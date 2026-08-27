@@ -12,3 +12,5 @@ Zero-config static site. Import this repo into Vercel and deploy — no build co
 
 ## Editing
 Each page is a single self-contained HTML file (styles, scripts, and images inlined). Edit the file, commit, and Vercel redeploys automatically.
+
+Live at https://bad-hombres.vercel.app - updated via automated commits.
