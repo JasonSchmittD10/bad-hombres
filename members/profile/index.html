@@ -428,9 +428,20 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   }).join('');
  }
 
- fetch('/data/history.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
-  D=j; code=pick(); render();
- }).catch(function(){
+ function grab(u){return fetch(u,{cache:'no-store'}).then(function(r){
+   if(!r.ok)throw 0; return r.json()})}
+
+ grab('/data/history.json').then(function(j){
+  D=j; code=pick();
+  // Team names change constantly, so prefer this league year's name and fall
+  // back to whatever the bio was written against.
+  return grab('/data/season.json').then(function(sn){
+   (sn.teams||[]).forEach(function(t){
+    for(var c in D.profiles) if(D.profiles[c].name===t.m && t.t) D.profiles[c].team=t.t;
+   });
+  }).catch(function(){});
+ }).then(function(){ if(D) render(); })
+ .catch(function(){
   el('pfHead').innerHTML='<p class="pf-empty">Could not load league history.</p>';
  });
 })();
