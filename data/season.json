@@ -1,0 +1,23 @@
+{
+  "updated": null,
+  "playoffCut": 6,
+  "weeklyBonus": 9,
+  "note": "Standings + weekly power-rank history. Written by the weekly recap task. See scripts/UPDATE_WEEK.md.",
+  "teams": [
+    {"m":"Drew","t":"I Stand with Jordon","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Wes","t":"MikeLee4 Prez","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Erick","t":"King in the North","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Tola","t":"Alien Awareness","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"David","t":"Drain the Swamp","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Dylan","t":"Carlie's Headset","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Matt","t":"San Diego Chillin'","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Zack","t":"Sewer Pigeons","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Hoa","t":"Critical Chase Theory","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Jason","t":"Pull-Out Game Weak","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Chris","t":"Maye the Force Be With You","w":0,"l":0,"tie":0,"pf":0,"bank":0},
+    {"m":"Adam","t":"Suck My Diggs","w":0,"l":0,"tie":0,"pf":0,"bank":0}
+  ],
+  "ranks": [
+    {"label":"PRE","order":["Drew","Wes","Erick","Tola","David","Dylan","Matt","Zack","Hoa","Jason","Chris","Adam"]}
+  ]
+}

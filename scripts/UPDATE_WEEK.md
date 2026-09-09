@@ -78,3 +78,44 @@ curl -s https://bad-hombres.vercel.app/data/week.json | head -c 200
 
 Once a week's award is settled, record the winner so the flip card on the
 homepage stops saying TBD. Winners live in `BH_AWARD_WINNERS` in `index.html`.
+
+---
+
+# Updating `data/season.json` (weekly recap task)
+
+Drives the **Standings** table and the **Power Lines** chart. Unlike
+`week.json` this changes **once a week**, with the Tuesday recap.
+
+```jsonc
+{
+  "updated": "2026-09-15T09:00:00-04:00",
+  "playoffCut": 6,
+  "weeklyBonus": 9,
+  "teams": [
+    {"m":"Drew","t":"I Stand with Jordon","w":1,"l":0,"tie":0,"pf":134.9,"bank":9}
+  ],
+  "ranks": [
+    {"label":"PRE",  "order":["Drew","Wes","..."]},
+    {"label":"WK 1", "order":["David","Hoa","..."]}
+  ]
+}
+```
+
+- `teams[].pf` is **season points for** (cumulative). The table divides by games
+  played to show Avg per week — don't pre-average it.
+- `teams[].bank` is dollars won from weekly bonuses so far ($9 each).
+- `ranks` is **your** power ranking, not the standings — one entry per week,
+  appended, `order` listing all 12 manager keys best to worst. Labels must be
+  `PRE` or `WK n`; the chart lays out `PRE` through `WK 14` and fills in what
+  exists.
+- Standings sort themselves: wins (ties count half), then points for. Before any
+  games are played they hold the `PRE` order rather than showing an arbitrary
+  list.
+
+Validate:
+
+```bash
+python3 -c "import json;d=json.load(open('data/season.json'));print(len(d['teams']),[r['label'] for r in d['ranks']])"
+```
+
+The playoff cut line sits after 6 — the league takes six teams.
