@@ -157,7 +157,8 @@ h2.title{font-size:28px;margin:0 0 6px;text-align:center}
 .verbadge{text-align:center;color:var(--muted);font-size:11px;letter-spacing:.1em;margin-top:14px;text-transform:uppercase}
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px;padding:24px 0;text-align:center}
 .divider{border-top:1px solid var(--line)}
-.champ-ticker-sec{max-width:none;margin:0;padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(#141418,#0d0d0f)}
+.champ-ticker-sec{position:fixed;left:0;right:0;bottom:0;z-index:60;max-width:none;margin:0;padding:0;border-top:1px solid var(--line);border-bottom:0;background:linear-gradient(#141418,#0d0d0f);box-shadow:0 -10px 26px rgba(0,0,0,.55)}
+body{padding-bottom:48px}
 .ticker-wrap{display:flex;align-items:stretch}
 .ticker-label{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:0 18px;background:var(--red);color:#fff;font-family:"Arial Black",Impact,sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;z-index:2}
 .ticker-label svg{width:15px;height:15px;fill:#fff}
