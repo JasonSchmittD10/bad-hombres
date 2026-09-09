@@ -50,8 +50,11 @@ Do **not** fetch these with `curl` from here — Yahoo 429s datacenter IPs.
 }
 ```
 
-- `m` = manager first name (the stable key — team names change constantly)
-- `t` = current team name, `s` = actual score, `p` = projected
+- `m` = manager first name — still the stable key: it selects the profile photo
+  and is what the bonus board shows. It is no longer printed on the matchup row.
+- `t` = current team name. This is what the scoreboard row displays, so keep it
+  current when someone renames their team.
+- `s` = actual score, `p` = projected
 - `status`: `live` while any game is unplayed, `final` after Monday night
 - `bonus.actual` is the top 3 for that week's award, best first
 
