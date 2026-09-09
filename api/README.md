@@ -37,40 +37,58 @@ returns a private league to a member of it.
 
 Click **Create App**. Yahoo shows you a **Client ID** and **Client Secret**.
 
-### 2. Get a refresh token
+### 2. Get a refresh token (the easy way)
 
-Open this URL in a browser (paste in your client ID) and approve the prompt.
-**The `redirect_uri` must be percent-encoded here** — Yahoo errors out on a raw
-`https://` in the query string:
+Yahoo's authorization codes expire almost instantly, which makes the
+copy-into-curl dance a race you will lose. `/api/yahoo-callback` does the
+exchange server-side instead.
+
+1. Add the app's **second Redirect URI** in the Yahoo console:
+   `https://bad-hombres.vercel.app/api/yahoo-callback`
+2. In Vercel, set `YAHOO_CLIENT_ID`, `YAHOO_CLIENT_SECRET`, and
+   `YAHOO_REDIRECT_URI=https://bad-hombres.vercel.app/api/yahoo-callback`
+   (Production + Preview). **Redeploy.**
+3. Visit <https://bad-hombres.vercel.app/api/yahoo-callback> — it builds the
+   authorize link for you with the right client ID and encoding.
+4. Approve. Yahoo redirects back, the route exchanges the code immediately, and
+   the page prints your **refresh token**.
+5. Copy it into Vercel as `YAHOO_REFRESH_TOKEN` and redeploy.
+
+The route disables itself once `YAHOO_REFRESH_TOKEN` exists.
+
+<details>
+<summary>Manual alternative (curl)</summary>
+
+Only if you want to avoid the callback route. Open the authorize URL with the
+`redirect_uri` **percent-encoded**:
 
 ```
 https://api.login.yahoo.com/oauth2/request_auth?client_id=YOUR_CLIENT_ID&redirect_uri=https%3A%2F%2Fbad-hombres.vercel.app%2F&response_type=code&language=en-us
 ```
 
-If Yahoo still errors:
-
-| What you see | Cause |
-|---|---|
-| `INVALID_REQUEST` / "Sorry, we couldn't process your request" | `redirect_uri` not encoded, or it doesn't character-for-character match what's registered on the app (the trailing `/` counts) |
-| "The OAuth client was not found" | wrong or truncated `client_id` — it is long and ends in `--` |
-| Prompt appears but no Fantasy access later | try adding `&scope=fspt-r` to the URL above |
-
-Yahoo bounces you back to the homepage with `?code=...` on the end of the URL.
-Copy that code straight out of the address bar — the page itself ignores it.
-
-Trade the code for tokens (the `redirect_uri` must match exactly):
+then exchange the `?code=` from the address bar **within seconds** — raw
+`redirect_uri` this time, and it must match the authorize call exactly:
 
 ```bash
 curl -X POST https://api.login.yahoo.com/oauth2/get_token \
   -u 'YOUR_CLIENT_ID:YOUR_CLIENT_SECRET' \
   -d grant_type=authorization_code \
   -d redirect_uri=https://bad-hombres.vercel.app/ \
-  -d code=THE_CODE_FROM_THE_ADDRESS_BAR
+  -d code=THE_CODE
 ```
 
-Keep `refresh_token` from the response. It does not expire with normal use;
-the function trades it for a fresh access token on demand. The `code` is
-single-use and dies in a few minutes, so do this part promptly.
+Watch out for shell history: pressing up-arrow re-sends the *old* code, which
+reads as `invalid_grant` / "Authorization code expired" even when you were fast.
+
+</details>
+
+Common errors:
+
+| Response | Cause |
+|---|---|
+| `INVALID_CONSUMER_KEY` — "Client ID does not exist" | You used the short **App ID**. Use **Client ID (Consumer Key)** — 80+ chars, ends in `--`. |
+| `invalid_grant` — "Authorization code expired" | Code already used or stale. Get a fresh one; check you're not re-running an old shell command. |
+| `invalid_client` | Secret wrong, or whitespace crept into the `-u 'ID:SECRET'` pair. |
 
 ### 3. Set the env vars in Vercel
 
