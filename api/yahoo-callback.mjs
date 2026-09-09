@@ -46,12 +46,6 @@ export default async function handler(req, res) {
       .send(page('Missing credentials', '<h1>Missing credentials</h1><p>Set <code>YAHOO_CLIENT_ID</code> and <code>YAHOO_CLIENT_SECRET</code> in Vercel, redeploy, then try the authorize URL again.</p>'));
   }
 
-  const shapeWarning = id.endsWith('--')
-    ? ''
-    : `<p class="warn"><b>Heads up:</b> your client ID is ${id.length} characters and does not end in
-       <code>--</code>. Yahoo client IDs do. It looks truncated — re-copy the whole
-       <b>Client ID (Consumer Key)</b> and re-paste it in Vercel.</p>`;
-
   const code = req.query?.code;
   if (!code) {
     const url =
@@ -63,8 +57,9 @@ export default async function handler(req, res) {
       page('Connect Yahoo', `<h1>Connect Yahoo</h1>
         <p>No <code>code</code> in the URL. Start the flow here:</p>
         <p><a href="${url}">Authorize with Yahoo →</a></p>
-        <p class="warn">Sign in with the Yahoo account that is in league 97724.</p>
-        ${shapeWarning}`)
+        <p class="warn">Sign in with the Yahoo account that is in league 97724.
+        This exact redirect URI must be registered on the Yahoo app:<br>
+        <code>${REDIRECT}</code></p>`)
     );
   }
 
