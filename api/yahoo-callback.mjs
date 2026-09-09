@@ -33,7 +33,8 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
 
-  if (env('YAHOO_REFRESH_TOKEN')) {
+  // ?reauth=1 lets us re-issue a token in place (e.g. to add a missing scope)
+  if (env('YAHOO_REFRESH_TOKEN') && req.query?.reauth !== '1' && !req.query?.code) {
     return res
       .status(410)
       .send(page('Setup already done', '<h1>Setup already done</h1><p>YAHOO_REFRESH_TOKEN is already set. This route is disabled. Unset it in Vercel if you genuinely need to re-issue a token.</p>'));
@@ -52,11 +53,15 @@ export default async function handler(req, res) {
       'https://api.login.yahoo.com/oauth2/request_auth?client_id=' +
       encodeURIComponent(id) +
       '&redirect_uri=' + encodeURIComponent(REDIRECT) +
-      '&response_type=code&language=en-us';
+      // fspt-r = Fantasy Sports read. The app console no longer offers a Fantasy
+      // permission checkbox, so the scope has to be asked for here or the token
+      // comes back without fantasy access and every league call 401s.
+      '&response_type=code&scope=fspt-r&language=en-us';
     return res.status(200).send(
       page('Connect Yahoo', `<h1>Connect Yahoo</h1>
         <p>No <code>code</code> in the URL. Start the flow here:</p>
         <p><a href="${url}">Authorize with Yahoo →</a></p>
+        <p class="warn">Requests <code>scope=fspt-r</code> (Fantasy read).</p>
         <p class="warn">Sign in with the Yahoo account that is in league 97724.
         This exact redirect URI must be registered on the Yahoo app:<br>
         <code>${REDIRECT}</code></p>`)

@@ -52,7 +52,10 @@ async function yahoo(path) {
   const res = await fetch(`${Y}${path}${path.includes('?') ? '&' : '?'}format=json`, {
     headers: { Authorization: `Bearer ${t}` },
   });
-  if (!res.ok) throw new Error(`yahoo-${res.status}-${path}`);
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    throw new Error(`yahoo-${res.status}-${path} ${body.slice(0, 300)}`);
+  }
   return res.json();
 }
 
