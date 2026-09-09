@@ -119,3 +119,33 @@ python3 -c "import json;d=json.load(open('data/season.json'));print(len(d['teams
 ```
 
 The playoff cut line sits after 6 — the league takes six teams.
+
+---
+
+# Scraping a week's bonus leaders
+
+Worked example (Week 1, highest-scoring QB). Run in Jason's Chrome on the
+league origin — same-origin `fetch` carries the session, so you can pull all
+twelve team pages without twelve navigations:
+
+```js
+for (var i = 1; i <= 12; i++) {
+  var h = await fetch('/f1/97724/' + i + '?week=1', {credentials:'include'}).then(r => r.text());
+  var d = new DOMParser().parseFromString(h, 'text/html');
+  var t = d.querySelector('#statTable0');           // starters; #statTable1 is the bench
+  ...
+}
+```
+
+Two traps, both real:
+
+- **Column indices shift between teams.** Your own team page has an `Edit`
+  column that other teams' pages don't, and rows carry one more `<td>` than the
+  header has `<th>`. Read the header, then offset by
+  `td.length - cols.length`. Never hardcode a column number.
+- **Player names run together** with the note/forecast links
+  (`Jaxson DartVideo ForecastPlayer Note NYG - QB ...`). Take the text of the
+  row's `a[href*="/players/"]` instead of the cell.
+
+Write the result into `week.json` as `bonus.projected` (and `bonus.actual` once
+games are played), best first, `who` = manager key, `sub` = the player.
