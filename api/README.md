@@ -11,36 +11,56 @@ static Week 1 projections baked into `index.html`. The site never breaks.
 
 ### 1. Register a Yahoo app
 
-1. Go to <https://developer.yahoo.com/apps/create/>
-2. **Application Name:** `Bad Hombres Scoreboard`
-3. **Redirect URI (OAuth Callback Domain):** `oob`
-4. **API Permissions:** check **Fantasy Sports**, `Read` is enough
-5. Create it. You get a **Client ID** and **Client Secret**.
+Go to <https://developer.yahoo.com/apps/create/> and fill in:
 
-Sign in with the Yahoo account that is **in league 97724** — the API only
+| Field | Value |
+|---|---|
+| **Application Name** | `Bad Hombres Scoreboard` |
+| **Description** | (blank is fine) |
+| **Homepage URL** | `https://bad-hombres.vercel.app` |
+| **Redirect URI(s)** | `https://bad-hombres.vercel.app/` |
+| **OAuth Client Type** | **Confidential Client** |
+| **API Permissions** | leave **both boxes unchecked** |
+
+Two things that differ from most guides online:
+
+- **`oob` no longer works.** Yahoo used to accept the literal string `oob`
+  for desktop-style apps; the form now rejects it with *"Invalid URI."* Use a
+  real https URL you control. Any page on the site works — we just read the
+  `code` out of the address bar in step 2, so nothing needs to handle it.
+- **There is no "Fantasy Sports" checkbox any more.** The only options listed
+  are *OpenID Connect Permissions* and *TW Auction*, and neither is what we
+  want. Leave them unchecked — Fantasy read access comes with the token.
+
+Sign in with the Yahoo account that is **in league 97724**. The API only
 returns a private league to a member of it.
+
+Click **Create App**. Yahoo shows you a **Client ID** and **Client Secret**.
 
 ### 2. Get a refresh token
 
-Open this in a browser (substitute your client ID), approve, and copy the code
-Yahoo shows on screen:
+Open this URL in a browser (paste in your client ID) and approve the prompt:
 
 ```
-https://api.login.yahoo.com/oauth2/request_auth?client_id=YOUR_CLIENT_ID&redirect_uri=oob&response_type=code&language=en-us
+https://api.login.yahoo.com/oauth2/request_auth?client_id=YOUR_CLIENT_ID&redirect_uri=https://bad-hombres.vercel.app/&response_type=code&language=en-us
 ```
 
-Trade that code for tokens:
+Yahoo bounces you back to the homepage with `?code=...` on the end of the URL.
+Copy that code straight out of the address bar — the page itself ignores it.
+
+Trade the code for tokens (the `redirect_uri` must match exactly):
 
 ```bash
 curl -X POST https://api.login.yahoo.com/oauth2/get_token \
   -u 'YOUR_CLIENT_ID:YOUR_CLIENT_SECRET' \
   -d grant_type=authorization_code \
-  -d redirect_uri=oob \
-  -d code=THE_CODE_FROM_THE_PAGE
+  -d redirect_uri=https://bad-hombres.vercel.app/ \
+  -d code=THE_CODE_FROM_THE_ADDRESS_BAR
 ```
 
 Keep `refresh_token` from the response. It does not expire with normal use;
-the function trades it for a fresh access token on demand.
+the function trades it for a fresh access token on demand. The `code` is
+single-use and dies in a few minutes, so do this part promptly.
 
 ### 3. Set the env vars in Vercel
 
@@ -52,6 +72,7 @@ Project → Settings → Environment Variables (Production + Preview):
 | `YAHOO_CLIENT_SECRET` | from step 1 |
 | `YAHOO_REFRESH_TOKEN` | from step 2 |
 | `YAHOO_LEAGUE_ID` | `97724` (optional — this is the default) |
+| `YAHOO_REDIRECT_URI` | only if you registered something other than `https://bad-hombres.vercel.app/` |
 
 Redeploy after adding them. Check it with:
 
@@ -99,3 +120,7 @@ Both degrade to an empty leaderboard rather than failing the whole response.
   it. If Yahoo changes shape, those two are what break.
 - **This has not been run against live Yahoo yet** — it needs the credentials
   above. Expect one round of fixes on first contact.
+- If the API returns 401/403 once credentials are in, the likely cause is the
+  missing Fantasy permission checkbox described in step 1. Yahoo's console has
+  changed here and the behaviour is not something this repo can verify ahead of
+  time. `curl` the endpoint and read `error` — it passes Yahoo's status through.

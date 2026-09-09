@@ -31,7 +31,9 @@ async function accessToken() {
     },
     body: new URLSearchParams({
       grant_type: 'refresh_token',
-      redirect_uri: 'oob',
+      // Must match the Redirect URI registered on the Yahoo app. Yahoo no
+      // longer accepts the old 'oob' value, so this defaults to the site.
+      redirect_uri: process.env.YAHOO_REDIRECT_URI || 'https://bad-hombres.vercel.app/',
       refresh_token: refresh,
     }),
   });
