@@ -1,0 +1,15 @@
+{
+  "week": 1,
+  "status": "preseason",
+  "updated": null,
+  "note": "Yahoo projections, entered from the league pages. Same shape as /api/scoreboard.",
+  "matchups": [
+    {"a":{"m":"Jason","t":"Pull-Out Game Weak","p":130.2},"b":{"m":"Drew","t":"I Stand with Jordon","p":123.9}},
+    {"a":{"m":"Tola","t":"Alien Awareness","p":126.5},"b":{"m":"Erick","t":"King in the North","p":119.4}},
+    {"a":{"m":"Hoa","t":"Critical Chase Theory","p":128.7},"b":{"m":"Dylan","t":"Carlie's Headset","p":125.5}},
+    {"a":{"m":"David","t":"Drain the Swamp","p":120.4},"b":{"m":"Wes","t":"MikeLee4 Prez","p":108.9}},
+    {"a":{"m":"Chris","t":"Maye the Force Be With You","p":117.0},"b":{"m":"Matt","t":"San Diego Chillin'","p":122.2}},
+    {"a":{"m":"Adam","t":"Suck My Diggs","p":125.8},"b":{"m":"Zack","t":"Sewer Pigeons","p":121.1}}
+  ],
+  "bonus": null
+}

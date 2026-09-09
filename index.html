@@ -576,13 +576,16 @@ footer.site-foot{border-top:1px solid var(--line);color:var(--muted);font-size:1
   renderMatchups();renderBonus();
  });
 
+ function apply(j){if(j&&j.matchups&&j.matchups.length){state.data=j;render();return true}return false}
+ function grab(url){return fetch(url,{cache:'no-store'}).then(function(r){
+   if(!r.ok)throw 0; return r.json();
+  })}
  function load(){
   if(!window.fetch)return;
-  fetch('/api/scoreboard',{cache:'no-store'}).then(function(r){
-   if(!r.ok)throw 0; return r.json();
-  }).then(function(j){
-   if(j&&j.matchups&&j.matchups.length){state.data=j;render()}
-  }).catch(function(){/* keep the static fallback */});
+  // Live Yahoo when it is available; otherwise the committed week file.
+  grab('/api/scoreboard').then(apply).catch(function(){
+   return grab('/data/week.json').then(apply).catch(function(){/* inline fallback */});
+  });
  }
  render(); load(); setInterval(load,90000);
 })();
