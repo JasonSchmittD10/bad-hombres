@@ -28,9 +28,13 @@ Two things that differ from most guides online:
   for desktop-style apps; the form now rejects it with *"Invalid URI."* Use a
   real https URL you control. Any page on the site works — we just read the
   `code` out of the address bar in step 2, so nothing needs to handle it.
-- **There is no "Fantasy Sports" checkbox any more.** The only options listed
-  are *OpenID Connect Permissions* and *TW Auction*, and neither is what we
-  want. Leave them unchecked — Fantasy read access comes with the token.
+- **The create form does not offer Fantasy Sports.** It only lists *OpenID
+  Connect Permissions* and *TW Auction*. Create the app anyway, then **edit it**
+  and enable **Fantasy Sports (Read)** under API Permissions. Without that, the
+  token authenticates fine but every league call returns
+  `401 oauth_problem="additional_authorization_required"`.
+- **Do not pass `scope=fspt-r`.** Yahoo rejects it with `invalid_scope`.
+  Fantasy access comes from the app's permissions, not the authorize request.
 
 Sign in with the Yahoo account that is **in league 97724**. The API only
 returns a private league to a member of it.
@@ -89,6 +93,9 @@ Common errors:
 | `INVALID_CONSUMER_KEY` — "Client ID does not exist" | You used the short **App ID**. Use **Client ID (Consumer Key)** — 80+ chars, ends in `--`. |
 | `invalid_grant` — "Authorization code expired" | Code already used or stale. Get a fresh one; check you're not re-running an old shell command. |
 | `invalid_client` | Secret wrong, or whitespace crept into the `-u 'ID:SECRET'` pair. |
+| `INVALID_REDIRECT_URI` | The redirect URI must be registered on the app character-for-character, no trailing slash. |
+| `invalid_scope` | You passed `scope=fspt-r`. Don't — enable Fantasy Sports on the app instead. |
+| API returns `401 additional_authorization_required` | The app lacks **Fantasy Sports** API permission. Enable it in the app settings, then re-issue the refresh token via `?reauth=1`. |
 
 ### 3. Set the env vars in Vercel
 

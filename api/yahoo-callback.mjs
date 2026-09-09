@@ -53,15 +53,14 @@ export default async function handler(req, res) {
       'https://api.login.yahoo.com/oauth2/request_auth?client_id=' +
       encodeURIComponent(id) +
       '&redirect_uri=' + encodeURIComponent(REDIRECT) +
-      // fspt-r = Fantasy Sports read. The app console no longer offers a Fantasy
-      // permission checkbox, so the scope has to be asked for here or the token
-      // comes back without fantasy access and every league call 401s.
-      '&response_type=code&scope=fspt-r&language=en-us';
+      // No scope param: Yahoo rejects scope=fspt-r with invalid_scope. Fantasy
+      // access is granted by the *app's* API Permissions, not by the request.
+      // Without it the league call returns 401 additional_authorization_required.
+      '&response_type=code&language=en-us';
     return res.status(200).send(
       page('Connect Yahoo', `<h1>Connect Yahoo</h1>
         <p>No <code>code</code> in the URL. Start the flow here:</p>
         <p><a href="${url}">Authorize with Yahoo →</a></p>
-        <p class="warn">Requests <code>scope=fspt-r</code> (Fantasy read).</p>
         <p class="warn">Sign in with the Yahoo account that is in league 97724.
         This exact redirect URI must be registered on the Yahoo app:<br>
         <code>${REDIRECT}</code></p>`)
