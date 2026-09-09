@@ -134,7 +134,7 @@ nav.top a{color:var(--muted);font:700 12.5px/1 "Segoe UI",sans-serif;text-transf
 nav.top a:hover{color:#fff;background:var(--panel)}nav.top a.active{color:#fff}
 .hero{text-align:center;padding:46px 0 30px}
 .hero img{height:150px;width:auto;filter:drop-shadow(0 8px 30px rgba(193,18,31,.35))}
-.hero h1{font-size:52px;margin:16px 0 0}.hero .ff{color:var(--red);font-size:20px;font-weight:800;letter-spacing:.28em;margin-top:2px}
+.hero h1{font-size:var(--fs-3xl);margin:16px 0 0}.hero .ff{color:var(--red);font-size:20px;font-weight:800;letter-spacing:.28em;margin-top:2px}
 section{padding:34px 0}
 .eyebrow{color:var(--red);font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 4px;text-align:center}
 h2.title{font-size:28px;margin:0 0 6px;text-align:center}
@@ -229,7 +229,8 @@ h1,h2,h3,.blk,.st-h1x,.sb-title,.bb-nm,.aw-nm,.aw-win,.kh-rule span,.foot-wm,.lo
  font-family:var(--font-display);font-weight:900;letter-spacing:var(--ls-display);line-height:var(--lh-head)}
 h1{font-size:var(--fs-2xl)}
 h2.title{font-size:var(--fs-xl);line-height:var(--lh-head)}
-h3.title{font-size:var(--fs-lg)!important}
+h3.title{font-size:var(--fs-lg)}
+.blk-sm{font-size:var(--fs-sm)}
 .eyebrow{font-size:var(--fs-xs);letter-spacing:var(--ls-label)}
 .sub{font-size:var(--fs-sm);line-height:var(--lh-body)}
 .ac-h{font-size:var(--fs-md)}
@@ -379,7 +380,7 @@ function renderH2H(){const a=document.getElementById('h2hA').value,b=document.ge
  if(big)h+=tile('Biggest Blowout',big.m.toFixed(1)+' <small>pts</small>',mline(big,a,b));
  if(close)h+=tile('Closest Game',close.m.toFixed(1)+' <small>pts</small>',mline(close,a,b));
  h+='</div>';
- h+='<div class="panel"><div class="pad" style="padding-bottom:6px"><b class="blk" style="font-size:13px">Every Meeting</b></div>';
+ h+='<div class="panel"><div class="pad" style="padding-bottom:6px"><b class="blk blk-sm">Every Meeting</b></div>';
  meets.forEach(o=>{const win=o.as_>o.bs_?a:(o.bs_>o.as_?b:null);
   h+=`<div class="meet"><div class="yw">${o.g.y} · <span class="${o.g.po?'po':''}">${o.g.label}</span></div>
    <div><span class="${win===a?'w':win===b?'ll':''}">${fn(a)}</span> <span style="color:var(--muted)">vs</span> <span class="${win===b?'w':win===a?'ll':''}">${fn(b)}</span></div>
@@ -461,10 +462,10 @@ function renderSeason(y){const s=SS[y];const place=D.place[y];const champ=D.cham
  document.getElementById('seasonBody').innerHTML=`
   <div class="panel pad" style="margin-bottom:16px;border-color:var(--gold)"><b class="blk" style="color:var(--gold)">🏆 ${y} Champion: ${fn(champ)}</b> <span style="color:var(--muted)">— ${D.teams[y][champ]}</span></div>
   <div class="grid" style="grid-template-columns:1fr;gap:16px">
-   <div class="panel" style="overflow-x:auto"><div class="pad" style="padding-bottom:4px"><b class="blk" style="font-size:13px">Final Standings</b></div>
+   <div class="panel" style="overflow-x:auto"><div class="pad" style="padding-bottom:4px"><b class="blk blk-sm">Final Standings</b></div>
     <table><thead><tr><th class="rank"></th><th>Manager</th><th>Team</th><th class="num">Record</th><th class="num">PF</th><th class="num">PA</th></tr></thead><tbody>${stand}</tbody></table></div>
-   <div class="panel pad"><b class="blk" style="font-size:13px">Playoff Bracket</b><div class="bracket">${br}</div></div>
-   <div class="panel pad"><b class="blk" style="font-size:13px">Draft — Round 1</b><div class="draftrow">${draft}</div></div>
-   <div class="panel pad"><b class="blk" style="font-size:13px">Week by Week</b><div style="height:8px"></div>${weeks}</div>
+   <div class="panel pad"><b class="blk blk-sm">Playoff Bracket</b><div class="bracket">${br}</div></div>
+   <div class="panel pad"><b class="blk blk-sm">Draft — Round 1</b><div class="draftrow">${draft}</div></div>
+   <div class="panel pad"><b class="blk blk-sm">Week by Week</b><div style="height:8px"></div>${weeks}</div>
   </div>`;}
 renderSeason(YEARS[YEARS.length-1]);</script></body></html>
