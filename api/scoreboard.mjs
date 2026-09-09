@@ -8,7 +8,11 @@
 //
 // Secrets never live in this repo. See api/README.md for setup.
 
-const LEAGUE_ID = process.env.YAHOO_LEAGUE_ID || '97724';
+// Env values are pasted by hand into a dashboard, where line wrapping loves to
+// smuggle in newlines. None of these values legitimately contain whitespace.
+const env = (name) => (process.env[name] || '').replace(/\s+/g, '');
+
+const LEAGUE_ID = env('YAHOO_LEAGUE_ID') || '97724';
 const LEAGUE_KEY = `nfl.l.${LEAGUE_ID}`;
 const Y = 'https://fantasysports.yahooapis.com/fantasy/v2';
 
@@ -18,9 +22,9 @@ let tokenCache = { token: null, exp: 0 };
 
 async function accessToken() {
   if (tokenCache.token && Date.now() < tokenCache.exp) return tokenCache.token;
-  const id = process.env.YAHOO_CLIENT_ID,
-        secret = process.env.YAHOO_CLIENT_SECRET,
-        refresh = process.env.YAHOO_REFRESH_TOKEN;
+  const id = env('YAHOO_CLIENT_ID'),
+        secret = env('YAHOO_CLIENT_SECRET'),
+        refresh = env('YAHOO_REFRESH_TOKEN');
   if (!id || !secret || !refresh) throw new Error('missing-yahoo-env');
 
   const res = await fetch('https://api.login.yahoo.com/oauth2/get_token', {
@@ -33,7 +37,7 @@ async function accessToken() {
       grant_type: 'refresh_token',
       // Must match the Redirect URI registered on the Yahoo app. Yahoo no
       // longer accepts the old 'oob' value, so this defaults to the site.
-      redirect_uri: process.env.YAHOO_REDIRECT_URI || 'https://bad-hombres.vercel.app/',
+      redirect_uri: env('YAHOO_REDIRECT_URI') || 'https://bad-hombres.vercel.app/',
       refresh_token: refresh,
     }),
   });

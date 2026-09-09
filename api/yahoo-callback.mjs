@@ -9,8 +9,10 @@
 //
 // Once YAHOO_REFRESH_TOKEN is set, this route refuses to run.
 
-const REDIRECT =
-  process.env.YAHOO_REDIRECT_URI || 'https://bad-hombres.vercel.app/api/yahoo-callback';
+// Hand-pasted env values pick up stray newlines from dashboard line wrapping.
+const env = (name) => (process.env[name] || '').replace(/\s+/g, '');
+
+const REDIRECT = env('YAHOO_REDIRECT_URI') || 'https://bad-hombres.vercel.app/api/yahoo-callback';
 
 function page(title, bodyHtml) {
   return `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -31,18 +33,24 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
 
-  if (process.env.YAHOO_REFRESH_TOKEN) {
+  if (env('YAHOO_REFRESH_TOKEN')) {
     return res
       .status(410)
       .send(page('Setup already done', '<h1>Setup already done</h1><p>YAHOO_REFRESH_TOKEN is already set. This route is disabled. Unset it in Vercel if you genuinely need to re-issue a token.</p>'));
   }
 
-  const id = process.env.YAHOO_CLIENT_ID, secret = process.env.YAHOO_CLIENT_SECRET;
+  const id = env('YAHOO_CLIENT_ID'), secret = env('YAHOO_CLIENT_SECRET');
   if (!id || !secret) {
     return res
       .status(500)
       .send(page('Missing credentials', '<h1>Missing credentials</h1><p>Set <code>YAHOO_CLIENT_ID</code> and <code>YAHOO_CLIENT_SECRET</code> in Vercel, redeploy, then try the authorize URL again.</p>'));
   }
+
+  const shapeWarning = id.endsWith('--')
+    ? ''
+    : `<p class="warn"><b>Heads up:</b> your client ID is ${id.length} characters and does not end in
+       <code>--</code>. Yahoo client IDs do. It looks truncated — re-copy the whole
+       <b>Client ID (Consumer Key)</b> and re-paste it in Vercel.</p>`;
 
   const code = req.query?.code;
   if (!code) {
@@ -55,7 +63,8 @@ export default async function handler(req, res) {
       page('Connect Yahoo', `<h1>Connect Yahoo</h1>
         <p>No <code>code</code> in the URL. Start the flow here:</p>
         <p><a href="${url}">Authorize with Yahoo →</a></p>
-        <p class="warn">Sign in with the Yahoo account that is in league 97724.</p>`)
+        <p class="warn">Sign in with the Yahoo account that is in league 97724.</p>
+        ${shapeWarning}`)
     );
   }
 
