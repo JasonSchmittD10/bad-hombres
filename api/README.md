@@ -39,11 +39,21 @@ Click **Create App**. Yahoo shows you a **Client ID** and **Client Secret**.
 
 ### 2. Get a refresh token
 
-Open this URL in a browser (paste in your client ID) and approve the prompt:
+Open this URL in a browser (paste in your client ID) and approve the prompt.
+**The `redirect_uri` must be percent-encoded here** — Yahoo errors out on a raw
+`https://` in the query string:
 
 ```
-https://api.login.yahoo.com/oauth2/request_auth?client_id=YOUR_CLIENT_ID&redirect_uri=https://bad-hombres.vercel.app/&response_type=code&language=en-us
+https://api.login.yahoo.com/oauth2/request_auth?client_id=YOUR_CLIENT_ID&redirect_uri=https%3A%2F%2Fbad-hombres.vercel.app%2F&response_type=code&language=en-us
 ```
+
+If Yahoo still errors:
+
+| What you see | Cause |
+|---|---|
+| `INVALID_REQUEST` / "Sorry, we couldn't process your request" | `redirect_uri` not encoded, or it doesn't character-for-character match what's registered on the app (the trailing `/` counts) |
+| "The OAuth client was not found" | wrong or truncated `client_id` — it is long and ends in `--` |
+| Prompt appears but no Fantasy access later | try adding `&scope=fspt-r` to the URL above |
 
 Yahoo bounces you back to the homepage with `?code=...` on the end of the URL.
 Copy that code straight out of the address bar — the page itself ignores it.
