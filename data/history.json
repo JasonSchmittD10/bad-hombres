@@ -1,0 +1,2095 @@
+{
+ "years": [
+  "2021",
+  "2022",
+  "2023",
+  "2024",
+  "2025"
+ ],
+ "managers": {
+  "JAS": "Jason",
+  "TOL": "Tola",
+  "DRE": "Drew",
+  "DAV": "David",
+  "DYL": "Dylan",
+  "ERI": "Erick",
+  "HOA": "Hoa",
+  "CHR": "Chris",
+  "WES": "Wes",
+  "MAT": "Matt",
+  "ZAC": "Zack",
+  "ADA": "Adam"
+ },
+ "fullNames": {
+  "JAS": "Jason Schmitt",
+  "DAV": "David Hurst",
+  "TOL": "Tola Odedere",
+  "DRE": "Drew Rose",
+  "HOA": "Hoa Tran",
+  "CHR": "Chris Dambro",
+  "ERI": "Erick DeLeon",
+  "MAT": "Matt Aday",
+  "ZAC": "Zack Moore",
+  "ADA": "Adam Schmitt",
+  "DYL": "Dylan Greene",
+  "WES": "Wes Jones"
+ },
+ "profiles": {
+  "JAS": {
+   "name": "Jason",
+   "w": 43,
+   "l": 27,
+   "t": 0,
+   "g": 70,
+   "pct": 0.614,
+   "avg": 129.93,
+   "avgPa": 122.88,
+   "highs": 5,
+   "weeksTop": 9,
+   "high": {
+    "v": 219.56,
+    "y": 2023,
+    "opp": "Matt"
+   },
+   "low": {
+    "v": 79.14,
+    "y": 2025,
+    "opp": "Erick"
+   },
+   "blowout": {
+    "v": 73.67,
+    "y": 2022,
+    "opp": "Chris"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 121.99,
+     "pa": 118.31,
+     "finish": 3,
+     "po": true
+    },
+    {
+     "y": 2024,
+     "w": 10,
+     "l": 4,
+     "t": 0,
+     "avg": 137.42,
+     "pa": 122.81,
+     "finish": 3,
+     "po": true
+    },
+    {
+     "y": 2023,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 131.34,
+     "pa": 135.82,
+     "finish": 2,
+     "po": true
+    },
+    {
+     "y": 2022,
+     "w": 10,
+     "l": 4,
+     "t": 0,
+     "avg": 132.65,
+     "pa": 116.77,
+     "finish": 3,
+     "po": true
+    },
+    {
+     "y": 2021,
+     "w": 7,
+     "l": 7,
+     "t": 0,
+     "avg": 126.23,
+     "pa": 120.68,
+     "finish": 2,
+     "po": true
+    }
+   ],
+   "playoff": {
+    "app": 5,
+    "w": 8,
+    "l": 5,
+    "avg": 127.81,
+    "high": {
+     "v": 163.98
+    },
+    "low": {
+     "v": 94.37
+    },
+    "trophies": {
+     "1": 0,
+     "2": 2,
+     "3": 3
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 4,
+     "l": 3,
+     "t": 0
+    },
+    "Chris": {
+     "w": 5,
+     "l": 3,
+     "t": 0
+    },
+    "David": {
+     "w": 4,
+     "l": 4,
+     "t": 0
+    },
+    "Drew": {
+     "w": 3,
+     "l": 4,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 6,
+     "l": 1,
+     "t": 0
+    },
+    "Erick": {
+     "w": 3,
+     "l": 5,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 5,
+     "l": 2,
+     "t": 0
+    },
+    "Matt": {
+     "w": 5,
+     "l": 3,
+     "t": 0
+    },
+    "Tola": {
+     "w": 5,
+     "l": 2,
+     "t": 0
+    },
+    "Wes": {
+     "w": 5,
+     "l": 2,
+     "t": 0
+    },
+    "Zack": {
+     "w": 6,
+     "l": 3,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 1,
+    "highs": 6,
+    "weeksTop": 4,
+    "avg": 2,
+    "avgPa": 6,
+    "high": 3,
+    "low": 2,
+    "blowout": 9
+   },
+   "bio": "The Commissioner. Everyone loves to hate on him. Has consistently finished near the top but has never won it outright \u2014 the streak lives on after a 3rd-place finish in 2025.",
+   "team": "Amon Ra Doggin",
+   "tags": [
+    "Commissioner",
+    "2025: 3rd",
+    "Perennial Bridesmaid"
+   ],
+   "full": "Jason Schmitt"
+  },
+  "TOL": {
+   "name": "Tola",
+   "w": 37,
+   "l": 33,
+   "t": 0,
+   "g": 70,
+   "pct": 0.529,
+   "avg": 122.31,
+   "avgPa": 122.65,
+   "highs": 5,
+   "weeksTop": 9,
+   "high": {
+    "v": 220.19,
+    "y": 2022,
+    "opp": "Drew"
+   },
+   "low": {
+    "v": 73.75,
+    "y": 2023,
+    "opp": "David"
+   },
+   "blowout": {
+    "v": 68.27,
+    "y": 2022,
+    "opp": "Adam"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 10,
+     "l": 4,
+     "t": 0,
+     "avg": 130.86,
+     "pa": 122.17,
+     "finish": 2,
+     "po": true
+    },
+    {
+     "y": 2024,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 123.22,
+     "pa": 124.72,
+     "finish": 8,
+     "po": false
+    },
+    {
+     "y": 2023,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 118.06,
+     "pa": 121.13,
+     "finish": 7,
+     "po": false
+    },
+    {
+     "y": 2022,
+     "w": 9,
+     "l": 5,
+     "t": 0,
+     "avg": 134.31,
+     "pa": 121.14,
+     "finish": 4,
+     "po": true
+    },
+    {
+     "y": 2021,
+     "w": 4,
+     "l": 10,
+     "t": 0,
+     "avg": 105.1,
+     "pa": 124.09,
+     "finish": 12,
+     "po": false
+    }
+   ],
+   "playoff": {
+    "app": 2,
+    "w": 1,
+    "l": 3,
+    "avg": 124.45,
+    "high": {
+     "v": 160.68
+    },
+    "low": {
+     "v": 85.2
+    },
+    "trophies": {
+     "1": 0,
+     "2": 1,
+     "3": 0
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 6,
+     "l": 2,
+     "t": 0
+    },
+    "Chris": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "David": {
+     "w": 1,
+     "l": 6,
+     "t": 0
+    },
+    "Drew": {
+     "w": 3,
+     "l": 5,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 4,
+     "l": 2,
+     "t": 0
+    },
+    "Erick": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Jason": {
+     "w": 2,
+     "l": 5,
+     "t": 0
+    },
+    "Matt": {
+     "w": 5,
+     "l": 3,
+     "t": 0
+    },
+    "Wes": {
+     "w": 5,
+     "l": 2,
+     "t": 0
+    },
+    "Zack": {
+     "w": 3,
+     "l": 2,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 5,
+    "highs": 7,
+    "weeksTop": 5,
+    "avg": 7,
+    "avgPa": 5,
+    "high": 2,
+    "low": 5,
+    "blowout": 11
+   },
+   "bio": "Has historically made some genuinely terrible picks but somehow does well anyway. Better than his draft board deserves \u2014 though the 2021 basement is still on his record.",
+   "team": "#MyLenovoCenter",
+   "tags": [
+    "2021 Last Place",
+    "Bad Picks, Good Team"
+   ],
+   "full": "Tola Odedere"
+  },
+  "DRE": {
+   "name": "Drew",
+   "w": 40,
+   "l": 30,
+   "t": 0,
+   "g": 70,
+   "pct": 0.571,
+   "avg": 129.35,
+   "avgPa": 124.33,
+   "highs": 6,
+   "weeksTop": 12,
+   "high": {
+    "v": 180.05,
+    "y": 2021,
+    "opp": "Hoa"
+   },
+   "low": {
+    "v": 74.26,
+    "y": 2024,
+    "opp": "Hoa"
+   },
+   "blowout": {
+    "v": 69.88,
+    "y": 2024,
+    "opp": "Zack"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 9,
+     "l": 5,
+     "t": 0,
+     "avg": 141.31,
+     "pa": 128.6,
+     "finish": 6,
+     "po": true
+    },
+    {
+     "y": 2024,
+     "w": 7,
+     "l": 7,
+     "t": 0,
+     "avg": 124.21,
+     "pa": 116.98,
+     "finish": 7,
+     "po": false
+    },
+    {
+     "y": 2023,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 120.64,
+     "pa": 125.23,
+     "finish": 9,
+     "po": false
+    },
+    {
+     "y": 2022,
+     "w": 9,
+     "l": 5,
+     "t": 0,
+     "avg": 132.09,
+     "pa": 129.14,
+     "finish": 6,
+     "po": true
+    },
+    {
+     "y": 2021,
+     "w": 9,
+     "l": 5,
+     "t": 0,
+     "avg": 128.48,
+     "pa": 121.67,
+     "finish": 1,
+     "po": true
+    }
+   ],
+   "playoff": {
+    "app": 3,
+    "w": 2,
+    "l": 4,
+    "avg": 116.01,
+    "high": {
+     "v": 169.27
+    },
+    "low": {
+     "v": 92.8
+    },
+    "trophies": {
+     "1": 1,
+     "2": 0,
+     "3": 0
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 4,
+     "l": 2,
+     "t": 0
+    },
+    "Chris": {
+     "w": 4,
+     "l": 1,
+     "t": 0
+    },
+    "David": {
+     "w": 2,
+     "l": 6,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 6,
+     "l": 1,
+     "t": 0
+    },
+    "Erick": {
+     "w": 0,
+     "l": 7,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 2,
+     "l": 4,
+     "t": 0
+    },
+    "Jason": {
+     "w": 4,
+     "l": 3,
+     "t": 0
+    },
+    "Matt": {
+     "w": 3,
+     "l": 4,
+     "t": 0
+    },
+    "Tola": {
+     "w": 5,
+     "l": 3,
+     "t": 0
+    },
+    "Wes": {
+     "w": 6,
+     "l": 2,
+     "t": 0
+    },
+    "Zack": {
+     "w": 6,
+     "l": 1,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 3,
+    "highs": 5,
+    "weeksTop": 2,
+    "avg": 3,
+    "avgPa": 10,
+    "high": 10,
+    "low": 4,
+    "blowout": 10
+   },
+   "bio": "The 2021 champion and an absolute wildcard. No one knows quite what he's up to, but he somehow makes it to every sporting event across the country. Wild guy.",
+   "team": "#NotMyLenovoCenter",
+   "tags": [
+    "2021 Champ",
+    "Wildcard",
+    "Everywhere at Once"
+   ],
+   "full": "Drew Rose"
+  },
+  "DAV": {
+   "name": "David",
+   "w": 42,
+   "l": 28,
+   "t": 0,
+   "g": 70,
+   "pct": 0.6,
+   "avg": 130.25,
+   "avgPa": 122.94,
+   "highs": 14,
+   "weeksTop": 5,
+   "high": {
+    "v": 188.12,
+    "y": 2022,
+    "opp": "Chris"
+   },
+   "low": {
+    "v": 76.33,
+    "y": 2022,
+    "opp": "Matt"
+   },
+   "blowout": {
+    "v": 91.78,
+    "y": 2025,
+    "opp": "Chris"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 10,
+     "l": 4,
+     "t": 0,
+     "avg": 136.04,
+     "pa": 114.02,
+     "finish": 1,
+     "po": true
+    },
+    {
+     "y": 2024,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 133.61,
+     "pa": 131.61,
+     "finish": 1,
+     "po": true
+    },
+    {
+     "y": 2023,
+     "w": 10,
+     "l": 4,
+     "t": 0,
+     "avg": 130.99,
+     "pa": 121.14,
+     "finish": 3,
+     "po": true
+    },
+    {
+     "y": 2022,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 121.68,
+     "pa": 124.75,
+     "finish": 7,
+     "po": false
+    },
+    {
+     "y": 2021,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 128.95,
+     "pa": 123.16,
+     "finish": 4,
+     "po": true
+    }
+   ],
+   "playoff": {
+    "app": 4,
+    "w": 7,
+    "l": 3,
+    "avg": 132.09,
+    "high": {
+     "v": 168.48
+    },
+    "low": {
+     "v": 102.05
+    },
+    "trophies": {
+     "1": 2,
+     "2": 0,
+     "3": 1
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Chris": {
+     "w": 5,
+     "l": 2,
+     "t": 0
+    },
+    "Drew": {
+     "w": 6,
+     "l": 2,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Erick": {
+     "w": 3,
+     "l": 2,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 5,
+     "l": 3,
+     "t": 0
+    },
+    "Jason": {
+     "w": 4,
+     "l": 4,
+     "t": 0
+    },
+    "Matt": {
+     "w": 8,
+     "l": 4,
+     "t": 0
+    },
+    "Tola": {
+     "w": 6,
+     "l": 1,
+     "t": 0
+    },
+    "Wes": {
+     "w": 5,
+     "l": 2,
+     "t": 0
+    },
+    "Zack": {
+     "w": 1,
+     "l": 5,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 2,
+    "highs": 1,
+    "weeksTop": 6,
+    "avg": 1,
+    "avgPa": 7,
+    "high": 6,
+    "low": 3,
+    "blowout": 3
+   },
+   "bio": "Back-to-back champion (2024 &amp; 2025). Really smart, really talented \u2014 and, having already won it all, still leading a campaign to replace Commissioner Jason with Chris Dambro. A genuine threat, on the field and in the group chat.",
+   "team": "Drain the Swamp",
+   "tags": [
+    "2024 &amp; 2025 Champ",
+    "Coup Leader"
+   ],
+   "full": "David Hurst"
+  },
+  "DYL": {
+   "name": "Dylan",
+   "w": 23,
+   "l": 47,
+   "t": 0,
+   "g": 70,
+   "pct": 0.329,
+   "avg": 113.64,
+   "avgPa": 121.75,
+   "highs": 2,
+   "weeksTop": 1,
+   "high": {
+    "v": 177.07,
+    "y": 2023,
+    "opp": "Jason"
+   },
+   "low": {
+    "v": 54.78,
+    "y": 2022,
+    "opp": "Chris"
+   },
+   "blowout": {
+    "v": 77.68,
+    "y": 2023,
+    "opp": "Jason"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 114.05,
+     "pa": 121.04,
+     "finish": 9,
+     "po": false
+    },
+    {
+     "y": 2024,
+     "w": 4,
+     "l": 10,
+     "t": 0,
+     "avg": 101.87,
+     "pa": 118.88,
+     "finish": 12,
+     "po": false
+    },
+    {
+     "y": 2023,
+     "w": 5,
+     "l": 9,
+     "t": 0,
+     "avg": 121.13,
+     "pa": 124.04,
+     "finish": 10,
+     "po": false
+    },
+    {
+     "y": 2022,
+     "w": 2,
+     "l": 12,
+     "t": 0,
+     "avg": 111.57,
+     "pa": 120.43,
+     "finish": 12,
+     "po": false
+    },
+    {
+     "y": 2021,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 119.6,
+     "pa": 124.37,
+     "finish": 8,
+     "po": false
+    }
+   ],
+   "playoff": {
+    "app": 0,
+    "w": 0,
+    "l": 0,
+    "avg": 0,
+    "high": null,
+    "low": null,
+    "trophies": {
+     "1": 0,
+     "2": 0,
+     "3": 0
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 4,
+     "l": 2,
+     "t": 0
+    },
+    "Chris": {
+     "w": 0,
+     "l": 5,
+     "t": 0
+    },
+    "David": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Drew": {
+     "w": 1,
+     "l": 6,
+     "t": 0
+    },
+    "Erick": {
+     "w": 2,
+     "l": 5,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 2,
+     "l": 3,
+     "t": 0
+    },
+    "Jason": {
+     "w": 1,
+     "l": 6,
+     "t": 0
+    },
+    "Matt": {
+     "w": 1,
+     "l": 5,
+     "t": 0
+    },
+    "Tola": {
+     "w": 2,
+     "l": 4,
+     "t": 0
+    },
+    "Wes": {
+     "w": 4,
+     "l": 3,
+     "t": 0
+    },
+    "Zack": {
+     "w": 3,
+     "l": 5,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 12,
+    "highs": 11,
+    "weeksTop": 9,
+    "avg": 11,
+    "avgPa": 4,
+    "high": 11,
+    "low": 10,
+    "blowout": 8
+   },
+   "bio": "Finished last twice (2022 and 2024) and never fulfilled the punishment \u2014 so everyone still gives him shit about it. Rightfully so.",
+   "team": "Rags-To-Richardson",
+   "tags": [
+    "2\u00d7 Last Place",
+    "Punishment Dodger"
+   ],
+   "full": "Dylan Greene"
+  },
+  "ERI": {
+   "name": "Erick",
+   "w": 40,
+   "l": 30,
+   "t": 0,
+   "g": 70,
+   "pct": 0.571,
+   "avg": 125.91,
+   "avgPa": 123.76,
+   "highs": 8,
+   "weeksTop": 0,
+   "high": {
+    "v": 200.64,
+    "y": 2025,
+    "opp": "Drew"
+   },
+   "low": {
+    "v": 81.36,
+    "y": 2024,
+    "opp": "Zack"
+   },
+   "blowout": {
+    "v": 57.92,
+    "y": 2021,
+    "opp": "Wes"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 9,
+     "l": 5,
+     "t": 0,
+     "avg": 127.98,
+     "pa": 121.32,
+     "finish": 5,
+     "po": true
+    },
+    {
+     "y": 2024,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 121.32,
+     "pa": 126.64,
+     "finish": 9,
+     "po": false
+    },
+    {
+     "y": 2023,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 123.39,
+     "pa": 115.94,
+     "finish": 6,
+     "po": true
+    },
+    {
+     "y": 2022,
+     "w": 9,
+     "l": 5,
+     "t": 0,
+     "avg": 130.59,
+     "pa": 126.66,
+     "finish": 2,
+     "po": true
+    },
+    {
+     "y": 2021,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 126.25,
+     "pa": 128.21,
+     "finish": 5,
+     "po": true
+    }
+   ],
+   "playoff": {
+    "app": 4,
+    "w": 4,
+    "l": 5,
+    "avg": 124.9,
+    "high": {
+     "v": 147.9
+    },
+    "low": {
+     "v": 93.95
+    },
+    "trophies": {
+     "1": 0,
+     "2": 1,
+     "3": 0
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 5,
+     "l": 1,
+     "t": 0
+    },
+    "Chris": {
+     "w": 4,
+     "l": 4,
+     "t": 0
+    },
+    "David": {
+     "w": 2,
+     "l": 3,
+     "t": 0
+    },
+    "Drew": {
+     "w": 7,
+     "l": 0,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 5,
+     "l": 2,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 3,
+     "l": 5,
+     "t": 0
+    },
+    "Jason": {
+     "w": 5,
+     "l": 3,
+     "t": 0
+    },
+    "Matt": {
+     "w": 2,
+     "l": 7,
+     "t": 0
+    },
+    "Tola": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Wes": {
+     "w": 4,
+     "l": 3,
+     "t": 0
+    },
+    "Zack": {
+     "w": 4,
+     "l": 4,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 4,
+    "highs": 3,
+    "weeksTop": 12,
+    "avg": 6,
+    "avgPa": 8,
+    "high": 4,
+    "low": 1,
+    "blowout": 12
+   },
+   "bio": "The 2020 champion who got absolutely destroyed by injuries this year. Also loves to roast the commissioner at every opportunity.",
+   "team": "King in the North",
+   "tags": [
+    "2020 Champ",
+    "Injury Cursed"
+   ],
+   "full": "Erick DeLeon"
+  },
+  "HOA": {
+   "name": "Hoa",
+   "w": 34,
+   "l": 36,
+   "t": 0,
+   "g": 70,
+   "pct": 0.486,
+   "avg": 126.04,
+   "avgPa": 127.82,
+   "highs": 7,
+   "weeksTop": 3,
+   "high": {
+    "v": 222.08,
+    "y": 2024,
+    "opp": "David"
+   },
+   "low": {
+    "v": 58.58,
+    "y": 2025,
+    "opp": "Adam"
+   },
+   "blowout": {
+    "v": 86.58,
+    "y": 2022,
+    "opp": "Wes"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 4,
+     "l": 10,
+     "t": 0,
+     "avg": 108.56,
+     "pa": 126.5,
+     "finish": 11,
+     "po": false
+    },
+    {
+     "y": 2024,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 137.69,
+     "pa": 131.97,
+     "finish": 2,
+     "po": true
+    },
+    {
+     "y": 2023,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 124.66,
+     "pa": 127.21,
+     "finish": 5,
+     "po": true
+    },
+    {
+     "y": 2022,
+     "w": 9,
+     "l": 5,
+     "t": 0,
+     "avg": 133.75,
+     "pa": 124.45,
+     "finish": 5,
+     "po": true
+    },
+    {
+     "y": 2021,
+     "w": 5,
+     "l": 9,
+     "t": 0,
+     "avg": 125.55,
+     "pa": 128.99,
+     "finish": 11,
+     "po": false
+    }
+   ],
+   "playoff": {
+    "app": 3,
+    "w": 4,
+    "l": 3,
+    "avg": 117.56,
+    "high": {
+     "v": 148.28
+    },
+    "low": {
+     "v": 90.41
+    },
+    "trophies": {
+     "1": 0,
+     "2": 1,
+     "3": 0
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 4,
+     "l": 4,
+     "t": 0
+    },
+    "Chris": {
+     "w": 5,
+     "l": 7,
+     "t": 0
+    },
+    "David": {
+     "w": 3,
+     "l": 5,
+     "t": 0
+    },
+    "Drew": {
+     "w": 4,
+     "l": 2,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 3,
+     "l": 2,
+     "t": 0
+    },
+    "Erick": {
+     "w": 5,
+     "l": 3,
+     "t": 0
+    },
+    "Jason": {
+     "w": 2,
+     "l": 5,
+     "t": 0
+    },
+    "Matt": {
+     "w": 4,
+     "l": 1,
+     "t": 0
+    },
+    "Tola": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Wes": {
+     "w": 2,
+     "l": 3,
+     "t": 0
+    },
+    "Zack": {
+     "w": 3,
+     "l": 4,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 8,
+    "highs": 4,
+    "weeksTop": 8,
+    "avg": 5,
+    "avgPa": 12,
+    "high": 1,
+    "low": 9,
+    "blowout": 7
+   },
+   "bio": "Loves his kicker more than any man should. Reliably finishes middle of the pack, year after year \u2014 and is the only manager who has never finished last.",
+   "team": "Koo Klutch Klan",
+   "tags": [
+    "Kicker Truther",
+    "Mr. Mid",
+    "Never Finished Last"
+   ],
+   "full": "Hoa Tran"
+  },
+  "CHR": {
+   "name": "Chris",
+   "w": 36,
+   "l": 34,
+   "t": 0,
+   "g": 70,
+   "pct": 0.514,
+   "avg": 117.62,
+   "avgPa": 120.85,
+   "highs": 1,
+   "weeksTop": 1,
+   "high": {
+    "v": 184.9,
+    "y": 2024,
+    "opp": "Hoa"
+   },
+   "low": {
+    "v": 47.94,
+    "y": 2025,
+    "opp": "David"
+   },
+   "blowout": {
+    "v": 88.24,
+    "y": 2024,
+    "opp": "Hoa"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 106.78,
+     "pa": 119.66,
+     "finish": 10,
+     "po": false
+    },
+    {
+     "y": 2024,
+     "w": 9,
+     "l": 5,
+     "t": 0,
+     "avg": 132.6,
+     "pa": 113.67,
+     "finish": 4,
+     "po": true
+    },
+    {
+     "y": 2023,
+     "w": 7,
+     "l": 7,
+     "t": 0,
+     "avg": 119.48,
+     "pa": 122.52,
+     "finish": 8,
+     "po": false
+    },
+    {
+     "y": 2022,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 111.85,
+     "pa": 121.04,
+     "finish": 1,
+     "po": true
+    },
+    {
+     "y": 2021,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 117.4,
+     "pa": 127.36,
+     "finish": 9,
+     "po": false
+    }
+   ],
+   "playoff": {
+    "app": 2,
+    "w": 3,
+    "l": 2,
+    "avg": 134.24,
+    "high": {
+     "v": 151.05
+    },
+    "low": {
+     "v": 122.12
+    },
+    "trophies": {
+     "1": 1,
+     "2": 0,
+     "3": 0
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 4,
+     "l": 3,
+     "t": 0
+    },
+    "David": {
+     "w": 2,
+     "l": 5,
+     "t": 0
+    },
+    "Drew": {
+     "w": 1,
+     "l": 4,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 5,
+     "l": 0,
+     "t": 0
+    },
+    "Erick": {
+     "w": 4,
+     "l": 4,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 7,
+     "l": 5,
+     "t": 0
+    },
+    "Jason": {
+     "w": 3,
+     "l": 5,
+     "t": 0
+    },
+    "Matt": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Tola": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Wes": {
+     "w": 3,
+     "l": 2,
+     "t": 0
+    },
+    "Zack": {
+     "w": 4,
+     "l": 2,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 6,
+    "highs": 12,
+    "weeksTop": 10,
+    "avg": 10,
+    "avgPa": 3,
+    "high": 8,
+    "low": 12,
+    "blowout": 6
+   },
+   "bio": "The 2022 champion and everyone's favorite to mess with. Sports a hairstyle best described as a bird's nest. Loves firing off ridiculous trade offers and is working with David Hurst to overthrow the commissioner.",
+   "team": "Mighty Marvin Power Rangers",
+   "tags": [
+    "2022 Champ",
+    "Trade Spammer",
+    "Co-Conspirator"
+   ],
+   "full": "Chris Dambro"
+  },
+  "WES": {
+   "name": "Wes",
+   "w": 31,
+   "l": 39,
+   "t": 0,
+   "g": 70,
+   "pct": 0.443,
+   "avg": 120.7,
+   "avgPa": 120.5,
+   "highs": 3,
+   "weeksTop": 10,
+   "high": {
+    "v": 181.35,
+    "y": 2023,
+    "opp": "Chris"
+   },
+   "low": {
+    "v": 67.54,
+    "y": 2025,
+    "opp": "Dylan"
+   },
+   "blowout": {
+    "v": 90.08,
+    "y": 2021,
+    "opp": "Tola"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 4,
+     "l": 10,
+     "t": 0,
+     "avg": 107.26,
+     "pa": 117.81,
+     "finish": 12,
+     "po": false
+    },
+    {
+     "y": 2024,
+     "w": 5,
+     "l": 9,
+     "t": 0,
+     "avg": 115.0,
+     "pa": 121.81,
+     "finish": 10,
+     "po": false
+    },
+    {
+     "y": 2023,
+     "w": 11,
+     "l": 3,
+     "t": 0,
+     "avg": 137.07,
+     "pa": 117.22,
+     "finish": 4,
+     "po": true
+    },
+    {
+     "y": 2022,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 118.48,
+     "pa": 123.78,
+     "finish": 10,
+     "po": false
+    },
+    {
+     "y": 2021,
+     "w": 5,
+     "l": 9,
+     "t": 0,
+     "avg": 125.69,
+     "pa": 121.9,
+     "finish": 10,
+     "po": false
+    }
+   ],
+   "playoff": {
+    "app": 1,
+    "w": 0,
+    "l": 2,
+    "avg": 111.49,
+    "high": {
+     "v": 118.51
+    },
+    "low": {
+     "v": 104.47
+    },
+    "trophies": {
+     "1": 0,
+     "2": 0,
+     "3": 0
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 4,
+     "l": 2,
+     "t": 0
+    },
+    "Chris": {
+     "w": 2,
+     "l": 3,
+     "t": 0
+    },
+    "David": {
+     "w": 2,
+     "l": 5,
+     "t": 0
+    },
+    "Drew": {
+     "w": 2,
+     "l": 6,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 3,
+     "l": 4,
+     "t": 0
+    },
+    "Erick": {
+     "w": 3,
+     "l": 4,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 3,
+     "l": 2,
+     "t": 0
+    },
+    "Jason": {
+     "w": 2,
+     "l": 5,
+     "t": 0
+    },
+    "Matt": {
+     "w": 3,
+     "l": 4,
+     "t": 0
+    },
+    "Tola": {
+     "w": 2,
+     "l": 5,
+     "t": 0
+    },
+    "Zack": {
+     "w": 5,
+     "l": 1,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 9,
+    "highs": 9,
+    "weeksTop": 3,
+    "avg": 8,
+    "avgPa": 2,
+    "high": 9,
+    "low": 7,
+    "blowout": 5
+   },
+   "bio": "Pastor Reverend Wes \u2014 college pastor to many people in the league. Lives out in Texas and is the certified \u201cdad\u201d of the group. Finished last in 2025 at 4-10, losing the tiebreaker to Hoa on points \u2014 and therefore owes the league the 9/9/9 Challenge.",
+   "team": "MikeLee4 Prez",
+   "tags": [
+    "The Dad",
+    "2025 Last Place",
+    "Punishment Pending"
+   ],
+   "full": "Wes Jones"
+  },
+  "MAT": {
+   "name": "Matt",
+   "w": 35,
+   "l": 35,
+   "t": 0,
+   "g": 70,
+   "pct": 0.5,
+   "avg": 128.53,
+   "avgPa": 124.19,
+   "highs": 11,
+   "weeksTop": 5,
+   "high": {
+    "v": 190.13,
+    "y": 2023,
+    "opp": "Erick"
+   },
+   "low": {
+    "v": 62.21,
+    "y": 2021,
+    "opp": "David"
+   },
+   "blowout": {
+    "v": 107.12,
+    "y": 2024,
+    "opp": "Adam"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 124.08,
+     "pa": 132.76,
+     "finish": 4,
+     "po": true
+    },
+    {
+     "y": 2024,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 127.43,
+     "pa": 120.96,
+     "finish": 6,
+     "po": true
+    },
+    {
+     "y": 2023,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 149.53,
+     "pa": 124.23,
+     "finish": 1,
+     "po": true
+    },
+    {
+     "y": 2022,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 120.67,
+     "pa": 119.66,
+     "finish": 8,
+     "po": false
+    },
+    {
+     "y": 2021,
+     "w": 7,
+     "l": 7,
+     "t": 0,
+     "avg": 120.94,
+     "pa": 123.36,
+     "finish": 6,
+     "po": true
+    }
+   ],
+   "playoff": {
+    "app": 4,
+    "w": 4,
+    "l": 6,
+    "avg": 125.99,
+    "high": {
+     "v": 190.13
+    },
+    "low": {
+     "v": 62.21
+    },
+    "trophies": {
+     "1": 1,
+     "2": 0,
+     "3": 0
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 4,
+     "l": 3,
+     "t": 0
+    },
+    "Chris": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "David": {
+     "w": 4,
+     "l": 8,
+     "t": 0
+    },
+    "Drew": {
+     "w": 4,
+     "l": 3,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 5,
+     "l": 1,
+     "t": 0
+    },
+    "Erick": {
+     "w": 7,
+     "l": 2,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 1,
+     "l": 4,
+     "t": 0
+    },
+    "Jason": {
+     "w": 3,
+     "l": 5,
+     "t": 0
+    },
+    "Tola": {
+     "w": 3,
+     "l": 5,
+     "t": 0
+    },
+    "Wes": {
+     "w": 4,
+     "l": 3,
+     "t": 0
+    },
+    "Zack": {
+     "w": 1,
+     "l": 4,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 7,
+    "highs": 2,
+    "weeksTop": 7,
+    "avg": 4,
+    "avgPa": 9,
+    "high": 5,
+    "low": 8,
+    "blowout": 1
+   },
+   "bio": "2023 champion. Lives out in California and is, by all accounts, a total badass.",
+   "team": "San Diego Chillin'",
+   "tags": [
+    "2023 Champ",
+    "West Coast"
+   ],
+   "full": "Matt Aday"
+  },
+  "ZAC": {
+   "name": "Zack",
+   "w": 31,
+   "l": 39,
+   "t": 0,
+   "g": 70,
+   "pct": 0.443,
+   "avg": 120.22,
+   "avgPa": 125.3,
+   "highs": 5,
+   "weeksTop": 14,
+   "high": {
+    "v": 185.17,
+    "y": 2021,
+    "opp": "David"
+   },
+   "low": {
+    "v": 68.28,
+    "y": 2024,
+    "opp": "Drew"
+   },
+   "blowout": {
+    "v": 91.09,
+    "y": 2021,
+    "opp": "Chris"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 117.79,
+     "pa": 122.5,
+     "finish": 8,
+     "po": false
+    },
+    {
+     "y": 2024,
+     "w": 5,
+     "l": 9,
+     "t": 0,
+     "avg": 113.42,
+     "pa": 130.69,
+     "finish": 11,
+     "po": false
+    },
+    {
+     "y": 2023,
+     "w": 1,
+     "l": 13,
+     "t": 0,
+     "avg": 112.79,
+     "pa": 133.21,
+     "finish": 12,
+     "po": false
+    },
+    {
+     "y": 2022,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 118.74,
+     "pa": 122.04,
+     "finish": 9,
+     "po": false
+    },
+    {
+     "y": 2021,
+     "w": 13,
+     "l": 1,
+     "t": 0,
+     "avg": 138.35,
+     "pa": 118.04,
+     "finish": 3,
+     "po": true
+    }
+   ],
+   "playoff": {
+    "app": 1,
+    "w": 1,
+    "l": 1,
+    "avg": 118.53,
+    "high": {
+     "v": 126.67
+    },
+    "low": {
+     "v": 110.38
+    },
+    "trophies": {
+     "1": 0,
+     "2": 0,
+     "3": 1
+    }
+   },
+   "vs": {
+    "Adam": {
+     "w": 1,
+     "l": 4,
+     "t": 0
+    },
+    "Chris": {
+     "w": 2,
+     "l": 4,
+     "t": 0
+    },
+    "David": {
+     "w": 5,
+     "l": 1,
+     "t": 0
+    },
+    "Drew": {
+     "w": 1,
+     "l": 6,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 5,
+     "l": 3,
+     "t": 0
+    },
+    "Erick": {
+     "w": 4,
+     "l": 4,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 4,
+     "l": 3,
+     "t": 0
+    },
+    "Jason": {
+     "w": 3,
+     "l": 6,
+     "t": 0
+    },
+    "Matt": {
+     "w": 4,
+     "l": 1,
+     "t": 0
+    },
+    "Tola": {
+     "w": 2,
+     "l": 3,
+     "t": 0
+    },
+    "Wes": {
+     "w": 1,
+     "l": 5,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 10,
+    "highs": 8,
+    "weeksTop": 1,
+    "avg": 9,
+    "avgPa": 11,
+    "high": 7,
+    "low": 6,
+    "blowout": 4
+   },
+   "bio": "Finished last in 2023 with a 1-13 campaign \u2014 the worst record in recorded league history. Extremely active in the shit-talk department and just trying, desperately, to stay out of the basement.",
+   "team": "Sewer Pigeons",
+   "tags": [
+    "2023 Last Place",
+    "1-13 Season",
+    "Loud"
+   ],
+   "full": "Zack Moore \u201cSEWP\u201d"
+  },
+  "ADA": {
+   "name": "Adam",
+   "w": 28,
+   "l": 42,
+   "t": 0,
+   "g": 70,
+   "pct": 0.4,
+   "avg": 112.95,
+   "avgPa": 120.49,
+   "highs": 3,
+   "weeksTop": 1,
+   "high": {
+    "v": 160.72,
+    "y": 2025,
+    "opp": "Hoa"
+   },
+   "low": {
+    "v": 49.3,
+    "y": 2024,
+    "opp": "Dylan"
+   },
+   "blowout": {
+    "v": 102.14,
+    "y": 2025,
+    "opp": "Hoa"
+   },
+   "season": [
+    {
+     "y": 2025,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 119.77,
+     "pa": 111.77,
+     "finish": 7,
+     "po": false
+    },
+    {
+     "y": 2024,
+     "w": 8,
+     "l": 6,
+     "t": 0,
+     "avg": 111.7,
+     "pa": 118.75,
+     "finish": 5,
+     "po": true
+    },
+    {
+     "y": 2023,
+     "w": 4,
+     "l": 10,
+     "t": 0,
+     "avg": 104.35,
+     "pa": 125.75,
+     "finish": 11,
+     "po": false
+    },
+    {
+     "y": 2022,
+     "w": 4,
+     "l": 10,
+     "t": 0,
+     "avg": 105.7,
+     "pa": 122.22,
+     "finish": 11,
+     "po": false
+    },
+    {
+     "y": 2021,
+     "w": 6,
+     "l": 8,
+     "t": 0,
+     "avg": 123.24,
+     "pa": 123.95,
+     "finish": 7,
+     "po": false
+    }
+   ],
+   "playoff": {
+    "app": 1,
+    "w": 1,
+    "l": 1,
+    "avg": 118.45,
+    "high": {
+     "v": 136.66
+    },
+    "low": {
+     "v": 100.24
+    },
+    "trophies": {
+     "1": 0,
+     "2": 0,
+     "3": 0
+    }
+   },
+   "vs": {
+    "Chris": {
+     "w": 3,
+     "l": 4,
+     "t": 0
+    },
+    "David": {
+     "w": 3,
+     "l": 3,
+     "t": 0
+    },
+    "Drew": {
+     "w": 2,
+     "l": 4,
+     "t": 0
+    },
+    "Dylan": {
+     "w": 2,
+     "l": 4,
+     "t": 0
+    },
+    "Erick": {
+     "w": 1,
+     "l": 5,
+     "t": 0
+    },
+    "Hoa": {
+     "w": 4,
+     "l": 4,
+     "t": 0
+    },
+    "Jason": {
+     "w": 3,
+     "l": 4,
+     "t": 0
+    },
+    "Matt": {
+     "w": 3,
+     "l": 4,
+     "t": 0
+    },
+    "Tola": {
+     "w": 2,
+     "l": 6,
+     "t": 0
+    },
+    "Wes": {
+     "w": 2,
+     "l": 4,
+     "t": 0
+    },
+    "Zack": {
+     "w": 4,
+     "l": 1,
+     "t": 0
+    }
+   },
+   "rank": {
+    "pct": 11,
+    "highs": 10,
+    "weeksTop": 11,
+    "avg": 12,
+    "avgPa": 1,
+    "high": 12,
+    "low": 11,
+    "blowout": 2
+   },
+   "bio": "Has posted the lowest point totals the last few years yet somehow keeps dodging last place. Consistently one of the worst managers in the league \u2014 and never met a bad bet he didn't like.",
+   "team": "Suck My Diggs",
+   "tags": [
+    "Degenerate Gambler",
+    "Escape Artist"
+   ],
+   "full": "Adam Schmitt"
+  }
+ },
+ "order": [
+  "ADA",
+  "CHR",
+  "DAV",
+  "DRE",
+  "DYL",
+  "ERI",
+  "HOA",
+  "JAS",
+  "MAT",
+  "TOL",
+  "WES",
+  "ZAC"
+ ]
+}
