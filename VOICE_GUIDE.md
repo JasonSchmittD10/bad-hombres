@@ -1,29 +1,50 @@
 # Voice Guide — Bad Hombres beat coverage
 
-Four voices, each with a fixed assignment. A beat has *one* voice per slot; rotating
-at random reads as costume-party, not coverage.
+The league is covered by a beat writer. Four registers, each with a fixed assignment.
+Rotating at random reads as costume-party, not coverage.
 
-| Slot | Voice | Why |
-|---|---|---|
-| Tuesday recap (the article) | **Peter King** structure, Magary register in the roasts | See "The Weekly Recap" below |
-| Sunday night in-progress post | **Scott Van Pelt** | Late-night, wry, built for bad beats |
-| Draft recap / season preview | **Matthew Berry** | Fantasy-native, Love/Hate format |
-| Last-place bit, rivalry hits, roasts | **Drew Magary** | The league's native register |
-| Kickoff / season-open pieces | **Collinsworth** (see CLAUDE.md) | Folksy ex-player warmth |
+**This file is authoritative.** The deep reference material lives in [`voice/`](voice/) —
+one folder per writer with identity, section skeletons, sentence-level mechanics, a
+league-adapted worked sample, and a paste-ready prompt kit. Read `voice/README.md` for the
+map. Where `voice/BLENDING.md` §5 proposes a different weekly skeleton, this file wins.
 
 **These are original compositions in the manner of these writers** — structure, rhythm and
 recurring devices. Never reproduce their actual sentences.
+
+## Assignments
+
+| Post | Primary voice | Seasoning | Reference |
+|---|---|---|---|
+| Tuesday recap (the article) | **Peter King** — structure and narrator | **Magary** in the roasts | "The Weekly Recap" below |
+| Sunday night in-progress post | **Scott Van Pelt** | one Magary button, max | `voice/scott-van-pelt/` |
+| Thursday week-opener | **Scott Van Pelt** — One Big Thing | — | `voice/scott-van-pelt/02-architecture.md` §D |
+| Bonus-settled post | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | `voice/peter-king/02-architecture.md` §B |
+| Draft recap / season preview | **Matthew Berry** — Love/Hate | — | `voice/matthew-berry/` |
+| Preseason member profiles | **Drew Magary** — Why Your Team Sucks | one Berry confession per profile | `voice/drew-magary/02-architecture.md` §A |
+| Last-place bit, rivalry hits, standalone roasts | **Drew Magary** | — | `voice/drew-magary/03-dialect.md` |
+| Bylaws, punishment, governance memos | **Peter King** — institutional earnestness | SVP plain-spoken as the alternate | `voice/peter-king/` |
+| Season-in-review / playoff omnibus | **Peter King** — the only format that holds a season | Berry narrative open | `voice/peter-king/02-architecture.md` |
+
+Kickoff and season-open pieces go to **Berry** (the narrative cold open is the tool for
+it). There is no fifth voice.
 
 ---
 
 ## The Weekly Recap — structure
 
 Peter King's mechanics, our sections. This is the fixed running order; every recap hits
-these six beats in this sequence.
+these six beats in this sequence. Full King skeleton and templates:
+`voice/peter-king/02-architecture.md`.
 
 ### 1. Lead story
 One thing that actually happened, reported at length with a specific scene. Not a summary
 of the week — the single most interesting thing in it. Name names, use exact numbers.
+
+Open on a **time, a place and a person**: *It was 9:14 Sunday night and Tola was in a
+Harris Teeter parking lot with the engine running, looking at a phone that said 148.44.*
+The clock is the King fingerprint. Quote people — if nobody said anything on the record,
+quote what they put in the thread and say when. One bold subhead is allowed to pivot to a
+second story. Hand off with a short line: *Now, to the rest of the week.*
 
 ### 2. The awards
 Three, every week, same order, same names:
@@ -34,7 +55,9 @@ Three, every week, same order, same names:
   field. Award name and criteria come from the Bonus Board.
 
 Give each one a line or three of commentary. The Big Dick gets grudging respect; the
-Little Bitch gets none.
+Little Bitch gets none. This is the beat where the gap does the work: crude award name,
+choirboy narrator, every number carrying a comp — *only the third time in league history
+anyone has started a full slate of Sunday players and scored zero.*
 
 ### 3. Matchup recaps
 All six, in whatever order is funniest — not seed order. Bolded lead-in per matchup, the
@@ -42,10 +65,19 @@ score, then the roast. The point is the roast; the score is the excuse for it. T
 Magary register inside the King structure: second person is fine here, contempt should be
 specific, and every jab needs a real number under it.
 
+Magary's engine, in order (`voice/drew-magary/03-dialect.md`): a flat statement of fact →
+the **extra clause** that turns it into an insult → escalate by comparison to something
+absurd and concrete → deflate. Short declarative, rhetorical question, flat answer:
+*Did the bye weeks work out? Reader, they did not.* The tell is the extra clause, not the
+swear. Insults are comparisons, never adjectives — "he sucks" is not a joke.
+
 ### 4. Things I Think
 **Five or six**, not ten. Numbered, each opening literally "I think…", with lettered
 sub-points (a, b, c) for tangents inside a single thought. These are allowed to wander —
 roster construction, a trade nobody liked, someone's waiver habits, a grievance.
+
+The last item is where the non-league thoughts go, sub-lettered, and it is the natural
+home for the sincere beat: one unironic *Good for you, ___* directed at a named manager.
 
 ### 5. Looking ahead
 **Two or three storylines** from next week's matchups. Who has a revenge game, who is
@@ -59,7 +91,10 @@ this is ours.
 
 **Mechanics throughout**
 - First person, constantly. "I think," "I'm told," "I keep coming back to."
-- Numbers specific and unrounded — 130.24, not "about 130."
+- Numbers specific and unrounded — 130.24, not "about 130." Every number gets a comp.
+- Short paragraphs, one or two sentences, a lot of them. Em-dashes and parentheticals to
+  cram in one more fact. Sentences end on a fact, not on a joke.
+- The sourced aside, placed: *A guy texted me at 11:40 Saturday night…*
 - Digressions welcome, and flag them as digressions.
 - Managers are the constant; team names change.
 
@@ -79,81 +114,73 @@ this is ours.
 
 ---
 
-## Drew Magary — the roast
+## League law — the eight blending rules
 
-**Recognisable because:** it is addressed *to* the victim, in the second person, and the
-contempt is specific rather than general.
+From `voice/BLENDING.md` §3. These govern every post, not just the recap.
 
-**Structure** — fixed headers, same order every time: **Your team. Your record. Your
-quarterback. What went wrong. Why this year is different (it isn't).** Then a chorus of
-reader submissions under a shouted header, ending with the most unhinged one.
-
-**Mechanics**
-- Second person throughout. "Your team." "You drafted this man on purpose."
-- Short declarative, then a rhetorical question, then a flat answer.
-  *Did the bye weeks work out? Reader, they did not.*
-- Insults by comparison and escalation — compare to an absurd concrete thing, not an
-  adjective.
-- Profanity as an intensity marker, not filler. Ration it so it still lands.
-- Crass is on-brand here. No slurs, nothing aimed at a protected class.
-
-**Don't:** be evenhanded. There is no other side.
-
-**Sample —**
-> Your team is called MikeLee4 Prez and you finished last a year ago, which is why you
-> currently owe this league nine of something. You responded by drafting Dak Prescott.
-> Did that fix anything? Reader, it did not.
+1. **One primary voice per post.** Seasoning is a device, not a second voice. If a reader
+   can't tell whose skeleton it is, it has no skeleton.
+2. **Borrow devices, not vocabulary.** Take Magary's escalation ladder; write your own
+   words. Take King's section names; write your own Factoids.
+3. **Profanity is a button, not a base.** The crude lives in the *nouns* (award names,
+   team names, the specific comparison) and in the *last line of a paragraph*. Never in the
+   intensifiers. "Fucking" before every noun is noise.
+4. **Every post needs exactly one sincere beat.** Zero reads as trying too hard. Two is a
+   Hallmark card.
+5. **Fixed sections are a feature.** The pleasure is in the *return* of the bit. Structure
+   repeats; jokes don't.
+6. **Self-implication licenses the roast.** The commissioner has to lose on the page at
+   least once per post — a bad start, a checked score, a dumb waiver claim — before he
+   calls anyone a bitch.
+7. **Chain-link the back half.** *"Speaking of losing…"* Flat lists read as fatigue.
+8. **Ventriloquize members, don't just describe them.** One or two members become
+   recurring voices with a consistent register and a tracked fake record. Highest-return
+   bit available and still unused.
 
 ---
 
-## Scott Van Pelt — Sunday night
+## The four registers — tells and failure modes
 
-**Recognisable because:** the emotional arc is always the same — incredulity, then
-sardonic humour, then acceptance. He has seen this before and will see it again.
+Compressed cards. The full machinery is in each writer's folder.
 
-**Mechanics**
-- Talk to one person, at midnight, conversationally.
-- Lead with the beat that hurt. Name the number that did it.
-- Self-deprecating before mocking anyone else.
-- Short sentences. Fragments are fine. Let a line land alone.
-- End resigned, not triumphant. Nobody has won anything yet; Monday is still out there.
+### Peter King — `voice/peter-king/`
+Earnest insider with a notebook he refuses to close. Runs warm and level; anger tops out
+at disappointed uncle. Zero profanity, zero sarcasm, no dunking on players. Comedy is
+accidental — over-precision and misplaced stakes, 900 words on a two-minute drill and 200
+on a gate agent in the same voice.
+**Tells:** clock-and-place stamps · the numeral pile · "Good for you, ___" · the placed
+anonymous source · nested enumeration · the one-word sincere paragraph (*Wow.*)
+**Fails when:** parodied without affection. "I think" items that are sarcastic instead of
+sincere. King only works if the narrator means it.
 
-**Bad Beat** — the recurring segment. One manager, one specific moment, the exact points
-that flipped it. Told as a small tragedy with a shrug at the end.
+### Drew Magary — `voice/drew-magary/`
+Controlled rage, addressed *to* the victim in second person. The league's closest native
+match. Fixed WYTS headers: *Your team. Your record. Your quarterback. What went wrong. Why
+this year is different (it isn't).*
+**Tells:** the escalation ladder · the extra clause · CAPS ventriloquism, rationed to one
+per piece · hyper-specific comparison instead of adjective · the deflate after the peak
+**Fails when:** volume without specificity — CAPS everywhere, swearing as punctuation.
+**Never:** slurs or anything aimed at a protected class.
 
-**Don't:** hype. This is the late show, not the pregame.
+### Matthew Berry — `voice/matthew-berry/`
+Vulnerable warmth. Long personal cold open, apparently unrelated, that turns out to be the
+frame. Then *Let's get to it.* Love first, Hate second, each entry name → bolded lead-in →
+the case → flat verdict. Then Others Receiving Votes, then Ride or Die.
+**Tells:** "Get this:" before a stat · the callback button · the confession · parentheticals
+constantly · naming his own past misses first
+**Fails when:** the open is a setup with no vulnerability in it. Readers smell a fake open.
 
-**Sample —**
-> Tola put up 23.50 on Wednesday night and has spent the four days since watching everyone
-> else catch up. That's the thing about scoring early. You don't get to keep it.
-> Monday night, Adam needs eleven. He has a kicker. Sleep well.
+### Scott Van Pelt — `voice/scott-van-pelt/`
+Wry delight, spoken. Talk to one person, at midnight. Incredulity → sardonic humour →
+acceptance. Write in beats, not paragraphs. Sincerity is flagged out loud: *serious for a
+second.*
+**Tells:** the Bad Beats delay → dagger · "That's a choice." · One Big Thing under 250
+words · fragments allowed to land alone · resigned close, never triumphant
+**Fails when:** you explain the joke. The pause *is* the content. Nothing follows the
+dagger.
 
----
-
-## Matthew Berry — Love/Hate
-
-**Recognisable because:** a long personal story opens it, apparently unrelated, and then
-turns out to be the frame for the whole column.
-
-**Structure**
-1. Personal cold open — a real anecdote, told at length, landing on a lesson.
-2. The pivot. Say it out loud: *Let's get to it.*
-3. Grouped by position or by manager. **Love** first, then **Hate**.
-4. Each entry: name, bolded lead-in, the case, then a flat verdict — "QB5 for me this week."
-5. **Others Receiving Votes** — bullets, one line each.
-6. **Ride or Die** — the one call you'd stake the week on.
-
-**Mechanics**
-- Back every take with a real number — ADP, positional rank, tier. Cite the source.
-- Parenthetical asides constantly. (Like this one.)
-- Reference your own past misses before anyone else can.
-
-**Don't:** hedge. Love or Hate. The format is the opinion.
-
-**Sample —**
-> **Hoa, Critical Chase Theory.** Best receiver room in the league and an RB1 who was
-> RB24 by ADP. I have talked myself into this roster three times and out of it four.
-> Love the ceiling. Hate the Sunday I'm going to have watching it. Fourth for me this week.
+**All four fail on recycled bits.** Same insult for the same guy two weeks running is the
+one unforgivable move. Magary writes 32 fresh roasts a year; we owe 14.
 
 ---
 
