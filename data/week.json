@@ -1,79 +1,91 @@
 {
   "week": 1,
-  "status": "preseason",
-  "updated": null,
+  "status": "live",
+  "updated": "2026-09-10T07:31:06-04:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
       "a": {
         "m": "Jason",
         "t": "Pull-Out Game Weak",
-        "p": 130.2
+        "s": 5.6,
+        "p": 124.16
       },
       "b": {
         "m": "Drew",
         "t": "I Stand with Jordon",
-        "p": 123.9
+        "s": 0.0,
+        "p": 125.61
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "p": 126.5
+        "s": 23.5,
+        "p": 125.97
       },
       "b": {
         "m": "Erick",
-        "t": "King in the North",
-        "p": 119.4
+        "t": "King In The North",
+        "s": 0.0,
+        "p": 121.35
       }
     },
     {
       "a": {
         "m": "Hoa",
         "t": "Critical Chase Theory",
-        "p": 128.7
+        "s": 0.0,
+        "p": 131.27
       },
       "b": {
         "m": "Dylan",
-        "t": "Carlie's Headset",
-        "p": 125.5
+        "t": "Carlie’s Headset",
+        "s": 0.0,
+        "p": 122.68
       }
     },
     {
       "a": {
         "m": "David",
         "t": "Drain the Swamp",
-        "p": 120.4
+        "s": 0.0,
+        "p": 118.29
       },
       "b": {
         "m": "Wes",
         "t": "MikeLee4 Prez",
-        "p": 108.9
+        "s": 0.0,
+        "p": 122.18
       }
     },
     {
       "a": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "p": 117.0
+        "s": 38.02,
+        "p": 101.89
       },
       "b": {
         "m": "Matt",
-        "t": "San Diego Chillin'",
-        "p": 122.2
+        "t": "San Diego Chillin’",
+        "s": 6.6,
+        "p": 118.5
       }
     },
     {
       "a": {
-        "m": "Adam",
-        "t": "Suck My Diggs",
-        "p": 125.8
-      },
-      "b": {
         "m": "Zack",
         "t": "Sewer Pigeons",
-        "p": 121.1
+        "s": 6.0,
+        "p": 124.38
+      },
+      "b": {
+        "m": "Adam",
+        "t": "Suck My Diggs",
+        "s": 0.0,
+        "p": 123.79
       }
     }
   ],
@@ -81,22 +93,28 @@
     "week": 1,
     "nm": "Josh Allen’s Money Shot",
     "cr": "Highest-scoring QB",
-    "actual": [],
-    "projected": [
+    "actual": [
       {
-        "who": "Matt",
-        "sub": "Josh Allen",
-        "val": 20.88
-      },
+        "who": "Chris",
+        "sub": "Drake Maye",
+        "val": 9.82
+      }
+    ],
+    "projected": [
       {
         "who": "Hoa",
         "sub": "Joe Burrow",
-        "val": 20.53
+        "val": 20.98
+      },
+      {
+        "who": "Jason",
+        "sub": "Jaxson Dart",
+        "val": 20.87
       },
       {
         "who": "Erick",
         "sub": "Jalen Hurts",
-        "val": 20.45
+        "val": 20.65
       }
     ]
   }
