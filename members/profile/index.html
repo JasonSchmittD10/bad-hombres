@@ -376,8 +376,11 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
  var el=function(id){return document.getElementById(id)};
  function esc(t){var d=document.createElement('div');d.textContent=t==null?'':String(t).replace(/'/g,'’');return d.innerHTML}
  function icon(n){var p=ICO[n];return p?('<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>'):''}
- function face(name,cls){var src=AV[name];
-  return src?'<img class="'+(cls||'')+'" src="'+src+'" alt="'+esc(name)+'" loading="lazy">':''}
+ function face(name,cls,big){var src=AV[name];
+  if(!src) return '';
+  // the header photo renders at 88px, well past the inlined 72px avatar
+  var url=big?('/assets/members/'+encodeURIComponent(name)+'.jpg'):src;
+  return '<img class="'+(cls||'')+'" src="'+url+'" alt="'+esc(name)+'" loading="lazy">'}
  function ord(n){return n?('Rank: #'+n):''}
  function tile(k,v,m,r,wide){
   return '<div class="pf-t'+(wide?' wide':'')+'"><div class="k">'+esc(k)+'</div>'+
@@ -400,7 +403,7 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   document.title='Bad Hombres — '+p.full;
 
   el('pfHead').innerHTML=
-   face(p.name,'pf-face')+
+   face(p.name,'pf-face',true)+
    '<div class="pf-id"><div class="pf-nm">'+esc(p.team)+'</div>'+
    '<div class="pf-tm">'+esc(p.full)+'</div>'+
    '<p class="pf-bio">'+p.bio+'</p>'+

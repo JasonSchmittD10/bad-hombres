@@ -1140,8 +1140,10 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   // alphabetical: this is a directory, not a ranking
   var roster=data.teams.slice().sort(function(a,b){return a.m.localeCompare(b.m)});
   host.innerHTML=roster.map(function(t){
+   // full-size photo here; the inlined 72px avatars are for the tiny row markers
    var src=AV[t.m];
-   var face=src?('<img src="'+src+'" alt="'+esc(t.m)+'" loading="lazy">')
+   var face=src?('<img src="/assets/members/'+encodeURIComponent(t.m)+'.jpg" alt="'+esc(t.m)+
+                 '" loading="lazy" width="420" height="420">')
                :('<div class="av">'+esc(initials(t.m))+'</div>');
    return '<a class="mem" href="/members/profile/?m='+encodeURIComponent(t.m)+'">'+face+
     '<span class="mem-nm">'+esc(t.m)+'</span>'+
