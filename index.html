@@ -468,6 +468,7 @@ img.av{object-fit:cover;object-position:center top;display:block}
  --fs-md:1.25rem;    /* 20.0 - sub-head */
  --fs-base:1rem;     /* 16.0 - body */
  --fs-sm:0.8rem;     /* 12.8 - secondary */
+ --fs-2xs:0.512rem; /* 8.2 - micro labels */
  --fs-xs:0.64rem;    /* 10.2 - eyebrow / label */
  --lh-tight:1.08;
  --lh-head:1.18;
@@ -687,18 +688,18 @@ h3.title{font-size:var(--fs-lg)}
 
 .mem-nm{font-family:var(--font-display);font-size:var(--fs-md);text-transform:uppercase;color:#fff;
  margin-top:14px;letter-spacing:.02em;line-height:1}
-.mem-tm{font-size:12px;color:var(--muted);line-height:1.35;margin-top:6px;overflow-wrap:anywhere;
+.mem-tm{font-size:var(--fs-sm);color:var(--muted);line-height:1.35;margin-top:6px;overflow-wrap:anywhere;
  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.7em}
 @media(max-width:760px){
  .mem-grid{grid-template-columns:repeat(3,1fr);gap:10px}
  .mem{padding:11px 9px 12px;border-radius:13px}
  .mem-nm{font-size:var(--fs-sm);margin-top:10px}
- .mem-tm{font-size:10.5px;margin-top:4px}
+ .mem-tm{font-size:var(--fs-xs);margin-top:4px}
 }
 @media(max-width:480px){
  .mem-grid{grid-template-columns:repeat(2,1fr);gap:10px}
  .mem-nm{font-size:var(--fs-md)}
- .mem-tm{font-size:11.5px}
+ .mem-tm{font-size:var(--fs-sm)}
 }
 
 /* the members strip gets its own breathing room above */
@@ -715,10 +716,10 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
 .foot-blurb{font-size:var(--fs-sm);line-height:1.6;color:rgba(255,255,255,.86);margin:12px 0 0;max-width:34ch}
 .foot-h{font-family:var(--font-display);font-size:var(--fs-xs);letter-spacing:var(--ls-label);
  text-transform:uppercase;color:#2a0509;margin-bottom:14px}
-.foot-col a{display:block;color:rgba(255,255,255,.9);text-decoration:none;font-size:12.5px;
+.foot-col a{display:block;color:rgba(255,255,255,.9);text-decoration:none;font-size:var(--fs-sm);
  font-weight:600;line-height:1.35;padding:5px 0}
 .foot-col a:hover{color:#fff;text-decoration:underline}
-.foot-note{font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.86);margin:0 0 10px}
+.foot-note{font-size:var(--fs-sm);line-height:1.6;color:rgba(255,255,255,.86);margin:0 0 10px}
 /* week countdown, in place of their clocks */
 .foot-clock{margin-top:24px}
 .fc-lab{font-family:var(--font-display);font-size:var(--fs-xs);letter-spacing:var(--ls-label);
@@ -727,13 +728,13 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
 .fc-u{background:rgba(0,0,0,.22);border-radius:10px;padding:9px 12px;text-align:center;min-width:56px}
 .fc-u b{display:block;font-family:var(--font-display);font-size:var(--fs-md);line-height:1;
  font-variant-numeric:tabular-nums}
-.fc-u span{display:block;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+.fc-u span{display:block;font-size:var(--fs-2xs);font-weight:800;letter-spacing:.14em;text-transform:uppercase;
  color:rgba(255,255,255,.72);margin-top:5px}
-.fc-when{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+.fc-when{font-size:var(--fs-xs);font-weight:700;letter-spacing:.06em;text-transform:uppercase;
  color:rgba(255,255,255,.8);margin-top:10px}
 .foot-bar{display:flex;flex-wrap:wrap;gap:8px 18px;max-width:1240px;margin:0 auto;
  padding:16px 28px;border-top:1px solid rgba(0,0,0,.22);
- font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+ font-size:var(--fs-xs);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85)}
 .foot-sep{position:relative;padding-left:18px}
 .foot-sep:before{content:"";position:absolute;left:0;top:50%;width:6px;height:1px;
  background:rgba(255,255,255,.5)}
