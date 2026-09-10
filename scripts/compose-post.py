@@ -66,11 +66,17 @@ def latest_story():
     body = page.read_text()
     t = re.search(r'<h1 class="st-h1">(.*?)</h1>', body, re.S)
     # the lede paragraph, else the first paragraph of the body
-    p = re.search(r'<p class="lede">(.*?)</p>', body, re.S) or \
-        re.search(r'<div class="st-body">\s*<p[^>]*>(.*?)</p>', body, re.S)
-    if not p: bail("could not find an intro paragraph in %s" % slug)
     strip = lambda s: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s)).strip()
-    return slug, strip(t.group(1)) if t else "", strip(p.group(1))
+    body_m = re.search(r'<div class="st-body">(.*?)</div>', body, re.S)
+    paras = [strip(x) for x in re.findall(r'<p[^>]*>(.*?)</p>', body_m.group(1) if body_m else body, re.S)]
+    paras = [x for x in paras if x]
+    if not paras: bail("could not find an intro paragraph in %s" % slug)
+    # a one-line lede makes a thin post, so keep taking paragraphs until it
+    # actually says something
+    intro, i = paras[0], 1
+    while len(intro) < 160 and i < len(paras):
+        intro += "\n\n" + paras[i]; i += 1
+    return slug, strip(t.group(1)) if t else "", intro
 
 def recap():
     slug, title, intro = latest_story()
