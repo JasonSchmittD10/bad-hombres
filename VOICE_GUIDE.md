@@ -16,7 +16,7 @@ recurring devices. Never reproduce their actual sentences.
 | Post | Primary voice | Seasoning | Reference |
 |---|---|---|---|
 | Tuesday recap (the article) | **Peter King** — structure and narrator | **Magary** in the roasts | "The Weekly Recap" below |
-| Sunday night in-progress post | **Scott Van Pelt** | one Magary button, max | `voice/scott-van-pelt/` |
+| Sunday night in-progress post | **Scott Van Pelt** — Bad Beats, narrated *to* Zack | one Magary button, max | `voice/scott-van-pelt/` |
 | Thursday week-opener | **Scott Van Pelt** — One Big Thing | — | `voice/scott-van-pelt/02-architecture.md` §D |
 | Bonus-settled post | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | `voice/peter-king/02-architecture.md` §B |
 | Draft recap / season preview | **Matthew Berry** — Love/Hate | — | `voice/matthew-berry/` |
@@ -71,6 +71,10 @@ absurd and concrete → deflate. Short declarative, rhetorical question, flat an
 *Did the bye weeks work out? Reader, they did not.* The tell is the extra clause, not the
 swear. Insults are comparisons, never adjectives — "he sucks" is not a joke.
 
+The week's closest or cruelest loss is told as a Bad Beat, addressed to Zack — *Sewp, I
+need you to hear this.* The section closes on one fixed line: **Zack's Luck Index**, this
+week's number and which way it moved.
+
 ### 4. Things I Think
 **Five or six**, not ten. Numbered, each opening literally "I think…", with lettered
 sub-points (a, b, c) for tangents inside a single thought. These are allowed to wander —
@@ -83,6 +87,8 @@ home for the sincere beat: one unironic *Good for you, ___* directed at a named 
 **Two or three storylines** from next week's matchups. Who has a revenge game, who is
 walking into a buzzsaw, whose bye weeks are about to detonate. Name the matchup, make a
 call, and be specific enough to be wrong.
+
+Closes on **Pastor Wes's Lock of the Week**, with his running record.
 
 ### 6. Chatnerdness
 The sign-off. Has nothing to do with football and never changes: the week's dumbest thing
@@ -133,9 +139,46 @@ From `voice/BLENDING.md` §3. These govern every post, not just the recap.
    least once per post — a bad start, a checked score, a dumb waiver claim — before he
    calls anyone a bitch.
 7. **Chain-link the back half.** *"Speaking of losing…"* Flat lists read as fatigue.
-8. **Ventriloquize members, don't just describe them.** One or two members become
-   recurring voices with a consistent register and a tracked fake record. Highest-return
-   bit available and still unused.
+8. **Ventriloquize members, don't just describe them.** Decided — Wes and Zack. See
+   "The recurring voices" below.
+
+---
+
+## The recurring voices
+
+From `voice/BLENDING.md` §7. Two managers become recurring voices with a consistent
+register and a tracked number. State lives in `data/voices.json`; the runbook covers
+updating it.
+
+### Wes — Pastor Wes's Lock of the Week *(the Rex Ryan slot)*
+A fake monologue that ends on a pick. Opens as a homily, cites scripture that doesn't
+exist, and derails by the second paragraph — the grill, Texas, a parable about a kicker —
+before landing on next week's lock. Register: warm and lost.
+
+- **The joke is the derail, never the faith.** Nothing aimed at what he believes.
+- Lives at the end of **Looking ahead**, every recap.
+- Record is tracked and quoted. It should be bad; never shade a grade to protect the bit.
+- Don't stack him in the week's sincere beat the same week he's done the monologue.
+
+> *Brothers, turn with me to the Book of Second Waivers, chapter four. "And the Lord said,
+> start thy kicker in a dome, for the wind is of the Adversary." Now I was at the grill
+> Saturday — brisket, fourteen hours, Kingsford, don't let anybody tell you different —
+> and it came to me. It came to me like the smoke. Hoa over Tola. Amen.* (Wes: 0–0.)
+
+### Zack — the foil *(the Stanford Steve slot)*
+Not a monologue — a reaction. Bad Beats are narrated **to** him. He is the man things
+happen to, and the one person in the league who fully understands what a 0.3-point loss
+feels like.
+
+- The Sunday post's Bad Beat and the recap's closest-loss story are addressed to him:
+  *Sewp, I need you to hear this.*
+- His tracked number is the **Luck Index** — points-against rank minus standings rank,
+  −11 to +11, negative means the schedule is doing it to you. Quoted once per recap, at
+  the end of the matchups.
+- His replies in the thread are next week's material. Quote them.
+
+**Bench:** David's campaign statements — only if the coup storyline gets real news.
+**Not a voice:** Chris. He's a target for the line-by-line, not a register.
 
 ---
 

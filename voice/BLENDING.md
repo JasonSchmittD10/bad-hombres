@@ -87,3 +87,11 @@ The highest-leverage instruction: **"Use the [writer] skeleton from `02-architec
 That last clause is the whole trick. The narrator is the borrowed voice. The league is the content. The gap between them is where the comedy lives.
 
 Each `05-prompt-kit.md` has a paste-ready version of this for its writer.
+
+## 7. Rule 8, decided — the two recurring voices
+
+**Wes → the Rex Ryan slot (fake monologue, tracked pick).** "Pastor Wes's Lock of the Week." Opens as a homily, cites scripture that doesn't exist, derails by the second paragraph (grill, Texas, a parable about a kicker), lands on a pick. Register: warm and lost. The joke is the derail, never the faith. Track his record weekly; it should be bad. Don't stack him in Best Thing / serious-for-a-second the same week.
+
+**Zack → the Stanford Steve slot (named foil, lives the bad beats).** Not a monologue — a reaction. Bad Beats is narrated *to* him ("Sewp, I need you to hear this"). His tracked number is the **Luck Index**: points-against rank vs. actual record, updated weekly. His chat replies are next week's material.
+
+**Bench:** David's campaign statements, only if the coup storyline gets real news. **Not a voice:** Chris — he's a target for the line-by-line, not a register.

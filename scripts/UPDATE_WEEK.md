@@ -103,6 +103,9 @@ Drives the **Standings** table and the **Power Lines** chart. Unlike
 
 - `teams[].pf` is **season points for** (cumulative). The table divides by games
   played to show Avg per week — don't pre-average it.
+- `teams[].pa` is **season points against** (cumulative), from the same Yahoo
+  standings page. The site doesn't display it; it feeds Zack's Luck Index in
+  `data/voices.json`.
 - `teams[].bank` is dollars won from weekly bonuses so far ($9 each).
 - `ranks` is **your** power ranking, not the standings — one entry per week,
   appended, `order` listing all 12 manager keys best to worst. Labels must be
@@ -119,6 +122,42 @@ python3 -c "import json;d=json.load(open('data/season.json'));print(len(d['teams
 ```
 
 The playoff cut line sits after 6 — the league takes six teams.
+
+---
+
+# Updating `data/voices.json` (weekly recap task)
+
+State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
+`season.json`, in the same Tuesday pass.
+
+```jsonc
+{
+  "wes":  {"record":{"w":1,"l":0},
+           "locks":[{"week":2,"pick":"Hoa over Tola","result":null}]},
+  "zack": {"history":[{"week":1,"index":-4,"paRank":2,"standingsRank":6}]}
+}
+```
+
+**Pastor Wes's Lock of the Week.** Each recap names one pick for next week. On
+Tuesday: grade last week's lock (`result` → `"W"` or `"L"`), bump `record`, then
+append this week's new lock with `result: null`. The record is quoted in the
+recap and should be allowed to be bad — never shade a grade.
+
+**Luck Index.** `index = paRank − standingsRank`, where `paRank` 1 = most points
+scored against (unluckiest) and `standingsRank` uses the site's own sort (wins,
+ties half, then points for). Range −11 to +11; negative means the schedule is
+doing it to you. Compute it, don't eyeball it:
+
+```bash
+python3 - <<'EOF'
+import json
+t=json.load(open('data/season.json'))['teams']
+st=sorted(t,key=lambda x:(-(x['w']+x['tie']/2),-x['pf']))
+pa=sorted(t,key=lambda x:-x['pa'])
+sr=[x['m'] for x in st].index('Zack')+1; pr=[x['m'] for x in pa].index('Zack')+1
+print({"index":pr-sr,"paRank":pr,"standingsRank":sr})
+EOF
+```
 
 ---
 
