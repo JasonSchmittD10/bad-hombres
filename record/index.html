@@ -245,6 +245,9 @@ h3.title{font-size:var(--fs-lg)}
 /* mobile nav */
 .navtoggle{display:none;background:transparent;border:0;cursor:pointer;padding:8px;margin-left:auto;
  color:#fff;line-height:0}
+/* these belong to the mobile drawer only -- keep them out of the desktop layout
+   entirely, or the button renders as default browser chrome in the corner */
+.navscrim,.navclose{display:none}
 .navtoggle svg{width:26px;height:26px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
 @media(max-width:760px){
  .navtoggle{display:block}
@@ -256,8 +259,8 @@ h3.title{font-size:var(--fs-lg)}
  nav.top a{font-family:var(--font-display);font-size:var(--fs-lg);text-transform:uppercase;
   color:#fff;padding:15px 0;width:100%;border-bottom:1px solid var(--line);letter-spacing:.01em}
  nav.top a.active{color:var(--red)}
- .navscrim{position:fixed;inset:0;z-index:110;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;
-  transition:opacity .28s}
+ .navscrim{display:block;position:fixed;inset:0;z-index:110;background:rgba(0,0,0,.55);opacity:0;
+  pointer-events:none;transition:opacity .28s}
  .navscrim.open{opacity:1;pointer-events:auto}
  .navclose{position:fixed;top:14px;right:16px;z-index:130;background:transparent;border:0;color:#fff;
   cursor:pointer;padding:8px;display:none;line-height:0}
