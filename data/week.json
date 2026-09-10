@@ -117,5 +117,8 @@
         "val": 20.65
       }
     ]
-  }
+  },
+  "nextWeek": 2,
+  "nextKickoff": "2026-09-17T20:15:00-04:00",
+  "nextKickoffLabel": "Thursday, Sept 17 · 8:15 PM ET"
 }
