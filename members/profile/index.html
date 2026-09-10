@@ -4,6 +4,8 @@
  font-weight:900;font-style:normal;font-display:swap}
 @font-face{font-family:"Gruffy";src:url("/fonts/gruffy-bold.otf") format("opentype");
  font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Gruffy";src:url("/fonts/gruffy-light.otf") format("opentype");
+ font-weight:300;font-style:normal;font-display:swap}
 
 
 :root{--red:#c1121f;--red-dark:#8b0d16;--ink:#0d0d0f;--panel:#16161a;--panel-2:#1e1e24;--line:#2a2a31;--silver:#d6d8dd;--muted:#9aa0aa;--white:#f4f5f7;--gold:#e8b84b;--green:#3fb26b}
@@ -350,12 +352,15 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
 .foot-sep:before{content:"";position:absolute;left:0;top:50%;width:6px;height:1px;
  background:rgba(255,255,255,.5)}
 /* oversized wordmark bleeding off the bottom edge */
-.foot-mark{position:relative;overflow:hidden;height:clamp(58px,9vw,124px);margin-top:6px}
+.foot-mark{position:relative;overflow:hidden;height:clamp(62px,10vw,140px);margin-top:6px}
+/* the light weight keeps this legible at size without shouting over the panel */
 .foot-mark span{position:absolute;left:50%;transform:translateX(-50%);top:0;white-space:nowrap;
- font-family:var(--font-display);font-size:clamp(74px,15.5vw,220px);line-height:.86;
- color:#a50f1a;letter-spacing:.01em;user-select:none}
-.foot-badge{position:absolute;right:clamp(14px,4vw,60px);bottom:10px;width:clamp(64px,9vw,104px);
- height:auto;filter:drop-shadow(0 8px 22px rgba(0,0,0,.45))}
+ font-family:var(--font-display);font-weight:300;font-size:clamp(40px,13.5vw,240px);
+ line-height:.84;color:#fff;letter-spacing:.005em;user-select:none}
+/* stamped on at an angle, like a sticker slapped over the wordmark */
+.foot-badge{position:absolute;right:clamp(12px,4.5vw,72px);bottom:clamp(-6px,0.4vw,10px);
+ width:clamp(104px,15vw,196px);height:auto;transform:rotate(-9deg);transform-origin:center;
+ filter:drop-shadow(0 10px 26px rgba(0,0,0,.5))}
 @media(max-width:900px){
  .foot-main{grid-template-columns:1fr 1fr;gap:26px;padding:36px 20px 26px}
  .foot-brandcol{grid-column:1 / -1}
@@ -364,7 +369,7 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
  .foot-main{grid-template-columns:1fr;gap:22px}
  .foot-bar{padding:14px 20px}
  .fc-u{min-width:0;flex:1;padding:8px 6px}
- .foot-badge{width:58px;right:14px;bottom:8px}
+ .foot-badge{width:96px;right:10px;bottom:-2px}
 }
 </style></head><body>
 <header><div class="wrap hbar">
