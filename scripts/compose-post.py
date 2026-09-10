@@ -46,7 +46,11 @@ def progress():
     if not ms: bail("no matchups")
     if not any((m["a"].get("s") or 0) or (m["b"].get("s") or 0) for m in ms):
         bail("no live scores yet")
+    # A written topper in the Van Pelt voice, if the caller supplied one.
+    # See VOICE_GUIDE.md. Without it the post is just the scores, which is fine.
+    topper = os.environ.get("BH_TOPPER", "").strip()
     lines = ["SUNDAY NIGHT \u2014 WEEK %s" % w.get("week"), ""]
+    if topper: lines += [topper, ""]
     for m in ms:
         a, b = m["a"], m["b"]
         # no column padding: iMessage renders proportionally, so it never lines up
