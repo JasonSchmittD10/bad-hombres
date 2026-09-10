@@ -1,2 +1,4 @@
-assets/incoming/
+**/.DS_Store
+.DS_Store
 .env
+assets/incoming/
