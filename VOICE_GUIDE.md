@@ -5,7 +5,7 @@ at random reads as costume-party, not coverage.
 
 | Slot | Voice | Why |
 |---|---|---|
-| Tuesday recap (the article) | **Peter King** structure, league's crass register | His column *is* a weekly template |
+| Tuesday recap (the article) | **Peter King** structure, Magary register in the roasts | See "The Weekly Recap" below |
 | Sunday night in-progress post | **Scott Van Pelt** | Late-night, wry, built for bad beats |
 | Draft recap / season preview | **Matthew Berry** | Fantasy-native, Love/Hate format |
 | Last-place bit, rivalry hits, roasts | **Drew Magary** | The league's native register |
@@ -16,36 +16,66 @@ recurring devices. Never reproduce their actual sentences.
 
 ---
 
-## Peter King — the weekly column
+## The Weekly Recap — structure
 
-**Recognisable because:** the column is a numbered brain-dump, not an argument. It jumps
-between unrelated things without transition and treats that as a feature.
+Peter King's mechanics, our sections. This is the fixed running order; every recap hits
+these six beats in this sequence.
 
-**Structure**
-1. A lead story, reported at length, with a specific scene.
-2. Awards — hand out the same named awards every week. (Ours: Offensive Player of the
-   Week, Goat of the Week, Bonus Hunter of the Week.)
-3. **Ten Things I Think I Think** — numbered 1–10, each opening literally "I think…",
-   with lettered sub-points (a, b, c) for tangents inside a single thought.
-4. A sign-off segment that has nothing to do with football and never changes.
-   King had *beernerdness* and *coffeenerdness*. Ours: **chatnerdness** — the week's
-   dumbest thing said in the iMessage thread.
+### 1. Lead story
+One thing that actually happened, reported at length with a specific scene. Not a summary
+of the week — the single most interesting thing in it. Name names, use exact numbers.
 
-**Mechanics**
+### 2. The awards
+Three, every week, same order, same names:
+
+- **Big Dick of the Week** — highest team score.
+- **Little Bitch of the Week** — lowest team score.
+- **The week's bonus** — whoever took the $9, what they took it with, and what it cost the
+  field. Award name and criteria come from the Bonus Board.
+
+Give each one a line or three of commentary. The Big Dick gets grudging respect; the
+Little Bitch gets none.
+
+### 3. Matchup recaps
+All six, in whatever order is funniest — not seed order. Bolded lead-in per matchup, the
+score, then the roast. The point is the roast; the score is the excuse for it. This is the
+Magary register inside the King structure: second person is fine here, contempt should be
+specific, and every jab needs a real number under it.
+
+### 4. Things I Think
+**Five or six**, not ten. Numbered, each opening literally "I think…", with lettered
+sub-points (a, b, c) for tangents inside a single thought. These are allowed to wander —
+roster construction, a trade nobody liked, someone's waiver habits, a grievance.
+
+### 5. Looking ahead
+**Two or three storylines** from next week's matchups. Who has a revenge game, who is
+walking into a buzzsaw, whose bye weeks are about to detonate. Name the matchup, make a
+call, and be specific enough to be wrong.
+
+### 6. Chatnerdness
+The sign-off. Has nothing to do with football and never changes: the week's dumbest thing
+said in the iMessage thread, quoted flat with no commentary. King had *beernerdness*;
+this is ours.
+
+**Mechanics throughout**
 - First person, constantly. "I think," "I'm told," "I keep coming back to."
-- Concrete sourcing: who you talked to, when, what they said.
-- Numbers are specific and unrounded — 130.24, not "about 130."
-- Digressions are welcome and should be flagged as digressions.
+- Numbers specific and unrounded — 130.24, not "about 130."
+- Digressions welcome, and flag them as digressions.
+- Managers are the constant; team names change.
 
 **Don't:** build to a thesis. There isn't one. It's a notebook emptied on the table.
 
-**Sample —**
-> I think Chris Dambro won Week 1 with a quarterback nobody in this league wanted, and I
-> think that tells you something about how the draft went.
-> a) Drake Maye put up 9.82 before most of the room had a starter on the field.
-> b) That is not a good number. It was, for eleven hours, the only number.
-> c) Dambro has never finished above eighth. I'm not saying it's happening. I'm saying I
-> looked twice.
+**Sample — the awards**
+> **Big Dick of the Week: Chris, 38.02.** Won the week on Wednesday night with a
+> quarterback nobody else in this room would have started, and has spent four days telling
+> everyone about it.
+>
+> **Little Bitch of the Week: Adam, 0.00.** Every man he started plays on Sunday. That is
+> not variance. That is a scheduling decision he made on purpose.
+>
+> **Josh Allen's Money Shot — $9 to Chris.** Drake Maye, 9.82, and for eleven hours it was
+> the only quarterback score on the board. The award is named after a man who finished
+> second to Drake Maye. Sit with that.
 
 ---
 
