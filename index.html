@@ -580,7 +580,7 @@ h3.title{font-size:var(--fs-lg)}
  .sec-stake b{font-size:var(--fs-base)}
  .sec-stake span{font-size:8.5px;letter-spacing:.1em}
  .sec-row .title{font-size:var(--fs-md)}
- .aw-grid{grid-template-columns:1fr 1fr;gap:10px}
+ .aw-grid{grid-template-columns:1fr 1fr;gap:10px;grid-auto-rows:186px}
  .aw-nm{font-size:11.5px}
  .aw-cr{font-size:10.5px;line-height:1.4;margin-top:7px}
 }
@@ -646,22 +646,23 @@ footer.site-foot .foot-bar-in>span{padding-left:18px;padding-right:18px}
 
 /* season awards board -- cards expand in place */
 .aw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(184px,1fr));gap:12px;
- align-items:start}
+ grid-auto-rows:216px}
 .aw{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
  background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:14px 12px;
- cursor:pointer;font:inherit;color:inherit;overflow:hidden;will-change:transform}
+ cursor:pointer;font:inherit;color:inherit;overflow:hidden;will-change:transform;height:100%}
 .aw:hover{border-color:var(--red)}
 .aw:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 .aw-wk{font-family:var(--font-display);font-size:11px;letter-spacing:.16em;color:var(--red)}
 .aw-nm{font-family:var(--font-display);font-size:var(--fs-sm);text-transform:uppercase;color:#fff;
- margin-top:7px;line-height:1.2}
+ margin-top:7px;line-height:1.2;min-height:2.4em;display:flex;align-items:center;
+ justify-content:center}
 .aw-media{width:74px;height:74px;border-radius:50%;overflow:hidden;background:#101014;
- border:1px solid var(--line);margin:12px auto 0;flex:0 0 auto;
+ border:1px solid var(--line);margin:10px auto 0;flex:0 0 auto;
  display:grid;place-items:center;transition:width .3s,height .3s}
 .aw-media .art{width:100%;height:100%;object-fit:cover;display:block}
 .aw-media .ic{width:22px;height:22px;color:var(--muted)}
 .aw:hover .aw-media{border-color:var(--red)}
-.aw-cr{font-size:12px;color:var(--muted);line-height:1.5;margin-top:11px}
+.aw-cr{font-size:12px;color:var(--muted);line-height:1.45;margin-top:auto;padding-top:10px}
 .aw-more{display:none;width:100%}
 .aw-amt{font-family:var(--font-display);font-size:var(--fs-md);color:var(--gold);margin-top:10px}
 .aw-win{font-family:var(--font-display);font-size:var(--fs-md);text-transform:uppercase;color:#fff}
@@ -671,6 +672,8 @@ footer.site-foot .foot-bar-in>span{padding-left:18px;padding-right:18px}
 /* expanded */
 .aw.open{grid-column:span 2;grid-row:span 2;border-color:var(--red);
  background:linear-gradient(180deg,#1d1116,#16161a);justify-content:center;padding:22px 20px}
+.aw.open .aw-nm{min-height:0}
+.aw.open .aw-cr{margin-top:12px;padding-top:0}
 .aw.open .aw-nm{font-size:var(--fs-lg)}
 .aw.open .aw-media{width:180px;height:180px;margin-top:16px}
 .aw.open .aw-cr{font-size:var(--fs-sm);max-width:38ch}
@@ -679,7 +682,7 @@ footer.site-foot .foot-bar-in>span{padding-left:18px;padding-right:18px}
  letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
 @media(max-width:560px){
- .aw-grid{grid-template-columns:1fr 1fr;gap:10px}
+ .aw-grid{grid-template-columns:1fr 1fr;gap:10px;grid-auto-rows:186px}
  .aw{padding:11px 9px}
  .aw-nm{font-size:11.5px}
  .aw-cr{font-size:10.5px;line-height:1.4;margin-top:7px}
@@ -902,6 +905,9 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
 
  /* FLIP: measure, mutate, then play every card back from where it was so the
     grid reflow reads as movement rather than a jump. */
+ var sweep;
+ function clean(c){c.style.transition='';c.style.transform='';c.style.transformOrigin='';}
+
  function toggle(target){
   var cards=[].slice.call(grid.children);
   var first=cards.map(function(c){return c.getBoundingClientRect()});
@@ -931,12 +937,14 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
     c.style.transform='';
    });
   })});
+  // transitionend can be missed if a toggle interrupts one already running,
+  // which would strand a card at its inverted scale. Sweep unconditionally.
+  clearTimeout(sweep);
+  sweep=setTimeout(function(){cards.forEach(clean)},560);
  }
 
  grid.addEventListener('transitionend',function(e){
-  if(e.propertyName==='transform'&&e.target.classList.contains('aw')){
-   e.target.style.transition='';e.target.style.transform='';e.target.style.transformOrigin='';
-  }
+  if(e.propertyName==='transform'&&e.target.classList.contains('aw')) clean(e.target);
  });
 
  grid.addEventListener('click',function(e){
