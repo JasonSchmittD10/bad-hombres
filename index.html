@@ -894,8 +894,6 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   if(!lead.length){
    list+='<div class="bb-note">Standings post once Yahoo has '+(state.mode==='actual'?'live':'projected')+
     ' numbers for Week '+wk+'.</div>';
-  }else if(lead.length<3){
-   list+='<div class="bb-note">'+lead.length+' of 3 posted — the rest fill in as their players take the field.</div>';
   }
   el('sbBonus').innerHTML='<div class="bb"><div class="bb-top"><div class="bb-ic'+(b.img?' has-art':'')+'">'+art(b)+'</div>'+
    '<div><div class="bb-nm">'+esc(b.nm)+'</div><div class="bb-cr">'+esc(b.cr)+'</div></div>'+
