@@ -149,3 +149,35 @@ Two traps, both real:
 
 Write the result into `week.json` as `bonus.projected` (and `bonus.actual` once
 games are played), best first, `who` = manager key, `sub` = the player.
+
+---
+
+# Posting to the league iMessage thread
+
+Thread: **Bad Hombres Fantasy 2026** — chat id `any;+;chat797144106140278556`, 12 people.
+
+```bash
+DRY_RUN=1 scripts/league-post.sh recap     # see it, send nothing
+scripts/league-post.sh recap               # send it
+```
+
+Kinds: `opener` (Thursday matchups), `progress` (Sunday night scores),
+`recap` (Tuesday, article intro + link), `bonus` (Tuesday, winner + award art).
+
+**Always refresh `week.json` from Yahoo before posting.** Every kind reads the
+committed data — posting on stale data is the main way this goes wrong.
+
+## Guards (in code, not instructions)
+
+- `opener` refuses if week.json still has actual scores — that means the week
+  was not rolled forward.
+- `progress` refuses when no live scores exist yet.
+- `bonus` refuses unless status is `final` and a winner exists.
+- Every post is keyed (`kind-wN`, recap keyed to the article slug) in
+  `~/.bad-hombres-posts.json`, so nothing goes out twice.
+- A skip exits 0. **Never edit a script to bypass a guard** — the guard firing
+  means the data is not ready, and twelve people see whatever gets sent.
+
+Group threads need AppleScript; the iMessage MCP only addresses individuals.
+Requires Messages running and signed in on Jason's Mac — same constraint as
+the Yahoo scrape, so none of this can run in the cloud.
