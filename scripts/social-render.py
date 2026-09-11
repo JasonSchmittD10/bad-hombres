@@ -20,7 +20,8 @@ matchups  Thursday's preview: 1. the slate with projections  2-7. one slide per
        matchup's score and reason for the caption; the slides don't show it.
        Each matchup slide shows the all-time series from data/history.json.
        8. Pastor Wes's Lock of the Week, if one is open in data/voices.json.
-       Needs a week that hasn't kicked off.
+       Last: the standings going in (preseason rankings in week 1) as a bookend.
+       Needs a week that hasn't kicked off, and season.json through week N-1.
 
 Every image is 1080x1350 (Instagram's 4:5 portrait) JPEG. Each is built as a
 self-contained HTML page — fonts, art and illustrations inlined — and shot
@@ -144,6 +145,22 @@ CSS = """
 .sb .sub{color:var(--muted);font-size:26px;letter-spacing:.2em;font-weight:700;margin:-14px 0 24px}
 .row.fav .nm{color:#fff;font-weight:700}.row.fav .pt{color:#fff}.row.dog{opacity:.62}
 
+/* Game of the Week: prime-time treatment, identical on both sides */
+.frame.gotw{background:
+  radial-gradient(760px 520px at 50% 40%,rgba(232,184,75,.20),transparent 70%),
+  radial-gradient(1100px 760px at 50% -10%,rgba(193,18,31,.55),transparent 72%),
+  repeating-linear-gradient(115deg,rgba(255,255,255,.028) 0 2px,transparent 2px 26px),
+  var(--ink)}
+.frame.gotw::after{content:"";position:absolute;inset:18px;border:3px solid var(--gold);border-radius:34px;
+ pointer-events:none;box-shadow:inset 0 0 60px rgba(232,184,75,.12)}
+.gw-badge{align-self:center;display:inline-flex;align-items:center;gap:18px;margin:0 auto 30px;padding:14px 34px;
+ border-radius:999px;background:var(--gold);color:var(--ink);font-size:34px;letter-spacing:.08em;
+ box-shadow:0 12px 34px rgba(232,184,75,.35)}
+.gw-badge span{font-size:26px}
+.gotw .mp .side img{border-color:var(--gold);box-shadow:0 0 0 6px rgba(232,184,75,.18),0 26px 60px rgba(0,0,0,.55)}
+.gotw .mp .vs{border-color:var(--gold);color:var(--gold)}
+.gotw .mp .fact{border-color:rgba(232,184,75,.55)}
+
 /* Pastor Wes */
 .wl{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .wl img{width:440px;height:440px;border-radius:50%;border:10px solid var(--red);object-fit:cover;background:#d7d7d7;
@@ -173,11 +190,11 @@ CSS = """
 .bn .stat{margin-top:22px;font-size:32px}.bn .stat b{color:var(--gold)}
 """
 
-def frame(week, body):
-    return ('<div class="frame"><div class="top"><div class="brand"><img src="%s" alt="">'
+def frame(week, body, cls=""):
+    return ('<div class="frame %s"><div class="top"><div class="brand"><img src="%s" alt="">'
             '<span class="disp">BAD <b>HOMBRES</b></span></div><div class="wk disp">WEEK %s</div></div>'
             '%s<div class="foot"><span>%s</span><span>bad-hombres.vercel.app</span></div></div>') % (
-        data_uri("assets/logo.webp"), esc(week), body, HANDLE)
+        cls, data_uri("assets/logo.webp"), esc(week), body, HANDLE)
 
 def award_card(week, t, title, sub, loser=False):
     return frame(week, (
@@ -197,20 +214,26 @@ def scoreboard(week, ms):
                 "" if tie else cls, face(t["m"]), esc(t["t"]), fmt(t["s"])) for t, cls in ((hi, "w"), (lo, "l"))) + "</div>"
     return frame(week, '<div class="sb"><h1 class="disp">Week %s <em>Final</em></h1>%s</div>' % (esc(week), rows))
 
-def standings(week, season, names):
-    """Same order as the site: wins (ties count half), then points for."""
-    ts = sorted(season["teams"], key=lambda t: (-(t["w"] + t.get("tie", 0) * .5), -t.get("pf", 0)))
+def standings(week, season, names, title=None):
+    """Same order as the site: wins (ties count half), then points for. Before any
+    game is played there's nothing to sort, so it shows the latest power rankings
+    with no record or points — never a table of 0-0s."""
+    played = any(t["w"] + t["l"] + t.get("tie", 0) for t in season["teams"])
+    if played:
+        ts = sorted(season["teams"], key=lambda t: (-(t["w"] + t.get("tie", 0) * .5), -t.get("pf", 0)))
+    else:
+        by_m = {t["m"]: t for t in season["teams"]}
+        ts = [by_m[m] for m in sorted(by_m, key=lambda m: current_ranks(season)[m])]
     cut = season.get("playoffCut", 6)
     rows = ""
     for i, t in enumerate(ts):
         rec = "%d-%d" % (t["w"], t["l"]) + ("-%d" % t["tie"] if t.get("tie") else "")
-        rows += ('<div class="r%s"><span class="rk">%d</span><img src="%s" alt=""><span class="nm">%s</span>'
-                 '<span class="rec">%s</span><span class="pf">%s</span></div>') % (
-            " up" if i < cut else "", i + 1, face(t["m"]), esc(names.get(t["m"], t["t"])), rec, fmt(t.get("pf", 0)))
+        nums = '<span class="rec">%s</span><span class="pf">%s</span>' % (rec, fmt(t.get("pf", 0))) if played else "<span></span><span></span>"
+        rows += ('<div class="r%s"><span class="rk">%d</span><img src="%s" alt=""><span class="nm">%s</span>%s</div>') % (
+            " up" if i < cut else "", i + 1, face(t["m"]), esc(names.get(t["m"], t["t"])), nums)
         if i == cut - 1: rows += '<div class="cut"><span>PLAYOFFS</span></div>'
-    return frame(week, ('<div class="stn"><h1 class="disp">Standings After <em>Week %s</em></h1>'
-                        '%s</div>') % (
-        esc(week), rows))
+    title = title or 'Standings After <em>Week %s</em>' % esc(week)
+    return frame(week, '<div class="stn"><h1 class="disp">%s</h1>%s</div>' % (title, rows))
 
 def slate(week, ms):
     rows = ""
@@ -223,7 +246,7 @@ def slate(week, ms):
     return frame(week, '<div class="sb"><h1 class="disp">Week %s <em>Preview</em></h1><div class="sub">PROJECTED POINTS</div>%s</div>' % (
         esc(week), rows))
 
-def matchup(week, mu, label):
+def matchup(week, mu, label, gotw=False):
     a, b = mu["a"], mu["b"]
     def side(t):
         # both sides framed the same: nobody has won anything yet
@@ -231,8 +254,10 @@ def matchup(week, mu, label):
                 '<div class="pj disp">%s<small>PROJECTED</small></div></div>') % (
             face(t["m"]), esc(t["m"]), esc(t["t"]), fmt(t["p"]))
     facts = '<div class="fact"><span>ALL-TIME SERIES</span><b>%s</b></div>' % esc(series(a["m"], b["m"]))
-    return frame(week, ('<div class="mp"><div class="eyebrow">%s</div><div class="pair">%s<div class="vs disp">VS</div>%s</div>'
-                        '<div class="facts">%s</div></div>') % (esc(label), side(a), side(b), facts))
+    head = ('<div class="gw-badge disp"><span>&#9733;</span>%s<span>&#9733;</span></div>' % esc(label)) if gotw \
+        else '<div class="eyebrow">%s</div>' % esc(label)
+    return frame(week, ('<div class="mp">%s<div class="pair">%s<div class="vs disp">VS</div>%s</div>'
+                        '<div class="facts">%s</div></div>') % (head, side(a), side(b), facts), "gotw" if gotw else "")
 
 def wes_lock(week, lock, record, ms):
     teams = {t["m"]: t["t"] for mu in ms for t in (mu["a"], mu["b"])}
@@ -324,15 +349,22 @@ def main():
             picked = set(re.findall(r"[A-Z][a-z]+", lock["pick"]))
             if not any(pair(mu) == picked for mu in ms):
                 bail("Wes's lock %r isn't one of this week's matchups" % lock["pick"])
-        for old in out_dir.glob("matchups-*.jpg"): old.unlink()   # never leave a stale slide 8 behind
+        behind = [t["m"] for t in season["teams"] if t["w"] + t["l"] + t.get("tie", 0) != int(week) - 1]
+        if behind: bail("season.json isn't updated through week %d (%s) — the closing standings slide would be stale" % (int(week) - 1, ", ".join(behind)))
+        for old in out_dir.glob("matchups-*.jpg"): old.unlink()   # never leave a stale slide behind
         shoot(page(slate(week, ms), preview), out_dir / "matchups-1.jpg")
         rest = sorted((mu for mu in ms if mu is not first[0]),
                       key=lambda mu: -watchability(week, mu, ranks, season.get("playoffCut", 6))[0])
         print("  Game of the Week: %s vs %s — %s" % (gotw["a"], gotw["b"], gotw["reason"]))
         for i, mu in enumerate(first + rest):
             label = "Game of the Week" if i == 0 else "Matchup %d of 6" % (i + 1)
-            shoot(page(matchup(week, mu, label), preview), out_dir / ("matchups-%d.jpg" % (i + 2)))
-        if lock: shoot(page(wes_lock(week, lock, voices["wes"]["record"], ms), preview), out_dir / "matchups-8.jpg")
+            shoot(page(matchup(week, mu, label, gotw=(i == 0)), preview), out_dir / ("matchups-%d.jpg" % (i + 2)))
+        n = 8
+        if lock:
+            shoot(page(wes_lock(week, lock, voices["wes"]["record"], ms), preview), out_dir / "matchups-8.jpg"); n = 9
+        # the bookend: where everyone stands going in
+        title = "Preseason <em>Rankings</em>" if int(week) == 1 else "Standings Entering <em>Week %s</em>" % esc(week)
+        shoot(page(standings(week, season, {t["m"]: t["t"] for t in teams}, title), preview), out_dir / ("matchups-%d.jpg" % n))
         return
 
     if not preview and w.get("status") != "final": bail("week %s is not final yet" % week)

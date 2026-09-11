@@ -26,7 +26,7 @@ recurring devices. Never reproduce their actual sentences.
 | Season-in-review / playoff omnibus | **Peter King** — the only format that holds a season | Berry narrative open | `voice/peter-king/02-architecture.md` |
 | Instagram recap carousel caption | **Peter King** — the recap compressed, award-header deadpan | one Magary button | "Instagram" below |
 | Instagram bonus award caption | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | "Instagram" below |
-| Instagram Thursday matchup preview caption | **Scott Van Pelt** — One Big Thing | — | "Instagram" below |
+| Instagram Thursday matchup preview caption | **Peter King** — the earnest preview, a Factoid | — | "Instagram" below |
 
 Kickoff and season-open pieces go to **Berry** (the narrative cold open is the tool for
 it). There is no fifth voice.
@@ -60,8 +60,11 @@ three differences:
 
 - **Nothing from the group chat.** No Chatnerdness, no quoted replies, no Zack reaction
   lines. What's said in the thread stays in the thread.
-- **First names and team names only** — the same as the site. Never tag a member's
-  personal account.
+- **First names and team names only** — the same as the site.
+- **Tagging is automatic, never written.** `scripts/ig-post.py` @mentions every member
+  listed in `data/handles.json` at the end of each post so everyone gets notified. A
+  caption never types an @ itself — the script refuses it, because Instagram notifies
+  whoever is tagged, stranger or not.
 - **The award names are the profanity.** "Big Dick of the Week" and "Little Bitch of the
   Week" carry the whole crude load; the caption's narrator stays clean (rule 3, applied
   harder). Instagram limits reach on profane captions, and the joke is funnier deadpan.
@@ -85,17 +88,24 @@ Caption is 2–4 lines: the award name as a King header, the winner and team, th
 won it framed Berry-style ("Get this: …"), then `Week N bonus · $9` and the same hashtags.
 
 **Thursday matchup preview** — slides are 1. the slate with projections, 2. the Game of
-the Week (the recorded one), 3–7. the other five matchups with the all-time series,
-8. Pastor Wes's Lock of the Week when he has one. The caption is Van Pelt's One Big Thing,
-300–800 characters:
+the Week (the recorded one, in the gold prime-time treatment), 3–7. the other five
+matchups with the all-time series, then Pastor Wes's Lock of the Week when he has one, and
+last the standings going in (preseason rankings in Week 1) as the bookend. The caption is
+**Peter King** — the earnest insider previewing the week, 400–900 characters:
 
-1. **The hook line** is the recorded Game of the Week — the same game the recap and the
-   iMessage opener named — with its reason in plain words. One point, made once.
-2. One or two lines on anything else worth a look: a lopsided projection, a long series
-   lead, a revenge game. Real numbers.
-3. If there's a lock: `Pastor Wes's Lock of the Week: <pick>. He is <w>-<l>.` Flat, no
-   commentary — the record is the joke.
-4. `Swipe for all six.` then the hashtags.
+1. **The hook** is the recorded Game of the Week — the same game the recap and the
+   iMessage opener named — told King's way: the series history and the stakes, reported
+   straight, a number with a comp. The first ~125 characters must carry it.
+2. **A Factoid That May Interest Only Me** — one real number from the slate that
+   delights the narrator more than it should (the closest projection, a long series
+   lead, a streak).
+3. If there's a lock: `Pastor Wes's Lock of the Week: <pick>. He is <w>-<l>.` Flat — King
+   reports it; the record is the joke.
+4. `Swipe for all six, and the standings at the end.` then the hashtags. No @ mentions —
+   the script adds them.
+
+King's rules hold: zero profanity and zero sarcasm in the narrator, every number real,
+"Good for you, ___" only if something has actually earned it.
 
 ---
 

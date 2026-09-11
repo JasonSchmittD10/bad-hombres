@@ -1,0 +1,7 @@
+{
+  "note": "Instagram handles for league members, WITHOUT the @. scripts/ig-post.py @mentions every filled-in handle at the end of each post so everyone gets notified. Leave a member blank to never tag them. Only add someone who's fine being tagged on a public account.",
+  "handles": {
+    "Adam": "", "Chris": "", "David": "", "Drew": "", "Dylan": "", "Erick": "",
+    "Hoa": "", "Jason": "", "Matt": "", "Tola": "", "Wes": "", "Zack": ""
+  }
+}

@@ -285,7 +285,7 @@ Two posts a week, both on Tuesday, both after the recap is published:
 |---|---|---|---|
 | Recap carousel | `social/week-N/recap-1..4.jpg` — Big Dick, Little Bitch, scoreboard, standings | `social/week-N/recap.txt` | `bad-hombres-ig-recap`, Tue 10:30am |
 | Bonus award | `social/week-N/award.jpg` — award art + winner's illustration | `social/week-N/award.txt` | `bad-hombres-ig-award`, Tue 6pm |
-| Matchup preview | `social/week-N/matchups-1..8.jpg` — slate, six matchups, Wes's lock | `social/week-N/matchups.txt` | `bad-hombres-ig-matchups`, Thu 4pm |
+| Matchup preview | `social/week-N/matchups-1..9.jpg` — slate, Game of the Week, five more matchups, Wes's lock, standings | `social/week-N/matchups.txt` | `bad-hombres-ig-matchups`, Thu 4pm |
 
 The weekly recap task renders the Tuesday images and writes both captions;
 the Thursday opener task does the same for the matchup preview (rules in
@@ -317,6 +317,8 @@ from `assets/awards/hd/wkN.jpg` (1080px; the 220px site versions are too small).
   board — after kickoff the projections are stale.
 - Captions over 2,200 characters or 30 hashtags are refused (Instagram would
   reject them anyway).
+- Every post @mentions the members listed in `data/handles.json` (added by the
+  script; captions may not tag anyone themselves).
 - Keyed `ig-recap-wN` / `ig-award-wN` / `ig-matchups-wN` in `~/.bad-hombres-posts.json`; nothing
   posts twice. A skip exits 0.
 

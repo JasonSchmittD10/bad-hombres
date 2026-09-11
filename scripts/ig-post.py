@@ -122,9 +122,27 @@ def material(kind, data=None):
     if not cap_path.exists(): skip("no caption at %s" % cap_path.relative_to(ROOT))
     caption = cap_path.read_text().strip()
     if not caption: skip("caption is empty")
+    caption = with_mentions(caption)
     if len(caption) > 2200: die("caption is %d characters; Instagram allows 2200" % len(caption))
     if len(re.findall(r"#\w", caption)) > 30: die("caption has more than 30 hashtags")
     return week, imgs, caption
+
+def with_mentions(caption):
+    """@mention every member with a handle in data/handles.json, on its own line
+    before the hashtags. Mentions come only from that file — a caption may not
+    tag anyone itself (Instagram notifies whoever is tagged, stranger or not)."""
+    if re.search(r"(^|\s)@\w", caption): die("caption tags an account itself; mentions come only from data/handles.json")
+    hp = ROOT / "data" / "handles.json"
+    handles = [h.strip().lstrip("@") for h in (json.loads(hp.read_text())["handles"].values() if hp.exists() else []) if h.strip()]
+    bad = [h for h in handles if not re.fullmatch(r"[A-Za-z0-9._]{1,30}", h)]
+    if bad: die("not valid Instagram handles in data/handles.json: %s" % ", ".join(bad))
+    if len(handles) > 20: die("Instagram allows 20 mentions per caption; handles.json has %d" % len(handles))
+    if not handles: return caption
+    line = " ".join("@" + h for h in handles)
+    parts = caption.rstrip().rsplit("\n\n", 1)
+    if len(parts) == 2 and parts[1].lstrip().startswith("#"):          # keep hashtags last
+        return "%s\n\n%s\n\n%s" % (parts[0], line, parts[1])
+    return "%s\n\n%s" % (caption.rstrip(), line)
 
 def check_live(imgs, tries=8, wait=15):
     """Instagram fetches these itself, so they must be deployed — and be these exact files.
