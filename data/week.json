@@ -1,7 +1,7 @@
 {
   "week": 1,
   "status": "live",
-  "updated": "2026-09-10T07:31:06-04:00",
+  "updated": "2026-09-11T09:24:23-04:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
@@ -9,27 +9,27 @@
         "m": "Jason",
         "t": "Pull-Out Game Weak",
         "s": 5.6,
-        "p": 124.16
+        "p": 123.97
       },
       "b": {
         "m": "Drew",
         "t": "I Stand with Jordon",
-        "s": 0.0,
-        "p": 125.61
+        "s": 15.4,
+        "p": 111.83
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "s": 23.5,
-        "p": 125.97
+        "s": 37.3,
+        "p": 119.79
       },
       "b": {
         "m": "Erick",
         "t": "King In The North",
         "s": 0.0,
-        "p": 121.35
+        "p": 121.18
       }
     },
     {
@@ -37,13 +37,13 @@
         "m": "Hoa",
         "t": "Critical Chase Theory",
         "s": 0.0,
-        "p": 131.27
+        "p": 131.1
       },
       "b": {
         "m": "Dylan",
         "t": "Carlie’s Headset",
-        "s": 0.0,
-        "p": 122.68
+        "s": 5.6,
+        "p": 115.42
       }
     },
     {
@@ -51,27 +51,27 @@
         "m": "David",
         "t": "Drain the Swamp",
         "s": 0.0,
-        "p": 118.29
+        "p": 119.0
       },
       "b": {
         "m": "Wes",
         "t": "MikeLee4 Prez",
-        "s": 0.0,
-        "p": 122.18
+        "s": 16.9,
+        "p": 127.06
       }
     },
     {
       "a": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "s": 38.02,
-        "p": 101.89
+        "s": 51.12,
+        "p": 106.28
       },
       "b": {
         "m": "Matt",
         "t": "San Diego Chillin’",
         "s": 6.6,
-        "p": 118.5
+        "p": 118.82
       }
     },
     {
@@ -79,13 +79,13 @@
         "m": "Zack",
         "t": "Sewer Pigeons",
         "s": 6.0,
-        "p": 124.38
+        "p": 123.81
       },
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
-        "s": 0.0,
-        "p": 123.79
+        "s": 15.5,
+        "p": 124.91
       }
     }
   ],
@@ -104,17 +104,17 @@
       {
         "who": "Hoa",
         "sub": "Joe Burrow",
-        "val": 20.98
+        "val": 20.97
       },
       {
         "who": "Jason",
         "sub": "Jaxson Dart",
-        "val": 20.87
+        "val": 20.82
       },
       {
         "who": "Erick",
         "sub": "Jalen Hurts",
-        "val": 20.65
+        "val": 20.79
       }
     ]
   },
