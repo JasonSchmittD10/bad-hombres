@@ -26,7 +26,7 @@ recurring devices. Never reproduce their actual sentences.
 | Season-in-review / playoff omnibus | **Peter King** — the only format that holds a season | Berry narrative open | `voice/peter-king/02-architecture.md` |
 | Instagram recap carousel caption | **Peter King** — the recap compressed, award-header deadpan | one Magary button | "Instagram" below |
 | Instagram bonus award caption | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | "Instagram" below |
-| Instagram Thursday matchup preview caption | **Peter King** — the earnest preview, a Factoid | — | "Instagram" below |
+| Instagram Thursday matchup preview caption | **Scott Van Pelt** — One Big Thing, the same point as the iMessage topper | — | "Instagram" below |
 
 Kickoff and season-open pieces go to **Berry** (the narrative cold open is the tool for
 it). There is no fifth voice.
@@ -91,21 +91,23 @@ won it framed Berry-style ("Get this: …"), then `Week N bonus · $9` and the s
 the Week (the recorded one, in the gold prime-time treatment), 3–7. the other five
 matchups with the all-time series, then Pastor Wes's Lock of the Week when he has one, and
 last the standings going in (preseason rankings in Week 1) as the bookend. The caption is
-**Peter King** — the earnest insider previewing the week, 400–900 characters:
+**Scott Van Pelt's One Big Thing** — the same voice and the same point as the Thursday
+iMessage topper, so the group chat and the public post read as one voice. 300–800
+characters:
 
 1. **The hook** is the recorded Game of the Week — the same game the recap and the
-   iMessage opener named — told King's way: the series history and the stakes, reported
-   straight, a number with a comp. The first ~125 characters must carry it.
-2. **A Factoid That May Interest Only Me** — one real number from the slate that
-   delights the narrator more than it should (the closest projection, a long series
-   lead, a streak).
-3. If there's a lock: `Pastor Wes's Lock of the Week: <pick>. He is <w>-<l>.` Flat — King
-   reports it; the record is the joke.
+   iMessage topper named — with its reason in plain words. The topper's angle, opened up
+   a little for people who aren't in the thread. One point, made once. The first ~125
+   characters must carry it.
+2. One or two lines on anything else worth a look: a lopsided projection, a long series
+   lead, a revenge game. Real numbers. Short sentences; fragments are fine.
+3. If there's a lock: `Pastor Wes's Lock of the Week: <pick>. He is <w>-<l>.` Flat, no
+   commentary — the record is the joke.
 4. `Swipe for all six, and the standings at the end.` then the hashtags. No @ mentions —
    the script adds them.
 
-King's rules hold: zero profanity and zero sarcasm in the narrator, every number real,
-"Good for you, ___" only if something has actually earned it.
+Van Pelt's rules hold: never explain the joke, nothing after the dagger, no hype, every
+number real.
 
 ---
 
