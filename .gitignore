@@ -2,3 +2,4 @@
 .DS_Store
 .env
 assets/incoming/
+__pycache__/
