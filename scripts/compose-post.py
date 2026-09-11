@@ -7,7 +7,7 @@ Writes the message to stdout and, for `bonus`, prints the attachment path on
 stderr as "ATTACH:<path>". Exits non-zero when there is nothing worth posting
 so the caller can skip silently rather than send something wrong.
 """
-import json, os, re, sys, datetime, pathlib
+import html, json, os, re, sys, datetime, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://bad-hombres.vercel.app"
@@ -65,8 +65,8 @@ def progress():
     return "\n".join(lines)
 
 def latest_story():
-    html = (ROOT / "index.html").read_text()
-    m = re.search(r'<a class="feature" href="(/story/[^"]+/)"', html)
+    home = (ROOT / "index.html").read_text()
+    m = re.search(r'<a class="feature" href="(/story/[^"]+/)"', home)
     if not m: bail("no featured story on the homepage")
     slug = m.group(1)
     page = ROOT / slug.strip("/") / "index.html"
@@ -74,7 +74,8 @@ def latest_story():
     body = page.read_text()
     t = re.search(r'<h1 class="st-h1">(.*?)</h1>', body, re.S)
     # the lede paragraph, else the first paragraph of the body
-    strip = lambda s: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s)).strip()
+    # iMessage is plain text, so entities (&amp;, &#x27;) must come out as characters
+    strip = lambda s: html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s))).strip()
     body_m = re.search(r'<div class="st-body">(.*?)</div>', body, re.S)
     paras = [strip(x) for x in re.findall(r'<p[^>]*>(.*?)</p>', body_m.group(1) if body_m else body, re.S)]
     paras = [x for x in paras if x]

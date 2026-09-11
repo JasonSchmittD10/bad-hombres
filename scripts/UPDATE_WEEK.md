@@ -128,7 +128,12 @@ The playoff cut line sits after 6 — the league takes six teams.
 # Updating `data/voices.json` (weekly recap task)
 
 State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
-`season.json`, in the same Tuesday pass.
+`season.json`. Who does what:
+
+| Step | Owner |
+|---|---|
+| Grade last week's lock, compute the Luck Index | Monday-night scoreboard run, once the week is `final` (Tuesday's tasks re-check it) |
+| Write next week's lock | The weekly recap, when it writes Looking ahead |
 
 ```jsonc
 {
@@ -157,6 +162,43 @@ pa=sorted(t,key=lambda x:-x['pa'])
 sr=[x['m'] for x in st].index('Zack')+1; pr=[x['m'] for x in pa].index('Zack')+1
 print({"index":pr-sr,"paRank":pr,"standingsRank":sr})
 EOF
+```
+
+---
+
+# Publishing the weekly recap (weekly recap task)
+
+The recap is written to `VOICE_GUIDE.md` — the six-beat running order, the
+recurring voices, the eight rules — and published with one script, which does
+the story page, the Updates card (first) and the homepage feature in one go:
+
+```bash
+scripts/publish-story.py spec.json            # refuses if the slug exists
+scripts/publish-story.py spec.json --force    # replace a story with that slug
+```
+
+The spec shape and the allowed body markup are in the script's header. The
+rules that matter:
+
+- **Slug `week-N-recap`.** The Tuesday post is keyed to the slug, so a stable
+  slug is what stops the same recap going to the thread twice.
+- **Body markup:** `<p class="lede">` first, then `<p>`, `<h2 class="st-h2">`
+  for the six section heads, `<blockquote class="st-q">` for one pull quote,
+  `<p class="sign">` for Chatnerdness, inline `<b>/<em>/<a>`. **No `<div>`** —
+  the script refuses it, because the iMessage post finds the end of the body
+  at the first `</div>`.
+- **The lede is the post.** The Tuesday iMessage post is the story's opening
+  paragraphs, taken until they pass 160 characters, plus a link. Write the
+  opening scene so it works on its own.
+- **Hero:** `assets/members/illus/<Manager>.jpg` for whoever the lead story
+  is about (photo at `assets/members/<Manager>.jpg` if there is no
+  illustration). The award art is 220px, too small for a hero.
+- **Stats:** up to four tiles. Use Big Dick, Little Bitch and the bonus.
+
+Check it before you commit:
+
+```bash
+DRY_RUN=1 scripts/league-post.sh recap    # the exact text the thread will get
 ```
 
 ---
