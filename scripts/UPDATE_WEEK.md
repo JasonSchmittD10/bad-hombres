@@ -317,22 +317,31 @@ needs an app and a token. Meta's console labels drift; the path is roughly:
    app** → use case *Manage messaging & content on Instagram* (the "Instagram
    API"). The app can stay in Development mode — it only ever posts to your
    own account, so no App Review is needed.
-3. In the app: **Instagram → API setup with Instagram login → Generate access
-   tokens → Add account**, and log in as @badhombresfantasy. If it asks, accept
-   the tester invite in the Instagram app under *Settings → Website
-   permissions → Apps and websites*. The permissions needed are
-   `instagram_business_basic` and `instagram_business_content_publish`.
-4. Copy the generated token and save it **outside the repo** — this prompts
+3. **Make the account a tester — required in Development mode**, or the
+   authorize screen fails with *"Insufficient Developer Role"*:
+   - App dashboard → **App roles → Roles → Add People → Instagram Tester** →
+     `badhombresfantasy`.
+   - Signed in **as @badhombresfantasy**, accept it at
+     [instagram.com/accounts/manage_access](https://www.instagram.com/accounts/manage_access/)
+     → *Tester Invites* (or in the app: *Settings → Website permissions →
+     Apps and websites*).
+4. In the app: **Instagram → API setup with Instagram login → Generate access
+   tokens → Add account**, and log in as @badhombresfantasy. The authorize
+   screen uses whichever Instagram account the browser is signed into — if
+   that's a personal account it fails the same way, so use a private window.
+   The permissions needed are `instagram_business_basic` and
+   `instagram_business_content_publish`.
+5. Copy the generated token and save it **outside the repo** — this prompts
    for it so it never lands in your shell history:
 
    ```bash
    read -rs "t?Paste token: " && printf 'IG_ACCESS_TOKEN=%s\nIG_TOKEN_ISSUED=%s\n' "$t" "$(date +%F)" > ~/.bad-hombres-ig.env && chmod 600 ~/.bad-hombres-ig.env && unset t
    ```
 
-5. `scripts/ig-post.py check` should print `ok: token works for @badhombresfantasy`.
-6. Set the profile's bio link to https://bad-hombres.vercel.app — captions say
+6. `scripts/ig-post.py check` should print `ok: token works for @badhombresfantasy`.
+7. Set the profile's bio link to https://bad-hombres.vercel.app — captions say
    "link in bio".
 
 Tokens last 60 days. `ig-post.py` refreshes it automatically once it's 30
 days old, so as long as it posts at least monthly it never expires. If it
-does lapse (a long off-season), repeat step 3–4.
+does lapse (a long off-season), repeat steps 4–5.
