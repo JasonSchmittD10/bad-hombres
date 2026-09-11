@@ -275,14 +275,16 @@ Two posts a week, both on Tuesday, both after the recap is published:
 |---|---|---|---|
 | Recap carousel | `social/week-N/recap-1..4.jpg` — Big Dick, Little Bitch, scoreboard, standings | `social/week-N/recap.txt` | `bad-hombres-ig-recap`, Tue 10:30am |
 | Bonus award | `social/week-N/award.jpg` — award art + winner's illustration | `social/week-N/award.txt` | `bad-hombres-ig-award`, Tue 6pm |
+| Matchup preview | `social/week-N/matchups-1..8.jpg` — slate, six matchups, Wes's lock | `social/week-N/matchups.txt` | `bad-hombres-ig-matchups`, Thu 4pm |
 
-The weekly recap task renders the images, writes both captions (rules in
-`VOICE_GUIDE.md`, "Instagram"), and commits them with the recap. The posting
-tasks only post.
+The weekly recap task renders the Tuesday images and writes both captions;
+the Thursday opener task does the same for the matchup preview (rules in
+`VOICE_GUIDE.md`, "Instagram"). The posting tasks only post.
 
 ```bash
 scripts/social-render.py recap                 # images from data/week.json (must be final)
 scripts/social-render.py award
+scripts/social-render.py matchups              # Thursday, before kickoff only
 scripts/social-render.py recap --preview DIR   # any state, to DIR, watermarked PREVIEW
 DRY_RUN=1 scripts/ig-post.py recap             # every check, nothing sent
 scripts/ig-post.py recap                       # post it
@@ -301,9 +303,11 @@ from `assets/awards/hd/wkN.jpg` (1080px; the 220px site versions are too small).
 - Instagram fetches the images from the live site, so the post refuses until
   every URL is deployed **and byte-identical to the local file** — a
   half-finished Vercel deploy can't post the wrong picture.
+- The matchup preview refuses (render and post) once any score is on the
+  board — after kickoff the projections are stale.
 - Captions over 2,200 characters or 30 hashtags are refused (Instagram would
   reject them anyway).
-- Keyed `ig-recap-wN` / `ig-award-wN` in `~/.bad-hombres-posts.json`; nothing
+- Keyed `ig-recap-wN` / `ig-award-wN` / `ig-matchups-wN` in `~/.bad-hombres-posts.json`; nothing
   posts twice. A skip exits 0.
 
 ## One-time setup (Jason)

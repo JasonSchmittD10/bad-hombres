@@ -1,23 +1,29 @@
 #!/usr/bin/env python3
 """Render the week's Instagram images from the site's own data.
 
-    scripts/social-render.py recap              # -> social/week-N/recap-1..3.jpg
+    scripts/social-render.py recap              # -> social/week-N/recap-1..4.jpg
     scripts/social-render.py award              # -> social/week-N/award.jpg
+    scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py recap --preview DIR   # any week state, written to DIR, marked PREVIEW
     scripts/social-render.py recap --preview DIR --data sample-week.json --season sample-season.json
+    scripts/social-render.py matchups --preview DIR --data sample-week.json --voices sample-voices.json
 
 recap  1. Big Dick of the Week (high score)  2. Little Bitch of the Week (low
        score)  3. the final scoreboard  4. standings after the week. Needs
        data/week.json status "final" and data/season.json caught up to that week.
 award  the week's bonus: the award art with the winner's illustration stamped
        on it. Needs a settled winner in week.json bonus.actual.
+matchups  Thursday's preview: 1. the slate with projections  2-7. one slide per
+       matchup, closest projected first ("Game of the Week"), with the all-time
+       series from data/history.json  8. Pastor Wes's Lock of the Week, if one
+       is open in data/voices.json. Needs a week that hasn't kicked off.
 
 Every image is 1080x1350 (Instagram's 4:5 portrait) JPEG. Each is built as a
 self-contained HTML page — fonts, art and illustrations inlined — and shot
 with headless Chrome in a throwaway profile, so it never touches Jason's.
 Exits 2 with a reason when the data isn't ready, so a caller can skip.
 """
-import base64, html, json, subprocess, sys, tempfile, time
+import base64, html, json, re, subprocess, sys, tempfile, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -112,6 +118,38 @@ CSS = """
 .stn .cut span{position:absolute;right:0;top:-15px;background:var(--ink);color:var(--red);padding:0 0 0 12px;
  font-size:20px;letter-spacing:.2em;font-weight:700}
 
+/* matchup preview */
+.mp{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.mp .eyebrow{margin-bottom:26px}
+.mp .pair{display:flex;justify-content:center;align-items:flex-start;gap:34px;position:relative}
+.mp .side{width:430px;display:flex;flex-direction:column;align-items:center}
+.mp .side img{width:400px;height:400px;border-radius:36px;border:6px solid var(--line);object-fit:cover;background:#d7d7d7}
+.mp .side.fav img{border-color:var(--red)}
+.mp .vs{position:absolute;left:50%;top:200px;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:50%;
+ background:var(--ink);border:5px solid var(--red);display:flex;align-items:center;justify-content:center;font-size:44px;z-index:2}
+.mp .mgr{margin-top:26px;font-size:40px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.mp .tm{margin-top:6px;font-size:28px;color:var(--muted);min-height:68px;line-height:1.2}
+.mp .pj{margin-top:12px;font-size:76px}.mp .pj small{display:block;font:700 20px "Segoe UI",Arial,sans-serif;
+ color:var(--muted);letter-spacing:.2em;margin-top:8px}
+.mp .facts{margin:44px auto 0;display:flex;justify-content:center;gap:18px}
+.mp .fact{background:var(--panel);border:2px solid var(--line);border-radius:22px;padding:18px 30px;min-width:300px}
+.mp .fact span{display:block;color:var(--muted);font-size:20px;letter-spacing:.2em;font-weight:700;margin-bottom:8px}
+.mp .fact b{font-size:32px}
+.sb .sub{color:var(--muted);font-size:26px;letter-spacing:.2em;font-weight:700;margin:-14px 0 24px}
+.row.fav .nm{color:#fff;font-weight:700}.row.fav .pt{color:#fff}.row.dog{opacity:.62}
+
+/* Pastor Wes */
+.wl{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.wl img{width:440px;height:440px;border-radius:50%;border:10px solid var(--red);object-fit:cover;background:#d7d7d7;
+ box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.wl .eyebrow{margin-top:44px}
+.wl h1{font-size:96px;margin-top:14px}
+.wl .pick{margin-top:40px;background:var(--panel);border:2px solid var(--red);border-radius:26px;padding:26px 44px}
+.wl .pick b{display:block;font-size:64px}
+.wl .pick span{display:block;margin-top:10px;font-size:28px;color:var(--muted)}
+.wl .rec{margin-top:30px;font-size:30px;color:var(--muted);letter-spacing:.08em}
+.wl .rec b{color:#fff}
+
 /* bonus award post */
 .bn{flex:1;display:flex;flex-direction:column}
 .bn .art{position:relative;margin:24px -64px 0;height:620px;overflow:visible}
@@ -168,6 +206,52 @@ def standings(week, season, names):
                         '%s</div>') % (
         esc(week), rows))
 
+def series(a, b):
+    """All-time head-to-head from data/history.json, as a sentence."""
+    h = json.loads((ROOT / "data" / "history.json").read_text())
+    code = {v: k for k, v in h["managers"].items()}
+    rec = h["profiles"].get(code.get(a, ""), {}).get("vs", {}).get(b)
+    if not rec or rec["w"] + rec["l"] + rec.get("t", 0) == 0: return "First meeting"
+    w, l, t = rec["w"], rec["l"], rec.get("t", 0)
+    tail = "-%d" % t if t else ""
+    if w == l: return "Tied %d-%d%s" % (w, l, tail)
+    return "%s leads %d-%d%s" % (a if w > l else b, max(w, l), min(w, l), tail)
+
+def slate(week, ms):
+    rows = ""
+    for mu in ms:
+        a, b = mu["a"], mu["b"]
+        fav, dog = (a, b) if a["p"] >= b["p"] else (b, a)
+        rows += '<div class="mu">' + "".join(
+            '<div class="row %s"><img src="%s" alt=""><span class="nm">%s</span><span class="pt">%s</span></div>' % (
+                cls, face(t["m"]), esc(t["t"]), fmt(t["p"])) for t, cls in ((fav, "fav"), (dog, "dog"))) + "</div>"
+    return frame(week, '<div class="sb"><h1 class="disp">Week %s <em>Preview</em></h1><div class="sub">PROJECTED POINTS</div>%s</div>' % (
+        esc(week), rows))
+
+def matchup(week, mu, label, records):
+    a, b = mu["a"], mu["b"]
+    fav = a["m"] if a["p"] >= b["p"] else b["m"]
+    def side(t):
+        return ('<div class="side%s"><img src="%s" alt=""><div class="mgr">%s</div><div class="tm">%s</div>'
+                '<div class="pj disp">%s<small>PROJECTED</small></div></div>') % (
+            " fav" if t["m"] == fav else "", face(t["m"]), esc(t["m"]), esc(t["t"]), fmt(t["p"]))
+    facts = '<div class="fact"><span>ALL-TIME SERIES</span><b>%s</b></div>' % esc(series(a["m"], b["m"]))
+    if records:
+        facts += '<div class="fact"><span>2026 RECORDS</span><b>%s %s · %s %s</b></div>' % (
+            esc(a["m"]), records[a["m"]], esc(b["m"]), records[b["m"]])
+    margin = abs(a["p"] - b["p"])
+    return frame(week, ('<div class="mp"><div class="eyebrow">%s · %s by %s</div><div class="pair">%s<div class="vs disp">VS</div>%s</div>'
+                        '<div class="facts">%s</div></div>') % (esc(label), esc(fav), "%.1f" % margin, side(a), side(b), facts))
+
+def wes_lock(week, lock, record, ms):
+    teams = {t["m"]: t["t"] for mu in ms for t in (mu["a"], mu["b"])}
+    names = re.findall(r"[A-Z][a-z]+", lock["pick"])
+    sub = " over ".join(teams[n] for n in names if n in teams) if len(names) == 2 else ""
+    return frame(week, ('<div class="wl"><img src="%s" alt=""><div class="eyebrow">Pastor Wes\u2019s</div>'
+                        '<h1 class="disp">Lock of the Week</h1><div class="pick"><b class="disp">%s</b>%s</div>'
+                        '<div class="rec">SEASON RECORD <b>%d-%d</b></div></div>') % (
+        face("Wes"), esc(lock["pick"]), ('<span>%s</span>' % esc(sub)) if sub else "", record["w"], record["l"]))
+
 def bonus_card(week, b, t):
     art = "assets/awards/hd/wk%s.jpg" % week
     if not (ROOT / art).exists(): bail("no 1080px award art at %s" % art)
@@ -217,7 +301,7 @@ def shoot(html_text, out):
 def main():
     args = sys.argv[1:]
     kind = args[0] if args else ""
-    if kind not in ("recap", "award"): sys.exit(__doc__)
+    if kind not in ("recap", "award", "matchups"): sys.exit(__doc__)
     preview = "--preview" in args
     # --data lets a preview run against a sample week instead of the live file
     src = Path(args[args.index("--data") + 1]) if "--data" in args else ROOT / "data" / "week.json"
@@ -227,6 +311,27 @@ def main():
     ms = w.get("matchups") or []
     if len(ms) != 6: bail("expected 6 matchups, found %d" % len(ms))
     teams = [t for mu in ms for t in (mu["a"], mu["b"])]
+    if kind == "matchups":
+        # a preview of a week that has started would be announcing stale projections
+        if any(t.get("s") for t in teams): bail("week %s has already kicked off — no preview" % week)
+        if any(not isinstance(t.get("p"), (int, float)) for t in teams): bail("a projection is missing")
+        sp = Path(args[args.index("--season") + 1]) if "--season" in args else ROOT / "data" / "season.json"
+        season = json.loads(sp.read_text())
+        played = any(t["w"] + t["l"] + t.get("tie", 0) for t in season["teams"])
+        records = {t["m"]: "%d-%d" % (t["w"], t["l"]) + ("-%d" % t["tie"] if t.get("tie") else "")
+                   for t in season["teams"]} if played else None
+        vp = Path(args[args.index("--voices") + 1]) if "--voices" in args else ROOT / "data" / "voices.json"
+        voices = json.loads(vp.read_text())
+        lock = next((l for l in voices["wes"]["locks"] if str(l["week"]) == str(week) and l.get("result") is None), None)
+        for old in out_dir.glob("matchups-*.jpg"): old.unlink()   # never leave a stale slide 8 behind
+        shoot(page(slate(week, ms), preview), out_dir / "matchups-1.jpg")
+        order = sorted(ms, key=lambda mu: abs(mu["a"]["p"] - mu["b"]["p"]))
+        for i, mu in enumerate(order):
+            label = "Game of the Week" if i == 0 else "Matchup %d of 6" % (i + 1)
+            shoot(page(matchup(week, mu, label, records), preview), out_dir / ("matchups-%d.jpg" % (i + 2)))
+        if lock: shoot(page(wes_lock(week, lock, voices["wes"]["record"], ms), preview), out_dir / "matchups-8.jpg")
+        return
+
     if not preview and w.get("status") != "final": bail("week %s is not final yet" % week)
     if any(not isinstance(t.get("s"), (int, float)) for t in teams): bail("a score is missing")
 

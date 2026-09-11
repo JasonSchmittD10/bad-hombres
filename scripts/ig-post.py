@@ -4,12 +4,13 @@
     scripts/ig-post.py check            # token works and belongs to the right account
     scripts/ig-post.py recap            # carousel: Big Dick, Little Bitch, scoreboard, standings
     scripts/ig-post.py award            # single image: the week's bonus winner
+    scripts/ig-post.py matchups         # Thursday carousel: slate, six matchups, Wes's lock
     DRY_RUN=1 scripts/ig-post.py recap  # every local check, no call to Instagram
 
 Uses the Instagram API with Instagram Login (graph.instagram.com). Instagram
 fetches images from public URLs, so the images must already be committed and
-deployed: social/week-N/{recap-1..4,award}.jpg, with captions in
-social/week-N/{recap,award}.txt. See scripts/UPDATE_WEEK.md, "Posting to Instagram".
+deployed: social/week-N/{recap-1..4,award,matchups-1..8}.jpg, with captions
+in social/week-N/{recap,award,matchups}.txt. See scripts/UPDATE_WEEK.md, "Posting to Instagram".
 
 Credentials live OUTSIDE the repo in ~/.bad-hombres-ig.env (chmod 600):
     IG_ACCESS_TOKEN=...          long-lived token for @badhombresfantasy
@@ -100,12 +101,21 @@ def wait_ready(cid, token):
 def material(kind):
     w = json.loads((ROOT / "data" / "week.json").read_text())
     week = w.get("week")
-    if w.get("status") != "final": skip("week %s is not final yet" % week)
     d = ROOT / "social" / ("week-%s" % week)
-    names = ["recap-%d.jpg" % i for i in range(1, 5)] if kind == "recap" else ["award.jpg"]
-    imgs = [d / n for n in names]
-    missing = [str(p.relative_to(ROOT)) for p in imgs if not p.exists()]
-    if missing: skip("not rendered yet: %s" % ", ".join(missing))
+    if kind == "matchups":
+        # a preview only makes sense before kickoff — after it, the projections are stale
+        teams = [t for mu in w.get("matchups") or [] for t in (mu["a"], mu["b"])]
+        if w.get("status") != "preseason" or any(t.get("s") for t in teams):
+            skip("week %s has already kicked off — too late for a preview" % week)
+        imgs = sorted(d.glob("matchups-*.jpg"), key=lambda p: int(re.search(r"(\d+)", p.stem).group(1)))
+        if len(imgs) < 7: skip("matchup preview not rendered yet (%d of at least 7 slides)" % len(imgs))
+        if len(imgs) > 10: die("%d slides; an Instagram carousel holds 10" % len(imgs))
+    else:
+        if w.get("status") != "final": skip("week %s is not final yet" % week)
+        names = ["recap-%d.jpg" % i for i in range(1, 5)] if kind == "recap" else ["award.jpg"]
+        imgs = [d / n for n in names]
+        missing = [str(p.relative_to(ROOT)) for p in imgs if not p.exists()]
+        if missing: skip("not rendered yet: %s" % ", ".join(missing))
     cap_path = d / ("%s.txt" % kind)
     if not cap_path.exists(): skip("no caption at %s" % cap_path.relative_to(ROOT))
     caption = cap_path.read_text().strip()
@@ -131,7 +141,7 @@ def check_live(imgs):
 
 def main():
     kind = sys.argv[1] if len(sys.argv) == 2 else ""
-    if kind not in ("check", "recap", "award"): sys.exit(__doc__)
+    if kind not in ("check", "recap", "award", "matchups"): sys.exit(__doc__)
 
     if kind == "check":
         env = load_env(); tok = maybe_refresh(env)

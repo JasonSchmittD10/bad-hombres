@@ -26,6 +26,7 @@ recurring devices. Never reproduce their actual sentences.
 | Season-in-review / playoff omnibus | **Peter King** — the only format that holds a season | Berry narrative open | `voice/peter-king/02-architecture.md` |
 | Instagram recap carousel caption | **Peter King** — the recap compressed, award-header deadpan | one Magary button | "Instagram" below |
 | Instagram bonus award caption | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | "Instagram" below |
+| Instagram Thursday matchup preview caption | **Scott Van Pelt** — One Big Thing | — | "Instagram" below |
 
 Kickoff and season-open pieces go to **Berry** (the narrative cold open is the tool for
 it). There is no fifth voice.
@@ -63,6 +64,19 @@ three differences:
 **Bonus award** — one image: the award art with the winner's illustration stamped on it.
 Caption is 2–4 lines: the award name as a King header, the winner and team, the stat that
 won it framed Berry-style ("Get this: …"), then `Week N bonus · $9` and the same hashtags.
+
+**Thursday matchup preview** — slides are 1. the slate with projections, 2. the Game of
+the Week (closest projected margin), 3–7. the other five matchups with the all-time series,
+8. Pastor Wes's Lock of the Week when he has one. The caption is Van Pelt's One Big Thing,
+300–800 characters:
+
+1. **The hook line** is the Game of the Week — both teams, the projected margin, and why
+   it matters. One point, made once.
+2. One or two lines on anything else worth a look: a lopsided projection, a long series
+   lead, a revenge game. Real numbers.
+3. If there's a lock: `Pastor Wes's Lock of the Week: <pick>. He is <w>-<l>.` Flat, no
+   commentary — the record is the joke.
+4. `Swipe for all six.` then the hashtags.
 
 ---
 
