@@ -126,20 +126,30 @@ def material(kind, data=None):
     if len(re.findall(r"#\w", caption)) > 30: die("caption has more than 30 hashtags")
     return week, imgs, caption
 
-def check_live(imgs):
-    """Instagram fetches these itself, so they must be deployed — and be these exact files."""
-    urls = []
-    for p in imgs:
+def check_live(imgs, tries=8, wait=15):
+    """Instagram fetches these itself, so they must be deployed — and be these exact files.
+
+    Right after a push, Vercel's edge can serve some files before others (the
+    week 1 test saw slide 7 live while slide 1 still 404'd), so a miss is
+    retried for up to ~2 minutes before giving up.
+    """
+    def probe(p):
         url = "%s/%s" % (SITE, p.relative_to(ROOT).as_posix())
         try:
             with urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=30) as r:
                 ctype, size = r.headers.get("Content-Type", ""), int(r.headers.get("Content-Length") or -1)
         except urllib.error.HTTPError as e:
-            skip("%s is not live yet (%s) — commit, push and let Vercel deploy first" % (url, e.code))
+            return url, "not live yet (%s)" % e.code
         if "image/jpeg" not in ctype: die("%s is %s, not a JPEG" % (url, ctype))
-        if size != p.stat().st_size: skip("%s is live but differs from the local file — deploy still in progress?" % url)
-        urls.append(url)
-    return urls
+        if size != p.stat().st_size: return url, "live but differs from the local file"
+        return url, None
+    for attempt in range(tries):
+        results = [probe(p) for p in imgs]
+        misses = [(u, why) for u, why in results if why]
+        if not misses: return [u for u, _ in results]
+        if attempt < tries - 1:
+            print("waiting for the deploy: %s %s" % misses[0]); time.sleep(wait)
+    skip("%s is %s — commit, push and let Vercel deploy first" % misses[0])
 
 def main():
     argv = sys.argv[1:]
