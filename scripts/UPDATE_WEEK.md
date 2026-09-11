@@ -190,9 +190,10 @@ rules that matter:
 - **The lede is the post.** The Tuesday iMessage post is the story's opening
   paragraphs, taken until they pass 160 characters, plus a link. Write the
   opening scene so it works on its own.
-- **Hero:** `assets/members/illus/<Manager>.jpg` for whoever the lead story
-  is about (photo at `assets/members/<Manager>.jpg` if there is no
-  illustration). The award art is 220px, too small for a hero.
+- **Hero:** `assets/members/svg/<Manager>.svg` for whoever the lead story
+  is about — vector, so it's sharp at any size (photo at
+  `assets/members/<Manager>.jpg` if a new member has no illustration yet).
+  The award art is 220px, too small for a hero.
 - **Stats:** up to four tiles. Use Big Dick, Little Bitch and the bonus.
 
 Check it before you commit:

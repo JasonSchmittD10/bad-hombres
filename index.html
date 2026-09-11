@@ -449,6 +449,7 @@ img.av{object-fit:cover;object-position:center top;display:block}
  border-radius:20px;padding:5px 12px 5px 5px;cursor:pointer;font:800 11px "Segoe UI",sans-serif;
  text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
 .pl-chip img{width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:center top}
+.pl-chip img.pl-ill{object-position:center;background:#d7d7d7}
 .pl-chip.on{color:#fff;border-color:var(--red)}
 .pl-empty{color:var(--muted);font-size:12.5px;padding:16px 4px}
 @media(max-width:520px){.st-h1x{font-size:16px}.pl-sub{display:none}}
@@ -1127,6 +1128,13 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
 
   var defs='',svg='';
   data.teams.forEach(function(t){
+   // the illustration, scaled up a touch so the face fills the dot; the
+   // photo for anyone without one
+   if(ILLUS[t.m]){
+    defs+='<pattern id="plp-'+t.m+'" patternContentUnits="objectBoundingBox" width="1" height="1">'+
+      '<image href="'+illus(t.m)+'" x="-.09" y="-.07" width="1.18" height="1.18" preserveAspectRatio="xMidYMid slice"></image></pattern>';
+    return;
+   }
    var src=AV[t.m]; if(!src)return;
    defs+='<pattern id="plp-'+t.m+'" patternContentUnits="objectBoundingBox" width="1" height="1">'+
      '<image href="'+src+'" width="1" height="1" preserveAspectRatio="xMidYMin slice"></image></pattern>';
@@ -1168,8 +1176,9 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
    '<defs>'+defs+'</defs>'+svg+'</svg>';
 
   legend.innerHTML=data.teams.map(function(t){
+   var f=ILLUS[t.m]?'<img class="pl-ill" src="'+illus(t.m)+'" alt="'+esc(t.m)+'" loading="lazy">':face(t.m);
    return '<button type="button" class="pl-chip'+(focus===t.m?' on':'')+'" data-m="'+esc(t.m)+'">'+
-    face(t.m)+'<span>'+esc(t.t)+'</span></button>';
+    f+'<span>'+esc(t.t)+'</span></button>';
   }).join('');
  }
 
@@ -1186,8 +1195,10 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   if(tr) location.href=tr.getAttribute('data-href');
  });
 
- // managers with a commissioned illustration; the rest just show the photo
- var ILLUS={Adam:1,Chris:1,David:1,Drew:1,Dylan:1,Erick:1,Hoa:1,Jason:1,Tola:1,Wes:1,Zack:1};
+ // managers with a vector illustration in /assets/members/svg/; anyone new
+ // without one just shows the photo
+ var ILLUS={Adam:1,Chris:1,David:1,Drew:1,Dylan:1,Erick:1,Hoa:1,Jason:1,Matt:1,Tola:1,Wes:1,Zack:1};
+ function illus(m){return '/assets/members/svg/'+encodeURIComponent(m)+'.svg'}
 
  function renderMembers(){
   var host=document.getElementById('memGrid'); if(!host) return;
@@ -1201,7 +1212,7 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
     face='<div class="av">'+esc(initials(t.m))+'</div>';
    }else if(ILLUS[t.m]){
     face='<span class="mem-ph has-illus">'+
-      '<img class="mem-illus" src="/assets/members/illus/'+n+'.jpg" alt="'+esc(t.m)+'" loading="lazy">'+
+      '<img class="mem-illus" src="'+illus(t.m)+'" alt="'+esc(t.m)+'" loading="lazy">'+
       '<img class="mem-photo" src="/assets/members/'+n+'.jpg" alt="" loading="lazy" aria-hidden="true">'+
       '</span>';
    }else{

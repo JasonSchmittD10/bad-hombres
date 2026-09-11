@@ -11,7 +11,7 @@ spec.json:
       "title":   "…",
       "dek":     "…",                               # one sentence; also the card + meta text
       "byline":  "The Bad Hombres beat · Week 1 · Sep 15, 2026",
-      "hero":    "assets/members/illus/Chris.jpg",  # repo-relative image
+      "hero":    "assets/members/svg/Chris.svg",    # repo-relative image
       "heroAlt": "Chris",
       "stats":   [["38.02", "Big Dick"], ["0.00", "Little Bitch"]],   # optional, up to 4
       "body":    "path/to/body.html"                # the article body, see below
