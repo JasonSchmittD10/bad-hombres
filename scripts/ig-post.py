@@ -6,6 +6,8 @@
     scripts/ig-post.py award            # single image: the week's bonus winner
     scripts/ig-post.py matchups         # Thursday carousel: slate, six matchups, Wes's lock
     DRY_RUN=1 scripts/ig-post.py recap  # every local check, no call to Instagram
+    scripts/ig-post.py matchups --data snapshot.json   # deliberate test against a week snapshot;
+                                                       # scheduled tasks never pass --data
 
 Uses the Instagram API with Instagram Login (graph.instagram.com). Instagram
 fetches images from public URLs, so the images must already be committed and
@@ -98,8 +100,8 @@ def wait_ready(cid, token):
     die("media container %s never finished processing" % cid)
 
 # ---- the post --------------------------------------------------------------
-def material(kind):
-    w = json.loads((ROOT / "data" / "week.json").read_text())
+def material(kind, data=None):
+    w = json.loads((Path(data) if data else ROOT / "data" / "week.json").read_text())
     week = w.get("week")
     d = ROOT / "social" / ("week-%s" % week)
     if kind == "matchups":
@@ -140,14 +142,17 @@ def check_live(imgs):
     return urls
 
 def main():
-    kind = sys.argv[1] if len(sys.argv) == 2 else ""
+    argv = sys.argv[1:]
+    data = argv[argv.index("--data") + 1] if "--data" in argv else None
+    kind = argv[0] if argv else ""
     if kind not in ("check", "recap", "award", "matchups"): sys.exit(__doc__)
 
     if kind == "check":
         env = load_env(); tok = maybe_refresh(env)
         print("ok: token works for @%s (user %s)" % (ACCOUNT, whoami(tok))); return
 
-    week, imgs, caption = material(kind)
+    week, imgs, caption = material(kind, data)
+    if data: print("TEST: week state from %s, not data/week.json" % data)
     key = "ig-%s-w%s" % (kind, week)
     state = json.loads(STATE.read_text()) if STATE.exists() else {}
     if key in state: skip("already posted [%s] at %s" % (key, state[key]))

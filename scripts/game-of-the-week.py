@@ -34,7 +34,8 @@ def main():
     if any(not isinstance(t.get("p"), (int, float)) for t in teams): die("every team needs a projection (p)")
     if len({t["m"] for t in teams}) != 12: die("expected 12 distinct managers")
 
-    vp = ROOT / "data" / "voices.json"
+    # --voices is for tests; the scheduled tasks always record into the real file
+    vp = Path(args[args.index("--voices") + 1]) if "--voices" in args else ROOT / "data" / "voices.json"
     voices = json.loads(vp.read_text())
     picks = voices.setdefault("gotw", [])
     have = next((g for g in picks if str(g["week"]) == str(week)), None)
@@ -52,7 +53,7 @@ def main():
     if have: picks.remove(have)
     picks.append(pick)
     vp.write_text(json.dumps(voices, indent=2, ensure_ascii=False) + "\n")
-    print("Week %s Game of the Week: %s vs %s — %s  (recorded in data/voices.json)" % (week, pick["a"], pick["b"], reason))
+    print("Week %s Game of the Week: %s vs %s — %s  (recorded in %s)" % (week, pick["a"], pick["b"], reason, vp.name if "--voices" in args else "data/voices.json"))
 
 if __name__ == "__main__":
     main()
