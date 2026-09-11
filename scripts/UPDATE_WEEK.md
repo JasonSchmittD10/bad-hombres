@@ -263,3 +263,76 @@ committed data — posting on stale data is the main way this goes wrong.
 Group threads need AppleScript; the iMessage MCP only addresses individuals.
 Requires Messages running and signed in on Jason's Mac — same constraint as
 the Yahoo scrape, so none of this can run in the cloud.
+
+---
+
+# Posting to Instagram
+
+Account: **[@badhombresfantasy](https://www.instagram.com/badhombresfantasy/)** — public.
+Two posts a week, both on Tuesday, both after the recap is published:
+
+| Post | Images | Caption | Posted by |
+|---|---|---|---|
+| Recap carousel | `social/week-N/recap-1..3.jpg` — Big Dick, Little Bitch, scoreboard | `social/week-N/recap.txt` | `bad-hombres-ig-recap`, Tue 10:30am |
+| Bonus award | `social/week-N/award.jpg` — award art + winner's illustration | `social/week-N/award.txt` | `bad-hombres-ig-award`, Tue 6pm |
+
+The weekly recap task renders the images, writes both captions (rules in
+`VOICE_GUIDE.md`, "Instagram"), and commits them with the recap. The posting
+tasks only post.
+
+```bash
+scripts/social-render.py recap                 # images from data/week.json (must be final)
+scripts/social-render.py award
+scripts/social-render.py recap --preview DIR   # any state, to DIR, watermarked PREVIEW
+DRY_RUN=1 scripts/ig-post.py recap             # every check, nothing sent
+scripts/ig-post.py recap                       # post it
+scripts/ig-post.py check                       # token works, right account
+```
+
+Images are 1080×1350 JPEG (Instagram's 4:5 portrait), built as self-contained
+HTML and shot with headless Chrome in a throwaway profile. The award art comes
+from `assets/awards/hd/wkN.jpg` (1080px; the 220px site versions are too small).
+
+## Guards (in code)
+
+- The render refuses unless the week is `final`, and refuses a tie for high or
+  low score — those get decided by hand.
+- The post refuses unless the token belongs to **@badhombresfantasy**.
+- Instagram fetches the images from the live site, so the post refuses until
+  every URL is deployed **and byte-identical to the local file** — a
+  half-finished Vercel deploy can't post the wrong picture.
+- Captions over 2,200 characters or 30 hashtags are refused (Instagram would
+  reject them anyway).
+- Keyed `ig-recap-wN` / `ig-award-wN` in `~/.bad-hombres-posts.json`; nothing
+  posts twice. A skip exits 0.
+
+## One-time setup (Jason)
+
+Instagram only allows automated posting through Meta's official API, which
+needs an app and a token. Meta's console labels drift; the path is roughly:
+
+1. **Instagram app → Settings → Account type and tools → Switch to professional
+   account** (Creator or Business). Personal accounts can't use the API.
+2. **[developers.facebook.com](https://developers.facebook.com/apps) → Create
+   app** → use case *Manage messaging & content on Instagram* (the "Instagram
+   API"). The app can stay in Development mode — it only ever posts to your
+   own account, so no App Review is needed.
+3. In the app: **Instagram → API setup with Instagram login → Generate access
+   tokens → Add account**, and log in as @badhombresfantasy. If it asks, accept
+   the tester invite in the Instagram app under *Settings → Website
+   permissions → Apps and websites*. The permissions needed are
+   `instagram_business_basic` and `instagram_business_content_publish`.
+4. Copy the generated token and save it **outside the repo** — this prompts
+   for it so it never lands in your shell history:
+
+   ```bash
+   read -rs "t?Paste token: " && printf 'IG_ACCESS_TOKEN=%s\nIG_TOKEN_ISSUED=%s\n' "$t" "$(date +%F)" > ~/.bad-hombres-ig.env && chmod 600 ~/.bad-hombres-ig.env && unset t
+   ```
+
+5. `scripts/ig-post.py check` should print `ok: token works for @badhombresfantasy`.
+6. Set the profile's bio link to https://bad-hombres.vercel.app — captions say
+   "link in bio".
+
+Tokens last 60 days. `ig-post.py` refreshes it automatically once it's 30
+days old, so as long as it posts at least monthly it never expires. If it
+does lapse (a long off-season), repeat step 3–4.

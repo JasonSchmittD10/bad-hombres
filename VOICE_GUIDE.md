@@ -24,9 +24,45 @@ recurring devices. Never reproduce their actual sentences.
 | Last-place bit, rivalry hits, standalone roasts | **Drew Magary** | — | `voice/drew-magary/03-dialect.md` |
 | Bylaws, punishment, governance memos | **Peter King** — institutional earnestness | SVP plain-spoken as the alternate | `voice/peter-king/` |
 | Season-in-review / playoff omnibus | **Peter King** — the only format that holds a season | Berry narrative open | `voice/peter-king/02-architecture.md` |
+| Instagram recap carousel caption | **Peter King** — the recap compressed, award-header deadpan | one Magary button | "Instagram" below |
+| Instagram bonus award caption | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | "Instagram" below |
 
 Kickoff and season-open pieces go to **Berry** (the narrative cold open is the tool for
 it). There is no fifth voice.
+
+---
+
+## Instagram
+
+[@badhombresfantasy](https://www.instagram.com/badhombresfantasy/) is **public**. The
+iMessage thread is twelve guys who know each other; Instagram is anyone. Same voice, with
+three differences:
+
+- **Nothing from the group chat.** No Chatnerdness, no quoted replies, no Zack reaction
+  lines. What's said in the thread stays in the thread.
+- **First names and team names only** — the same as the site. Never tag a member's
+  personal account.
+- **The award names are the profanity.** "Big Dick of the Week" and "Little Bitch of the
+  Week" carry the whole crude load; the caption's narrator stays clean (rule 3, applied
+  harder). Instagram limits reach on profane captions, and the joke is funnier deadpan.
+
+**Recap carousel** — images are 1. Big Dick of the Week, 2. Little Bitch of the Week,
+3. the final scoreboard. The caption is the recap compressed, 600–1,200 characters:
+
+1. **The hook line** — only the first ~125 characters show before "more". Lead with the
+   week's verdict, not "Week 3 is in the books."
+2. **Big Dick of the Week** — name, team, exact score, one line.
+3. **Little Bitch of the Week** — name, team, exact score, one line. The button goes here.
+4. **One or two lines from the rest of the week** — the best matchup, the Bad Beat, a
+   standings swing. Real numbers.
+5. **The bonus**, one line — who took the $9 and with what.
+6. `Full recap: link in bio.` Links in captions aren't clickable.
+7. Three to five hashtags on their own line at the end, e.g. `#fantasyfootball
+   #fantasyfootballleague #badhombres`. Never more than 30; Instagram rejects the post.
+
+**Bonus award** — one image: the award art with the winner's illustration stamped on it.
+Caption is 2–4 lines: the award name as a King header, the winner and team, the stat that
+won it framed Berry-style ("Get this: …"), then `Week N bonus · $9` and the same hashtags.
 
 ---
 
