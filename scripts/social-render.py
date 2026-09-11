@@ -165,7 +165,7 @@ def standings(week, season, names):
                  '<span class="rec">%s</span><span class="pf">%s</span></div>') % (
             " up" if i < cut else "", i + 1, face(t["m"]), esc(names.get(t["m"], t["t"])), rec, fmt(t.get("pf", 0)))
         if i == cut - 1: rows += '<div class="cut"><span>PLAYOFFS</span></div>'
-    return frame(week, ('<div class="stn"><h1 class="disp">Standings <em>After Week %s</em></h1>'
+    return frame(week, ('<div class="stn"><h1 class="disp">Standings After <em>Week %s</em></h1>'
                         '<div class="hd"><span></span><span></span><span>TEAM</span><span>W-L</span><span>PF</span></div>%s</div>') % (
         esc(week), rows))
 
