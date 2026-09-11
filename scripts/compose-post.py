@@ -31,7 +31,11 @@ def opener():
     # the board these are last week's fixtures and posting them would be wrong.
     if any((m["a"].get("s") or 0) or (m["b"].get("s") or 0) for m in ms):
         bail("week.json still holds a played week - refresh before posting an opener")
+    # A written topper in the Van Pelt One Big Thing voice, if the caller
+    # supplied one. See VOICE_GUIDE.md. Without it the post is just the slate.
+    topper = os.environ.get("BH_TOPPER", "").strip()
     lines = ["\U0001F3C8 WEEK %s IS UP" % w.get("week"), ""]
+    if topper: lines += [topper, ""]
     for m in ms:
         a, b = m["a"], m["b"]
         lines.append("%s  vs  %s" % (a["t"], b["t"]))
