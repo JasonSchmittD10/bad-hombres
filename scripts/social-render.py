@@ -124,7 +124,6 @@ CSS = """
 .mp .pair{display:flex;justify-content:center;align-items:flex-start;gap:34px;position:relative}
 .mp .side{width:430px;display:flex;flex-direction:column;align-items:center}
 .mp .side img{width:400px;height:400px;border-radius:36px;border:6px solid var(--line);object-fit:cover;background:#d7d7d7}
-.mp .side.fav img{border-color:var(--red)}
 .mp .vs{position:absolute;left:50%;top:200px;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:50%;
  background:var(--ink);border:5px solid var(--red);display:flex;align-items:center;justify-content:center;font-size:44px;z-index:2}
 .mp .mgr{margin-top:26px;font-size:40px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
@@ -232,9 +231,10 @@ def matchup(week, mu, label, records):
     a, b = mu["a"], mu["b"]
     fav = a["m"] if a["p"] >= b["p"] else b["m"]
     def side(t):
-        return ('<div class="side%s"><img src="%s" alt=""><div class="mgr">%s</div><div class="tm">%s</div>'
+        # both sides framed the same: nobody has won anything yet
+        return ('<div class="side"><img src="%s" alt=""><div class="mgr">%s</div><div class="tm">%s</div>'
                 '<div class="pj disp">%s<small>PROJECTED</small></div></div>') % (
-            " fav" if t["m"] == fav else "", face(t["m"]), esc(t["m"]), esc(t["t"]), fmt(t["p"]))
+            face(t["m"]), esc(t["m"]), esc(t["t"]), fmt(t["p"]))
     facts = '<div class="fact"><span>ALL-TIME SERIES</span><b>%s</b></div>' % esc(series(a["m"], b["m"]))
     if records:
         facts += '<div class="fact"><span>2026 RECORDS</span><b>%s %s · %s %s</b></div>' % (
