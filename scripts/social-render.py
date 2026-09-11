@@ -14,9 +14,13 @@ recap  1. Big Dick of the Week (high score)  2. Little Bitch of the Week (low
 award  the week's bonus: the award art with the winner's illustration stamped
        on it. Needs a settled winner in week.json bonus.actual.
 matchups  Thursday's preview: 1. the slate with projections  2-7. one slide per
-       matchup, closest projected first ("Game of the Week"), with the all-time
-       series from data/history.json  8. Pastor Wes's Lock of the Week, if one
-       is open in data/voices.json. Needs a week that hasn't kicked off.
+       matchup, most watchable first — slide 2 is the Game of the Week, scored
+       on projected closeness, the all-time series, current rankings and (late
+       in the season) stakes; see watchability(). The render prints each
+       matchup's score and reason for the caption; the slides don't show it.
+       Each matchup slide shows the all-time series from data/history.json.
+       8. Pastor Wes's Lock of the Week, if one is open in data/voices.json.
+       Needs a week that hasn't kicked off.
 
 Every image is 1080x1350 (Instagram's 4:5 portrait) JPEG. Each is built as a
 self-contained HTML page — fonts, art and illustrations inlined — and shot
@@ -25,6 +29,9 @@ Exits 2 with a reason when the data isn't ready, so a caller can skip.
 """
 import base64, html, json, re, subprocess, sys, tempfile, time
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from bh_league import current_ranks, series, watchability  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -205,17 +212,6 @@ def standings(week, season, names):
                         '%s</div>') % (
         esc(week), rows))
 
-def series(a, b):
-    """All-time head-to-head from data/history.json, as a sentence."""
-    h = json.loads((ROOT / "data" / "history.json").read_text())
-    code = {v: k for k, v in h["managers"].items()}
-    rec = h["profiles"].get(code.get(a, ""), {}).get("vs", {}).get(b)
-    if not rec or rec["w"] + rec["l"] + rec.get("t", 0) == 0: return "First meeting"
-    w, l, t = rec["w"], rec["l"], rec.get("t", 0)
-    tail = "-%d" % t if t else ""
-    if w == l: return "Tied %d-%d%s" % (w, l, tail)
-    return "%s leads %d-%d%s" % (a if w > l else b, max(w, l), min(w, l), tail)
-
 def slate(week, ms):
     rows = ""
     for mu in ms:
@@ -227,21 +223,16 @@ def slate(week, ms):
     return frame(week, '<div class="sb"><h1 class="disp">Week %s <em>Preview</em></h1><div class="sub">PROJECTED POINTS</div>%s</div>' % (
         esc(week), rows))
 
-def matchup(week, mu, label, records):
+def matchup(week, mu, label):
     a, b = mu["a"], mu["b"]
-    fav = a["m"] if a["p"] >= b["p"] else b["m"]
     def side(t):
         # both sides framed the same: nobody has won anything yet
         return ('<div class="side"><img src="%s" alt=""><div class="mgr">%s</div><div class="tm">%s</div>'
                 '<div class="pj disp">%s<small>PROJECTED</small></div></div>') % (
             face(t["m"]), esc(t["m"]), esc(t["t"]), fmt(t["p"]))
     facts = '<div class="fact"><span>ALL-TIME SERIES</span><b>%s</b></div>' % esc(series(a["m"], b["m"]))
-    if records:
-        facts += '<div class="fact"><span>2026 RECORDS</span><b>%s %s · %s %s</b></div>' % (
-            esc(a["m"]), records[a["m"]], esc(b["m"]), records[b["m"]])
-    margin = abs(a["p"] - b["p"])
-    return frame(week, ('<div class="mp"><div class="eyebrow">%s · %s by %s</div><div class="pair">%s<div class="vs disp">VS</div>%s</div>'
-                        '<div class="facts">%s</div></div>') % (esc(label), esc(fav), "%.1f" % margin, side(a), side(b), facts))
+    return frame(week, ('<div class="mp"><div class="eyebrow">%s</div><div class="pair">%s<div class="vs disp">VS</div>%s</div>'
+                        '<div class="facts">%s</div></div>') % (esc(label), side(a), side(b), facts))
 
 def wes_lock(week, lock, record, ms):
     teams = {t["m"]: t["t"] for mu in ms for t in (mu["a"], mu["b"])}
@@ -317,18 +308,30 @@ def main():
         if any(not isinstance(t.get("p"), (int, float)) for t in teams): bail("a projection is missing")
         sp = Path(args[args.index("--season") + 1]) if "--season" in args else ROOT / "data" / "season.json"
         season = json.loads(sp.read_text())
-        played = any(t["w"] + t["l"] + t.get("tie", 0) for t in season["teams"])
-        records = {t["m"]: "%d-%d" % (t["w"], t["l"]) + ("-%d" % t["tie"] if t.get("tie") else "")
-                   for t in season["teams"]} if played else None
+        ranks = current_ranks(season)
         vp = Path(args[args.index("--voices") + 1]) if "--voices" in args else ROOT / "data" / "voices.json"
         voices = json.loads(vp.read_text())
         lock = next((l for l in voices["wes"]["locks"] if str(l["week"]) == str(week) and l.get("result") is None), None)
+        pair = lambda mu: {mu["a"]["m"], mu["b"]["m"]}
+        # Slide 2 is the RECORDED Game of the Week (scripts/game-of-the-week.py), never
+        # re-picked here — the recap and the Thursday opener already named it.
+        # Everything is checked before any file is touched, so a refusal leaves no partial set.
+        gotw = next((g for g in voices.get("gotw", []) if str(g["week"]) == str(week)), None)
+        if not gotw: bail("no Game of the Week recorded for week %s — run scripts/game-of-the-week.py first" % week)
+        first = [mu for mu in ms if pair(mu) == {gotw["a"], gotw["b"]}]
+        if not first: bail("recorded Game of the Week (%s vs %s) isn't one of this week's matchups" % (gotw["a"], gotw["b"]))
+        if lock:
+            picked = set(re.findall(r"[A-Z][a-z]+", lock["pick"]))
+            if not any(pair(mu) == picked for mu in ms):
+                bail("Wes's lock %r isn't one of this week's matchups" % lock["pick"])
         for old in out_dir.glob("matchups-*.jpg"): old.unlink()   # never leave a stale slide 8 behind
         shoot(page(slate(week, ms), preview), out_dir / "matchups-1.jpg")
-        order = sorted(ms, key=lambda mu: abs(mu["a"]["p"] - mu["b"]["p"]))
-        for i, mu in enumerate(order):
+        rest = sorted((mu for mu in ms if mu is not first[0]),
+                      key=lambda mu: -watchability(week, mu, ranks, season.get("playoffCut", 6))[0])
+        print("  Game of the Week: %s vs %s — %s" % (gotw["a"], gotw["b"], gotw["reason"]))
+        for i, mu in enumerate(first + rest):
             label = "Game of the Week" if i == 0 else "Matchup %d of 6" % (i + 1)
-            shoot(page(matchup(week, mu, label, records), preview), out_dir / ("matchups-%d.jpg" % (i + 2)))
+            shoot(page(matchup(week, mu, label), preview), out_dir / ("matchups-%d.jpg" % (i + 2)))
         if lock: shoot(page(wes_lock(week, lock, voices["wes"]["record"], ms), preview), out_dir / "matchups-8.jpg")
         return
 

@@ -134,12 +134,14 @@ State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
 |---|---|
 | Grade last week's lock, compute the Luck Index | Monday-night scoreboard run, once the week is `final` (Tuesday's tasks re-check it) |
 | Write next week's lock | The weekly recap, when it writes Looking ahead |
+| Record next week's Game of the Week | The weekly recap, before it writes Looking ahead: `scripts/game-of-the-week.py --matchups next.json` (Thursday's opener runs it too, as a fallback — it records only if Tuesday didn't) |
 
 ```jsonc
 {
   "wes":  {"record":{"w":1,"l":0},
            "locks":[{"week":2,"pick":"Hoa over Tola","result":null}]},
-  "zack": {"history":[{"week":1,"index":-4,"paRank":2,"standingsRank":6}]}
+  "zack": {"history":[{"week":1,"index":-4,"paRank":2,"standingsRank":6}]},
+  "gotw": [{"week":2,"a":"Tola","b":"Erick","reason":"Projected within 1.4"}]
 }
 ```
 
@@ -147,6 +149,14 @@ State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
 Tuesday: grade last week's lock (`result` → `"W"` or `"L"`), bump `record`, then
 append this week's new lock with `result: null`. The record is quoted in the
 recap and should be allowed to be bad — never shade a grade.
+
+**Game of the Week.** Scored by `scripts/bh_league.py` `watchability()` and
+recorded once by `scripts/game-of-the-week.py`; after that it's locked and
+every post reads it (`VOICE_GUIDE.md`, "One week, one story"). On Tuesday the
+input is next week's matchups with Yahoo projections, as
+`{"week": N+1, "matchups": [...]}` in the week.json matchup shape. With no
+`--matchups` it reads `data/week.json` (Thursday, after the roll-forward).
+`--force` re-decides — only before anything about that week is published.
 
 **Luck Index.** `index = paRank − standingsRank`, where `paRank` 1 = most points
 scored against (unluckiest) and `standingsRank` uses the site's own sort (wins,

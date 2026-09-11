@@ -33,6 +33,25 @@ it). There is no fifth voice.
 
 ---
 
+## One week, one story
+
+Every post about a week has to tell the **same** story. Two things are decided once and
+recorded in `data/voices.json`, and every later post reads them — nothing re-picks:
+
+| Decision | Made | Then used by |
+|---|---|---|
+| **Game of the Week** | Tuesday, by the recap, with `scripts/game-of-the-week.py` | The recap's *Looking ahead* (first storyline) · Thursday iMessage opener (the One Big Thing) · Instagram preview (slide 2 and the caption's hook) |
+| **Pastor Wes's Lock** | Tuesday, in the recap's *Looking ahead* | Thursday iMessage opener · Instagram preview (slide 8 and caption) · graded the next Monday |
+
+The Game of the Week is scored, not chosen by taste: projected closeness, the all-time
+series, current rankings, and — counting for more each week — stakes (both on the playoff
+bubble, both fighting over last place, both fighting for the top seed; last place weighs
+most, because it carries the punishment). The script prints the reason; the writer turns
+it into a sentence. It's locked once recorded — if Thursday's projections have moved,
+the game stays the game.
+
+---
+
 ## Instagram
 
 [@badhombresfantasy](https://www.instagram.com/badhombresfantasy/) is **public**. The
@@ -66,12 +85,12 @@ Caption is 2–4 lines: the award name as a King header, the winner and team, th
 won it framed Berry-style ("Get this: …"), then `Week N bonus · $9` and the same hashtags.
 
 **Thursday matchup preview** — slides are 1. the slate with projections, 2. the Game of
-the Week (closest projected margin), 3–7. the other five matchups with the all-time series,
+the Week (the recorded one), 3–7. the other five matchups with the all-time series,
 8. Pastor Wes's Lock of the Week when he has one. The caption is Van Pelt's One Big Thing,
 300–800 characters:
 
-1. **The hook line** is the Game of the Week — both teams, the projected margin, and why
-   it matters. One point, made once.
+1. **The hook line** is the recorded Game of the Week — the same game the recap and the
+   iMessage opener named — with its reason in plain words. One point, made once.
 2. One or two lines on anything else worth a look: a lopsided projection, a long series
    lead, a revenge game. Real numbers.
 3. If there's a lock: `Pastor Wes's Lock of the Week: <pick>. He is <w>-<l>.` Flat, no
@@ -134,7 +153,8 @@ The last item is where the non-league thoughts go, sub-lettered, and it is the n
 home for the sincere beat: one unironic *Good for you, ___* directed at a named manager.
 
 ### 5. Looking ahead
-**Two or three storylines** from next week's matchups. Who has a revenge game, who is
+**Two or three storylines** from next week's matchups. **The first is always the Game of
+the Week** recorded by `scripts/game-of-the-week.py` — see "One week, one story". Who has a revenge game, who is
 walking into a buzzsaw, whose bye weeks are about to detonate. Name the matchup, make a
 call, and be specific enough to be wrong.
 

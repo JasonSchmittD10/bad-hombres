@@ -1,12 +1,16 @@
 {
-  "note": "State for the recurring voices (VOICE_GUIDE.md, 'The recurring voices'). Written by the weekly recap task. See scripts/UPDATE_WEEK.md.",
+  "note": "State for the recurring voices and the week's decided stories (VOICE_GUIDE.md, 'One week, one story'). Written by the weekly recap task. See scripts/UPDATE_WEEK.md.",
   "wes": {
     "bit": "Pastor Wes's Lock of the Week",
-    "record": {"w": 0, "l": 0},
+    "record": {
+      "w": 0,
+      "l": 0
+    },
     "locks": []
   },
   "zack": {
     "bit": "Luck Index",
     "history": []
-  }
+  },
+  "gotw": []
 }
