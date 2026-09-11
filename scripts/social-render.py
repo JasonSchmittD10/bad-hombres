@@ -95,10 +95,9 @@ CSS = """
 
 /* standings */
 .stn{flex:1;display:flex;flex-direction:column;justify-content:center;padding:24px 0 16px}
-.stn h1{font-size:84px;margin:0 0 22px}.stn h1 em{font-style:normal;color:var(--red)}
-.stn .hd,.stn .r{display:grid;grid-template-columns:52px 64px 1fr 120px 150px;align-items:center;column-gap:14px}
-.stn .hd{color:var(--muted);font-size:20px;letter-spacing:.18em;font-weight:700;padding:0 18px 10px}
-.stn .hd span:nth-child(n+4),.stn .r span:nth-child(n+4){text-align:right}
+.stn h1{font-size:84px;margin:0 0 30px}.stn h1 em{font-style:normal;color:var(--red)}
+.stn .r{display:grid;grid-template-columns:52px 64px 1fr 120px 150px;align-items:center;column-gap:14px}
+.stn .r span:nth-child(n+4){text-align:right}
 .stn .r{height:66px;padding:0 18px;border-bottom:1px solid var(--line)}
 .stn .r:nth-child(odd){background:rgba(255,255,255,.025)}
 .stn .rk{font-size:30px;font-weight:700;color:var(--muted);text-align:center}
@@ -166,7 +165,7 @@ def standings(week, season, names):
             " up" if i < cut else "", i + 1, face(t["m"]), esc(names.get(t["m"], t["t"])), rec, fmt(t.get("pf", 0)))
         if i == cut - 1: rows += '<div class="cut"><span>PLAYOFFS</span></div>'
     return frame(week, ('<div class="stn"><h1 class="disp">Standings After <em>Week %s</em></h1>'
-                        '<div class="hd"><span></span><span></span><span>TEAM</span><span>W-L</span><span>PF</span></div>%s</div>') % (
+                        '%s</div>') % (
         esc(week), rows))
 
 def bonus_card(week, b, t):
