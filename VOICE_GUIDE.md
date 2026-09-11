@@ -47,7 +47,7 @@ three differences:
   harder). Instagram limits reach on profane captions, and the joke is funnier deadpan.
 
 **Recap carousel** — images are 1. Big Dick of the Week, 2. Little Bitch of the Week,
-3. the final scoreboard. The caption is the recap compressed, 600–1,200 characters:
+3. the final scoreboard, 4. standings after the week. The caption is the recap compressed, 600–1,200 characters:
 
 1. **The hook line** — only the first ~125 characters show before "more". Lead with the
    week's verdict, not "Week 3 is in the books."

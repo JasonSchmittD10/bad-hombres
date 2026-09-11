@@ -4,10 +4,11 @@
     scripts/social-render.py recap              # -> social/week-N/recap-1..3.jpg
     scripts/social-render.py award              # -> social/week-N/award.jpg
     scripts/social-render.py recap --preview DIR   # any week state, written to DIR, marked PREVIEW
-    scripts/social-render.py recap --preview DIR --data sample-week.json
+    scripts/social-render.py recap --preview DIR --data sample-week.json --season sample-season.json
 
 recap  1. Big Dick of the Week (high score)  2. Little Bitch of the Week (low
-       score)  3. the final scoreboard. Needs data/week.json status "final".
+       score)  3. the final scoreboard  4. standings after the week. Needs
+       data/week.json status "final" and data/season.json caught up to that week.
 award  the week's bonus: the award art with the winner's illustration stamped
        on it. Needs a settled winner in week.json bonus.actual.
 
@@ -92,6 +93,26 @@ CSS = """
 .row.l{opacity:.5}
 .row.w img{box-shadow:0 0 0 4px var(--red)}
 
+/* standings */
+.stn{flex:1;display:flex;flex-direction:column;justify-content:center;padding:24px 0 16px}
+.stn h1{font-size:84px;margin:0 0 22px}.stn h1 em{font-style:normal;color:var(--red)}
+.stn .hd,.stn .r{display:grid;grid-template-columns:52px 64px 1fr 120px 150px;align-items:center;column-gap:14px}
+.stn .hd{color:var(--muted);font-size:20px;letter-spacing:.18em;font-weight:700;padding:0 18px 10px}
+.stn .hd span:nth-child(n+4),.stn .r span:nth-child(n+4){text-align:right}
+.stn .r{height:66px;padding:0 18px;border-bottom:1px solid var(--line)}
+.stn .r:nth-child(odd){background:rgba(255,255,255,.025)}
+.stn .rk{font-size:30px;font-weight:700;color:var(--muted);text-align:center}
+.stn .r.up .rk{color:#fff}
+.stn .r img{width:50px;height:50px;border-radius:50%;object-fit:cover;background:#d7d7d7}
+.stn .r.up img{box-shadow:0 0 0 3px var(--red)}
+.stn .nm{font-size:29px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stn .r.up .nm{font-weight:700}
+.stn .rec{font-size:32px;font-weight:700;font-variant-numeric:tabular-nums}
+.stn .pf{font-size:28px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stn .cut{position:relative;height:0;border-top:3px dashed var(--red);margin:8px 0}
+.stn .cut span{position:absolute;right:0;top:-15px;background:var(--ink);color:var(--red);padding:0 0 0 12px;
+ font-size:20px;letter-spacing:.2em;font-weight:700}
+
 /* bonus award post */
 .bn{flex:1;display:flex;flex-direction:column}
 .bn .art{position:relative;margin:24px -64px 0;height:620px;overflow:visible}
@@ -132,6 +153,21 @@ def scoreboard(week, ms):
             '<div class="row %s"><img src="%s" alt=""><span class="nm">%s</span><span class="pt">%s</span></div>' % (
                 "" if tie else cls, face(t["m"]), esc(t["t"]), fmt(t["s"])) for t, cls in ((hi, "w"), (lo, "l"))) + "</div>"
     return frame(week, '<div class="sb"><h1 class="disp">Week %s <em>Final</em></h1>%s</div>' % (esc(week), rows))
+
+def standings(week, season, names):
+    """Same order as the site: wins (ties count half), then points for."""
+    ts = sorted(season["teams"], key=lambda t: (-(t["w"] + t.get("tie", 0) * .5), -t.get("pf", 0)))
+    cut = season.get("playoffCut", 6)
+    rows = ""
+    for i, t in enumerate(ts):
+        rec = "%d-%d" % (t["w"], t["l"]) + ("-%d" % t["tie"] if t.get("tie") else "")
+        rows += ('<div class="r%s"><span class="rk">%d</span><img src="%s" alt=""><span class="nm">%s</span>'
+                 '<span class="rec">%s</span><span class="pf">%s</span></div>') % (
+            " up" if i < cut else "", i + 1, face(t["m"]), esc(names.get(t["m"], t["t"])), rec, fmt(t.get("pf", 0)))
+        if i == cut - 1: rows += '<div class="cut"><span>PLAYOFFS</span></div>'
+    return frame(week, ('<div class="stn"><h1 class="disp">Standings <em>After Week %s</em></h1>'
+                        '<div class="hd"><span></span><span></span><span>TEAM</span><span>W-L</span><span>PF</span></div>%s</div>') % (
+        esc(week), rows))
 
 def bonus_card(week, b, t):
     art = "assets/awards/hd/wk%s.jpg" % week
@@ -200,9 +236,17 @@ def main():
         lo, hi = ranked[0], ranked[-1]
         if ranked[-1]["s"] == ranked[-2]["s"]: bail("tie for the high score — decide Big Dick by hand")
         if ranked[0]["s"] == ranked[1]["s"]: bail("tie for the low score — decide Little Bitch by hand")
+        # standings must already include this week, or slide 4 shows last week's table;
+        # checked before rendering anything so a refusal never leaves a partial set
+        sp = Path(args[args.index("--season") + 1]) if "--season" in args else ROOT / "data" / "season.json"
+        season = json.loads(sp.read_text())
+        if len(season.get("teams") or []) != 12: bail("season.json should have 12 teams")
+        behind = [t["m"] for t in season["teams"] if t["w"] + t["l"] + t.get("tie", 0) != int(week)]
+        if behind: bail("season.json is not updated through week %s (%s) — settle standings first" % (week, ", ".join(behind)))
         shoot(page(award_card(week, hi, "Big Dick", "of the Week"), preview), out_dir / "recap-1.jpg")
         shoot(page(award_card(week, lo, "Little Bitch", "of the Week", loser=True), preview), out_dir / "recap-2.jpg")
         shoot(page(scoreboard(week, ms), preview), out_dir / "recap-3.jpg")
+        shoot(page(standings(week, season, {t["m"]: t["t"] for t in teams}), preview), out_dir / "recap-4.jpg")
     else:
         b = w.get("bonus") or {}
         if not (b.get("actual") or []): bail("week %s bonus is not settled" % week)

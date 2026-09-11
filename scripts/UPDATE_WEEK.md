@@ -273,7 +273,7 @@ Two posts a week, both on Tuesday, both after the recap is published:
 
 | Post | Images | Caption | Posted by |
 |---|---|---|---|
-| Recap carousel | `social/week-N/recap-1..3.jpg` — Big Dick, Little Bitch, scoreboard | `social/week-N/recap.txt` | `bad-hombres-ig-recap`, Tue 10:30am |
+| Recap carousel | `social/week-N/recap-1..4.jpg` — Big Dick, Little Bitch, scoreboard, standings | `social/week-N/recap.txt` | `bad-hombres-ig-recap`, Tue 10:30am |
 | Bonus award | `social/week-N/award.jpg` — award art + winner's illustration | `social/week-N/award.txt` | `bad-hombres-ig-award`, Tue 6pm |
 
 The weekly recap task renders the images, writes both captions (rules in

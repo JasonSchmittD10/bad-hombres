@@ -2,13 +2,13 @@
 """Post the week's recap carousel or bonus award to @badhombresfantasy, once.
 
     scripts/ig-post.py check            # token works and belongs to the right account
-    scripts/ig-post.py recap            # carousel: Big Dick, Little Bitch, scoreboard
+    scripts/ig-post.py recap            # carousel: Big Dick, Little Bitch, scoreboard, standings
     scripts/ig-post.py award            # single image: the week's bonus winner
     DRY_RUN=1 scripts/ig-post.py recap  # every local check, no call to Instagram
 
 Uses the Instagram API with Instagram Login (graph.instagram.com). Instagram
 fetches images from public URLs, so the images must already be committed and
-deployed: social/week-N/{recap-1,recap-2,recap-3,award}.jpg, with captions in
+deployed: social/week-N/{recap-1..4,award}.jpg, with captions in
 social/week-N/{recap,award}.txt. See scripts/UPDATE_WEEK.md, "Posting to Instagram".
 
 Credentials live OUTSIDE the repo in ~/.bad-hombres-ig.env (chmod 600):
@@ -102,7 +102,7 @@ def material(kind):
     week = w.get("week")
     if w.get("status") != "final": skip("week %s is not final yet" % week)
     d = ROOT / "social" / ("week-%s" % week)
-    names = ["recap-1.jpg", "recap-2.jpg", "recap-3.jpg"] if kind == "recap" else ["award.jpg"]
+    names = ["recap-%d.jpg" % i for i in range(1, 5)] if kind == "recap" else ["award.jpg"]
     imgs = [d / n for n in names]
     missing = [str(p.relative_to(ROOT)) for p in imgs if not p.exists()]
     if missing: skip("not rendered yet: %s" % ", ".join(missing))
