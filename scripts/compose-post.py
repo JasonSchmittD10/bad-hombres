@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Compose a league-thread post from the site's own data.
 
-    scripts/compose-post.py opener|progress|recap|bonus
+    scripts/compose-post.py opener|progress|afternoon|recap|bonus
 
 Writes the message to stdout and, for `bonus`, prints the attachment path on
 stderr as "ATTACH:<path>". Exits non-zero when there is nothing worth posting
@@ -44,16 +44,17 @@ def opener():
     lines += ["", "%s/" % SITE]
     return "\n".join(lines)
 
-def progress():
+def live_scores(header, footer):
     w = load("week.json")
     ms = w.get("matchups") or []
     if not ms: bail("no matchups")
     if not any((m["a"].get("s") or 0) or (m["b"].get("s") or 0) for m in ms):
         bail("no live scores yet")
+    if w.get("status") == "final": bail("week is already final")
     # A written topper in the Van Pelt voice, if the caller supplied one.
     # See VOICE_GUIDE.md. Without it the post is just the scores, which is fine.
     topper = os.environ.get("BH_TOPPER", "").strip()
-    lines = ["SUNDAY NIGHT \u2014 WEEK %s" % w.get("week"), ""]
+    lines = ["%s \u2014 WEEK %s" % (header, w.get("week")), ""]
     if topper: lines += [topper, ""]
     for m in ms:
         a, b = m["a"], m["b"]
@@ -61,8 +62,16 @@ def progress():
         first, second = (a, b) if (a.get("s") or 0) >= (b.get("s") or 0) else (b, a)
         lines.append("%s %s \u2014 %s %s" % (first["t"], fmt(first.get("s")),
                                               second["t"], fmt(second.get("s"))))
-    lines += ["", "Monday night still to play. %s/" % SITE]
+    lines += ["", "%s %s/" % (footer, SITE)]
     return "\n".join(lines)
+
+def progress():
+    return live_scores("SUNDAY NIGHT", "Monday night still to play.")
+
+def afternoon():
+    # after the 1pm/4pm slate, before Sunday Night Football — its own kind, so
+    # it doesn't use up the week's Sunday-night post
+    return live_scores("SUNDAY AFTERNOON", "Sunday night and Monday night still to play.")
 
 def latest_story():
     home = (ROOT / "index.html").read_text()
@@ -114,7 +123,7 @@ def bonus():
     if art.exists(): print("ATTACH:%s" % art, file=sys.stderr)
     return "\n".join(lines)
 
-KIND = {"opener": opener, "progress": progress, "recap": recap, "bonus": bonus}
+KIND = {"opener": opener, "progress": progress, "afternoon": afternoon, "recap": recap, "bonus": bonus}
 if __name__ == "__main__":
     if len(sys.argv) != 2 or sys.argv[1] not in KIND:
         sys.exit("usage: compose-post.py %s" % "|".join(KIND))

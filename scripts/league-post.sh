@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Compose and post one league update, once.
 #
-#   scripts/league-post.sh opener|progress|recap|bonus
+#   scripts/league-post.sh opener|progress|afternoon|recap|bonus
 #   DRY_RUN=1 scripts/league-post.sh recap    # show it, send nothing
 #
 # Skips silently (exit 0) when there is nothing worth posting or when this
@@ -10,7 +10,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-kind=${1:?usage: league-post.sh opener|progress|recap|bonus}
+kind=${1:?usage: league-post.sh opener|progress|afternoon|recap|bonus}
 state="${BH_POST_STATE:-$HOME/.bad-hombres-posts.json}"
 [ -f "$state" ] || echo '{}' > "$state"
 
