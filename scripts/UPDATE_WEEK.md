@@ -56,7 +56,11 @@ Do **not** fetch these with `curl` from here — Yahoo 429s datacenter IPs.
   current when someone renames their team.
 - `s` = actual score, `p` = projected
 - `status`: `live` while any game is unplayed, `final` after Monday night
-- `bonus.actual` is the top 3 for that week's award, best first
+- `bonus.actual` is the top 3 for that week's award, best first — the **live
+  leaderboard** while `status` is `live`, the settled result once `final`
+- **Never set `bonus` to `null`.** The Bonus Board reads `bonus.actual` and
+  `bonus.projected` all week; null blanks it (Week 1, Sunday 8pm). If you can't
+  read the leaders, leave the existing object untouched.
 
 Award names and criteria live in `index.html` as `BH_BONUSES` — the scoreboard
 and the season awards grid both read it, so don't restate them anywhere else.
