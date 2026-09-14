@@ -1,123 +1,95 @@
 {
   "week": 1,
   "status": "live",
-  "updated": "2026-09-11T09:24:23-04:00",
+  "updated": "2026-09-13T20:00:32-04:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
       "a": {
         "m": "Jason",
         "t": "Pull-Out Game Weak",
-        "s": 5.6,
-        "p": 123.97
+        "s": 127.9,
+        "p": 148.13
       },
       "b": {
         "m": "Drew",
         "t": "I Stand with Jordon",
-        "s": 15.4,
-        "p": 111.83
+        "s": 127.46,
+        "p": 127.46
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "s": 37.3,
-        "p": 119.79
+        "s": 134.46,
+        "p": 134.46
       },
       "b": {
         "m": "Erick",
         "t": "King In The North",
-        "s": 0.0,
-        "p": 121.18
+        "s": 134.12,
+        "p": 159.52
       }
     },
     {
       "a": {
         "m": "Hoa",
         "t": "Critical Chase Theory",
-        "s": 0.0,
-        "p": 131.1
+        "s": 86.36,
+        "p": 115.07
       },
       "b": {
         "m": "Dylan",
         "t": "Carlie’s Headset",
-        "s": 5.6,
-        "p": 115.42
+        "s": 51.96,
+        "p": 100.21
       }
     },
     {
       "a": {
         "m": "David",
         "t": "Drain the Swamp",
-        "s": 0.0,
-        "p": 119.0
+        "s": 79.4,
+        "p": 120.14
       },
       "b": {
         "m": "Wes",
         "t": "MikeLee4 Prez",
-        "s": 16.9,
-        "p": 127.06
+        "s": 112.9,
+        "p": 131.43
       }
     },
     {
       "a": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "s": 51.12,
-        "p": 106.28
+        "s": 116.42,
+        "p": 116.42
       },
       "b": {
         "m": "Matt",
         "t": "San Diego Chillin’",
-        "s": 6.6,
-        "p": 118.82
+        "s": 132.66,
+        "p": 132.66
       }
     },
     {
       "a": {
         "m": "Zack",
         "t": "Sewer Pigeons",
-        "s": 6.0,
-        "p": 123.81
+        "s": 113.06,
+        "p": 156.62
       },
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
-        "s": 15.5,
-        "p": 124.91
+        "s": 150.64,
+        "p": 150.64
       }
     }
   ],
-  "bonus": {
-    "week": 1,
-    "nm": "Josh Allen’s Money Shot",
-    "cr": "Highest-scoring QB",
-    "actual": [
-      {
-        "who": "Chris",
-        "sub": "Drake Maye",
-        "val": 9.82
-      }
-    ],
-    "projected": [
-      {
-        "who": "Hoa",
-        "sub": "Joe Burrow",
-        "val": 20.97
-      },
-      {
-        "who": "Jason",
-        "sub": "Jaxson Dart",
-        "val": 20.82
-      },
-      {
-        "who": "Erick",
-        "sub": "Jalen Hurts",
-        "val": 20.79
-      }
-    ]
-  },
+  "bonus": null,
   "nextWeek": 2,
   "nextKickoff": "2026-09-17T20:15:00-04:00",
   "nextKickoffLabel": "Thursday, Sept 17 · 8:15 PM ET"
