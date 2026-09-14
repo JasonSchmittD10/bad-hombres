@@ -89,7 +89,45 @@
       }
     }
   ],
-  "bonus": null,
+  "bonus": {
+    "week": 1,
+    "nm": "Josh Allen’s Money Shot",
+    "cr": "Highest-scoring QB",
+    "actual": [
+      {
+        "who": "Matt",
+        "sub": "Josh Allen",
+        "val": 38.66
+      },
+      {
+        "who": "Zack",
+        "sub": "Caleb Williams",
+        "val": 38.26
+      },
+      {
+        "who": "Tola",
+        "sub": "Lamar Jackson",
+        "val": 28.96
+      }
+    ],
+    "projected": [
+      {
+        "who": "Hoa",
+        "sub": "Joe Burrow",
+        "val": 20.77
+      },
+      {
+        "who": "Erick",
+        "sub": "Jalen Hurts",
+        "val": 20.35
+      },
+      {
+        "who": "Jason",
+        "sub": "Jaxson Dart",
+        "val": 20.23
+      }
+    ]
+  },
   "nextWeek": 2,
   "nextKickoff": "2026-09-17T20:15:00-04:00",
   "nextKickoffLabel": "Thursday, Sept 17 · 8:15 PM ET"
