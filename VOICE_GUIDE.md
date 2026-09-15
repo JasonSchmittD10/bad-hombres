@@ -190,6 +190,52 @@ this is ours.
 
 **Don't:** build to a thesis. There isn't one. It's a notebook emptied on the table.
 
+### It has to sound like the writer wrote it
+
+This is the point of the whole guide. A reader should be able to tell, paragraph by paragraph,
+**who** is writing — King in the frame, Magary in the matchups — the way you'd recognise
+either one with the byline covered. Week 1 didn't read that way. It had King's *structure*
+with a snarky narrator ("winning a hot-dog contest by being the second man to throw up") —
+and King is never sarcastic — and matchups that were lineup arithmetic instead of Magary.
+Only the Bad Beat sounded like a person.
+
+**Before drafting, read the writer, not just this file:** `voice/peter-king/03-dialect.md`
+and the samples in `04-league-adaptation.md`; `voice/drew-magary/03-dialect.md` and
+`04-league-adaptation.md`. Study the *shape* of those samples; never lift their lines.
+
+**Lead, awards, Things I Think, Looking ahead — Peter King.**
+- Earnest, warm, a little square. He means it. No snark, no sneer, no dunking — a guy played
+  poorly; a guy is never a bum. The crude award names do the offending; he doesn't.
+- The reporter's texture: where someone was and what they did — *in what I'm told was a
+  Costco parking lot, he put the phone back in his pocket and went inside for paper towels.*
+  The sourced aside, placed (*a manager texted me Saturday night*). Full names on first
+  reference, the way he'd write about people he respects.
+- Stakes out of proportion: a trivial detail treated with total seriousness.
+- The disappointed-uncle scold instead of an insult: *Erick, the lineup lock is at 1 p.m.
+  It has always been at 1 p.m.*
+- His words, sparingly and sincerely: *Interesting. Terrific. Awful. Man, …* The one-word
+  paragraph as real emphasis: *Wow.*
+- One **Factoid That May Interest Only Me** — the one place a number is allowed to be the
+  whole joke — and one sincere *Good for you, ___*.
+
+**Matchup recaps — Drew Magary.**
+- The **escalation ladder**: reasonable observation → unreasonable extension → absurd image →
+  CAPS of the absurd image → quiet deflate (*Anyway.*). Run it fully **once** in the
+  section; CAPS fire once, maybe twice, never every matchup.
+- The **extra clause** that makes it specific — the insult is a picture of the person, not a
+  number next to his name. The compound insult-noun that becomes his name for a paragraph.
+- Conspiratorial second person (*You and I both know what happened here.*), mock-solemn setups
+  (*Let us pause for a moment to salute…*), the narrator's own parenthetical confession.
+- Contempt with a wink — you'd buy him a beer. Peers only.
+
+**The voice check — before publishing, read each section as its writer:**
+- *King sections:* would King write this sentence? Any sarcasm, sneer or snark simile is
+  out. Is there reporter texture — a place, a moment, something someone did — not just a
+  result?
+- *Matchups:* is there a full ladder somewhere, and specific extra-clause insults? Any
+  paragraph that is mostly arithmetic gets rewritten as Magary.
+- *Everywhere:* if a paragraph could have been produced by a stats feed, it isn't done.
+
 ### Numbers are seasoning, not the meal
 
 Jason's note on the Week 1 recap: it leaned on stats for every point. The numbers stay —
@@ -207,11 +253,7 @@ each paragraph, and a number should *land* it, not *be* it.
 - **Sometimes no number at all.** A two-sentence matchup built on what someone did or said
   is a feature, not an omission.
 - The rule that never bends: any number that does appear is real and checked.
-
-**The model is Pastor Wes's Lock** — the best-received part of Week 1. It has no stats. It's
-a character telling a small, specific, human story (one hinge, aisle nine) that wanders
-off and lands on a button. The rest of the recap should borrow that instinct: the person
-first, the number second.
+- This overrides the King prompt kit's "every number has a comp" (`voice/peter-king/05-prompt-kit.md`).
 
 ### Variety — no device twice
 
@@ -273,8 +315,8 @@ register and a tracked number. State lives in `data/voices.json`; the runbook co
 updating it.
 
 ### Wes — Pastor Wes's Lock of the Week *(the Rex Ryan slot)*
-*Jason's favorite part of the Week 1 recap. Protect it: same length, same shape, fresh
-parable every week — and never a second monologue elsewhere in the article to "use it more."*
+*Jason's favorite part of the Week 1 recap. Protect it: same length, same shape, a fresh
+parable every week. It's one bit inside the article — not a template for the rest of it.*
 
 A fake monologue that ends on a pick. Opens as a homily, cites scripture that doesn't
 exist, and derails by the second paragraph — the grill, Texas, a parable about a kicker —
