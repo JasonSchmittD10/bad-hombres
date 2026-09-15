@@ -224,6 +224,11 @@ rules that matter:
   `assets/members/<Manager>.jpg` if a new member has no illustration yet).
   The award art is 220px, too small for a hero.
 - **Stats:** up to four tiles. Use Big Dick, Little Bitch and the bonus.
+- **Link preview:** the script renders `story/<slug>/og.jpg` (1200×630: hero,
+  kicker, headline) and points the page's `og:image` at it, so the recap link
+  in the thread shows a card. The site-wide card is `/og.jpg`
+  (`scripts/social-render.py og`). Keep preview tags right after `<title>` —
+  link previewers only read the top of the page.
 
 Check it before you commit:
 

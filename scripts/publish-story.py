@@ -87,6 +87,12 @@ def build_page(spec, related):
         attr = "property" if prop.startswith("og") else "name"
         page = swap(page, r'<meta %s="%s" content="[^"]*">' % (attr, prop), '<meta %s="%s" content="%s">' % (attr, prop, d), prop)
     page = swap(page, r'<meta property="og:url" content="[^"]*">', '<meta property="og:url" content="%s">' % url, "og:url")
+    # every story gets its own link-preview card (rendered after the page is written)
+    img = url + "og.jpg"
+    for prop, attr in (("og:image", "property"), ("og:image:secure_url", "property"), ("twitter:image", "name")):
+        page = swap(page, r'<meta %s="%s" content="[^"]*">' % (attr, prop), '<meta %s="%s" content="%s">' % (attr, prop, img), prop)
+    page = swap(page, r'<meta property="og:image:alt" content="[^"]*">', '<meta property="og:image:alt" content="%s">' % t, "og:image:alt")
+    page = swap(page, r'<meta property="og:type" content="[^"]*">', '<meta property="og:type" content="article">', "og:type")
     # a story belongs to Updates, not the season hub
     page = swap(page, r'<a href="/" class="active">2026 Season</a><a href="/updates/" class="">Updates</a>',
                 '<a href="/" class="">2026 Season</a><a href="/updates/" class="active">Updates</a>', "nav")
@@ -146,7 +152,11 @@ def main():
 
     page_path.parent.mkdir(parents=True, exist_ok=True)
     page_path.write_text(page); upd_path.write_text(upd); home_path.write_text(home)
-    print("published /story/%s/  (page %d KB; Updates card first; homepage feature set)" % (slug, len(page) // 1024))
+    # the story's link-preview card, from the page just written (1200x630)
+    import subprocess
+    r = subprocess.run([str(ROOT / "scripts" / "social-render.py"), "og-story", slug], capture_output=True, text=True)
+    if r.returncode != 0: die("page published but its preview card failed: %s" % (r.stderr.strip() or r.stdout.strip()))
+    print("published /story/%s/  (page %d KB; Updates card first; homepage feature set; preview card story/%s/og.jpg)" % (slug, len(page) // 1024, slug))
 
 if __name__ == "__main__":
     main()

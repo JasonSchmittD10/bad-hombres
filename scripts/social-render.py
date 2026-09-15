@@ -4,6 +4,8 @@
     scripts/social-render.py recap              # -> social/week-N/recap-1..4.jpg
     scripts/social-render.py award              # -> social/week-N/award.jpg
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
+    scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
+    scripts/social-render.py og-story <slug>    # -> story/<slug>/og.jpg, that story's link-preview card
     scripts/social-render.py recap --preview DIR   # any week state, written to DIR, marked PREVIEW
     scripts/social-render.py recap --preview DIR --data sample-week.json --season sample-season.json
     scripts/social-render.py matchups --preview DIR --data sample-week.json --voices sample-voices.json
@@ -57,7 +59,7 @@ def face(m):
         if (ROOT / p).exists(): return data_uri(p)
     bail("no illustration or photo for %s" % m)
 
-def page(inner, preview):
+def page(inner, preview, w=None, h=None):
     fonts = "".join('@font-face{font-family:"Gruffy";font-weight:%d;src:url(%s)}' % (w, data_uri("fonts/gruffy-%s.otf" % n))
                     for w, n in ((300, "light"), (700, "bold"), (900, "black")))
     stamp = '<div class="pv">PREVIEW</div>' if preview else ""
@@ -77,7 +79,7 @@ html,body{width:%dpx;height:%dpx;overflow:hidden;background:var(--ink);color:var
 .eyebrow{color:var(--red);font-size:26px;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
 .pv{position:absolute;top:50%%;left:50%%;transform:translate(-50%%,-50%%) rotate(-24deg);font:900 190px Arial Black,sans-serif;
  color:rgba(255,255,255,.08);letter-spacing:.1em;pointer-events:none;z-index:9}
-%s</style></head><body>%s%s</body></html>""" % (fonts, W, H, CSS, inner, stamp)
+%s</style></head><body>%s%s</body></html>""" % (fonts, w or W, h or H, CSS, inner, stamp)
 
 CSS = """
 /* award card: Big Dick / Little Bitch */
@@ -268,6 +270,53 @@ def wes_lock(week, lock, record, ms):
                         '<div class="rec">SEASON RECORD <b>%d-%d</b></div></div>') % (
         face("Wes"), esc(lock["pick"]), ('<span>%s</span>' % esc(sub)) if sub else "", record["w"], record["l"]))
 
+OG_W, OG_H = 1200, 630
+
+OG_CSS = """
+.og{position:relative;width:1200px;height:630px;display:flex;align-items:center;gap:56px;padding:0 70px;
+ background:radial-gradient(900px 520px at 18% 50%,rgba(193,18,31,.42),transparent 70%),var(--ink);overflow:hidden}
+.og .art{width:470px;height:470px;flex:none;border-radius:34px;overflow:hidden;border:6px solid var(--red);background:#d7d7d7;
+ box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.og .art img{width:100%;height:100%;object-fit:cover;display:block}
+.og .txt{flex:1;min-width:0;display:flex;flex-direction:column;height:470px}
+.og .k{color:var(--red);font:700 26px "Segoe UI",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.og h1{margin-top:22px;font-size:var(--hs);line-height:.98;color:#fff}
+.og .brand{margin-top:auto;display:flex;align-items:center;gap:16px}
+.og .brand img{height:62px}.og .brand span{font-size:30px;white-space:nowrap}.og .brand b{color:var(--red)}
+/* site card */
+.og.site{justify-content:flex-start;flex-direction:column;gap:0;text-align:center;padding-top:52px}
+.og.site .logo{height:215px}
+.og.site h1{margin-top:16px;font-size:104px}.og.site h1 b{color:var(--red)}
+.og.site .tag{margin-top:14px;color:var(--silver,#d6d8dd);font:600 30px "Segoe UI",Arial,sans-serif;letter-spacing:.06em}
+.og.site .faces{position:absolute;left:0;right:0;bottom:34px;display:flex;justify-content:center;gap:10px}
+.og.site .faces img{width:76px;height:76px;border-radius:50%;background:#d7d7d7;border:3px solid var(--ink)}
+"""
+
+def og_site():
+    faces = "".join('<img src="%s" alt="">' % face(m) for m in
+                    ("Adam", "Chris", "David", "Drew", "Dylan", "Erick", "Hoa", "Jason", "Matt", "Tola", "Wes", "Zack"))
+    return ('<style>%s</style><div class="og site"><img class="logo" src="%s" alt="">'
+            '<h1 class="disp">BAD <b>HOMBRES</b></h1><div class="tag">Fantasy Football League · Est. 2020</div>'
+            '<div class="faces">%s</div></div>') % (OG_CSS, data_uri("assets/logo.webp"), faces)
+
+def og_story(slug):
+    """A story's preview card, built from its own page: hero art, kicker, headline."""
+    src = (ROOT / "story" / slug / "index.html")
+    if not src.exists(): bail("no story at story/%s/" % slug)
+    s = src.read_text()
+    grab = lambda pat: (re.search(pat, s, re.S) or [None, ""])[1]
+    kicker = html.unescape(re.sub(r"<[^>]+>", "", grab(r'<div class="st-kicker">(.*?)</div>')))
+    title = html.unescape(re.sub(r"<[^>]+>", "", grab(r'<h1 class="st-h1">(.*?)</h1>')))
+    hero = grab(r'<div class="st-hero"><img[^>]*src="([^"]+)"')
+    if not title or not hero: bail("story/%s is missing a headline or hero image" % slug)
+    art = hero if hero.startswith("data:") else data_uri(hero.lstrip("/"))
+    # longer headlines step down so they always fit three lines
+    size = 84 if len(title) <= 28 else 70 if len(title) <= 48 else 58
+    return ('<style>%s</style><div class="og" style="--hs:%dpx"><div class="art"><img src="%s" alt=""></div>'
+            '<div class="txt"><div class="k">%s</div><h1 class="disp">%s</h1>'
+            '<div class="brand"><img src="%s" alt=""><span class="disp">BAD <b>HOMBRES</b></span></div></div></div>') % (
+        OG_CSS, size, art, esc(kicker), esc(title), data_uri("assets/logo.webp"))
+
 def bonus_card(week, b, t):
     art = "assets/awards/hd/wk%s.jpg" % week
     if not (ROOT / art).exists(): bail("no 1080px award art at %s" % art)
@@ -279,8 +328,9 @@ def bonus_card(week, b, t):
         '<h1 class="disp">%s</h1><div class="who">%s</div><div class="tm">%s</div>%s</div></div>') % (
         data_uri(art), face(top["who"]), esc(week), esc(b.get("nm", "")), esc(top["who"]), esc(t), stat))
 
-def shoot(html_text, out):
-    """Headless Chrome -> PNG -> JPEG, exactly W x H."""
+def shoot(html_text, out, w=None, h=None):
+    """Headless Chrome -> PNG -> JPEG, exactly w x h (default the 1080x1350 feed size)."""
+    w, h = w or W, h or H
     if not Path(CHROME).exists(): bail("Google Chrome not found at %s" % CHROME)
     with tempfile.TemporaryDirectory() as tmp:
         src, png = Path(tmp) / "card.html", Path(tmp) / "card.png"
@@ -290,7 +340,7 @@ def shoot(html_text, out):
         proc = subprocess.Popen([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--no-first-run",
                                  "--no-default-browser-check", "--disable-background-networking",
                                  "--disable-component-update", "--user-data-dir=" + str(Path(tmp) / "profile"),
-                                 "--force-device-scale-factor=1", "--window-size=%d,%d" % (W, H),
+                                 "--force-device-scale-factor=1", "--window-size=%d,%d" % (w, h),
                                  "--virtual-time-budget=4000", "--screenshot=" + str(png), src.as_uri()],
                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         try:
@@ -307,7 +357,7 @@ def shoot(html_text, out):
             try: proc.wait(5)
             except subprocess.TimeoutExpired: proc.kill()
         dims = subprocess.run(["sips", "-g", "pixelWidth", "-g", "pixelHeight", str(png)], capture_output=True, text=True).stdout
-        if "pixelWidth: %d" % W not in dims or "pixelHeight: %d" % H not in dims:
+        if "pixelWidth: %d" % w not in dims or "pixelHeight: %d" % h not in dims:
             bail("screenshot came out the wrong size:\n" + dims)
         out.parent.mkdir(parents=True, exist_ok=True)
         subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "90", str(png), "--out", str(out)],
@@ -317,6 +367,12 @@ def shoot(html_text, out):
 def main():
     args = sys.argv[1:]
     kind = args[0] if args else ""
+    # link previews (iMessage, Slack, etc.) — 1200x630, no week data needed
+    if kind == "og":
+        shoot(page(og_site(), False, OG_W, OG_H), ROOT / "og.jpg", OG_W, OG_H); return
+    if kind == "og-story":
+        if len(args) < 2: sys.exit("usage: social-render.py og-story <slug>")
+        shoot(page(og_story(args[1]), False, OG_W, OG_H), ROOT / "story" / args[1] / "og.jpg", OG_W, OG_H); return
     if kind not in ("recap", "award", "matchups"): sys.exit(__doc__)
     preview = "--preview" in args
     # --data lets a preview run against a sample week instead of the live file
