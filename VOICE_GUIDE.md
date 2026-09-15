@@ -120,7 +120,7 @@ these six beats in this sequence. Full King skeleton and templates:
 
 ### 1. Lead story
 One thing that actually happened, reported at length with a specific scene. Not a summary
-of the week — the single most interesting thing in it. Name names, use exact numbers.
+of the week — the single most interesting thing in it. Name names; tell it as a story.
 
 Open on a **time, a place and a person**: *It was 9:14 Sunday night and Tola was in a
 Harris Teeter parking lot with the engine running, looking at a phone that said 148.44.*
@@ -138,14 +138,14 @@ Three, every week, same order, same names:
 
 Give each one a line or three of commentary. The Big Dick gets grudging respect; the
 Little Bitch gets none. This is the beat where the gap does the work: crude award name,
-choirboy narrator, every number carrying a comp — *only the third time in league history
-anyone has started a full slate of Sunday players and scored zero.*
+choirboy narrator. The score is the headline; the line after it is about the *person* —
+what he did, what he said, what he'll never hear the end of — not three more numbers.
 
 ### 3. Matchup recaps
 All six, in whatever order is funniest — not seed order. Bolded lead-in per matchup, the
 score, then the roast. The point is the roast; the score is the excuse for it. This is the
-Magary register inside the King structure: second person is fine here, contempt should be
-specific, and every jab needs a real number under it.
+Magary register inside the King structure: second person is fine here, and contempt should be
+specific — a decision, a habit, a thing he said — not a stat line.
 
 Magary's engine, in order (`voice/drew-magary/03-dialect.md`): a flat statement of fact →
 the **extra clause** that turns it into an insult → escalate by comparison to something
@@ -180,7 +180,8 @@ this is ours.
 
 **Mechanics throughout**
 - First person, constantly. "I think," "I'm told," "I keep coming back to."
-- Numbers specific and unrounded — 130.24, not "about 130." Every number gets a comp.
+- When a number appears it's exact — 130.24, not "about 130." But most sentences don't
+  need one. See "Numbers are seasoning" below.
 - Short paragraphs, one or two sentences, a lot of them. Em-dashes and parentheticals to
   cram in one more fact. Sentences end on a fact, not on a joke.
 - The sourced aside, placed: *A guy texted me at 11:40 Saturday night…*
@@ -188,6 +189,44 @@ this is ours.
 - Managers are the constant; team names change.
 
 **Don't:** build to a thesis. There isn't one. It's a notebook emptied on the table.
+
+### Numbers are seasoning, not the meal
+
+Jason's note on the Week 1 recap: it leaned on stats for every point. The numbers stay —
+they're what make the jokes land — but a story, a decision or a character should drive
+each paragraph, and a number should *land* it, not *be* it.
+
+- **About one number does the work per matchup.** The final score is free; after that, one
+  more, placed where it hits hardest. Never list players with their points ("30.00 from
+  Flowers, 28.90 from Montgomery, 27.72 from Hurts…") — pick the one that matters.
+- **Comps are rare.** "X points above his career average," "beat his projection by," "the
+  Nth-best score of the week" — each at most **once in the whole article**, and only where
+  it is the story.
+- **Not every matchup closes on the all-time series.** Mention it where the rivalry *is*
+  the point.
+- **Sometimes no number at all.** A two-sentence matchup built on what someone did or said
+  is a feature, not an omission.
+- The rule that never bends: any number that does appear is real and checked.
+
+**The model is Pastor Wes's Lock** — the best-received part of Week 1. It has no stats. It's
+a character telling a small, specific, human story (one hinge, aisle nine) that wanders
+off and lands on a button. The rest of the recap should borrow that instinct: the person
+first, the number second.
+
+### Variety — no device twice
+
+The Week 1 recap repeated itself: "put the bench player in and he still loses by X" in five
+matchups, "career average" three times, five "like a [guy] doing [thing]" similes, the
+series record closing five of six matchups. Each one worked the first time.
+
+- **Each device once per article** — the bench counterfactual, the simile, the comp, the
+  "That is not X. That is Y." construction, the rhetorical question. If it's been used,
+  reach for something else.
+- **Give every matchup a different angle:** a decision, a quote, a history, a scene, a
+  one-line dismissal, the Bad Beat. Six matchups, six shapes.
+- **Vary the length.** One matchup gets a paragraph; another gets two sentences.
+- **Before publishing, read it once only for repetition** — same construction, same comp,
+  same joke shape. Cut or change the second one.
 
 **Sample — the awards**
 > **Big Dick of the Week: Chris, 38.02.** Won the week on Wednesday night with a
@@ -234,6 +273,9 @@ register and a tracked number. State lives in `data/voices.json`; the runbook co
 updating it.
 
 ### Wes — Pastor Wes's Lock of the Week *(the Rex Ryan slot)*
+*Jason's favorite part of the Week 1 recap. Protect it: same length, same shape, fresh
+parable every week — and never a second monologue elsewhere in the article to "use it more."*
+
 A fake monologue that ends on a pick. Opens as a homily, cites scripture that doesn't
 exist, and derails by the second paragraph — the grill, Texas, a parable about a kicker —
 before landing on next week's lock. Register: warm and lost.
