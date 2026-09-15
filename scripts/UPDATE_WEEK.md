@@ -62,6 +62,21 @@ Do **not** fetch these with `curl` from here — Yahoo 429s datacenter IPs.
   `bonus.projected` all week; null blanks it (Week 1, Sunday 8pm). If you can't
   read the leaders, leave the existing object untouched.
 
+### `nextGame` — the homepage hero
+
+```jsonc
+"nextGame": {"away":"BUF","home":"MIA","kickoff":"2026-09-17T20:15:00-04:00",
+             "label":"Thursday, Sept 17 at 8:15 PM ET","network":"Prime Video"}
+```
+
+The hero reads `week.json`: a countdown to `nextGame.kickoff`, then "Week N is
+Live" once it passes, then **"Week N is Complete"** once `status` is `final`,
+with `nextGame` as the matchup under it. So when a week goes final (the
+Monday-night run; Tuesday's recap re-checks), `nextGame` must move to the first
+game of NFL week N+1 — from ESPN's schedule, teams by ESPN abbreviation (logos
+are `assets/nfl/<abbr>.png`). If it can't be confirmed, set it to `null`: the
+hero hides the matchup rather than show a game that's already been played.
+
 Award names and criteria live in `index.html` as `BH_BONUSES` — the scoreboard
 and the season awards grid both read it, so don't restate them anywhere else.
 
