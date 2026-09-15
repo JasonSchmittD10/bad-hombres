@@ -1,5 +1,5 @@
 {
-  "note": "Instagram handles for league members, WITHOUT the @. scripts/ig-post.py @mentions every filled-in handle at the end of each post so everyone gets notified. Leave a member blank to never tag them. Only add someone who's fine being tagged on a public account.",
+  "note": "Instagram handles for league members, WITHOUT the @. scripts/ig-post.py tags only the members a post is about: Big Dick and Little Bitch of the Week on the recap carousel, the winner on the bonus award, nobody on the matchup preview. Leave a member blank to never tag them. Only add someone who's fine being tagged on a public account.",
   "handles": {
     "Adam": "adamschmitt18",
     "Chris": "christopher_dambro",

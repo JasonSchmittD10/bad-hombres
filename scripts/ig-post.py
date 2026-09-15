@@ -2,7 +2,7 @@
 """Post the week's recap carousel or bonus award to @badhombresfantasy, once.
 
     scripts/ig-post.py check            # token works and belongs to the right account
-    scripts/ig-post.py recap            # carousel: Big Dick, Little Bitch, scoreboard, standings
+    scripts/ig-post.py recap            # carousel: results, Big Dick, Little Bitch, standings
     scripts/ig-post.py award            # single image: the week's bonus winner
     scripts/ig-post.py matchups         # Thursday carousel: slate, six matchups, Wes's lock
     DRY_RUN=1 scripts/ig-post.py recap  # every local check, no call to Instagram
@@ -122,21 +122,44 @@ def material(kind, data=None):
     if not cap_path.exists(): skip("no caption at %s" % cap_path.relative_to(ROOT))
     caption = cap_path.read_text().strip()
     if not caption: skip("caption is empty")
-    caption = with_mentions(caption)
+    caption = with_mentions(caption, subjects(kind, w))
     if len(caption) > 2200: die("caption is %d characters; Instagram allows 2200" % len(caption))
     if len(re.findall(r"#\w", caption)) > 30: die("caption has more than 30 hashtags")
     return week, imgs, caption
 
-def with_mentions(caption):
-    """@mention every member with a handle in data/handles.json, on its own line
-    before the hashtags. Mentions come only from that file — a caption may not
-    tag anyone itself (Instagram notifies whoever is tagged, stranger or not)."""
+def subjects(kind, w):
+    """The members a post is about — the only people it tags.
+
+    recap     Big Dick of the Week (high score) and Little Bitch of the Week (low)
+    award     the week's bonus winner
+    matchups  nobody
+    """
+    if kind == "recap":
+        teams = [t for mu in w.get("matchups") or [] for t in (mu["a"], mu["b"]) if isinstance(t.get("s"), (int, float))]
+        if not teams: return []
+        hi, lo = max(t["s"] for t in teams), min(t["s"] for t in teams)
+        return [t["m"] for t in teams if t["s"] == hi] + [t["m"] for t in teams if t["s"] == lo]
+    if kind == "award":
+        winners = ((w.get("bonus") or {}).get("actual") or [])
+        return [winners[0]["who"]] if winners else []
+    return []
+
+def with_mentions(caption, members):
+    """@mention the members this post is about, on their own line before the
+    hashtags, using data/handles.json. A member with no handle there is simply
+    not tagged. A caption may not tag anyone itself (Instagram notifies whoever
+    is tagged, stranger or not)."""
     if re.search(r"(^|\s)@\w", caption): die("caption tags an account itself; mentions come only from data/handles.json")
     hp = ROOT / "data" / "handles.json"
-    handles = [h.strip().lstrip("@") for h in (json.loads(hp.read_text())["handles"].values() if hp.exists() else []) if h.strip()]
-    bad = [h for h in handles if not re.fullmatch(r"[A-Za-z0-9._]{1,30}", h)]
-    if bad: die("not valid Instagram handles in data/handles.json: %s" % ", ".join(bad))
-    if len(handles) > 20: die("Instagram allows 20 mentions per caption; handles.json has %d" % len(handles))
+    book = json.loads(hp.read_text())["handles"] if hp.exists() else {}
+    handles, untagged = [], []
+    for m in dict.fromkeys(members):                                  # keep order, drop repeats
+        h = (book.get(m) or "").strip().lstrip("@")
+        if not h: untagged.append(m); continue
+        if not re.fullmatch(r"[A-Za-z0-9._]{1,30}", h): die("not a valid Instagram handle for %s in data/handles.json: %r" % (m, h))
+        handles.append(h)
+    if members: print("tagging: %s%s" % (", ".join("@" + h for h in handles) or "nobody",
+                                         " (no handle for %s)" % ", ".join(untagged) if untagged else ""))
     if not handles: return caption
     line = " ".join("@" + h for h in handles)
     parts = caption.rstrip().rsplit("\n\n", 1)

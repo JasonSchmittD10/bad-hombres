@@ -8,8 +8,8 @@
     scripts/social-render.py recap --preview DIR --data sample-week.json --season sample-season.json
     scripts/social-render.py matchups --preview DIR --data sample-week.json --voices sample-voices.json
 
-recap  1. Big Dick of the Week (high score)  2. Little Bitch of the Week (low
-       score)  3. the final scoreboard  4. standings after the week. Needs
+recap  1. the final scoreboard  2. Big Dick of the Week (high score)  3. Little
+       Bitch of the Week (low score)  4. standings after the week. Needs
        data/week.json status "final" and data/season.json caught up to that week.
 award  the week's bonus: the award art with the winner's illustration stamped
        on it. Needs a settled winner in week.json bonus.actual.
@@ -382,9 +382,10 @@ def main():
         if len(season.get("teams") or []) != 12: bail("season.json should have 12 teams")
         behind = [t["m"] for t in season["teams"] if t["w"] + t["l"] + t.get("tie", 0) != int(week)]
         if behind: bail("season.json is not updated through week %s (%s) — settle standings first" % (week, ", ".join(behind)))
-        shoot(page(award_card(week, hi, "Big Dick", "of the Week"), preview), out_dir / "recap-1.jpg")
-        shoot(page(award_card(week, lo, "Little Bitch", "of the Week", loser=True), preview), out_dir / "recap-2.jpg")
-        shoot(page(scoreboard(week, ms), preview), out_dir / "recap-3.jpg")
+        # results first, then the two awards, then where it leaves everyone
+        shoot(page(scoreboard(week, ms), preview), out_dir / "recap-1.jpg")
+        shoot(page(award_card(week, hi, "Big Dick", "of the Week"), preview), out_dir / "recap-2.jpg")
+        shoot(page(award_card(week, lo, "Little Bitch", "of the Week", loser=True), preview), out_dir / "recap-3.jpg")
         shoot(page(standings(week, season, {t["m"]: t["t"] for t in teams}), preview), out_dir / "recap-4.jpg")
     else:
         b = w.get("bonus") or {}

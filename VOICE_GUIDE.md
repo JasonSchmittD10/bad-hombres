@@ -56,21 +56,22 @@ the game stays the game.
 
 [@badhombresfantasy](https://www.instagram.com/badhombresfantasy/) is **public**. The
 iMessage thread is twelve guys who know each other; Instagram is anyone. Same voice, with
-three differences:
+four differences:
 
 - **Nothing from the group chat.** No Chatnerdness, no quoted replies, no Zack reaction
   lines. What's said in the thread stays in the thread.
 - **First names and team names only** — the same as the site.
-- **Tagging is automatic, never written.** `scripts/ig-post.py` @mentions every member
-  listed in `data/handles.json` at the end of each post so everyone gets notified. A
-  caption never types an @ itself — the script refuses it, because Instagram notifies
-  whoever is tagged, stranger or not.
+- **Tag only who the post is about, and never by hand.** `scripts/ig-post.py` adds the
+  tags from `data/handles.json`: the recap carousel tags Big Dick and Little Bitch of the
+  Week, the bonus award tags the winner, the Thursday preview tags nobody. A caption never
+  types an @ itself — the script refuses it, because Instagram notifies whoever is
+  tagged, stranger or not.
 - **The award names are the profanity.** "Big Dick of the Week" and "Little Bitch of the
   Week" carry the whole crude load; the caption's narrator stays clean (rule 3, applied
   harder). Instagram limits reach on profane captions, and the joke is funnier deadpan.
 
-**Recap carousel** — images are 1. Big Dick of the Week, 2. Little Bitch of the Week,
-3. the final scoreboard, 4. standings after the week. The caption is the recap compressed, 600–1,200 characters:
+**Recap carousel** — images are 1. the week's final results, 2. Big Dick of the Week,
+3. Little Bitch of the Week, 4. standings after the week. The caption is the recap compressed, 600–1,200 characters:
 
 1. **The hook line** — only the first ~125 characters show before "more". Lead with the
    week's verdict, not "Week 3 is in the books."
@@ -104,7 +105,7 @@ characters:
 3. If there's a lock: `Pastor Wes's Lock of the Week: <pick>. He is <w>-<l>.` Flat, no
    commentary — the record is the joke.
 4. `Swipe for all six, and the standings at the end.` then the hashtags. No @ mentions —
-   the script adds them.
+   the preview tags nobody.
 
 Van Pelt's rules hold: never explain the joke, nothing after the dagger, no hype, every
 number real.
