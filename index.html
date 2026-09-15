@@ -649,6 +649,16 @@ h3.title{font-size:var(--fs-lg)}
 .aw-media .ic{width:22px;height:22px;color:var(--muted)}
 .aw:hover .aw-media{border-color:var(--red)}
 .aw-cr{font-size:12px;color:var(--muted);line-height:1.45;margin-top:auto;padding-top:10px}
+/* settled: gold stroke, and the winner stamped on the photo (outside its crop) */
+.aw-mwrap{position:relative;flex:0 0 auto}
+.aw.won{border:2px solid var(--gold);background:linear-gradient(180deg,rgba(232,184,75,.10),transparent 55%),var(--panel-2)}
+.aw.won:hover,.aw.won.open{border-color:var(--gold)}
+.aw.won .aw-media,.aw.won:hover .aw-media{border:2px solid var(--gold)}
+.aw.won .aw-wk{color:var(--gold)}
+.aw-winner{position:absolute;right:-9px;bottom:-5px;width:36px;height:36px;border-radius:50%;
+ object-fit:cover;background:#d7d7d7;border:2px solid var(--gold);box-shadow:0 0 0 2px var(--panel-2),0 4px 12px rgba(0,0,0,.5);
+ transition:width .3s,height .3s,right .3s,bottom .3s}
+.aw.open .aw-winner{width:72px;height:72px;right:-6px;bottom:0;border-width:3px}
 .aw-more{display:none;width:100%}
 .aw-amt{font-family:var(--font-display);font-size:var(--fs-md);color:var(--gold);margin-top:10px}
 .aw-win{font-family:var(--font-display);font-size:var(--fs-md);text-transform:uppercase;color:#fff}
@@ -673,10 +683,12 @@ h3.title{font-size:var(--fs-lg)}
  .aw-nm{font-size:11.5px}
  .aw-cr{font-size:10.5px;line-height:1.4;margin-top:7px}
  .aw-media{width:58px;height:58px;margin-top:9px}
+ .aw-winner{width:28px;height:28px;right:-8px;bottom:-4px}
+ .aw.open .aw-winner{width:58px;height:58px}
  .aw.open .aw-media{width:150px;height:150px}
  .aw.open{padding:18px 14px}
 }
-@media(prefers-reduced-motion:reduce){.aw,.aw-media{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.aw,.aw-media,.aw-winner{transition:none!important}}
 
 .bb-ic .ic{width:20px;height:20px;color:var(--red);display:block}
 /* the bonus card carries the same award art as the season grid */
@@ -1014,10 +1026,14 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   var winner=w
    ? '<div class="aw-win">'+esc(w.who)+'</div>'+(w.sub?'<div class="aw-sub">'+esc(w.sub)+'</div>':'')
    : '<div class="aw-win tbd">TBD</div><div class="aw-sub">Not settled yet</div>';
-  return '<button type="button" class="aw" aria-expanded="false" data-wk="'+b.w+'">'+
+  // a settled award is framed in gold with the winner's illustration stamped on
+  // the photo, so finished weeks read at a glance
+  var stamp=w?'<img class="aw-winner" src="/assets/members/svg/'+encodeURIComponent(w.who)+'.svg" alt="Won by '+esc(w.who)+'" loading="lazy" '+
+    'onerror="this.onerror=null;this.src=\'/assets/members/'+encodeURIComponent(w.who)+'.jpg\'">':'';
+  return '<button type="button" class="aw'+(w?' won':'')+'" aria-expanded="false" data-wk="'+b.w+'">'+
    '<div class="aw-wk">Week '+b.w+'</div>'+
    '<div class="aw-nm">'+esc(b.nm)+'</div>'+
-   '<div class="aw-media'+(b.img?' has-art':'')+'">'+art(b)+'</div>'+
+   '<div class="aw-mwrap"><div class="aw-media'+(b.img?' has-art':'')+'">'+art(b)+'</div>'+stamp+'</div>'+
    '<div class="aw-cr">'+esc(b.cr)+'</div>'+
    '<div class="aw-more"><div class="aw-winwrap">'+winner+'</div>'+
     '<div class="aw-amt">$9</div></div>'+
