@@ -78,7 +78,7 @@ four differences:
 2. **Big Dick of the Week** — name, team, exact score, one line.
 3. **Little Bitch of the Week** — name, team, exact score, one line. The button goes here.
 4. **One or two lines from the rest of the week** — the best matchup, the Bad Beat, a
-   standings swing. Real numbers.
+   standings swing — told as a moment, not a stat line. A number only if it's the punchline.
 5. **The bonus**, one line — who took the $9 and with what.
 6. `Full recap: link in bio.` Links in captions aren't clickable.
 7. Three to five hashtags on their own line at the end, e.g. `#fantasyfootball
@@ -86,7 +86,8 @@ four differences:
 
 **Bonus award** — one image: the award art with the winner's illustration stamped on it.
 Caption is 2–4 lines: the award name as a King header, the winner and team, the stat that
-won it framed Berry-style ("Get this: …"), then `Week N bonus · $9` and the same hashtags.
+won it framed Berry-style ("Get this: …") — that stat is the caption's one number — then
+`Week N bonus · $9` and the same hashtags.
 
 **Thursday matchup preview** — slides are 1. the slate with projections, 2. the Game of
 the Week (the recorded one, in the gold prime-time treatment), 3–7. the other five
@@ -100,15 +101,16 @@ characters:
    iMessage topper named — with its reason in plain words. The topper's angle, opened up
    a little for people who aren't in the thread. One point, made once. The first ~125
    characters must carry it.
-2. One or two lines on anything else worth a look: a lopsided projection, a long series
-   lead, a revenge game. Real numbers. Short sentences; fragments are fine.
+2. One or two lines on anything else worth a look: a revenge game, a long rivalry, someone
+   walking into a buzzsaw — a picture, not a projection table. Short sentences; fragments
+   are fine.
 3. If there's a lock: `Pastor Wes's Lock of the Week: <pick>. He is <w>-<l>.` Flat, no
    commentary — the record is the joke.
 4. `Swipe for all six, and the standings at the end.` then the hashtags. No @ mentions —
    the preview tags nobody.
 
-Van Pelt's rules hold: never explain the joke, nothing after the dagger, no hype, every
-number real.
+Van Pelt's rules hold: never explain the joke, nothing after the dagger, no hype. Two
+numbers at most (rule 10), every one real.
 
 ---
 
@@ -305,6 +307,22 @@ From `voice/BLENDING.md` §3. These govern every post, not just the recap.
 7. **Chain-link the back half.** *"Speaking of losing…"* Flat lists read as fatigue.
 8. **Ventriloquize members, don't just describe them.** Decided — Wes and Zack. See
    "The recurring voices" below.
+9. **Sound like the assigned writer — in every post, not just the recap.** Van Pelt's
+   Sunday topper should read like Van Pelt at midnight; a King caption like King. The
+   detail lives in "It has to sound like the writer wrote it": check each post against its
+   writer's tells and "What he does NOT do" before it goes out.
+10. **Numbers are seasoning in every post.** The story, the moment or the person carries it;
+   a number lands it. No device twice in a post, and not the same angle as last week's
+   version of that post. Number budgets beyond the scores the format prints itself:
+
+   | Post | Numbers in the written part |
+   |---|---|
+   | Sunday night / afternoon topper (Van Pelt) | **One** — the one that did it. Often it's better as a moment than a figure. |
+   | Thursday opener topper (Van Pelt) | **One**, maybe none. |
+   | Instagram recap caption (King) | The Big Dick and Little Bitch scores, plus **one** more at most. |
+   | Instagram award caption (King) | The winning stat, **once**. |
+   | Instagram matchup preview caption (Van Pelt) | **Two** at most. Wes's record doesn't count. |
+   | The weekly recap | See "Numbers are seasoning, not the meal." |
 
 ---
 
