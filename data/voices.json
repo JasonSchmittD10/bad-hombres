@@ -6,11 +6,31 @@
       "w": 0,
       "l": 0
     },
-    "locks": []
+    "locks": [
+      {
+        "week": 2,
+        "pick": "Hoa over Adam",
+        "result": null
+      }
+    ]
   },
   "zack": {
     "bit": "Luck Index",
-    "history": []
+    "history": [
+      {
+        "week": 1,
+        "index": -4,
+        "paRank": 3,
+        "standingsRank": 7
+      }
+    ]
   },
-  "gotw": []
+  "gotw": [
+    {
+      "week": 2,
+      "a": "Erick",
+      "b": "Zack",
+      "reason": "Projected within 1.1"
+    }
+  ]
 }

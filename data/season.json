@@ -1,23 +1,24 @@
 {
-  "updated": null,
+  "updated": "2026-09-15T09:00:00-04:00",
   "playoffCut": 6,
   "weeklyBonus": 9,
   "note": "Standings + weekly power-rank history. Written by the weekly recap task. See scripts/UPDATE_WEEK.md.",
   "teams": [
-    {"m":"Drew","t":"I Stand with Jordon","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Wes","t":"MikeLee4 Prez","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Erick","t":"King in the North","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Tola","t":"Alien Awareness","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"David","t":"Drain the Swamp","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Dylan","t":"Carlie's Headset","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Matt","t":"San Diego Chillin'","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Zack","t":"Sewer Pigeons","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Hoa","t":"Critical Chase Theory","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Jason","t":"Pull-Out Game Weak","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Chris","t":"Maye the Force Be With You","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0},
-    {"m":"Adam","t":"Suck My Diggs","w":0,"l":0,"tie":0,"pf":0,"pa":0,"bank":0}
+    {"m":"Drew","t":"I Stand with Jordon","w":0,"l":1,"tie":0,"pf":127.96,"pa":154.5,"bank":0},
+    {"m":"Wes","t":"MikeLee4 Prez","w":1,"l":0,"tie":0,"pf":127.3,"pa":122.54,"bank":0},
+    {"m":"Erick","t":"King In The North","w":1,"l":0,"tie":0,"pf":153.52,"pa":134.46,"bank":0},
+    {"m":"Tola","t":"Alien Awareness","w":0,"l":1,"tie":0,"pf":134.46,"pa":153.52,"bank":0},
+    {"m":"David","t":"Drain the Swamp","w":0,"l":1,"tie":0,"pf":122.54,"pa":127.3,"bank":0},
+    {"m":"Dylan","t":"Carlie's Headset","w":0,"l":1,"tie":0,"pf":101.86,"pa":113.36,"bank":0},
+    {"m":"Matt","t":"San Diego Chillin'","w":1,"l":0,"tie":0,"pf":132.66,"pa":116.42,"bank":9},
+    {"m":"Zack","t":"Sewer Pigeons","w":0,"l":1,"tie":0,"pf":146.16,"pa":150.64,"bank":0},
+    {"m":"Hoa","t":"Critical Chase Theory","w":1,"l":0,"tie":0,"pf":113.36,"pa":101.86,"bank":0},
+    {"m":"Jason","t":"Pull-Out Game Weak","w":1,"l":0,"tie":0,"pf":154.5,"pa":127.96,"bank":0},
+    {"m":"Chris","t":"Maye the Force Be With You","w":0,"l":1,"tie":0,"pf":116.42,"pa":132.66,"bank":0},
+    {"m":"Adam","t":"Suck My Diggs","w":1,"l":0,"tie":0,"pf":150.64,"pa":146.16,"bank":0}
   ],
   "ranks": [
-    {"label":"PRE","order":["Drew","Wes","Erick","Tola","David","Dylan","Matt","Zack","Hoa","Jason","Chris","Adam"]}
+    {"label":"PRE","order":["Drew","Wes","Erick","Tola","David","Dylan","Matt","Zack","Hoa","Jason","Chris","Adam"]},
+    {"label":"WK 1","order":["Jason","Erick","Adam","Zack","Matt","Tola","Wes","Drew","Hoa","David","Chris","Dylan"]}
   ]
 }
