@@ -98,6 +98,10 @@ def latest_story():
 
 def recap():
     slug, title, intro = latest_story()
+    # Thursday's preview is the homepage feature until Tuesday's recap replaces it.
+    # If the recap didn't publish, post nothing rather than the preview as a "recap".
+    if not re.fullmatch(r"/story/week-\d+-recap/", slug):
+        bail("the featured story is %s, not a weekly recap" % slug)
     parts = []
     if title: parts.append(title.upper())
     parts += ["", intro, "", "Read the rest: %s%s" % (SITE, slug)]

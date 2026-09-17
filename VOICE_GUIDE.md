@@ -18,6 +18,7 @@ recurring devices. Never reproduce their actual sentences.
 | Tuesday recap (the article) | **Peter King** — structure and narrator | **Magary** in the roasts | "The Weekly Recap" below |
 | Sunday night in-progress post | **Scott Van Pelt** — Bad Beats, narrated *to* Zack | one Magary button, max | `voice/scott-van-pelt/` |
 | Thursday week-opener | **Scott Van Pelt** — One Big Thing | — | `voice/scott-van-pelt/02-architecture.md` §D |
+| Thursday preview article (the site) | **Drew Magary** — the Thursday column, games rated in Money Shots | — | "The Thursday Preview" below |
 | Bonus-settled post | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | `voice/peter-king/02-architecture.md` §B |
 | Draft recap / season preview | **Matthew Berry** — Love/Hate | — | `voice/matthew-berry/` |
 | Preseason member profiles | **Drew Magary** — Why Your Team Sucks | one Berry confession per profile | `voice/drew-magary/02-architecture.md` §A |
@@ -286,6 +287,34 @@ series record closing five of six matchups. Each one worked the first time.
 
 ---
 
+## The Thursday Preview — structure
+
+Magary's Thursday column, cut to size, published to the site as `week-N-preview` by the
+Thursday opener. It tells the **same story** as the Thursday text and the Instagram
+preview — the recorded Game of the Week and Wes's recorded lock — with its own jokes.
+Model: `voice/drew-magary/02-architecture.md` §B (the Jamboroo) and his samples in
+`04-league-adaptation.md`.
+
+1. **Cold open** — the commissioner takes the first shot, at himself (rule 6). Then the
+   week's one story, run up **one full escalation ladder** with a single CAPS line and a
+   one-word deflate (*Anyway.*). Open on an insult with a picture in it.
+2. **The Games** — *All six, rated for sheer watchability on a scale of one to five
+   Money Shots.* Tiers **FIVE → ONE MONEY SHOT(S)**, bolded. The recorded Game of the Week
+   stands alone at FIVE. At least one tier is empty and says exactly **None.** Each
+   matchup gets a bolded lead-in and its own shape.
+3. **Pastor Wes's Lock of the Week** — his recorded pick and record, flat. The monologue
+   lives in Tuesday's recap; never write a second one here.
+4. **Sign-off**, fixed every week: *Lineups lock at kickoff. Set them.*
+
+Rules that bite here: about one number per matchup (a series record, a projection, a rank);
+the all-time series only where it's the point; one CAPS line per section, always followed
+by a quiet line; one sincere line, buried and unflagged; one simile in the whole piece; no
+angle or joke the Tuesday recap or the Instagram caption already used — same story, new
+material; profanity as a button, placed once or twice; nothing from the group chat unless
+the thread export covers the week; never invent a fact to land a joke.
+
+---
+
 ## League law — the eight blending rules
 
 From `voice/BLENDING.md` §3. These govern every post, not just the recap.
@@ -322,6 +351,7 @@ From `voice/BLENDING.md` §3. These govern every post, not just the recap.
    | Instagram recap caption (King) | The Big Dick and Little Bitch scores, plus **one** more at most. |
    | Instagram award caption (King) | The winning stat, **once**. |
    | Instagram matchup preview caption (Van Pelt) | **Two** at most. Wes's record doesn't count. |
+   | Thursday preview article (Magary) | About **one per matchup**. |
    | The weekly recap | See "Numbers are seasoning, not the meal." |
 
 ---

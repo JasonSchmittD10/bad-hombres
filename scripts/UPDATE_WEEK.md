@@ -243,7 +243,10 @@ The spec shape and the allowed body markup are in the script's header. The
 rules that matter:
 
 - **Slug `week-N-recap`.** The Tuesday post is keyed to the slug, so a stable
-  slug is what stops the same recap going to the thread twice.
+  slug is what stops the same recap going to the thread twice. The Thursday
+  preview publishes the same way as `week-N-preview` (kicker `Week N · The
+  Preview`); the Tuesday iMessage post only ever shares a `week-N-recap`, so a
+  failed recap can't send the preview to the thread by mistake.
 - **Body markup:** `<p class="lede">` first, then `<p>`, `<h2 class="st-h2">`
   for the six section heads, `<blockquote class="st-q">` for one pull quote,
   `<p class="sign">` for Chatnerdness, inline `<b>/<em>/<a>`. **No `<div>`** —
