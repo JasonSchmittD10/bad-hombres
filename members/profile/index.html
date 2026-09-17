@@ -465,8 +465,8 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   el('pfSeasons').innerHTML='<table class="st-tbl"><thead><tr>'+
    '<th class="l">Year</th><th>W</th><th>L</th><th>Playoffs</th><th>Avg Pts</th><th>Pts Ag</th><th>Finish</th>'+
    '</tr></thead><tbody>'+p.season.map(function(h){
-    return '<tr><td style="text-align:left">'+h.y+'</td><td>'+h.w+'</td><td>'+h.l+'</td>'+
-     '<td>'+(h.po?'<span class="pf-yes">&#10003;</span>':'<span class="pf-no">&#10007;</span>')+'</td>'+
+    return '<tr><td style="text-align:left">'+h.y+(h.finish==null?' <span class="pf-no">so far</span>':'')+'</td><td>'+h.w+'</td><td>'+h.l+'</td>'+
+     '<td>'+(h.po==null?'<span class="pf-no">—</span>':h.po?'<span class="pf-yes">&#10003;</span>':'<span class="pf-no">&#10007;</span>')+'</td>'+
      '<td>'+h.avg.toFixed(2)+'</td><td>'+h.pa.toFixed(2)+'</td><td>'+fin(h.finish)+'</td></tr>';
    }).join('')+'</tbody></table>';
 

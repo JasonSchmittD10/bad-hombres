@@ -144,6 +144,39 @@ The playoff cut line sits after 6 — the league takes six teams.
 
 ---
 
+# The league record (`data/record.json`)
+
+Every game the league has played, and the source for the Record Book and the
+member profiles. **Updated once a week, when the week goes final:**
+
+```bash
+scripts/build-history.py add-week     # append the final week in data/week.json, rebuild everything
+scripts/build-history.py build        # rebuild without adding (after a hand fix)
+```
+
+- `record.json` holds each season's regular-season games by week as
+  `[code, score, code, score]`, playoff games, finishes (`place`), champions,
+  team names, drafts and brackets. The season being played is named in
+  `current`: it has games and team names, but no finishes or champion.
+- `add-week` rebuilds `data/history.json` (profiles: career record, averages,
+  weekly high scores, weeks atop the standings, best/worst games, blowouts,
+  head-to-head, league ranks) and the Record Book's embedded data. Bios, team
+  names and tags in `history.json` are hand-written and carried over.
+- Safe to re-run. A week already recorded is a no-op; changed scores replace
+  the old ones (Yahoo stat corrections); a missing earlier week is refused.
+- Who runs it: the Monday-night scoreboard run once the week is `final`;
+  Tuesday's recap re-runs it before writing, since recap comps and the matchup
+  previews' all-time series read `history.json`.
+- **At season's end** (after the championship), `current` gets finishes: add
+  `place`, `champ`, `playoffs`, `bracket` (and `draft`) for the year, then
+  remove `current`. That's a once-a-year hand step — the pages treat any season
+  without `place` as still in progress.
+- The 2021–25 numbers are reproduced exactly from the games (checked when this
+  was built): `scripts/build-history.py build --exclude-current --out /tmp/h.json`
+  and compare to a pre-2026 `history.json` if the rules ever change.
+
+---
+
 # Updating `data/voices.json` (weekly recap task)
 
 State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
