@@ -1,130 +1,114 @@
 {
-  "week": 1,
-  "status": "final",
-  "updated": "2026-09-15T07:41:49-04:00",
+  "week": 2,
+  "status": "preseason",
+  "updated": "2026-09-16T21:09:43-04:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
       "a": {
         "m": "Jason",
         "t": "Pull-Out Game Weak",
-        "s": 154.5,
-        "p": 117.92
+        "s": 0.0,
+        "p": 124.01
       },
       "b": {
-        "m": "Drew",
-        "t": "I Stand with Jordon",
-        "s": 127.96,
-        "p": 128.41
+        "m": "Wes",
+        "t": "MikeLee4 Prez",
+        "s": 0.0,
+        "p": 117.83
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "s": 134.46,
-        "p": 124.02
+        "s": 0.0,
+        "p": 128.61
       },
       "b": {
-        "m": "Erick",
-        "t": "King In The North",
-        "s": 153.52,
-        "p": 121.21
+        "m": "Matt",
+        "t": "San Diego Chillin’",
+        "s": 0.0,
+        "p": 126.66
       }
     },
     {
       "a": {
         "m": "Hoa",
         "t": "Critical Chase Theory",
-        "s": 113.36,
-        "p": 130.8
+        "s": 0.0,
+        "p": 124.8
       },
       "b": {
-        "m": "Dylan",
-        "t": "Carlie’s Headset",
-        "s": 101.86,
-        "p": 123.4
+        "m": "Adam",
+        "t": "Suck My Diggs",
+        "s": 0.0,
+        "p": 120.13
       }
     },
     {
       "a": {
         "m": "David",
         "t": "Drain the Swamp",
-        "s": 122.54,
-        "p": 120.97
+        "s": 0.0,
+        "p": 118.24
       },
       "b": {
-        "m": "Wes",
-        "t": "MikeLee4 Prez",
-        "s": 127.3,
-        "p": 123.59
+        "m": "Dylan",
+        "t": "Carlie’s Headset",
+        "s": 0.0,
+        "p": 122.78
       }
     },
     {
       "a": {
+        "m": "Drew",
+        "t": "I Stand with Jordon",
+        "s": 0.0,
+        "p": 123.02
+      },
+      "b": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "s": 116.42,
-        "p": 112.06
-      },
-      "b": {
-        "m": "Matt",
-        "t": "San Diego Chillin’",
-        "s": 132.66,
-        "p": 122.49
+        "s": 0.0,
+        "p": 114.86
       }
     },
     {
       "a": {
-        "m": "Zack",
-        "t": "Sewer Pigeons",
-        "s": 146.16,
-        "p": 126.41
+        "m": "Erick",
+        "t": "King In The North",
+        "s": 0.0,
+        "p": 124.0
       },
       "b": {
-        "m": "Adam",
-        "t": "Suck My Diggs",
-        "s": 150.64,
-        "p": 123.09
+        "m": "Zack",
+        "t": "Sewer Pigeons",
+        "s": 0.0,
+        "p": 126.72
       }
     }
   ],
   "bonus": {
-    "week": 1,
-    "nm": "Josh Allen’s Money Shot",
-    "cr": "Highest-scoring QB",
-    "actual": [
-      {
-        "who": "Matt",
-        "sub": "Josh Allen",
-        "val": 38.66
-      },
-      {
-        "who": "Zack",
-        "sub": "Caleb Williams",
-        "val": 38.26
-      },
-      {
-        "who": "Tola",
-        "sub": "Lamar Jackson",
-        "val": 28.96
-      }
-    ],
+    "week": 2,
+    "nm": "Raw-Dogged",
+    "cr": "Biggest blowout (largest margin of victory)",
+    "actual": [],
     "projected": [
       {
-        "who": "Hoa",
-        "sub": "Joe Burrow",
-        "val": 20.77
-      },
-      {
-        "who": "Erick",
-        "sub": "Jalen Hurts",
-        "val": 20.38
+        "who": "Drew",
+        "sub": "over Chris",
+        "val": 8.16
       },
       {
         "who": "Jason",
-        "sub": "Jaxson Dart",
-        "val": 20.21
+        "sub": "over Wes",
+        "val": 6.18
+      },
+      {
+        "who": "Hoa",
+        "sub": "over Adam",
+        "val": 4.67
       }
     ]
   },
