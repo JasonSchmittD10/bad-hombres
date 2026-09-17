@@ -1,7 +1,7 @@
 {
   "week": 2,
   "status": "preseason",
-  "updated": "2026-09-16T21:09:43-04:00",
+  "updated": "2026-09-17T12:00:00-04:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
@@ -9,13 +9,13 @@
         "m": "Jason",
         "t": "Pull-Out Game Weak",
         "s": 0.0,
-        "p": 124.01
+        "p": 124.33
       },
       "b": {
         "m": "Wes",
         "t": "MikeLee4 Prez",
         "s": 0.0,
-        "p": 117.83
+        "p": 117.91
       }
     },
     {
@@ -23,13 +23,13 @@
         "m": "Tola",
         "t": "Alien Awareness",
         "s": 0.0,
-        "p": 128.61
+        "p": 128.56
       },
       "b": {
         "m": "Matt",
         "t": "San Diego Chillin’",
         "s": 0.0,
-        "p": 126.66
+        "p": 127.16
       }
     },
     {
@@ -37,13 +37,13 @@
         "m": "Hoa",
         "t": "Critical Chase Theory",
         "s": 0.0,
-        "p": 124.8
+        "p": 124.86
       },
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
         "s": 0.0,
-        "p": 120.13
+        "p": 120.95
       }
     },
     {
@@ -51,13 +51,13 @@
         "m": "David",
         "t": "Drain the Swamp",
         "s": 0.0,
-        "p": 118.24
+        "p": 118.63
       },
       "b": {
         "m": "Dylan",
         "t": "Carlie’s Headset",
         "s": 0.0,
-        "p": 122.78
+        "p": 122.81
       }
     },
     {
@@ -65,7 +65,7 @@
         "m": "Drew",
         "t": "I Stand with Jordon",
         "s": 0.0,
-        "p": 123.02
+        "p": 123.0
       },
       "b": {
         "m": "Chris",
@@ -79,13 +79,13 @@
         "m": "Erick",
         "t": "King In The North",
         "s": 0.0,
-        "p": 124.0
+        "p": 124.1
       },
       "b": {
         "m": "Zack",
         "t": "Sewer Pigeons",
         "s": 0.0,
-        "p": 126.72
+        "p": 126.51
       }
     }
   ],
@@ -98,17 +98,17 @@
       {
         "who": "Drew",
         "sub": "over Chris",
-        "val": 8.16
+        "val": 8.14
       },
       {
         "who": "Jason",
         "sub": "over Wes",
-        "val": 6.18
+        "val": 6.42
       },
       {
-        "who": "Hoa",
-        "sub": "over Adam",
-        "val": 4.67
+        "who": "Dylan",
+        "sub": "over David",
+        "val": 4.18
       }
     ]
   },
