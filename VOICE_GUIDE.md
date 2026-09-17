@@ -11,6 +11,14 @@ map. Where `voice/BLENDING.md` §5 proposes a different weekly skeleton, this fi
 **These are original compositions in the manner of these writers** — structure, rhythm and
 recurring devices. Never reproduce their actual sentences.
 
+**The narrator is never the commissioner.** Every article, caption and topper is written by
+a third party covering the league — a beat writer on the outside. Jason is a subject like
+any other manager: "Jason," "Jason Schmitt," "the commissioner," always in the third person,
+never "I" or "my team." The beat writer can say "I"; that "I" is the writer, not Jason.
+Where the reference samples in `voice/` cast the commissioner as the narrator ("He's my
+brother," "the commissioner just went 79-point Week 1" said of himself), this overrides
+them.
+
 ## Assignments
 
 | Post | Primary voice | Seasoning | Reference |
@@ -295,8 +303,8 @@ preview — the recorded Game of the Week and Wes's recorded lock — with its o
 Model: `voice/drew-magary/02-architecture.md` §B (the Jamboroo) and his samples in
 `04-league-adaptation.md`.
 
-1. **Cold open** — the commissioner takes the first shot, at himself (rule 6). Then the
-   week's one story, run up **one full escalation ladder** with a single CAPS line and a
+1. **Cold open** — the beat writer lands the first shot on the commissioner, in the third
+   person (rule 6). Then the week's one story, run up **one full escalation ladder** with a single CAPS line and a
    one-word deflate (*Anyway.*). Open on an insult with a picture in it.
 2. **The Games** — *All six, rated for sheer watchability on a scale of one to five
    Money Shots.* Tiers **FIVE → ONE MONEY SHOT(S)**, bolded. The recorded Game of the Week
@@ -330,9 +338,10 @@ From `voice/BLENDING.md` §3. These govern every post, not just the recap.
    Hallmark card.
 5. **Fixed sections are a feature.** The pleasure is in the *return* of the bit. Structure
    repeats; jokes don't.
-6. **Self-implication licenses the roast.** The commissioner has to lose on the page at
-   least once per post — a bad start, a checked score, a dumb waiver claim — before he
-   calls anyone a bitch.
+6. **The commissioner takes a hit too.** At least once per post the beat writer lands one on
+   Jason — a bad start, a checked score, a dumb waiver claim — in the third person, so the
+   league's own boss doesn't get a pass while everyone else gets roasted. He's written
+   about, never writing.
 7. **Chain-link the back half.** *"Speaking of losing…"* Flat lists read as fatigue.
 8. **Ventriloquize members, don't just describe them.** Decided — Wes and Zack. See
    "The recurring voices" below.
