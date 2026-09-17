@@ -290,6 +290,38 @@ h3.title{font-size:var(--fs-lg)}
 .pf-fin.b{background:#b3763f;color:#0d0d0f}
 .pf-yes{color:var(--green);font-weight:800}.pf-no{color:#4d525c}
 @media(max-width:560px){.pf-face{width:66px;height:66px}.pf-t.wide{grid-column:span 1}}
+/* the money + trophy case */
+.pf-t .v.big{font-size:var(--fs-2xl)}
+.pf-pos{color:var(--green)!important}.pf-neg{color:#ff6b76!important}
+.pf-bars{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:end;height:170px;margin-top:4px}
+.pf-bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
+.pf-bar .amt{font-size:var(--fs-xs);font-weight:800;color:var(--silver);font-variant-numeric:tabular-nums;margin-bottom:5px;white-space:nowrap}
+.pf-bar .col{width:100%;max-width:44px;border-radius:6px 6px 0 0;background:var(--red);min-height:2px}
+.pf-bar.zero .col{background:transparent;border:1px dashed var(--line);border-bottom:0;height:18px!important}
+.pf-bar.zero .amt{color:#4d525c}
+.pf-bar .yr{margin-top:7px;padding-top:6px;border-top:1px solid var(--line);width:100%;text-align:center;
+ font-size:var(--fs-xs);font-weight:800;letter-spacing:.1em;color:var(--muted)}
+.pf-foot{color:var(--muted);font-size:var(--fs-xs);line-height:1.6;margin:12px 0 0}
+.pf-line{color:var(--silver);font-size:var(--fs-sm);line-height:1.6;font-style:italic;margin:14px 0 0;
+ border-left:3px solid var(--red);padding-left:12px}
+.pf-grp{padding:16px;border-bottom:1px solid var(--line)}.pf-grp:last-child{border-bottom:0}
+.pf-gh{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;font-size:var(--fs-xs);font-weight:800;
+ letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pf-gh b{font-family:var(--font-display);font-size:var(--fs-lg);color:#fff;letter-spacing:0}
+.pf-finrow{display:flex;flex-wrap:wrap;gap:10px}
+.pf-fincard{display:flex;align-items:center;gap:10px;background:var(--panel-2);border:1px solid var(--line);
+ border-radius:12px;padding:9px 14px 9px 9px}
+.pf-fincard .yr{font-family:var(--font-display);font-size:var(--fs-md);color:#fff;line-height:1}
+.pf-fincard .pay{font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;color:var(--muted);margin-top:3px}
+.pf-fincard.champ{border-color:var(--gold);background:linear-gradient(180deg,rgba(232,184,75,.1),var(--panel-2))}
+.pf-fincard.champ .pf-fin{width:36px;height:36px;font-size:var(--fs-sm)}
+.pf-fincard.champ .pay{color:var(--gold)}
+.pf-aw{display:flex;gap:12px;align-items:baseline;padding:8px 0;border-top:1px solid var(--line);font-size:var(--fs-sm)}
+.pf-aw:first-of-type{border-top:0}
+.pf-aw .n{flex:1;color:#fff;font-weight:700;min-width:0}
+.pf-aw .n small{color:var(--muted);font-weight:600}
+.pf-aw .y{color:var(--muted);font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;white-space:nowrap}
+.pf-aw .a{color:var(--silver);font-weight:800;font-variant-numeric:tabular-nums;min-width:52px;text-align:right}
 
 /* mobile nav */
 .navtoggle{display:none;background:transparent;border:0;cursor:pointer;padding:8px;margin-left:auto;
@@ -391,6 +423,10 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
  <div class="pf-head" id="pfHead"></div>
  <div class="pf-lab"><span>Career Stats</span></div>
  <div class="pf-tiles" id="pfCareer"></div>
+ <div class="pf-lab"><span>The Money</span><span class="pf-note" id="pfMoneyNote"></span></div>
+ <div id="pfMoney"></div>
+ <div class="pf-lab"><span>Trophy Case</span><span class="pf-note">Every payout, 2020–2025</span></div>
+ <div class="st-card" id="pfTrophy"></div>
  <div class="pf-lab"><span>Season History</span></div>
  <div class="st-card"><div class="st-wrapx" id="pfSeasons"></div></div>
  <div class="pf-lab"><span>Medals</span><span class="pf-note">Weekly bonuses</span></div>
@@ -437,6 +473,63 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   return D.order[0];
  }
 
+ // ---- the money + trophy case (history.json "money" and "awards") ----
+ // totals always carry cents; award amounts only when they have them
+ function usd(v,cents){var a=Math.abs(v),c=cents||Math.round(a*100)%100!==0;
+  return '$'+a.toLocaleString('en-US',{minimumFractionDigits:c?2:0,maximumFractionDigits:c?2:0})}
+ function nm(c){return D.managers[c]||c}
+ function list(names){return names.length<2?names.join(''):names.slice(0,-1).join(', ')+' and '+names[names.length-1]}
+ function renderMoney(){
+  var M=D.money, m=M&&M.members[code];
+  if(!m){el('pfMoney').innerHTML='';el('pfTrophy').innerHTML='';return}
+  el('pfMoneyNote').textContent='Through '+M.through;
+  var net=m.net>0?'pf-pos':m.net<0?'pf-neg':'', sign=m.net>0?'+':m.net<0?'−':'';
+  var yrs=Object.keys(M.buyIns).sort(), top=Math.max.apply(null,yrs.map(function(y){return m.byYear[y]||0}));
+  var bars=yrs.map(function(y){var v=m.byYear[y]||0, star=(m.note&&y==='2024')?'*':'';
+   return '<div class="pf-bar'+(v?'':' zero')+'"><div class="amt">'+(v?usd(v):'$0')+star+'</div>'+
+    '<div class="col" style="height:'+(v?Math.max(2,Math.round(v/top*112)):0)+'px"></div><div class="yr">'+y+'</div></div>'}).join('');
+  el('pfMoney').innerHTML='<div class="pf-tiles">'+
+   '<div class="pf-t wide"><div class="k">Lifetime Earnings</div><div class="v big">'+usd(m.gross,true)+'</div><div class="m">gross, 2020–'+M.through+'</div></div>'+
+   '<div class="pf-t"><div class="k">Net</div><div class="v '+net+'">'+sign+usd(m.net,true)+'</div><div class="m">after '+usd(m.paid)+' in buy-ins</div></div>'+
+   tile('Cost Per Win',m.costPerWin!=null?usd(m.costPerWin,true):'—','per win, 2021–'+M.through,'')+
+   tile('Share of All League Money',m.share.toFixed(1)+'%','of '+usd(M.paidOut,true)+' paid out','')+
+   '</div><div class="st-card" style="margin-top:12px"><div class="pf-pad"><div class="pf-gh">Earnings by year</div>'+
+   '<div class="pf-bars">'+bars+'</div>'+(m.note?'<p class="pf-foot">* '+esc(m.note)+'</p>':'')+'</div></div>'+
+   (m.line?'<p class="pf-line">'+esc(m.line)+'</p>':'');
+
+  var mine=(D.awards||[]).filter(function(a){return a.who.indexOf(code)>=0});
+  var empty='<p class="pf-empty">Nothing. Not one thing.</p>';
+  function share(a){return a.amount/a.who.length}
+  function others(a){return a.unconfirmed?'':a.who.length>1?' <small>(split with '+esc(list(a.who.filter(function(c){return c!==code}).map(nm)))+')</small>':''}
+  var byYr=function(a,b){return a.year-b.year||(a.week||0)-(b.week||0)};
+
+  var fins=mine.filter(function(a){return a.type==='place'}).sort(byYr);
+  var finH=fins.length?'<div class="pf-finrow">'+fins.map(function(a){var c=a.place===1?'g':a.place===2?'s':'b';
+   return '<div class="pf-fincard'+(a.place===1?' champ':'')+'"><span class="pf-fin '+c+'">'+a.place+'</span><div>'+
+    '<div class="yr">'+a.year+'</div><div class="pay">'+(a.place===1?'Champion · ':'')+usd(a.amount)+'</div></div></div>'}).join('')+'</div>':empty;
+
+  var seas=mine.filter(function(a){return a.type==='season'}).sort(byYr);
+  var row=function(n,y,amt){return '<div class="pf-aw"><div class="n">'+n+'</div><div class="y">'+y+'</div><div class="a">'+amt+'</div></div>'};
+  var seasH=seas.length?seas.map(function(a){return row(esc(a.name)+others(a),a.year,usd(share(a)))}).join(''):empty;
+
+  var wk=mine.filter(function(a){return a.type==='weekly'}).sort(byYr), count=0, rows=[], pend={};
+  wk.forEach(function(a){
+   if(a.unconfirmed){count+=1/a.who.length;pend[a.year]=(pend[a.year]||0)+1/a.who.length;return}
+   count++; rows.push(row(esc(a.name)+others(a),a.year+' · Wk '+a.week,usd(share(a))));
+  });
+  Object.keys(pend).forEach(function(y){
+   var n=Math.round(pend[y]), each=wk.filter(function(a){return a.unconfirmed&&String(a.year)===y})[0];
+   for(var i=0;i<n;i++) rows.push(row(y+' weekly award <small>(week unconfirmed)</small>',y,usd(each.amount)));
+  });
+  count=Math.round(count);
+  var wkH=count?rows.join(''):empty;
+
+  el('pfTrophy').innerHTML=
+   '<div class="pf-grp"><div class="pf-gh">Finishes</div>'+finH+'</div>'+
+   '<div class="pf-grp"><div class="pf-gh">Season Awards</div>'+seasH+'</div>'+
+   '<div class="pf-grp"><div class="pf-gh">Weekly Awards <b>'+count+'</b></div>'+wkH+'</div>';
+ }
+
  function render(){
   var p=D.profiles[code], R=p.rank||{};
   document.title='Bad Hombres — '+p.full;
@@ -469,6 +562,8 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
      '<td>'+(h.po==null?'<span class="pf-no">—</span>':h.po?'<span class="pf-yes">&#10003;</span>':'<span class="pf-no">&#10007;</span>')+'</td>'+
      '<td>'+h.avg.toFixed(2)+'</td><td>'+h.pa.toFixed(2)+'</td><td>'+fin(h.finish)+'</td></tr>';
    }).join('')+'</tbody></table>';
+
+  renderMoney();
 
   var medals=(p.medals||[]);
   el('pfMedals').innerHTML=medals.length

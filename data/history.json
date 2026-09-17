@@ -2212,5 +2212,1236 @@
       ],
       "full": "Zack Moore “SEWP”"
     }
-  }
+  },
+  "money": {
+    "through": 2025,
+    "paidOut": 4826.45,
+    "buyIns": {
+      "2020": 20,
+      "2021": 50,
+      "2022": 60,
+      "2023": 70,
+      "2024": 100,
+      "2025": 100
+    },
+    "members": {
+      "DAV": {
+        "gross": 1623.0,
+        "paid": 400,
+        "net": 1223.0,
+        "byYear": {
+          "2021": 10,
+          "2022": 18,
+          "2023": 75,
+          "2024": 780,
+          "2025": 740
+        },
+        "line": "Has taken 34% of every dollar ever paid into this league. Nearly all of it in the last two years.",
+        "costPerWin": 9.05,
+        "share": 33.63
+      },
+      "MAT": {
+        "gross": 595.0,
+        "paid": 400,
+        "net": 195.0,
+        "byYear": {
+          "2022": 6,
+          "2023": 560,
+          "2024": 5,
+          "2025": 24
+        },
+        "line": "Made $560 in 2023 and $35 in every other season combined.",
+        "costPerWin": 10.86,
+        "share": 12.33
+      },
+      "JAS": {
+        "gross": 507.8,
+        "paid": 400,
+        "net": 107.8,
+        "byYear": {
+          "2021": 80,
+          "2022": 66,
+          "2023": 155,
+          "2024": 105,
+          "2025": 101.8
+        },
+        "line": "Cashed a check every year from 2021 to 2025. Still zero rings. The most profitable loser in league history.",
+        "costPerWin": 8.84,
+        "share": 10.52
+      },
+      "CHR": {
+        "gross": 459.8,
+        "paid": 400,
+        "net": 59.8,
+        "byYear": {
+          "2021": 5,
+          "2022": 400,
+          "2023": 10,
+          "2024": 15,
+          "2025": 29.8
+        },
+        "costPerWin": 10.56,
+        "share": 9.53
+      },
+      "DRE": {
+        "gross": 402.3,
+        "paid": 380,
+        "net": 22.3,
+        "byYear": {
+          "2021": 350,
+          "2022": 27,
+          "2024": 10,
+          "2025": 15.3
+        },
+        "costPerWin": 9.5,
+        "share": 8.34
+      },
+      "ERI": {
+        "gross": 393.0,
+        "paid": 400,
+        "net": -7.0,
+        "byYear": {
+          "2020": 200,
+          "2021": 10,
+          "2022": 126,
+          "2024": 15,
+          "2025": 42
+        },
+        "line": "Six seasons and a championship, and still $7 short of breaking even.",
+        "costPerWin": 9.5,
+        "share": 8.14
+      },
+      "HOA": {
+        "gross": 315.0,
+        "paid": 400,
+        "net": -85.0,
+        "byYear": {
+          "2020": 40,
+          "2022": 6,
+          "2024": 260,
+          "2025": 9
+        },
+        "costPerWin": 11.18,
+        "share": 6.53
+      },
+      "TOL": {
+        "gross": 274.3,
+        "paid": 400,
+        "net": -125.7,
+        "byYear": {
+          "2022": 58,
+          "2023": 5,
+          "2024": 5,
+          "2025": 206.3
+        },
+        "costPerWin": 10.27,
+        "share": 5.68
+      },
+      "ZAC": {
+        "gross": 133.0,
+        "paid": 400,
+        "net": -267.0,
+        "byYear": {
+          "2021": 120,
+          "2023": 5,
+          "2024": 5,
+          "2025": 3
+        },
+        "line": "The 2021 Sewp Revenge Tour paid $120. He's made $13 since.",
+        "costPerWin": 12.26,
+        "share": 2.76
+      },
+      "DYL": {
+        "gross": 67.25,
+        "paid": 400,
+        "net": -332.75,
+        "byYear": {
+          "2021": 10,
+          "2022": 6,
+          "2023": 15,
+          "2024": 25.45,
+          "2025": 10.8
+        },
+        "note": "2024 includes $24.45 in HYSA interest, held by the treasury and released only after he completed his Costco punishment.",
+        "line": "$24.45 of his lifetime earnings came from interest, paid only after he finished eating hot dogs inside a Costco.",
+        "costPerWin": 16.52,
+        "share": 1.39
+      },
+      "ADA": {
+        "gross": 31.0,
+        "paid": 400,
+        "net": -369.0,
+        "byYear": {
+          "2021": 5,
+          "2022": 7,
+          "2023": 10,
+          "2025": 9
+        },
+        "costPerWin": 13.57,
+        "share": 0.64
+      },
+      "WES": {
+        "gross": 24.0,
+        "paid": 400,
+        "net": -376.0,
+        "byYear": {
+          "2021": 10,
+          "2023": 5,
+          "2025": 9
+        },
+        "line": "$24 lifetime. $4 a year. God does not reward this.",
+        "costPerWin": 12.26,
+        "share": 0.5
+      }
+    }
+  },
+  "awards": [
+    {
+      "year": 2020,
+      "type": "place",
+      "name": "1st Place",
+      "who": [
+        "ERI"
+      ],
+      "amount": 200,
+      "place": 1
+    },
+    {
+      "year": 2020,
+      "type": "place",
+      "name": "2nd Place",
+      "who": [
+        "HOA"
+      ],
+      "amount": 40,
+      "place": 2
+    },
+    {
+      "year": 2021,
+      "type": "place",
+      "name": "1st Place",
+      "who": [
+        "DRE"
+      ],
+      "amount": 350,
+      "place": 1
+    },
+    {
+      "year": 2021,
+      "type": "place",
+      "name": "2nd Place",
+      "who": [
+        "JAS"
+      ],
+      "amount": 75,
+      "place": 2
+    },
+    {
+      "year": 2021,
+      "type": "place",
+      "name": "3rd Place",
+      "who": [
+        "ZAC"
+      ],
+      "amount": 25,
+      "place": 3
+    },
+    {
+      "year": 2022,
+      "type": "place",
+      "name": "1st Place",
+      "who": [
+        "CHR"
+      ],
+      "amount": 400,
+      "place": 1
+    },
+    {
+      "year": 2022,
+      "type": "place",
+      "name": "2nd Place",
+      "who": [
+        "ERI"
+      ],
+      "amount": 120,
+      "place": 2
+    },
+    {
+      "year": 2022,
+      "type": "place",
+      "name": "3rd Place",
+      "who": [
+        "JAS"
+      ],
+      "amount": 60,
+      "place": 3
+    },
+    {
+      "year": 2023,
+      "type": "place",
+      "name": "1st Place",
+      "who": [
+        "MAT"
+      ],
+      "amount": 540,
+      "place": 1
+    },
+    {
+      "year": 2023,
+      "type": "place",
+      "name": "2nd Place",
+      "who": [
+        "JAS"
+      ],
+      "amount": 140,
+      "place": 2
+    },
+    {
+      "year": 2023,
+      "type": "place",
+      "name": "3rd Place",
+      "who": [
+        "DAV"
+      ],
+      "amount": 70,
+      "place": 3
+    },
+    {
+      "year": 2024,
+      "type": "place",
+      "name": "1st Place",
+      "who": [
+        "DAV"
+      ],
+      "amount": 770,
+      "place": 1
+    },
+    {
+      "year": 2024,
+      "type": "place",
+      "name": "2nd Place",
+      "who": [
+        "HOA"
+      ],
+      "amount": 200,
+      "place": 2
+    },
+    {
+      "year": 2024,
+      "type": "place",
+      "name": "3rd Place",
+      "who": [
+        "JAS"
+      ],
+      "amount": 100,
+      "place": 3
+    },
+    {
+      "year": 2025,
+      "type": "place",
+      "name": "1st Place",
+      "who": [
+        "DAV"
+      ],
+      "amount": 720,
+      "place": 1
+    },
+    {
+      "year": 2025,
+      "type": "place",
+      "name": "2nd Place",
+      "who": [
+        "TOL"
+      ],
+      "amount": 200,
+      "place": 2
+    },
+    {
+      "year": 2025,
+      "type": "place",
+      "name": "3rd Place",
+      "who": [
+        "JAS"
+      ],
+      "amount": 100,
+      "place": 3
+    },
+    {
+      "year": 2021,
+      "type": "season",
+      "name": "Best Offense (most regular-season points)",
+      "who": [
+        "ZAC"
+      ],
+      "amount": 40
+    },
+    {
+      "year": 2021,
+      "type": "season",
+      "name": "Mr. Smartass (best efficiency, points vs. points possible)",
+      "who": [
+        "ZAC"
+      ],
+      "amount": 40
+    },
+    {
+      "year": 2022,
+      "type": "season",
+      "name": "Best Offense (most regular-season points)",
+      "who": [
+        "TOL"
+      ],
+      "amount": 40
+    },
+    {
+      "year": 2022,
+      "type": "season",
+      "name": "You Got Dicked (most points against)",
+      "who": [
+        "DRE"
+      ],
+      "amount": 15
+    },
+    {
+      "year": 2022,
+      "type": "season",
+      "name": "You Suck (lowest points)",
+      "who": [
+        "ADA"
+      ],
+      "amount": 1
+    },
+    {
+      "year": 2023,
+      "type": "season",
+      "name": "Most Season Points",
+      "who": [
+        "MAT"
+      ],
+      "amount": 10
+    },
+    {
+      "year": 2023,
+      "type": "season",
+      "name": "You Got Dicked (most points against)",
+      "who": [
+        "JAS"
+      ],
+      "amount": 10
+    },
+    {
+      "year": 2024,
+      "type": "season",
+      "name": "Most Points Scored",
+      "who": [
+        "HOA"
+      ],
+      "amount": 20
+    },
+    {
+      "year": 2024,
+      "type": "season",
+      "name": "You Got Dicked (most points against)",
+      "who": [
+        "HOA"
+      ],
+      "amount": 15
+    },
+    {
+      "year": 2024,
+      "type": "season",
+      "name": "Most Points in a Single Week",
+      "who": [
+        "HOA"
+      ],
+      "amount": 15
+    },
+    {
+      "year": 2024,
+      "type": "season",
+      "name": "GM of the Year (most trades)",
+      "who": [
+        "DAV",
+        "CHR"
+      ],
+      "amount": 10
+    },
+    {
+      "year": 2024,
+      "type": "season",
+      "name": "You Suck (lowest points), paid by the Commish",
+      "who": [
+        "DYL"
+      ],
+      "amount": 1
+    },
+    {
+      "year": 2024,
+      "type": "season",
+      "name": "HYSA Interest (released upon completing punishment)",
+      "who": [
+        "DYL"
+      ],
+      "amount": 24.45
+    },
+    {
+      "year": 2025,
+      "type": "season",
+      "name": "Cream of the Crop (most regular-season points)",
+      "who": [
+        "DAV"
+      ],
+      "amount": 20
+    },
+    {
+      "year": 2025,
+      "type": "season",
+      "name": "You Got Dicked (most points against)",
+      "who": [
+        "MAT"
+      ],
+      "amount": 15
+    },
+    {
+      "year": 2025,
+      "type": "season",
+      "name": "Biggest Load (most points in a single week)",
+      "who": [
+        "ERI"
+      ],
+      "amount": 15
+    },
+    {
+      "year": 2025,
+      "type": "season",
+      "name": "You Suck (lowest points)",
+      "who": [
+        "CHR"
+      ],
+      "amount": 1
+    },
+    {
+      "year": 2025,
+      "type": "season",
+      "name": "The Commissioner's Award",
+      "who": [
+        "ZAC"
+      ],
+      "amount": 3
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Busted Nut",
+      "who": [
+        "ZAC"
+      ],
+      "amount": 5,
+      "week": 1
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Deadliest Catch",
+      "who": [
+        "ZAC"
+      ],
+      "amount": 5,
+      "week": 2
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Blackjack",
+      "who": [
+        "WES"
+      ],
+      "amount": 5,
+      "week": 3
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Hot & Flexy",
+      "who": [
+        "DAV"
+      ],
+      "amount": 5,
+      "week": 4
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Great Decision Maker",
+      "who": [
+        "JAS"
+      ],
+      "amount": 5,
+      "week": 5
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Size Doesn't Matter",
+      "who": [
+        "ERI"
+      ],
+      "amount": 5,
+      "week": 6
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Zak's Anal Bead Award",
+      "who": [
+        "CHR"
+      ],
+      "amount": 5,
+      "week": 7
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Tom Brady Award",
+      "who": [
+        "DAV"
+      ],
+      "amount": 5,
+      "week": 8
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Massive Cuck",
+      "who": [
+        "DYL"
+      ],
+      "amount": 5,
+      "week": 9
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Erick's Lockdown D",
+      "who": [
+        "WES"
+      ],
+      "amount": 5,
+      "week": 10
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Mr. Big Dick",
+      "who": [
+        "ERI"
+      ],
+      "amount": 5,
+      "week": 11
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Double Penetration",
+      "who": [
+        "ZAC"
+      ],
+      "amount": 5,
+      "week": 12
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Rona",
+      "who": [
+        "ADA"
+      ],
+      "amount": 5,
+      "week": 13
+    },
+    {
+      "year": 2021,
+      "type": "weekly",
+      "name": "Sewp 2.0",
+      "who": [
+        "DYL"
+      ],
+      "amount": 5,
+      "week": 14
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Busted Nut",
+      "who": [
+        "TOL"
+      ],
+      "amount": 6,
+      "week": 1
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Should've Wrapped It Up",
+      "who": [
+        "DYL"
+      ],
+      "amount": 6,
+      "week": 2
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Deshaunerable Discharge",
+      "who": [
+        "DRE"
+      ],
+      "amount": 6,
+      "week": 3
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "The Iron Curtain",
+      "who": [
+        "TOL"
+      ],
+      "amount": 6,
+      "week": 4
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Size Doesn't Matter",
+      "who": [
+        "HOA"
+      ],
+      "amount": 6,
+      "week": 5
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Massive Cuck",
+      "who": [
+        "ADA"
+      ],
+      "amount": 6,
+      "week": 6
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Hanging w/ Hernandez",
+      "who": [
+        "TOL"
+      ],
+      "amount": 6,
+      "week": 7
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Blackjack",
+      "who": [
+        "JAS"
+      ],
+      "amount": 6,
+      "week": 8
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Double Penetration",
+      "who": [
+        "DAV"
+      ],
+      "amount": 6,
+      "week": 9
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Tola of the Week",
+      "who": [
+        "DAV"
+      ],
+      "amount": 6,
+      "week": 10
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Mr. Big Dick",
+      "who": [
+        "ERI"
+      ],
+      "amount": 6,
+      "week": 11
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Bradeez Nuts",
+      "who": [
+        "DRE"
+      ],
+      "amount": 6,
+      "week": 12
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Dambro's Daddy",
+      "who": [
+        "DAV"
+      ],
+      "amount": 6,
+      "week": 13
+    },
+    {
+      "year": 2022,
+      "type": "weekly",
+      "name": "Sewp 3.0",
+      "who": [
+        "MAT"
+      ],
+      "amount": 6,
+      "week": 14
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Busted Nut",
+      "who": [
+        "JAS"
+      ],
+      "amount": 5,
+      "week": 1
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Deadliest Catch",
+      "who": [
+        "DAV"
+      ],
+      "amount": 5,
+      "week": 2
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Blackjack",
+      "who": [
+        "CHR"
+      ],
+      "amount": 5,
+      "week": 3
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Hot & Flexy",
+      "who": [
+        "ZAC"
+      ],
+      "amount": 5,
+      "week": 4
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Size Doesn't Matter",
+      "who": [
+        "TOL"
+      ],
+      "amount": 5,
+      "week": 5
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Massive Cuck",
+      "who": [
+        "DYL"
+      ],
+      "amount": 5,
+      "week": 6
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Hanging with Hernandez",
+      "who": [
+        "ADA"
+      ],
+      "amount": 5,
+      "week": 7
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "James Franklin Chuck It Deep",
+      "who": [
+        "MAT"
+      ],
+      "amount": 5,
+      "week": 8
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Double Penetration",
+      "who": [
+        "MAT"
+      ],
+      "amount": 5,
+      "week": 9
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "The Receptionist",
+      "who": [
+        "DYL"
+      ],
+      "amount": 5,
+      "week": 10
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Mr. Big Dick",
+      "who": [
+        "DYL"
+      ],
+      "amount": 5,
+      "week": 11
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Turkey Leg",
+      "who": [
+        "WES"
+      ],
+      "amount": 5,
+      "week": 12
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Dambro's Daddy",
+      "who": [
+        "ADA"
+      ],
+      "amount": 5,
+      "week": 13
+    },
+    {
+      "year": 2023,
+      "type": "weekly",
+      "name": "Sewp 2.0",
+      "who": [
+        "CHR"
+      ],
+      "amount": 5,
+      "week": 14
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Hangin w/ Hernandez",
+      "who": [
+        "DRE"
+      ],
+      "amount": 5,
+      "week": 1
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Double Penetration",
+      "who": [
+        "CHR"
+      ],
+      "amount": 5,
+      "week": 2
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Massive Cuck",
+      "who": [
+        "ZAC"
+      ],
+      "amount": 5,
+      "week": 3
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "The Iron Curtain",
+      "who": [
+        "ERI"
+      ],
+      "amount": 5,
+      "week": 4
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Deshaunerable Discharge",
+      "who": [
+        "ERI"
+      ],
+      "amount": 5,
+      "week": 5
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Busted Nut",
+      "who": [
+        "MAT"
+      ],
+      "amount": 5,
+      "week": 6
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Adam of the Week",
+      "who": [
+        "DRE"
+      ],
+      "amount": 5,
+      "week": 7
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Bradeez Nuts",
+      "who": [
+        "TOL"
+      ],
+      "amount": 5,
+      "week": 8
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Size Doesn't Matter",
+      "who": [
+        "ERI"
+      ],
+      "amount": 5,
+      "week": 9
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Should've Wrapped It",
+      "who": [
+        "HOA"
+      ],
+      "amount": 5,
+      "week": 10
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Dambro's Daddy",
+      "who": [
+        "CHR",
+        "HOA",
+        "JAS"
+      ],
+      "amount": 5,
+      "week": 11,
+      "unconfirmed": true
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Mr. Big Dick",
+      "who": [
+        "DAV"
+      ],
+      "amount": 5,
+      "week": 12
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Sewp 6.0",
+      "who": [
+        "CHR",
+        "HOA",
+        "JAS"
+      ],
+      "amount": 5,
+      "week": 13,
+      "unconfirmed": true
+    },
+    {
+      "year": 2024,
+      "type": "weekly",
+      "name": "Blackjack",
+      "who": [
+        "CHR",
+        "HOA",
+        "JAS"
+      ],
+      "amount": 5,
+      "week": 14,
+      "unconfirmed": true
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Sewp 6.0",
+      "who": [
+        "DRE"
+      ],
+      "amount": 9,
+      "week": 1
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Dambro's Daddy",
+      "who": [
+        "CHR"
+      ],
+      "amount": 9,
+      "week": 2
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Should've Wrapped It",
+      "who": [
+        "ERI"
+      ],
+      "amount": 9,
+      "week": 3
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Bradeez Nuts",
+      "who": [
+        "WES"
+      ],
+      "amount": 9,
+      "week": 4
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Blackjack",
+      "who": [
+        "ERI"
+      ],
+      "amount": 9,
+      "week": 5
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Pastor Wes's Blessing",
+      "who": [
+        "JAS",
+        "TOL",
+        "CHR",
+        "DRE",
+        "DYL"
+      ],
+      "amount": 9,
+      "week": 6
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Double Penetration",
+      "who": [
+        "TOL",
+        "DRE"
+      ],
+      "amount": 9,
+      "week": 7
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Size Doesn't Matter",
+      "who": [
+        "ERI"
+      ],
+      "amount": 9,
+      "week": 8
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Premature Ejaculation",
+      "who": [
+        "HOA"
+      ],
+      "amount": 9,
+      "week": 9
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "The Iron Curtain",
+      "who": [
+        "ADA"
+      ],
+      "amount": 9,
+      "week": 10
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Adam of the Week",
+      "who": [
+        "CHR"
+      ],
+      "amount": 9,
+      "week": 11
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Hoa's Foot Fetish",
+      "who": [
+        "DYL"
+      ],
+      "amount": 9,
+      "week": 12
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Massive Cuck",
+      "who": [
+        "CHR"
+      ],
+      "amount": 9,
+      "week": 13
+    },
+    {
+      "year": 2025,
+      "type": "weekly",
+      "name": "Mr. Big Dick",
+      "who": [
+        "MAT"
+      ],
+      "amount": 9,
+      "week": 14
+    }
+  ]
 }

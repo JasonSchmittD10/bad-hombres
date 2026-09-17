@@ -18,7 +18,18 @@ From it this builds:
                       and league ranks. Hand-written fields (name, full, bio,
                       team, tags, medals) are carried over untouched.
   record/index.html   the Record Book's embedded DATA, which the page turns
-                      into the ledger, head-to-head explorer and records.
+                      into the ledger, head-to-head explorer and records, and
+                      its LEDGER (history.json's money + awards).
+
+Money and awards (history.json "money" and "awards") are hand-entered from the
+league's official payout posts and carried over untouched. Each award is
+{year, type: place|season|weekly, name, who: [codes], amount, week?}. A tie
+lists every winner and splits the amount evenly; "unconfirmed": true means one
+of the listed members won it and the order isn't known (2024 weeks 11, 13, 14),
+so each is credited 1/n of the win and the money. The build adds each member's
+costPerWin (2021-25 buy-ins / 2021-25 regular-season wins) and share (gross /
+money.paidOut, every dollar ever paid out), and fails if any member's awards don't add up to
+their gross or their byYear.
 
 Rules (reproduce the 2021-25 numbers the profiles launched with, exactly):
   record, win %, averages, weekly highs, weeks #1   regular season only
@@ -118,6 +129,33 @@ def compute(D):
             prof[c]["rank"][k] = i + 1
     return done, prof
 
+def ledger(old, prof):
+    money, awards = old.get("money"), old.get("awards")
+    if not money or awards is None: return None
+    got, years, wins = {}, {}, {}
+    for a in awards:
+        if a["type"] not in ("place", "season", "weekly"): die("award %r has unknown type %r" % (a["name"], a["type"]))
+        if a["type"] == "weekly" and not a.get("week"): die("weekly award %r (%s) has no week" % (a["name"], a["year"]))
+        n = len(a["who"])
+        for c in a["who"]:
+            if c not in money["members"]: die("award %r names unknown member %r" % (a["name"], c))
+            got[c] = got.get(c, 0) + a["amount"] / n
+            y = years.setdefault(c, {}); y[str(a["year"])] = y.get(str(a["year"]), 0) + a["amount"] / n
+    # every dollar ever paid out, from the payout posts (not the sum of gross: see "paidOut")
+    total = money.get("paidOut") or die("money has no paidOut total")
+    span = [y for y in money["buyIns"] if int(y) >= 2021]
+    for c, m in money["members"].items():
+        if round(got.get(c, 0), 2) != round(m["gross"], 2):
+            die("awards for %s add up to $%.2f, but money says gross $%.2f" % (c, got.get(c, 0), m["gross"]))
+        for y in set(years.get(c, {})) | set(m["byYear"]):
+            if round(years.get(c, {}).get(y, 0), 2) != round(m["byYear"].get(y, 0), 2):
+                die("%s %s awards add up to $%.2f, but byYear says $%.2f" % (c, y, years[c].get(y, 0), m["byYear"].get(y, 0)))
+        if round(m["gross"] - m["paid"], 2) != round(m["net"], 2): die("%s net doesn't equal gross minus paid" % c)
+        w = sum(r["w"] for r in prof[c]["season"] if 2021 <= r["y"] <= int(money["through"]))
+        m["costPerWin"] = round(sum(money["buyIns"][y] for y in span) / w, 2) if w else None
+        m["share"] = round(100 * m["gross"] / total, 2)
+    return {"money": money, "awards": awards}
+
 def history(D, old):
     done, prof = compute(D)
     out = {"years": done, "managers": D["managers"], "fullNames": D["fullNames"],
@@ -130,14 +168,21 @@ def history(D, old):
         out["profiles"][c] = {k: p[k] for k in ("name", "w", "l", "t", "g", "pct", "avg", "avgPa", "highs", "weeksTop",
                                                  "high", "low", "blowout", "season", "playoff", "vs", "rank")
                               if k in p} | {k: p[k] for k in ("bio", "team", "tags", "full", "medals") if k in p}
+    L = ledger(old, prof)
+    if L: out.update(L)
     return out
 
 # ---------------------------------------------------------------- outputs
-def write_page(D):
+def write_page(D, H):
     s = PAGE.read_text()
     i = s.index("const DATA = ") + len("const DATA = ")
-    j = s.index(";\nconst D = DATA;", i)
+    j = s.index(";\nconst LEDGER = ", i)
     new = s[:i] + json.dumps(D, separators=(",", ":")) + s[j:]
+    i = new.index("const LEDGER = ") + len("const LEDGER = ")
+    j = new.index(";\nconst D = DATA;", i)
+    L = {"managers": H["managers"], "fullNames": H["fullNames"], "order": H["order"],
+         "money": H.get("money"), "awards": H.get("awards", [])}
+    new = new[:i] + json.dumps(L, separators=(",", ":"), ensure_ascii=False) + new[j:]
     if new != s: PAGE.write_text(new)
     return new != s
 
@@ -154,7 +199,7 @@ def build(D, exclude_current=False, out=None):
     target = Path(out) if out else HIST
     target.write_text(text)
     if not out:
-        changed = write_page(D)
+        changed = write_page(D, H)
         print("history.json rebuilt; Record Book page %s" % ("updated" if changed else "unchanged"))
     return H
 
