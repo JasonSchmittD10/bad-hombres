@@ -350,6 +350,13 @@ async function computeBonus(week, matchups, teams, kickoffDays, rookies) {
 
 export default async function handler(req, res) {
   try {
+    // TEMP: ?probe=1 asks Yahoo which leagues the authorizing account can see,
+    // to tell an app-authorization problem apart from a wrong league key.
+    if (req.query?.probe === '1') {
+      const j = await yahoo('/users;use_login=1/games;game_keys=nfl/leagues');
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(200).json(j);
+    }
     const qWeek = parseInt(req.query?.week, 10);
     const sb = await getScoreboard(Number.isFinite(qWeek) ? qWeek : undefined);
     const week = sb.week;
