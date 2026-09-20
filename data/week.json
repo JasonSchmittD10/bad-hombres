@@ -1,91 +1,91 @@
 {
   "week": 2,
   "status": "live",
-  "updated": "2026-09-18T09:55:08-04:00",
+  "updated": "2026-09-20T19:33:24-04:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
       "a": {
         "m": "Jason",
         "t": "Pull-Out Game Weak",
-        "s": 40.5,
-        "p": 129.52
+        "s": 101.4,
+        "p": 127.89
       },
       "b": {
         "m": "Wes",
         "t": "MikeLee4 Prez",
-        "s": 0.0,
-        "p": 117.38
+        "s": 99.56,
+        "p": 100.19
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "s": 22.5,
-        "p": 138.41
+        "s": 144.0,
+        "p": 144.0
       },
       "b": {
         "m": "Matt",
         "t": "San Diego Chillin’",
-        "s": 48.12,
-        "p": 138.78
+        "s": 87.62,
+        "p": 116.71
       }
     },
     {
       "a": {
         "m": "Hoa",
         "t": "Critical Chase Theory",
-        "s": 0.0,
-        "p": 123.03
+        "s": 89.08,
+        "p": 116.36
       },
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
-        "s": 62.88,
-        "p": 127.63
+        "s": 106.08,
+        "p": 121.49
       }
     },
     {
       "a": {
         "m": "David",
         "t": "Drain the Swamp",
-        "s": 20.9,
-        "p": 122.98
+        "s": 73.3,
+        "p": 124.25
       },
       "b": {
         "m": "Dylan",
         "t": "Carlie’s Headset",
-        "s": 0.0,
-        "p": 122.02
+        "s": 111.14,
+        "p": 152.04
       }
     },
     {
       "a": {
         "m": "Drew",
         "t": "I Stand with Jordon",
-        "s": 0.0,
-        "p": 122.62
+        "s": 71.68,
+        "p": 100.31
       },
       "b": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "s": 0.0,
-        "p": 117.01
+        "s": 112.42,
+        "p": 112.42
       }
     },
     {
       "a": {
         "m": "Erick",
         "t": "King In The North",
-        "s": 0.0,
-        "p": 123.49
+        "s": 115.46,
+        "p": 116.03
       },
       "b": {
         "m": "Zack",
         "t": "Sewer Pigeons",
-        "s": 0.0,
-        "p": 124.91
+        "s": 76.52,
+        "p": 88.69
       }
     }
   ],
@@ -95,36 +95,36 @@
     "cr": "Biggest blowout (largest margin of victory)",
     "actual": [
       {
-        "who": "Adam",
-        "sub": "over Hoa",
-        "val": 62.88
+        "who": "Tola",
+        "sub": "over Matt",
+        "val": 56.38
       },
       {
-        "who": "Jason",
-        "sub": "over Wes",
-        "val": 40.5
+        "who": "Chris",
+        "sub": "over Drew",
+        "val": 40.74
       },
       {
-        "who": "Matt",
-        "sub": "over Tola",
-        "val": 25.62
+        "who": "Erick",
+        "sub": "over Zack",
+        "val": 38.94
       }
     ],
     "projected": [
       {
+        "who": "Dylan",
+        "sub": "over David",
+        "val": 27.79
+      },
+      {
         "who": "Jason",
         "sub": "over Wes",
-        "val": 12.14
+        "val": 27.7
       },
       {
-        "who": "Drew",
-        "sub": "over Chris",
-        "val": 5.61
-      },
-      {
-        "who": "Adam",
-        "sub": "over Hoa",
-        "val": 4.6
+        "who": "Erick",
+        "sub": "over Zack",
+        "val": 27.34
       }
     ]
   },
