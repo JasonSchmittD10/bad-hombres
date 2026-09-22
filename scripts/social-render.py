@@ -5,7 +5,7 @@
     scripts/social-render.py award              # -> social/week-N/award.jpg
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
-    scripts/social-render.py stats <spec.json>       # -> social/stats-<slug>/slide-N.jpg + caption.txt
+    scripts/social-render.py stats <spec.json>       # Hard Numbers -> social/stats-<slug>/slide-N.jpg
     scripts/social-render.py og-story <slug>    # -> story/<slug>/og.jpg, that story's link-preview card
     scripts/social-render.py recap --preview DIR   # any week state, written to DIR, marked PREVIEW
     scripts/social-render.py recap --preview DIR --data sample-week.json --season sample-season.json
@@ -192,7 +192,7 @@ CSS = """
 .bn .tm{font-size:30px;color:var(--muted);margin-top:6px}
 .bn .stat{margin-top:22px;font-size:32px}.bn .stat b{color:var(--gold)}
 
-/* Stats & Figures: a spec-driven carousel (see stats_slides) */
+/* Hard Numbers: the spec-driven stats carousel (see stats_slides) */
 .sf{flex:1;display:flex;flex-direction:column;justify-content:center}
 .sf.center{align-items:center;text-align:center}
 .sf .big{font-size:250px;line-height:.86;color:#fff;margin:18px 0 0}
@@ -360,13 +360,13 @@ def bonus_card(week, b, t):
         data_uri(art), face(top["who"]), esc(week), esc(b.get("nm", "")), esc(top["who"]), esc(t), stat))
 
 def stats_slides(spec):
-    """Slides for a Stats & Figures carousel, built from a spec file.
+    """Slides for a Hard Numbers carousel, built from a spec file.
 
     Each slide names a type — hook (one big number), cards (a face per row),
     chips (a crowd of names) or plain. All the words live in the spec; this
     only lays them out, so a new post is a new spec, not new code.
     """
-    label, out = spec.get("label", "Stats & Figures"), []
+    label, out = spec.get("label", "Hard Numbers"), []
     for sl in spec["slides"]:
         t = sl.get("type", "plain")
         if t == "hook":

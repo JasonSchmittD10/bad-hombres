@@ -5,7 +5,7 @@
     scripts/ig-post.py recap            # carousel: results, Big Dick, Little Bitch, standings
     scripts/ig-post.py award            # single image: the week's bonus winner
     scripts/ig-post.py matchups         # Thursday carousel: slate, six matchups, Wes's lock
-    scripts/ig-post.py stats <slug>     # a Stats & Figures carousel from social/stats-<slug>/
+    scripts/ig-post.py stats <slug>     # a Hard Numbers carousel from social/stats-<slug>/
     DRY_RUN=1 scripts/ig-post.py recap  # every local check, no call to Instagram
     scripts/ig-post.py matchups --data snapshot.json   # deliberate test against a week snapshot;
                                                        # scheduled tasks never pass --data
@@ -102,7 +102,7 @@ def wait_ready(cid, token):
 
 # ---- the post --------------------------------------------------------------
 def material_stats(slug):
-    """A Stats & Figures carousel: slides and caption rendered from its spec."""
+    """A Hard Numbers carousel: slides and caption rendered from its spec."""
     d = ROOT / "social" / ("stats-%s" % slug)
     spec_path = d / "spec.json"
     if not spec_path.exists(): skip("no spec at %s" % spec_path.relative_to(ROOT))

@@ -1,10 +1,10 @@
 {
  "slug": "0-2-club",
- "label": "Stats & Figures",
+ "label": "Hard Numbers",
  "slides": [
   {
    "type": "hook",
-   "eyebrow": "Stats & Figures",
+   "eyebrow": "Hard Numbers",
    "stat": "15.4%",
    "statSub": "of 0-2 teams reach the playoffs",
    "say": "Thirteen teams have started <b>0-2</b> since 2021.<br>Exactly two of them crawled into the playoffs."
