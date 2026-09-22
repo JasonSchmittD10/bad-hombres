@@ -5,6 +5,7 @@
     scripts/ig-post.py recap            # carousel: results, Big Dick, Little Bitch, standings
     scripts/ig-post.py award            # single image: the week's bonus winner
     scripts/ig-post.py matchups         # Thursday carousel: slate, six matchups, Wes's lock
+    scripts/ig-post.py stats <slug>     # a Stats & Figures carousel from social/stats-<slug>/
     DRY_RUN=1 scripts/ig-post.py recap  # every local check, no call to Instagram
     scripts/ig-post.py matchups --data snapshot.json   # deliberate test against a week snapshot;
                                                        # scheduled tasks never pass --data
@@ -100,6 +101,23 @@ def wait_ready(cid, token):
     die("media container %s never finished processing" % cid)
 
 # ---- the post --------------------------------------------------------------
+def material_stats(slug):
+    """A Stats & Figures carousel: slides and caption rendered from its spec."""
+    d = ROOT / "social" / ("stats-%s" % slug)
+    spec_path = d / "spec.json"
+    if not spec_path.exists(): skip("no spec at %s" % spec_path.relative_to(ROOT))
+    spec = json.loads(spec_path.read_text())
+    imgs = sorted(d.glob("slide-*.jpg"), key=lambda p: int(re.search(r"(\d+)", p.stem).group(1)))
+    if len(imgs) < 2: skip("not rendered yet (%d slides) — run social-render.py stats first" % len(imgs))
+    if len(imgs) > 10: die("%d slides; an Instagram carousel holds 10" % len(imgs))
+    cap_path = d / "caption.txt"
+    if not cap_path.exists(): skip("no caption at %s" % cap_path.relative_to(ROOT))
+    caption = with_mentions(cap_path.read_text().strip(), spec.get("tag") or [])
+    if len(caption) > 2200: die("caption is %d characters; Instagram allows 2200" % len(caption))
+    if len(re.findall(r"#\w", caption)) > 30: die("caption has more than 30 hashtags")
+    return slug, imgs, caption
+
+
 def material(kind, data=None):
     w = json.loads((Path(data) if data else ROOT / "data" / "week.json").read_text())
     week = w.get("week")
@@ -196,20 +214,26 @@ def main():
     argv = sys.argv[1:]
     data = argv[argv.index("--data") + 1] if "--data" in argv else None
     kind = argv[0] if argv else ""
-    if kind not in ("check", "recap", "award", "matchups"): sys.exit(__doc__)
+    if kind not in ("check", "recap", "award", "matchups", "stats"): sys.exit(__doc__)
 
     if kind == "check":
         env = load_env(); tok = maybe_refresh(env)
         print("ok: token works for @%s (user %s)" % (ACCOUNT, whoami(tok))); return
 
-    week, imgs, caption = material(kind, data)
-    if data: print("TEST: week state from %s, not data/week.json" % data)
-    key = "ig-%s-w%s" % (kind, week)
+    if kind == "stats":
+        slug = argv[1] if len(argv) > 1 and not argv[1].startswith("--") else ""
+        if not slug: sys.exit("usage: ig-post.py stats <slug>")
+        week, imgs, caption = material_stats(slug)
+        key = "ig-stats-%s" % slug
+    else:
+        week, imgs, caption = material(kind, data)
+        if data: print("TEST: week state from %s, not data/week.json" % data)
+        key = "ig-%s-w%s" % (kind, week)
     state = json.loads(STATE.read_text()) if STATE.exists() else {}
     if key in state: skip("already posted [%s] at %s" % (key, state[key]))
     urls = check_live(imgs)
 
-    print("=== %s, week %s: %d image(s) ===" % (kind, week, len(urls)))
+    print("=== %s, %s: %d image(s) ===" % (kind, week, len(urls)))
     for u in urls: print("  " + u)
     print("--- caption (%d chars) ---\n%s\n---" % (len(caption), caption))
     if DRY:

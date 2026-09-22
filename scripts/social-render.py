@@ -5,6 +5,7 @@
     scripts/social-render.py award              # -> social/week-N/award.jpg
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
+    scripts/social-render.py stats <spec.json>       # -> social/stats-<slug>/slide-N.jpg + caption.txt
     scripts/social-render.py og-story <slug>    # -> story/<slug>/og.jpg, that story's link-preview card
     scripts/social-render.py recap --preview DIR   # any week state, written to DIR, marked PREVIEW
     scripts/social-render.py recap --preview DIR --data sample-week.json --season sample-season.json
@@ -190,13 +191,43 @@ CSS = """
 .bn .who{font-size:40px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .bn .tm{font-size:30px;color:var(--muted);margin-top:6px}
 .bn .stat{margin-top:22px;font-size:32px}.bn .stat b{color:var(--gold)}
+
+/* Stats & Figures: a spec-driven carousel (see stats_slides) */
+.sf{flex:1;display:flex;flex-direction:column;justify-content:center}
+.sf.center{align-items:center;text-align:center}
+.sf .big{font-size:250px;line-height:.86;color:#fff;margin:18px 0 0}
+.sf .big small{display:block;font-size:60px;color:var(--red);letter-spacing:.06em;margin-top:26px}
+.sf h1{font-size:82px;margin:0 0 34px}.sf h1 em{font-style:normal;color:var(--red)}
+.sf .say{font-size:38px;line-height:1.42;color:var(--muted);margin-top:40px;max-width:860px}
+.sf .say b{color:#fff;font-weight:700}
+.sf .card{display:flex;gap:30px;align-items:center;background:var(--panel);border:2px solid var(--line);
+ border-radius:26px;padding:26px 30px;margin-bottom:20px}
+.sf .card:last-of-type{margin-bottom:0}
+.sf .card img{width:150px;height:150px;border-radius:24px;object-fit:cover;background:#d7d7d7;flex:none;
+ border:4px solid var(--line)}
+.sf .card.good img{border-color:var(--gold)}
+.sf .card.bad img{border-color:var(--red)}
+.sf .card .tx{min-width:0}
+.sf .card .nm{font-size:40px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.sf .card .nm span{color:var(--muted);font-size:28px;letter-spacing:.12em;margin-left:14px}
+.sf .card .ln{font-size:29px;line-height:1.36;color:var(--muted);margin-top:10px}
+.sf .card .ln b{color:#fff;font-weight:700}
+.sf .names{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+.sf .chip{background:var(--panel);border:2px solid var(--line);border-radius:999px;padding:16px 26px;font-size:34px}
+.sf .chip span{color:var(--muted);font-size:25px;margin-left:12px}
+.sf .facts{display:flex;gap:18px}
+.sf .fact{flex:1;background:var(--panel);border:2px solid var(--line);border-radius:22px;padding:22px 26px;text-align:center}
+.sf .fact span{display:block;color:var(--muted);font-size:20px;letter-spacing:.18em;font-weight:700;margin-bottom:10px}
+.sf .fact b{font-size:44px}
+.sf .kicker{margin-top:34px;border-left:6px solid var(--red);padding-left:26px;font-size:34px;line-height:1.4}
+.sf .kicker b{color:#fff;font-weight:700}
 """
 
-def frame(week, body, cls=""):
+def frame(week, body, cls="", badge=None):
     return ('<div class="frame %s"><div class="top"><div class="brand"><img src="%s" alt="">'
-            '<span class="disp">BAD <b>HOMBRES</b></span></div><div class="wk disp">WEEK %s</div></div>'
+            '<span class="disp">BAD <b>HOMBRES</b></span></div><div class="wk disp">%s</div></div>'
             '%s<div class="foot"><span>%s</span><span>bad-hombres.vercel.app</span></div></div>') % (
-        cls, data_uri("assets/logo.webp"), esc(week), body, HANDLE)
+        cls, data_uri("assets/logo.webp"), esc(badge if badge is not None else "WEEK %s" % week), body, HANDLE)
 
 def award_card(week, t, title, sub, loser=False):
     return frame(week, (
@@ -328,6 +359,46 @@ def bonus_card(week, b, t):
         '<h1 class="disp">%s</h1><div class="who">%s</div><div class="tm">%s</div>%s</div></div>') % (
         data_uri(art), face(top["who"]), esc(week), esc(b.get("nm", "")), esc(top["who"]), esc(t), stat))
 
+def stats_slides(spec):
+    """Slides for a Stats & Figures carousel, built from a spec file.
+
+    Each slide names a type — hook (one big number), cards (a face per row),
+    chips (a crowd of names) or plain. All the words live in the spec; this
+    only lays them out, so a new post is a new spec, not new code.
+    """
+    label, out = spec.get("label", "Stats & Figures"), []
+    for sl in spec["slides"]:
+        t = sl.get("type", "plain")
+        if t == "hook":
+            body = ('<div class="sf center"><div class="eyebrow">%s</div>'
+                    '<div class="big disp">%s%s</div><p class="say">%s</p></div>') % (
+                esc(sl.get("eyebrow", label)), esc(sl["stat"]),
+                ('<small class="disp">%s</small>' % esc(sl["statSub"])) if sl.get("statSub") else "",
+                sl.get("say", ""))
+        elif t == "cards":
+            rows = "".join(
+                '<div class="card %s">%s<div class="tx"><div class="nm">%s%s</div><div class="ln">%s</div></div></div>' % (
+                    esc(c.get("tone", "")), ('<img src="%s" alt="">' % face(c["who"])) if c.get("who") else "",
+                    esc(c.get("name") or c.get("who", "")),
+                    ('<span>%s</span>' % esc(c["tag"])) if c.get("tag") else "", c.get("ln", ""))
+                for c in sl["cards"])
+            body = '<div class="sf"><h1 class="disp">%s</h1>%s%s</div>' % (
+                sl["title"], rows, ('<p class="kicker">%s</p>' % sl["kicker"]) if sl.get("kicker") else "")
+        elif t == "chips":
+            chips = "".join('<div class="chip disp">%s%s</div>' % (
+                esc(c["name"]), ('<span>%s</span>' % esc(c["tag"])) if c.get("tag") else "") for c in sl["chips"])
+            facts = "".join('<div class="fact"><span>%s</span><b class="disp">%s</b></div>' % (esc(f["k"]), esc(f["v"]))
+                            for f in sl.get("facts", []))
+            body = '<div class="sf"><h1 class="disp">%s</h1><div class="names">%s</div>%s%s</div>' % (
+                sl["title"], chips, ('<div class="facts">%s</div>' % facts) if facts else "",
+                ('<p class="kicker">%s</p>' % sl["kicker"]) if sl.get("kicker") else "")
+        else:
+            body = '<div class="sf center"><h1 class="disp">%s</h1><p class="say">%s</p></div>' % (
+                sl["title"], sl.get("say", ""))
+        out.append(frame(None, body, cls=sl.get("cls", ""), badge=sl.get("badge", label)))
+    return out
+
+
 def shoot(html_text, out, w=None, h=None):
     """Headless Chrome -> PNG -> JPEG, exactly w x h (default the 1080x1350 feed size)."""
     w, h = w or W, h or H
@@ -373,6 +444,18 @@ def main():
     if kind == "og-story":
         if len(args) < 2: sys.exit("usage: social-render.py og-story <slug>")
         shoot(page(og_story(args[1]), False, OG_W, OG_H), ROOT / "story" / args[1] / "og.jpg", OG_W, OG_H); return
+    if kind == "stats":
+        if len(args) < 2: sys.exit("usage: social-render.py stats <spec.json> [--preview]")
+        spec = json.loads(Path(args[1]).read_text())
+        if not spec.get("slug"): bail("the spec needs a slug")
+        slides = stats_slides(spec)
+        if not 2 <= len(slides) <= 10: bail("%d slides; an Instagram carousel holds 2 to 10" % len(slides))
+        out_dir = ROOT / "social" / ("stats-%s" % spec["slug"]); out_dir.mkdir(parents=True, exist_ok=True)
+        for old in out_dir.glob("slide-*.jpg"): old.unlink()
+        for i, html_slide in enumerate(slides, 1):
+            shoot(page(html_slide, "--preview" in args), out_dir / ("slide-%d.jpg" % i))
+        if spec.get("caption"): (out_dir / "caption.txt").write_text(spec["caption"].strip() + "\n")
+        return
     if kind not in ("recap", "award", "matchups"): sys.exit(__doc__)
     preview = "--preview" in args
     # --data lets a preview run against a sample week instead of the live file

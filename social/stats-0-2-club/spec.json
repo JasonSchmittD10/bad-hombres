@@ -1,0 +1,131 @@
+{
+ "slug": "0-2-club",
+ "label": "Stats & Figures",
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "Stats & Figures",
+   "stat": "15.4%",
+   "statSub": "of 0-2 teams reach the playoffs",
+   "say": "Thirteen teams have started <b>0-2</b> since 2021.<br>Exactly two of them crawled into the playoffs."
+  },
+  {
+   "type": "cards",
+   "title": "The two who <em>survived</em>",
+   "cards": [
+    {
+     "who": "Erick",
+     "tag": "2021",
+     "tone": "good",
+     "ln": "Snuck in as the <b>4 seed</b>, then got bounced in the first round by Jason on a Monday night. Saved just long enough to lose to the commish."
+    },
+    {
+     "who": "Hoa",
+     "tag": "2024",
+     "tone": "good",
+     "ln": "Rode it all the way to the <b>championship</b>, where David beat him. Best case for an 0-2 team here: a miracle run, and you still lose the final."
+    }
+   ]
+  },
+  {
+   "type": "chips",
+   "title": "The other <em>eleven</em>",
+   "chips": [
+    {
+     "name": "Chris",
+     "tag": "2021 · 9th"
+    },
+    {
+     "name": "Tola",
+     "tag": "2021 · 12th"
+    },
+    {
+     "name": "Wes",
+     "tag": "2021 · 10th"
+    },
+    {
+     "name": "Wes",
+     "tag": "2022 · 10th"
+    },
+    {
+     "name": "Matt",
+     "tag": "2022 · 8th"
+    },
+    {
+     "name": "Adam",
+     "tag": "2023 · 11th"
+    },
+    {
+     "name": "Zack",
+     "tag": "2023 · 12th"
+    },
+    {
+     "name": "Erick",
+     "tag": "2024 · 9th"
+    },
+    {
+     "name": "Adam",
+     "tag": "2025 · 7th"
+    },
+    {
+     "name": "Zack",
+     "tag": "2025 · 8th"
+    },
+    {
+     "name": "Wes",
+     "tag": "2025 · 12th"
+    }
+   ],
+   "facts": [
+    {
+     "k": "Average finish",
+     "v": "10th"
+    },
+    {
+     "k": "Finished last",
+     "v": "3"
+    },
+    {
+     "k": "Made playoffs",
+     "v": "0"
+    }
+   ],
+   "kicker": "Wes has done it <b>three times</b>. Zack and Adam, twice each."
+  },
+  {
+   "type": "cards",
+   "title": "The 2026 <em>0-2 club</em>",
+   "cards": [
+    {
+     "who": "David",
+     "tag": "0-2",
+     "tone": "bad",
+     "ln": "The two-time defending champ had <b>never started 0-2</b> before, and Dylan just hung a 200 on him. Hurst-Dambro should issue a statement."
+    },
+    {
+     "who": "Drew",
+     "tag": "0-2",
+     "tone": "bad",
+     "ln": "He posted <b>84.38</b> last week, which is basically a bye with extra steps. I Stand with Jordon, but Jordon doesn't stand with you."
+    },
+    {
+     "who": "Zack",
+     "tag": "0-2",
+     "tone": "bad",
+     "ln": "Third 0-2 start in four years. Those seasons ended <b>12th and 8th</b>. The Sewer Pigeons aren't in a slump, they're a way of life."
+    }
+   ]
+  },
+  {
+   "type": "plain",
+   "title": "Nobody has ever started 0-2 and <em>won this league</em>",
+   "say": "David is the only one of the three with a ring.<br>The other two are playing for the <b>Beer Mile</b>."
+  }
+ ],
+ "caption": "15.4%.\n\nThirteen teams have started 0-2 since 2021, and exactly two of them crawled into the playoffs.\n\nErick, 2021: snuck in as the 4 seed, then got bounced in the first round by Jason on a Monday night. Saved just long enough to lose to the commish.\n\nHoa, 2024: rode it all the way to the championship, where David beat him. That's the best case for an 0-2 team in this league. You go on a miracle run and still lose the final.\n\nThe other eleven finished around 10th on average. Three of them finished dead last.\n\nThe 2026 0-2 club: David, who had never started 0-2 before and just got hung with a 200. Drew, who posted 84.38, which is basically a bye with extra steps. And Zack, whose third 0-2 start in four years makes it less of a slump than a way of life.\n\nNobody has ever started 0-2 and won this league.\n\n#fantasyfootball #fantasyfootballleague #badhombres #week3",
+ "tag": [
+  "David",
+  "Drew",
+  "Zack"
+ ]
+}
