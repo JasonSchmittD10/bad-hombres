@@ -4,13 +4,13 @@
     "bit": "Pastor Wes's Lock of the Week",
     "record": {
       "w": 0,
-      "l": 0
+      "l": 1
     },
     "locks": [
       {
         "week": 2,
         "pick": "Hoa over Adam",
-        "result": null
+        "result": "L"
       }
     ]
   },
@@ -22,6 +22,12 @@
         "index": -4,
         "paRank": 3,
         "standingsRank": 7
+      },
+      {
+        "week": 2,
+        "index": -7,
+        "paRank": 4,
+        "standingsRank": 11
       }
     ]
   },
