@@ -11,6 +11,11 @@
         "week": 2,
         "pick": "Hoa over Adam",
         "result": "L"
+      },
+      {
+        "week": 3,
+        "pick": "Hoa over Erick",
+        "result": null
       }
     ]
   },
@@ -37,6 +42,12 @@
       "a": "Erick",
       "b": "Zack",
       "reason": "Projected within 1.1"
+    },
+    {
+      "week": 3,
+      "a": "Chris",
+      "b": "Wes",
+      "reason": "Projected within 0.4"
     }
   ]
 }
