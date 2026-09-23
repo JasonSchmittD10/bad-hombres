@@ -1,141 +1,125 @@
 {
-  "week": 2,
-  "status": "final",
-  "updated": "2026-09-22T00:30:00-04:00",
-  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
-  "matchups": [
-    {
-      "a": {
-        "m": "Jason",
-        "t": "Pull-Out Game Weak",
-        "s": 103.2,
-        "p": 121.66
-      },
-      "b": {
-        "m": "Wes",
-        "t": "MikeLee4 Prez",
-        "s": 99.56,
-        "p": 119.0
-      }
-    },
-    {
-      "a": {
-        "m": "Tola",
-        "t": "Alien Awareness",
-        "s": 144.0,
-        "p": 127.62
-      },
-      "b": {
-        "m": "Matt",
-        "t": "San Diego Chillin’",
-        "s": 118.92,
-        "p": 128.4
-      }
-    },
-    {
-      "a": {
-        "m": "Hoa",
-        "t": "Critical Chase Theory",
-        "s": 99.68,
-        "p": 118.67
-      },
-      "b": {
-        "m": "Adam",
-        "t": "Suck My Diggs",
-        "s": 121.78,
-        "p": 121.79
-      }
-    },
-    {
-      "a": {
-        "m": "David",
-        "t": "Drain the Swamp",
-        "s": 141.38,
-        "p": 123.01
-      },
-      "b": {
-        "m": "Dylan",
-        "t": "Carlie’s Headset",
-        "s": 200.54,
-        "p": 126.17
-      }
-    },
-    {
-      "a": {
-        "m": "Drew",
-        "t": "I Stand with Jordon",
-        "s": 84.38,
-        "p": 110.93
-      },
-      "b": {
-        "m": "Chris",
-        "t": "Maye the Force Be With You",
-        "s": 112.42,
-        "p": 119.18
-      }
-    },
-    {
-      "a": {
-        "m": "Erick",
-        "t": "King In The North",
-        "s": 115.46,
-        "p": 117.36
-      },
-      "b": {
-        "m": "Zack",
-        "t": "Sewer Pigeons",
-        "s": 90.92,
-        "p": 124.31
-      }
-    }
-  ],
-  "bonus": {
-    "week": 2,
-    "nm": "Raw-Dogged",
-    "cr": "Biggest blowout (largest margin of victory)",
-    "actual": [
-      {
-        "who": "Dylan",
-        "sub": "over David",
-        "val": 59.16
-      },
-      {
-        "who": "Chris",
-        "sub": "over Drew",
-        "val": 28.04
-      },
-      {
-        "who": "Tola",
-        "sub": "over Matt",
-        "val": 25.08
-      }
-    ],
-    "projected": [
-      {
-        "who": "Dylan",
-        "sub": "over David",
-        "val": 29.65
-      },
-      {
-        "who": "Tola",
-        "sub": "over Matt",
-        "val": 25.08
-      },
-      {
-        "who": "Erick",
-        "sub": "over Zack",
-        "val": 24.54
-      }
-    ]
+ "week": 3,
+ "status": "preseason",
+ "updated": "2026-09-23T09:05:00-04:00",
+ "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
+ "matchups": [
+  {
+   "a": {
+    "m": "Jason",
+    "t": "Pull-Out Game Weak",
+    "s": 0.0,
+    "p": 131.65
+   },
+   "b": {
+    "m": "David",
+    "t": "Drain the Swamp",
+    "s": 0.0,
+    "p": 138.07
+   }
   },
-  "nextWeek": 2,
-  "nextKickoff": "2026-09-17T20:15:00-04:00",
-  "nextKickoffLabel": "Thursday, Sept 17 · 8:15 PM ET",
-  "nextGame": {
-    "away": "ATL",
-    "home": "GB",
-    "kickoff": "2026-09-24T20:15:00-04:00",
-    "label": "Thursday, Sept 24 at 8:15 PM ET",
-    "network": "Prime Video"
+  {
+   "a": {
+    "m": "Tola",
+    "t": "Alien Awareness",
+    "s": 0.0,
+    "p": 127.3
+   },
+   "b": {
+    "m": "Drew",
+    "t": "I Stand with Jordon",
+    "s": 0.0,
+    "p": 116.75
+   }
+  },
+  {
+   "a": {
+    "m": "Hoa",
+    "t": "Critical Chase Theory",
+    "s": 0.0,
+    "p": 62.51
+   },
+   "b": {
+    "m": "Erick",
+    "t": "King In The North",
+    "s": 0.0,
+    "p": 110.54
+   }
+  },
+  {
+   "a": {
+    "m": "Dylan",
+    "t": "Carlie’s Headset",
+    "s": 0.0,
+    "p": 120.71
+   },
+   "b": {
+    "m": "Adam",
+    "t": "Suck My Diggs",
+    "s": 0.0,
+    "p": 127.39
+   }
+  },
+  {
+   "a": {
+    "m": "Chris",
+    "t": "Maye the Force Be With You",
+    "s": 0.0,
+    "p": 125.2
+   },
+   "b": {
+    "m": "Wes",
+    "t": "MikeLee4 Prez",
+    "s": 0.0,
+    "p": 114.3
+   }
+  },
+  {
+   "a": {
+    "m": "Matt",
+    "t": "San Diego Chillin’",
+    "s": 0.0,
+    "p": 113.5
+   },
+   "b": {
+    "m": "Zack",
+    "t": "Sewer Pigeons",
+    "s": 0.0,
+    "p": 118.0
+   }
   }
+ ],
+ "bonus": {
+  "week": 3,
+  "nm": "Kittle Dick Energy",
+  "cr": "Lowest-scoring starting TE",
+  "actual": [],
+  "projected": [
+   {
+    "who": "Erick",
+    "sub": "Dallas Goedert",
+    "val": 0.0
+   },
+   {
+    "who": "Wes",
+    "sub": "Colston Loveland",
+    "val": 10.03
+   },
+   {
+    "who": "Adam",
+    "sub": "Mark Andrews",
+    "val": 11.29
+   }
+  ]
+ },
+ "nextWeek": 3,
+ "nextKickoff": "2026-09-24T20:15:00-04:00",
+ "nextKickoffLabel": "Thursday, Sept 24 · 8:15 PM ET",
+ "nextGame": {
+  "away": "ATL",
+  "home": "GB",
+  "kickoff": "2026-09-24T20:15:00-04:00",
+  "label": "Thursday, Sept 24 at 8:15 PM ET",
+  "network": "Prime Video"
+ }
 }
