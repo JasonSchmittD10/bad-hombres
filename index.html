@@ -890,15 +890,16 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
 
 /* ---- Week scoreboard (Yahoo-backed, with static fallback) ---- */
 (function(){
- // Season-long bonuses. src/dir drive the computed races; note marks the two
- // that no game file can settle.
+ // Season-long bonuses. Amounts follow the by-laws, section 11.3 (Prize
+ // Distribution). src/dir drive the computed races; note marks the one no game
+ // file can settle.
  window.BH_SEASON_AWARDS=[
   {nm:"Cream of the Crop", cr:"Most regular-season points", amt:20, src:"pf", dir:"desc"},
-  {nm:"You Got Dicked",    cr:"Most points against",        amt:15, src:"pa", dir:"desc"},
-  {nm:"Biggest Load",      cr:"Most points in a single week", amt:15, src:"week"},
+  {nm:"You Got Dicked",    cr:"Most points against",        amt:10, src:"pa", dir:"desc"},
+  {nm:"Biggest Load",      cr:"Most points in a single week", amt:10, src:"week"},
   {nm:"You Suck",          cr:"Lowest total points",        amt:1,  src:"pf", dir:"asc"},
   {nm:"GM of the Year",    cr:"Most trades",                amt:10, src:"trades", dir:"desc", empty:"No trades yet this season."},
-  {nm:"The Commissioner\u2019s Award", cr:"Commissioner\u2019s discretion", amt:3, note:"Commissioner\u2019s call"}
+  {nm:"The Commissioner\u2019s Award", cr:"Sportsmanship or entertainment \u00b7 late fees add to it", amt:15, note:"Commissioner\u2019s call"}
  ];
  window.BH_AWARD_WINNERS={1:{who:"Matt",sub:"Josh Allen · 38.66"},2:{who:"Dylan",sub:"over David · 59.16"}};
  var BONUSES=window.BH_BONUSES=[
@@ -1131,7 +1132,7 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
  var seg=document.getElementById('bbSeg'), wk=document.getElementById('awGrid'), sn=document.getElementById('saGrid');
  if(!seg||!wk||!sn) return;
  var HEAD={weekly:['Season Awards','The Bonus Board','$9','per week'],
-           season:['End of Season','Season-Long Bonuses','$64','at season\u2019s end']};
+           season:['End of Season','Season-Long Bonuses','$'+(window.BH_SEASON_AWARDS||[]).reduce(function(t,a){return t+(a.amt||0)},0),'at season\u2019s end']};
  function show(which){
   var h=HEAD[which]||HEAD.weekly;
   document.getElementById('bbEyebrow').textContent=h[0];
