@@ -1,7 +1,7 @@
 {
  "week": 3,
  "status": "preseason",
- "updated": "2026-09-23T09:05:00-04:00",
+ "updated": "2026-09-24T12:00:00-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -9,13 +9,13 @@
     "m": "Jason",
     "t": "Pull-Out Game Weak",
     "s": 0.0,
-    "p": 131.65
+    "p": 131.27
    },
    "b": {
     "m": "David",
     "t": "Drain the Swamp",
     "s": 0.0,
-    "p": 138.07
+    "p": 127.07
    }
   },
   {
@@ -23,13 +23,13 @@
     "m": "Tola",
     "t": "Alien Awareness",
     "s": 0.0,
-    "p": 127.3
+    "p": 127.73
    },
    "b": {
     "m": "Drew",
     "t": "I Stand with Jordon",
     "s": 0.0,
-    "p": 116.75
+    "p": 122.8
    }
   },
   {
@@ -37,13 +37,13 @@
     "m": "Hoa",
     "t": "Critical Chase Theory",
     "s": 0.0,
-    "p": 62.51
+    "p": 64.47
    },
    "b": {
     "m": "Erick",
     "t": "King In The North",
     "s": 0.0,
-    "p": 110.54
+    "p": 110.16
    }
   },
   {
@@ -51,13 +51,13 @@
     "m": "Dylan",
     "t": "Carlie’s Headset",
     "s": 0.0,
-    "p": 120.71
+    "p": 122.61
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
     "s": 0.0,
-    "p": 127.39
+    "p": 127.32
    }
   },
   {
@@ -65,13 +65,13 @@
     "m": "Chris",
     "t": "Maye the Force Be With You",
     "s": 0.0,
-    "p": 125.2
+    "p": 126.14
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
     "s": 0.0,
-    "p": 114.3
+    "p": 114.34
    }
   },
   {
@@ -79,13 +79,13 @@
     "m": "Matt",
     "t": "San Diego Chillin’",
     "s": 0.0,
-    "p": 113.5
+    "p": 122.56
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
     "s": 0.0,
-    "p": 118.0
+    "p": 116.86
    }
   }
  ],
