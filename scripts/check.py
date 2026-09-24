@@ -17,6 +17,7 @@ number on the site. A failure means DON'T PUSH: fix the data, or report and stop
                   per week
     handles.json  every manager has an entry (blank means "never tag")
     story/        every published story has its link-preview card and its hero image
+    pages         every section page's og:image points at a card that exists
     ledger        (--posted) the posts this run claims to have made are recorded
 """
 import datetime, json, os, re, sys
@@ -164,6 +165,13 @@ def check_stories():
         elif not m.group(1).startswith("data:") and not (ROOT / m.group(1).lstrip("/")).exists():
             fail("story/%s: hero %s doesn't exist" % (slug, m.group(1)))
 
+def check_page_cards():
+    for rel in ("", "updates", "members", "members/profile", "record", "bylaws", "picks"):
+        page = ROOT / rel / "index.html"
+        m = re.search(r'<meta property="og:image" content="https://bad-hombres\.vercel\.app/([^"]+)"', page.read_text())
+        if not m: fail("%s: no og:image" % (rel or "home")); continue
+        if not (ROOT / m.group(1)).exists(): fail("%s: its link-preview card %s doesn't exist" % (rel or "home", m.group(1)))
+
 def check_ledger(keys):
     try: s = json.loads(LEDGER.read_text())
     except (FileNotFoundError, json.JSONDecodeError): fail("ledger %s is missing or unreadable" % LEDGER); return
@@ -180,6 +188,7 @@ def main():
     check_handles(load("data/handles.json"))
     load("data/history.json")
     check_stories()
+    check_page_cards()
     if posted: check_ledger(posted)
     for n in notes: print("note: " + n)
     if fails:

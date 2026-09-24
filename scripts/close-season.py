@@ -218,6 +218,8 @@ def apply(year):
         if TICK_SVG is None:
             TICK_SVG = re.search(r'<span class="tk[^"]*">(<svg.*?</svg>)', m2.group(1), re.S).group(1)
         p.write_text(s[:m2.start(1)] + ticker(rec) + s[m2.end(1):]); changed += 1
+    # the Record Book and profile cards list the champions and the reigning champ's numbers
+    subprocess.run([str(ROOT / "scripts" / "social-render.py"), "og-pages"], capture_output=True, text=True)
     print("closed %s: %d awards and $%.2f in the ledger, %s champion, record book rebuilt, ticker updated on %d pages"
           % (year, len(d["awards"]), d["total"], rec["fullNames"][d["places"][0]], changed))
 

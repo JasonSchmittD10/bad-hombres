@@ -6,6 +6,7 @@
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
     scripts/social-render.py stats <spec.json>       # Hard Numbers -> social/stats-<slug>/slide-N.jpg
+    scripts/social-render.py og-pages              # -> og.jpg for Updates, Members, profiles, Record Book, By-Laws
     scripts/social-render.py og-picks              # -> picks/og.jpg, the pick'em's link-preview card
     scripts/social-render.py og-story <slug>    # -> story/<slug>/og.jpg, that story's link-preview card
     scripts/social-render.py recap --preview DIR   # any week state, written to DIR, marked PREVIEW
@@ -334,6 +335,43 @@ OG_CSS = """
 .og.pk h1{font-size:88px}
 .og.pk .sub{margin-top:22px;color:#d6d8dd;font:600 30px "Segoe UI",Arial,sans-serif;line-height:1.3}
 .og.pk .sub b{color:var(--gold);font-weight:700}
+/* section cards: one per page, a panel only that page could have */
+.og.sec .panel{width:470px;height:470px;flex:none;border-radius:34px;border:6px solid var(--red);background:#15151a;
+ box-shadow:0 30px 70px rgba(0,0,0,.55);overflow:hidden;position:relative}
+.og.sec h1{font-size:84px}
+.og.sec .sub{margin-top:22px;color:#d6d8dd;font:600 30px "Segoe UI",Arial,sans-serif;line-height:1.3}
+.og.sec .sub b{color:var(--gold);font-weight:700}
+/* updates: the newest story art, four up */
+.p-stories{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;height:100%;background:#2a2a31}
+.p-stories img{width:100%;height:100%;object-fit:cover;display:block;background:#d7d7d7}
+/* members: all twelve */
+.p-faces{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 12px;padding:24px 22px;height:100%;align-content:center}
+.p-faces div{display:flex;flex-direction:column;align-items:center;gap:6px}
+.p-faces img{width:84px;height:84px;border-radius:50%;background:#d7d7d7;border:3px solid #2a2a31}
+.p-faces span{font:800 15px "Segoe UI",Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#d6d8dd}
+/* profile: a stat sheet */
+.p-sheet{padding:28px 30px 0;height:100%}
+.p-sheet .who{display:flex;align-items:center;gap:22px}
+.p-sheet .who img{width:100px;height:100px;border-radius:22px;background:#d7d7d7;border:4px solid var(--gold)}
+.p-sheet .who b{display:block;font:900 38px "Arial Black",Impact,sans-serif;color:#fff;text-transform:uppercase;line-height:1}
+.p-sheet .who span{display:block;margin-top:8px;color:var(--red);font:800 17px "Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.p-sheet .stats{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.p-sheet .st{background:#1e1e24;border:2px solid #2a2a31;border-radius:14px;padding:9px 16px;display:block}
+.p-sheet .st span{display:block;color:#9aa0aa;font:800 13px "Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.p-sheet .st b{display:block;margin-top:2px;font:900 30px "Arial Black",Impact,sans-serif;color:#fff;white-space:nowrap}
+/* record book: every champion */
+.p-champs{padding:30px 36px;height:100%;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.p-champs .c{display:flex;align-items:baseline;gap:22px;border-bottom:2px solid #2a2a31;padding-bottom:10px}
+.p-champs .c:last-child{border-bottom:0}
+.p-champs .y{font:900 34px "Arial Black",Impact,sans-serif;color:var(--red);width:92px;flex:none}
+.p-champs .n{font:800 30px "Segoe UI",Arial,sans-serif;color:#fff}
+.p-champs .c.reign .y,.p-champs .c.reign .n{color:var(--gold)}
+/* by-laws: the articles */
+.p-doc{padding:34px 36px;height:100%;display:flex;flex-direction:column;gap:13px;
+ -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent)}
+.p-doc .a{display:flex;align-items:baseline;gap:18px}
+.p-doc .r{font:900 24px "Arial Black",Impact,sans-serif;color:var(--red);width:56px;flex:none}
+.p-doc .t{font:700 22px "Segoe UI",Arial,sans-serif;color:#d6d8dd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 """
 
 def og_site():
@@ -354,6 +392,64 @@ def og_picks():
             '<div class="sub">One game, one pick each.<br>Locks at kickoff.<br><b>Bragging rights only.</b></div>'
             '<div class="brand"><img src="%s" alt=""><span class="disp">BAD <b>HOMBRES</b></span></div></div></div>') % (
         OG_CSS, cells, data_uri("assets/logo.webp"))
+
+ROMAN = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX"]
+
+def og_section(page_key):
+    """A page's preview card: the story-card layout, with a panel only that page could have.
+    Built from the site's own data, so the Record Book card gains each new champion when
+    it's re-rendered."""
+    rec = json.loads((ROOT / "data" / "record.json").read_text())
+    full = rec["fullNames"]
+    if page_key == "updates":
+        # the newest story art, in the order the Updates page lists it
+        upd = (ROOT / "updates" / "index.html").read_text()
+        heroes = []
+        for slug in re.findall(r'href="/story/([^/"]+)/"', upd):
+            sp = ROOT / "story" / slug / "index.html"
+            m = sp.exists() and re.search(r'<div class="st-hero"><img[^>]*src="/([^"]+)"', sp.read_text())
+            if m and m.group(1) not in heroes: heroes.append(m.group(1))
+            if len(heroes) == 4: break
+        panel = '<div class="p-stories">%s</div>' % "".join('<img src="%s" alt="">' % data_uri(h) for h in heroes)
+        k, t, sub = "The Booth", "Recaps &amp; Stories", "Every weekly recap and preview,<br><b>written like it matters.</b>"
+    elif page_key == "members":
+        order = ("Jason", "David", "Matt", "Erick", "Chris", "Wes", "Zack", "Adam", "Dylan", "Drew", "Tola", "Hoa")
+        panel = '<div class="p-faces">%s</div>' % "".join(
+            '<div><img src="%s" alt=""><span>%s</span></div>' % (face(m), m) for m in order)
+        k, t, sub = "The League", "Meet the Hombres", "Twelve managers.<br><b>One trophy.</b>"
+    elif page_key == "profile":
+        hist = json.loads((ROOT / "data" / "history.json").read_text())
+        champ = rec["champ"][max(rec["champ"])]
+        pr = hist["profiles"][champ]
+        titles = sum(1 for c in rec["champ"].values() if c == champ)
+        tr = pr.get("playoff", {}).get("trophies", {})
+        cells = [("Record", "%d-%d" % (pr["w"], pr["l"])), ("Win %", ("%.3f" % pr["pct"]).lstrip("0")),
+                 ("Titles", str(titles)), ("Podiums", str(sum(tr.get(k, 0) for k in ("1", "2", "3")))),
+                 ("High score", "%.1f" % pr["high"]["v"]), ("Playoff trips", str(pr.get("playoff", {}).get("app", 0)))]
+        panel = ('<div class="p-sheet"><div class="who"><img src="%s" alt=""><div><b>%s</b><span>Reigning champion</span></div></div>'
+                 '<div class="stats">%s</div></div>') % (face(pr["name"]), html.escape(full[champ]).replace(" ", "<br>", 1),
+                 "".join('<div class="st"><span>%s</span><b>%s</b></div>' % c for c in cells))
+        k, t, sub = "Manager Profiles", "Careers, Rivalries &amp; Receipts", "Every win, loss and payout<br><b>since 2020.</b>"
+    elif page_key == "record":
+        rows = sorted(rec["champ"].items(), reverse=True) + [("2020", None)]
+        panel = '<div class="p-champs">%s</div>' % "".join(
+            '<div class="c%s"><span class="y">%s</span><span class="n">%s</span></div>' % (
+                " reign" if i == 0 else "", y, html.escape(full[c] if c else "Erick DeLeon")) for i, (y, c) in enumerate(rows))
+        k, t, sub = "The Record Book", "League History &amp; Records", "Every champion. Every game.<br><b>Every receipt.</b>"
+    elif page_key == "bylaws":
+        bl = (ROOT / "bylaws" / "index.html").read_text()
+        arts = [html.unescape(a).split(" & ")[0] for a in re.findall(r'<span class="atitle">(.*?)</span>', bl)][:9]
+        panel = '<div class="p-doc">%s</div>' % "".join(
+            '<div class="a"><span class="r">%s</span><span class="t">%s</span></div>' % (ROMAN[i], html.escape(a)) for i, a in enumerate(arts))
+        k, t, sub = "The Contract", "Official By-Laws", "Rules, prizes and<br><b>the punishment.</b>"
+    else:
+        bail("no section card for %r" % page_key)
+    return ('<style>%s</style><div class="og sec"><div class="panel">%s</div><div class="txt"><div class="k">%s</div>'
+            '<h1 class="disp">%s</h1><div class="sub">%s</div>'
+            '<div class="brand"><img src="%s" alt=""><span class="disp">BAD <b>HOMBRES</b></span></div></div></div>') % (
+        OG_CSS, panel, k, t, sub, data_uri("assets/logo.webp"))
+
+SECTION_PAGES = {"updates": "updates", "members": "members", "profile": "members/profile", "record": "record", "bylaws": "bylaws"}
 
 def og_story(slug):
     """A story's preview card, built from its own page: hero art, kicker, headline."""
@@ -466,6 +562,10 @@ def main():
     # link previews (iMessage, Slack, etc.) — 1200x630, no week data needed
     if kind == "og":
         shoot(page(og_site(), False, OG_W, OG_H), ROOT / "og.jpg", OG_W, OG_H); return
+    if kind == "og-pages":
+        for key, rel in SECTION_PAGES.items():
+            shoot(page(og_section(key), False, OG_W, OG_H), ROOT / rel / "og.jpg", OG_W, OG_H)
+        return
     if kind == "og-picks":
         shoot(page(og_picks(), False, OG_W, OG_H), ROOT / "picks" / "og.jpg", OG_W, OG_H); return
     if kind == "og-story":

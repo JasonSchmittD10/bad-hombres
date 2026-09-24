@@ -156,6 +156,9 @@ def main():
     import subprocess
     r = subprocess.run([str(ROOT / "scripts" / "social-render.py"), "og-story", slug], capture_output=True, text=True)
     if r.returncode != 0: die("page published but its preview card failed: %s" % (r.stderr.strip() or r.stdout.strip()))
+    # the section pages' cards show the newest story art and the latest numbers — refresh them too
+    r = subprocess.run([str(ROOT / "scripts" / "social-render.py"), "og-pages"], capture_output=True, text=True)
+    if r.returncode != 0: print("note: story published, but the section preview cards didn't refresh: %s" % (r.stderr.strip() or r.stdout.strip()))
     print("published /story/%s/  (page %d KB; Updates card first; homepage feature set; preview card story/%s/og.jpg)" % (slug, len(page) // 1024, slug))
 
 if __name__ == "__main__":
