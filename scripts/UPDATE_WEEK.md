@@ -492,3 +492,24 @@ evenly** (Jason's ruling, Sept 2026). Record every tied manager in `bonus.actual
 same value, note the split in the report, and enter the award in the money ledger with all
 of them in `who` — the ledger already splits a shared award evenly. Ties for Big Dick or
 Little Bitch of the Week still stop the recap carousel and wait for Jason.
+
+---
+
+# The pick'em (`/picks/`)
+
+One pick a week: members call the recorded **Game of the Week** before the week's first
+kickoff. Bragging rights only — nothing in the by-laws, nothing paid out.
+
+- **Page:** `picks/index.html`. Pick your name, enter a four-digit PIN, tap a side. The
+  first pick sets that member's PIN; picks can change until kickoff. The tally shows who
+  has picked, but not what, until the lock.
+- **API:** `api/picks.mjs` (`GET` / `POST /api/picks`). The game comes from
+  `data/voices.json` `gotw`, the lock from `data/week.json` (`nextKickoff`, or any score on
+  the board), and grading from the final scores in `data/record.json` — so the routines
+  don't have to do anything for it to work week to week.
+- **Storage:** Upstash Redis via its REST API. **One-time setup:** in Vercel, open the
+  project → Storage (or Marketplace) → Upstash for Redis → create/connect it to this
+  project. That adds `KV_REST_API_URL` and `KV_REST_API_TOKEN`; redeploy. Until then the
+  page says "opens soon".
+- **Forgotten PIN:** delete that member's `pin:<Name>` key in the Upstash console; their
+  next pick sets a new one.
