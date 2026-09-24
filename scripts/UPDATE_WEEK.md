@@ -452,12 +452,19 @@ Chatnerdness and any quoted line come from `~/Documents/bad-hombres-chat/bad-hom
 (columns: date, SENDER, text). The Week Recap task checks every week whether it covers the
 week just played, and writes the recap without Chatnerdness when it doesn't.
 
-Claude's shell cannot refresh it — reading `~/Library/Messages/chat.db` needs Full Disk
-Access, which the scheduled sessions don't have. Jason refreshes it from a Terminal that
-does:
+It refreshes itself: a launchd job, `com.badhombres.chat-export`, runs
+`~/Documents/bad-hombres-chat/refresh.sh` every **Tuesday at 6:00am**, an hour before the
+recap. The wrapper dumps to a temp file and only replaces the export if the new one has rows
+and isn't smaller, so a failed run never wipes a good export. Every run appends a line to
+`~/Documents/bad-hombres-chat/refresh.log`.
+
+Reading `~/Library/Messages/chat.db` needs **Full Disk Access for `/bin/zsh`** (System
+Settings → Privacy & Security → Full Disk Access → + → ⌘⇧G `/bin/zsh`). Without it the log
+says `REFUSED ... 0 lines` and the old export stays. Claude's own sessions can't refresh it
+either way. To run it by hand from a Terminal that has access:
 
 ```bash
-perl ~/Documents/bad-hombres-chat/dump-script.pl > ~/Documents/bad-hombres-chat/bad-hombres-full-2021-2026.tsv
+~/Documents/bad-hombres-chat/refresh.sh
 ```
 
 The chat is an accent, never a dependency (`VOICE_GUIDE.md`, "The group chat is an accent,
