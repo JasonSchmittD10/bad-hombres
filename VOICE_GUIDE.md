@@ -336,6 +336,22 @@ Every published story leads with a **real photograph**, not a member illustratio
 illustrations belong on the site's cards, the scoreboard and the Instagram slides; an
 article that opens with one looks like a database record, not a piece of writing.
 
+**The photo is a joke, not an illustration.** It should land ironically against the
+headline or the week's story — the visual version of the deadpan caption. Generic football
+action under a headline about somebody's lineup being empty is wallpaper; a shot of empty
+stadium seats under that same headline is the bit. Ask what the piece is actually about,
+then find the picture that comments on it:
+
+- A blowout nobody saw coming → the aftermath, not the touchdown.
+- A manager who forgot to set a lineup → empty chairs, an empty field, a closed door.
+- A week decided by a kicker → something small doing a large job.
+- A championship team losing → the trophy, the confetti, the wrong guy holding it.
+- Literal is the fallback, irony is the target. If the funny version doesn't exist under a
+  free licence, take the plain one rather than force a stretch nobody will read.
+
+The test: read the headline, look at the photo, and see whether the pairing makes you
+exhale through your nose. If it's just "men playing football", keep looking.
+
 - Source: Openverse, filtered to **CC0 / public domain**
   (`https://api.openverse.org/v1/images/?q=...&license=cc0,pdm`). No credit required, and
   nothing that needs a licence we don't have. Google Images is not a source.
