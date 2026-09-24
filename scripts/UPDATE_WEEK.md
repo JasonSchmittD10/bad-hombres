@@ -100,7 +100,7 @@ homepage stops saying TBD. Winners live in `BH_AWARD_WINNERS` in `index.html`.
 
 ---
 
-# Updating `data/season.json` (weekly recap task)
+# Updating `data/season.json` (the Week Recap task)
 
 Drives the **Standings** table and the **Power Lines** chart. Unlike
 `week.json` this changes **once a week**, with the Tuesday recap.
@@ -177,7 +177,7 @@ scripts/build-history.py build        # rebuild without adding (after a hand fix
 
 ---
 
-# Updating `data/voices.json` (weekly recap task)
+# Updating `data/voices.json` (the Week Recap task)
 
 State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
 `season.json`. Who does what:
@@ -186,7 +186,7 @@ State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
 |---|---|
 | Grade last week's lock, compute the Luck Index | Monday-night scoreboard run, once the week is `final` (Tuesday's tasks re-check it) |
 | Write this week's lock | The **Week Preview** task, Thursday, in the preview article — picked from this week's real matchups so it is never stale |
-| Record next week's Game of the Week | The weekly recap, before it writes Looking ahead: `scripts/game-of-the-week.py --matchups next.json` (Thursday's opener runs it too, as a fallback — it records only if Tuesday didn't) |
+| Record next week's Game of the Week | The **Week Recap** task, before it writes Looking ahead: `scripts/game-of-the-week.py --matchups next.json` (Thursday's Week Preview runs it too, as a fallback — it records only if Tuesday didn't) |
 
 ```jsonc
 {
@@ -228,7 +228,7 @@ EOF
 
 ---
 
-# Publishing the weekly recap (weekly recap task)
+# Publishing the weekly recap (the Week Recap task)
 
 The recap is written to `VOICE_GUIDE.md` — the six-beat running order, the
 recurring voices, the eight rules — and published with one script, which does
@@ -314,8 +314,9 @@ scripts/league-post.sh recap               # send it
 ```
 
 Kinds: `opener` (Thursday: the topper and a link to the preview article — nothing else),
-`progress` (Sunday night scores),
-`recap` (Tuesday, article intro + link), `bonus` (Tuesday, winner + award art).
+`afternoon` (Sunday 7:30pm, topper + scores), `progress` (Sunday night scores),
+`recap` (Tuesday, article intro + link), `bonus` (Tuesday, the Instagram award card and
+nothing else — no list, no link).
 
 **Always refresh `week.json` from Yahoo before posting.** Every kind reads the
 committed data — posting on stale data is the main way this goes wrong.
@@ -326,7 +327,8 @@ committed data — posting on stale data is the main way this goes wrong.
   forward), if `BH_TOPPER` is empty (the write-up is the post), or if
   `story/week-N-preview/` has not been published (there is no link to send).
 - `progress` refuses when no live scores exist yet.
-- `bonus` refuses unless status is `final` and a winner exists.
+- `bonus` refuses unless status is `final`, a winner exists, and
+  `social/week-N/award.jpg` has been rendered — the card IS the post.
 - Every post is keyed (`kind-wN`, recap keyed to the article slug) in
   `~/.bad-hombres-posts.json`, so nothing goes out twice.
 - A skip exits 0. **Never edit a script to bypass a guard** — the guard firing
@@ -346,15 +348,16 @@ kickoff.
 
 | Post | Images | Caption | Posted by |
 |---|---|---|---|
-| Recap carousel | `social/week-N/recap-1..4.jpg` — results, Big Dick, Little Bitch, standings | `social/week-N/recap.txt` | `bad-hombres-ig-recap`, Tue 10:30am |
-| Bonus award | `social/week-N/award.jpg` — award art + winner's illustration | `social/week-N/award.txt` | `bad-hombres-ig-award`, Tue 6pm |
+| Recap carousel | `social/week-N/recap-1..4.jpg` — results, Big Dick, Little Bitch, standings | `social/week-N/recap.txt` | `bad-hombres-week-recap`, Tue 7am |
+| Bonus award | `social/week-N/award.jpg` — award art + winner's illustration | `social/week-N/award.txt` | `bad-hombres-week-recap`, Tue 7am |
 | Matchup preview | `social/week-N/matchups-1..9.jpg` — slate, Game of the Week, five more matchups, Wes's lock, standings | `social/week-N/matchups.txt` | `bad-hombres-week-preview`, Thu noon |
 
-The weekly recap task renders the Tuesday images and writes both captions, and the
-Tuesday posting tasks only post. Thursday is one task end to end: the **Week Preview**
-task rolls the week forward, picks Wes's lock, publishes the preview article, then posts
-the iMessage opener and the Instagram carousel itself (rules in `VOICE_GUIDE.md`,
-"Instagram").
+Each day is one task, end to end. **Week Recap** (Tue 7am) settles the week, publishes the
+recap, drafts both Instagram posts from it, then posts: group chat first (the recap link,
+then the award card), then the carousel, then the bonus award. **Week Preview** (Thu noon)
+rolls the week forward, picks Wes's lock, publishes the preview article, then posts the
+opener and the matchup carousel. Rules for the captions are in `VOICE_GUIDE.md`,
+"Instagram"; art rules are in "Article art".
 
 ```bash
 scripts/social-render.py recap                 # images from data/week.json (must be final)
@@ -386,7 +389,9 @@ from `assets/awards/hd/wkN.jpg` (1080px; the 220px site versions are too small).
   carousel tags Big Dick and Little Bitch of the Week, the award tags the
   winner, the matchup preview tags nobody. A member with no handle isn't
   tagged. Captions may not tag anyone themselves.
-- Keyed `ig-recap-wN` / `ig-award-wN` / `ig-matchups-wN` in `~/.bad-hombres-posts.json`; nothing
+- Keyed `ig-recap-wN` / `ig-award-wN` / `ig-matchups-wN` in `~/.bad-hombres-posts.json`.
+  **Check the key landed after posting** — in Week 2 the recap and award went out but were
+  never recorded, which left them one rerun away from posting twice. Nothing
   posts twice. A skip exits 0.
 
 ## One-time setup (Jason)

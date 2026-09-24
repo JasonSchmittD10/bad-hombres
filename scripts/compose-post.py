@@ -106,24 +106,19 @@ def recap():
     return "\n".join(parts)
 
 def bonus():
+    """The weekly bonus post: the Instagram award image, and nothing else.
+    The card already says the award, the winner and the number, so the thread
+    gets the picture rather than the picture plus a list of it."""
     w = load("week.json")
     if w.get("status") != "final": bail("week is not final yet")
     b = w.get("bonus") or {}
-    winners = b.get("actual") or []
-    if not winners: bail("bonus not settled")
-    top = winners[0]
+    if not (b.get("actual") or []): bail("bonus not settled")
     wk = b.get("week") or w.get("week")
-    art = ROOT / "assets" / "awards" / ("wk%s.jpg" % wk)
-    lines = ["🏆 WEEK %s BONUS — %s" % (wk, (b.get("nm") or "").upper()), ""]
-    lines.append("%s takes the $9." % top.get("who"))
-    if top.get("sub"): lines.append("(%s — %s)" % (top["sub"], fmt(top.get("val"))))
-    if len(winners) > 1:
-        lines.append("")
-        for i, r in enumerate(winners[1:3], start=2):
-            lines.append("%d. %s %s" % (i, r.get("who"), fmt(r.get("val"))))
-    lines += ["", "%s/" % SITE]
-    if art.exists(): print("ATTACH:%s" % art, file=sys.stderr)
-    return "\n".join(lines)
+    art = ROOT / "social" / ("week-%s" % wk) / "award.jpg"
+    if not art.exists():
+        bail("no award card at %s - render it first (social-render.py award)" % art.relative_to(ROOT))
+    print("ATTACH:%s" % art, file=sys.stderr)
+    return ""
 
 KIND = {"opener": opener, "progress": progress, "afternoon": afternoon, "recap": recap, "bonus": bonus}
 if __name__ == "__main__":

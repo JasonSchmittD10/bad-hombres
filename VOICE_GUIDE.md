@@ -297,6 +297,38 @@ series record closing five of six matchups. Each one worked the first time.
 
 ---
 
+## Article art
+
+Every published story leads with a **real photograph**, not a member illustration. The
+illustrations belong on the site's cards, the scoreboard and the Instagram slides; an
+article that opens with one looks like a database record, not a piece of writing.
+
+- Source: Openverse, filtered to **CC0 / public domain**
+  (`https://api.openverse.org/v1/images/?q=...&license=cc0,pdm`). No credit required, and
+  nothing that needs a licence we don't have. Google Images is not a source.
+- **Look at the photo before you use it.** No recognizable current NFL players (likeness),
+  no stickers or clip art dressed up as photos, nothing that reads as a stock cliché.
+- Save it to `assets/stories/<slug>.jpg`, about 1600px wide, and write `heroAlt`
+  describing what is actually in the frame.
+- Never reuse a photo another story already used.
+- If nothing suitable turns up, fall back to the member illustration and say so — a
+  fallback is fine, a bad photo is not.
+
+---
+
+## Running bits go stale
+
+A recurring joke is only funny while it is still true. Before leaning on one, check the
+fact underneath it:
+
+- **Dylan's punishments are not a theme.** He completed one; never frame him as the man
+  who owes the league.
+- Records, streaks, droughts and "hasn't won since" lines get checked against
+  `data/history.json` the week they run, not remembered from a previous article.
+- A bit that has run three weeks straight is a tic. Retire it or invert it.
+
+---
+
 ## The Thursday Preview — structure
 
 Magary's Thursday column, cut to size, published to the site as `week-N-preview` by the

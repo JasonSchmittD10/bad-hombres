@@ -14,7 +14,11 @@ msg_file=${1:?usage: imessage-post.sh <message-file> [image-path]}
 img=${2:-}
 
 [ -f "$msg_file" ] || { echo "no such message file: $msg_file" >&2; exit 1; }
-[ -s "$msg_file" ] || { echo "refusing to send an empty message" >&2; exit 1; }
+# An empty message is fine ONLY when there's an image: some posts are the picture
+# and nothing else (the weekly bonus). Empty and imageless is always a mistake.
+if [ ! -s "$msg_file" ] && [ -z "$img" ]; then
+  echo "refusing to send an empty message" >&2; exit 1
+fi
 if [ -n "$img" ] && [ ! -f "$img" ]; then
   echo "attachment missing: $img" >&2; exit 1
 fi
@@ -34,7 +38,7 @@ osascript <<APPLESCRIPT
 set msgText to (do shell script "cat " & quoted form of "$msg_file")
 tell application "Messages"
 	set targetChat to a reference to chat id "$CHAT_ID"
-	send msgText to targetChat
+	$( [ -s "$msg_file" ] && echo "send msgText to targetChat" )
 	$( [ -n "$img" ] && echo "send POSIX file \"$img\" to targetChat" )
 end tell
 APPLESCRIPT
