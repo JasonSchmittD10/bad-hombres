@@ -58,6 +58,7 @@ def bylaws():
         "commish": money(r"Commissioner.s Award[^$]*\$(\d+)", "The Commissioner's Award"),
         "best_week": money(r"Most Points in a Single Week[^$]*\$(\d+)", "Most Points in a Single Week"),
         "fewest": money(r"You Suck[^$]*\$(\d+)", "You Suck"),
+        "gm": money(r"GM of the Year[^$]*\$(\d+)", "GM of the Year"),
         "weekly": money(r"Weekly Awards[^$]*\$(\d+)", "the weekly award"),
     }
     buy = re.search(r"Buy-in: \$(\d+) per team", t)
@@ -118,6 +119,12 @@ def draft(year, places_arg, commish):
     add("season", "Most Points in a Single Week", sorted({g[1] for g in games if abs(g[0] - top) < 0.005}),
         rules["best_week"], stat=round(top, 2), weeks=sorted({g[2] for g in games if abs(g[0] - top) < 0.005}))
     w, v = leaders(pf, False); add("season", "You Suck (fewest points)", w, rules["fewest"], stat=v)
+    trades = (load("data/season.json").get("trades") or {})
+    if trades and max(trades.values()) > 0:
+        w, v = leaders({code[m]: n for m, n in trades.items()}, True)
+        add("season", "GM of the Year (most trades)", w, rules["gm"], stat=v)
+    else:
+        add("season", "GM of the Year (most trades)", ["TBD"], rules["gm"])   # nobody traded: Jason's call
     if commish:
         if commish not in code: die("--commish %r isn't a manager" % commish)
         add("season", "The Commissioner's Award", [code[commish]], rules["commish"])
