@@ -12,8 +12,18 @@ member — i.e. Jason's Chrome, driven from a Claude session.
 
 ## Cadence
 
-Once at the end of each game day: after Thursday night, after Sunday night,
-after Monday night. Monday's run closes the week out.
+One task, `bad-hombres-scoreboard`, fires at 00:20 and 19:20 on Sun/Mon/Tue/Fri and
+works out which moment it is. Four of those firings matter; the rest exit doing nothing:
+
+| Run | Fires | Job |
+|---|---|---|
+| **A** Thursday night | Fri 00:20 | TNF is done — refresh, status `live`, no post |
+| **B** Sunday evening | Sun 19:20 | the 1pm/4pm games are done, SNF hasn't kicked off — refresh, then post the afternoon scores to the thread |
+| **C** Sunday night | Mon 00:20 | SNF is done, Monday still to play — refresh, then post the in-progress scores |
+| **D** Monday night | Tue 00:20 | MNF is done — refresh, status `final`, settle the season layer, no post (the Week Recap task writes and posts at 7am) |
+
+Every run checks `nextGame` and never nulls `bonus`. A run that finds no newly completed
+games makes no commit and posts nothing — that is a normal outcome, not a failure.
 
 ## Steps
 
@@ -72,7 +82,7 @@ Do **not** fetch these with `curl` from here — Yahoo 429s datacenter IPs.
 The hero reads `week.json`: a countdown to `nextGame.kickoff`, then "Week N is
 Live" once it passes, then **"Week N is Complete"** once `status` is `final`,
 with `nextGame` as the matchup under it. So when a week goes final (the
-Monday-night run; Tuesday's recap re-checks), `nextGame` must move to the first
+scoreboard run D; the Week Recap re-checks), `nextGame` must move to the first
 game of NFL week N+1 — from ESPN's schedule, teams by ESPN abbreviation (logos
 are `assets/nfl/<abbr>.png`). If it can't be confirmed, set it to `null`: the
 hero hides the matchup rather than show a game that's already been played.
@@ -164,7 +174,7 @@ scripts/build-history.py build        # rebuild without adding (after a hand fix
   names and tags in `history.json` are hand-written and carried over.
 - Safe to re-run. A week already recorded is a no-op; changed scores replace
   the old ones (Yahoo stat corrections); a missing earlier week is refused.
-- Who runs it: the Monday-night scoreboard run once the week is `final`;
+- Who runs it: the scoreboard task's run D (Tue 00:20) once the week is `final`;
   Tuesday's recap re-runs it before writing, since recap comps and the matchup
   previews' all-time series read `history.json`.
 - **At season's end** (after the championship), `current` gets finishes: add
@@ -184,7 +194,7 @@ State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
 
 | Step | Owner |
 |---|---|
-| Grade last week's lock, compute the Luck Index | Monday-night scoreboard run, once the week is `final` (Tuesday's tasks re-check it) |
+| Grade last week's lock, compute the Luck Index | The scoreboard task's run D (Tue 00:20), once the week is `final` (the Week Recap re-checks it) |
 | Write this week's lock | The **Week Preview** task, Thursday, in the preview article — picked from this week's real matchups so it is never stale |
 | Record next week's Game of the Week | The **Week Recap** task, before it writes Looking ahead: `scripts/game-of-the-week.py --matchups next.json` (Thursday's Week Preview runs it too, as a fallback — it records only if Tuesday didn't) |
 
