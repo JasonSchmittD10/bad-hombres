@@ -462,3 +462,26 @@ perl ~/Documents/bad-hombres-chat/dump-script.pl > ~/Documents/bad-hombres-chat/
 
 The chat is an accent, never a dependency (`VOICE_GUIDE.md`, "The group chat is an accent,
 not a source"). A missing sign-off is a footnote; an invented quote is a firing.
+
+---
+
+# Before every push: `scripts/check.py`
+
+```bash
+scripts/check.py                               # exit 1 and print FAIL lines if anything is wrong
+scripts/check.py --posted opener-w3 ig-matchups-w3   # also require those ledger keys
+```
+
+Every routine runs it right before pushing and refuses to push on a FAIL. It checks the
+things that have actually gone wrong: a null bonus, a countdown pointing at a game already
+played, a settled week with no Bonus Board winner, standings that disagree with the game
+log, Wes's record drifting from his graded locks, a missing handle entry, a story without
+its art, and posts that went out but never made the ledger.
+
+# Tied weekly bonus
+
+If two or more managers tie for a weekly bonus, **they all win it and the $9 splits
+evenly** (Jason's ruling, Sept 2026). Record every tied manager in `bonus.actual` at the
+same value, note the split in the report, and enter the award in the money ledger with all
+of them in `who` — the ledger already splits a shared award evenly. Ties for Big Dick or
+Little Bitch of the Week still stop the recap carousel and wait for Jason.
