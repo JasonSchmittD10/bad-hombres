@@ -6,6 +6,7 @@
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
     scripts/social-render.py stats <spec.json>       # Hard Numbers -> social/stats-<slug>/slide-N.jpg
+    scripts/social-render.py og-picks              # -> picks/og.jpg, the pick'em's link-preview card
     scripts/social-render.py og-story <slug>    # -> story/<slug>/og.jpg, that story's link-preview card
     scripts/social-render.py recap --preview DIR   # any week state, written to DIR, marked PREVIEW
     scripts/social-render.py recap --preview DIR --data sample-week.json --season sample-season.json
@@ -321,6 +322,18 @@ OG_CSS = """
 .og.site .tag{margin-top:14px;color:var(--silver,#d6d8dd);font:600 30px "Segoe UI",Arial,sans-serif;letter-spacing:.06em}
 .og.site .faces{position:absolute;left:0;right:0;bottom:34px;display:flex;justify-content:center;gap:10px}
 .og.site .faces img{width:76px;height:76px;border-radius:50%;background:#d7d7d7;border:3px solid var(--ink)}
+/* pick'em card: the league as a ballot, a few names already checked */
+.og.pk .board{width:470px;height:470px;flex:none;border-radius:34px;border:6px solid var(--red);background:#15151a;
+ box-shadow:0 30px 70px rgba(0,0,0,.55);display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:26px;align-content:center}
+.og.pk .cell{position:relative;display:flex;justify-content:center}
+.og.pk .cell img{width:88px;height:88px;border-radius:50%;background:#d7d7d7;border:3px solid #2a2a31;filter:grayscale(.35)}
+.og.pk .cell.on img{border-color:var(--gold);filter:none}
+.og.pk .cell.on:after{content:"✓";position:absolute;right:4px;bottom:-2px;width:34px;height:34px;border-radius:50%;
+ background:var(--gold);color:#0d0d0f;font:900 22px Arial,sans-serif;display:flex;align-items:center;justify-content:center;
+ border:3px solid #15151a}
+.og.pk h1{font-size:88px}
+.og.pk .sub{margin-top:22px;color:#d6d8dd;font:600 30px "Segoe UI",Arial,sans-serif;line-height:1.3}
+.og.pk .sub b{color:var(--gold);font-weight:700}
 """
 
 def og_site():
@@ -329,6 +342,18 @@ def og_site():
     return ('<style>%s</style><div class="og site"><img class="logo" src="%s" alt="">'
             '<h1 class="disp">BAD <b>HOMBRES</b></h1><div class="tag">Fantasy Football League · Est. 2020</div>'
             '<div class="faces">%s</div></div>') % (OG_CSS, data_uri("assets/logo.webp"), faces)
+
+def og_picks():
+    """The pick'em's preview card. Evergreen on purpose: iMessage caches a link's image,
+    so a card showing this week's game would show a stale one every time it's re-shared."""
+    order = ("Jason", "David", "Matt", "Erick", "Chris", "Wes", "Zack", "Adam", "Dylan", "Drew", "Tola", "Hoa")
+    picked = {"David", "Erick", "Wes", "Adam", "Tola"}
+    cells = "".join('<div class="cell%s"><img src="%s" alt=""></div>' % (" on" if m in picked else "", face(m)) for m in order)
+    return ('<style>%s</style><div class="og pk"><div class="board">%s</div>'
+            '<div class="txt"><div class="k">The Pick\u2019em</div><h1 class="disp">Call the Game of the Week</h1>'
+            '<div class="sub">One game, one pick each.<br>Locks at kickoff.<br><b>Bragging rights only.</b></div>'
+            '<div class="brand"><img src="%s" alt=""><span class="disp">BAD <b>HOMBRES</b></span></div></div></div>') % (
+        OG_CSS, cells, data_uri("assets/logo.webp"))
 
 def og_story(slug):
     """A story's preview card, built from its own page: hero art, kicker, headline."""
@@ -441,6 +466,8 @@ def main():
     # link previews (iMessage, Slack, etc.) — 1200x630, no week data needed
     if kind == "og":
         shoot(page(og_site(), False, OG_W, OG_H), ROOT / "og.jpg", OG_W, OG_H); return
+    if kind == "og-picks":
+        shoot(page(og_picks(), False, OG_W, OG_H), ROOT / "picks" / "og.jpg", OG_W, OG_H); return
     if kind == "og-story":
         if len(args) < 2: sys.exit("usage: social-render.py og-story <slug>")
         shoot(page(og_story(args[1]), False, OG_W, OG_H), ROOT / "story" / args[1] / "og.jpg", OG_W, OG_H); return
