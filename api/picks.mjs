@@ -4,7 +4,11 @@
 //   GET  /api/picks           this week's Game of the Week, the tally, whether picks are
 //                             locked, who picked what (only once locked), and the season
 //                             leaderboard
-//   POST /api/picks           {who, pin, pick} — make or change a pick before kickoff
+//   GET  /api/picks?who=Name  the same, plus that member's own pick ("mine")
+//   POST /api/picks           {who, pick} — make or change a pick before kickoff
+//
+// No PINs: members pick their name and the page remembers it in a cookie. It's a
+// bragging-rights game among twelve friends, so anyone could pick for anyone — fine.
 //
 // Storage is a secret GitHub Gist holding one JSON file — free, and on the GitHub
 // account the site already uses. Set two env vars in Vercel:
@@ -13,15 +17,12 @@
 // Until they're set, GET says so and the page shows "opens soon".
 //
 // The file, bad-hombres-picks.json:
-//   {"pins":  {"<Manager>": "<sha-256 of their PIN>"},
-//    "picks": {"<season>": {"<week>": {"<Manager>": "<manager they picked>"}}}}
+//   {"picks": {"<season>": {"<week>": {"<Manager>": "<manager they picked>"}}}}
 //
 // The game, the lock and the result all come from the site's own data files, so the
 // pick'em always agrees with the scoreboard: the recorded Game of the Week
 // (data/voices.json "gotw"), kickoff (data/week.json), and the final scores
 // (data/record.json). Nothing here is graded by hand.
-
-import { createHash } from 'node:crypto';
 
 const env = (n) => (process.env[n] || '').trim();
 const GIST = env('PICKS_GIST_ID');
@@ -41,11 +42,11 @@ async function loadStore() {
   const r = await fetch(`https://api.github.com/gists/${GIST}`, { headers: GH, cache: 'no-store' });
   if (!r.ok) throw new Error(`storage-${r.status}`);
   const f = ((await r.json()).files || {})[FILE];
-  if (!f) return { pins: {}, picks: {} };
+  if (!f) return { picks: {} };
   // a big file comes back truncated; fetch the raw copy instead
   const text = f.truncated ? await (await fetch(f.raw_url, { headers: GH })).text() : f.content;
   const d = JSON.parse(text || '{}');
-  return { pins: d.pins || {}, picks: d.picks || {} };
+  return { picks: d.picks || {} };
 }
 
 async function saveStore(d) {
@@ -56,8 +57,6 @@ async function saveStore(d) {
   });
   if (!r.ok) throw new Error(`storage-save-${r.status}`);
 }
-
-const pinHash = (who, pin) => createHash('sha256').update(`bad-hombres:${who}:${pin}`).digest('hex');
 
 async function siteData(req) {
   const proto = req.headers['x-forwarded-proto'] || 'https';
@@ -120,6 +119,7 @@ function board(data, cur, store) {
 }
 
 async function read(req, store) {
+  const who = MANAGERS.includes(String((req.query || {}).who || '')) ? req.query.who : null;
   const data = await siteData(req);
   const cur = current(data);
   const { thisWeek, leaderboard, graded } = board(data, cur, store || await loadStore());
@@ -130,6 +130,7 @@ async function read(req, store) {
     counts, total: Object.keys(thisWeek).length,
     picked: Object.keys(thisWeek).sort(),                // who has picked, never what — until the lock
     picks: cur.locked ? thisWeek : null,
+    mine: who ? (thisWeek[who] || null) : null,          // your own pick, before or after the lock
     leaderboard, graded, members: MANAGERS,
   };
 }
@@ -142,9 +143,8 @@ export default async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).json({ error: 'method' });
 
     const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
-    const who = String(body.who || ''), pin = String(body.pin || ''), pick = String(body.pick || '');
+    const who = String(body.who || ''), pick = String(body.pick || '');
     if (!MANAGERS.includes(who)) return res.status(400).json({ error: 'Pick your name from the list.' });
-    if (!/^\d{4}$/.test(pin)) return res.status(400).json({ error: 'Your PIN is four digits.' });
 
     const data = await siteData(req);
     const cur = current(data);
@@ -152,23 +152,18 @@ export default async function handler(req, res) {
     if (cur.locked) return res.status(409).json({ error: 'Picks are locked — the week has kicked off.' });
     if (![cur.game.a, cur.game.b].includes(pick)) return res.status(400).json({ error: 'Pick one of the two teams in the game.' });
 
-    // A manager's first pick sets their PIN; after that it has to match.
-    const h = pinHash(who, pin);
-    let store = await loadStore();
-    const saved = store.pins[who];
-    if (saved && saved !== h) return res.status(403).json({ error: `That isn't ${who}'s PIN.` });
-
     // Read, change, write — then read back. Twelve people rarely pick in the same second,
     // but if two saves cross, the loser's pick won't be there and we write it again.
+    let store = await loadStore();
     for (let attempt = 0; attempt < 3; attempt++) {
-      store.pins[who] = h;
       const season = (store.picks[cur.season] = store.picks[cur.season] || {});
       (season[cur.n] = season[cur.n] || {})[who] = pick;
       await saveStore(store);
       store = await loadStore();
       if ((((store.picks[cur.season] || {})[cur.n]) || {})[who] === pick) break;
     }
-    return res.status(200).json({ ok: true, firstPick: !saved, ...(await read(req, store)) });
+    req.query = { ...(req.query || {}), who };
+    return res.status(200).json({ ok: true, ...(await read(req, store)) });
   } catch (err) {
     return res.status(502).json({ error: String(err.message || err) });
   }

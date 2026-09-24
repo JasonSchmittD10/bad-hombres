@@ -500,9 +500,10 @@ Little Bitch of the Week still stop the recap carousel and wait for Jason.
 One pick a week: members call the recorded **Game of the Week** before the week's first
 kickoff. Bragging rights only — nothing in the by-laws, nothing paid out.
 
-- **Page:** `picks/index.html`. Pick your name, enter a four-digit PIN, tap a side. The
-  first pick sets that member's PIN; picks can change until kickoff. The tally shows who
-  has picked, but not what, until the lock.
+- **Page:** `picks/index.html`. Choose your name, tap a side. No PIN — the page remembers
+  your name in a cookie (`bh_who`, a year) and shows your own pick; anyone could pick for
+  anyone, which is fine for bragging rights. Picks can change until kickoff. Everyone
+  else's picks stay hidden until the lock; the tally shows who has picked.
 - **API:** `api/picks.mjs` (`GET` / `POST /api/picks`). The game comes from
   `data/voices.json` `gotw`, the lock from `data/week.json` (`nextKickoff`, or any score on
   the board), and grading from the final scores in `data/record.json` — so the routines
@@ -514,5 +515,4 @@ kickoff. Bragging rights only — nothing in the by-laws, nothing paid out.
   Tokens (classic)), then in Vercel add `PICKS_GIST_ID` =
   `cd34b3a6f0774b382277b8a3505d4e6a` and `PICKS_GIST_TOKEN` = that token (Production +
   Preview) and redeploy. Until then the page says "opens soon".
-- **Forgotten PIN:** edit the gist and delete that member's line under `"pins"`; their
-  next pick sets a new one. PINs are stored only as hashes.
+- **Fixing a pick:** edit the gist by hand — `picks → <season> → <week> → <Manager>`.
