@@ -502,7 +502,9 @@ kickoff. Bragging rights only — nothing in the by-laws, nothing paid out.
 
 - **Page:** `picks/index.html`. Choose your name, tap a side. No PIN — the page remembers
   your name in a cookie (`bh_who`, a year) and shows your own pick; anyone could pick for
-  anyone, which is fine for bragging rights. Picks can change until kickoff. Everyone
+  anyone, which is fine for bragging rights. Once you've picked, the name selector is gone
+  for the rest of that week ("Picking as Jason this week"); you can still switch sides
+  until kickoff. Everyone
   else's picks stay hidden until the lock; the tally shows who has picked.
 - **API:** `api/picks.mjs` (`GET` / `POST /api/picks`). The game comes from
   `data/voices.json` `gotw`, the lock from `data/week.json` (`nextKickoff`, or any score on

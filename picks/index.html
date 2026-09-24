@@ -339,6 +339,8 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
 .pk-who select,.pk-who input{background:var(--panel-2);color:#fff;border:1px solid var(--line);border-radius:10px;
  padding:12px;font:700 15px "Segoe UI",sans-serif;width:100%;min-width:0}
 .pk-who input{letter-spacing:.35em;text-align:center}
+.pk-as{margin:18px 0 0;text-align:center;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--muted)}
+.pk-as b{color:#fff}
 .pk-help{font-size:12px;color:var(--muted);margin:8px 0 0}
 .pk-msg{min-height:20px;margin:12px 0 0;font-size:13.5px;font-weight:700;text-align:center}
 .pk-msg.ok{color:var(--green)}.pk-msg.err{color:#ff6b76}
@@ -404,8 +406,10 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
    '<div class="pk-game">'+side(g.a)+'<div class="pk-vs">VS</div>'+side(g.b)+'</div>'+
    (g.reason?'<p class="pk-why">'+esc(g.reason)+'</p>':'')+
    (s.locked?'':
-    '<div class="pk-who"><select id="pkWho"><option value="">Who are you?</option>'+
-     s.members.map(function(m){return '<option'+(m===me?' selected':'')+'>'+esc(m)+'</option>'}).join('')+'</select></div>'+
+    // once you've picked this week, you are who you picked as — no switching names
+    (mine?'<p class="pk-as">Picking as <b>'+esc(me)+'</b> this week</p>':
+     '<div class="pk-who"><select id="pkWho"><option value="">Who are you?</option>'+
+     s.members.map(function(m){return '<option'+(m===me?' selected':'')+'>'+esc(m)+'</option>'}).join('')+'</select></div>')+
     '<p class="pk-help">'+(mine?('You\u2019re on <b>'+esc(mine)+'</b>. Tap the other side to switch \u2014 you can change it until kickoff.'):
       'Choose your name, then tap a side. You can change your pick until kickoff.')+'</p>')+
    '<p class="pk-msg" id="pkMsg"></p>'+
@@ -424,7 +428,7 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
  }
  function msg(t,ok){var m=el('pkMsg');if(m){m.textContent=t;m.className='pk-msg '+(ok?'ok':'err')}}
  function send(pick){
-  var who=el('pkWho').value;
+  var sel=el('pkWho'), who=sel?sel.value:me;
   if(!who) return msg('Choose your name first.');
   msg('Locking it in\u2026',true);
   fetch('/api/picks',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({who:who,pick:pick})})
