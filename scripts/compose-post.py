@@ -24,6 +24,9 @@ def fmt(v):
     return ("%.2f" % v) if isinstance(v, (int, float)) else str(v)
 
 def opener():
+    """Thursday's week-opener: the written topper and a link to the preview
+    article, nothing else. The slate lives on the site and in the article, so
+    the thread gets two things — what to look at, and where to read it."""
     w = load("week.json")
     ms = w.get("matchups") or []
     if not ms: bail("no matchups")
@@ -31,18 +34,13 @@ def opener():
     # the board these are last week's fixtures and posting them would be wrong.
     if any((m["a"].get("s") or 0) or (m["b"].get("s") or 0) for m in ms):
         bail("week.json still holds a played week - refresh before posting an opener")
-    # A written topper in the Van Pelt One Big Thing voice, if the caller
-    # supplied one. See VOICE_GUIDE.md. Without it the post is just the slate.
+    # The topper IS the post, so there is nothing to send without one.
     topper = os.environ.get("BH_TOPPER", "").strip()
-    lines = ["\U0001F3C8 WEEK %s IS UP" % w.get("week"), ""]
-    if topper: lines += [topper, ""]
-    for m in ms:
-        a, b = m["a"], m["b"]
-        lines.append("%s  vs  %s" % (a["t"], b["t"]))
-    when = w.get("nextKickoffLabel") if w.get("nextWeek") == w.get("week") else None
-    if when: lines += ["", "First game: %s" % when]
-    lines += ["", "%s/" % SITE]
-    return "\n".join(lines)
+    if not topper: bail("no BH_TOPPER - the opener is the write-up plus the link")
+    slug = "/story/week-%s-preview/" % w.get("week")
+    if not (ROOT / slug.strip("/") / "index.html").exists():
+        bail("no preview article at %s - publish it before posting the opener" % slug)
+    return "\n".join([topper, "", "The preview: %s%s" % (SITE, slug)])
 
 def live_scores(header, footer):
     w = load("week.json")

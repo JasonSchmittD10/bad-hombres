@@ -185,7 +185,7 @@ State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
 | Step | Owner |
 |---|---|
 | Grade last week's lock, compute the Luck Index | Monday-night scoreboard run, once the week is `final` (Tuesday's tasks re-check it) |
-| Write next week's lock | The weekly recap, when it writes Looking ahead |
+| Write this week's lock | The **Week Preview** task, Thursday, in the preview article — picked from this week's real matchups so it is never stale |
 | Record next week's Game of the Week | The weekly recap, before it writes Looking ahead: `scripts/game-of-the-week.py --matchups next.json` (Thursday's opener runs it too, as a fallback — it records only if Tuesday didn't) |
 
 ```jsonc
@@ -313,7 +313,8 @@ DRY_RUN=1 scripts/league-post.sh recap     # see it, send nothing
 scripts/league-post.sh recap               # send it
 ```
 
-Kinds: `opener` (Thursday matchups), `progress` (Sunday night scores),
+Kinds: `opener` (Thursday: the topper and a link to the preview article — nothing else),
+`progress` (Sunday night scores),
 `recap` (Tuesday, article intro + link), `bonus` (Tuesday, winner + award art).
 
 **Always refresh `week.json` from Yahoo before posting.** Every kind reads the
@@ -321,8 +322,9 @@ committed data — posting on stale data is the main way this goes wrong.
 
 ## Guards (in code, not instructions)
 
-- `opener` refuses if week.json still has actual scores — that means the week
-  was not rolled forward.
+- `opener` refuses if week.json still has actual scores (the week was not rolled
+  forward), if `BH_TOPPER` is empty (the write-up is the post), or if
+  `story/week-N-preview/` has not been published (there is no link to send).
 - `progress` refuses when no live scores exist yet.
 - `bonus` refuses unless status is `final` and a winner exists.
 - Every post is keyed (`kind-wN`, recap keyed to the article slug) in
@@ -339,17 +341,20 @@ the Yahoo scrape, so none of this can run in the cloud.
 # Posting to Instagram
 
 Account: **[@badhombresfantasy](https://www.instagram.com/badhombresfantasy/)** — public.
-Two posts a week, both on Tuesday, both after the recap is published:
+Three posts a week: two on Tuesday after the recap is published, one on Thursday before
+kickoff.
 
 | Post | Images | Caption | Posted by |
 |---|---|---|---|
 | Recap carousel | `social/week-N/recap-1..4.jpg` — results, Big Dick, Little Bitch, standings | `social/week-N/recap.txt` | `bad-hombres-ig-recap`, Tue 10:30am |
 | Bonus award | `social/week-N/award.jpg` — award art + winner's illustration | `social/week-N/award.txt` | `bad-hombres-ig-award`, Tue 6pm |
-| Matchup preview | `social/week-N/matchups-1..9.jpg` — slate, Game of the Week, five more matchups, Wes's lock, standings | `social/week-N/matchups.txt` | `bad-hombres-ig-matchups`, Thu 4pm |
+| Matchup preview | `social/week-N/matchups-1..9.jpg` — slate, Game of the Week, five more matchups, Wes's lock, standings | `social/week-N/matchups.txt` | `bad-hombres-week-preview`, Thu noon |
 
-The weekly recap task renders the Tuesday images and writes both captions;
-the Thursday opener task does the same for the matchup preview (rules in
-`VOICE_GUIDE.md`, "Instagram"). The posting tasks only post.
+The weekly recap task renders the Tuesday images and writes both captions, and the
+Tuesday posting tasks only post. Thursday is one task end to end: the **Week Preview**
+task rolls the week forward, picks Wes's lock, publishes the preview article, then posts
+the iMessage opener and the Instagram carousel itself (rules in `VOICE_GUIDE.md`,
+"Instagram").
 
 ```bash
 scripts/social-render.py recap                 # images from data/week.json (must be final)

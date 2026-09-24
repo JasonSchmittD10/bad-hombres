@@ -25,7 +25,7 @@ them.
 |---|---|---|---|
 | Tuesday recap (the article) | **Peter King** — structure and narrator | **Magary** in the roasts | "The Weekly Recap" below |
 | Sunday night in-progress post | **Scott Van Pelt** — Bad Beats, narrated *to* Zack | one Magary button, max | `voice/scott-van-pelt/` |
-| Thursday week-opener | **Scott Van Pelt** — One Big Thing | — | `voice/scott-van-pelt/02-architecture.md` §D |
+| Thursday week-opener (iMessage) | **Scott Van Pelt** — One Big Thing. The post is two things: the topper and the link to the preview article. No slate. | — | `voice/scott-van-pelt/02-architecture.md` §D |
 | Thursday preview article (the site) | **Drew Magary** — the Thursday column, games rated in Money Shots | — | "The Thursday Preview" below |
 | Bonus-settled post | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | `voice/peter-king/02-architecture.md` §B |
 | Draft recap / season preview | **Matthew Berry** — Love/Hate | — | `voice/matthew-berry/` |
@@ -50,7 +50,7 @@ recorded in `data/voices.json`, and every later post reads them — nothing re-p
 | Decision | Made | Then used by |
 |---|---|---|
 | **Game of the Week** | Tuesday, by the recap, with `scripts/game-of-the-week.py` | The recap's *Looking ahead* (first storyline) · Thursday iMessage opener (the One Big Thing) · Instagram preview (slide 2 and the caption's hook) |
-| **Pastor Wes's Lock** | Tuesday, in the recap's *Looking ahead* | Thursday iMessage opener · Instagram preview (slide 8 and caption) · graded the next Monday |
+| **Pastor Wes's Lock** | **Thursday, in the preview article** (the Week Preview task), from this week's real matchups | Thursday iMessage opener · Instagram preview (slide 8 and caption) · graded by the next Tuesday recap |
 
 The Game of the Week is scored, not chosen by taste: projected closeness, the all-time
 series, current rankings, and — counting for more each week — stakes (both on the playoff
@@ -182,7 +182,9 @@ the Week** recorded by `scripts/game-of-the-week.py` — see "One week, one stor
 walking into a buzzsaw, whose bye weeks are about to detonate. Name the matchup, make a
 call, and be specific enough to be wrong.
 
-Closes on **Pastor Wes's Lock of the Week**, with his running record.
+Does **not** carry Pastor Wes's Lock — that is picked fresh on Thursday, in the preview
+article, so it is never four days stale. The recap **grades** the open lock ("W"/"L") and
+quotes his record where the week's story calls for it; it never names the next pick.
 
 ### 6. Chatnerdness
 The sign-off. Has nothing to do with football and never changes: the week's dumbest thing
@@ -298,8 +300,9 @@ series record closing five of six matchups. Each one worked the first time.
 ## The Thursday Preview — structure
 
 Magary's Thursday column, cut to size, published to the site as `week-N-preview` by the
-Thursday opener. It tells the **same story** as the Thursday text and the Instagram
-preview — the recorded Game of the Week and Wes's recorded lock — with its own jokes.
+Week Preview task. It tells the **same story** as the Thursday text and the Instagram
+preview — the recorded Game of the Week and Wes's lock, which is picked here — with its
+own jokes. It is also the article the iMessage opener links to, so it publishes first.
 Model: `voice/drew-magary/02-architecture.md` §B (the Jamboroo) and his samples in
 `04-league-adaptation.md`.
 
@@ -310,8 +313,11 @@ Model: `voice/drew-magary/02-architecture.md` §B (the Jamboroo) and his samples
    Money Shots.* Tiers **FIVE → ONE MONEY SHOT(S)**, bolded. The recorded Game of the Week
    stands alone at FIVE. At least one tier is empty and says exactly **None.** Each
    matchup gets a bolded lead-in and its own shape.
-3. **Pastor Wes's Lock of the Week** — his recorded pick and record, flat. The monologue
-   lives in Tuesday's recap; never write a second one here.
+3. **Pastor Wes's Lock of the Week** — the monologue and the pick, made here, from this
+   week's real matchups. Opens as a homily, cites scripture that doesn't exist, derails by
+   the second paragraph, lands on the pick, then his record. Same length and shape every
+   week, a fresh parable every week (see "Wes" below). Record it in `data/voices.json`
+   before anything else quotes it.
 4. **Sign-off**, fixed every week: *Lineups lock at kickoff. Set them.*
 
 Rules that bite here: about one number per matchup (a series record, a projection, a rank);
@@ -380,7 +386,8 @@ exist, and derails by the second paragraph — the grill, Texas, a parable about
 before landing on next week's lock. Register: warm and lost.
 
 - **The joke is the derail, never the faith.** Nothing aimed at what he believes.
-- Lives at the end of **Looking ahead**, every recap.
+- Lives in the **Thursday preview article**, its own section, every week — picked the day
+  it matters, not four days early.
 - Record is tracked and quoted. It should be bad; never shade a grade to protect the bit.
 - Don't stack him in the week's sincere beat the same week he's done the monologue.
 
