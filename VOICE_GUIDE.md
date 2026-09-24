@@ -283,6 +283,39 @@ series record closing five of six matchups. Each one worked the first time.
 - **Before publishing, read it once only for repetition** — same construction, same comp,
   same joke shape. Cut or change the second one.
 
+**Across weeks, not just within one.** The voice stays the same; the material never
+repeats. Before writing anything, read the **last three pieces** the site published (the
+newest `story/` pages) and the other posts from this same week, and make a short list of
+what is already used up:
+
+- **Jokes, images and comparisons.** A hinge in the truck, somebody else's Crock-Pot lid,
+  a man reading the inactive list at 3 a.m. — each lands once, ever. Wes's parable is a
+  fresh object every single week, never a variation on last week's.
+- **Angles.** If last week led on Dylan's two hundred, this week does not lead on Dylan's
+  two hundred. A running storyline can continue; the *shape* of the telling changes.
+- **Structures.** The escalation ladder's subject, the CAPS line, the pull quote, the
+  sincere beat — same slots, different occupants.
+- **Openings.** Don't start two consecutive pieces the same way (a timestamp, a
+  transaction log, a scoreboard line).
+
+If a bit is genuinely worth returning to, it comes back **changed** — inverted, paid off,
+or turned on a different person. A repeat that isn't doing new work is a tic.
+
+### The group chat is an accent, not a source
+
+Chatnerdness and the occasional quoted line come from the thread export at
+`~/Documents/bad-hombres-chat/`. **Check it every week** and say in the report whether it
+covers the week just played:
+
+- Fresh enough to cover the week → use it for Chatnerdness and, when something in the
+  thread genuinely drives a matchup, one quoted line.
+- Stale, missing, or silent on that week → **write the piece anyway** and omit
+  Chatnerdness. Note in the report that the export needs refreshing. A missing sign-off is
+  a footnote; an invented quote is a firing.
+- Never paraphrase-as-quote, never "improve" what somebody wrote, never quote a
+  one-to-one message, and never let the thread decide what the week was about — the games
+  decide that. The chat is seasoning on top, the same as numbers.
+
 **Sample — the awards**
 > **Big Dick of the Week: Chris, 38.02.** Won the week on Wednesday night with a
 > quarterback nobody else in this room would have started, and has spent four days telling

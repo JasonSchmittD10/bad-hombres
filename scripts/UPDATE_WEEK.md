@@ -433,3 +433,22 @@ needs an app and a token. Meta's console labels drift; the path is roughly:
 Tokens last 60 days. `ig-post.py` refreshes it automatically once it's 30
 days old, so as long as it posts at least monthly it never expires. If it
 does lapse (a long off-season), repeat steps 4–5.
+
+---
+
+# The group-chat export
+
+Chatnerdness and any quoted line come from `~/Documents/bad-hombres-chat/bad-hombres-full-2021-2026.tsv`
+(columns: date, SENDER, text). The Week Recap task checks every week whether it covers the
+week just played, and writes the recap without Chatnerdness when it doesn't.
+
+Claude's shell cannot refresh it — reading `~/Library/Messages/chat.db` needs Full Disk
+Access, which the scheduled sessions don't have. Jason refreshes it from a Terminal that
+does:
+
+```bash
+perl ~/Documents/bad-hombres-chat/dump-script.pl > ~/Documents/bad-hombres-chat/bad-hombres-full-2021-2026.tsv
+```
+
+The chat is an accent, never a dependency (`VOICE_GUIDE.md`, "The group chat is an accent,
+not a source"). A missing sign-off is a footnote; an invented quote is a firing.

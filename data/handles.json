@@ -1,5 +1,5 @@
 {
-  "note": "Instagram handles for league members, WITHOUT the @. scripts/ig-post.py tags only the members a post is about: Big Dick and Little Bitch of the Week on the recap carousel, the winner on the bonus award, nobody on the matchup preview. Leave a member blank to never tag them. Only add someone who's fine being tagged on a public account.",
+  "note": "Instagram handles for league members, WITHOUT the @. scripts/ig-post.py tags only the members a post is about: Big Dick and Little Bitch of the Week on the recap carousel, the winner on the bonus award, nobody on the matchup preview. Leave a member blank to never tag them. Only add someone who's fine being tagged on a public account. Matt has no Instagram account, so he is never tagged.",
   "handles": {
     "Adam": "adamschmitt18",
     "Chris": "christopher_dambro",
@@ -7,10 +7,10 @@
     "Drew": "andymrose",
     "Dylan": "greendylan95",
     "Erick": "eadeleon28",
-    "Hoa": "",
+    "Hoa": "hv.tran",
     "Jason": "jason__schmitt",
     "Matt": "",
-    "Tola": "",
+    "Tola": "tola_odedere",
     "Wes": "therealwesjones",
     "Zack": "exzacklymoore"
   }
