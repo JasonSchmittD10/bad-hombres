@@ -1,25 +1,195 @@
 {
-  "updated": "2026-09-22T09:00:00-04:00",
-  "playoffCut": 6,
-  "weeklyBonus": 9,
-  "note": "Standings + weekly power-rank history. Written by the weekly recap task. See scripts/UPDATE_WEEK.md.",
-  "teams": [
-    {"m":"Drew","t":"I Stand with Jordon","w":0,"l":2,"tie":0,"pf":212.34,"pa":266.92,"bank":0},
-    {"m":"Wes","t":"MikeLee4 Prez","w":1,"l":1,"tie":0,"pf":226.86,"pa":225.74,"bank":0},
-    {"m":"Erick","t":"King In The North","w":2,"l":0,"tie":0,"pf":268.98,"pa":225.38,"bank":0},
-    {"m":"Tola","t":"Alien Awareness","w":1,"l":1,"tie":0,"pf":278.46,"pa":272.44,"bank":0},
-    {"m":"David","t":"Drain the Swamp","w":0,"l":2,"tie":0,"pf":263.92,"pa":327.84,"bank":0},
-    {"m":"Dylan","t":"Carlie's Headset","w":1,"l":1,"tie":0,"pf":302.4,"pa":254.74,"bank":9},
-    {"m":"Matt","t":"San Diego Chillin'","w":1,"l":1,"tie":0,"pf":251.58,"pa":260.42,"bank":9},
-    {"m":"Zack","t":"Sewer Pigeons","w":0,"l":2,"tie":0,"pf":237.08,"pa":266.1,"bank":0},
-    {"m":"Hoa","t":"Critical Chase Theory","w":1,"l":1,"tie":0,"pf":213.04,"pa":223.64,"bank":0},
-    {"m":"Jason","t":"Pull-Out Game Weak","w":2,"l":0,"tie":0,"pf":257.7,"pa":227.52,"bank":0},
-    {"m":"Chris","t":"Maye the Force Be With You","w":1,"l":1,"tie":0,"pf":228.84,"pa":217.04,"bank":0},
-    {"m":"Adam","t":"Suck My Diggs","w":2,"l":0,"tie":0,"pf":272.42,"pa":245.84,"bank":0}
-  ],
-  "ranks": [
-    {"label":"PRE","order":["Drew","Wes","Erick","Tola","David","Dylan","Matt","Zack","Hoa","Jason","Chris","Adam"]},
-    {"label":"WK 1","order":["Jason","Erick","Adam","Zack","Matt","Tola","Wes","Drew","Hoa","David","Chris","Dylan"]},
-    {"label":"WK 2","order":["Adam","Erick","Dylan","Jason","Tola","David","Matt","Chris","Wes","Hoa","Zack","Drew"]}
-  ]
+ "updated": "2026-09-22T09:00:00-04:00",
+ "playoffCut": 6,
+ "weeklyBonus": 9,
+ "note": "Standings + weekly power-rank history. Written by the weekly recap task. See scripts/UPDATE_WEEK.md. trades: per-manager trade count for GM of the Year, from Yahoo's Commish Tools > Transaction Numbers (read-only), updated on the scoreboard's run D.",
+ "teams": [
+  {
+   "m": "Drew",
+   "t": "I Stand with Jordon",
+   "w": 0,
+   "l": 2,
+   "tie": 0,
+   "pf": 212.34,
+   "pa": 266.92,
+   "bank": 0
+  },
+  {
+   "m": "Wes",
+   "t": "MikeLee4 Prez",
+   "w": 1,
+   "l": 1,
+   "tie": 0,
+   "pf": 226.86,
+   "pa": 225.74,
+   "bank": 0
+  },
+  {
+   "m": "Erick",
+   "t": "King In The North",
+   "w": 2,
+   "l": 0,
+   "tie": 0,
+   "pf": 268.98,
+   "pa": 225.38,
+   "bank": 0
+  },
+  {
+   "m": "Tola",
+   "t": "Alien Awareness",
+   "w": 1,
+   "l": 1,
+   "tie": 0,
+   "pf": 278.46,
+   "pa": 272.44,
+   "bank": 0
+  },
+  {
+   "m": "David",
+   "t": "Drain the Swamp",
+   "w": 0,
+   "l": 2,
+   "tie": 0,
+   "pf": 263.92,
+   "pa": 327.84,
+   "bank": 0
+  },
+  {
+   "m": "Dylan",
+   "t": "Carlie's Headset",
+   "w": 1,
+   "l": 1,
+   "tie": 0,
+   "pf": 302.4,
+   "pa": 254.74,
+   "bank": 9
+  },
+  {
+   "m": "Matt",
+   "t": "San Diego Chillin'",
+   "w": 1,
+   "l": 1,
+   "tie": 0,
+   "pf": 251.58,
+   "pa": 260.42,
+   "bank": 9
+  },
+  {
+   "m": "Zack",
+   "t": "Sewer Pigeons",
+   "w": 0,
+   "l": 2,
+   "tie": 0,
+   "pf": 237.08,
+   "pa": 266.1,
+   "bank": 0
+  },
+  {
+   "m": "Hoa",
+   "t": "Critical Chase Theory",
+   "w": 1,
+   "l": 1,
+   "tie": 0,
+   "pf": 213.04,
+   "pa": 223.64,
+   "bank": 0
+  },
+  {
+   "m": "Jason",
+   "t": "Pull-Out Game Weak",
+   "w": 2,
+   "l": 0,
+   "tie": 0,
+   "pf": 257.7,
+   "pa": 227.52,
+   "bank": 0
+  },
+  {
+   "m": "Chris",
+   "t": "Maye the Force Be With You",
+   "w": 1,
+   "l": 1,
+   "tie": 0,
+   "pf": 228.84,
+   "pa": 217.04,
+   "bank": 0
+  },
+  {
+   "m": "Adam",
+   "t": "Suck My Diggs",
+   "w": 2,
+   "l": 0,
+   "tie": 0,
+   "pf": 272.42,
+   "pa": 245.84,
+   "bank": 0
+  }
+ ],
+ "ranks": [
+  {
+   "label": "PRE",
+   "order": [
+    "Drew",
+    "Wes",
+    "Erick",
+    "Tola",
+    "David",
+    "Dylan",
+    "Matt",
+    "Zack",
+    "Hoa",
+    "Jason",
+    "Chris",
+    "Adam"
+   ]
+  },
+  {
+   "label": "WK 1",
+   "order": [
+    "Jason",
+    "Erick",
+    "Adam",
+    "Zack",
+    "Matt",
+    "Tola",
+    "Wes",
+    "Drew",
+    "Hoa",
+    "David",
+    "Chris",
+    "Dylan"
+   ]
+  },
+  {
+   "label": "WK 2",
+   "order": [
+    "Adam",
+    "Erick",
+    "Dylan",
+    "Jason",
+    "Tola",
+    "David",
+    "Matt",
+    "Chris",
+    "Wes",
+    "Hoa",
+    "Zack",
+    "Drew"
+   ]
+  }
+ ],
+ "trades": {
+  "Jason": 0,
+  "David": 0,
+  "Matt": 0,
+  "Erick": 0,
+  "Chris": 0,
+  "Wes": 0,
+  "Zack": 0,
+  "Adam": 0,
+  "Dylan": 0,
+  "Drew": 0,
+  "Tola": 0,
+  "Hoa": 0
+ }
 }

@@ -897,7 +897,7 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   {nm:"You Got Dicked",    cr:"Most points against",        amt:15, src:"pa", dir:"desc"},
   {nm:"Biggest Load",      cr:"Most points in a single week", amt:15, src:"week"},
   {nm:"You Suck",          cr:"Lowest total points",        amt:1,  src:"pf", dir:"asc"},
-  {nm:"GM of the Year",    cr:"Most trades",                amt:10, note:"Decided at season\u2019s end"},
+  {nm:"GM of the Year",    cr:"Most trades",                amt:10, src:"trades", dir:"desc", empty:"No trades yet this season."},
   {nm:"The Commissioner\u2019s Award", cr:"Commissioner\u2019s discretion", amt:3, note:"Commissioner\u2019s call"}
  ];
  window.BH_AWARD_WINNERS={1:{who:"Matt",sub:"Josh Allen · 38.66"},2:{who:"Dylan",sub:"over David · 59.16"}};
@@ -1178,23 +1178,30 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
    ? '<div class="sa-tbd">'+esc(a.note)+'</div>'
    : '<div class="sa-rows">'+(rows&&rows.length?rows.map(function(r,i){
        return '<div class="sa-r'+(i?'':' lead')+'"><span class="pos">'+(i+1)+'</span>'+face(r.who)+
-        '<span class="who">'+esc(r.who)+'</span><span class="val">'+fmt(r.val)+
+        '<span class="who">'+esc(r.who)+'</span><span class="val">'+(a.src==='trades'?(r.val+(r.val===1?' trade':' trades')):fmt(r.val))+
         (r.wk?'<small>Wk '+r.wk+'</small>':'')+'</span></div>';
-      }).join(''):'<div class="sa-r"><span class="who">Nothing settled yet.</span></div>')+'</div>';
+      }).join(''):'<div class="sa-r"><span class="who">'+esc(a.empty||'Nothing settled yet.')+'</span></div>')+'</div>';
   return '<div class="sa"><div class="sa-top"><div class="sa-nm">'+esc(a.nm)+'</div>'+
    '<div class="sa-amt">$'+a.amt+'</div></div><div class="sa-cr">'+esc(a.cr)+'</div>'+body+'</div>';
  }
- function render(teams,rec){
+ function trades(season){
+  var t=(season&&season.trades)||{}, rows=Object.keys(t).filter(function(m){return t[m]>0})
+   .map(function(m){return {who:m,val:t[m]}});
+  rows.sort(function(a,b){return b.val-a.val});
+  return rows.slice(0,3);
+ }
+ function render(teams,rec,season){
   grid.innerHTML=list.map(function(a){
    if(a.note) return card(a);
    if(a.src==='week') return card(a,rec?bestWeeks(rec):null);
+   if(a.src==='trades') return card(a,season?trades(season):null);
    return card(a,teams?rank(teams,a.src,a.dir):null);
   }).join('');
  }
  function grab(u){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return null})}
  Promise.all([grab('/data/season.json'),grab('/data/record.json')]).then(function(o){
   var teams=o[0]&&o[0].teams&&o[0].teams.length?o[0].teams:null;
-  render(teams,o[1]);
+  render(teams,o[1],o[0]);
  });
 })();
 

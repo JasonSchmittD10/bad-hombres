@@ -101,6 +101,12 @@ def check_season(season, rec):
     if len(set(played.values())) > 1:
         fail("season.json: managers have played different numbers of games: %s" % played)
 
+    tr = season.get("trades")
+    if tr is not None:
+        if set(tr) != MANAGERS: fail("season.json: trades should list exactly the 12 managers")
+        bad = {m: n for m, n in tr.items() if not isinstance(n, int) or n < 0}
+        if bad: fail("season.json: trade counts must be whole numbers: %s" % bad)
+
     cur = str(rec.get("current") or "")
     weeks = (rec.get("weeks") or {}).get(cur, [])
     M = rec.get("managers") or {}
