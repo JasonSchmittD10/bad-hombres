@@ -507,9 +507,12 @@ kickoff. Bragging rights only — nothing in the by-laws, nothing paid out.
   `data/voices.json` `gotw`, the lock from `data/week.json` (`nextKickoff`, or any score on
   the board), and grading from the final scores in `data/record.json` — so the routines
   don't have to do anything for it to work week to week.
-- **Storage:** Upstash Redis via its REST API. **One-time setup:** in Vercel, open the
-  project → Storage (or Marketplace) → Upstash for Redis → create/connect it to this
-  project. That adds `KV_REST_API_URL` and `KV_REST_API_TOKEN`; redeploy. Until then the
-  page says "opens soon".
-- **Forgotten PIN:** delete that member's `pin:<Name>` key in the Upstash console; their
-  next pick sets a new one.
+- **Storage:** a secret GitHub Gist — free, on the same GitHub account as the site:
+  <https://gist.github.com/JasonSchmittD10/cd34b3a6f0774b382277b8a3505d4e6a>, one file,
+  `bad-hombres-picks.json`. **One-time setup:** create a *classic* GitHub token with only
+  the **gist** scope (GitHub → Settings → Developer settings → Personal access tokens →
+  Tokens (classic)), then in Vercel add `PICKS_GIST_ID` =
+  `cd34b3a6f0774b382277b8a3505d4e6a` and `PICKS_GIST_TOKEN` = that token (Production +
+  Preview) and redeploy. Until then the page says "opens soon".
+- **Forgotten PIN:** edit the gist and delete that member's line under `"pins"`; their
+  next pick sets a new one. PINs are stored only as hashes.

@@ -6,13 +6,15 @@
 //                             leaderboard
 //   POST /api/picks           {who, pin, pick} — make or change a pick before kickoff
 //
-// Storage is Upstash Redis over its REST API. Connect it once from the Vercel dashboard
-// (Storage / Marketplace → Upstash Redis → connect to this project); that sets
-// KV_REST_API_URL and KV_REST_API_TOKEN. UPSTASH_REDIS_REST_URL / _TOKEN also work.
-// Until it's connected, GET says so and the page shows "opens soon".
+// Storage is a secret GitHub Gist holding one JSON file — free, and on the GitHub
+// account the site already uses. Set two env vars in Vercel:
+//   PICKS_GIST_ID     the gist's id (the last part of its URL)
+//   PICKS_GIST_TOKEN  a classic GitHub token with ONLY the "gist" scope
+// Until they're set, GET says so and the page shows "opens soon".
 //
-// Keys:  picks:<season>:<week>   hash  manager -> manager they picked
-//        pin:<manager>           sha-256 of their PIN (set by their first pick)
+// The file, bad-hombres-picks.json:
+//   {"pins":  {"<Manager>": "<sha-256 of their PIN>"},
+//    "picks": {"<season>": {"<week>": {"<Manager>": "<manager they picked>"}}}}
 //
 // The game, the lock and the result all come from the site's own data files, so the
 // pick'em always agrees with the scoreboard: the recorded Game of the Week
@@ -22,29 +24,39 @@
 import { createHash } from 'node:crypto';
 
 const env = (n) => (process.env[n] || '').trim();
-const URL_ = env('KV_REST_API_URL') || env('UPSTASH_REDIS_REST_URL');
-const TOKEN = env('KV_REST_API_TOKEN') || env('UPSTASH_REDIS_REST_TOKEN');
+const GIST = env('PICKS_GIST_ID');
+const TOKEN = env('PICKS_GIST_TOKEN');
+const FILE = 'bad-hombres-picks.json';
 
 const MANAGERS = ['Adam', 'Chris', 'David', 'Drew', 'Dylan', 'Erick', 'Hoa', 'Jason', 'Matt', 'Tola', 'Wes', 'Zack'];
 
-async function redis(...cmds) {
-  const r = await fetch(`${URL_}/pipeline`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(cmds),
-  });
+const GH = {
+  Authorization: `Bearer ${TOKEN}`,
+  Accept: 'application/vnd.github+json',
+  'X-GitHub-Api-Version': '2022-11-28',
+  'User-Agent': 'bad-hombres-picks',
+};
+
+async function loadStore() {
+  const r = await fetch(`https://api.github.com/gists/${GIST}`, { headers: GH, cache: 'no-store' });
   if (!r.ok) throw new Error(`storage-${r.status}`);
-  const out = await r.json();
-  const bad = out.find((x) => x.error);
-  if (bad) throw new Error(`storage: ${bad.error}`);
-  return out.map((x) => x.result);
+  const f = ((await r.json()).files || {})[FILE];
+  if (!f) return { pins: {}, picks: {} };
+  // a big file comes back truncated; fetch the raw copy instead
+  const text = f.truncated ? await (await fetch(f.raw_url, { headers: GH })).text() : f.content;
+  const d = JSON.parse(text || '{}');
+  return { pins: d.pins || {}, picks: d.picks || {} };
 }
 
-const hashToObj = (arr) => {
-  const o = {};
-  for (let i = 0; arr && i < arr.length; i += 2) o[arr[i]] = arr[i + 1];
-  return o;
-};
+async function saveStore(d) {
+  const r = await fetch(`https://api.github.com/gists/${GIST}`, {
+    method: 'PATCH',
+    headers: { ...GH, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ files: { [FILE]: { content: JSON.stringify(d, null, 1) } } }),
+  });
+  if (!r.ok) throw new Error(`storage-save-${r.status}`);
+}
+
 const pinHash = (who, pin) => createHash('sha256').update(`bad-hombres:${who}:${pin}`).digest('hex');
 
 async function siteData(req) {
@@ -89,11 +101,9 @@ function results({ voices, record }, season) {
   return out;
 }
 
-async function board(data, cur) {
+function board(data, cur, store) {
   const res = results(data, cur.season);
-  const weeks = [...new Set([...Object.keys(res).map(Number), cur.n])];
-  const hashes = await redis(...weeks.map((w) => ['HGETALL', `picks:${cur.season}:${w}`]));
-  const byWeek = Object.fromEntries(weeks.map((w, i) => [w, hashToObj(hashes[i])]));
+  const byWeek = (store.picks || {})[cur.season] || {};
   const table = Object.fromEntries(MANAGERS.map((m) => [m, { who: m, w: 0, l: 0, t: 0 }]));
   for (const [w, winner] of Object.entries(res)) {
     for (const [who, pick] of Object.entries(byWeek[w] || {})) {
@@ -109,10 +119,10 @@ async function board(data, cur) {
   return { thisWeek: byWeek[cur.n] || {}, leaderboard, graded: res };
 }
 
-async function read(req) {
+async function read(req, store) {
   const data = await siteData(req);
   const cur = current(data);
-  const { thisWeek, leaderboard, graded } = await board(data, cur);
+  const { thisWeek, leaderboard, graded } = board(data, cur, store || await loadStore());
   const counts = {};
   if (cur.game) for (const side of [cur.game.a, cur.game.b]) counts[side] = Object.values(thisWeek).filter((p) => p === side).length;
   return {
@@ -126,7 +136,7 @@ async function read(req) {
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-  if (!URL_ || !TOKEN) return res.status(503).json({ error: 'storage-not-connected' });
+  if (!GIST || !TOKEN) return res.status(503).json({ error: 'storage-not-connected' });
   try {
     if (req.method === 'GET') return res.status(200).json(await read(req));
     if (req.method !== 'POST') return res.status(405).json({ error: 'method' });
@@ -143,11 +153,22 @@ export default async function handler(req, res) {
     if (![cur.game.a, cur.game.b].includes(pick)) return res.status(400).json({ error: 'Pick one of the two teams in the game.' });
 
     // A manager's first pick sets their PIN; after that it has to match.
-    const [saved] = await redis(['GET', `pin:${who}`]);
     const h = pinHash(who, pin);
+    let store = await loadStore();
+    const saved = store.pins[who];
     if (saved && saved !== h) return res.status(403).json({ error: `That isn't ${who}'s PIN.` });
-    await redis(...(saved ? [] : [['SET', `pin:${who}`, h]]), ['HSET', `picks:${cur.season}:${cur.n}`, who, pick]);
-    return res.status(200).json({ ok: true, firstPick: !saved, ...(await read(req)) });
+
+    // Read, change, write — then read back. Twelve people rarely pick in the same second,
+    // but if two saves cross, the loser's pick won't be there and we write it again.
+    for (let attempt = 0; attempt < 3; attempt++) {
+      store.pins[who] = h;
+      const season = (store.picks[cur.season] = store.picks[cur.season] || {});
+      (season[cur.n] = season[cur.n] || {})[who] = pick;
+      await saveStore(store);
+      store = await loadStore();
+      if ((((store.picks[cur.season] || {})[cur.n]) || {})[who] === pick) break;
+    }
+    return res.status(200).json({ ok: true, firstPick: !saved, ...(await read(req, store)) });
   } catch (err) {
     return res.status(502).json({ error: String(err.message || err) });
   }
