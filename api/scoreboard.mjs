@@ -101,7 +101,16 @@ const MANAGERS = {
   tola: 'Tola', hoa: 'Hoa',
 };
 
+// Yahoo team_id -> manager. Stable for the life of the league, unlike nicknames
+// (several are handles: "dylang", "aschmitty32", "DAYUMbro", "zek") and team names.
+const TEAM_IDS = {
+  1: 'Jason', 2: 'Tola', 3: 'Hoa', 4: 'David', 5: 'Dylan', 6: 'Drew',
+  7: 'Chris', 8: 'Erick', 9: 'Wes', 10: 'Matt', 11: 'Zack', 12: 'Adam',
+};
+
 function managerName(team) {
+  const byId = TEAM_IDS[Number(team.team_id)];
+  if (byId) return byId;
   const mgrs = flat(team.managers).map((m) => merge(m).manager || merge(m));
   const nick = (mgrs[0] && (mgrs[0].nickname || mgrs[0].name)) || '';
   const first = String(nick).trim().split(/\s+/)[0].toLowerCase();
@@ -126,13 +135,20 @@ async function getScoreboard(week) {
   const meta = merge(league[0]);
   const sb = merge(league[1]).scoreboard;
   const wk = Number(merge(sb).week || meta.current_week);
-  const matchups = flat(merge(sb).matchups || merge(merge(sb)['0']))
-    .map((m) => merge(merge(m).matchup))
-    .filter((m) => m && m.teams)
-    .map((m) => {
-      const [a, b] = flat(m.teams).map(teamShape);
-      return { a, b, status: m.status };
-    });
+  // Yahoo nests these deeper than it looks: scoreboard -> "0" -> matchups -> "n" -> matchup,
+  // and each matchup -> "0" -> teams -> "n" -> {team: [...]}. Checked against a real
+  // response (Week 3, 2026) — the first time the API ever answered.
+  const sbn = merge(sb);
+  const mnode = sbn.matchups || merge(sbn['0'] || {}).matchups;
+  const matchups = flat(mnode)
+    .map((m) => merge(m).matchup)
+    .filter(Boolean)
+    .map((mu) => {
+      const teamsNode = mu.teams || merge(mu['0'] || {}).teams;
+      const [a, b] = flat(teamsNode).map((e) => teamShape(merge(e).team || e));
+      return { a, b, status: mu.status };
+    })
+    .filter((m) => m.a && m.b);
   return { week: wk, meta, matchups };
 }
 
@@ -350,11 +366,6 @@ async function computeBonus(week, matchups, teams, kickoffDays, rookies) {
 
 export default async function handler(req, res) {
   try {
-    // TEMP: ?raw=1 returns Yahoo's scoreboard response as-is, to fix the parser against it
-    if (req.query?.raw === '1') {
-      res.setHeader('Cache-Control', 'no-store');
-      return res.status(200).json(await yahoo(`/league/${LEAGUE_KEY}/scoreboard`));
-    }
     const qWeek = parseInt(req.query?.week, 10);
     const sb = await getScoreboard(Number.isFinite(qWeek) ? qWeek : undefined);
     const week = sb.week;

@@ -1031,11 +1031,17 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   })}
  function load(){
   if(!window.fetch)return;
-  // Live Yahoo when it is available; otherwise the committed week file. An answer
-  // with no matchups counts as unavailable — otherwise the page keeps the inline
-  // placeholder (Week 1) it draws before any data arrives.
-  grab('/api/scoreboard').then(function(j){if(!apply(j))throw 0}).catch(function(){
-   return grab('/data/week.json').then(apply).catch(function(){/* inline fallback */});
+  // Live Yahoo scores when the API has them; the committed week file otherwise. An
+  // answer with no matchups counts as unavailable (or the page keeps its inline Week 1
+  // placeholder), and the bonus board keeps the week file's leaders unless the API
+  // actually computed some.
+  var none=function(){return null};
+  Promise.all([grab('/api/scoreboard').catch(none),grab('/data/week.json').catch(none)]).then(function(o){
+   var api=o[0], file=o[1], live=api&&api.matchups&&api.matchups.length&&(!file||api.week>=file.week);
+   var d=live?api:file; if(!d) return;
+   var hasBonus=function(b){return b&&((b.actual&&b.actual.length)||(b.projected&&b.projected.length))};
+   if(live&&!hasBonus(api.bonus)&&file&&file.week===api.week) d.bonus=file.bonus;
+   apply(d);
   });
  }
  render(); load(); setInterval(load,90000);
