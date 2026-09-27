@@ -1031,8 +1031,10 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   })}
  function load(){
   if(!window.fetch)return;
-  // Live Yahoo when it is available; otherwise the committed week file.
-  grab('/api/scoreboard').then(apply).catch(function(){
+  // Live Yahoo when it is available; otherwise the committed week file. An answer
+  // with no matchups counts as unavailable — otherwise the page keeps the inline
+  // placeholder (Week 1) it draws before any data arrives.
+  grab('/api/scoreboard').then(function(j){if(!apply(j))throw 0}).catch(function(){
    return grab('/data/week.json').then(apply).catch(function(){/* inline fallback */});
   });
  }
