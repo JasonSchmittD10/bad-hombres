@@ -1,91 +1,91 @@
 {
  "week": 3,
  "status": "live",
- "updated": "2026-09-25T00:30:00-04:00",
+ "updated": "2026-09-27T19:50:00-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 0.0,
-    "p": 130.93
+    "s": 123.5,
+    "p": 134.28
    },
    "b": {
     "m": "David",
     "t": "Drain the Swamp",
-    "s": 0.0,
-    "p": 126.03
+    "s": 92.24,
+    "p": 92.24
    }
   },
   {
    "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 32.4,
-    "p": 139.84
+    "s": 115.34,
+    "p": 131.05
    },
    "b": {
     "m": "Drew",
     "t": "I Stand with Jordon",
-    "s": 19.48,
-    "p": 121.77
+    "s": 111.38,
+    "p": 111.38
    }
   },
   {
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 0.0,
-    "p": 118.57
+    "s": 96.58,
+    "p": 119.98
    },
    "b": {
     "m": "Erick",
     "t": "King In The North",
-    "s": 0.0,
-    "p": 116.57
+    "s": 71.5,
+    "p": 97.38
    }
   },
   {
    "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 16.04,
-    "p": 125.26
+    "s": 118.04,
+    "p": 147.84
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
-    "s": 22.6,
-    "p": 137.18
+    "s": 105.86,
+    "p": 119.32
    }
   },
   {
    "a": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 0.0,
-    "p": 126.41
+    "s": 156.42,
+    "p": 156.42
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
-    "s": 0.0,
-    "p": 115.33
+    "s": 94.84,
+    "p": 109.95
    }
   },
   {
    "a": {
     "m": "Matt",
     "t": "San Diego Chillin’",
-    "s": 4.6,
-    "p": 106.09
+    "s": 99.76,
+    "p": 99.76
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
-    "s": 37.3,
-    "p": 133.7
+    "s": 134.52,
+    "p": 134.52
    }
   }
  ],
@@ -95,9 +95,19 @@
   "cr": "Lowest-scoring starting TE",
   "actual": [
    {
-    "who": "Matt",
-    "sub": "Tucker Kraft",
-    "val": 6.6
+    "who": "David",
+    "sub": "Isaiah Likely",
+    "val": 3.3
+   },
+   {
+    "who": "Tola",
+    "sub": "Dalton Kincaid",
+    "val": 3.8
+   },
+   {
+    "who": "Adam",
+    "sub": "Mark Andrews",
+    "val": 5.4
    }
   ],
   "projected": [
@@ -122,10 +132,10 @@
  "nextKickoff": "2026-09-24T20:15:00-04:00",
  "nextKickoffLabel": "Thursday, Sept 24 · 8:15 PM ET",
  "nextGame": {
-  "away": "LAC",
-  "home": "BUF",
-  "kickoff": "2026-09-27T13:00:00-04:00",
-  "label": "Sunday, Sept 27 at 1:00 PM ET",
-  "network": "FOX"
+  "away": "LAR",
+  "home": "DEN",
+  "kickoff": "2026-09-27T20:20:00-04:00",
+  "label": "Sunday, Sept 27 at 8:20 PM ET",
+  "network": "NBC"
  }
 }
