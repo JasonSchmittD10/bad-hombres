@@ -350,6 +350,11 @@ async function computeBonus(week, matchups, teams, kickoffDays, rookies) {
 
 export default async function handler(req, res) {
   try {
+    // TEMP: ?raw=1 returns Yahoo's scoreboard response as-is, to fix the parser against it
+    if (req.query?.raw === '1') {
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(200).json(await yahoo(`/league/${LEAGUE_KEY}/scoreboard`));
+    }
     const qWeek = parseInt(req.query?.week, 10);
     const sb = await getScoreboard(Number.isFinite(qWeek) ? qWeek : undefined);
     const week = sb.week;
