@@ -445,8 +445,7 @@ img.av{object-fit:cover;object-position:center top;display:block}
 a.st-odds{text-decoration:none}a.st-odds:hover{color:#fff}
 .st-od{min-width:58px}
 .st-pct{display:block;font-weight:800;color:#fff}
-.st-bar{display:block;height:3px;margin-top:4px;border-radius:2px;background:#2a2a31;overflow:hidden}
-.st-bar i{display:block;height:100%;background:#3fb26b;border-radius:2px}
+.st-bar{display:block;width:18px;height:3px;margin:4px 0 0 auto;border-radius:2px}
 .st-tbl td.st-bm{color:var(--silver)}
 .st-tbl td.st-bm.hot{color:var(--red);font-weight:800}
 .st-tbl th.st-bm{color:var(--red)}
@@ -628,7 +627,6 @@ h3.title{font-size:var(--fs-lg)}
  /* with the odds in: headers wrap, spacing tightens, so the team names keep the room */
  .st-tbl.has-odds th{white-space:normal;letter-spacing:.04em;line-height:1.25;padding:6px 4px;vertical-align:bottom}
  .st-tbl.has-odds td{padding:6px 5px}
- .st-tbl.has-odds .st-bar{width:34px;margin-left:auto}
  .st-note.st-odds{margin-left:0;width:100%}
  .st-cut span:after{font-size:7.5px}
  /* let long team names wrap instead of forcing the table wider */
@@ -1333,10 +1331,12 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
   // 20,000 simulated seasons prove nothing at the extremes: never print 0% or 100%
   return p<.005?'&lt;1%':p>=.995?'&gt;99%':Math.round(p*100)+'%';
  }
+ // green (safe) -> yellow -> orange -> red (in trouble): the hue runs 120 -> 0 with the odds
+ function oddsColor(p){return 'hsl('+Math.round(Math.max(0,Math.min(1,p))*120)+',72%,50%)'}
  function oddsCells(o,isBeer){
   var p=typeof o.playoffs==='number'?o.playoffs:0;
   return '<td class="st-od"><span class="st-pct">'+pctTxt(o.playoffs)+'</span>'+
-    '<span class="st-bar"><i style="width:'+Math.round(p*100)+'%"></i></span></td>'+
+    '<span class="st-bar" style="background:'+oddsColor(p)+'"></span></td>'+
    '<td class="st-od st-bm'+(isBeer?' hot':'')+'">'+pctTxt(o.last)+'</td>';
  }
 
