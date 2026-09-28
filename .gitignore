@@ -3,3 +3,5 @@
 .env
 assets/incoming/
 __pycache__/
+# the pulse sampler's live working file (local only; the ledger is data/chokes.json)
+data/pulse.json

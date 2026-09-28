@@ -22,13 +22,16 @@ A choke is a manager who lost after being at or above the threshold (85%) at som
 point while the games were live. Pre-game odds don't count: losing as a projected
 favourite is an upset, not a choke.
 
-This file is written locally; the scoreboard routine commits it with its other data.
+data/pulse.json stays local (gitignored). data/chokes.json is the published ledger:
+{season, threshold, chokes, weeks (the weeks judged)} — it changes only when a week settles,
+and the scoreboard routine commits it.
 """
 import datetime, json, os, sys, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-FILE = ROOT / "data" / "pulse.json"
+FILE = ROOT / "data" / "pulse.json"          # local working file (gitignored)
+LEDGER = ROOT / "data" / "chokes.json"       # the published ledger (committed by the scoreboard routine)
 API = os.environ.get("BH_API", "https://bad-hombres.vercel.app/api/scoreboard") + "?lite=1"
 THRESHOLD = 0.85
 MAX_SAMPLES = 400            # ~66 hours of live games at one per 10 minutes, per week
@@ -39,10 +42,17 @@ def load():
     if FILE.exists(): return json.loads(FILE.read_text())
     return {"season": None, "threshold": THRESHOLD, "weeks": {}, "chokes": []}
 
-def save(d): FILE.write_text(json.dumps(d, indent=1, ensure_ascii=False) + "\n")
+def save(d):
+    FILE.write_text(json.dumps(d, indent=1, ensure_ascii=False) + "\n")
+    # the site reads only the ledger, which changes once a week — not every sample
+    led = {"season": d.get("season"), "threshold": d.get("threshold", THRESHOLD), "chokes": d.get("chokes", []),
+           "weeks": sorted(int(k) for k, w in d.get("weeks", {}).items() if w.get("settled"))}
+    old = json.loads(LEDGER.read_text()) if LEDGER.exists() else None
+    if old != led: LEDGER.write_text(json.dumps(led, indent=1, ensure_ascii=False) + "\n")
 
-def fetch():
-    with urllib.request.urlopen(urllib.request.Request(API, headers={"Cache-Control": "no-store"}), timeout=60) as r:
+def fetch(week=None):
+    url = API + ("&week=%d" % week if week else "")
+    with urllib.request.urlopen(urllib.request.Request(url, headers={"Cache-Control": "no-store"}), timeout=60) as r:
         return json.loads(r.read())
 
 def settle(d, wk, ms):
@@ -97,10 +107,10 @@ def main():
     if a[0] == "sample": return sample()
     d = load()
     if a[0] == "settle":
-        j = fetch()
-        wk = int(a[1]) if len(a) > 1 else j["week"]
-        if wk != j.get("week"): sys.exit("pulse: settle needs the week Yahoo is showing (%s)" % j.get("week"))
+        j = fetch(int(a[1]) if len(a) > 1 else None)
+        wk = j["week"]
         if j.get("status") != "final": sys.exit("pulse: week %s is %s, not final" % (wk, j.get("status")))
+        if str(wk) not in d.get("weeks", {}): print("pulse: no live samples for week %s — nothing to judge" % wk); return
         settle(d, wk, j["matchups"]); save(d)
     for c in d.get("chokes", []):
         print("week %s: %s was %d%% to beat %s at %s (%s-%s), lost %s-%s" % (c["week"], c["who"], round(c["peak"] * 100), c["opp"], c["at"], c["score_then"], c["opp_then"], c["final"], c["opp_final"]))
