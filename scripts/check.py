@@ -166,7 +166,7 @@ def check_stories():
             fail("story/%s: hero %s doesn't exist" % (slug, m.group(1)))
 
 def check_page_cards():
-    for rel in ("", "updates", "members", "members/profile", "record", "bylaws", "picks"):
+    for rel in ("", "updates", "members", "members/profile", "record", "bylaws", "picks", "numbers"):
         page = ROOT / rel / "index.html"
         m = re.search(r'<meta property="og:image" content="https://bad-hombres\.vercel\.app/([^"]+)"', page.read_text())
         if not m: fail("%s: no og:image" % (rel or "home")); continue

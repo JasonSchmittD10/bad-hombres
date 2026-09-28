@@ -517,3 +517,58 @@ kickoff. Bragging rights only — nothing in the by-laws, nothing paid out.
   `cd34b3a6f0774b382277b8a3505d4e6a` and `PICKS_GIST_TOKEN` = that token (Production +
   Preview) and redeploy. Until then the page says "opens soon".
 - **Fixing a pick:** edit the gist by hand — `picks → <season> → <week> → <Manager>`.
+
+# The Yahoo archive (`data/archive/<season>.json`)
+
+Every season Yahoo has for the league, 2021 on (2020 isn't in Yahoo's renew chain):
+every game (playoffs and consolation included), all twelve rosters every week with each
+player's slot and points, every transaction, the draft, season points and the final
+standings. Built by `scripts/archive.py` through the site's read-only gateway
+(`/api/yahoo`), so no credentials live on the Mac. The file format is documented at the
+top of `archive.py`.
+
+- **Weekly (scoreboard run D):** `./scripts/archive.py season 2026 --weeks N` adds the
+  week that just went final (a week that isn't final is skipped with a note), then
+  `./scripts/archive.py verify 2026`.
+- **Checks it runs:** starters add up to every team's score, transaction counts match
+  Yahoo's per-team move/trade counts, FAAB balances add up. The "Year Zero" audit
+  (Sept 2026) matched every game 2021-2025 to `data/record.json` to the cent, and every
+  champion and places 1-6. Places 7-12 differ by design: Yahoo ranks them by the
+  consolation bracket, the league (and `record.json`) by regular-season record — last
+  place is the worst regular-season team.
+- Team ids reshuffle every season (only Jason is `t.1`), so files map ids to managers
+  by team name; ids are strings everywhere.
+
+# The pulse and the sweat charts
+
+The site records Yahoo's live win probability itself: `POST /api/pulse` every 5 minutes
+(launchd `com.badhombres.pulse` runs `scripts/pulse.py sample`), stored in the league's
+gist. Outside live games a ping records nothing. Tap a matchup on the homepage for its
+chart (`assets/js/sweat.js`); the tug-of-war bar under each live matchup is the latest
+reading.
+
+- **The Choke Ledger:** a team that lost after being 85% or better *while the games were
+  live* (pre-game odds don't count). The server settles a finished week at the next
+  ping; run D also runs `./scripts/pulse.py settle N`, which writes the committed copy
+  `data/chokes.json`. The record starts with Week 3 of 2026.
+- If the Mac was asleep, that stretch of the chart is simply missing — nothing to fix.
+  A missed peak can't be recovered; Yahoo only ever reports the odds right now.
+
+# Hard Numbers (`/numbers/`)
+
+One page, seven tabs, each its own module: Real Standings (all-play, luck, schedule
+swap), The Pine (points left on the bench, lineup losses), Odds (playoff / bye /
+last-place odds with a what-if machine), the Choke Ledger (live from `/api/pulse`),
+Trade Court, FAAB Receipts and the Draft Vault.
+
+- **Data:** `scripts/numbers.py` runs `build()` in every `scripts/hn/<tab>.py` and writes
+  `data/numbers/<tab>.json`; `./scripts/numbers.py pine odds` rebuilds just those. The
+  tabs read `data/archive/` and `data/record.json`, so run it after `build-history.py
+  add-week` and `archive.py` (scoreboard run D does all three).
+- **Page:** `numbers/index.html` is the shell (tabs, shared `.hn-*` styles),
+  `numbers/hn.js` the shared helpers; each tab is `numbers/<tab>.js`, loaded the first
+  time it opens. Deep links: `/numbers/#pine`.
+- **Adding a tab:** a `scripts/hn/<tab>.py` with `build()`, a `numbers/<tab>.js` that
+  registers `HN.tabs.<tab>`, and a button in the shell.
+- The recap and preview may quote a number from here as seasoning; every figure on the
+  page is computed, never typed.

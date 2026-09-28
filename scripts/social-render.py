@@ -6,7 +6,7 @@
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
     scripts/social-render.py stats <spec.json>       # Hard Numbers -> social/stats-<slug>/slide-N.jpg
-    scripts/social-render.py og-pages              # -> og.jpg for Updates, Members, profiles, Record Book, By-Laws
+    scripts/social-render.py og-pages              # -> og.jpg for Updates, Members, profiles, Record Book, By-Laws, Hard Numbers
     scripts/social-render.py og-picks              # -> picks/og.jpg, the pick'em's link-preview card
     scripts/social-render.py og-story <slug>    # -> story/<slug>/og.jpg, that story's link-preview card
     scripts/social-render.py recap --preview DIR   # any week state, written to DIR, marked PREVIEW
@@ -372,6 +372,13 @@ OG_CSS = """
 .p-doc .a{display:flex;align-items:baseline;gap:18px}
 .p-doc .r{font:900 24px "Arial Black",Impact,sans-serif;color:var(--red);width:56px;flex:none}
 .p-doc .t{font:700 22px "Segoe UI",Arial,sans-serif;color:#d6d8dd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* hard numbers: a blown lead, and the size of the pile */
+.p-nums{height:100%;display:flex;flex-direction:column}
+.p-nums svg{display:block;width:100%;height:210px;flex:none}
+.p-nums .grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:6px 26px 26px}
+.p-nums .st{background:#1e1e24;border:2px solid #2a2a31;border-radius:14px;padding:12px 18px}
+.p-nums .st span{display:block;color:#9aa0aa;font:800 13px "Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.p-nums .st b{display:block;margin-top:2px;font:900 36px "Arial Black",Impact,sans-serif;color:#fff;white-space:nowrap}
 """
 
 def og_site():
@@ -442,6 +449,28 @@ def og_section(page_key):
         panel = '<div class="p-doc">%s</div>' % "".join(
             '<div class="a"><span class="r">%s</span><span class="t">%s</span></div>' % (ROMAN[i], html.escape(a)) for i, a in enumerate(arts))
         k, t, sub = "The Contract", "Official By-Laws", "Rules, prizes and<br><b>the punishment.</b>"
+    elif page_key == "numbers":
+        # the counts come from the Yahoo archive, so the card grows with it
+        g = ln = tx = dp = 0
+        for f in sorted((ROOT / "data" / "archive").glob("*.json")):
+            a = json.loads(f.read_text())
+            g += sum(len(v) for v in a["weeks"].values()); ln += sum(len(v) for v in a["rosters"].values())
+            tx += sum(1 for x in a["transactions"] if x.get("status", "successful") == "successful" and x["type"] != "commish")
+            dp += len(a["draft"])
+        # a lead climbing past 90% and then falling off a cliff: the shape of a choke, not any one game
+        wp = [.50, .53, .49, .57, .62, .60, .68, .74, .71, .80, .86, .84, .91, .93, .90, .88, .79, .64, .41, .22, .08, 0]
+        W, H, T, B = 470, 210, 26, 22
+        xy = lambda i, p: (12 + i * (W - 24) / (len(wp) - 1), T + (1 - p) * (H - T - B))
+        line = " ".join(("M" if i == 0 else "L") + "%.1f %.1f" % xy(i, p) for i, p in enumerate(wp))
+        mid = T + .5 * (H - T - B)
+        chart = ('<svg viewBox="0 0 %d %d"><line x1="12" y1="%.1f" x2="%d" y2="%.1f" stroke="#3a3a44" stroke-width="2" stroke-dasharray="6 6"/>'
+                 '<path d="%s L%.1f %.1f L12 %.1f Z" fill="rgba(193,18,31,.18)"/>'
+                 '<path d="%s" fill="none" stroke="#c1121f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/></svg>') % (
+            W, H, mid, W - 12, mid, line, xy(len(wp) - 1, 0)[0], mid, mid, line)
+        cells = [("Games", g), ("Lineups", ln), ("Moves", tx), ("Draft picks", dp)]
+        panel = '<div class="p-nums">%s<div class="grid">%s</div></div>' % (
+            chart, "".join('<div class="st"><span>%s</span><b>%s</b></div>' % (k2, "{:,}".format(v)) for k2, v in cells))
+        k, t, sub = "Luck, Lineups &amp; Chokes", "Hard Numbers", "Who got lucky, who blew it,<br><b>and who can\u2019t set a lineup.</b>"
     else:
         bail("no section card for %r" % page_key)
     return ('<style>%s</style><div class="og sec"><div class="panel">%s</div><div class="txt"><div class="k">%s</div>'
@@ -449,7 +478,8 @@ def og_section(page_key):
             '<div class="brand"><img src="%s" alt=""><span class="disp">BAD <b>HOMBRES</b></span></div></div></div>') % (
         OG_CSS, panel, k, t, sub, data_uri("assets/logo.webp"))
 
-SECTION_PAGES = {"updates": "updates", "members": "members", "profile": "members/profile", "record": "record", "bylaws": "bylaws"}
+SECTION_PAGES = {"updates": "updates", "members": "members", "profile": "members/profile", "record": "record", "bylaws": "bylaws",
+                 "numbers": "numbers"}
 
 def og_story(slug):
     """A story's preview card, built from its own page: hero art, kicker, headline."""

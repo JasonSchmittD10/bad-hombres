@@ -7,10 +7,27 @@ scheduled routines pull everything through `scripts/sync.py`, which calls
 next week's matchups). See `scripts/UPDATE_WEEK.md` for how the data flows.
 
 - `scoreboard.mjs` — Yahoo: scoreboard, per-team rosters with player stats, standings.
-  Managers are mapped by Yahoo `team_id` (`TEAM_IDS`), because several nicknames are
-  handles. Yahoo has no per-player projections.
+  Managers are mapped by Yahoo `team_id` (`TEAM_IDS` in `_league.mjs` — 2026 only; Yahoo
+  reshuffles team ids every season). Yahoo has no per-player projections.
+  `?lite=1` = matchups + status only (one Yahoo call); `?full=1` adds standings, trade
+  counts and next week.
+- `yahoo.mjs` — a read-only gateway: `GET /api/yahoo?path=<league/... or team/...>` passes a
+  Yahoo read through, but only for this league's own seasons (the renew chain: 2021-2026;
+  anything else is a 403), and `?chain=1` lists them. Past seasons are cached a day at
+  the edge. `scripts/archive.py` builds `data/archive/` through it.
+- `pulse.mjs` — the win-probability recorder. `POST /api/pulse` samples Yahoo's live
+  `win_probability` for every team (throttled to one sample per 4 minutes, recorded only
+  while games are live, the gist is written only when something changed) and settles a
+  finished week. `GET /api/pulse` = the season and the Choke Ledger (lost after being
+  85%+ live); `GET /api/pulse?week=N` = every sample, for the sweat charts
+  (`assets/js/sweat.js`). Yahoo only ever reports the odds *now*, so the Mac's launchd job
+  `com.badhombres.pulse` pings it every 5 minutes; if the Mac sleeps, that stretch of
+  the chart is missing. Stored in the gist as `bad-hombres-pulse-<season>.json`.
 - `picks.mjs` — the Game of the Week pick'em, stored in a secret GitHub Gist.
 - `yahoo-callback.mjs` — one-time OAuth helper that mints the refresh token.
+- `_yahoo.mjs` (auth + Yahoo JSON helpers), `_league.mjs` (managers, scoreboard parser),
+  `_gist.mjs` (gist storage) are shared modules — the leading underscore keeps Vercel
+  from serving them as routes.
 
 The setup notes below are the history of getting access; keep them for re-issuing a
 token (`/api/yahoo-callback?reauth=1`).
@@ -23,8 +40,8 @@ Powers the Weekly Scoreboard + Bonus Board on the homepage. Runs as a Vercel
 serverless function. **No secrets live in this repo** — they go in Vercel's
 environment variables.
 
-If the function is missing or erroring, the homepage silently falls back to the
-static Week 1 projections baked into `index.html`. The site never breaks.
+If the function is missing or erroring, the homepage falls back to `data/week.json`
+(what the routines last synced). The site never breaks.
 
 ## One-time setup
 
@@ -172,9 +189,8 @@ Both degrade to an empty leaderboard rather than failing the whole response.
   looks absent in Week 8, that's the first place to look.
 - Yahoo's JSON uses numeric-keyed pseudo-arrays; `flat()` / `merge()` normalize
   it. If Yahoo changes shape, those two are what break.
-- **This has not been run against live Yahoo yet** — it needs the credentials
-  above. Expect one round of fixes on first contact.
-- If the API returns 401/403 once credentials are in, the likely cause is the
-  missing Fantasy permission checkbox described in step 1. Yahoo's console has
-  changed here and the behaviour is not something this repo can verify ahead of
-  time. `curl` the endpoint and read `error` — it passes Yahoo's status through.
+- If the API starts answering 401/403, the refresh token was revoked or the app lost
+  its Fantasy permission — re-issue with `/api/yahoo-callback?reauth=1`. `curl` the
+  endpoint and read `error`; it passes Yahoo's status through.
+- Rosters have to be fetched one team at a time: the league-wide roster call drops the
+  player stats.
