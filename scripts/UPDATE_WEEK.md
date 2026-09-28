@@ -3,12 +3,33 @@
 The homepage scoreboard reads this file. Updating a week is one small commit —
 never edit `index.html` for scores.
 
-**Why this is manual:** Yahoo's Fantasy API is not available to us (every
-endpoint returns `401 additional_authorization_required`, and the app console
-offers no permission to grant). Yahoo also returns `429` to server-side requests
-from cloud IPs, so no function or GitHub Action can fetch it either. The only
-route that works is a real browser on a residential IP, signed in as a league
-member — i.e. Jason's Chrome, driven from a Claude session.
+**Where the data comes from: Yahoo's Fantasy API** (live since Sept 27, 2026), through
+the site's own endpoint. Nothing reads Yahoo's website or drives Chrome any more.
+
+```bash
+scripts/sync.py check                  # is the API answering? which week is Yahoo on?
+scripts/sync.py week                   # data/week.json — scores, projections, status, bonus leaders
+scripts/sync.py season                 # data/season.json — records, points for/against, trade counts
+scripts/sync.py next --out FILE        # next week's matchups, for game-of-the-week.py
+scripts/sync.py status --week N        # any week's status and games (playoff weeks too)
+scripts/sync.py standings              # Yahoo's standings, rank 1-12
+```
+
+The Yahoo credentials live in Vercel (`YAHOO_CLIENT_ID`, `YAHOO_CLIENT_SECRET`,
+`YAHOO_REFRESH_TOKEN`, app `JzPBl9eW`); `api/scoreboard.mjs` talks to Yahoo, and
+`scripts/sync.py` calls `https://bad-hombres.vercel.app/api/scoreboard?full=1`. So the
+routines need the internet, and nothing else — no browser, no signed-in session.
+
+Two things the API can't do, and how the site handles them:
+
+- **No per-player projections.** Yahoo publishes team projections, not player ones.
+  Awards judged on one player (weeks 1, 3, 4, 6, 8, 10, 11, 12) have live leaders but no
+  projected list; the Bonus Board says so. Team and matchup awards project normally.
+- **Projections are pre-game.** A team's `p` is Yahoo's original projection for the
+  week, not the in-game number that converges on the final score as players finish.
+
+If the API fails, `sync.py` refuses and writes nothing; the routine alerts Jason and
+stops. There is no browser fallback.
 
 ## Cadence
 
@@ -27,19 +48,15 @@ games makes no commit and posts nothing — that is a normal outcome, not a fail
 
 ## Steps
 
-### 1. Read the league pages through Chrome
+### 1. Pull the week from the API
 
-Use the Claude-in-Chrome tools (Jason is signed in). League 97724:
+```bash
+scripts/sync.py week            # the live week in the file, or Yahoo's current week once the file's is final
+scripts/sync.py week --week 4   # a specific week
+```
 
-- Live/completed scores: `https://football.fantasysports.yahoo.com/f1/97724?week=N`
-- Standings: `https://football.fantasysports.yahoo.com/f1/97724`
-
-Parsing tip carried over from the old builder, still works: fetch the page,
-strip `<script>`/`<style>`, read `innerText`, slice between `Matchups` and
-`Recent Transactions`, then for each line equal to `vs` take `lines[i-4]` =
-team A, `lines[i-2]` = score A, `lines[i+1]` = score B, `lines[i+3]` = team B.
-
-Do **not** fetch these with `curl` from here — Yahoo 429s datacenter IPs.
+It validates six matchups between the twelve managers before writing, never moves
+backwards, never nulls the bonus, and keeps `nextGame` / `nextKickoff`.
 
 ### 2. Write `data/week.json`
 
@@ -47,7 +64,7 @@ Do **not** fetch these with `curl` from here — Yahoo 429s datacenter IPs.
 {
   "week": 1,
   "status": "live",          // "preseason" | "live" | "final"
-  "updated": "2026-09-13T23:55:00-04:00",   // ISO, when the scrape ran
+  "updated": "2026-09-13T23:55:00-04:00",   // ISO, when sync.py ran
   "matchups": [
     { "a": {"m":"Jason","t":"Pull-Out Game Weak","s":118.4,"p":130.2},
       "b": {"m":"Drew","t":"I Stand with Jordon","s":101.7,"p":123.9} }
@@ -284,33 +301,15 @@ DRY_RUN=1 scripts/league-post.sh recap    # the exact text the thread will get
 
 ---
 
-# Scraping a week's bonus leaders
+# The week's bonus leaders
 
-Worked example (Week 1, highest-scoring QB). Run in Jason's Chrome on the
-league origin — same-origin `fetch` carries the session, so you can pull all
-twelve team pages without twelve navigations:
-
-```js
-for (var i = 1; i <= 12; i++) {
-  var h = await fetch('/f1/97724/' + i + '?week=1', {credentials:'include'}).then(r => r.text());
-  var d = new DOMParser().parseFromString(h, 'text/html');
-  var t = d.querySelector('#statTable0');           // starters; #statTable1 is the bench
-  ...
-}
-```
-
-Two traps, both real:
-
-- **Column indices shift between teams.** Your own team page has an `Edit`
-  column that other teams' pages don't, and rows carry one more `<td>` than the
-  header has `<th>`. Read the header, then offset by
-  `td.length - cols.length`. Never hardcode a column number.
-- **Player names run together** with the note/forecast links
-  (`Jaxson DartVideo ForecastPlayer Note NYG - QB ...`). Take the text of the
-  row's `a[href*="/players/"]` instead of the cell.
-
-Write the result into `week.json` as `bonus.projected` (and `bonus.actual` once
-games are played), best first, `who` = manager key, `sub` = the player.
+`api/scoreboard.mjs` computes them from Yahoo's player stats — `computeBonus()`, one case
+per week, criteria as in `BH_BONUSES`. Rosters come **per team**
+(`/team/<key>/roster;week=N/players/stats;type=week;week=N`); the league-wide roster call
+silently drops player stats. Checked against real responses: weeks 1-3 match what was
+recorded by hand, to the cent. `sync.py week` writes them into `bonus.actual` (the live
+leaderboard, settled once the week is final) and `bonus.projected` (team awards only —
+see above).
 
 ---
 
@@ -345,8 +344,8 @@ committed data — posting on stale data is the main way this goes wrong.
   means the data is not ready, and twelve people see whatever gets sent.
 
 Group threads need AppleScript; the iMessage MCP only addresses individuals.
-Requires Messages running and signed in on Jason's Mac — same constraint as
-the Yahoo scrape, so none of this can run in the cloud.
+Requires Messages running and signed in on Jason's Mac, so posting can't run in the
+cloud (the data can: it comes from the API).
 
 ---
 

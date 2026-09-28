@@ -1,3 +1,22 @@
+# `/api/*` — live Yahoo data, and the pick'em
+
+**Status (Sept 27, 2026): the Yahoo Fantasy API is live** for app `JzPBl9eW`, and it is
+the league's only data source. The homepage reads `/api/scoreboard` directly; the
+scheduled routines pull everything through `scripts/sync.py`, which calls
+`/api/scoreboard?full=1` (scores, projections, bonus leaders, standings, trade counts,
+next week's matchups). See `scripts/UPDATE_WEEK.md` for how the data flows.
+
+- `scoreboard.mjs` — Yahoo: scoreboard, per-team rosters with player stats, standings.
+  Managers are mapped by Yahoo `team_id` (`TEAM_IDS`), because several nicknames are
+  handles. Yahoo has no per-player projections.
+- `picks.mjs` — the Game of the Week pick'em, stored in a secret GitHub Gist.
+- `yahoo-callback.mjs` — one-time OAuth helper that mints the refresh token.
+
+The setup notes below are the history of getting access; keep them for re-issuing a
+token (`/api/yahoo-callback?reauth=1`).
+
+---
+
 # `/api/scoreboard` — live Yahoo data
 
 Powers the Weekly Scoreboard + Bonus Board on the homepage. Runs as a Vercel
