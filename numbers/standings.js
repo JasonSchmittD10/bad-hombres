@@ -2,7 +2,7 @@
 // Data: /data/numbers/standings.json, built by scripts/hn/standings.py.
 (function (HN) {
   var CSS = [
-    '#hn-standings .st-bar{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}',
+    '#hn-standings .st-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}',
     '#hn-standings .st-when{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}',
     '#hn-standings .st-early{background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;',
     ' padding:10px 14px;margin:0 0 16px;font-size:13px;line-height:1.5;color:var(--silver)}',
@@ -176,8 +176,8 @@
     s.rows.forEach(function (r) { cnt[n(r.rank)] = (cnt[n(r.rank)] || 0) + 1; });
     s.rows.forEach(function (r) {
       var mv = n(r.rank) - n(r.place), m = '';
-      if (mv > 0) m = '<span class="st-mv hn-good" title="' + mv + ' spots higher than the all-play rank">+' + mv + '</span>';
-      else if (mv < 0) m = '<span class="st-mv hn-bad" title="' + (-mv) + ' spots lower than the all-play rank">−' + (-mv) + '</span>';
+      if (mv > 0) m = '<span class="st-mv hn-good" title="' + mv + (mv === 1 ? ' spot' : ' spots') + ' above the all-play rank">+' + mv + '</span>';
+      else if (mv < 0) m = '<span class="st-mv hn-bad" title="' + (-mv) + (mv === -1 ? ' spot' : ' spots') + ' below the all-play rank">−' + (-mv) + '</span>';
       h += '<tr>' +
         '<td class="n st-rk">' + (cnt[n(r.rank)] > 1 ? 'T' : '') + n(r.rank) + '</td>' +
         '<td class="who">' + HN.who(r.who) + '</td>' +
@@ -191,11 +191,11 @@
         '<td class="n">' + pts(r.pf) + '</td></tr>';
     });
     h += '</tbody></table></div>';
-    h += '<p class="hn-note">All-play puts each week’s score up against every other team, not just the one on the schedule; ' +
-      'equal all-play rates share a rank (T) and are listed by points for. ' +
-      'Expected wins is that all-play win rate times games played; luck is actual wins minus expected wins. ' +
-      'Actual is the real regular-season place (record, then points), and the small number is how far it sits above (+) or below (−) the all-play rank. ' +
-      'A lucky win came with a score below that week’s median; an unlucky loss came with one above it.</p>';
+    h += '<p class="hn-note">All-play plays each week’s score against every other team, not just the one on the schedule. ' +
+      'Equal all-play rates share a rank (T) and are listed by points for. ' +
+      'Expected wins is the all-play win rate times games played; luck is actual wins (a tie counts as half) minus expected wins. ' +
+      'Actual is the real regular-season place (win percentage, then points for); the small number is how many spots it sits above (+) or below (−) the all-play rank. ' +
+      'A lucky win is a win with a score below that week’s median; an unlucky loss is a loss with a score above it.</p>';
     return h + '</div>';
   }
 
@@ -231,16 +231,16 @@
     h += '<div class="st-key"><span><i style="box-shadow:inset 0 0 0 2px var(--gold)"></i>real record</span>' +
       '<span><i style="background:rgba(63,178,107,.5)"></i>better than it</span>' +
       '<span><i style="background:rgba(255,107,118,.5)"></i>worse than it</span></div>';
-    h += '<p class="hn-note">Each cell is the row manager’s record with their own weekly scores played against the column manager’s opponents ' +
-      '(in the week that opponent was the row manager, the column manager is the opponent instead). ' +
-      'The diagonal is the real record, shading deepens with every win gained or lost, and “Better on” counts the other schedules that would have beaten it.</p>';
+    h += '<p class="hn-note">Each cell is the record the row manager’s weekly scores would have earned against the column manager’s opponents; ' +
+      'in the week that schedule meets the row manager, the column manager is the opponent instead. ' +
+      'The diagonal is the real record. Shading deepens with each win gained or lost. “Better on” counts the other schedules that would have produced a better record.</p>';
     return h + '</div>';
   }
 
   function allTime(a, d) {
     var partial = !a.cur_final && n(a.cur_weeks) > 0;
     var h = '<div class="hn-card"><h3 class="hn-h">All-time <small>' + esc(a.first) + '–' + esc(a.last) +
-      (partial ? ' · ' + esc(d.current) + ' through week ' + n(a.cur_weeks) : '') + '</small></h3>';
+      (partial ? ' · ' + esc(d.current) + ' through Week ' + n(a.cur_weeks) : '') + '</small></h3>';
     if (!a.rows || !a.rows.length) return h + '<p class="hn-empty">No seasons on file yet.</p></div>';
     // a Seasons column only earns its place once someone has played fewer seasons than the rest
     var ns = a.rows.map(function (r) { return n(r.seasons); });
@@ -272,9 +272,9 @@
       return t + '</tbody></table></div></div>';
     }
     h += '<div class="st-two">' + list('Luckiest seasons', a.luckiest) + list('Unluckiest seasons', a.unluckiest) + '</div>';
-    h += '<p class="hn-note">Career all-play and record add up every regular-season week' +
-      (partial ? ', this season’s included' : '') + '; career luck is the sum of each season’s luck. ' +
-      'Luckiest and unluckiest years count finished seasons only, and any season tied with the fifth makes the list too.</p>';
+    h += '<p class="hn-note">Career record and all-play add up every regular-season week' +
+      (partial ? ', this season’s included' : '') + '. Career luck is the sum of each season’s luck. ' +
+      'Luckiest and unluckiest years count finished seasons only; the two lists run five deep, plus any season tied with the fifth.</p>';
     return h + '</div>';
   }
 
@@ -299,8 +299,6 @@
       var years = Object.keys(d.seasons).sort(function (a, b) { return b - a; });
       if (!years.length) return HN.fail(el);
       var on = d.seasons[d.current] ? String(d.current) : years[0];
-      // the shell resets the hash to #standings, so a picked season rides along in this tab's session instead
-      try { var kept = sessionStorage.getItem('hn-st-season'); if (kept && d.seasons[kept]) on = kept; } catch (e) {}
       el.innerHTML = '<p class="hn-intro">Every score, every week, played against every other team instead of the one Yahoo scheduled. ' +
         'What’s left is who’s actually good, and who’s been living off the schedule.</p>' +
         '<div class="st-bar"></div><div class="st-season"></div><div class="st-all"></div>';
@@ -308,14 +306,13 @@
       function when(y) {
         var s = d.seasons[y] || {};
         if (s.final) return 'Final · ' + n(s.weeks) + ' weeks';
-        return n(s.weeks) ? 'Through week ' + n(s.weeks) + ' of ' + (n(s.of) || 14) : 'Not started';
+        return n(s.weeks) ? 'Through Week ' + n(s.weeks) + ' of ' + (n(s.of) || 14) : 'Not started';
       }
       var tag = document.createElement('span'); tag.className = 'st-when';
       function show(y) {
         on = String(y); tag.textContent = when(on); box.innerHTML = season(d.seasons[on], on, d);
-        try { sessionStorage.setItem('hn-st-season', on); } catch (e) {}
       }
-      bar.appendChild(HN.seg(years, on, show));
+      bar.appendChild(HN.season(years, on, show));
       bar.appendChild(tag);
       show(on);
       el.querySelector('.st-all').innerHTML = d.alltime ? allTime(d.alltime, d) : '';

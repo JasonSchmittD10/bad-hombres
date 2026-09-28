@@ -2,7 +2,7 @@
 // Data: /data/numbers/draft.json (scripts/hn/draft.py).
 (function (HN) {
   var CSS = [
-    '#hn-draft .dv-bar{display:flex;justify-content:center;margin:0 0 18px}',
+    '#hn-draft .dv-bar{display:flex;align-items:center;margin:0 0 18px}',
     '@media(max-width:420px){#hn-draft .dv-bar .hn-seg button{padding:6px 7px;letter-spacing:.02em}}',
     '@media(max-width:340px){#hn-draft .dv-bar .hn-seg button{padding:6px 5px;letter-spacing:0}}',
     '#hn-draft .dv-so{display:block;text-align:center;color:var(--gold);font-size:12.5px;font-weight:700;margin:-6px 0 16px}',
@@ -93,14 +93,12 @@
   };
 
   function render(el, d) {
-    var seasons = d.seasons, on = null, i;
-    for (i = 0; i < seasons.length; i++) if (seasons[i].done || seasons[i].weeks >= 4) { on = seasons[i]; break; }
-    if (!on) on = seasons[0];
+    var seasons = d.seasons, on = seasons[0];   // newest first: the season being played
     el.innerHTML =
       '<p class="hn-intro">Every pick since ' + e(seasons[seasons.length - 1].year) + ', re-graded with the one thing nobody had on draft night: the answers. The busts get a permanent record.</p>' +
       '<div class="dv-bar"></div><div class="dv-season"></div><div class="dv-all"></div>';
     var bar = el.querySelector('.dv-bar'), box = el.querySelector('.dv-season');
-    bar.appendChild(HN.seg(seasons.map(function (s) { return { v: s.year, l: s.done ? String(s.year) : s.year + ' so far' }; }), on.year, function (y) {
+    bar.appendChild(HN.season(seasons.map(function (s) { return { v: s.year, l: s.done ? String(s.year) : s.year + ' so far' }; }), on.year, function (y) {
       for (var j = 0; j < seasons.length; j++) if (String(seasons[j].year) === String(y)) season(box, seasons[j], d);
     }));
     season(box, on, d);
@@ -109,8 +107,8 @@
 
   function soFar(s) {
     if (!s.weeks) return e(s.year) + ': no week is final yet. Until one is, every draft is an A in its owner’s head.';
-    var h = e(s.year) + ' so far: ' + s.weeks + ' week' + (s.weeks === 1 ? '' : 's') + ' in. ';
-    if (s.weeks < 6) return h + 'Grades this early are mostly noise with a letter on it.';
+    var h = e(s.year) + ', through Week ' + e(s.weeks) + '. ';
+    if (s.weeks < 6) return h + 'Grades this early are noise with a letter on it.';
     if (s.weeks < 12) return h + 'The letters are starting to mean something.';
     return h + 'Late enough that most of these letters are going to stick.';
   }
@@ -145,7 +143,7 @@
     h += board(s, byN);
 
     if (g.length) {
-      h += '<div class="dv-two">' + list('Steals', s.steals, byN, 'Beat the slot by the most', 'Nothing beat its slot yet.') +
+      h += '<div class="dv-two">' + list('Steals', s.steals, byN, 'Beat the slot by the most', 'Nothing has beaten its slot yet.') +
         list('Busts', s.busts, byN, 'Short of the slot by the most', 'Nothing has missed its slot yet.') + '</div>';
     }
     h += seasonNote(s, d);
@@ -186,7 +184,7 @@
       return n > 1 && t.length > 1 && k[ini.toLowerCase()] === 1 ? ini + '. ' + l : l;
     }
     var h = '<div class="hn-card"><h3 class="hn-h">The board <small>' + e(s.year) + ' · ' + rounds + ' rounds, snake</small></h3>' +
-      (scale ? '<div class="dv-legend">Each square: the pick, the player’s finish at their position and their points' + (s.done ? '' : ' so far') + '. ' +
+      (scale ? '<div class="dv-legend">Each square: the player, their finish at the position and their points' + (s.done ? '' : ' so far') + '. ' +
       '<span style="background:linear-gradient(90deg,' + tint(-scale, scale) + ',' + tint(-0.001, scale) + ')"></span>short of the slot ' +
       '<span style="background:linear-gradient(90deg,' + tint(0.001, scale) + ',' + tint(scale, scale) + ')"></span>beat the slot</div>'
         : '<div class="dv-legend">Just the picks for now. The colors and points arrive when Week 1 goes final.</div>') +
@@ -248,16 +246,16 @@
       if (r[p] && r[p].pts != null) parts.push(p + r[p].rank + ' ' + f1(r[p].pts));
     });
     var h = '<p class="hn-note dv-note">';
-    if (parts.length) h += '<b>' + e(s.year) + ' replacement level' + (s.done ? '' : ' so far') + ':</b> ' + e(parts.join(' · ')) + '. ';
+    if (parts.length) h += '<b>' + e(s.year) + ' replacement level' + (s.done ? '' : ' so far') + '</b>, the waiver-wire bar at each position: ' + e(parts.join(' · ')) + '. ';
     if (!s.done && s.weeks) {
-      h += '<b>So far:</b> points are through Week ' + e(s.weeks) + '.';
+      h += '<b>In progress:</b> points run through Week ' + e(s.weeks) + '.';
       if (s.scale != null) {
-        h += ' Each pick’s expectation is the full-season curve scaled to ' + HN.pct(s.scale, 0) +
-          ', the share of it this whole draft has actually returned, so value is measured against the rest of the league.';
+        h += ' The draft as a whole has produced ' + HN.pct(s.scale, 0) + ' of a full season’s expected points over replacement, so every pick’s expectation is cut to ' +
+          HN.pct(s.scale, 0) + ' and value compares each pick with the rest of this draft.';
       }
       var n = (s.grades || []).length;
       if (s.black != null && n) {
-        h += ' Scaled by the calendar instead (' + e(s.weeks) + ' of ' + e(s.end) + ' weeks), ' +
+        h += ' Cut by the calendar instead (' + e(s.weeks) + ' of ' + e(s.end) + ' weeks), ' +
           (s.black === n ? 'all ' + n + ' managers' : s.black === 0 ? 'none of the ' + n + ' managers' : s.black + ' of ' + n + ' managers') +
           ' would be in the black' + (s.black >= n - 1 ? ', which is why it isn’t.' : '.');
       }
@@ -301,18 +299,18 @@
     ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'].forEach(function (p) { if (r[p]) ranks.push(p + r[p].rank); });
     var q = d.qbrb;
     return '<p class="hn-note dv-note"><b>How it’s graded.</b> ' +
-      '<b>Pts</b> are a player’s league-scored points over the league’s own season' + (fs ? ', weeks 1–' + e(fs.weeks) : '') +
-      ', added up from Yahoo’s weekly totals. Not Yahoo’s season totals: those count NFL week 18, which this league doesn’t play, and in some years leave out part of the scoring. ' +
-      '<b>Finish</b> (WR1, RB12) is the player’s rank by those points at their position among every NFL player who scored that season; a player eligible at two positions counts at both. ' +
+      '<b>Pts</b> are a player’s points under league scoring over the league’s own season' + (fs ? ', weeks 1–' + e(fs.weeks) : '') +
+      ', added up from Yahoo’s weekly totals. Not Yahoo’s season totals: those count NFL Week 18, which this league doesn’t play, and some years leave out part of the scoring. ' +
+      '<b>Finish</b> (WR1, RB12) is the player’s rank by those points at their position among every NFL player who scored that season; a player eligible at two positions is ranked at both. ' +
       'Raw points would make every late quarterback a steal' +
       (q && q.above != null && q.rank ? ' (in ' + e(q.y) + ' the ' + ordinal(q.rank) + '-best QB outscored ' +
         (q.above ? 'all but ' + e(q.above) + ' running back' + (q.above === 1 ? '' : 's') : 'every running back') + ')' : '') +
-      ', so picks are judged on <b>points over replacement</b>: points minus the first player past the league’s starting lineups at that position, never below zero. ' +
-      'That replacement player is one per team for each starting slot at the position, plus its share of the flex (' + flexText(d.flex) + ' of flex starts in ' + e(span) + ' regular seasons), plus one' +
-      (ranks.length ? ': ' + e(ranks.join(', ')) : '') + '. ' +
-      '<b>Expected</b> for a pick is the average points over replacement of every pick within ' + e(d.window) + ' spots of it, ' + e(span) + ' pooled. ' +
+      ', so picks are judged on <b>points over replacement</b>: a player’s points minus the replacement player’s at that position, never below zero. ' +
+      'The replacement player is the first one the league’s starting lineups don’t need: count twelve per starting spot at the position, add the position’s share of the flex (' + flexText(d.flex) + ' of flex starts in the ' + e(span) + ' regular seasons), then one more' +
+      (ranks.length ? ', which makes it ' + e(ranks.join(', ')) : '') + '. ' +
+      '<b>Expected</b> for a pick is the average points over replacement of every pick within ' + e(d.window) + ' spots of it, either way, across ' + e(span) + '. ' +
       '<b>Value</b> is points over replacement minus expected. ' +
-      '<b>Grade</b> is a z-score: a manager’s total value against all twelve totals that season; within an eighth of a standard deviation of average is a C+, and every further quarter of a standard deviation moves one step, up to A+ or down to F. ' +
+      '<b>Grade</b> is a z-score, a manager’s total value measured in standard deviations from that season’s average of all twelve: within an eighth of one is a C+, and each further quarter moves one step, as high as A+ or as low as F. ' +
       '<b>Career</b> puts each manager’s average z-score across finished seasons on the same ladder.' +
       (cur ? ' ' + e(cur.year) + ' joins the all-time section when it’s over.' : '') + '</p>';
   }

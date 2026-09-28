@@ -110,7 +110,7 @@
     if (ll.moves === 1) {
       return list(ins, true) + (outs.length ? ' in for ' + list(outs) : ' in an empty slot') + tail;
     }
-    return 'Took ' + (WORDS[ll.moves] || ll.moves) + ' moves: ' + list(ins, true) + ' in' +
+    return 'Needed ' + (WORDS[ll.moves] || ll.moves) + ' moves: ' + list(ins, true) + ' in' +
       (outs.length ? '; ' + list(outs) + ' out' : '') + tail;
   }
 
@@ -134,7 +134,7 @@
     return t + '</tbody></table></div></div>' + l + '</div>';
   }
 
-  // one manager's dead men, for the row that opens under him
+  // one manager's dead men, for the row that opens under that manager
   function deadText(r) {
     return (r.dead_list || []).map(function (d) {
       var what = d.empty ? 'empty ' + esc(d.pos || 'starting') + ' slot' :
@@ -222,9 +222,9 @@
     h += '<div class="hn-card"><h3 class="hn-h">Left on the bench <small>' + esc(s.season) + ' regular season</small></h3>' +
       managerTable(rows, false) +
       '<p class="hn-note">Optimal is the highest-scoring legal lineup each week’s roster could have started (' +
-      esc(lineupText(s.lineup)) + '; IR excluded), found by exact search, so RB/WR and QB/TE types land wherever they score most. ' +
+      esc(lineupText(s.lineup)) + '; IR excluded), found by exact search, so dual-position players (RB/WR, QB/TE) land wherever they score most. ' +
       'A starter can’t be benched just to leave the slot empty, so a lone kicker or defense that went negative stays in. ' +
-      'Rosters are Yahoo’s end-of-week rosters: a player cut during the week isn’t there, and one picked up after the Sunday 1 p.m. kickoffs can’t be swapped in. ' +
+      'Rosters are Yahoo’s end-of-week rosters: a player cut during the week isn’t there, and one added after the Sunday 1 p.m. ET kickoffs can’t be swapped in. ' +
       'Left on bench is optimal minus the points actually started. Coaching % is points started divided by optimal points. ' +
       'A lineup loss is a loss where the optimal lineup beat the opponent’s actual score. ' +
       'Dead men are starters who scored 0 or less, plus starting slots left empty (tap a count for names). ' +
@@ -244,8 +244,8 @@
       });
     }
     h += '<p class="hn-note">Lost is the final score. Optimal is what the best lineup from the same roster would have scored. ' +
-      'The fix is the fewest bench players that, swapped in with the rest of the lineup reshuffled, beat the opponent’s actual score; ' +
-      'the opponent’s lineup stays exactly as it was.</p></div>';
+      'The fix is the fewest bench players who, swapped in with the rest of the lineup reshuffled to fit, clear the opponent’s actual score; ' +
+      'the opponent’s lineup stays as it was.</p></div>';
     box.innerHTML = h;
     var mt = box.querySelector('.pine-mt');
     if (mt) wireDead(mt, rows);
@@ -297,8 +297,8 @@
         label: function (x) { return esc(x.season) + ' ' + esc(x.round || 'Playoffs'); }
       });
     }
-    h += '<p class="hn-note">Championship bracket only; the consolation bracket doesn’t count. ' +
-      'A quarterfinal, semifinal or final loss ends the title run; the 3rd- and 5th-place games only settle the order. ' +
+    h += '<p class="hn-note">Championship bracket only. A knockout is a quarterfinal, semifinal or final, where the loss ended the title run; ' +
+      'the 3rd- and 5th-place games only settle the order. ' +
       'Same test as a lineup loss: the optimal lineup beats the opponent’s actual score.</p></div>';
     box.innerHTML = h;
   }
@@ -306,7 +306,7 @@
   function render(el, d) {
     var seasons = (d && d.seasons) || [];
     if (!seasons.length) { HN.fail(el, 'No seasons in the archive yet, so nothing has been left on any bench.'); return; }
-    el.innerHTML = '<p class="hn-intro">Every roster, every week, graded against the best lineup it could have started. ' +
+    el.innerHTML = '<p class="hn-intro">Every lineup, graded against the best one the roster could have started. ' +
       'The difference sat on the bench and watched.</p>' +
       '<div class="pine-bar"></div><div class="pine-season"></div><div class="pine-all"></div>';
     var bar = el.querySelector('.pine-bar'), box = el.querySelector('.pine-season');
@@ -319,7 +319,7 @@
         ' · League total <b>' + score(s.league_left) + '</b> left on the bench' : '');
       drawSeason(box, s);
     }
-    bar.appendChild(HN.seg(seasons.map(function (s) { return { v: s.season, l: String(s.season) }; }), seasons[0].season, show));
+    bar.appendChild(HN.season(seasons.map(function (s) { return { v: s.season, l: String(s.season) }; }), seasons[0].season, show));
     bar.appendChild(cap);
     show(seasons[0].season);
     drawAll(el.querySelector('.pine-all'), d);

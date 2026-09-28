@@ -8,8 +8,8 @@
 //
 // Pre-game odds don't count. The pulse records every matchup as soon as anyone in the league has
 // a point, so a matchup nobody has played yet goes in at Yahoo's projection, and the server's
-// peaks and ledger count those readings. This tab doesn't: a manager's peak is his best reading
-// with a point on the board in his own matchup (livePeak). The server's peak is the best of ALL
+// peaks and ledger count those readings. This tab doesn't: a manager's peak is their best reading
+// with a point on the board in their own matchup (livePeak). The server's peak is the best of ALL
 // readings, so its ledger can only hold extras — entries whose peak reading was 0–0 — and those
 // are re-judged here from the week's readings (judge). A tie counts as a loss, as on the server
 // (won = s > opp_s): 85% was the chance to win.
@@ -25,7 +25,7 @@ window.HN = window.HN || { tabs: {} };
   var NS = 'http://www.w3.org/2000/svg';
 
   var CSS =
-    '#hn-chokes .ck-bar{display:flex;justify-content:center;margin:0 0 16px}' +
+    '#hn-chokes .ck-bar{display:flex;align-items:center;margin:0 0 16px}' +
     '#hn-chokes .ck-bar:empty{display:none}' +
     '#hn-chokes .ck-list{display:grid;gap:12px}' +
     '#hn-chokes .ck-item{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}' +
@@ -150,7 +150,7 @@ window.HN = window.HN || { tabs: {} };
   function weekList(ns) { return (ns.length === 1 ? 'Week ' : 'Weeks ') + andList(ns.map(String)); }
   function copy(o, x) { var r = {}, k; for (k in o) r[k] = o[k]; for (k in x) r[k] = x[k]; return r; }
   function byPeak(a, b) { return b.peak - a.peak || b.week - a.week || (a.who < b.who ? -1 : a.who > b.who ? 1 : 0); }
-  // a peak at the record's very first reading: that week was picked up late, so he may have been higher before it
+  // a peak at the record's very first reading: that week was picked up late, so the peak may have been higher before it
   function early(yr, wk, at) { return yr === START.season && wk === START.week && sameTime(at, START.at); }
 
   // ---- data ----
@@ -210,7 +210,7 @@ window.HN = window.HN || { tabs: {} };
     Object.keys(f).forEach(function (m) { if (!o[m] && f[m] && f[m].opp) o[m] = f[m].opp; });
     return o;
   }
-  // His best reading with a point on the board in his matchup: {wp, at, s, o}, or null. A 0–0 reading is
+  // A manager's best reading with a point on the board in their matchup: {wp, at, s, o}, or null. A 0–0 reading is
   // Yahoo's pre-game projection, so it doesn't count; a reading with no scores at all does (the three
   // imported from before the server kept scores, all taken during Sunday night's game in Week 3, 2026).
   // Equal readings go to the earlier one, as on the server.
@@ -328,7 +328,7 @@ window.HN = window.HN || { tabs: {} };
     return '<div class="ck-chart' + (cls ? ' ' + cls : '') + '" id="ck-chart-' + i + '" data-i="' + i + '"' + (open ? '' : ' hidden') + '></div>';
   }
   function star() {
-    return '<p class="ck-foot"><b class="ck-ast">*</b> The record’s first reading (' + HN.esc(when(START.at)) + ') — the peak may have been higher before the pulse started.</p>';
+    return '<p class="ck-foot"><b class="ck-ast">*</b> The record’s first reading (' + HN.esc(when(START.at)) + ') — the peak may have been higher before the readings began.</p>';
   }
   // a list of rows on one grid: cols = [{l: header label, w: grid track, c: header class}], rows = row markup.
   // Below 780px the grid turns into wrapped lines: name, peak and button first, the details (.ck-ds) under them.
@@ -345,18 +345,18 @@ window.HN = window.HN || { tabs: {} };
   }
   function method(v, updated) {
     var T = pc(v.thr);
-    return 'How it’s kept: every few minutes from a week’s first points until it goes final, the site writes down Yahoo’s win probability ' +
-      'for every matchup. A manager’s peak is the best reading once that matchup had a point on the board. Peak at ' + T + ' or better, lose, ' +
-      'and it goes in the ledger when the week goes final. A tie counts as a loss here: ' + T + ' was the chance to win. ' +
-      'A stretch with no readings is simply missing, peak and all. The record starts ' + HN.esc(when(START.at)) + ' in Week ' + START.week +
-      ' of ' + START.season + ', during the late game; that week’s earlier games went unrecorded.' +
+    return 'How it’s kept: every few minutes, from a week’s first points to the final, the site logs Yahoo’s win probability for every matchup. ' +
+      'A manager’s peak is their best reading once their matchup has a point on the board. Peak at ' + T + ' or better, lose, ' +
+      'and it goes in the ledger when the week goes final. A tie counts as a loss: ' + T + ' was the chance to win. ' +
+      'A stretch with no readings is missing, peak included. The record starts ' + HN.esc(when(START.at)) + ' in Week ' + START.week +
+      ' of ' + START.season + ', partway through the late game; that week’s earlier games weren’t recorded.' +
       (updated ? ' Last update: ' + HN.esc(when(updated)) + '.' : '');
   }
   function cleanSheet(v) {
     var n = v.settled.length, live = v.live, T = pc(v.thr), msg;
     var first = v.yr === START.season && live === START.week;
     if (!n && live == null) msg = '<b>Clean sheet.</b> Nothing on the record' +
-      (v.current ? ' yet. The pulse starts taking readings when a week’s first game kicks off.' : ' for ' + v.yr + '.');
+      (v.current ? ' yet. Readings start with a week’s first points.' : ' for ' + v.yr + '.');
     else if (!n) msg = '<b>Clean sheet.</b> Nobody has choked yet. Week ' + live + ' is the first week on trial' +
       (first ? ', recorded from Sunday night on,' : '') + ' and the verdict comes when its last game goes final.';
     else msg = '<b>Clean sheet.</b> Nobody has choked yet — ' + weeksWord(n) + ' judged, and everyone who got to ' + T + ' closed it out.' +
@@ -425,7 +425,7 @@ window.HN = window.HN || { tabs: {} };
     bar.innerHTML = '';
     if (!(current > START.season)) return;
     for (var y = current; y >= START.season; y--) ys.push(String(y));
-    bar.appendChild(HN.seg(ys, String(current), function (y) { y = Number(y); show(el, y === current ? null : y); }));
+    bar.appendChild(HN.season(ys, String(current), function (y) { y = Number(y); show(el, y === current ? null : y); }));
   }
 
   function click(el, e) {
@@ -488,8 +488,8 @@ window.HN = window.HN || { tabs: {} };
     h += '<section class="hn-card ck-blown-card"><h3 class="hn-h">Biggest Leads Blown <small>' + v.yr + ' · top 10</small></h3>' +
       '<div class="ck-blown">' + (n ? '<p class="ck-wait">Reading the judged weeks…</p>' :
         '<p class="hn-empty">Nothing to rank yet. This fills in once a week is judged' + (live != null ? ', starting with Week ' + live : '') + '.</p>') + '</div>' +
-      '<p class="hn-note">Every manager who lost a judged week, ranked by their best reading with points on the board — chokes and near-misses alike. ' +
-      'Red cleared ' + T + ' and is in the ledger. Grey never got past 50%: never the favorite, so there was no lead to blow.</p></section>';
+      '<p class="hn-note">Every loss from a judged week, ranked by the loser’s best reading with points on the board, chokes and near-misses alike. ' +
+      'Red reached ' + T + ' and is in the ledger. Grey never got past 50%, so there was no lead to blow.</p></section>';
     v.body.innerHTML = h;
 
     v.ledgerP = judge(v, raw);
@@ -527,8 +527,8 @@ window.HN = window.HN || { tabs: {} };
     } else h = cleanSheet(v);
     if (res.out.length) {
       h += '<p class="ck-out">Not counted: ' + andList(res.out.map(function (c) { return '<b>' + HN.esc(c.who) + '</b> in Week ' + c.week; })) + '. ' +
-        (res.out.length === 1 ? 'He' : 'Each') + ' only reached ' + pc(v.thr) + ' on Yahoo’s pre-game projection, before anyone in ' +
-        (res.out.length === 1 ? 'his' : 'the') + ' matchup had scored.</p>';
+        'They only reached ' + pc(v.thr) + ' on Yahoo’s pre-game projection, before anyone in ' +
+        (res.out.length === 1 ? 'the matchup' : 'their matchups') + ' had scored.</p>';
     }
     var unread = [];
     list.forEach(function (c) { if (c.unchecked && unread.indexOf(c.week) < 0) unread.push(c.week); });

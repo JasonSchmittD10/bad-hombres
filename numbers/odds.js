@@ -366,7 +366,7 @@
       (over
         ? kpi('No. 1 seed', '<i class="od-kpi-who">' + HN.who(ft) + '</i>', 'Finished first') +
           kpi('The Beer Mile', '<i class="od-kpi-who">' + HN.who(fl) + '</i>', 'Finished ' + ordinal(T) + '. Lace up.')
-        : kpi('Playoff favorite', '<i class="od-kpi-who">' + HN.who(fp) + '</i>', pc(B[fp].playoffs) + ' to make the ' + (E.playoffs === 6 ? 'six' : 'top ' + E.playoffs)) +
+        : kpi('Playoff favorite', '<i class="od-kpi-who">' + HN.who(fp) + '</i>', pc(B[fp].playoffs) + ' to make the ' + (E.playoffs === 6 ? 'top six' : 'top ' + E.playoffs)) +
           kpi('No. 1 seed favorite', '<i class="od-kpi-who">' + HN.who(ft) + '</i>', pc(B[ft].top) + ' to finish first') +
           kpi('Beer Mile favorite', '<i class="od-kpi-who">' + HN.who(fl) + '</i>', pc(B[fl].last) + ' to finish ' + ordinal(T))) +
       '</div>';
@@ -396,7 +396,7 @@
       return;
     }
     html += '<p class="od-lede">Pick winners and the rest of the season re-runs ' + commas(E.sims) + ' times, right here in the browser. ' +
-      'The percentage by each name is the model’s pregame chance.</p>' +
+      'The percentage by each name is the model’s pre-game chance.</p>' +
       '<div class="wi-grid"><div class="wi-next"></div><div class="wi-res"></div><details class="wi-more"></details></div>' +
       '<div class="wi-strip"><div class="ws-l"><span class="ws-k"></span><span class="ws-v"></span></div>' +
       '<button type="button" class="ws-go">Odds &uarr;</button><button type="button" class="od-reset">Reset</button></div>' +
@@ -409,7 +409,7 @@
   function method(d, E, sims, yrs, over) {
     var m = d.model, rule = 'record (a tie is half a win), then total points, then head-to-head record and points among the tied teams';
     if (over) {
-      return 'How it works: the regular season is over, so every number above is the final standings, ranked by the by-laws: ' + rule + '. ' +
+      return 'How it works: the regular season is over, so every number above comes from the final standings, ranked by the by-laws: ' + rule + '. ' +
         'Top ' + E.playoffs + ' made the playoffs, top ' + E.byes + ' got byes, and ' + ordinal(E.T) + ' runs the Beer Mile.';
     }
     var s = 'How it works: each manager’s weekly score is drawn from a bell curve. ';
@@ -421,7 +421,7 @@
       s += 'Before Week 1 everyone is centered on the ' + (yrs ? yrs + ' ' : 'league’s ') + 'average' +
         (isNum(m.hist_mean) ? ' (' + num(m.hist_mean, 1) + ')' : '') + ', so only the schedule separates them. ';
     }
-    s += 'That center is Model avg. The spread is ' + num(m.sigma, 1) + ' points, the typical swing around a manager’s own season average' +
+    s += 'That center is the Model avg column. The spread is ' + num(m.sigma, 1) + ' points, the typical swing around a manager’s own season average' +
       (yrs ? ' in ' + yrs : ' in past seasons') + (isNum(m.sigma_weeks) ? ' (' + commas(m.sigma_weeks) + ' team-weeks)' : '') + '. ' +
       (d.through_week ? weeks(1, d.through_week) + ' real; ' : '') +
       weeks(d.through_week + 1, d.reg_weeks) + ' played ' + sims + ' times, and a week counts as unplayed until it’s final. ' +
@@ -456,7 +456,7 @@
     for (i = next + 1; i <= d.reg_weeks; i++) if (gw[i]) later.push(i);
     var more = box.querySelector('.wi-more');
     if (later.length) {
-      more.innerHTML = '<summary>Every remaining week <span class="hn-mute">(' + later[0] + (later.length > 1 ? '–' + later[later.length - 1] : '') +
+      more.innerHTML = '<summary>Later weeks <span class="hn-mute">(' + later[0] + (later.length > 1 ? '–' + later[later.length - 1] : '') +
         ')</span> <em></em></summary><div class="wi-weeks">' + later.map(weekBlock).join('') + '</div>';
     } else more.parentNode.removeChild(more);
 

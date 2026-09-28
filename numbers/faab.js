@@ -2,7 +2,7 @@
 // Data: /data/numbers/faab.json, built by scripts/hn/faab.py.
 (function (HN) {
   var CSS = [
-    '#hn-faab .fb-bar{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}',
+    '#hn-faab .fb-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}',
     '#hn-faab .fb-when{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}',
     '#hn-faab .fb-flag{background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;',
     ' padding:10px 14px;margin:0 0 16px;font-size:13px;line-height:1.5;color:var(--silver)}',
@@ -129,7 +129,7 @@
     var claims = P.filter(function (p) { return p.src === 'waivers'; }).length;
     h += '<div class="hn-kpi"><span>The wire</span><b>' + plural(P.length, 'pickup') + '</b><em>' +
       (s.faab ? usd(s.spent) + ' of FAAB spent' + (s.pend > 0 ? ', ' + usd(s.pend) + ' of it on pickups yet to play' : ', league-wide')
-        : plural(claims, 'waiver claim') + ', ' + plural(P.length - claims, 'free agent')) + '</em></div>';
+        : plural(claims, 'waiver claim') + ', ' + plural(P.length - claims, 'free-agent add')) + '</em></div>';
     return h + '</div>';
   }
 
@@ -179,8 +179,8 @@
       var m = s.managers.filter(function (x) { return x.m === st.who; })[0];
       if (m && s.faab && num(m.worst) != null) {
         var w = P[m.worst];
-        head += '<p class="fb-line">' + (m.big === 1 ? 'His only $' + esc(s.minBid) + '+ bid' + (s.final ? '' : ' to play so far') : 'Worst spend') +
-          ': <b>' + esc(w.p) + '</b>, ' + usd(w.bid) + ' for ' + pts(w.pts) + ' started pts.</p>';
+        head += '<p class="fb-line">' + (m.big === 1 ? 'Only $' + esc(s.minBid) + '+ bid' + (s.final ? '' : ' to play so far') : 'Worst spend') +
+          ': <b>' + esc(w.p) + '</b>, ' + usd(w.bid) + ' for ' + pts(w.pts) + ' started points.</p>';
       }
     } else {
       var all = s.top.concat(pend);
@@ -208,7 +208,7 @@
     });
     return h + '</tbody></table></div><p class="hn-note">Weeks: from the week the player was added until the drop, the trade or the end of the season' +
       (open ? '; “now” means still on the roster' : '') + '. ' +
-      (s.faab ? 'Price: the winning FAAB bid; FA means a free agent, who costs nothing.' : '') + '</p></div>';
+      (s.faab ? 'Price: the winning FAAB bid; FA is a free-agent add, which costs nothing.' : '') + '</p></div>';
   }
   function byPts(P, a, b) {
     var x = num(P[a].pts), y = num(P[b].pts);
@@ -239,7 +239,7 @@
       '<th class="n">Started pts after</th><th>For</th></tr></thead><tbody>';
     a.forEach(function (x, k) {
       h += '<tr><td class="fb-rk">' + (k + 1) + '</td><td>' + player(x) + '</td><td class="fb-wrap">' +
-        (x.by || []).map(function (b) { return chip(b[0], 'wk ' + esc(b[1])); }).join('') + '</td>' +
+        (x.by || []).map(function (b) { return chip(b[0], 'Wk ' + esc(b[1])); }).join('') + '</td>' +
         '<td class="n' + (k === 0 ? ' hn-gold' : '') + '">' + pts(x.pts) + '</td><td class="fb-wrap">' +
         (x['for'] || []).map(function (f) { return chip(f[0], pts(f[1])); }).join('') + '</td></tr>';
     });
@@ -268,8 +268,8 @@
     }
     if (!P.length) return h + '<p class="hn-empty">No pickups in ' + esc(y) + ' yet.</p>';
     return h + kpis(s, P) + ledger(s, P, st.who) + receipts(s, P, st) + (s.faab ? worstCard(s, P) : '') + awayCard(s) +
-      '<p class="hn-note">Started points count only the starting lineup in games that counted: every regular-season week and the playoff bracket. ' +
-      'Bench weeks, consolation games and playoff byes are worth nothing. A pickup belongs to the week the player joined; ' +
+      '<p class="hn-note">Started points count the starting lineup only, in every regular-season week and the playoff bracket; ' +
+      'consolation games and playoff byes don’t count. A pickup belongs to the week the player joined, and ' +
       'Yahoo turns the week over overnight, Monday into Tuesday.</p>';
   }
 
@@ -302,7 +302,7 @@
       function when(y) {
         var s = d.seasons[y] || {};
         if (s.final) return 'Final · ' + plural(s.P.length, 'pickup');
-        return num(s.through) ? 'Through week ' + s.through : 'Week 1 not final';
+        return num(s.through) ? 'Through Week ' + s.through : 'Week 1 not final';
       }
       // redraw, then put keyboard focus back on the control that caused it
       function draw(focus) {
@@ -333,7 +333,7 @@
           r.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
-      bar.appendChild(HN.seg(years, on, show));
+      bar.appendChild(HN.season(years, on, show));
       bar.appendChild(tag);
       show(on);
     }).catch(function (e) {

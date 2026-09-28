@@ -28,4 +28,19 @@ window.HN = window.HN || { tabs: {} };
     });
     return w;
   };
+  // the season picker: a quiet dropdown that sits at the far right of a tab's bar.
+  // HN.season([{v:2026,l:'2026'}, 2025, ...], 2026, function(v){...}) -> element
+  HN.season = function (opts, on, pick) {
+    var w = document.createElement('label'); w.className = 'hn-season';
+    var sel = document.createElement('select'); sel.setAttribute('aria-label', 'Season');
+    opts.forEach(function (o) {
+      var v = typeof o === 'object' ? o.v : o, l = typeof o === 'object' ? o.l : o;
+      var op = document.createElement('option'); op.value = String(v); op.textContent = l;
+      if (String(v) === String(on)) op.selected = true;
+      sel.appendChild(op);
+    });
+    sel.onchange = function () { pick(sel.value); };
+    w.innerHTML = '<span>Season</span>'; w.appendChild(sel);
+    return w;
+  };
 })(window.HN);

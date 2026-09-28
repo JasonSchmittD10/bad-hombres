@@ -2,7 +2,7 @@
 // did for their new team. Data: /data/numbers/trades.json, built by scripts/hn/trades.py.
 (function (HN) {
   var CSS = [
-    '#hn-trades .tc-ctl{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 16px}',
+    '#hn-trades .tc-ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 16px}',
     '#hn-trades .hn-kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}',
     '#hn-trades .hn-kpi b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
     '#hn-trades .hn-kpi b .hn-face{width:22px;height:22px;margin-right:7px;vertical-align:-3px}',
@@ -91,7 +91,7 @@
     }).join('');
   }
 
-  // his time on the new roster: "from Wk 9 · cut after Wk 10 · re-added Wk 13 · cut after Wk 14"
+  // the player's time on the new roster: "from Wk 9 · cut after Wk 10 · re-added Wk 13 · cut after Wk 14"
   function path(pl) {
     var st = pl.stints || [], out = [];
     if (!st.length) return pl.left === 'traded' ? 'flipped before playing a week for them'
@@ -126,7 +126,7 @@
     }
     if (t.winner == null) return (a.started || 0) === 0 && (b.started || 0) === 0
       ? 'Neither side started anybody it got. No ruling.' : 'Dead even. No ruling.';
-    return 'The court finds for <b>' + HN.esc(t.sides[t.winner].who) + '</b>, by ' + pts(t.margin) + '.';
+    return 'The court finds for <b>' + HN.esc(t.sides[t.winner].who) + '</b>, by ' + pts(t.margin) + ' points.';
   }
 
   function card(t, D, topId) {
@@ -208,14 +208,14 @@
     Object.keys(po).forEach(function (y) { if (po[y] && po[y].length === 2) spans[po[y][0] + '–' + po[y][1]] = 1; });
     var one = Object.keys(spans), weeks = one.length === 1 ? 'Weeks ' + one[0] : 'the playoff weeks';
     var vyrs = vet.map(function (v) { return v.season; }).filter(function (y, i, a) { return a.indexOf(y) === i; });
-    var vnote = !vet.length ? '' : vet.length === 1 ? ' The one vetoed trade, in ' + vyrs[0] + ', is listed and never judged.'
-      : ' The ' + word(vet.length) + ' vetoed trades (' + vyrs.join(', ') + ') are listed and never judged.';
+    var vnote = !vet.length ? '' : vet.length === 1 ? ' The one vetoed trade, in ' + vyrs[0] + ', is listed but never judged.'
+      : ' The ' + word(vet.length) + ' vetoed trades (' + vyrs.join(', ') + ') are listed but never judged.';
     return '<div class="hn-note tc-method">' +
-      '<p><b>Started points:</b> what each player a side received scored in that side’s starting lineup (bench and IR don’t count), in every week the player sat on the new roster from the week the trade took effect to the end of that season. Cut and picked back up by the same team, the player counts again once back; brought back by a later trade, he counts for that trade instead.</p>' +
-      '<p><b>Only games that counted:</b> every regular-season week, plus the team’s own championship-bracket games in ' + weeks + '; consolation games and playoff byes are skipped. The evidence splits the two.</p>' +
-      '<p><b>Verdict:</b> the side whose incoming players started for more points wins, by the difference. A trade this season with fewer than ' + word(need) + ' finished weeks behind it is pending.</p>' +
-      '<p><b>When a trade took effect</b> comes from the weekly rosters, not the timestamp: the first week the player shows up on the new roster. Yahoo’s rosters are end-of-week snapshots, so Wks and Rostered count that whole week, even when the player’s game came before the trade went through.</p>' +
-      '<p><b>Rostered:</b> all the player’s points on the new roster over the same weeks, started or not. <b>Ledger:</b> Pts in is what a manager’s incoming players started for that manager, Pts out is what the outgoing players started for the other guy, Net is the difference; pending trades are left out.</p>' +
+      '<p><b>Started points:</b> what the players a side received scored in its starting lineup (not bench or IR), from the week the trade took effect to the end of that season. A player cut and re-added by the same team counts again once back; one reacquired in a later trade counts for that trade instead.</p>' +
+      '<p><b>Games that counted:</b> every regular-season week, plus the team’s own championship-bracket games in ' + weeks + '. Consolation games and playoff byes don’t count. The evidence shows regular season and playoffs separately.</p>' +
+      '<p><b>Verdict:</b> the side whose incoming players started for more points wins, by the difference. A trade from this season stays pending until ' + word(need) + ' weeks have finished since it took effect.</p>' +
+      '<p><b>Effective week:</b> the first week the player appears on the new roster, taken from Yahoo’s weekly rosters rather than the trade’s timestamp. Those rosters are end-of-week snapshots, so Wks and Rostered count that whole week, even when the player’s game came before the trade went through.</p>' +
+      '<p><b>Rostered:</b> all the player’s points on the new roster over the same weeks, started or not. <b>Ledger:</b> Pts in is what a manager’s incoming players started for that manager, Pts out is what the outgoing players started for the other side, and Net is the difference. Pending trades are left out.</p>' +
       '<p><b>Proposers:</b> judged trades won, lost and even for the side that sent the offer.' + vnote + '</p></div>';
   }
 
@@ -224,13 +224,14 @@
       var st = document.createElement('style'); st.id = 'hn-trades-css'; st.textContent = CSS; document.head.appendChild(st);
     }
     HN.data('trades').then(function (D) {
-      var season = 'all', sort = 'new';
       var trades = D.trades || [], vetoed = D.vetoed || [], yrs = (D.seasons || []).slice().reverse();
+      // the season being played, unless nobody has traded yet — then the whole docket
+      var season = trades.some(function (t) { return String(t.season) === String(D.current); }) ? String(D.current) : 'all', sort = 'new';
       el.innerHTML = '<p class="hn-intro">Every trade since ' + HN.esc(String((D.seasons || [])[0] || '')) +
         ', re-tried on the only evidence that matters: points scored in the new owner’s starting lineup. No appeals.</p>' +
         '<div class="tc-ctl"></div><div class="tc-body"></div>' + method(D);
       var ctl = el.querySelector('.tc-ctl'), body = el.querySelector('.tc-body');
-      ctl.appendChild(HN.seg([{ v: 'all', l: 'All' }].concat(yrs.map(String)), season, function (v) { season = String(v); draw(); }));
+      ctl.appendChild(HN.season([{ v: 'all', l: 'All seasons' }].concat(yrs.map(String)), season, function (v) { season = String(v); draw(); }));
       ctl.appendChild(HN.seg([{ v: 'new', l: 'Newest' }, { v: 'old', l: 'Oldest' }, { v: 'big', l: 'Most lopsided' }], sort, function (v) { sort = v; draw(); }));
 
       function draw() {
