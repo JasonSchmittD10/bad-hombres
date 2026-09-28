@@ -364,6 +364,11 @@ section.view{display:none;padding:6px 0 0}section.view.active{display:block}
 .mu-wp .bar{flex:1;height:6px;border-radius:4px;overflow:hidden;background:#3a3a44;display:flex;min-width:40px}
 .mu-wp .bar i{display:block;height:100%;background:var(--red);transition:width .6s ease}
 .mu-wp .fav{color:#fff}
+.mu{cursor:pointer;transition:border-color .15s}
+.mu:hover{border-color:#3a3a44}
+.mu.open{border-color:var(--red);grid-column:1/-1}
+.mu-chart:empty{display:none}
+.mu-chart{padding:4px 0 10px;cursor:default}
 .mu-row+.mu-row{border-top:1px dashed var(--line)}
 img.av{object-fit:cover;object-position:center top;display:block}
 .av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;
@@ -947,7 +952,7 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
  function art(b){return b.img?('<img class="art" src="'+b.img+'" alt="" loading="lazy">'):icon(b.ic);}
  var el=function(id){return document.getElementById(id)};
  var sb=el('sb'); if(!sb) return;
- var state={data:FALLBACK,mode:'projected',chosen:false};
+ var state={data:FALLBACK,mode:'projected',chosen:false,charts:{}};
 
  function esc(t){var d=document.createElement('div');d.textContent=t==null?'':String(t).replace(/'/g,'\u2019');return d.innerHTML}
  function initials(n){return String(n||'?').trim().split(/\s+/).map(function(x){return x[0]}).join('').slice(0,2).toUpperCase()}
@@ -983,10 +988,32 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
    for(k in mu.a)a[k]=mu.a[k];
    for(k in mu.b)b[k]=mu.b[k];
    a.pts=(live&&a.s!=null)?a.s:a.p; b.pts=(live&&b.s!=null)?b.s:b.p;
-   return '<div class="mu">'+side(a,a.pts>b.pts)+side(b,b.pts>a.pts)+sweat(mu,d.status)+'</div>';
+   var key=mu.a.m+'|'+mu.b.m, open=!!state.charts[key];
+   return '<div class="mu'+(open?' open':'')+'" data-k="'+esc(key)+'" role="button" tabindex="0" aria-expanded="'+open+'">'+
+    side(a,a.pts>b.pts)+side(b,b.pts>a.pts)+sweat(mu,d.status)+'<div class="mu-chart"></div></div>';
   }).join('');
   el('sbMus').innerHTML=rows||'<div class="bb-note">No matchups posted yet.</div>';
+  drawCharts(false);
  }
+
+ // the sweat chart under a matchup: tap to open, tap to close (assets/js/sweat.js)
+ function drawCharts(fresh){
+  if(!window.BHSweat) return;
+  var wk=state.data.week;
+  [].forEach.call(document.querySelectorAll('#sbMus .mu.open'),function(card){
+   var k=card.getAttribute('data-k').split('|'), box=card.querySelector('.mu-chart');
+   BHSweat.load(wk,fresh).then(function(d){BHSweat.chart(box,d,k[0],k[1],{since:'in Week 3'})})
+    .catch(function(){box.innerHTML='<div class="sw-empty">The chart isn\u2019t available right now.</div>'});
+  });
+ }
+ function toggleChart(card){
+  var k=card.getAttribute('data-k'); if(!k) return;
+  state.charts[k]=!state.charts[k];
+  card.classList.toggle('open',state.charts[k]); card.setAttribute('aria-expanded',state.charts[k]);
+  if(state.charts[k]) drawCharts(false); else card.querySelector('.mu-chart').innerHTML='';
+ }
+ el('sbMus').addEventListener('click',function(e){var c=e.target.closest('.mu');if(c&&!e.target.closest('a'))toggleChart(c)});
+ el('sbMus').addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var c=e.target.closest('.mu');if(c){e.preventDefault();toggleChart(c)}});
 
  function renderBonus(){
   var d=state.data, wk=d.week||1, i;
@@ -1064,6 +1091,7 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
    var hasBonus=function(b){return b&&((b.actual&&b.actual.length)||(b.projected&&b.projected.length))};
    if(live&&!hasBonus(api.bonus)&&file&&file.week===api.week) d.bonus=file.bonus;
    apply(d);
+   drawCharts(true);
   });
  }
  render(); load(); setInterval(load,90000);
@@ -1531,4 +1559,5 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
  }).catch(function(){box.hidden=true});
 })();
 </script>
+<script src="/assets/js/sweat.js"></script>
 </body></html>
