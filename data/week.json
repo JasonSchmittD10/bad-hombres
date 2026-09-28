@@ -132,10 +132,10 @@
  "nextKickoff": "2026-09-24T20:15:00-04:00",
  "nextKickoffLabel": "Thursday, Sept 24 · 8:15 PM ET",
  "nextGame": {
-  "away": "LAR",
-  "home": "DEN",
-  "kickoff": "2026-09-27T20:20:00-04:00",
-  "label": "Sunday, Sept 27 at 8:20 PM ET",
-  "network": "NBC"
+  "away": "PHI",
+  "home": "CHI",
+  "kickoff": "2026-09-28T20:15:00-04:00",
+  "label": "Monday, Sept 28 at 8:15 PM ET",
+  "network": "ESPN/ABC"
  }
 }
