@@ -320,6 +320,14 @@ export default async function handler(req, res) {
     const sb = await getScoreboard(Number.isFinite(qWeek) ? qWeek : undefined);
     const week = sb.week;
 
+    // ?lite=1 — scores and live win probability only, one Yahoo call (the pulse sampler)
+    if (req.query?.lite === '1') {
+      const any = sb.matchups.some((m) => (m.a.s ?? 0) > 0 || (m.b.s ?? 0) > 0);
+      const done = sb.matchups.length > 0 && sb.matchups.every((m) => m.status === 'postevent');
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(200).json({ week, status: done ? 'final' : any ? 'live' : 'preseason', updated: new Date().toISOString(), matchups: sb.matchups });
+    }
+
     let teams = [];
     try { teams = await getRosters(week, sb.matchups); } catch (_) { /* bonus degrades, matchups still render */ }
 
