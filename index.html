@@ -358,6 +358,12 @@ section.view{display:none;padding:6px 0 0}section.view.active{display:block}
 .sb-mus{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:12px}
 .mu{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:6px 14px}
 .mu-row{display:flex;align-items:center;gap:11px;padding:10px 0}
+/* tug-of-war: live win probability, top team fills from the left */
+.mu-wp{display:flex;align-items:center;gap:8px;padding:2px 0 10px;font-size:10.5px;font-weight:800;
+ letter-spacing:.04em;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mu-wp .bar{flex:1;height:6px;border-radius:4px;overflow:hidden;background:#3a3a44;display:flex;min-width:40px}
+.mu-wp .bar i{display:block;height:100%;background:var(--red);transition:width .6s ease}
+.mu-wp .fav{color:#fff}
 .mu-row+.mu-row{border-top:1px dashed var(--line)}
 img.av{object-fit:cover;object-position:center top;display:block}
 .av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;
@@ -958,6 +964,18 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
    '<div class="mu-pt">'+num(s.pts)+'</div></div>';
  }
 
+ // The tug-of-war: Yahoo's live chance each side wins, from the API. Before and during the
+ // week only — once it's final the scoreboard already says who won.
+ function sweat(mu,status){
+  var aw=mu.a.wp, bw=mu.b.wp;
+  if(status==='final'||typeof aw!=='number'||typeof bw!=='number') return '';
+  var ap=Math.round(aw*100), bp=100-ap, fav=ap>=bp?'a':'b';
+  return '<div class="mu-wp" title="Yahoo\u2019s live win probability">'+
+   '<span class="'+(fav==='a'?'fav':'')+'">'+esc(mu.a.m)+' '+ap+'%</span>'+
+   '<span class="bar"><i style="width:'+ap+'%"></i></span>'+
+   '<span class="'+(fav==='b'?'fav':'')+'">'+bp+'% '+esc(mu.b.m)+'</span></div>';
+ }
+
  function renderMatchups(){
   var d=state.data, live=(state.mode==='actual'&&d.status!=='preseason');
   var rows=(d.matchups||[]).map(function(mu){
@@ -965,7 +983,7 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
    for(k in mu.a)a[k]=mu.a[k];
    for(k in mu.b)b[k]=mu.b[k];
    a.pts=(live&&a.s!=null)?a.s:a.p; b.pts=(live&&b.s!=null)?b.s:b.p;
-   return '<div class="mu">'+side(a,a.pts>b.pts)+side(b,b.pts>a.pts)+'</div>';
+   return '<div class="mu">'+side(a,a.pts>b.pts)+side(b,b.pts>a.pts)+sweat(mu,d.status)+'</div>';
   }).join('');
   el('sbMus').innerHTML=rows||'<div class="bb-note">No matchups posted yet.</div>';
  }
