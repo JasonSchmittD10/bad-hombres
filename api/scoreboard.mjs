@@ -51,7 +51,7 @@ function teamShape(team) {
     s: numOr(pts.total),
     p: numOr(proj.total),
     // Yahoo's live chance this team wins the matchup, 0-1 (the homepage's tug-of-war)
-    wp: numOr(t.win_probability),
+    wp: t.win_probability == null ? null : Math.round(numOr(t.win_probability, 0) * 100) / 100,
   };
 }
 
