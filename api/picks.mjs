@@ -24,39 +24,18 @@
 // (data/voices.json "gotw"), kickoff (data/week.json), and the final scores
 // (data/record.json). Nothing here is graded by hand.
 
-const env = (n) => (process.env[n] || '').trim();
-const GIST = env('PICKS_GIST_ID');
-const TOKEN = env('PICKS_GIST_TOKEN');
+import { storageReady, readFile, writeFile } from './_gist.mjs';
+
 const FILE = 'bad-hombres-picks.json';
 
 const MANAGERS = ['Adam', 'Chris', 'David', 'Drew', 'Dylan', 'Erick', 'Hoa', 'Jason', 'Matt', 'Tola', 'Wes', 'Zack'];
 
-const GH = {
-  Authorization: `Bearer ${TOKEN}`,
-  Accept: 'application/vnd.github+json',
-  'X-GitHub-Api-Version': '2022-11-28',
-  'User-Agent': 'bad-hombres-picks',
-};
-
 async function loadStore() {
-  const r = await fetch(`https://api.github.com/gists/${GIST}`, { headers: GH, cache: 'no-store' });
-  if (!r.ok) throw new Error(`storage-${r.status}`);
-  const f = ((await r.json()).files || {})[FILE];
-  if (!f) return { picks: {} };
-  // a big file comes back truncated; fetch the raw copy instead
-  const text = f.truncated ? await (await fetch(f.raw_url, { headers: GH })).text() : f.content;
-  const d = JSON.parse(text || '{}');
+  const d = (await readFile(FILE)) || {};
   return { picks: d.picks || {} };
 }
 
-async function saveStore(d) {
-  const r = await fetch(`https://api.github.com/gists/${GIST}`, {
-    method: 'PATCH',
-    headers: { ...GH, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ files: { [FILE]: { content: JSON.stringify(d, null, 1) } } }),
-  });
-  if (!r.ok) throw new Error(`storage-save-${r.status}`);
-}
+const saveStore = (d) => writeFile(FILE, d);
 
 async function siteData(req) {
   const proto = req.headers['x-forwarded-proto'] || 'https';
@@ -137,7 +116,7 @@ async function read(req, store) {
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-  if (!GIST || !TOKEN) return res.status(503).json({ error: 'storage-not-connected' });
+  if (!storageReady()) return res.status(503).json({ error: 'storage-not-connected' });
   try {
     if (req.method === 'GET') return res.status(200).json(await read(req));
     if (req.method !== 'POST') return res.status(405).json({ error: 'method' });

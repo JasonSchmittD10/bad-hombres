@@ -1,120 +1,74 @@
 #!/usr/bin/env python3
-"""The pulse: sample Yahoo's live win probability through the week, and keep the Choke Ledger.
+"""The pulse, from the Mac's side: ping the site to sample Yahoo's live win probability.
 
-    scripts/pulse.py sample        # one sample (launchd runs this every 10 minutes)
-    scripts/pulse.py settle [N]    # judge week N's chokes now (sample does it by itself at final)
-    scripts/pulse.py show          # print the ledger
+    scripts/pulse.py sample       # take a sample (launchd runs this every 5 minutes)
+    scripts/pulse.py settle N     # judge week N's chokes now, then pull the ledger
+    scripts/pulse.py pull         # write the Choke Ledger into data/chokes.json
+    scripts/pulse.py show         # print the ledger
+    scripts/pulse.py seed         # one-time: send samples taken locally to the server
 
-Yahoo only reports the win probability right now, so "he was 94% to win at 4:10 on
-Sunday" exists only if something wrote it down at 4:10 on Sunday. A launchd job,
-com.badhombres.pulse, runs `sample` every 10 minutes; it calls the site's scoreboard in
-lite mode (one Yahoo request) and records only while games are live, so off-hours
-samples cost one request and write nothing.
+The site does the work: POST https://bad-hombres.vercel.app/api/pulse reads Yahoo and
+stores the sample in the league's gist, so the charts on the site update without a
+deploy. This script only knocks on the door. A launchd job, com.badhombres.pulse, runs
+`sample` every 5 minutes; outside live games the server records nothing.
 
-data/pulse.json:
-  {"season": 2026, "threshold": 0.85,
-   "weeks": {"<N>": {"samples": [["<iso>", {"<Manager>": wp, ...}], ...],
-                     "peak": {"<Manager>": {"wp", "at", "s", "opp_s"}},
-                     "final": {"<Manager>": {"s", "opp", "opp_s", "won"}} }},
-   "chokes": [{"week", "who", "opp", "peak", "at", "score_then", "opp_then", "final", "opp_final"}]}
-
-A choke is a manager who lost after being at or above the threshold (85%) at some
-point while the games were live. Pre-game odds don't count: losing as a projected
-favourite is an upset, not a choke.
-
-data/pulse.json stays local (gitignored). data/chokes.json is the published ledger:
-{season, threshold, chokes, weeks (the weeks judged)} — it changes only when a week settles,
-and the scoreboard routine commits it.
+data/chokes.json is a committed copy of the ledger — {season, threshold, chokes, weeks
+(the weeks judged)} — written by `pull`/`settle`, and committed by the scoreboard
+routine's run D. The live version is always GET /api/pulse.
 """
-import datetime, json, os, sys, urllib.request
+import json, os, sys, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-FILE = ROOT / "data" / "pulse.json"          # local working file (gitignored)
-LEDGER = ROOT / "data" / "chokes.json"       # the published ledger (committed by the scoreboard routine)
-API = os.environ.get("BH_API", "https://bad-hombres.vercel.app/api/scoreboard") + "?lite=1"
-THRESHOLD = 0.85
-MAX_SAMPLES = 400            # ~66 hours of live games at one per 10 minutes, per week
+API = os.environ.get("BH_PULSE", "https://bad-hombres.vercel.app/api/pulse")
+LEDGER = ROOT / "data" / "chokes.json"
+LOCAL = ROOT / "data" / "pulse.json"          # samples from before the server sampled (gitignored)
 
-def now(): return datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()
+def call(method="GET", query="", body=None):
+    data = json.dumps(body).encode() if body is not None else (b"" if method == "POST" else None)
+    req = urllib.request.Request(API + query, data=data, method=method,
+                                 headers={"Content-Type": "application/json", "Cache-Control": "no-store"})
+    try:
+        with urllib.request.urlopen(req, timeout=90) as r: return json.loads(r.read())
+    except urllib.error.HTTPError as e:
+        sys.exit("pulse: the site answered %s: %s" % (e.code, e.read().decode("utf-8", "replace")[:300]))
+    except Exception as e:
+        sys.exit("pulse: couldn't reach the site: %s" % e)
 
-def load():
-    if FILE.exists(): return json.loads(FILE.read_text())
-    return {"season": None, "threshold": THRESHOLD, "weeks": {}, "chokes": []}
-
-def save(d):
-    FILE.write_text(json.dumps(d, indent=1, ensure_ascii=False) + "\n")
-    # the site reads only the ledger, which changes once a week — not every sample
-    led = {"season": d.get("season"), "threshold": d.get("threshold", THRESHOLD), "chokes": d.get("chokes", []),
-           "weeks": sorted(int(k) for k, w in d.get("weeks", {}).items() if w.get("settled"))}
+def pull():
+    d = call("GET", "?t=%d" % os.getpid())
+    led = {"season": d["season"], "threshold": d["threshold"], "chokes": d["chokes"],
+           "weeks": sorted(w["week"] for w in d["weeks"] if w["settled"])}
     old = json.loads(LEDGER.read_text()) if LEDGER.exists() else None
     if old != led: LEDGER.write_text(json.dumps(led, indent=1, ensure_ascii=False) + "\n")
+    return led
 
-def fetch(week=None):
-    url = API + ("&week=%d" % week if week else "")
-    with urllib.request.urlopen(urllib.request.Request(url, headers={"Cache-Control": "no-store"}), timeout=60) as r:
-        return json.loads(r.read())
-
-def settle(d, wk, ms):
-    """Record the week's finals and judge chokes. Safe to run twice."""
-    w = d["weeks"].setdefault(str(wk), {"samples": [], "peak": {}, "final": {}})
-    for m in ms:
-        a, b = m["a"], m["b"]
-        for me, op in ((a, b), (b, a)):
-            w["final"][me["m"]] = {"s": me.get("s"), "opp": op["m"], "opp_s": op.get("s"), "won": (me.get("s") or 0) > (op.get("s") or 0)}
-    d["chokes"] = [c for c in d["chokes"] if c["week"] != wk]
-    for who, f in w["final"].items():
-        pk = w["peak"].get(who)
-        if not f["won"] and pk and pk["wp"] >= d.get("threshold", THRESHOLD):
-            d["chokes"].append({"week": wk, "who": who, "opp": f["opp"], "peak": pk["wp"], "at": pk["at"],
-                                "score_then": pk.get("s"), "opp_then": pk.get("opp_s"), "final": f["s"], "opp_final": f["opp_s"]})
-    d["chokes"].sort(key=lambda c: (c["week"], -c["peak"]))
-    w["settled"] = now()
-
-def sample():
-    try: j = fetch()
-    except Exception as e: print("pulse: couldn't reach the API: %s" % e, file=sys.stderr); sys.exit(1)
-    ms, wk, status = j.get("matchups") or [], j.get("week"), j.get("status")
-    if not ms: print("pulse: no matchups"); return
-    d = load()
-    season = datetime.date.today().year if datetime.date.today().month >= 8 else datetime.date.today().year - 1
-    if d.get("season") not in (None, season): d = {"season": season, "threshold": THRESHOLD, "weeks": {}, "chokes": []}
-    d["season"] = season
-    w = d["weeks"].get(str(wk))
-    if status == "live":
-        w = d["weeks"].setdefault(str(wk), {"samples": [], "peak": {}, "final": {}})
-        t = now()
-        snap = {}
-        for m in ms:
-            for me, op in ((m["a"], m["b"]), (m["b"], m["a"])):
-                if me.get("wp") is None: continue
-                snap[me["m"]] = me["wp"]
-                pk = w["peak"].get(me["m"])
-                if not pk or me["wp"] > pk["wp"]:
-                    w["peak"][me["m"]] = {"wp": me["wp"], "at": t, "s": me.get("s"), "opp_s": op.get("s")}
-        w["samples"].append([t, snap])
-        w["samples"] = w["samples"][-MAX_SAMPLES:]
-        save(d); print("pulse: week %s live, sampled %d teams" % (wk, len(snap)))
-    elif status == "final" and w is not None and not w.get("settled"):
-        settle(d, wk, ms); save(d)
-        print("pulse: week %s final — %d choke(s)" % (wk, len([c for c in d["chokes"] if c["week"] == wk])))
-    else:
-        print("pulse: week %s %s — nothing to record" % (wk, status))
+def show(led):
+    for c in led["chokes"]:
+        print("week %s: %s was %d%% to beat %s (%s-%s at %s), lost %s-%s" % (
+            c["week"], c["who"], round(c["peak"] * 100), c["opp"], c["score_then"], c["opp_then"], c["at"], c["final"], c["opp_final"]))
+    if not led["chokes"]: print("no chokes yet (weeks judged: %s)" % (led["weeks"] or "none"))
 
 def main():
     a = sys.argv[1:]
-    if not a or a[0] not in ("sample", "settle", "show"): sys.exit(__doc__)
-    if a[0] == "sample": return sample()
-    d = load()
-    if a[0] == "settle":
-        j = fetch(int(a[1]) if len(a) > 1 else None)
-        wk = j["week"]
-        if j.get("status") != "final": sys.exit("pulse: week %s is %s, not final" % (wk, j.get("status")))
-        if str(wk) not in d.get("weeks", {}): print("pulse: no live samples for week %s — nothing to judge" % wk); return
-        settle(d, wk, j["matchups"]); save(d)
-    for c in d.get("chokes", []):
-        print("week %s: %s was %d%% to beat %s at %s (%s-%s), lost %s-%s" % (c["week"], c["who"], round(c["peak"] * 100), c["opp"], c["at"], c["score_then"], c["opp_then"], c["final"], c["opp_final"]))
-    if not d.get("chokes"): print("no chokes yet")
+    cmd = a[0] if a else ""
+    if cmd == "sample":
+        r = call("POST"); print("pulse:", json.dumps(r))
+    elif cmd == "settle":
+        if len(a) < 2: sys.exit("usage: pulse.py settle N")
+        r = call("POST", "?settle=%d" % int(a[1])); print("pulse:", json.dumps(r)[:300]); show(pull())
+    elif cmd == "pull":
+        show(pull())
+    elif cmd == "show":
+        d = call("GET"); show({"chokes": d["chokes"], "weeks": [w["week"] for w in d["weeks"] if w["settled"]]})
+    elif cmd == "seed":
+        if not LOCAL.exists(): sys.exit("pulse: no local samples to send")
+        d = json.loads(LOCAL.read_text())
+        for k, w in d.get("weeks", {}).items():
+            r = call("POST", "?seed=1", {"week": int(k), "samples": w.get("samples", []), "peak": w.get("peak", {})})
+            print("pulse: week %s -> %s" % (k, json.dumps(r)))
+    else:
+        sys.exit(__doc__)
 
 if __name__ == "__main__":
     main()
