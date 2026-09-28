@@ -369,9 +369,9 @@ export default async function handler(req, res) {
     // TEMP: ?raw=<league sub-path> returns Yahoo's response as-is, to fix the parsers
     if (req.query?.raw) {
       const sub = String(req.query.raw);
-      if (!/^[a-z_\/;=,.0-9]+$/i.test(sub)) return res.status(400).json({ error: 'bad path' });
+      if (!/^\/?(league|team|players|game)[a-z_\/;=,.0-9]*$/i.test(sub)) return res.status(400).json({ error: 'bad path' });
       res.setHeader('Cache-Control', 'no-store');
-      return res.status(200).json(await yahoo(`/league/${LEAGUE_KEY}/${sub}`));
+      return res.status(200).json(await yahoo(sub.startsWith('/') ? sub : `/league/${LEAGUE_KEY}/${sub}`));
     }
     const qWeek = parseInt(req.query?.week, 10);
     const sb = await getScoreboard(Number.isFinite(qWeek) ? qWeek : undefined);
