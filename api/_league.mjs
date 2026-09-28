@@ -18,7 +18,9 @@ export const MANAGERS = {
   tola: 'Tola', hoa: 'Hoa',
 };
 
-// Yahoo team_id -> manager. Stable for the life of the league, unlike nicknames
+// Yahoo team_id -> manager for THIS season (2026). Yahoo reshuffles team ids every season
+// (only t.1 = Jason has held), so this must be re-checked when a new season starts —
+// scripts/archive.py maps past seasons by team name instead. Unlike nicknames
 // (several are handles: "dylang", "aschmitty32", "DAYUMbro", "zek") and team names.
 export const TEAM_IDS = {
   1: 'Jason', 2: 'Tola', 3: 'Hoa', 4: 'David', 5: 'Dylan', 6: 'Drew',
