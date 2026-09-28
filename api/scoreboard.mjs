@@ -154,22 +154,18 @@ async function getScoreboard(week) {
 
 /* ---------------- Rosters with per-player weekly stats ---------------- */
 
-async function getRosters(week) {
-  const j = await yahoo(
-    `/league/${LEAGUE_KEY}/teams/roster;week=${week}/players/stats;type=week;week=${week}`
-  );
-  const teams = flat(merge(j.fantasy_content.league[1]).teams);
-  return teams.map((entry) => {
-    const t = merge(entry).team;
-    const base = teamShape(t);
-    const rosterNode = merge(flat(t).find((x) => x && x.roster)) .roster;
-    const players = flat(merge(rosterNode).players).map((p) => {
-      const pl = merge(merge(p).player);
+async function getRosters(week, matchups) {
+  // Yahoo only returns player stats per team: the league-wide roster call silently drops
+  // the /players/stats part. Twelve calls in parallel, one per team.
+  const one = async (id) => {
+    const j = await yahoo(`/team/${LEAGUE_KEY}.t.${id}/roster;week=${week}/players/stats;type=week;week=${week}`);
+    const t = merge(j.fantasy_content.team);
+    const players = flat(merge(merge(t.roster)['0'] || {}).players).map((entry) => {
+      const pl = merge(merge(entry).player);
       const sel = merge(pl.selected_position);
-      const pts = merge(pl.player_points), proj = merge(pl.player_projected_points);
       const stats = {};
-      for (const s of flat(merge(pl.player_stats).stats)) {
-        const st = merge(s).stat;
+      for (const x of flat(merge(pl.player_stats).stats)) {
+        const st = merge(x).stat;
         if (st) stats[String(st.stat_id)] = numOr(st.value, 0);
       }
       return {
@@ -177,13 +173,18 @@ async function getRosters(week) {
         pos: pl.display_position,
         slot: sel.position,
         nflTeam: pl.editorial_team_abbr,
-        pts: numOr(pts.total, 0),
-        proj: numOr(proj.total, 0),
+        pts: numOr(merge(pl.player_points).total, 0),
+        // Yahoo's API has no per-player projections (every variant returns 400); only
+        // team projections exist, on the scoreboard.
+        proj: null,
         stats,
       };
     });
-    return { ...base, players };
-  });
+    // the scoreboard carries each team's points and projection
+    const mu = (matchups || []).flatMap((m) => [m.a, m.b]).find((x) => String(x.key) === String(t.team_key));
+    return { key: t.team_key, m: managerName(t), t: t.name, s: mu ? mu.s : null, p: mu ? mu.p : null, players };
+  };
+  return Promise.all(Object.keys(TEAM_IDS).map(one));
 }
 
 /* ---------------- ESPN enrichment (no auth): kickoff day + rookies ---------------- */
@@ -270,7 +271,8 @@ const top3 = (rows, dir = 'desc') =>
   rows
     .filter((r) => r && Number.isFinite(r.val))
     .sort((a, b) => (dir === 'desc' ? b.val - a.val : a.val - b.val))
-    .slice(0, 3);
+    .slice(0, 3)
+    .map((r) => ({ who: r.who, sub: r.sub, val: Math.round(r.val * 100) / 100 }));
 
 // Every starter across all rosters, flattened, with its owner attached.
 function starters(teams, pick) {
@@ -286,7 +288,11 @@ async function computeBonus(week, matchups, teams, kickoffDays, rookies) {
   const val = (r, mode) => (mode === 'projected' ? r.p.proj : r.p.pts);
   const teamVal = (t, mode) => (mode === 'projected' ? t.p : t.s);
 
+  // Awards judged on single players can't be projected: Yahoo's API has no per-player
+  // projections. Team and matchup awards project from the scoreboard's team projections.
+  const PLAYER_AWARDS = new Set([1, 3, 4, 6, 8, 10, 11, 12]);
   const build = async (mode) => {
+    if (mode === 'projected' && PLAYER_AWARDS.has(week)) return [];
     switch (week) {
       case 1:
         return top3(starters(teams, (p) => p.pos === 'QB').map((r) => ({ ...r, val: val(r, mode) })));
@@ -362,23 +368,34 @@ async function computeBonus(week, matchups, teams, kickoffDays, rookies) {
   return { week, ...BONUS[week], actual: await build('actual'), projected: await build('projected') };
 }
 
+/* ---------------- Standings and trade counts ---------------- */
+
+async function getStandings() {
+  const j = await yahoo(`/league/${LEAGUE_KEY}/standings`);
+  const teams = flat(merge(merge(j.fantasy_content.league[1]).standings).teams);
+  return teams.map((entry) => {
+    const t = merge(merge(entry).team || entry);
+    const ts = merge(t.team_standings), o = merge(ts.outcome_totals);
+    return {
+      m: managerName(t), t: t.name,
+      w: numOr(o.wins, 0), l: numOr(o.losses, 0), tie: numOr(o.ties, 0),
+      pf: Math.round(numOr(ts.points_for, 0) * 100) / 100, pa: Math.round(numOr(ts.points_against, 0) * 100) / 100,
+      rank: numOr(ts.rank), seed: numOr(ts.playoff_seed),
+      trades: numOr(t.number_of_trades, 0), moves: numOr(t.number_of_moves, 0),
+    };
+  });
+}
+
 /* ---------------- Handler ---------------- */
 
 export default async function handler(req, res) {
   try {
-    // TEMP: ?raw=<league sub-path> returns Yahoo's response as-is, to fix the parsers
-    if (req.query?.raw) {
-      const sub = String(req.query.raw);
-      if (!/^\/?(league|team|players|game)[a-z_\/;=,.0-9]*$/i.test(sub)) return res.status(400).json({ error: 'bad path' });
-      res.setHeader('Cache-Control', 'no-store');
-      return res.status(200).json(await yahoo(sub.startsWith('/') ? sub : `/league/${LEAGUE_KEY}/${sub}`));
-    }
     const qWeek = parseInt(req.query?.week, 10);
     const sb = await getScoreboard(Number.isFinite(qWeek) ? qWeek : undefined);
     const week = sb.week;
 
     let teams = [];
-    try { teams = await getRosters(week); } catch (_) { /* bonus degrades, matchups still render */ }
+    try { teams = await getRosters(week, sb.matchups); } catch (_) { /* bonus degrades, matchups still render */ }
 
     const bonus = teams.length
       ? await computeBonus(week, sb.matchups, teams, getKickoffDays(week), getRookies())
@@ -388,10 +405,24 @@ export default async function handler(req, res) {
     const allFinal = sb.matchups.length > 0 && sb.matchups.every((m) => m.status === 'postevent');
     const status = allFinal ? 'final' : anyScores ? 'live' : 'preseason';
 
+    const out = { week, status, updated: new Date().toISOString(), matchups: sb.matchups, bonus };
+
+    // ?full=1 — everything the scheduled routines write into the site's data files:
+    // standings, trade counts, and next week's matchups with projections.
+    if (req.query?.full === '1') {
+      const [standings, next] = await Promise.all([
+        getStandings(),
+        getScoreboard(week + 1).catch(() => null),
+      ]);
+      out.standings = standings;
+      out.trades = Object.fromEntries(standings.map((r) => [r.m, r.trades]));
+      out.next = next && next.matchups.length ? { week: next.week, matchups: next.matchups } : null;
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(200).json(out);
+    }
+
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
-    res.status(200).json({
-      week, status, updated: new Date().toISOString(), matchups: sb.matchups, bonus,
-    });
+    res.status(200).json(out);
   } catch (err) {
     res.setHeader('Cache-Control', 'no-store');
     res.status(502).json({ error: String(err.message || err) });
