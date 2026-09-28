@@ -213,7 +213,7 @@
     h += kpi('Worst coaching', coach(worst.v), names(worst.rows) +
       (worst.rows.length === 1 ? ' · ' + score(worst.rows[0].actual) + ' of a possible ' + score(worst.rows[0].optimal) : ''));
     h += ll.v ? kpi('Most lineup losses', String(ll.v), names(ll.rows)) :
-      kpi('Most lineup losses', '0', 'Nobody has lost one to his own bench yet');
+      kpi('Most lineup losses', '0', 'Nobody has lost one to their own bench yet');
     h += dead.v ? kpi('Most dead men', String(dead.v), names(dead.rows) +
       (dead.rows.length === 1 ? ' · ' + deadSub(dead.rows[0]) : '')) :
       kpi('Most dead men', '0', 'Every starter has scored');
@@ -223,7 +223,7 @@
       managerTable(rows, false) +
       '<p class="hn-note">Optimal is the highest-scoring legal lineup each week’s roster could have started (' +
       esc(lineupText(s.lineup)) + '; IR excluded), found by exact search, so RB/WR and QB/TE types land wherever they score most. ' +
-      'A starter can’t be benched just to leave his slot empty, so a lone kicker or defense that went negative stays in. ' +
+      'A starter can’t be benched just to leave the slot empty, so a lone kicker or defense that went negative stays in. ' +
       'Rosters are Yahoo’s end-of-week rosters: a player cut during the week isn’t there, and one picked up after the Sunday 1 p.m. kickoffs can’t be swapped in. ' +
       'Left on bench is optimal minus the points actually started. Coaching % is points started divided by optimal points. ' +
       'A lineup loss is a loss where the optimal lineup beat the opponent’s actual score. ' +
@@ -234,8 +234,8 @@
     h += '<div class="hn-card"><h3 class="hn-h">Lineup losses <small>' + esc(s.season) + ' · ' +
       plural(losses.length, 'game') + '</small></h3>';
     if (!losses.length) {
-      h += '<p class="hn-empty">' + (s.complete ? 'Nobody lost a ' + esc(s.season) + ' game to his own bench.' :
-        'Nobody has lost a ' + esc(s.season) + ' game to his own bench yet.') + '</p>';
+      h += '<p class="hn-empty">' + (s.complete ? 'Nobody lost a ' + esc(s.season) + ' game to their own bench.' :
+        'Nobody has lost a ' + esc(s.season) + ' game to their own bench yet.') + '</p>';
     } else {
       h += lossBlock(losses, {
         head: '<th class="n">Wk</th>',

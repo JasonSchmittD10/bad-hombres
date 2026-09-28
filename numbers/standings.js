@@ -213,7 +213,7 @@
     s.rows.forEach(function (r) { byWho[r.who] = r; });
     h += '<div class="hn-scroll"><table class="st-swap"><thead><tr><th class="st-rh"></th>';
     sw.order.forEach(function (c) { h += '<th title="' + esc(c) + '’s schedule">' + HN.face(c) + esc(c) + '</th>'; });
-    h += '<th title="How many of the other ' + word(sw.order.length - 1) + ' schedules would have given him a better record">Better on</th></tr></thead><tbody>';
+    h += '<th title="How many of the other ' + word(sw.order.length - 1) + ' schedules would have given a better record">Better on</th></tr></thead><tbody>';
     sw.order.forEach(function (r, i) {
       var row = sw.cells[i] || [], real = row[i] || { w: 0, l: 0, t: 0 }, rw = wins(real);
       h += '<tr><th class="st-rh" scope="row">' + HN.who(r) + '</th>';
@@ -231,8 +231,8 @@
     h += '<div class="st-key"><span><i style="box-shadow:inset 0 0 0 2px var(--gold)"></i>real record</span>' +
       '<span><i style="background:rgba(63,178,107,.5)"></i>better than it</span>' +
       '<span><i style="background:rgba(255,107,118,.5)"></i>worse than it</span></div>';
-    h += '<p class="hn-note">Each cell is the row manager’s record with his own weekly scores played against the column manager’s opponents ' +
-      '(in the week that opponent was the row manager himself, he plays the column manager instead). ' +
+    h += '<p class="hn-note">Each cell is the row manager’s record with their own weekly scores played against the column manager’s opponents ' +
+      '(in the week that opponent was the row manager, the column manager is the opponent instead). ' +
       'The diagonal is the real record, shading deepens with every win gained or lost, and “Better on” counts the other schedules that would have beaten it.</p>';
     return h + '</div>';
   }

@@ -94,8 +94,8 @@
   // his time on the new roster: "from Wk 9 · cut after Wk 10 · re-added Wk 13 · cut after Wk 14"
   function path(pl) {
     var st = pl.stints || [], out = [];
-    if (!st.length) return pl.left === 'traded' ? 'flipped before he played for them'
-      : pl.left === 'cut' ? 'cut before he played for them' : 'not on the new roster in a finished week yet';
+    if (!st.length) return pl.left === 'traded' ? 'flipped before playing a week for them'
+      : pl.left === 'cut' ? 'cut before playing a week for them' : 'not on the new roster in a finished week yet';
     st.forEach(function (s, i) {
       out.push((i ? 're-added Wk\u00a0' : 'from Wk\u00a0') + s[0]);
       if (s[2]) out.push((s[2] === 'traded' ? 'traded away' : s[2] === 'cut' ? 'cut' : 'gone') + ' after Wk\u00a0' + s[1]);
@@ -211,11 +211,11 @@
     var vnote = !vet.length ? '' : vet.length === 1 ? ' The one vetoed trade, in ' + vyrs[0] + ', is listed and never judged.'
       : ' The ' + word(vet.length) + ' vetoed trades (' + vyrs.join(', ') + ') are listed and never judged.';
     return '<div class="hn-note tc-method">' +
-      '<p><b>Started points:</b> what each player a side received scored in that side’s starting lineup (bench and IR don’t count), in every week he sat on the new roster from the week the trade took effect to the end of that season. Cut and picked back up by the same team, he counts again once he’s back; brought back by a later trade, he counts for that trade instead.</p>' +
+      '<p><b>Started points:</b> what each player a side received scored in that side’s starting lineup (bench and IR don’t count), in every week the player sat on the new roster from the week the trade took effect to the end of that season. Cut and picked back up by the same team, the player counts again once back; brought back by a later trade, he counts for that trade instead.</p>' +
       '<p><b>Only games that counted:</b> every regular-season week, plus the team’s own championship-bracket games in ' + weeks + '; consolation games and playoff byes are skipped. The evidence splits the two.</p>' +
       '<p><b>Verdict:</b> the side whose incoming players started for more points wins, by the difference. A trade this season with fewer than ' + word(need) + ' finished weeks behind it is pending.</p>' +
-      '<p><b>When a trade took effect</b> comes from the weekly rosters, not the timestamp: the first week the player shows up on the new roster. Yahoo’s rosters are end-of-week snapshots, so Wks and Rostered count that whole week, even when his game came before the trade went through.</p>' +
-      '<p><b>Rostered:</b> all his points on the new roster over the same weeks, started or not. <b>Ledger:</b> Pts in is what a manager’s incoming players started for him, Pts out is what his outgoing players started for the other guy, Net is the difference; pending trades are left out.</p>' +
+      '<p><b>When a trade took effect</b> comes from the weekly rosters, not the timestamp: the first week the player shows up on the new roster. Yahoo’s rosters are end-of-week snapshots, so Wks and Rostered count that whole week, even when the player’s game came before the trade went through.</p>' +
+      '<p><b>Rostered:</b> all the player’s points on the new roster over the same weeks, started or not. <b>Ledger:</b> Pts in is what a manager’s incoming players started for that manager, Pts out is what the outgoing players started for the other guy, Net is the difference; pending trades are left out.</p>' +
       '<p><b>Proposers:</b> judged trades won, lost and even for the side that sent the offer.' + vnote + '</p></div>';
   }
 

@@ -138,7 +138,7 @@
     var rows = s.managers.slice().sort(function (a, b) { return (key(b) - key(a)) || (b.n - a.n) || (a.m < b.m ? -1 : 1); });
     var top = rows.length && rows[0].done ? rows[0].pts : null;
     var h = '<div class="hn-card"><h3 class="hn-h">The ledger <small>pickups by manager</small>' +
-      '<small class="hn-right">tap a row for his receipts</small></h3>' +
+      '<small class="hn-right">tap a row for the receipts</small></h3>' +
       '<div class="hn-scroll"><table class="hn-table fb-led"><thead><tr><th>Manager</th><th class="n">Pickups</th>' +
       (s.faab ? '<th class="n">Spent</th>' : '') + '<th class="n">Started pts</th>' + (s.faab ? '<th class="n">$/pt</th>' : '') +
       '<th>Best pickup</th></tr></thead><tbody>';
@@ -159,7 +159,7 @@
       }
       h += '<td>' + (b ? player(b) + '<span class="fb-sub">' + pts(b.pts) + '</span>' : mute('—')) + '</td></tr>';
     });
-    return h + '</tbody></table></div><p class="hn-note">Started pts: what his pickups scored in his starting lineup, in games that counted, while he had them. ' +
+    return h + '</tbody></table></div><p class="hn-note">Started pts: what a manager’s pickups scored in that manager’s starting lineup, in games that counted, while still on the roster. ' +
       (s.faab ? '$/pt: FAAB spent on pickups that have played, divided by their started points. ' +
         (s.pend > 0 ? 'Spent counts every winning bid, the way Yahoo’s balance does; pending is money on pickups that haven’t played yet.' : '') : '') +
       '</p></div>';
@@ -206,8 +206,8 @@
         (s.faab ? '<td class="n">' + price(p) + '</td>' : '') + '<td>' + weeks(p) + '</td><td class="n">' + (num(p.starts) || 0) + '</td>' +
         '<td class="n">' + ptsCell(p) + '</td>' + (s.faab ? '<td class="n">' + perPoint(p) + '</td>' : '') + '</tr>';
     });
-    return h + '</tbody></table></div><p class="hn-note">Weeks: from the week he was added until he was dropped, traded or the season ran out' +
-      (open ? '; “now” means he’s still there' : '') + '. ' +
+    return h + '</tbody></table></div><p class="hn-note">Weeks: from the week the player was added until the drop, the trade or the end of the season' +
+      (open ? '; “now” means still on the roster' : '') + '. ' +
       (s.faab ? 'Price: the winning FAAB bid; FA means a free agent, who costs nothing.' : '') + '</p></div>';
   }
   function byPts(P, a, b) {
@@ -243,8 +243,8 @@
         '<td class="n' + (k === 0 ? ' hn-gold' : '') + '">' + pts(x.pts) + '</td><td class="fb-wrap">' +
         (x['for'] || []).map(function (f) { return chip(f[0], pts(f[1])); }).join('') + '</td></tr>';
     });
-    return h + '</tbody></table></div><p class="hn-note">From the week a player was first cut that season, everything he scored in ' +
-      'other teams’ starting lineups. One row per player: everyone who cut him is named, with the week he did it.</p></div>';
+    return h + '</tbody></table></div><p class="hn-note">From the week a player was first cut that season, everything the player scored in ' +
+      'other teams’ starting lineups. One row per player: everyone who cut them is named, with the week of the cut.</p></div>';
   }
 
   function season(s, y, st) {
@@ -269,7 +269,7 @@
     if (!P.length) return h + '<p class="hn-empty">No pickups in ' + esc(y) + ' yet.</p>';
     return h + kpis(s, P) + ledger(s, P, st.who) + receipts(s, P, st) + (s.faab ? worstCard(s, P) : '') + awayCard(s) +
       '<p class="hn-note">Started points count only the starting lineup in games that counted: every regular-season week and the playoff bracket. ' +
-      'Bench weeks, consolation games and playoff byes are worth nothing. A pickup belongs to the week he joined; ' +
+      'Bench weeks, consolation games and playoff byes are worth nothing. A pickup belongs to the week the player joined; ' +
       'Yahoo turns the week over overnight, Monday into Tuesday.</p>';
   }
 

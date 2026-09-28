@@ -186,7 +186,7 @@
       return n > 1 && t.length > 1 && k[ini.toLowerCase()] === 1 ? ini + '. ' + l : l;
     }
     var h = '<div class="hn-card"><h3 class="hn-h">The board <small>' + e(s.year) + ' · ' + rounds + ' rounds, snake</small></h3>' +
-      (scale ? '<div class="dv-legend">Each square: the pick, his finish at his position and his points' + (s.done ? '' : ' so far') + '. ' +
+      (scale ? '<div class="dv-legend">Each square: the pick, the player’s finish at their position and their points' + (s.done ? '' : ' so far') + '. ' +
       '<span style="background:linear-gradient(90deg,' + tint(-scale, scale) + ',' + tint(-0.001, scale) + ')"></span>short of the slot ' +
       '<span style="background:linear-gradient(90deg,' + tint(0.001, scale) + ',' + tint(scale, scale) + ')"></span>beat the slot</div>'
         : '<div class="dv-legend">Just the picks for now. The colors and points arrive when Week 1 goes final.</div>') +
@@ -303,7 +303,7 @@
     return '<p class="hn-note dv-note"><b>How it’s graded.</b> ' +
       '<b>Pts</b> are a player’s league-scored points over the league’s own season' + (fs ? ', weeks 1–' + e(fs.weeks) : '') +
       ', added up from Yahoo’s weekly totals. Not Yahoo’s season totals: those count NFL week 18, which this league doesn’t play, and in some years leave out part of the scoring. ' +
-      '<b>Finish</b> (WR1, RB12) is his rank by those points at his position among every NFL player who scored that season; a player eligible at two positions counts at both. ' +
+      '<b>Finish</b> (WR1, RB12) is the player’s rank by those points at their position among every NFL player who scored that season; a player eligible at two positions counts at both. ' +
       'Raw points would make every late quarterback a steal' +
       (q && q.above != null && q.rank ? ' (in ' + e(q.y) + ' the ' + ordinal(q.rank) + '-best QB outscored ' +
         (q.above ? 'all but ' + e(q.above) + ' running back' + (q.above === 1 ? '' : 's') : 'every running back') + ')' : '') +

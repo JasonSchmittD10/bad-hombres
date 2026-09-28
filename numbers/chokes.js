@@ -328,7 +328,7 @@ window.HN = window.HN || { tabs: {} };
     return '<div class="ck-chart' + (cls ? ' ' + cls : '') + '" id="ck-chart-' + i + '" data-i="' + i + '"' + (open ? '' : ' hidden') + '></div>';
   }
   function star() {
-    return '<p class="ck-foot"><b class="ck-ast">*</b> The record’s first reading (' + HN.esc(when(START.at)) + ') — he may have been higher before the pulse started.</p>';
+    return '<p class="ck-foot"><b class="ck-ast">*</b> The record’s first reading (' + HN.esc(when(START.at)) + ') — the peak may have been higher before the pulse started.</p>';
   }
   // a list of rows on one grid: cols = [{l: header label, w: grid track, c: header class}], rows = row markup.
   // Below 780px the grid turns into wrapped lines: name, peak and button first, the details (.ck-ds) under them.
@@ -346,8 +346,8 @@ window.HN = window.HN || { tabs: {} };
   function method(v, updated) {
     var T = pc(v.thr);
     return 'How it’s kept: every few minutes from a week’s first points until it goes final, the site writes down Yahoo’s win probability ' +
-      'for every matchup. A manager’s peak is his best reading once his matchup had a point on the board. Peak at ' + T + ' or better, lose, ' +
-      'and he’s in the ledger when the week goes final. A tie counts as a loss here: ' + T + ' was the chance to win. ' +
+      'for every matchup. A manager’s peak is the best reading once that matchup had a point on the board. Peak at ' + T + ' or better, lose, ' +
+      'and it goes in the ledger when the week goes final. A tie counts as a loss here: ' + T + ' was the chance to win. ' +
       'A stretch with no readings is simply missing, peak and all. The record starts ' + HN.esc(when(START.at)) + ' in Week ' + START.week +
       ' of ' + START.season + ', during the late game; that week’s earlier games went unrecorded.' +
       (updated ? ' Last update: ' + HN.esc(when(updated)) + '.' : '');
@@ -365,7 +365,7 @@ window.HN = window.HN || { tabs: {} };
   }
   function chokeCard(v, c, i, open) {
     var fin = margin(c.final, c.opp_final, 'won by', 'lost by', 'tied');
-    var then = c.unchecked ? 'before anyone in his matchup scored; that week couldn’t be re-checked' :
+    var then = c.unchecked ? 'before anyone in that matchup scored; that week couldn’t be re-checked' :
       isNum(c.score_then) && isNum(c.opp_then) ? margin(c.score_then, c.opp_then, 'up', 'down', 'tied') : 'score not recorded at that reading';
     return '<article class="ck-item">' +
       '<div class="ck-top">' + HN.face(c.who) +
@@ -375,7 +375,7 @@ window.HN = window.HN || { tabs: {} };
       '</div>' +
       '<div class="ck-facts">' +
       '<div class="ck-f"><span>Peaked</span><b>' + HN.esc(when(c.at)) + '</b>' +
-      (early(v.yr, c.week, c.at) ? '<em>the record’s first reading; he may have been higher earlier</em>' : '') + '</div>' +
+      (early(v.yr, c.week, c.at) ? '<em>the record’s first reading; the peak may have been higher earlier</em>' : '') + '</div>' +
       '<div class="ck-f"><span>Score then</span><b>' + score(c.score_then, c.opp_then) + '</b><em>' + then + '</em></div>' +
       '<div class="ck-f ck-lost"><span>Final</span><b>' + score(c.final, c.opp_final) + '</b>' + (fin ? '<em>' + fin + '</em>' : '') + '</div>' +
       '</div>' + box(i, open) + '</article>';
@@ -488,8 +488,8 @@ window.HN = window.HN || { tabs: {} };
     h += '<section class="hn-card ck-blown-card"><h3 class="hn-h">Biggest Leads Blown <small>' + v.yr + ' · top 10</small></h3>' +
       '<div class="ck-blown">' + (n ? '<p class="ck-wait">Reading the judged weeks…</p>' :
         '<p class="hn-empty">Nothing to rank yet. This fills in once a week is judged' + (live != null ? ', starting with Week ' + live : '') + '.</p>') + '</div>' +
-      '<p class="hn-note">Every manager who lost a judged week, ranked by his best reading with points on the board — chokes and near-misses alike. ' +
-      'Red cleared ' + T + ' and is in the ledger. Grey never got past 50%: he was never the favorite, so there was no lead to blow.</p></section>';
+      '<p class="hn-note">Every manager who lost a judged week, ranked by their best reading with points on the board — chokes and near-misses alike. ' +
+      'Red cleared ' + T + ' and is in the ledger. Grey never got past 50%: never the favorite, so there was no lead to blow.</p></section>';
     v.body.innerHTML = h;
 
     v.ledgerP = judge(v, raw);
