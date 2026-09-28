@@ -14,7 +14,8 @@
 //    weeks: {"<N>": {pairs: [[a, b], ...], samples: [[iso, {m: wp}, {m: score}], ...],
 //                    peak: {m: {wp, at, s, opp_s}}, final: {m: {s, opp, opp_s, won}}, settled}},
 //    chokes: [{week, who, opp, peak, at, score_then, opp_then, final, opp_final}]}
-// A choke: lost after being at or above the threshold (85%) while the games were live.
+// A choke: lost after being at or above the threshold (85%) while the games were live —
+// in that matchup, once somebody had scored; pre-game odds never count.
 
 import { getScoreboard } from './_league.mjs';
 import { storageReady, readFile, writeFile } from './_gist.mjs';
@@ -42,7 +43,8 @@ function settle(doc, n, ms) {
   doc.chokes = doc.chokes.filter((c) => c.week !== n);
   for (const [who, f] of Object.entries(w.final)) {
     const pk = w.peak[who];
-    if (!f.won && pk && pk.wp >= (doc.threshold ?? THRESHOLD)) {
+    const live = pk && ((pk.s ?? 0) > 0 || (pk.opp_s ?? 0) > 0);   // older peaks may be pre-game
+    if (!f.won && live && pk.wp >= (doc.threshold ?? THRESHOLD)) {
       doc.chokes.push({ week: n, who, opp: f.opp, peak: pk.wp, at: pk.at, score_then: pk.s, opp_then: pk.opp_s, final: f.s, opp_final: f.opp_s });
     }
   }
@@ -58,6 +60,8 @@ function record(doc, n, ms, at) {
     for (const [me, op] of [[m.a, m.b], [m.b, m.a]]) {
       if (me.wp == null) continue;
       wp[me.m] = me.wp; sc[me.m] = me.s;
+      // a matchup nobody has scored in yet is still pre-game odds: charted, never a peak
+      if (!((me.s ?? 0) > 0 || (op.s ?? 0) > 0)) continue;
       const pk = w.peak[me.m];
       if (!pk || me.wp > pk.wp) w.peak[me.m] = { wp: me.wp, at, s: me.s, opp_s: op.s };
     }

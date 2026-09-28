@@ -386,6 +386,7 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
   document.body.appendChild(sc);
  }
  tabs.addEventListener('click',function(e){var b=e.target.closest('button');if(b)open(b.dataset.t)});
+ window.addEventListener('hashchange',function(){open((location.hash||'').slice(1)||'standings')});
  open((location.hash||'').slice(1)||'standings');
 })();
 </script>
