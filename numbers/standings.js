@@ -4,9 +4,6 @@
   var CSS = [
     '#hn-standings .st-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}',
     '#hn-standings .st-when{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}',
-    '#hn-standings .st-early{background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;',
-    ' padding:10px 14px;margin:0 0 16px;font-size:13px;line-height:1.5;color:var(--silver)}',
-    '#hn-standings .st-early b{color:var(--gold)}',
     '#hn-standings .hn-kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}',
     '#hn-standings .hn-kpi b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
     '#hn-standings .hn-kpi b .hn-face{width:22px;height:22px;margin-right:7px;vertical-align:-3px}',
@@ -67,7 +64,6 @@
   function luck(v) { return '<span class="' + luckCls(v) + '">' + HN.signed(v, 2) + '</span>'; }
   var WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen'];
   function word(k) { return WORDS[k] || String(k); }
-  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
   function wn(v) { return (v % 1 ? v.toFixed(1) : String(v)) + (v === 1 ? ' win' : ' wins'); }
   // "A", "A or B", "A, B or C"
@@ -282,13 +278,7 @@
     if (!s || !s.rows || !s.rows.length || !n(s.weeks)) {
       return '<p class="hn-empty">No ' + esc(y) + ' games are final yet. The table fills in after Week 1.</p>';
     }
-    var h = '';
-    if (!s.final && n(s.weeks) < 4) {
-      var k = n(s.weeks), opp = s.rows.length - 1;
-      h += '<p class="st-early"><b>' + cap(word(k)) + ' week' + (k === 1 ? '' : 's') + ' in.</b> That’s ' + (k * opp) +
-        ' all-play games apiece — a sample, not a verdict. Luck needs about a month before it means much.</p>';
-    }
-    return h + kpis(s) + mainTable(s) + swapGrid(s);
+    return kpis(s) + mainTable(s) + swapGrid(s);
   }
 
   HN.tabs.standings = function (el) {

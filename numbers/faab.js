@@ -51,7 +51,6 @@
   function usd(v) { return num(v) == null ? '—' : '$' + v; }
   function plural(k, one, many) { return k + ' ' + (k === 1 ? one : (many || one + 's')); }
   function mute(t) { return '<span class="hn-mute">' + t + '</span>'; }
-  var WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 
   // pickups arrive as arrays; the file names the columns
   function unpack(cols, rows) {
@@ -260,10 +259,6 @@
       if (!k) {
         h += '<p class="fb-flag"><b>Week 1 isn’t final.</b> ' +
           (pend ? plural(pend, 'pickup is', 'pickups are') + ' in; they score once it is.' : 'Nothing has scored yet.') + '</p>';
-      } else {
-        h += '<p class="fb-flag"><b>' + (WORDS[k] || k) + ' week' + (k === 1 ? '' : 's') + ' in.</b> ' +
-          (pend ? plural(pend, 'pickup has', 'pickups have') + ' been made since Week ' + k + ' ended; they score once Week ' + (k + 1) + ' is final.'
-            : 'Everything here is through Week ' + k + '.') + '</p>';
       }
     }
     if (!P.length) return h + '<p class="hn-empty">No pickups in ' + esc(y) + ' yet.</p>';

@@ -98,7 +98,7 @@
       '<p class="hn-intro">Every pick since ' + e(seasons[seasons.length - 1].year) + ', re-graded with the one thing nobody had on draft night: the answers. The busts get a permanent record.</p>' +
       '<div class="dv-bar"></div><div class="dv-season"></div><div class="dv-all"></div>';
     var bar = el.querySelector('.dv-bar'), box = el.querySelector('.dv-season');
-    bar.appendChild(HN.season(seasons.map(function (s) { return { v: s.year, l: s.done ? String(s.year) : s.year + ' so far' }; }), on.year, function (y) {
+    bar.appendChild(HN.season(seasons.map(function (s) { return { v: s.year, l: String(s.year) }; }), on.year, function (y) {
       for (var j = 0; j < seasons.length; j++) if (String(seasons[j].year) === String(y)) season(box, seasons[j], d);
     }));
     season(box, on, d);
@@ -107,17 +107,14 @@
 
   function soFar(s) {
     if (!s.weeks) return e(s.year) + ': no week is final yet. Until one is, every draft is an A in its owner’s head.';
-    var h = e(s.year) + ', through Week ' + e(s.weeks) + '. ';
-    if (s.weeks < 6) return h + 'Grades this early are noise with a letter on it.';
-    if (s.weeks < 12) return h + 'The letters are starting to mean something.';
-    return h + 'Late enough that most of these letters are going to stick.';
+    return '';
   }
 
   function season(box, s, d) {
     var byN = {}, i, picks = s.picks || [];
     for (i = 0; i < picks.length; i++) byN[picks[i].n] = picks[i];
     var h = '', live = !s.done;
-    if (live) h += '<span class="dv-so">' + soFar(s) + '</span>';
+    if (live && !s.weeks) h += '<span class="dv-so">' + soFar(s) + '</span>';
     if (!picks.length) { box.innerHTML = h + '<div class="hn-card"><p class="hn-empty">No draft on file for ' + e(s.year) + '.</p></div>'; return; }
 
     var g = s.grades || [];
