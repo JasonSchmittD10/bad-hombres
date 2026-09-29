@@ -1045,7 +1045,7 @@ window.BH_ICONS={"cherry": "<path d=\"M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-
      '<span class="bb-rk">'+(i+1)+'</span>'+
      '<span><span class="bb-who">'+(filled?esc(r.who):'—')+'</span>'+
      (filled&&r.sub?'<div class="bb-sub">'+esc(r.sub)+'</div>':'')+'</span>'+
-     '<span class="bb-val">'+(filled?num(r.val):'0.00')+'</span></li>';
+     '<span class="bb-val">'+(filled?num(r.val):'\u2014')+'</span></li>';
    }).join('')+'</ol>';
   if(!lead.length){
    list+='<div class="bb-note">'+(state.mode==='actual'
