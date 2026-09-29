@@ -389,7 +389,7 @@ footer.site-foot{position:relative;background:var(--red);color:#fff;border-top:0
 
  function render(){
   var s=STATE, g=s.game;
-  if(!g){el('pkCard').innerHTML='<p class="pk-empty">This week\u2019s Game of the Week isn\u2019t set yet. Check back Thursday.</p>';return}
+  if(!g){el('pkCard').innerHTML='<p class="pk-empty">This week\u2019s Game of the Week isn\u2019t set yet. It\u2019s named the morning after Monday night.</p>';return}
   var mine=s.mine||(me&&s.picks?s.picks[me]:null), graded=s.graded&&s.graded[s.week];
   function side(n){var t=team(n);
    return '<button type="button" class="pk-side'+(mine===n?' mine':'')+(graded===n?' won':'')+'" data-p="'+esc(n)+'"'+(s.locked?' disabled':'')+'>'+

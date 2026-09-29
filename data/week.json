@@ -128,9 +128,9 @@
    }
   ]
  },
- "nextWeek": 3,
- "nextKickoff": "2026-09-24T20:15:00-04:00",
- "nextKickoffLabel": "Thursday, Sept 24 · 8:15 PM ET",
+ "nextWeek": 4,
+ "nextKickoff": "2026-10-01T20:15:00-04:00",
+ "nextKickoffLabel": "Thursday, Oct 1 · 8:15 PM ET",
  "nextGame": {
   "away": "PIT",
   "home": "CLE",

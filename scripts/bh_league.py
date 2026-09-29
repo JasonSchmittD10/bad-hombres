@@ -3,12 +3,31 @@
 The Game of the Week is scored here and recorded once (scripts/game-of-the-week.py);
 nothing else should pick its own.
 """
-import json
+import json, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
 REGULAR_SEASON = 14
+
+def award_winners():
+    """The weekly bonus winners recorded on the homepage (index.html BH_AWARD_WINNERS):
+    {week: [manager, ...]} — more than one manager when the award was tied."""
+    s = (ROOT / "index.html").read_text()
+    m = re.search(r"window\.BH_AWARD_WINNERS=\{(.*?)\};", s)
+    if not m: raise SystemExit("index.html: BH_AWARD_WINNERS not found")
+    out = {}
+    for wk, who in re.findall(r'(\d+)\s*:\s*\{\s*who\s*:\s*"([^"]*)"', m.group(1)):
+        out[int(wk)] = [x.strip() for x in re.split(r"\s*(?:&|,|\band\b)\s*", who) if x.strip()]
+    return out
+
+def bonus_bank(amount=9):
+    """Dollars each manager has won from weekly bonuses, from the recorded winners.
+    A tied award splits the pot evenly (Jason's ruling, Sept 2026)."""
+    bank = {}
+    for wk, who in award_winners().items():
+        for m in who: bank[m] = round(bank.get(m, 0) + amount / len(who), 2)
+    return {m: (int(v) if v == int(v) else v) for m, v in bank.items()}
 
 def series_rec(a, b):
     """All-time head-to-head from data/history.json: (a's wins, a's losses, ties)."""

@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-29T04:42:57-04:00",
+ "updated": "2026-09-29T08:03:38-04:00",
  "playoffCut": 6,
  "weeklyBonus": 9,
  "note": "Standings + weekly power-rank history. Written by the weekly recap task. See scripts/UPDATE_WEEK.md. trades: per-manager trade count for GM of the Year, from Yahoo's Commish Tools > Transaction Numbers (read-only), updated on the scoreboard's run D.",
@@ -52,7 +52,7 @@
    "tie": 0,
    "pf": 356.16,
    "pa": 471.14,
-   "bank": 0
+   "bank": 9
   },
   {
    "m": "Dylan",
@@ -175,6 +175,23 @@
     "Hoa",
     "Zack",
     "Drew"
+   ]
+  },
+  {
+   "label": "WK 3",
+   "order": [
+    "Tola",
+    "Jason",
+    "Adam",
+    "Dylan",
+    "Chris",
+    "Zack",
+    "Erick",
+    "Matt",
+    "David",
+    "Drew",
+    "Wes",
+    "Hoa"
    ]
   }
  ],

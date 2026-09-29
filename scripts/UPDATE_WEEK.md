@@ -152,11 +152,15 @@ Drives the **Standings** table and the **Power Lines** chart. Unlike
 - `teams[].pa` is **season points against** (cumulative), from the same Yahoo
   standings page. The site doesn't display it; it feeds Zack's Luck Index in
   `data/voices.json`.
-- `teams[].bank` is dollars won from weekly bonuses so far ($9 each).
-- `ranks` is **your** power ranking, not the standings — one entry per week,
-  appended, `order` listing all 12 manager keys best to worst. Labels must be
-  `PRE` or `WK n`; the chart lays out `PRE` through `WK 14` and fills in what
-  exists.
+- `teams[].bank` is dollars won from weekly bonuses so far ($9 each, a tie splits it).
+  **Never typed:** `sync.py season` computes it from `BH_AWARD_WINNERS` in index.html, so
+  record the week's winner first, then sync. `check.py` fails if the two disagree.
+- `ranks` is the Power Lines ranking, not the standings — one entry per week, `order`
+  listing all 12 managers best to worst, labels `PRE` or `WK n`. `PRE` is hand-written;
+  every `WK n` comes from `./scripts/power.py` (all-play record, last three weeks
+  counting double, ties to points for), run in the scoreboard's run D. `check.py` fails
+  if a finished week has no entry. (Weeks 1-2 of 2026 were ranked by hand, before the
+  formula.)
 - Standings sort themselves: wins (ties count half), then points for. Before any
   games are played they hold the `PRE` order rather than showing an arbitrary
   list.
@@ -308,8 +312,18 @@ per week, criteria as in `BH_BONUSES`. Rosters come **per team**
 (`/team/<key>/roster;week=N/players/stats;type=week;week=N`); the league-wide roster call
 silently drops player stats. Checked against real responses: weeks 1-3 match what was
 recorded by hand, to the cent. `sync.py week` writes them into `bonus.actual` (the live
-leaderboard, settled once the week is final) and `bonus.projected` (team awards only —
-see above).
+leaderboard, settled once the week is final; empty until the week has points on the board)
+and `bonus.projected`.
+
+**Projections.** Team and matchup awards project from Yahoo's team projections. Yahoo has
+no player projections, so player awards (the QB, TE, kicker, D/ST, rookie, receptions,
+Monday night, top player) use Sleeper's free projected stat lines
+(`api.sleeper.com/projections/nfl/<season>/<week>`), scored with the league's own Yahoo
+scoring in `api/_proj.mjs`. That scoring was checked against Yahoo: Sleeper's actual Week 3
+stats, scored the same way, match the league's points for all 175 players who played (two
+defenses differ only by the averaged stops below). Sleeper doesn't project 40+ yard
+passing TDs or a defense's 4th-down stops and three-and-outs; the latter are averaged in
+(1.34 points a game). If Sleeper is down, the projected board is simply empty.
 
 ---
 
@@ -506,7 +520,10 @@ kickoff. Bragging rights only — nothing in the by-laws, nothing paid out.
   until kickoff. Everyone
   else's picks stay hidden until the lock; the tally shows who has picked.
 - **API:** `api/picks.mjs` (`GET` / `POST /api/picks`). The game comes from
-  `data/voices.json` `gotw`, the lock from `data/week.json` (`nextKickoff`, or any score on
+  `data/voices.json` `gotw` — and once a week is final, picking opens on the next week as
+  soon as its game is recorded (the Week Recap does that Tuesday morning) — the lock from
+  `data/week.json` (`nextKickoff`, which `sync.py week` points at the coming week's first
+  game, falling back to `nextGame`; or any score on
   the board), and grading from the final scores in `data/record.json` — so the routines
   don't have to do anything for it to work week to week.
 - **Storage:** a secret GitHub Gist — free, on the same GitHub account as the site:

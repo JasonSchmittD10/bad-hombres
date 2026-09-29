@@ -10,6 +10,7 @@
 
 import { env, LEAGUE_ID, LEAGUE_KEY, yahoo, flat, merge } from './_yahoo.mjs';
 import { numOr, TEAM_IDS, managerName, teamShape, getScoreboard } from './_league.mjs';
+import { getProjections, projectionFor } from './_proj.mjs';
 
 
 /* ---------------- Rosters with per-player weekly stats ---------------- */
@@ -34,9 +35,9 @@ async function getRosters(week, matchups) {
         slot: sel.position,
         nflTeam: pl.editorial_team_abbr,
         pts: numOr(merge(pl.player_points).total, 0),
-        // Yahoo's API has no per-player projections (every variant returns 400); only
-        // team projections exist, on the scoreboard.
+        // filled from Sleeper's projections (./_proj.mjs): Yahoo's API has none per player
         proj: null,
+        projRec: null,
         stats,
       };
     });
@@ -144,15 +145,15 @@ function starters(teams, pick) {
   return out;
 }
 
-async function computeBonus(week, matchups, teams, kickoffDays, rookies) {
+async function computeBonus(week, matchups, teams, kickoffDays, rookies, scoring) {
   const val = (r, mode) => (mode === 'projected' ? r.p.proj : r.p.pts);
   const teamVal = (t, mode) => (mode === 'projected' ? t.p : t.s);
 
-  // Awards judged on single players can't be projected: Yahoo's API has no per-player
-  // projections. Team and matchup awards project from the scoreboard's team projections.
-  const PLAYER_AWARDS = new Set([1, 3, 4, 6, 8, 10, 11, 12]);
+  // Team and matchup awards project from Yahoo's team projections; player awards from the
+  // Sleeper projections getRosters attached (a player with none drops off the projected board).
   const build = async (mode) => {
-    if (mode === 'projected' && PLAYER_AWARDS.has(week)) return [];
+    // nothing has been scored yet: the actual board stays empty instead of listing zeros
+    if (mode === 'actual' && !scoring) return [];
     switch (week) {
       case 1:
         return top3(starters(teams, (p) => p.pos === 'QB').map((r) => ({ ...r, val: val(r, mode) })));
@@ -177,7 +178,7 @@ async function computeBonus(week, matchups, teams, kickoffDays, rookies) {
         }));
       case 6:
         return top3(
-          starters(teams, () => true).map((r) => ({ ...r, val: r.p.stats['11'] ?? 0 }))
+          starters(teams, () => true).map((r) => ({ ...r, val: mode === 'projected' ? r.p.projRec : (r.p.stats['11'] ?? 0) }))
         );
       case 7:
         return top3(teams.map((t) => ({ who: t.m, sub: t.t, val: teamVal(t, mode) })), 'asc');
@@ -205,7 +206,7 @@ async function computeBonus(week, matchups, teams, kickoffDays, rookies) {
           val: t.players
             .filter((p) => p.slot && p.slot !== 'BN' && p.slot !== 'IR')
             .filter((p) => days[String(p.nflTeam || '').toUpperCase()] === 'Mon')
-            .reduce((s, p) => s + (mode === 'projected' ? p.proj : p.pts), 0),
+            .reduce((s, p) => s + ((mode === 'projected' ? p.proj : p.pts) ?? 0), 0),
         })));
       }
       case 12:
@@ -264,12 +265,19 @@ export default async function handler(req, res) {
 
     let teams = [];
     try { teams = await getRosters(week, sb.matchups); } catch (_) { /* bonus degrades, matchups still render */ }
-
-    const bonus = teams.length
-      ? await computeBonus(week, sb.matchups, teams, getKickoffDays(week), getRookies())
-      : null;
+    if (teams.length) {
+      const proj = await getProjections(Number(sb.meta.season) || new Date().getFullYear(), week);
+      for (const t of teams) for (const p of t.players) {
+        const x = projectionFor(proj, p);
+        if (x) { p.proj = x.pts; p.projRec = x.rec; }
+      }
+    }
 
     const anyScores = sb.matchups.some((m) => (m.a.s ?? 0) > 0 || (m.b.s ?? 0) > 0);
+    const bonus = teams.length
+      ? await computeBonus(week, sb.matchups, teams, getKickoffDays(week), getRookies(), anyScores)
+      : null;
+
     const allFinal = sb.matchups.length > 0 && sb.matchups.every((m) => m.status === 'postevent');
     const status = allFinal ? 'final' : anyScores ? 'live' : 'preseason';
 

@@ -2,7 +2,7 @@
 """Pull the league from Yahoo's API (through the site's own endpoint) into the data files.
 
     scripts/sync.py week  [--week N] [--dry-run]   # data/week.json: scores, projections, status, bonus
-    scripts/sync.py season [--dry-run] [--force]  # data/season.json: records, points, trade counts
+    scripts/sync.py season [--dry-run] [--force]  # data/season.json: records, points, trade counts, bank
     scripts/sync.py next --out FILE               # next week's matchups, for game-of-the-week.py
     scripts/sync.py check                         # is the API answering? (exit 1 if not)
     scripts/sync.py status --week N               # a week's status and games, any week (playoffs too)
@@ -19,7 +19,9 @@ Which week `week` syncs, unless --week says:
 It never moves backwards without --week.
 
 What it keeps from the existing file: nextGame / nextWeek / nextKickoff /
-nextKickoffLabel (those come from the NFL schedule, not Yahoo), and the note. The bonus
+nextKickoffLabel (those come from the NFL schedule, not Yahoo), and the note. Once the
+week is final (or before it starts), nextWeek / nextKickoff are pointed at the coming
+week's first game, taken from nextGame. The bonus
 is never set to null; if the API's bonus lists come back empty for the same week and
 the file already had leaders, the file's leaders stay.
 
@@ -85,6 +87,13 @@ def week_cmd(args):
     new["bonus"] = bonus
     for k in KEEP:
         if k in cur: new[k] = cur[k]
+    # the week the countdown and the pick'em lock point at: once this week is final it's the
+    # next one, and its first kickoff is the next NFL game on the schedule
+    ng = new.get("nextGame") or {}
+    upcoming = new["week"] + 1 if new["status"] == "final" else new["week"] if new["status"] == "preseason" else None
+    if upcoming and ng.get("kickoff") and datetime.datetime.fromisoformat(ng["kickoff"]) > datetime.datetime.now().astimezone():
+        new["nextWeek"], new["nextKickoff"] = upcoming, ng["kickoff"]
+        new["nextKickoffLabel"] = (ng.get("label") or new.get("nextKickoffLabel") or "").replace(" at ", " · ")
     new = {k: new[k] for k in ("week", "status", "updated", "note", "matchups", "bonus", "nextWeek", "nextKickoff", "nextKickoffLabel", "nextGame") if k in new}
 
     moved = "week %s %s -> week %s %s" % (cur.get("week"), cur.get("status"), new["week"], new["status"])
@@ -111,11 +120,17 @@ def season_cmd(args):
         teams.append(t)
     order = [t["m"] for t in s.get("teams", [])]
     teams.sort(key=lambda t: order.index(t["m"]) if t["m"] in order else 99)   # keep the file's order: small diffs
+    # the bank is never typed: it's the weekly bonuses won, from the homepage's recorded winners
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from bh_league import bonus_bank
+    bank = bonus_bank(s.get("weeklyBonus") or 9)
+    for t in teams: t["bank"] = bank.get(t["m"], 0)
     s["teams"] = teams
     s["trades"] = {m: int(n) for m, n in sorted((d.get("trades") or {}).items())} or s.get("trades", {})
     s["updated"] = now()
-    print("standings through week %s: %s | trades: %s" % (w.get("week"), ", ".join("%s %d-%d" % (t["m"], t["w"], t["l"]) for t in teams),
-                                                          {m: n for m, n in s["trades"].items() if n} or "none yet"))
+    print("standings through week %s: %s | trades: %s | bank: %s" % (w.get("week"), ", ".join("%s %d-%d" % (t["m"], t["w"], t["l"]) for t in teams),
+                                                          {m: n for m, n in s["trades"].items() if n} or "none yet",
+                                                          {t["m"]: t["bank"] for t in teams if t["bank"]} or "none yet"))
     if "--dry-run" in args: print("dry run: nothing written"); return
     (ROOT / "data" / "season.json").write_text(json.dumps(s, indent=1, ensure_ascii=False) + "\n")
     print("wrote data/season.json")

@@ -8,7 +8,9 @@ next week's matchups). See `scripts/UPDATE_WEEK.md` for how the data flows.
 
 - `scoreboard.mjs` — Yahoo: scoreboard, per-team rosters with player stats, standings.
   Managers are mapped by Yahoo `team_id` (`TEAM_IDS` in `_league.mjs` — 2026 only; Yahoo
-  reshuffles team ids every season). Yahoo has no per-player projections.
+  reshuffles team ids every season). Yahoo has no per-player projections, so the Bonus
+  Board's player awards project from Sleeper's free projected stats, scored with the
+  league's Yahoo scoring (`_proj.mjs`).
   `?lite=1` = matchups + status only (one Yahoo call); `?full=1` adds standings, trade
   counts and next week.
 - `yahoo.mjs` — a read-only gateway: `GET /api/yahoo?path=<league/... or team/...>` passes a

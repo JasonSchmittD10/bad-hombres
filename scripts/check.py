@@ -96,6 +96,17 @@ def award_winners():
 def check_season(season, rec):
     if season is None or rec is None: return
     teams = season.get("teams") or []
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from bh_league import bonus_bank
+    bank = bonus_bank(season.get("weeklyBonus") or 9)
+    for t in teams:
+        if t.get("bank", 0) != bank.get(t.get("m"), 0):
+            fail("season.json: %s's bank is $%s but the recorded bonus winners say $%s — run ./scripts/sync.py season" % (
+                t.get("m"), t.get("bank", 0), bank.get(t.get("m"), 0)))
+    done = len((rec.get("weeks") or {}).get(str(rec.get("current")), []))
+    labels = {r.get("label") for r in season.get("ranks", [])}
+    if done and "WK %d" % done not in labels:
+        fail("season.json: no Power Lines ranking for Week %d — run ./scripts/power.py" % done)
     if len(teams) != 12: fail("season.json: %d teams, expected 12" % len(teams))
     if {t.get("m") for t in teams} != MANAGERS: fail("season.json: teams aren't exactly the 12 league members")
     played = {t.get("m"): t.get("w", 0) + t.get("l", 0) + t.get("tie", 0) for t in teams}

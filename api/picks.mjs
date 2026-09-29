@@ -52,12 +52,21 @@ async function siteData(req) {
 
 // The week open for picking, its game, and whether it has locked.
 function current({ week, voices, record }) {
-  const n = week.week;
   const season = String(record.current || new Date().getFullYear());
-  const g = (voices.gotw || []).find((x) => x.week === n);
-  // picks lock at the week's first kickoff; any score on the board also means it's too late
-  const kickoff = week.nextWeek === n && week.nextKickoff ? new Date(week.nextKickoff) : null;
-  const locked = week.status !== 'preseason' || (kickoff ? Date.now() >= kickoff.getTime() : true);
+  const gotw = voices.gotw || [];
+  // once a week is final, picking opens on the next one as soon as its game is recorded
+  // (the Week Recap names it Tuesday morning) — no waiting for Thursday's roll-forward
+  const rolled = week.status === 'final' && gotw.some((x) => x.week === week.week + 1);
+  const n = rolled ? week.week + 1 : week.week;
+  const g = gotw.find((x) => x.week === n);
+  // picks lock at the week's first kickoff: nextKickoff when it's for this week, otherwise the
+  // next NFL game (after Monday night that's the Thursday opener); any score on the board
+  // also means it's too late
+  const next = week.nextGame && week.nextGame.kickoff ? new Date(week.nextGame.kickoff) : null;
+  const kickoff = week.nextWeek === n && week.nextKickoff ? new Date(week.nextKickoff)
+    : (rolled || week.status === 'preseason') ? next : null;
+  const started = rolled ? false : week.status !== 'preseason';
+  const locked = started || (kickoff ? Date.now() >= kickoff.getTime() : true);
   return { n, season, game: g ? { a: g.a, b: g.b, reason: g.reason || '' } : null, lockAt: kickoff ? kickoff.toISOString() : null, locked };
 }
 
