@@ -54,6 +54,12 @@
       "a": "Chris",
       "b": "Wes",
       "reason": "Projected within 0.4"
+    },
+    {
+      "week": 4,
+      "a": "Jason",
+      "b": "Dylan",
+      "reason": "Projected within 3.7"
     }
   ]
 }
