@@ -200,23 +200,24 @@ CSS = """
 .bn .tm{font-size:30px;color:var(--muted);margin-top:6px}
 .bn .stat{margin-top:22px;font-size:32px}.bn .stat b{color:var(--gold)}
 
-/* Power Lines poster: a line per team, week by week */
-.jr{flex:1;display:flex;flex-direction:column;padding:26px 0 18px}
-.jr h1{font-size:84px}.jr h1 em{font-style:normal;color:var(--red)}
-.jr .sub{color:var(--muted);font-size:26px;letter-spacing:.2em;font-weight:700;margin:14px 0 26px;text-transform:uppercase}
-.jr .body{display:flex;gap:0;flex:1}
-.jr .lg{width:352px;flex:none}
-.jr .lr{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line)}
-.jr .lr .rk{width:34px;font-size:26px;font-weight:700;color:var(--muted);text-align:center;flex:none}
-.jr .lr .dot{width:12px;height:12px;border-radius:50%;flex:none}
-.jr .lr img{width:50px;height:50px;border-radius:50%;object-fit:cover;background:#d7d7d7;flex:none;border:3px solid var(--c)}
+/* Power Lines poster: a line per team, week by week — the lines get the room, the legend stays quiet */
+.frame.pl{padding:44px 36px 38px}
+.jr{flex:1;display:flex;flex-direction:column;padding:22px 0 14px}
+.jr h1{font-size:70px}.jr h1 em{font-style:normal;color:var(--red)}
+.jr .sub{color:var(--muted);font-size:21px;letter-spacing:.18em;font-weight:700;margin:12px 0 22px;text-transform:uppercase}
+.jr .body{display:flex;flex:1}
+.jr .lg{width:256px;flex:none}
+.jr .lr{display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--line)}
+.jr .lr .rk{width:26px;font-size:20px;font-weight:700;color:var(--muted);text-align:center;flex:none}
+.jr .lr img{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#d7d7d7;flex:none;border:3px solid var(--c)}
 .jr .lr .tx{min-width:0;flex:1}
-.jr .lr b{display:block;font-size:27px;letter-spacing:.05em;text-transform:uppercase;line-height:1.05}
-.jr .lr span.tm{display:block;font-size:18px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
-.jr .lr .mv{font-size:19px;font-weight:800;color:var(--muted);flex:none;width:52px;text-align:right;padding-right:14px}
+.jr .lr b{display:block;font-size:21px;letter-spacing:.05em;text-transform:uppercase;line-height:1.05}
+.jr .lr span.tm{display:block;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+.jr .lr .mv{font-size:15px;font-weight:800;color:var(--muted);flex:none;width:36px;text-align:right;padding-right:8px}
 .jr .lr .mv.up{color:#3fb26b}.jr .lr .mv.dn{color:#e0524d}
-.jr svg{display:block;flex:1}
+.jr svg{display:block;flex:none}
 
+/* Hard Numbers: the spec-driven stats carousel (see stats_slides) */
 .sf{flex:1;display:flex;flex-direction:column;justify-content:center}
 .sf.center{align-items:center;text-align:center}
 .sf .big{font-size:250px;line-height:.86;color:#fff;margin:18px 0 0}
@@ -268,8 +269,8 @@ def power_poster(week, season, teams_by_m, records):
     n = len(order)
     cols = (["PRE"] if hist[0][0] == "PRE" else []) + [str(i) for i in range(1, 15)]
     total = len(cols)
-    RH = 72                                   # one row per rank; the legend and the chart share it
-    CW, CH, L, R = 598, RH * n, 24, 24
+    RH = 78                                   # one row per rank; the legend and the chart share it
+    CW, CH, L, R = 1080 - 72 - 256, RH * n, 34, 30
     x = lambda i: L + i * (CW - L - R) / (total - 1)
     y = lambda r: (r - .5) * RH
     g = []
@@ -280,21 +281,22 @@ def power_poster(week, season, teams_by_m, records):
                      x(i), CH + 34, "#f4f5f7" if i < len(hist) else "#5e6470", 15 if c == "PRE" else 21, c))
     for r in range(1, n + 1):
         g.append('<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="#1d1d22" stroke-width="2"/>' % (L - 10, y(r), CW - R + 10, y(r)))
-    # a line per team; the current No. 1 drawn last so it sits on top
+    # three passes, so nothing ever covers a face: all the lines, then the weekly dots, then
+    # the faces that end each line (the current No. 1 last, on top of any neighbour)
+    paths = {m: [(x(i), y(h[m])) for i, (_, h) in enumerate(hist) if m in h] for m in order}
     for m in reversed(order):
-        pts = [(x(i), y(h[m])) for i, (_, h) in enumerate(hist) if m in h]
-        c = color[m]
-        if len(pts) > 1:
-            g.append('<polyline points="%s" fill="none" stroke="%s" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>' % (
-                " ".join("%.1f,%.1f" % p for p in pts), c))
-        for px, py in pts[:-1]:
-            g.append('<circle cx="%.1f" cy="%.1f" r="8" fill="%s" stroke="#0d0d0f" stroke-width="2"/>' % (px, py, c))
-        # each line ends in the manager's face, so a line is never just a colour
-        px, py = pts[-1]
+        if len(paths[m]) > 1:
+            g.append('<polyline points="%s" fill="none" stroke="%s" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>' % (
+                " ".join("%.1f,%.1f" % p for p in paths[m]), color[m]))
+    for m in reversed(order):
+        for px, py in paths[m][:-1]:
+            g.append('<circle cx="%.1f" cy="%.1f" r="8" fill="%s" stroke="#0d0d0f" stroke-width="2.5"/>' % (px, py, color[m]))
+    for m in reversed(order):
+        px, py = paths[m][-1]
         g.append('<circle cx="%.1f" cy="%.1f" r="25" fill="#d7d7d7" stroke="%s" stroke-width="5"/>'
                  '<clipPath id="f-%s"><circle cx="%.1f" cy="%.1f" r="22"/></clipPath>'
                  '<image href="%s" x="%.1f" y="%.1f" width="44" height="44" clip-path="url(#f-%s)" preserveAspectRatio="xMidYMid slice"/>' % (
-                     px, py, c, esc(m), px, py, face(m), px - 22, py - 22, esc(m)))
+                     px, py, color[m], esc(m), px, py, face(m), px - 22, py - 22, esc(m)))
     svg = '<svg viewBox="0 0 %d %d" width="%d" height="%d">%s</svg>' % (CW, CH + 44, CW, CH + 44, "".join(g))
     prev = hist[-2][1] if len(hist) > 1 else {}
     def move(m):
@@ -309,7 +311,7 @@ def power_poster(week, season, teams_by_m, records):
     body = ('<div class="jr"><h1 class="disp">Power <em>Lines</em></h1>'
             '<div class="sub">The rise &amp; fall, week to week · through Week %s</div>'
             '<div class="body"><div class="lg">%s</div>%s</div></div>') % (esc(week), legend, svg)
-    return frame(week, body)
+    return frame(week, body, cls="pl")
 
 def frame(week, body, cls="", badge=None):
     return ('<div class="frame %s"><div class="top"><div class="brand"><img src="%s" alt="">'
