@@ -1,7 +1,7 @@
 {
  "week": 3,
  "status": "live",
- "updated": "2026-09-27T20:10:24-04:00",
+ "updated": "2026-09-28T20:14:54-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -9,13 +9,13 @@
     "m": "Jason",
     "t": "Pull-Out Game Weak",
     "s": 123.5,
-    "p": 131.55
+    "p": 131.54
    },
    "b": {
     "m": "David",
     "t": "Drain the Swamp",
     "s": 92.24,
-    "p": 126.42
+    "p": 107.92
    }
   },
   {
@@ -23,13 +23,13 @@
     "m": "Tola",
     "t": "Alien Awareness",
     "s": 115.34,
-    "p": 128.39
+    "p": 128.24
    },
    "b": {
     "m": "Drew",
     "t": "I Stand with Jordon",
     "s": 111.38,
-    "p": 117.55
+    "p": 106.28
    }
   },
   {
@@ -37,27 +37,27 @@
     "m": "Hoa",
     "t": "Critical Chase Theory",
     "s": 96.58,
-    "p": 119.34
+    "p": 119.61
    },
    "b": {
     "m": "Erick",
     "t": "King In The North",
-    "s": 71.5,
-    "p": 112.71
+    "s": 86.0,
+    "p": 112.86
    }
   },
   {
    "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 118.04,
-    "p": 124.6
+    "s": 147.14,
+    "p": 124.66
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
-    "s": 105.86,
-    "p": 132.8
+    "s": 127.66,
+    "p": 132.66
    }
   },
   {
@@ -65,13 +65,13 @@
     "m": "Chris",
     "t": "Maye the Force Be With You",
     "s": 156.42,
-    "p": 130.99
+    "p": 131.04
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
-    "s": 94.84,
-    "p": 117.67
+    "s": 95.34,
+    "p": 117.77
    }
   },
   {
@@ -79,13 +79,13 @@
     "m": "Matt",
     "t": "San Diego Chillin’",
     "s": 99.76,
-    "p": 124.39
+    "p": 124.35
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
     "s": 134.52,
-    "p": 117.34
+    "p": 117.22
    }
   }
  ],
@@ -132,10 +132,10 @@
  "nextKickoff": "2026-09-24T20:15:00-04:00",
  "nextKickoffLabel": "Thursday, Sept 24 · 8:15 PM ET",
  "nextGame": {
-  "away": "PHI",
-  "home": "CHI",
-  "kickoff": "2026-09-28T20:15:00-04:00",
-  "label": "Monday, Sept 28 at 8:15 PM ET",
-  "network": "ESPN/ABC"
+  "away": "PIT",
+  "home": "CLE",
+  "kickoff": "2026-10-01T20:15:00-04:00",
+  "label": "Thursday, Oct 1 at 8:15 PM ET",
+  "network": "Prime Video"
  }
 }
