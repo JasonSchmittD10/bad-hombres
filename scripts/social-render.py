@@ -3,7 +3,7 @@
 
     scripts/social-render.py recap              # -> social/week-N/recap-1..4.jpg
     scripts/social-render.py award              # -> social/week-N/award.jpg
-    scripts/social-render.py power              # -> social/week-N/power.jpg, the Power Lines
+    scripts/social-render.py power [--to-date]  # -> social/week-N/power.jpg, the Power Lines (--to-date: only weeks played)
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
     scripts/social-render.py stats <spec.json>       # Hard Numbers -> social/stats-<slug>/slide-N.jpg
@@ -261,13 +261,14 @@ def power_history(season, week):
     if missing: bail("season.json ranks is missing %s — run scripts/power.py" % ", ".join(missing))
     return [(l, {m: i + 1 for i, m in enumerate(by[l])}) for l in labels]
 
-def power_poster(week, season, teams_by_m, records):
+def power_poster(week, season, teams_by_m, records, to_date=False):
     hist = power_history(season, week)
     now = hist[-1][1]
     order = sorted(now, key=now.get)
     color = {t["m"]: POWER_COLORS[i % 12] for i, t in enumerate(season["teams"])}
     n = len(order)
-    cols = (["PRE"] if hist[0][0] == "PRE" else []) + [str(i) for i in range(1, 15)]
+    # the whole regular season (weeks to come left empty), or --to-date: only the weeks played
+    cols = (["PRE"] if hist[0][0] == "PRE" else []) + [str(i) for i in range(1, (int(week) if to_date else 14) + 1)]
     total = len(cols)
     RH = 78                                   # one row per rank; the legend and the chart share it
     CW, CH, L, R = 1080 - 72 - 256, RH * n, 34, 30
@@ -755,8 +756,11 @@ def main():
     if any(not isinstance(t.get("s"), (int, float)) for t in teams): bail("a score is missing")
 
     if kind == "power":
-        season = json.loads((ROOT / "data" / "season.json").read_text())
-        shoot(page(power_poster(week, season, {t["m"]: t["t"] for t in teams}, {}), preview), out_dir / "power.jpg")
+        sp = Path(args[args.index("--season") + 1]) if "--season" in args else ROOT / "data" / "season.json"
+        season = json.loads(sp.read_text())
+        wk = args[args.index("--week") + 1] if "--week" in args else week
+        out = Path(args[args.index("--out") + 1]) if "--out" in args else out_dir / "power.jpg"
+        shoot(page(power_poster(wk, season, {t["m"]: t["t"] for t in teams}, {}, to_date="--to-date" in args), preview), out)
         return
 
     if kind == "recap":
