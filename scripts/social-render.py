@@ -3,7 +3,7 @@
 
     scripts/social-render.py recap              # -> social/week-N/recap-1..4.jpg
     scripts/social-render.py award              # -> social/week-N/award.jpg
-    scripts/social-render.py power [--to-date]  # -> social/week-N/power.jpg, the Power Lines (--to-date: only weeks played)
+    scripts/social-render.py power [--full]     # -> social/week-N/power.jpg, the Power Lines (--full: all 14 weeks, the rest empty)
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
     scripts/social-render.py stats <spec.json>       # Hard Numbers -> social/stats-<slug>/slide-N.jpg
@@ -21,8 +21,8 @@ award  the week's bonus: the award art with the winner's illustration stamped
        on it. Needs a settled winner in week.json bonus.actual.
 power  the Power Lines, the homepage chart as a poster: every team's power
        ranking (data/season.json ranks, from scripts/power.py) from the preseason
-       through each week, a line per team across PRE-Week 14 (weeks to come left
-       empty), same colours as the homepage. Posted after the bonus award.
+       through the week just played, a line per team ending in the manager's face,
+       same colours as the homepage. Posted after the bonus award.
        Needs season.json ranks to include "WK N".
 matchups  Thursday's preview: 1. the slate with projections  2-7. one slide per
        matchup, most watchable first — slide 2 is the Game of the Week, scored
@@ -261,13 +261,13 @@ def power_history(season, week):
     if missing: bail("season.json ranks is missing %s — run scripts/power.py" % ", ".join(missing))
     return [(l, {m: i + 1 for i, m in enumerate(by[l])}) for l in labels]
 
-def power_poster(week, season, teams_by_m, records, to_date=False):
+def power_poster(week, season, teams_by_m, records, to_date=True):
     hist = power_history(season, week)
     now = hist[-1][1]
     order = sorted(now, key=now.get)
     color = {t["m"]: POWER_COLORS[i % 12] for i, t in enumerate(season["teams"])}
     n = len(order)
-    # the whole regular season (weeks to come left empty), or --to-date: only the weeks played
+    # only the weeks played (the lines get the whole width), or --full: all 14, the rest left empty
     cols = (["PRE"] if hist[0][0] == "PRE" else []) + [str(i) for i in range(1, (int(week) if to_date else 14) + 1)]
     total = len(cols)
     RH = 78                                   # one row per rank; the legend and the chart share it
@@ -760,7 +760,7 @@ def main():
         season = json.loads(sp.read_text())
         wk = args[args.index("--week") + 1] if "--week" in args else week
         out = Path(args[args.index("--out") + 1]) if "--out" in args else out_dir / "power.jpg"
-        shoot(page(power_poster(wk, season, {t["m"]: t["t"] for t in teams}, {}, to_date="--to-date" in args), preview), out)
+        shoot(page(power_poster(wk, season, {t["m"]: t["t"] for t in teams}, {}, to_date="--full" not in args), preview), out)
         return
 
     if kind == "recap":
