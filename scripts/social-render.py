@@ -3,6 +3,7 @@
 
     scripts/social-render.py recap              # -> social/week-N/recap-1..4.jpg
     scripts/social-render.py award              # -> social/week-N/award.jpg
+    scripts/social-render.py power              # -> social/week-N/power.jpg, the Power Lines
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
     scripts/social-render.py stats <spec.json>       # Hard Numbers -> social/stats-<slug>/slide-N.jpg
@@ -18,6 +19,11 @@ recap  1. the final scoreboard  2. Big Dick of the Week (high score)  3. Little
        data/week.json status "final" and data/season.json caught up to that week.
 award  the week's bonus: the award art with the winner's illustration stamped
        on it. Needs a settled winner in week.json bonus.actual.
+power  the Power Lines, the homepage chart as a poster: every team's power
+       ranking (data/season.json ranks, from scripts/power.py) from the preseason
+       through each week, a line per team across PRE-Week 14 (weeks to come left
+       empty), same colours as the homepage. Posted after the bonus award.
+       Needs season.json ranks to include "WK N".
 matchups  Thursday's preview: 1. the slate with projections  2-7. one slide per
        matchup, most watchable first — slide 2 is the Game of the Week, scored
        on projected closeness, the all-time series, current rankings and (late
@@ -194,7 +200,23 @@ CSS = """
 .bn .tm{font-size:30px;color:var(--muted);margin-top:6px}
 .bn .stat{margin-top:22px;font-size:32px}.bn .stat b{color:var(--gold)}
 
-/* Hard Numbers: the spec-driven stats carousel (see stats_slides) */
+/* Power Lines poster: a line per team, week by week */
+.jr{flex:1;display:flex;flex-direction:column;padding:26px 0 18px}
+.jr h1{font-size:84px}.jr h1 em{font-style:normal;color:var(--red)}
+.jr .sub{color:var(--muted);font-size:26px;letter-spacing:.2em;font-weight:700;margin:14px 0 26px;text-transform:uppercase}
+.jr .body{display:flex;gap:0;flex:1}
+.jr .lg{width:352px;flex:none}
+.jr .lr{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line)}
+.jr .lr .rk{width:34px;font-size:26px;font-weight:700;color:var(--muted);text-align:center;flex:none}
+.jr .lr .dot{width:12px;height:12px;border-radius:50%;flex:none}
+.jr .lr img{width:50px;height:50px;border-radius:50%;object-fit:cover;background:#d7d7d7;flex:none;border:3px solid var(--c)}
+.jr .lr .tx{min-width:0;flex:1}
+.jr .lr b{display:block;font-size:27px;letter-spacing:.05em;text-transform:uppercase;line-height:1.05}
+.jr .lr span.tm{display:block;font-size:18px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+.jr .lr .mv{font-size:19px;font-weight:800;color:var(--muted);flex:none;width:52px;text-align:right;padding-right:14px}
+.jr .lr .mv.up{color:#3fb26b}.jr .lr .mv.dn{color:#e0524d}
+.jr svg{display:block;flex:1}
+
 .sf{flex:1;display:flex;flex-direction:column;justify-content:center}
 .sf.center{align-items:center;text-align:center}
 .sf .big{font-size:250px;line-height:.86;color:#fff;margin:18px 0 0}
@@ -224,6 +246,70 @@ CSS = """
 .sf .kicker{margin-top:34px;border-left:6px solid var(--red);padding-left:26px;font-size:34px;line-height:1.4}
 .sf .kicker b{color:#fff;font-weight:700}
 """
+
+# the Power Lines palette (index.html COLORS), by data/season.json team order, so a
+# manager is the same colour on the homepage chart and on Instagram
+POWER_COLORS = ['#e8b84b', '#3fb26b', '#5aa9e6', '#c1121f', '#b07de0', '#f0803c',
+                  '#4ecdc4', '#ef6f8e', '#8ea1b8', '#d4d94a', '#7c86e0', '#e0724d']
+
+def power_history(season, week):
+    """[(label, {manager: rank})] for PRE and WK 1..week, from data/season.json ranks."""
+    by = {r["label"]: r["order"] for r in season.get("ranks", [])}
+    labels = (["PRE"] if "PRE" in by else []) + ["WK %d" % i for i in range(1, int(week) + 1)]
+    missing = [l for l in labels if l not in by]
+    if missing: bail("season.json ranks is missing %s — run scripts/power.py" % ", ".join(missing))
+    return [(l, {m: i + 1 for i, m in enumerate(by[l])}) for l in labels]
+
+def power_poster(week, season, teams_by_m, records):
+    hist = power_history(season, week)
+    now = hist[-1][1]
+    order = sorted(now, key=now.get)
+    color = {t["m"]: POWER_COLORS[i % 12] for i, t in enumerate(season["teams"])}
+    n = len(order)
+    cols = (["PRE"] if hist[0][0] == "PRE" else []) + [str(i) for i in range(1, 15)]
+    total = len(cols)
+    RH = 72                                   # one row per rank; the legend and the chart share it
+    CW, CH, L, R = 598, RH * n, 24, 24
+    x = lambda i: L + i * (CW - L - R) / (total - 1)
+    y = lambda r: (r - .5) * RH
+    g = []
+    for i, c in enumerate(cols):               # the grid: preseason, then every week of the regular season
+        g.append('<line x1="%.1f" y1="0" x2="%.1f" y2="%d" stroke="#232329" stroke-width="2"/>' % (x(i), x(i), CH))
+        g.append('<text x="%.1f" y="%d" fill="%s" font-size="%d" font-weight="700" text-anchor="middle" '
+                 'font-family="Segoe UI,Arial,sans-serif">%s</text>' % (
+                     x(i), CH + 34, "#f4f5f7" if i < len(hist) else "#5e6470", 15 if c == "PRE" else 21, c))
+    for r in range(1, n + 1):
+        g.append('<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="#1d1d22" stroke-width="2"/>' % (L - 10, y(r), CW - R + 10, y(r)))
+    # a line per team; the current No. 1 drawn last so it sits on top
+    for m in reversed(order):
+        pts = [(x(i), y(h[m])) for i, (_, h) in enumerate(hist) if m in h]
+        c = color[m]
+        if len(pts) > 1:
+            g.append('<polyline points="%s" fill="none" stroke="%s" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>' % (
+                " ".join("%.1f,%.1f" % p for p in pts), c))
+        for px, py in pts[:-1]:
+            g.append('<circle cx="%.1f" cy="%.1f" r="8" fill="%s" stroke="#0d0d0f" stroke-width="2"/>' % (px, py, c))
+        # each line ends in the manager's face, so a line is never just a colour
+        px, py = pts[-1]
+        g.append('<circle cx="%.1f" cy="%.1f" r="25" fill="#d7d7d7" stroke="%s" stroke-width="5"/>'
+                 '<clipPath id="f-%s"><circle cx="%.1f" cy="%.1f" r="22"/></clipPath>'
+                 '<image href="%s" x="%.1f" y="%.1f" width="44" height="44" clip-path="url(#f-%s)" preserveAspectRatio="xMidYMid slice"/>' % (
+                     px, py, c, esc(m), px, py, face(m), px - 22, py - 22, esc(m)))
+    svg = '<svg viewBox="0 0 %d %d" width="%d" height="%d">%s</svg>' % (CW, CH + 44, CW, CH + 44, "".join(g))
+    prev = hist[-2][1] if len(hist) > 1 else {}
+    def move(m):
+        if m not in prev: return ""
+        d = prev[m] - now[m]
+        return '<span class="mv %s">%s%d</span>' % ("up" if d > 0 else "dn", "▲" if d > 0 else "▼", abs(d)) if d else '<span class="mv">–</span>'
+    legend = "".join(
+        '<div class="lr" style="height:%dpx;--c:%s"><span class="rk">%d</span><img src="%s" alt="">'
+        '<div class="tx"><b>%s</b><span class="tm">%s</span></div>%s</div>' % (
+            RH, color[m], i + 1, face(m), esc(m), esc(teams_by_m.get(m, "")), move(m))
+        for i, m in enumerate(order))
+    body = ('<div class="jr"><h1 class="disp">Power <em>Lines</em></h1>'
+            '<div class="sub">The rise &amp; fall, week to week · through Week %s</div>'
+            '<div class="body"><div class="lg">%s</div>%s</div></div>') % (esc(week), legend, svg)
+    return frame(week, body)
 
 def frame(week, body, cls="", badge=None):
     return ('<div class="frame %s"><div class="top"><div class="brand"><img src="%s" alt="">'
@@ -613,7 +699,7 @@ def main():
             shoot(page(html_slide, "--preview" in args), out_dir / ("slide-%d.jpg" % i))
         if spec.get("caption"): (out_dir / "caption.txt").write_text(spec["caption"].strip() + "\n")
         return
-    if kind not in ("recap", "award", "matchups"): sys.exit(__doc__)
+    if kind not in ("recap", "award", "matchups", "power"): sys.exit(__doc__)
     preview = "--preview" in args
     # --data lets a preview run against a sample week instead of the live file
     src = Path(args[args.index("--data") + 1]) if "--data" in args else ROOT / "data" / "week.json"
@@ -665,6 +751,11 @@ def main():
 
     if not preview and w.get("status") != "final": bail("week %s is not final yet" % week)
     if any(not isinstance(t.get("s"), (int, float)) for t in teams): bail("a score is missing")
+
+    if kind == "power":
+        season = json.loads((ROOT / "data" / "season.json").read_text())
+        shoot(page(power_poster(week, season, {t["m"]: t["t"] for t in teams}, {}), preview), out_dir / "power.jpg")
+        return
 
     if kind == "recap":
         ranked = sorted(teams, key=lambda t: t["s"])

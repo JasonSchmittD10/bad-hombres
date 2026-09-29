@@ -4,6 +4,7 @@
     scripts/ig-post.py check            # token works and belongs to the right account
     scripts/ig-post.py recap            # carousel: results, Big Dick, Little Bitch, standings
     scripts/ig-post.py award            # single image: the week's bonus winner
+    scripts/ig-post.py power            # single image: the Power Lines, posted after the award
     scripts/ig-post.py matchups         # Thursday carousel: slate, six matchups, Wes's lock
     scripts/ig-post.py stats <slug>     # a Hard Numbers carousel from social/stats-<slug>/
     DRY_RUN=1 scripts/ig-post.py recap  # every local check, no call to Instagram
@@ -12,8 +13,8 @@
 
 Uses the Instagram API with Instagram Login (graph.instagram.com). Instagram
 fetches images from public URLs, so the images must already be committed and
-deployed: social/week-N/{recap-1..4,award,matchups-1..8}.jpg, with captions
-in social/week-N/{recap,award,matchups}.txt. See scripts/UPDATE_WEEK.md, "Posting to Instagram".
+deployed: social/week-N/{recap-1..4,award,power,matchups-1..8}.jpg, with captions
+in social/week-N/{recap,award,power,matchups}.txt. See scripts/UPDATE_WEEK.md, "Posting to Instagram".
 
 Credentials live OUTSIDE the repo in ~/.bad-hombres-ig.env (chmod 600):
     IG_ACCESS_TOKEN=...          long-lived token for @badhombresfantasy
@@ -132,7 +133,7 @@ def material(kind, data=None):
         if len(imgs) > 10: die("%d slides; an Instagram carousel holds 10" % len(imgs))
     else:
         if w.get("status") != "final": skip("week %s is not final yet" % week)
-        names = ["recap-%d.jpg" % i for i in range(1, 5)] if kind == "recap" else ["award.jpg"]
+        names = ["recap-%d.jpg" % i for i in range(1, 5)] if kind == "recap" else ["%s.jpg" % kind]
         imgs = [d / n for n in names]
         missing = [str(p.relative_to(ROOT)) for p in imgs if not p.exists()]
         if missing: skip("not rendered yet: %s" % ", ".join(missing))
@@ -151,6 +152,7 @@ def subjects(kind, w):
     recap     Big Dick of the Week (high score) and Little Bitch of the Week (low)
     award     the week's bonus winner
     matchups  nobody
+    power     nobody
     """
     if kind == "recap":
         teams = [t for mu in w.get("matchups") or [] for t in (mu["a"], mu["b"]) if isinstance(t.get("s"), (int, float))]
@@ -214,7 +216,7 @@ def main():
     argv = sys.argv[1:]
     data = argv[argv.index("--data") + 1] if "--data" in argv else None
     kind = argv[0] if argv else ""
-    if kind not in ("check", "recap", "award", "matchups", "stats"): sys.exit(__doc__)
+    if kind not in ("check", "recap", "award", "power", "matchups", "stats"): sys.exit(__doc__)
 
     if kind == "check":
         env = load_env(); tok = maybe_refresh(env)

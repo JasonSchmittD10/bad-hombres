@@ -365,6 +365,12 @@ cloud (the data can: it comes from the API).
 
 # Posting to Instagram
 
+Tuesday's Week Recap posts three things, in order: the recap carousel (`ig-post.py recap`),
+the bonus award (`award`), then the **Power Lines** poster (`power`) — the homepage chart as
+one image, rendered by `social-render.py power` from `data/season.json` ranks (PRE through
+the week just played, faces at the end of each line, Power Lines colours), captioned from
+`social/week-N/power.txt`. It tags nobody.
+
 Account: **[@badhombresfantasy](https://www.instagram.com/badhombresfantasy/)** — public.
 Three posts a week: two on Tuesday after the recap is published, one on Thursday before
 kickoff.
