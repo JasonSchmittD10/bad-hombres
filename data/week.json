@@ -1,14 +1,14 @@
 {
  "week": 3,
- "status": "live",
- "updated": "2026-09-28T20:14:54-04:00",
+ "status": "final",
+ "updated": "2026-09-29T04:42:46-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 123.5,
+    "s": 143.3,
     "p": 131.54
    },
    "b": {
@@ -22,7 +22,7 @@
    "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 115.34,
+    "s": 127.84,
     "p": 128.24
    },
    "b": {
@@ -36,13 +36,13 @@
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 96.58,
+    "s": 108.38,
     "p": 119.61
    },
    "b": {
     "m": "Erick",
     "t": "King In The North",
-    "s": 86.0,
+    "s": 98.62,
     "p": 112.86
    }
   },
@@ -70,7 +70,7 @@
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
-    "s": 95.34,
+    "s": 104.34,
     "p": 117.77
    }
   },
