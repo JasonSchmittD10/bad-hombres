@@ -1,130 +1,114 @@
 {
- "week": 3,
- "status": "final",
- "updated": "2026-09-29T04:42:46-04:00",
+ "week": 4,
+ "status": "preseason",
+ "updated": "2026-10-01T09:02:29-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 143.3,
-    "p": 131.54
+    "s": 0.0,
+    "p": 131.69
    },
    "b": {
-    "m": "David",
-    "t": "Drain the Swamp",
-    "s": 92.24,
-    "p": 107.92
+    "m": "Dylan",
+    "t": "Carlie’s Headset",
+    "s": 0.0,
+    "p": 131.51
    }
   },
   {
    "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 127.84,
-    "p": 128.24
+    "s": 0.0,
+    "p": 127.3
    },
    "b": {
-    "m": "Drew",
-    "t": "I Stand with Jordon",
-    "s": 111.38,
-    "p": 106.28
+    "m": "Wes",
+    "t": "MikeLee4 Prez",
+    "s": 0.0,
+    "p": 116.09
    }
   },
   {
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 108.38,
-    "p": 119.61
+    "s": 0.0,
+    "p": 108.19
    },
    "b": {
-    "m": "Erick",
-    "t": "King In The North",
-    "s": 98.62,
-    "p": 112.86
-   }
-  },
-  {
-   "a": {
-    "m": "Dylan",
-    "t": "Carlie’s Headset",
-    "s": 147.14,
-    "p": 124.66
-   },
-   "b": {
-    "m": "Adam",
-    "t": "Suck My Diggs",
-    "s": 127.66,
-    "p": 132.66
-   }
-  },
-  {
-   "a": {
-    "m": "Chris",
-    "t": "Maye the Force Be With You",
-    "s": 156.42,
-    "p": 131.04
-   },
-   "b": {
-    "m": "Wes",
-    "t": "MikeLee4 Prez",
-    "s": 104.34,
-    "p": 117.77
-   }
-  },
-  {
-   "a": {
     "m": "Matt",
     "t": "San Diego Chillin’",
-    "s": 99.76,
-    "p": 124.35
+    "s": 0.0,
+    "p": 123.41
+   }
+  },
+  {
+   "a": {
+    "m": "David",
+    "t": "Drain the Swamp",
+    "s": 0.0,
+    "p": 114.12
+   },
+   "b": {
+    "m": "Chris",
+    "t": "Maye the Force Be With You",
+    "s": 0.0,
+    "p": 136.68
+   }
+  },
+  {
+   "a": {
+    "m": "Drew",
+    "t": "I Stand with Jordon",
+    "s": 0.0,
+    "p": 115.41
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
-    "s": 134.52,
-    "p": 117.22
+    "s": 0.0,
+    "p": 120.25
+   }
+  },
+  {
+   "a": {
+    "m": "Erick",
+    "t": "King In The North",
+    "s": 0.0,
+    "p": 109.25
+   },
+   "b": {
+    "m": "Adam",
+    "t": "Suck My Diggs",
+    "s": 0.0,
+    "p": 115.95
    }
   }
  ],
  "bonus": {
-  "week": 3,
-  "nm": "Kittle Dick Energy",
-  "cr": "Lowest-scoring starting TE",
-  "actual": [
-   {
-    "who": "David",
-    "sub": "Isaiah Likely",
-    "val": 3.3
-   },
-   {
-    "who": "Tola",
-    "sub": "Dalton Kincaid",
-    "val": 3.8
-   },
-   {
-    "who": "Adam",
-    "sub": "Mark Andrews",
-    "val": 5.4
-   }
-  ],
+  "week": 4,
+  "nm": "Hoa's Foot Fetish",
+  "cr": "Highest-scoring kicker",
+  "actual": [],
   "projected": [
    {
+    "who": "Chris",
+    "sub": "Spencer Shrader",
+    "val": 10.14
+   },
+   {
     "who": "Erick",
-    "sub": "Darren Waller",
-    "val": 7.08
+    "sub": "Ka'imi Fairbairn",
+    "val": 9.69
    },
    {
-    "who": "Wes",
-    "sub": "Colston Loveland",
-    "val": 9.71
-   },
-   {
-    "who": "David",
-    "sub": "Isaiah Likely",
-    "val": 9.97
+    "who": "Dylan",
+    "sub": "Brandon Aubrey",
+    "val": 9.36
    }
   ]
  },
