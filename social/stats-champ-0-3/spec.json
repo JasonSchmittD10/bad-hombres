@@ -1,0 +1,168 @@
+{
+ "slug": "champ-0-3",
+ "label": "Hard Numbers",
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "Hard Numbers",
+   "stat": "0-3",
+   "statSub": "the two-time defending champion",
+   "say": "David won the last two titles. He had never started 0-3 in any season on record.<br>Here's whose fault that is."
+  },
+  {
+   "type": "cards",
+   "title": "The schedule <em>did this</em>",
+   "cards": [
+    {
+     "who": "David",
+     "name": "471.14 against",
+     "tone": "bad",
+     "ln": "The most points scored against anyone in the league, by <b>76</b>. Matt is next at 394.94."
+    },
+    {
+     "who": "Dylan",
+     "name": "Week 2",
+     "tone": "bad",
+     "ln": "David scored <b>141.38</b>, third-most in the league. Dylan hung <b>200.54</b> on him, the highest score of the season."
+    }
+   ],
+   "kicker": "On any other team's schedule, David has at least one win: <b>1‑2 on ten of them</b>, 2‑1 on Hoa's."
+  },
+  {
+   "type": "cards",
+   "title": "Mostly the <em>schedule</em>",
+   "cards": [
+    {
+     "who": "David",
+     "name": "Week 3",
+     "tag": "92.24",
+     "tone": "bad",
+     "ln": "The <b>lowest score in the league</b>. Jason beat him by 51."
+    },
+    {
+     "who": "David",
+     "name": "Week 1",
+     "tag": "122.54",
+     "tone": "bad",
+     "ln": "Lost to Wes by <b>4.76</b>, with Patrick Mahomes (22.66) on the bench and Bo Nix (5.44) at quarterback."
+    }
+   ]
+  },
+  {
+   "type": "chips",
+   "title": "Ten teams have started <em>0-3</em>",
+   "chips": [
+    {
+     "name": "Chris",
+     "tag": "2021 · 9th"
+    },
+    {
+     "name": "Erick",
+     "tag": "2021 · 5th"
+    },
+    {
+     "name": "Wes",
+     "tag": "2021 · 10th"
+    },
+    {
+     "name": "Wes",
+     "tag": "2022 · 10th"
+    },
+    {
+     "name": "Matt",
+     "tag": "2022 · 8th"
+    },
+    {
+     "name": "Zack",
+     "tag": "2023 · 12th"
+    },
+    {
+     "name": "Adam",
+     "tag": "2023 · 11th"
+    },
+    {
+     "name": "Erick",
+     "tag": "2024 · 9th"
+    },
+    {
+     "name": "Adam",
+     "tag": "2025 · 7th"
+    },
+    {
+     "name": "Wes",
+     "tag": "2025 · 12th"
+    }
+   ],
+   "facts": [
+    {
+     "k": "Made playoffs",
+     "v": "1"
+    },
+    {
+     "k": "Won it",
+     "v": "0"
+    },
+    {
+     "k": "Finished last",
+     "v": "2"
+    }
+   ],
+   "kicker": "The one who got in: <b>Erick, 2021</b>. He finished 5th."
+  },
+  {
+   "type": "hook",
+   "eyebrow": "The odds",
+   "stat": "18%",
+   "statSub": "chance David runs the Beer Mile",
+   "say": "His chance of making the playoffs is <b>15%</b>.<br>The champ is likelier to run the Beer Mile than to make the playoffs."
+  },
+  {
+   "type": "chips",
+   "title": "How the champ <em>usually starts</em>",
+   "chips": [
+    {
+     "name": "2021",
+     "tag": "2-1"
+    },
+    {
+     "name": "2022",
+     "tag": "1-2"
+    },
+    {
+     "name": "2023",
+     "tag": "2-1"
+    },
+    {
+     "name": "2024",
+     "tag": "1-2 · Champion"
+    },
+    {
+     "name": "2025",
+     "tag": "3-0 · Champion"
+    },
+    {
+     "name": "2026",
+     "tag": "0-3"
+    }
+   ],
+   "facts": [
+    {
+     "k": "Titles",
+     "v": "2"
+    },
+    {
+     "k": "Worst start before",
+     "v": "1-2"
+    },
+    {
+     "k": "Titles from 0-3",
+     "v": "0"
+    }
+   ],
+   "kicker": "He has won it from 1-2. Nobody has won it from 0-3."
+  }
+ ],
+ "tag": [
+  "David"
+ ]
+}
