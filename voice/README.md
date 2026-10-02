@@ -23,7 +23,8 @@ voice/
 │   └── 05-prompt-kit.md         ← rules, paste-ready prompt, QA checklist, reference reads
 ├── drew-magary/                 (same 5 files)
 ├── matthew-berry/               (same 5 files)
-└── scott-van-pelt/              (same 5 files)
+├── scott-van-pelt/              (same 5 files)
+└── stephen-a-smith/             (same 5 files; proposed fifth voice, not yet assigned in VOICE_GUIDE)
 ```
 
 ## Which file to open
@@ -49,6 +50,7 @@ voice/
 - **Magary** — active. WYTS 2026 complete; Jamboroo running weekly at Defector. Re-read each season.
 - **Berry** — written Love/Hate ended Aug 2025 (final column is in project files). Now a sub-1,200-word Thursday "10 Facts" plus daily video.
 - **Van Pelt** — active, 11th season of the midnight SportsCenter, segments unchanged.
+- **Stephen A. Smith** — active (Oct 2026): First Take commentator/EP, The Stephen A. Smith Show on SiriusXM; the verdict voice for trade alerts, breaking news and chokes, pending an assignment row in VOICE_GUIDE.
 
 ## Samples note
 All worked samples use **2025-season team names and Week 9 data as placeholders.** Swap in current-season rosters before reusing any structure.

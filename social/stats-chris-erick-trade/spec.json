@@ -3,84 +3,103 @@
  "label": "Trade Alert",
  "slides": [
   {
-   "type": "hook",
-   "eyebrow": "Trade Alert",
-   "stat": "3‑for‑4",
-   "statSub": "Chris and Erick",
-   "say": "Accepted in <b>under five minutes</b>.<br>Pending league review, set to go through Sunday.",
-   "statSize": 170
+   "type": "bomb",
+   "faces": [
+    "Chris",
+    "Erick"
+   ],
+   "head": "3‑for‑4",
+   "dek": "Chris and Erick pull the trigger. <b>Accepted in under five minutes.</b>"
   },
   {
-   "type": "cards",
-   "title": "The <em>deal</em>",
-   "cards": [
+   "type": "deal",
+   "head": "The <em>deal</em>",
+   "sides": [
     {
      "who": "Chris",
-     "name": "Chris gets",
-     "tone": "",
-     "ln": "<b>CeeDee Lamb</b>, <b>Josh Jacobs</b>, <b>Zay Flowers</b> and <b>MarShawn Lloyd</b>"
+     "players": [
+      "CeeDee Lamb",
+      "Josh Jacobs",
+      "Zay Flowers",
+      "MarShawn Lloyd"
+     ]
     },
     {
      "who": "Erick",
-     "name": "Erick gets",
-     "tone": "",
-     "ln": "<b>Jaxon Smith-Njigba</b>, <b>Tony Pollard</b> and <b>Chuba Hubbard</b>"
+     "players": [
+      "Jaxon Smith-Njigba",
+      "Tony Pollard",
+      "Chuba Hubbard"
+     ]
     }
    ],
-   "kicker": "Chris drops Ollie Gordon II to make room for the extra body."
+   "note": "Chris drops Ollie Gordon II to make room."
   },
   {
-   "type": "cards",
-   "title": "The <em>receipts</em>",
-   "cards": [
+   "type": "numbers",
+   "kicker": "The Receipts",
+   "head": "Read <em>these</em>",
+   "rows": [
     {
-     "who": "Erick",
-     "name": "Jaxon Smith-Njigba",
-     "tag": "108.06",
-     "tone": "good",
-     "ln": "The most points of <b>any player on any roster</b> in the league. Chris took him <b>8th overall</b>."
+     "n": "108.06",
+     "label": "Smith‑Njigba",
+     "say": "Most points of any rostered player. Chris drafted him 8th overall.",
+     "color": "#e8b84b"
     },
     {
-     "who": "Chris",
-     "name": "Josh Jacobs",
-     "tag": "0.00",
-     "tone": "bad",
-     "ln": "Hasn't played a snap this season. Listed <b>not active</b>."
-    }
-   ],
-   "kicker": "Points so far, Weeks 1-3: Chris sends <b>186.66</b>, gets back <b>134.40</b>."
-  },
-  {
-   "type": "cards",
-   "title": "The <em>track record</em>",
-   "cards": [
-    {
-     "who": "Chris",
-     "name": "Chris",
-     "tag": "Trade No. 21",
-     "tone": "bad",
-     "ln": "The most in the league since 2021. <b>10-10</b> on the first twenty, <b>239.62 points</b> in the red."
+     "n": "0.00",
+     "label": "Josh Jacobs",
+     "say": "Hasn't played a snap. Listed not active."
     },
     {
-     "who": "Erick",
-     "name": "Erick",
-     "tag": "Trade No. 2",
-     "tone": "good",
-     "ln": "Second trade in six seasons. Won the first by <b>25.30</b>."
+     "n": "186.66",
+     "label": "Out the door",
+     "say": "What Chris sends, Weeks 1‑3. He gets back <b>134.40</b>.",
+     "color": "#f4f5f7"
     }
-   ],
-   "kicker": "The manager who proposes a trade in this league is <b>13-25-1</b>. Chris proposed this one."
+   ]
   },
   {
-   "type": "hook",
-   "eyebrow": "Week 4 projections",
-   "stat": "+5.19",
-   "statSub": "Erick's side of the deal",
-   "say": "Erick's three: <b>50.68</b>. Chris's four: <b>45.49</b>.<br>Trade Court rules on started points after <b>Week 6</b>."
+   "type": "numbers",
+   "kicker": "The Track Record",
+   "head": "Trade <em>No. 21</em>",
+   "rows": [
+    {
+     "n": "20",
+     "label": "Chris's trades since 2021",
+     "say": "Most in the league. <b>10-10</b>, <b>239.62</b> points in the red."
+    },
+    {
+     "n": "1",
+     "label": "Erick's trades ever",
+     "say": "Won it by 25.30.",
+     "color": "#e8b84b"
+    },
+    {
+     "n": "13-25",
+     "label": "The proposer's record",
+     "say": "The manager who proposes the trade here is 13-25-1. Chris proposed.",
+     "color": "#f4f5f7"
+    }
+   ]
+  },
+  {
+   "type": "plain",
+   "kicker": "Week 4 Projections",
+   "head": "Erick <em>+5.19</em>",
+   "dek": "Erick's three: <b>50.68</b>. Chris's four: <b>45.49</b>.<br>Trade Court rules on started points after Week 6.",
+   "stamp": "Court is in session"
   }
  ],
  "tag": [
   "Chris",
   "Erick"
+ ],
+ "kicker": "Trade Alert",
+ "ticker": [
+  "Chris gets Lamb, Jacobs, Flowers, Lloyd",
+  "Erick gets Smith-Njigba, Pollard, Hubbard",
+  "Pending league review",
+  "Processes Sunday"
  ]
 }

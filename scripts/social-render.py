@@ -7,6 +7,7 @@
     scripts/social-render.py matchups           # -> social/week-N/matchups-1..8.jpg
     scripts/social-render.py og                 # -> og.jpg, the site's link-preview card (1200x630)
     scripts/social-render.py stats <spec.json>       # Hard Numbers -> social/stats-<slug>/slide-N.jpg
+    scripts/social-render.py breaking <spec.json>    # Breaking news (trades, big moves) -> social/stats-<slug>/slide-N.jpg
     scripts/social-render.py og-pages              # -> og.jpg for Updates, Members, profiles, Record Book, By-Laws, Hard Numbers
     scripts/social-render.py og-picks              # -> picks/og.jpg, the pick'em's link-preview card
     scripts/social-render.py og-story <slug>    # -> story/<slug>/og.jpg, that story's link-preview card
@@ -216,6 +217,60 @@ CSS = """
 .jr .lr .mv{font-size:15px;font-weight:800;color:var(--muted);flex:none;width:36px;text-align:right;padding-right:8px}
 .jr .lr .mv.up{color:#3fb26b}.jr .lr .mv.dn{color:#e0524d}
 .jr svg{display:block;flex:none}
+
+/* Breaking news: trades and big moves (see breaking_slides) — loud on purpose */
+.bk{position:relative;width:100%;height:100%;overflow:hidden;display:flex;flex-direction:column;
+ background:radial-gradient(900px 700px at 50% 38%,rgba(193,18,31,.42),transparent 70%),
+  repeating-linear-gradient(-58deg,rgba(255,255,255,.035) 0 3px,transparent 3px 34px),#09090b}
+.bk::before{content:"";position:absolute;left:-200px;right:-200px;top:520px;height:300px;transform:rotate(-8deg);
+ background:linear-gradient(90deg,transparent,rgba(193,18,31,.30) 20%,rgba(193,18,31,.30) 80%,transparent);filter:blur(2px)}
+.bk>*{position:relative}
+.bk-top{display:flex;align-items:stretch;height:96px;margin-top:44px;box-shadow:0 14px 40px rgba(0,0,0,.6)}
+.bk-tag{background:#e10f1f;color:#fff;padding:0 34px 0 64px;display:flex;align-items:center;font-size:54px;letter-spacing:.04em;
+ font-style:italic;clip-path:polygon(0 0,100% 0,93% 100%,0 100%)}
+.bk-kick{flex:1;background:#f4f5f7;color:#0d0d0f;display:flex;align-items:center;padding:0 28px 0 36px;margin-left:-26px;
+ font-size:46px;font-style:italic;letter-spacing:.02em;white-space:nowrap}
+.bk-kick.long{font-size:36px}
+.bk-live{background:#0d0d0f;color:#fff;display:flex;align-items:center;gap:12px;padding:0 54px 0 26px;font:900 26px "Segoe UI",Arial,sans-serif;letter-spacing:.2em}
+.bk-live i{width:18px;height:18px;border-radius:50%;background:#e10f1f;box-shadow:0 0 0 6px rgba(225,15,31,.3),0 0 24px #e10f1f}
+.bk-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 64px}
+.bk-tick{display:flex;height:74px;background:#0d0d0f;border-top:4px solid #e10f1f;margin-bottom:0}
+.bk-tl{background:#e10f1f;display:flex;align-items:center;gap:12px;padding:0 26px 0 64px;font-size:26px;letter-spacing:.06em;white-space:nowrap}
+.bk-tl img{height:40px}
+.bk-tt{flex:1;display:flex;align-items:center;padding:0 24px;font:800 26px "Segoe UI",Arial,sans-serif;letter-spacing:.06em;
+ text-transform:uppercase;white-space:nowrap;overflow:hidden;color:#f4f5f7}
+.bk-tt b{color:#e8b84b;margin:0 16px}
+.bk-foot{display:flex;justify-content:space-between;padding:16px 64px 30px;color:var(--muted);font-size:22px;letter-spacing:.04em;background:#0d0d0f}
+.bk-h{font-size:150px;line-height:.86;font-style:italic;transform:skewX(-6deg);letter-spacing:-.01em;text-shadow:0 10px 0 rgba(0,0,0,.45)}
+.bk-h em{font-style:inherit;color:#e10f1f}
+.bk-h2{font-size:92px;line-height:.9;font-style:italic;transform:skewX(-6deg);text-shadow:0 8px 0 rgba(0,0,0,.45)}
+.bk-h2 em{font-style:inherit;color:#e10f1f}
+.bk-dek{font-size:36px;line-height:1.35;color:#d6d8dd;margin-top:30px;font-weight:600}
+.bk-dek b{color:#fff}
+/* the face-off */
+.bk-vs{display:flex;align-items:center;justify-content:center;gap:26px;margin:10px 0 40px}
+.bk-vs .who{display:flex;flex-direction:column;align-items:center}
+.bk-vs img{width:300px;height:300px;border-radius:50%;object-fit:cover;background:#d7d7d7;border:10px solid #f4f5f7;
+ box-shadow:0 0 0 8px #e10f1f,0 30px 60px rgba(0,0,0,.6)}
+.bk-vs .nm{margin-top:24px;font-size:54px;font-style:italic;letter-spacing:.03em}
+.bk-swap{font-size:120px;color:#e10f1f;font-weight:900;line-height:1;text-shadow:0 0 30px rgba(225,15,31,.6)}
+/* the deal: two sides */
+.bk-sides{display:flex;flex-direction:column;gap:26px;margin-top:34px}
+.bk-side{display:flex;gap:26px;align-items:center;background:rgba(13,13,15,.86);border-left:12px solid #e10f1f;padding:26px 30px}
+.bk-side img{width:150px;height:150px;border-radius:50%;object-fit:cover;background:#d7d7d7;border:6px solid #f4f5f7;flex:none}
+.bk-side .k{font-size:30px;color:#e8b84b;letter-spacing:.14em;font-weight:800;text-transform:uppercase}
+.bk-side .ps{font-size:44px;line-height:1.12;margin-top:8px}
+.bk-side .ps span{display:block}
+.bk-note{margin-top:26px;font-size:30px;color:#9aa0aa;font-weight:600}
+/* big numbers */
+.bk-nums{display:flex;flex-direction:column;gap:24px;margin-top:34px}
+.bk-num{display:flex;align-items:center;gap:30px;background:rgba(13,13,15,.86);padding:26px 34px;border-left:12px solid var(--c,#e10f1f)}
+.bk-num>b{flex:none;font-size:112px;line-height:.9;font-style:italic;color:var(--c,#e10f1f);padding-right:14px;text-shadow:0 6px 0 rgba(0,0,0,.4)}
+.bk-num .t{flex:1;min-width:0;font-size:30px;line-height:1.3;color:#d6d8dd;font-weight:600}
+.bk-num .t b{color:#fff}
+.bk-num .t strong{display:block;color:#fff;font-size:34px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.bk-stamp{align-self:flex-start;margin-top:34px;border:6px solid #e8b84b;color:#e8b84b;padding:14px 28px;font-size:46px;
+ transform:rotate(-4deg);letter-spacing:.06em}
 
 /* Hard Numbers: the spec-driven stats carousel (see stats_slides) */
 .sf{flex:1;display:flex;flex-direction:column;justify-content:center}
@@ -641,6 +696,47 @@ def stats_slides(spec):
     return out
 
 
+def breaking_slides(spec):
+    """A breaking-news carousel (trades, big moves): chyron, ticker, oversized italic type.
+
+    Slide types: bomb (the face-off headline), deal (who gets whom), numbers (big stat
+    rows), plain (a headline and a dek). All the words live in the spec."""
+    items = spec.get("ticker", [])
+    kick = spec.get("kicker", "Trade Alert")
+    out = []
+    for n, sl in enumerate(spec["slides"]):
+        # the ticker moves as you swipe: each slide starts one item further along
+        roll = items[n % len(items):] + items[:n % len(items)] if items else []
+        tick = "".join(('<b>•</b>' if i else '') + esc(t) for i, t in enumerate(roll))
+        k = sl.get("kicker", kick)
+        t = sl.get("type", "plain")
+        if t == "bomb":
+            a, b = sl["faces"]
+            body = ('<div class="bk-vs"><div class="who"><img src="%s" alt=""><div class="nm disp">%s</div></div>'
+                    '<div class="bk-swap">&#8644;</div><div class="who"><img src="%s" alt=""><div class="nm disp">%s</div></div></div>'
+                    '<div class="bk-h disp">%s</div><div class="bk-dek">%s</div>') % (
+                face(a), esc(a), face(b), esc(b), sl["head"], sl.get("dek", ""))
+        elif t == "deal":
+            sides = "".join('<div class="bk-side"><img src="%s" alt=""><div><div class="k">%s gets</div><div class="ps disp">%s</div></div></div>' % (
+                face(sd["who"]), esc(sd["who"]), "".join("<span>%s</span>" % esc(x) for x in sd["players"])) for sd in sl["sides"])
+            body = '<div class="bk-h2 disp">%s</div><div class="bk-sides">%s</div>%s' % (
+                sl["head"], sides, ('<div class="bk-note">%s</div>' % sl["note"]) if sl.get("note") else "")
+        elif t == "numbers":
+            rows = "".join('<div class="bk-num" style="--c:%s"><b class="disp">%s</b><div class="t"><strong>%s</strong>%s</div></div>' % (
+                esc(r.get("color", "#e10f1f")), esc(r["n"]), esc(r["label"]), r.get("say", "")) for r in sl["rows"])
+            body = '<div class="bk-h2 disp">%s</div><div class="bk-nums">%s</div>%s' % (
+                sl["head"], rows, ('<div class="bk-stamp disp">%s</div>' % esc(sl["stamp"])) if sl.get("stamp") else "")
+        else:
+            body = '<div class="bk-h disp">%s</div><div class="bk-dek">%s</div>%s' % (
+                sl["head"], sl.get("dek", ""), ('<div class="bk-stamp disp">%s</div>' % esc(sl["stamp"])) if sl.get("stamp") else "")
+        out.append(('<div class="bk"><div class="bk-top"><span class="bk-tag disp">Breaking</span>'
+                    '<span class="bk-kick disp%s">%s</span><span class="bk-live"><i></i>LIVE</span></div>'
+                    '<div class="bk-body">%s</div>'
+                    '<div class="bk-tick"><span class="bk-tl disp"><img src="%s" alt="">BAD HOMBRES</span><span class="bk-tt">%s</span></div>'
+                    '<div class="bk-foot"><span>%s</span><span>bad-hombres.vercel.app</span></div></div>') % (
+            " long" if len(k) > 14 else "", esc(k), body, data_uri("assets/logo.webp"), tick, HANDLE))
+    return out
+
 def shoot(html_text, out, w=None, h=None):
     """Headless Chrome -> PNG -> JPEG, exactly w x h (default the 1080x1350 feed size)."""
     w, h = w or W, h or H
@@ -692,6 +788,16 @@ def main():
     if kind == "og-story":
         if len(args) < 2: sys.exit("usage: social-render.py og-story <slug>")
         shoot(page(og_story(args[1]), False, OG_W, OG_H), ROOT / "story" / args[1] / "og.jpg", OG_W, OG_H); return
+    if kind == "breaking":
+        if len(args) < 2: sys.exit("usage: social-render.py breaking <spec.json>")
+        spec = json.loads(Path(args[1]).read_text())
+        if not spec.get("slug"): bail("the spec needs a slug")
+        slides = breaking_slides(spec)
+        if not 2 <= len(slides) <= 10: bail("%d slides; an Instagram carousel holds 2 to 10" % len(slides))
+        out_dir = ROOT / "social" / ("stats-%s" % spec["slug"]); out_dir.mkdir(parents=True, exist_ok=True)
+        for old in out_dir.glob("slide-*.jpg"): old.unlink()
+        for i, html_text in enumerate(slides, 1): shoot(page(html_text, "--preview" in args), out_dir / ("slide-%d.jpg" % i))
+        return
     if kind == "stats":
         if len(args) < 2: sys.exit("usage: social-render.py stats <spec.json> [--preview]")
         spec = json.loads(Path(args[1]).read_text())
