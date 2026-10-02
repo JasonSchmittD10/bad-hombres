@@ -611,8 +611,10 @@ def stats_slides(spec):
         t = sl.get("type", "plain")
         if t == "hook":
             body = ('<div class="sf center"><div class="eyebrow">%s</div>'
-                    '<div class="big disp">%s%s</div><p class="say">%s</p></div>') % (
-                esc(sl.get("eyebrow", label)), esc(sl["stat"]),
+                    '<div class="big disp"%s>%s%s</div><p class="say">%s</p></div>') % (
+                esc(sl.get("eyebrow", label)),
+                (' style="font-size:%dpx"' % int(sl["statSize"])) if sl.get("statSize") else "",   # a long stat steps down
+                esc(sl["stat"]),
                 ('<small class="disp">%s</small>' % esc(sl["statSub"])) if sl.get("statSub") else "",
                 sl.get("say", ""))
         elif t == "cards":

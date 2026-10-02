@@ -1,0 +1,86 @@
+{
+ "slug": "chris-erick-trade",
+ "label": "Trade Alert",
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "Trade Alert",
+   "stat": "3‑for‑4",
+   "statSub": "Chris and Erick",
+   "say": "Accepted in <b>under five minutes</b>.<br>Pending league review, set to go through Sunday.",
+   "statSize": 170
+  },
+  {
+   "type": "cards",
+   "title": "The <em>deal</em>",
+   "cards": [
+    {
+     "who": "Chris",
+     "name": "Chris gets",
+     "tone": "",
+     "ln": "<b>CeeDee Lamb</b>, <b>Josh Jacobs</b>, <b>Zay Flowers</b> and <b>MarShawn Lloyd</b>"
+    },
+    {
+     "who": "Erick",
+     "name": "Erick gets",
+     "tone": "",
+     "ln": "<b>Jaxon Smith-Njigba</b>, <b>Tony Pollard</b> and <b>Chuba Hubbard</b>"
+    }
+   ],
+   "kicker": "Chris drops Ollie Gordon II to make room for the extra body."
+  },
+  {
+   "type": "cards",
+   "title": "The <em>receipts</em>",
+   "cards": [
+    {
+     "who": "Erick",
+     "name": "Jaxon Smith-Njigba",
+     "tag": "108.06",
+     "tone": "good",
+     "ln": "The most points of <b>any player on any roster</b> in the league. Chris took him <b>8th overall</b>."
+    },
+    {
+     "who": "Chris",
+     "name": "Josh Jacobs",
+     "tag": "0.00",
+     "tone": "bad",
+     "ln": "Hasn't played a snap this season. Listed <b>not active</b>."
+    }
+   ],
+   "kicker": "Points so far, Weeks 1-3: Chris sends <b>186.66</b>, gets back <b>134.40</b>."
+  },
+  {
+   "type": "cards",
+   "title": "The <em>track record</em>",
+   "cards": [
+    {
+     "who": "Chris",
+     "name": "Chris",
+     "tag": "Trade No. 21",
+     "tone": "bad",
+     "ln": "The most in the league since 2021. <b>10-10</b> on the first twenty, <b>239.62 points</b> in the red."
+    },
+    {
+     "who": "Erick",
+     "name": "Erick",
+     "tag": "Trade No. 2",
+     "tone": "good",
+     "ln": "Second trade in six seasons. Won the first by <b>25.30</b>."
+    }
+   ],
+   "kicker": "The manager who proposes a trade in this league is <b>13-25-1</b>. Chris proposed this one."
+  },
+  {
+   "type": "hook",
+   "eyebrow": "Week 4 projections",
+   "stat": "+5.19",
+   "statSub": "Erick's side of the deal",
+   "say": "Erick's three: <b>50.68</b>. Chris's four: <b>45.49</b>.<br>Trade Court rules on started points after <b>Week 6</b>."
+  }
+ ],
+ "tag": [
+  "Chris",
+  "Erick"
+ ]
+}
