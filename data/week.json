@@ -1,91 +1,91 @@
 {
  "week": 4,
  "status": "live",
- "updated": "2026-10-02T00:24:15-04:00",
+ "updated": "2026-10-04T19:23:57-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 28.1,
-    "p": 133.51
+    "s": 62.4,
+    "p": 128.04
    },
    "b": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 0.0,
-    "p": 131.21
+    "s": 133.44,
+    "p": 126.39
    }
   },
   {
    "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 0.0,
-    "p": 118.71
+    "s": 90.78,
+    "p": 115.59
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
-    "s": 0.0,
-    "p": 116.43
+    "s": 78.6,
+    "p": 112.02
    }
   },
   {
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 0.0,
-    "p": 125.52
+    "s": 108.32,
+    "p": 125.86
    },
    "b": {
     "m": "Matt",
     "t": "San Diego Chillin’",
-    "s": 0.0,
-    "p": 123.54
+    "s": 91.32,
+    "p": 120.72
    }
   },
   {
    "a": {
     "m": "David",
     "t": "Drain the Swamp",
-    "s": 0.0,
-    "p": 114.41
+    "s": 76.6,
+    "p": 126.46
    },
    "b": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 0.0,
-    "p": 137.19
+    "s": 147.46,
+    "p": 134.27
    }
   },
   {
    "a": {
     "m": "Drew",
     "t": "I Stand with Jordon",
-    "s": 18.5,
-    "p": 116.91
+    "s": 108.48,
+    "p": 128.79
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
-    "s": 0.0,
-    "p": 120.31
+    "s": 83.12,
+    "p": 122.46
    }
   },
   {
    "a": {
     "m": "Erick",
     "t": "King In The North",
-    "s": 0.0,
-    "p": 110.75
+    "s": 75.92,
+    "p": 120.53
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
-    "s": 15.6,
-    "p": 124.55
+    "s": 86.3,
+    "p": 125.76
    }
   }
  ],
@@ -95,36 +95,36 @@
   "cr": "Highest-scoring kicker",
   "actual": [
    {
+    "who": "Chris",
+    "sub": "Spencer Shrader",
+    "val": 17.4
+   },
+   {
+    "who": "Erick",
+    "sub": "Ka'imi Fairbairn",
+    "val": 17.4
+   },
+   {
     "who": "Jason",
     "sub": "Cam Little",
-    "val": 0
-   },
-   {
-    "who": "Tola",
-    "sub": "Tyler Loop",
-    "val": 0
-   },
-   {
-    "who": "Hoa",
-    "sub": "Ryan Fitzgerald",
-    "val": 0
+    "val": 14.7
    }
   ],
   "projected": [
    {
     "who": "Chris",
     "sub": "Spencer Shrader",
-    "val": 10.24
+    "val": 10.07
    },
    {
     "who": "Erick",
     "sub": "Ka'imi Fairbairn",
-    "val": 9.69
+    "val": 9.73
    },
    {
     "who": "Dylan",
     "sub": "Brandon Aubrey",
-    "val": 9.36
+    "val": 9.4
    }
   ]
  },
@@ -132,10 +132,10 @@
  "nextKickoff": "2026-10-04T09:30:00-04:00",
  "nextKickoffLabel": "Sunday, Oct 4 · 9:30 AM ET",
  "nextGame": {
-  "away": "IND",
-  "home": "WSH",
-  "kickoff": "2026-10-04T09:30:00-04:00",
-  "label": "Sunday, Oct 4 at 9:30 AM ET",
-  "network": "NFL Network"
+  "away": "DET",
+  "home": "CAR",
+  "kickoff": "2026-10-04T20:20:00-04:00",
+  "label": "Sunday, Oct 4 at 8:20 PM ET",
+  "network": "NBC"
  }
 }
