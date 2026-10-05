@@ -66,7 +66,11 @@ function record(doc, n, ms, at) {
       if (!pk || me.wp > pk.wp) w.peak[me.m] = { wp: me.wp, at, s: me.s, opp_s: op.s };
     }
   }
+  // a reading identical to the last one (Friday, Saturday, overnight) adds nothing to the chart
+  const prev = w.samples[w.samples.length - 1];
+  if (prev && JSON.stringify(prev[1]) === JSON.stringify(wp) && JSON.stringify(prev[2]) === JSON.stringify(sc)) return false;
   w.samples.push([at, wp, sc]);
+  return true;
 }
 
 async function sample(force) {
@@ -78,7 +82,8 @@ async function sample(force) {
 
   let changed = false;
   const status = statusOf(sb.matchups);
-  if (status === 'live') { record(doc, sb.week, sb.matchups, now.toISOString()); changed = true; }
+  // record() still tracks peaks, but only an actual change is written (and counts as a reading)
+  if (status === 'live') { const before = JSON.stringify(doc.weeks[String(sb.week)]?.peak || {}); changed = record(doc, sb.week, sb.matchups, now.toISOString()) || before !== JSON.stringify(doc.weeks[String(sb.week)].peak); }
 
   // settle every sampled week that has finished — this one, or one Yahoo has moved past
   for (const [k, w] of Object.entries(doc.weeks)) {
@@ -89,7 +94,7 @@ async function sample(force) {
   }
   // write only when something was recorded: off-hours pings leave the gist alone
   if (changed) { doc.updated = now.toISOString(); await writeFile(file(season), doc, false); }
-  return { week: sb.week, status, recorded: status === 'live', chokes: doc.chokes.length };
+  return { week: sb.week, status, recorded: changed, chokes: doc.chokes.length };
 }
 
 export default async function handler(req, res) {

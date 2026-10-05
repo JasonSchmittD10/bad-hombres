@@ -5,8 +5,10 @@
 //   BHSweat.chart(el, weekData, a, b, opts) -> draws a vs b into el (a on top)
 //
 // weekData is /api/pulse?week=N: {samples: [[iso, {name: wp}, {name: score}], ...], final: {...}}.
-// The x axis is the sample sequence, not the clock — samples only exist while games are
-// live, so Thursday night, Sunday and Monday sit side by side with a day marker between.
+// The x axis is the action, not the clock: a reading is drawn only when this matchup's
+// score or odds moved since the last one drawn, so Friday, Saturday, overnight and the
+// windows when neither team has anyone playing all fall away. Markers name the game
+// window the action resumed in (Thu, Sun AM, 1 PM, 4 PM, SNF, MNF).
 (function () {
   var cache = {};
   function esc(t) { var d = document.createElement('div'); d.textContent = t == null ? '' : String(t); return d.innerHTML; }
@@ -16,9 +18,26 @@
     var s = d.toLocaleString('en-US', { timeZone: 'America/New_York', weekday: 'short', hour: 'numeric', minute: '2-digit' });
     var day = d.toLocaleString('en-US', { timeZone: 'America/New_York', weekday: 'short' });
     // games after midnight still belong to the night before
-    var hr = Number(d.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
-    if (hr < 5) day = DAYS[(DAYS.indexOf(day) + 6) % 7];
-    return { label: s, day: day };
+    var hr = Number(d.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false })) % 24;
+    if (hr < 5) { day = DAYS[(DAYS.indexOf(day) + 6) % 7]; hr += 24; }
+    // the game window, in the order a week plays out
+    var win = day !== 'Sun' ? (day === 'Mon' ? 'MNF' : day) : hr < 12 ? 'Sun AM' : hr < 16 ? '1 PM' : hr < 20 ? '4 PM' : 'SNF';
+    return { label: s, day: day, win: win };
+  }
+  // keep a reading only when this matchup moved: its score changed, or its odds changed while
+  // games were on (some score somewhere moved). Odds that drift on a Friday with nobody
+  // playing — injury news, Yahoo recalculating — don't count.
+  function moments(samples, a, b) {
+    var out = [], lastSc = null, lastWp = null, prevAll = null;
+    samples.forEach(function (s, i) {
+      var all = JSON.stringify(s[2] || {}), live = prevAll !== null && all !== prevAll;
+      prevAll = all;
+      if (!s[1] || typeof s[1][a] !== 'number') return;
+      var sc = s[2] || {}, k = sc[a] + '|' + sc[b], first = lastSc === null;
+      if (first || k !== lastSc || (live && s[1][a] !== lastWp)) { out.push(s); lastSc = k; lastWp = s[1][a]; }
+      else if (i === samples.length - 1) out.push(s);      // the latest reading always shows
+    });
+    return out;
   }
 
   function load(week, fresh) {
@@ -29,7 +48,7 @@
 
   function chart(el, wk, a, b, opts) {
     opts = opts || {};
-    var pts = (wk.samples || []).filter(function (s) { return s[1] && typeof s[1][a] === 'number'; });
+    var pts = moments(wk.samples || [], a, b);
     if (pts.length < 2) {
       el.innerHTML = '<div class="sw-empty">' + (pts.length ? 'One reading so far — the line starts with the next one.' :
         'No chart for this one — the pulse only records while games are live' + (opts.since ? ', and it started ' + esc(opts.since) : '') + '.') + '</div>';
@@ -40,14 +59,15 @@
     var y = function (p) { return T + (1 - p) * ih; };
     var line = pts.map(function (s, i) { return (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(s[1][a]).toFixed(1); }).join(' ');
     var area = line + ' L' + x(pts.length - 1).toFixed(1) + ' ' + y(0.5) + ' L' + x(0).toFixed(1) + ' ' + y(0.5) + ' Z';
-    // day markers where the evening changes
-    var marks = '', last = null;
+    // window markers where the action moves to the next game window; a label too close
+    // to the previous one is skipped rather than drawn on top of it
+    var marks = '', last = null, lastX = -999;
     pts.forEach(function (s, i) {
-      var d = etParts(s[0]).day;
-      if (d !== last) {
+      var w = etParts(s[0]).win;
+      if (w !== last) {
         if (last !== null) marks += '<line x1="' + x(i).toFixed(1) + '" y1="' + T + '" x2="' + x(i).toFixed(1) + '" y2="' + (T + ih) + '" class="sw-day"/>';
-        marks += '<text x="' + (x(i) + 4).toFixed(1) + '" y="' + (H - 8) + '" class="sw-dl">' + d + '</text>';
-        last = d;
+        if (x(i) - lastX > 70) { marks += '<text x="' + (x(i) + 4).toFixed(1) + '" y="' + (H - 8) + '" class="sw-dl">' + w + '</text>'; lastX = x(i); }
+        last = w;
       }
     });
     var end = pts[pts.length - 1][1][a], ap = Math.round(end * 100);
