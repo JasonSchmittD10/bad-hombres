@@ -1,20 +1,20 @@
 {
  "week": 4,
  "status": "live",
- "updated": "2026-10-04T19:23:57-04:00",
+ "updated": "2026-10-05T00:23:35-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 62.4,
-    "p": 128.04
+    "s": 102.5,
+    "p": 128.54
    },
    "b": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 133.44,
+    "s": 135.14,
     "p": 126.39
    }
   },
@@ -23,40 +23,40 @@
     "m": "Tola",
     "t": "Alien Awareness",
     "s": 90.78,
-    "p": 115.59
+    "p": 123.91
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
-    "s": 78.6,
-    "p": 112.02
+    "s": 123.8,
+    "p": 112.05
    }
   },
   {
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 108.32,
-    "p": 125.86
+    "s": 114.32,
+    "p": 125.83
    },
    "b": {
     "m": "Matt",
     "t": "San Diego Chillin’",
-    "s": 91.32,
-    "p": 120.72
+    "s": 114.62,
+    "p": 120.91
    }
   },
   {
    "a": {
     "m": "David",
     "t": "Drain the Swamp",
-    "s": 76.6,
-    "p": 126.46
+    "s": 75.5,
+    "p": 126.47
    },
    "b": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 147.46,
+    "s": 156.46,
     "p": 134.27
    }
   },
@@ -64,13 +64,13 @@
    "a": {
     "m": "Drew",
     "t": "I Stand with Jordon",
-    "s": 108.48,
-    "p": 128.79
+    "s": 129.08,
+    "p": 128.89
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
-    "s": 83.12,
+    "s": 82.92,
     "p": 122.46
    }
   },
@@ -78,14 +78,14 @@
    "a": {
     "m": "Erick",
     "t": "King In The North",
-    "s": 75.92,
-    "p": 120.53
+    "s": 108.42,
+    "p": 120.5
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
-    "s": 86.3,
-    "p": 125.76
+    "s": 130.38,
+    "p": 126.51
    }
   }
  ],
@@ -95,6 +95,11 @@
   "cr": "Highest-scoring kicker",
   "actual": [
    {
+    "who": "Drew",
+    "sub": "Jake Bates",
+    "val": 18.4
+   },
+   {
     "who": "Chris",
     "sub": "Spencer Shrader",
     "val": 17.4
@@ -103,11 +108,6 @@
     "who": "Erick",
     "sub": "Ka'imi Fairbairn",
     "val": 17.4
-   },
-   {
-    "who": "Jason",
-    "sub": "Cam Little",
-    "val": 14.7
    }
   ],
   "projected": [
@@ -132,10 +132,10 @@
  "nextKickoff": "2026-10-04T09:30:00-04:00",
  "nextKickoffLabel": "Sunday, Oct 4 · 9:30 AM ET",
  "nextGame": {
-  "away": "DET",
-  "home": "CAR",
-  "kickoff": "2026-10-04T20:20:00-04:00",
-  "label": "Sunday, Oct 4 at 8:20 PM ET",
-  "network": "NBC"
+  "away": "ATL",
+  "home": "NO",
+  "kickoff": "2026-10-05T20:15:00-04:00",
+  "label": "Monday, Oct 5 at 8:15 PM ET",
+  "network": "ESPN"
  }
 }
