@@ -1,35 +1,35 @@
 {
  "week": 4,
  "status": "live",
- "updated": "2026-10-05T00:23:35-04:00",
+ "updated": "2026-10-06T00:23:27-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 102.5,
-    "p": 128.54
+    "s": 141.04,
+    "p": 128.68
    },
    "b": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
     "s": 135.14,
-    "p": 126.39
+    "p": 126.33
    }
   },
   {
    "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 90.78,
-    "p": 123.91
+    "s": 105.88,
+    "p": 124.09
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
     "s": 123.8,
-    "p": 112.05
+    "p": 112.09
    }
   },
   {
@@ -37,13 +37,13 @@
     "m": "Hoa",
     "t": "Critical Chase Theory",
     "s": 114.32,
-    "p": 125.83
+    "p": 125.85
    },
    "b": {
     "m": "Matt",
     "t": "San Diego Chillin’",
     "s": 114.62,
-    "p": 120.91
+    "p": 120.92
    }
   },
   {
@@ -51,13 +51,13 @@
     "m": "David",
     "t": "Drain the Swamp",
     "s": 75.5,
-    "p": 126.47
+    "p": 126.41
    },
    "b": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 156.46,
-    "p": 134.27
+    "s": 178.76,
+    "p": 134.2
    }
   },
   {
@@ -65,13 +65,13 @@
     "m": "Drew",
     "t": "I Stand with Jordon",
     "s": 129.08,
-    "p": 128.89
+    "p": 128.82
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
-    "s": 82.92,
-    "p": 122.46
+    "s": 130.02,
+    "p": 123.0
    }
   },
   {
@@ -79,13 +79,13 @@
     "m": "Erick",
     "t": "King In The North",
     "s": 108.42,
-    "p": 120.5
+    "p": 120.59
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
     "s": 130.38,
-    "p": 126.51
+    "p": 126.44
    }
   }
  ],
@@ -132,10 +132,10 @@
  "nextKickoff": "2026-10-04T09:30:00-04:00",
  "nextKickoffLabel": "Sunday, Oct 4 · 9:30 AM ET",
  "nextGame": {
-  "away": "ATL",
-  "home": "NO",
-  "kickoff": "2026-10-05T20:15:00-04:00",
-  "label": "Monday, Oct 5 at 8:15 PM ET",
-  "network": "ESPN"
+  "away": "TB",
+  "home": "DAL",
+  "kickoff": "2026-10-08T20:15:00-04:00",
+  "label": "Thursday, Oct 8 at 8:15 PM ET",
+  "network": "Prime Video"
  }
 }
