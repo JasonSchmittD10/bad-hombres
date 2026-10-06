@@ -107,6 +107,28 @@ def check_season(season, rec):
     labels = {r.get("label") for r in season.get("ranks", [])}
     if done and "WK %d" % done not in labels:
         fail("season.json: no Power Lines ranking for Week %d — run ./scripts/power.py" % done)
+    # the archive and every Hard Numbers tab must be through the last recorded week too
+    if done:
+        cur = str(rec.get("current"))
+        try:
+            arch = json.loads((ROOT / "data" / "archive" / ("%s.json" % cur)).read_text())
+            if str(done) not in arch.get("weeks", {}):
+                fail("data/archive/%s.json has no Week %d — run ./scripts/archive.py season %s --weeks %d" % (cur, done, cur, done))
+        except FileNotFoundError:
+            fail("no data/archive/%s.json — run ./scripts/archive.py season %s" % (cur, cur))
+        stale = []
+        for tab, through in (("standings", lambda d: (d.get("seasons") or {}).get(cur, {}).get("weeks")),
+                             ("odds", lambda d: d.get("through_week")),
+                             ("pine", lambda d: next((x.get("through") for x in d.get("seasons", []) if str(x.get("season")) == cur), None))):
+            try: got = through(json.loads((ROOT / "data" / "numbers" / ("%s.json" % tab)).read_text()))
+            except FileNotFoundError: got = None
+            if got is not None and int(got) < done: stale.append("%s (through Week %s)" % (tab, got))
+        for tab in ("draft", "faab", "trades"):
+            f = ROOT / "data" / "numbers" / ("%s.json" % tab)
+            if f.exists() and f.stat().st_mtime < (ROOT / "data" / "archive" / ("%s.json" % cur)).stat().st_mtime - 1:
+                stale.append("%s (older than the archive)" % tab)
+        if stale:
+            fail("Hard Numbers are behind Week %d: %s — run ./scripts/numbers.py" % (done, ", ".join(stale)))
     if len(teams) != 12: fail("season.json: %d teams, expected 12" % len(teams))
     if {t.get("m") for t in teams} != MANAGERS: fail("season.json: teams aren't exactly the 12 league members")
     played = {t.get("m"): t.get("w", 0) + t.get("l", 0) + t.get("tie", 0) for t in teams}

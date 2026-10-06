@@ -587,7 +587,10 @@ Trade Court, FAAB Receipts and the Draft Vault.
 - **Data:** `scripts/numbers.py` runs `build()` in every `scripts/hn/<tab>.py` and writes
   `data/numbers/<tab>.json`; `./scripts/numbers.py pine odds` rebuilds just those. The
   tabs read `data/archive/` and `data/record.json`, so run it after `build-history.py
-  add-week` and `archive.py` (scoreboard run D does all three).
+  add-week` and `archive.py`. Scoreboard run D (Tue 00:20) does all three when Yahoo has
+  finalized Monday night; when it hasn't (often), the Week Recap (Tue 7am) does them.
+  `check.py` fails if the archive or any tab is behind the last recorded week, so neither
+  routine can push without it.
 - **Page:** `numbers/index.html` is the shell (tabs, shared `.hn-*` styles),
   `numbers/hn.js` the shared helpers; each tab is `numbers/<tab>.js`, loaded the first
   time it opens. Deep links: `/numbers/#pine`.
