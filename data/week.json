@@ -1,7 +1,7 @@
 {
  "week": 4,
- "status": "live",
- "updated": "2026-10-06T00:23:27-04:00",
+ "status": "final",
+ "updated": "2026-10-06T07:13:36-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -56,7 +56,7 @@
    "b": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 178.76,
+    "s": 179.26,
     "p": 134.2
    }
   },
@@ -128,9 +128,9 @@
    }
   ]
  },
- "nextWeek": 4,
- "nextKickoff": "2026-10-04T09:30:00-04:00",
- "nextKickoffLabel": "Sunday, Oct 4 · 9:30 AM ET",
+ "nextWeek": 5,
+ "nextKickoff": "2026-10-08T20:15:00-04:00",
+ "nextKickoffLabel": "Thursday, Oct 8 · 8:15 PM ET",
  "nextGame": {
   "away": "TB",
   "home": "DAL",

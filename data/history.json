@@ -52,13 +52,13 @@
   "profiles": {
     "ADA": {
       "name": "Adam",
-      "w": 30,
+      "w": 31,
       "l": 43,
       "t": 0,
-      "g": 73,
-      "pct": 0.411,
-      "avg": 113.79,
-      "avgPa": 120.92,
+      "g": 74,
+      "pct": 0.419,
+      "avg": 114.01,
+      "avgPa": 120.75,
       "highs": 3,
       "weeksTop": 2,
       "high": {
@@ -79,11 +79,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 2,
+          "w": 3,
           "l": 1,
           "t": 0,
-          "avg": 133.36,
-          "pa": 130.99,
+          "avg": 132.62,
+          "pa": 125.35,
           "finish": null,
           "po": null
         },
@@ -177,7 +177,7 @@
           "t": 0
         },
         "Erick": {
-          "w": 1,
+          "w": 2,
           "l": 5,
           "t": 0
         },
@@ -214,13 +214,13 @@
       },
       "rank": {
         "pct": 11,
-        "highs": 11,
+        "highs": 12,
         "weeksTop": 9,
         "avg": 12,
         "avgPa": 3,
         "high": 12,
         "low": 11,
-        "blowout": 2
+        "blowout": 3
       },
       "bio": "Has posted the lowest point totals the last few years yet somehow keeps dodging last place. Consistently one of the worst managers in the league — and never met a bad bet he didn't like.",
       "team": "Suck My Diggs",
@@ -232,14 +232,14 @@
     },
     "CHR": {
       "name": "Chris",
-      "w": 38,
+      "w": 39,
       "l": 35,
       "t": 0,
-      "g": 73,
-      "pct": 0.521,
-      "avg": 118.07,
-      "avgPa": 120.29,
-      "highs": 2,
+      "g": 74,
+      "pct": 0.527,
+      "avg": 118.89,
+      "avgPa": 119.68,
+      "highs": 3,
       "weeksTop": 1,
       "high": {
         "v": 184.9,
@@ -252,18 +252,18 @@
         "opp": "David"
       },
       "blowout": {
-        "v": 88.24,
-        "y": 2024,
-        "opp": "Hoa"
+        "v": 103.76,
+        "y": 2026,
+        "opp": "David"
       },
       "season": [
         {
           "y": 2026,
-          "w": 2,
+          "w": 3,
           "l": 1,
           "t": 0,
-          "avg": 128.42,
-          "pa": 107.13,
+          "avg": 141.13,
+          "pa": 99.22,
           "finish": null,
           "po": null
         },
@@ -342,7 +342,7 @@
           "t": 0
         },
         "David": {
-          "w": 2,
+          "w": 3,
           "l": 5,
           "t": 0
         },
@@ -394,13 +394,13 @@
       },
       "rank": {
         "pct": 6,
-        "highs": 12,
+        "highs": 10,
         "weeksTop": 11,
         "avg": 10,
         "avgPa": 1,
         "high": 9,
         "low": 12,
-        "blowout": 6
+        "blowout": 2
       },
       "bio": "The 2022 champion and everyone's favorite to mess with. Sports a hairstyle best described as a bird's nest. Loves firing off ridiculous trade offers and is working with David Hurst to overthrow the commissioner.",
       "team": "Mighty Marvin Power Rangers",
@@ -414,12 +414,12 @@
     "DAV": {
       "name": "David",
       "w": 42,
-      "l": 31,
+      "l": 32,
       "t": 0,
-      "g": 73,
-      "pct": 0.575,
-      "avg": 129.78,
-      "avgPa": 124.34,
+      "g": 74,
+      "pct": 0.568,
+      "avg": 129.05,
+      "avgPa": 125.08,
       "highs": 14,
       "weeksTop": 5,
       "high": {
@@ -428,9 +428,9 @@
         "opp": "Chris"
       },
       "low": {
-        "v": 76.33,
-        "y": 2022,
-        "opp": "Matt"
+        "v": 75.5,
+        "y": 2026,
+        "opp": "Chris"
       },
       "blowout": {
         "v": 91.78,
@@ -441,10 +441,10 @@
         {
           "y": 2026,
           "w": 0,
-          "l": 3,
+          "l": 4,
           "t": 0,
-          "avg": 118.72,
-          "pa": 157.05,
+          "avg": 107.91,
+          "pa": 162.6,
           "finish": null,
           "po": null
         },
@@ -524,7 +524,7 @@
         },
         "Chris": {
           "w": 5,
-          "l": 2,
+          "l": 3,
           "t": 0
         },
         "Drew": {
@@ -578,10 +578,10 @@
         "highs": 1,
         "weeksTop": 6,
         "avg": 2,
-        "avgPa": 8,
+        "avgPa": 10,
         "high": 7,
         "low": 3,
-        "blowout": 3
+        "blowout": 4
       },
       "bio": "Back-to-back champion (2024 &amp; 2025). Really smart, really talented — and, having already won it all, still leading a campaign to replace Commissioner Jason with Chris Dambro. A genuine threat, on the field and in the group chat.",
       "team": "Drain the Swamp",
@@ -594,12 +594,12 @@
     "DRE": {
       "name": "Drew",
       "w": 40,
-      "l": 33,
+      "l": 34,
       "t": 0,
-      "g": 73,
-      "pct": 0.548,
+      "g": 74,
+      "pct": 0.541,
       "avg": 128.47,
-      "avgPa": 124.62,
+      "avgPa": 124.7,
       "highs": 6,
       "weeksTop": 12,
       "high": {
@@ -621,10 +621,10 @@
         {
           "y": 2026,
           "w": 0,
-          "l": 3,
+          "l": 4,
           "t": 0,
-          "avg": 107.91,
-          "pa": 131.59,
+          "avg": 113.2,
+          "pa": 131.19,
           "finish": null,
           "po": null
         },
@@ -749,16 +749,16 @@
         },
         "Zack": {
           "w": 6,
-          "l": 1,
+          "l": 2,
           "t": 0
         }
       },
       "rank": {
         "pct": 4,
         "highs": 6,
-        "weeksTop": 2,
+        "weeksTop": 3,
         "avg": 3,
-        "avgPa": 10,
+        "avgPa": 9,
         "high": 11,
         "low": 4,
         "blowout": 10
@@ -775,12 +775,12 @@
     "DYL": {
       "name": "Dylan",
       "w": 25,
-      "l": 48,
+      "l": 49,
       "t": 0,
-      "g": 73,
-      "pct": 0.342,
-      "avg": 115.13,
-      "avgPa": 121.99,
+      "g": 74,
+      "pct": 0.338,
+      "avg": 115.4,
+      "avgPa": 122.24,
       "highs": 3,
       "weeksTop": 1,
       "high": {
@@ -802,10 +802,10 @@
         {
           "y": 2026,
           "w": 2,
-          "l": 1,
+          "l": 2,
           "t": 0,
-          "avg": 149.85,
-          "pa": 127.47,
+          "avg": 146.17,
+          "pa": 130.86,
           "finish": null,
           "po": null
         },
@@ -906,7 +906,7 @@
         },
         "Jason": {
           "w": 1,
-          "l": 6,
+          "l": 7,
           "t": 0
         },
         "Matt": {
@@ -951,12 +951,12 @@
     "ERI": {
       "name": "Erick",
       "w": 42,
-      "l": 31,
+      "l": 32,
       "t": 0,
-      "g": 73,
-      "pct": 0.575,
-      "avg": 125.77,
-      "avgPa": 123.24,
+      "g": 74,
+      "pct": 0.568,
+      "avg": 125.53,
+      "avgPa": 123.34,
       "highs": 8,
       "weeksTop": 0,
       "high": {
@@ -978,10 +978,10 @@
         {
           "y": 2026,
           "w": 2,
-          "l": 1,
+          "l": 2,
           "t": 0,
-          "avg": 122.53,
-          "pa": 111.25,
+          "avg": 119.0,
+          "pa": 116.03,
           "finish": null,
           "po": null
         },
@@ -1056,7 +1056,7 @@
       "vs": {
         "Adam": {
           "w": 5,
-          "l": 1,
+          "l": 2,
           "t": 0
         },
         "Chris": {
@@ -1131,12 +1131,12 @@
     "HOA": {
       "name": "Hoa",
       "w": 36,
-      "l": 37,
+      "l": 38,
       "t": 0,
-      "g": 73,
-      "pct": 0.493,
-      "avg": 125.27,
-      "avgPa": 126.99,
+      "g": 74,
+      "pct": 0.486,
+      "avg": 125.12,
+      "avgPa": 126.82,
       "highs": 7,
       "weeksTop": 3,
       "high": {
@@ -1158,10 +1158,10 @@
         {
           "y": 2026,
           "w": 2,
-          "l": 1,
+          "l": 2,
           "t": 0,
-          "avg": 107.14,
-          "pa": 107.42,
+          "avg": 108.94,
+          "pa": 109.22,
           "finish": null,
           "po": null
         },
@@ -1271,7 +1271,7 @@
         },
         "Matt": {
           "w": 4,
-          "l": 1,
+          "l": 2,
           "t": 0
         },
         "Tola": {
@@ -1291,7 +1291,7 @@
         }
       },
       "rank": {
-        "pct": 7,
+        "pct": 8,
         "highs": 4,
         "weeksTop": 8,
         "avg": 6,
@@ -1311,15 +1311,15 @@
     },
     "JAS": {
       "name": "Jason",
-      "w": 46,
+      "w": 47,
       "l": 27,
       "t": 0,
-      "g": 73,
-      "pct": 0.63,
-      "avg": 130.08,
-      "avgPa": 122.21,
+      "g": 74,
+      "pct": 0.635,
+      "avg": 130.23,
+      "avgPa": 122.38,
       "highs": 6,
-      "weeksTop": 11,
+      "weeksTop": 12,
       "high": {
         "v": 219.56,
         "y": 2023,
@@ -1338,11 +1338,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 3,
+          "w": 4,
           "l": 0,
           "t": 0,
-          "avg": 133.67,
-          "pa": 106.59,
+          "avg": 135.51,
+          "pa": 113.72,
           "finish": null,
           "po": null
         },
@@ -1436,7 +1436,7 @@
           "t": 0
         },
         "Dylan": {
-          "w": 6,
+          "w": 7,
           "l": 1,
           "t": 0
         },
@@ -1474,7 +1474,7 @@
       "rank": {
         "pct": 1,
         "highs": 5,
-        "weeksTop": 3,
+        "weeksTop": 2,
         "avg": 1,
         "avgPa": 5,
         "high": 3,
@@ -1492,13 +1492,13 @@
     },
     "MAT": {
       "name": "Matt",
-      "w": 36,
+      "w": 37,
       "l": 37,
       "t": 0,
-      "g": 73,
-      "pct": 0.493,
-      "avg": 128.06,
-      "avgPa": 124.5,
+      "g": 74,
+      "pct": 0.5,
+      "avg": 127.88,
+      "avgPa": 124.36,
       "highs": 11,
       "weeksTop": 5,
       "high": {
@@ -1519,11 +1519,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 1,
+          "w": 2,
           "l": 2,
           "t": 0,
-          "avg": 117.11,
-          "pa": 131.65,
+          "avg": 116.49,
+          "pa": 127.31,
           "finish": null,
           "po": null
         },
@@ -1627,7 +1627,7 @@
           "t": 0
         },
         "Hoa": {
-          "w": 1,
+          "w": 2,
           "l": 4,
           "t": 0
         },
@@ -1653,11 +1653,11 @@
         }
       },
       "rank": {
-        "pct": 8,
+        "pct": 7,
         "highs": 2,
         "weeksTop": 7,
         "avg": 4,
-        "avgPa": 9,
+        "avgPa": 8,
         "high": 6,
         "low": 8,
         "blowout": 1
@@ -1673,12 +1673,12 @@
     "TOL": {
       "name": "Tola",
       "w": 39,
-      "l": 34,
+      "l": 35,
       "t": 0,
-      "g": 73,
-      "pct": 0.534,
-      "avg": 122.85,
-      "avgPa": 122.87,
+      "g": 74,
+      "pct": 0.527,
+      "avg": 122.62,
+      "avgPa": 122.88,
       "highs": 5,
       "weeksTop": 9,
       "high": {
@@ -1700,10 +1700,10 @@
         {
           "y": 2026,
           "w": 2,
-          "l": 1,
+          "l": 2,
           "t": 0,
-          "avg": 135.43,
-          "pa": 127.94,
+          "avg": 128.05,
+          "pa": 126.91,
           "finish": null,
           "po": null
         },
@@ -1823,7 +1823,7 @@
         },
         "Wes": {
           "w": 5,
-          "l": 2,
+          "l": 3,
           "t": 0
         },
         "Zack": {
@@ -1852,13 +1852,13 @@
     },
     "WES": {
       "name": "Wes",
-      "w": 32,
+      "w": 33,
       "l": 41,
       "t": 0,
-      "g": 73,
-      "pct": 0.438,
-      "avg": 120.28,
-      "avgPa": 120.79,
+      "g": 74,
+      "pct": 0.446,
+      "avg": 120.33,
+      "avgPa": 120.59,
       "highs": 3,
       "weeksTop": 10,
       "high": {
@@ -1879,11 +1879,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 1,
+          "w": 2,
           "l": 2,
           "t": 0,
-          "avg": 110.4,
-          "pa": 127.39,
+          "avg": 113.75,
+          "pa": 122.01,
           "finish": null,
           "po": null
         },
@@ -2002,7 +2002,7 @@
           "t": 0
         },
         "Tola": {
-          "w": 2,
+          "w": 3,
           "l": 5,
           "t": 0
         },
@@ -2014,13 +2014,13 @@
       },
       "rank": {
         "pct": 9,
-        "highs": 10,
+        "highs": 11,
         "weeksTop": 4,
         "avg": 9,
         "avgPa": 2,
         "high": 10,
         "low": 7,
-        "blowout": 5
+        "blowout": 6
       },
       "bio": "Pastor Reverend Wes — college pastor to many people in the league. Lives out in Texas and is the certified “dad” of the group. Finished last in 2025 at 4-10, losing the tiebreaker to Hoa on points — and therefore owes the league the 9/9/9 Challenge.",
       "team": "MikeLee4 Prez",
@@ -2033,13 +2033,13 @@
     },
     "ZAC": {
       "name": "Zack",
-      "w": 32,
+      "w": 33,
       "l": 41,
       "t": 0,
-      "g": 73,
-      "pct": 0.438,
-      "avg": 120.37,
-      "avgPa": 125.16,
+      "g": 74,
+      "pct": 0.446,
+      "avg": 120.5,
+      "avgPa": 125.21,
       "highs": 5,
       "weeksTop": 14,
       "high": {
@@ -2060,11 +2060,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 1,
+          "w": 2,
           "l": 2,
           "t": 0,
-          "avg": 123.87,
-          "pa": 121.95,
+          "avg": 125.41,
+          "pa": 123.73,
           "finish": null,
           "po": null
         },
@@ -2153,7 +2153,7 @@
           "t": 0
         },
         "Drew": {
-          "w": 1,
+          "w": 2,
           "l": 6,
           "t": 0
         },
@@ -2201,7 +2201,7 @@
         "avgPa": 11,
         "high": 8,
         "low": 6,
-        "blowout": 4
+        "blowout": 5
       },
       "bio": "Finished last in 2023 with a 1-13 campaign — the worst record in recorded league history. Extremely active in the shit-talk department and just trying, desperately, to stay out of the basement.",
       "team": "Sewer Pigeons",

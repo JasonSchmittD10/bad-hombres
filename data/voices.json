@@ -4,7 +4,7 @@
     "bit": "Pastor Wes's Lock of the Week",
     "record": {
       "w": 1,
-      "l": 1
+      "l": 2
     },
     "locks": [
       {
@@ -20,7 +20,7 @@
       {
         "week": 4,
         "pick": "Drew over Zack",
-        "result": null
+        "result": "L"
       }
     ]
   },
@@ -44,6 +44,12 @@
         "index": 0,
         "paRank": 8,
         "standingsRank": 8
+      },
+      {
+        "week": 4,
+        "index": 1,
+        "paRank": 7,
+        "standingsRank": 6
       }
     ]
   },
@@ -65,6 +71,12 @@
       "a": "Jason",
       "b": "Dylan",
       "reason": "Projected within 3.7"
+    },
+    {
+      "week": 5,
+      "a": "Jason",
+      "b": "Chris",
+      "reason": "Projected within 1.0"
     }
   ]
 }
