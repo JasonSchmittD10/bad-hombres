@@ -21,6 +21,11 @@
         "week": 4,
         "pick": "Drew over Zack",
         "result": "L"
+      },
+      {
+        "week": 5,
+        "pick": "Wes over Zack",
+        "result": null
       }
     ]
   },
