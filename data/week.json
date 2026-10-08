@@ -1,130 +1,114 @@
 {
- "week": 4,
- "status": "final",
- "updated": "2026-10-06T07:13:36-04:00",
+ "week": 5,
+ "status": "preseason",
+ "updated": "2026-10-08T12:07:40-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 141.04,
-    "p": 128.68
+    "s": 0.0,
+    "p": 129.02
    },
    "b": {
-    "m": "Dylan",
-    "t": "Carlie’s Headset",
-    "s": 135.14,
-    "p": 126.33
+    "m": "Chris",
+    "t": "Maye the Force Be With You",
+    "s": 0.0,
+    "p": 134.81
    }
   },
   {
    "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 105.88,
-    "p": 124.09
+    "s": 0.0,
+    "p": 120.11
    },
    "b": {
-    "m": "Wes",
-    "t": "MikeLee4 Prez",
-    "s": 123.8,
-    "p": 112.09
+    "m": "David",
+    "t": "Drain the Swamp",
+    "s": 0.0,
+    "p": 116.74
    }
   },
   {
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 114.32,
-    "p": 125.85
+    "s": 0.0,
+    "p": 123.63
    },
    "b": {
-    "m": "Matt",
-    "t": "San Diego Chillin’",
-    "s": 114.62,
-    "p": 120.92
-   }
-  },
-  {
-   "a": {
-    "m": "David",
-    "t": "Drain the Swamp",
-    "s": 75.5,
-    "p": 126.41
-   },
-   "b": {
-    "m": "Chris",
-    "t": "Maye the Force Be With You",
-    "s": 179.26,
-    "p": 134.2
-   }
-  },
-  {
-   "a": {
     "m": "Drew",
     "t": "I Stand with Jordon",
-    "s": 129.08,
-    "p": 128.82
+    "s": 0.0,
+    "p": 135.45
+   }
+  },
+  {
+   "a": {
+    "m": "Dylan",
+    "t": "Carlie’s Headset",
+    "s": 0.0,
+    "p": 120.68
+   },
+   "b": {
+    "m": "Erick",
+    "t": "King In The North",
+    "s": 0.0,
+    "p": 112.28
+   }
+  },
+  {
+   "a": {
+    "m": "Wes",
+    "t": "MikeLee4 Prez",
+    "s": 0.0,
+    "p": 97.43
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
-    "s": 130.02,
-    "p": 123.0
+    "s": 0.0,
+    "p": 120.15
    }
   },
   {
    "a": {
-    "m": "Erick",
-    "t": "King In The North",
-    "s": 108.42,
-    "p": 120.59
+    "m": "Matt",
+    "t": "San Diego Chillin’",
+    "s": 0.0,
+    "p": 120.84
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
-    "s": 130.38,
-    "p": 126.44
+    "s": 0.0,
+    "p": 129.01
    }
   }
  ],
  "bonus": {
-  "week": 4,
-  "nm": "Hoa's Foot Fetish",
-  "cr": "Highest-scoring kicker",
-  "actual": [
-   {
-    "who": "Drew",
-    "sub": "Jake Bates",
-    "val": 18.4
-   },
-   {
-    "who": "Chris",
-    "sub": "Spencer Shrader",
-    "val": 17.4
-   },
-   {
-    "who": "Erick",
-    "sub": "Ka'imi Fairbairn",
-    "val": 17.4
-   }
-  ],
+  "week": 5,
+  "nm": "Massive Cuck",
+  "cr": "Loses their matchup by the most points",
+  "actual": [],
   "projected": [
    {
-    "who": "Chris",
-    "sub": "Spencer Shrader",
-    "val": 10.07
+    "who": "Wes",
+    "sub": "to Zack",
+    "val": 22.72
+   },
+   {
+    "who": "Hoa",
+    "sub": "to Drew",
+    "val": 11.82
    },
    {
     "who": "Erick",
-    "sub": "Ka'imi Fairbairn",
-    "val": 9.73
-   },
-   {
-    "who": "Dylan",
-    "sub": "Brandon Aubrey",
-    "val": 9.4
+    "sub": "to Dylan",
+    "val": 8.4
    }
   ]
  },
