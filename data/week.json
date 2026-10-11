@@ -1,141 +1,141 @@
 {
- "week": 5,
- "status": "live",
- "updated": "2026-10-09T00:24:27-04:00",
- "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
- "matchups": [
-  {
-   "a": {
-    "m": "Jason",
-    "t": "Pull-Out Game Weak",
-    "s": 0.0,
-    "p": 128.92
-   },
-   "b": {
-    "m": "Chris",
-    "t": "Maye the Force Be With You",
-    "s": 2.9,
-    "p": 134.73
-   }
-  },
-  {
-   "a": {
-    "m": "Tola",
-    "t": "Alien Awareness",
-    "s": 14.0,
-    "p": 120.42
-   },
-   "b": {
-    "m": "David",
-    "t": "Drain the Swamp",
-    "s": 0.0,
-    "p": 116.73
-   }
-  },
-  {
-   "a": {
-    "m": "Hoa",
-    "t": "Critical Chase Theory",
-    "s": 0.0,
-    "p": 123.63
-   },
-   "b": {
-    "m": "Drew",
-    "t": "I Stand with Jordon",
-    "s": 33.5,
-    "p": 134.43
-   }
-  },
-  {
-   "a": {
-    "m": "Dylan",
-    "t": "Carlie’s Headset",
-    "s": 5.1,
-    "p": 120.59
-   },
-   "b": {
-    "m": "Erick",
-    "t": "King In The North",
-    "s": 0.0,
-    "p": 112.77
-   }
-  },
-  {
-   "a": {
-    "m": "Wes",
-    "t": "MikeLee4 Prez",
-    "s": 13.64,
-    "p": 92.03
-   },
-   "b": {
-    "m": "Zack",
-    "t": "Sewer Pigeons",
-    "s": 42.2,
-    "p": 120.11
-   }
-  },
-  {
-   "a": {
-    "m": "Matt",
-    "t": "San Diego Chillin’",
-    "s": 3.0,
-    "p": 121.31
-   },
-   "b": {
-    "m": "Adam",
-    "t": "Suck My Diggs",
-    "s": 0.0,
-    "p": 129.36
-   }
-  }
- ],
- "bonus": {
   "week": 5,
-  "nm": "Massive Cuck",
-  "cr": "Loses their matchup by the most points",
-  "actual": [
-   {
-    "who": "Hoa",
-    "sub": "to Drew",
-    "val": 33.5
-   },
-   {
-    "who": "Wes",
-    "sub": "to Zack",
-    "val": 28.56
-   },
-   {
-    "who": "David",
-    "sub": "to Tola",
-    "val": 14
-   }
+  "status": "live",
+  "updated": "2026-10-11T19:23:34-04:00",
+  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
+  "matchups": [
+    {
+      "a": {
+        "m": "Jason",
+        "t": "Pull-Out Game Weak",
+        "s": 105.04,
+        "p": 131.52
+      },
+      "b": {
+        "m": "Chris",
+        "t": "Maye the Force Be With You",
+        "s": 129.56,
+        "p": 133.67
+      }
+    },
+    {
+      "a": {
+        "m": "Tola",
+        "t": "Alien Awareness",
+        "s": 82.84,
+        "p": 120.39
+      },
+      "b": {
+        "m": "David",
+        "t": "Drain the Swamp",
+        "s": 151.68,
+        "p": 115.65
+      }
+    },
+    {
+      "a": {
+        "m": "Hoa",
+        "t": "Critical Chase Theory",
+        "s": 112.38,
+        "p": 135.33
+      },
+      "b": {
+        "m": "Drew",
+        "t": "I Stand with Jordon",
+        "s": 122.98,
+        "p": 132.05
+      }
+    },
+    {
+      "a": {
+        "m": "Dylan",
+        "t": "Carlie’s Headset",
+        "s": 84.66,
+        "p": 119.56
+      },
+      "b": {
+        "m": "Erick",
+        "t": "King In The North",
+        "s": 100.5,
+        "p": 112.48
+      }
+    },
+    {
+      "a": {
+        "m": "Wes",
+        "t": "MikeLee4 Prez",
+        "s": 125.64,
+        "p": 109.6
+      },
+      "b": {
+        "m": "Zack",
+        "t": "Sewer Pigeons",
+        "s": 91.62,
+        "p": 121.13
+      }
+    },
+    {
+      "a": {
+        "m": "Matt",
+        "t": "San Diego Chillin’",
+        "s": 91.2,
+        "p": 119.87
+      },
+      "b": {
+        "m": "Adam",
+        "t": "Suck My Diggs",
+        "s": 135.14,
+        "p": 132.39
+      }
+    }
   ],
-  "projected": [
-   {
-    "who": "Wes",
-    "sub": "to Zack",
-    "val": 28.08
-   },
-   {
-    "who": "Hoa",
-    "sub": "to Drew",
-    "val": 10.8
-   },
-   {
-    "who": "Matt",
-    "sub": "to Adam",
-    "val": 8.05
-   }
-  ]
- },
- "nextWeek": 5,
- "nextKickoff": "2026-10-11T09:30:00-04:00",
- "nextKickoffLabel": "Thursday, Oct 8 · 8:15 PM ET",
- "nextGame": {
-  "away": "PHI",
-  "home": "JAX",
-  "kickoff": "2026-10-11T09:30:00-04:00",
-  "label": "Sunday, Oct 11 at 9:30 AM ET",
-  "network": "NFL Network"
- }
+  "bonus": {
+    "week": 5,
+    "nm": "Massive Cuck",
+    "cr": "Loses their matchup by the most points",
+    "actual": [
+      {
+        "who": "Tola",
+        "sub": "to David",
+        "val": 68.84
+      },
+      {
+        "who": "Matt",
+        "sub": "to Adam",
+        "val": 43.94
+      },
+      {
+        "who": "Zack",
+        "sub": "to Wes",
+        "val": 34.02
+      }
+    ],
+    "projected": [
+      {
+        "who": "Matt",
+        "sub": "to Adam",
+        "val": 12.52
+      },
+      {
+        "who": "Wes",
+        "sub": "to Zack",
+        "val": 11.53
+      },
+      {
+        "who": "Erick",
+        "sub": "to Dylan",
+        "val": 7.08
+      }
+    ]
+  },
+  "nextWeek": 5,
+  "nextKickoff": "2026-10-11T20:20:00-04:00",
+  "nextKickoffLabel": "Sunday, Oct 11 · 8:20 PM ET",
+  "nextGame": {
+    "away": "BAL",
+    "home": "ATL",
+    "kickoff": "2026-10-11T20:20:00-04:00",
+    "label": "Sunday, Oct 11 at 8:20 PM ET",
+    "network": "NBC"
+  }
 }
