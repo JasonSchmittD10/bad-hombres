@@ -1,7 +1,7 @@
 {
   "week": 5,
   "status": "live",
-  "updated": "2026-10-11T19:23:34-04:00",
+  "updated": "2026-10-12T00:23:39-04:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
@@ -14,22 +14,22 @@
       "b": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "s": 129.56,
-        "p": 133.67
+        "s": 144.16,
+        "p": 134.19
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "s": 82.84,
-        "p": 120.39
+        "s": 119.74,
+        "p": 120.34
       },
       "b": {
         "m": "David",
         "t": "Drain the Swamp",
         "s": 151.68,
-        "p": 115.65
+        "p": 115.64
       }
     },
     {
@@ -43,7 +43,7 @@
         "m": "Drew",
         "t": "I Stand with Jordon",
         "s": 122.98,
-        "p": 132.05
+        "p": 132.06
       }
     },
     {
@@ -56,7 +56,7 @@
       "b": {
         "m": "Erick",
         "t": "King In The North",
-        "s": 100.5,
+        "s": 105.0,
         "p": 112.48
       }
     },
@@ -70,7 +70,7 @@
       "b": {
         "m": "Zack",
         "t": "Sewer Pigeons",
-        "s": 91.62,
+        "s": 107.42,
         "p": 121.13
       }
     },
@@ -78,14 +78,14 @@
       "a": {
         "m": "Matt",
         "t": "San Diego Chillin’",
-        "s": 91.2,
-        "p": 119.87
+        "s": 112.2,
+        "p": 119.93
       },
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
-        "s": 135.14,
-        "p": 132.39
+        "s": 139.94,
+        "p": 132.81
       }
     }
   ],
@@ -95,26 +95,26 @@
     "cr": "Loses their matchup by the most points",
     "actual": [
       {
+        "who": "Jason",
+        "sub": "to Chris",
+        "val": 39.12
+      },
+      {
         "who": "Tola",
         "sub": "to David",
-        "val": 68.84
+        "val": 31.94
       },
       {
         "who": "Matt",
         "sub": "to Adam",
-        "val": 43.94
-      },
-      {
-        "who": "Zack",
-        "sub": "to Wes",
-        "val": 34.02
+        "val": 27.74
       }
     ],
     "projected": [
       {
         "who": "Matt",
         "sub": "to Adam",
-        "val": 12.52
+        "val": 12.88
       },
       {
         "who": "Wes",
@@ -132,10 +132,10 @@
   "nextKickoff": "2026-10-11T20:20:00-04:00",
   "nextKickoffLabel": "Sunday, Oct 11 · 8:20 PM ET",
   "nextGame": {
-    "away": "BAL",
-    "home": "ATL",
-    "kickoff": "2026-10-11T20:20:00-04:00",
-    "label": "Sunday, Oct 11 at 8:20 PM ET",
-    "network": "NBC"
+    "away": "BUF",
+    "home": "LAR",
+    "kickoff": "2026-10-12T20:15:00-04:00",
+    "label": "Monday, Oct 12 at 8:15 PM ET",
+    "network": "ESPN/ABC"
   }
 }
