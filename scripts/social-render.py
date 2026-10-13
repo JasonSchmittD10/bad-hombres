@@ -654,6 +654,35 @@ def bonus_card(week, b, t):
         '<h1 class="disp">%s</h1><div class="who">%s</div><div class="tm">%s</div>%s</div></div>') % (
         data_uri(art), face(top["who"]), esc(week), esc(b.get("nm", "")), esc(top["who"]), esc(t), stat))
 
+def wp_chart(series, peak=None, W=952, H=420):
+    """A win-probability line for a slide: series is [[wp, window], ...] in order (the pulse's
+    readings, already trimmed to the moments that matchup moved), ending at the result.
+    The peak gets a marker with its percentage; window names sit along the bottom."""
+    L, R, T, B = 8, 70, 24, 46
+    n = len(series)
+    x = lambda i: L + i * (W - L - R) / max(1, n - 1)
+    y = lambda p: T + (1 - p) * (H - T - B)
+    line = " ".join("%s%.1f %.1f" % ("M" if i == 0 else "L", x(i), y(p)) for i, (p, _) in enumerate(series))
+    g = ['<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="#3a3a44" stroke-width="2" stroke-dasharray="8 8"/>' % (L, y(.5), W - R, y(.5)),
+         '<text x="%d" y="%.1f" fill="#5e6470" font-size="20" font-weight="700" font-family="Segoe UI,Arial">50%%</text>' % (W - R + 10, y(.5) + 7),
+         '<path d="%s L%.1f %.1f L%.1f %.1f Z" fill="rgba(193,18,31,.16)"/>' % (line, x(n - 1), y(.5), x(0), y(.5)),
+         '<path d="%s" fill="none" stroke="#e10f1f" stroke-width="5" stroke-linejoin="round"/>' % line]
+    last, lastx = None, -999
+    for i, (_, w) in enumerate(series):
+        if w != last:
+            if last is not None: g.append('<line x1="%.1f" y1="%d" x2="%.1f" y2="%d" stroke="#2a2a31" stroke-width="2" stroke-dasharray="4 6"/>' % (x(i), T, x(i), H - B))
+            if x(i) > lastx:                       # room for it: the previous label has ended
+                g.append('<text x="%.1f" y="%d" fill="#9aa0aa" font-size="19" font-weight="800" letter-spacing="2" font-family="Segoe UI,Arial">%s</text>' % (x(i) + 6, H - 14, esc(w.upper())))
+                lastx = x(i) + 6 + len(w) * 15 + 18
+            last = w
+    if peak is not None:
+        i = max(range(n), key=lambda k: series[k][0])
+        g.append('<circle cx="%.1f" cy="%.1f" r="13" fill="#e8b84b" stroke="#0d0d0f" stroke-width="4"/>' % (x(i), y(series[i][0])))
+        g.append('<text x="%.1f" y="%.1f" fill="#e8b84b" font-size="34" font-weight="900" text-anchor="middle" font-family="Arial Black,Impact">%s</text>' % (
+            min(max(x(i), 60), W - R - 60), y(series[i][0]) - 24, esc(peak)))
+    g.append('<circle cx="%.1f" cy="%.1f" r="11" fill="#f4f5f7" stroke="#e10f1f" stroke-width="4"/>' % (x(n - 1), y(series[-1][0])))
+    return '<svg viewBox="0 0 %d %d" width="%d" height="%d" style="display:block;margin:6px 0 10px">%s</svg>' % (W, H, W, H, "".join(g))
+
 def stats_slides(spec):
     """Slides for a Hard Numbers carousel, built from a spec file.
 
@@ -689,6 +718,10 @@ def stats_slides(spec):
             body = '<div class="sf"><h1 class="disp">%s</h1><div class="names">%s</div>%s%s</div>' % (
                 sl["title"], chips, ('<div class="facts">%s</div>' % facts) if facts else "",
                 ('<p class="kicker">%s</p>' % sl["kicker"]) if sl.get("kicker") else "")
+        elif t == "chart":
+            body = '<div class="sf"><div class="eyebrow">%s</div><h1 class="disp">%s</h1>%s%s</div>' % (
+                esc(sl.get("eyebrow", "")), sl["title"], wp_chart(sl["series"], sl.get("peak")),
+                "".join('<p class="kicker">%s</p>' % k for k in sl.get("lines", [])))
         else:
             body = '<div class="sf center"><h1 class="disp">%s</h1><p class="say">%s</p></div>' % (
                 sl["title"], sl.get("say", ""))
