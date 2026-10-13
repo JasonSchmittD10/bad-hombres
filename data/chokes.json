@@ -12,10 +12,33 @@
    "opp_then": 122.72,
    "final": 129.08,
    "opp_final": 130.02
+  },
+  {
+   "week": 5,
+   "who": "Erick",
+   "opp": "Dylan",
+   "peak": 0.93,
+   "at": "2026-10-13T02:57:53.031Z",
+   "score_then": 105,
+   "opp_then": 94.36,
+   "final": 105,
+   "opp_final": 106.76
+  },
+  {
+   "week": 5,
+   "who": "Zack",
+   "opp": "Wes",
+   "peak": 0.9,
+   "at": "2026-10-11T14:31:28.459Z",
+   "score_then": 42.2,
+   "opp_then": 15.24,
+   "final": 107.42,
+   "opp_final": 125.64
   }
  ],
  "weeks": [
   3,
-  4
+  4,
+  5
  ]
 }
