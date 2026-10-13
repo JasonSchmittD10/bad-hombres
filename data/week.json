@@ -1,7 +1,7 @@
 {
   "week": 5,
   "status": "live",
-  "updated": "2026-10-12T00:23:39-04:00",
+  "updated": "2026-10-13T00:23:43-04:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
@@ -15,21 +15,21 @@
         "m": "Chris",
         "t": "Maye the Force Be With You",
         "s": 144.16,
-        "p": 134.19
+        "p": 134.17
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "s": 119.74,
-        "p": 120.34
+        "s": 123.44,
+        "p": 121.01
       },
       "b": {
         "m": "David",
         "t": "Drain the Swamp",
-        "s": 151.68,
-        "p": 115.64
+        "s": 174.48,
+        "p": 106.6
       }
     },
     {
@@ -37,27 +37,27 @@
         "m": "Hoa",
         "t": "Critical Chase Theory",
         "s": 112.38,
-        "p": 135.33
+        "p": 135.47
       },
       "b": {
         "m": "Drew",
         "t": "I Stand with Jordon",
-        "s": 122.98,
-        "p": 132.06
+        "s": 173.68,
+        "p": 132.82
       }
     },
     {
       "a": {
         "m": "Dylan",
         "t": "Carlie’s Headset",
-        "s": 84.66,
-        "p": 119.56
+        "s": 106.76,
+        "p": 119.83
       },
       "b": {
         "m": "Erick",
         "t": "King In The North",
         "s": 105.0,
-        "p": 112.48
+        "p": 112.58
       }
     },
     {
@@ -65,27 +65,27 @@
         "m": "Wes",
         "t": "MikeLee4 Prez",
         "s": 125.64,
-        "p": 109.6
+        "p": 109.57
       },
       "b": {
         "m": "Zack",
         "t": "Sewer Pigeons",
         "s": 107.42,
-        "p": 121.13
+        "p": 121.17
       }
     },
     {
       "a": {
         "m": "Matt",
         "t": "San Diego Chillin’",
-        "s": 112.2,
-        "p": 119.93
+        "s": 144.7,
+        "p": 119.91
       },
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
-        "s": 139.94,
-        "p": 132.81
+        "s": 167.24,
+        "p": 132.49
       }
     }
   ],
@@ -95,36 +95,36 @@
     "cr": "Loses their matchup by the most points",
     "actual": [
       {
-        "who": "Jason",
-        "sub": "to Chris",
-        "val": 39.12
+        "who": "Hoa",
+        "sub": "to Drew",
+        "val": 61.3
       },
       {
         "who": "Tola",
         "sub": "to David",
-        "val": 31.94
+        "val": 51.04
       },
       {
-        "who": "Matt",
-        "sub": "to Adam",
-        "val": 27.74
+        "who": "Jason",
+        "sub": "to Chris",
+        "val": 39.12
       }
     ],
     "projected": [
       {
+        "who": "David",
+        "sub": "to Tola",
+        "val": 14.41
+      },
+      {
         "who": "Matt",
         "sub": "to Adam",
-        "val": 12.88
+        "val": 12.58
       },
       {
         "who": "Wes",
         "sub": "to Zack",
-        "val": 11.53
-      },
-      {
-        "who": "Erick",
-        "sub": "to Dylan",
-        "val": 7.08
+        "val": 11.6
       }
     ]
   },
@@ -132,10 +132,10 @@
   "nextKickoff": "2026-10-11T20:20:00-04:00",
   "nextKickoffLabel": "Sunday, Oct 11 · 8:20 PM ET",
   "nextGame": {
-    "away": "BUF",
-    "home": "LAR",
-    "kickoff": "2026-10-12T20:15:00-04:00",
-    "label": "Monday, Oct 12 at 8:15 PM ET",
-    "network": "ESPN/ABC"
+    "away": "SEA",
+    "home": "DEN",
+    "kickoff": "2026-10-15T20:15:00-04:00",
+    "label": "Thursday, Oct 15 at 8:15 PM ET",
+    "network": "Prime Video"
   }
 }
