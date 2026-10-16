@@ -1,130 +1,130 @@
 {
- "week": 5,
- "status": "final",
- "updated": "2026-10-13T07:13:50-04:00",
+ "week": 6,
+ "status": "live",
+ "updated": "2026-10-16T00:25:56-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 105.04,
-    "p": 131.52
+    "s": 0.0,
+    "p": 109.59
    },
    "b": {
-    "m": "Chris",
-    "t": "Maye the Force Be With You",
-    "s": 144.16,
-    "p": 134.17
-   }
-  },
-  {
-   "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 123.44,
-    "p": 121.01
-   },
-   "b": {
-    "m": "David",
-    "t": "Drain the Swamp",
-    "s": 174.48,
-    "p": 106.6
+    "s": 0.0,
+    "p": 130.09
    }
   },
   {
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 112.38,
-    "p": 135.47
+    "s": 16.3,
+    "p": 119.18
    },
    "b": {
-    "m": "Drew",
-    "t": "I Stand with Jordon",
-    "s": 173.68,
-    "p": 132.82
+    "m": "Wes",
+    "t": "MikeLee4 Prez",
+    "s": 0.0,
+    "p": 88.55
+   }
+  },
+  {
+   "a": {
+    "m": "David",
+    "t": "Drain the Swamp",
+    "s": 5.2,
+    "p": 122.85
+   },
+   "b": {
+    "m": "Zack",
+    "t": "Sewer Pigeons",
+    "s": 0.0,
+    "p": 123.84
    }
   },
   {
    "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 106.76,
-    "p": 119.83
+    "s": 6.4,
+    "p": 112.57
    },
    "b": {
-    "m": "Erick",
-    "t": "King In The North",
-    "s": 105.0,
-    "p": 112.58
+    "m": "Chris",
+    "t": "Maye the Force Be With You",
+    "s": 0.0,
+    "p": 132.45
    }
   },
   {
    "a": {
-    "m": "Wes",
-    "t": "MikeLee4 Prez",
-    "s": 125.64,
-    "p": 109.57
-   },
-   "b": {
-    "m": "Zack",
-    "t": "Sewer Pigeons",
-    "s": 107.42,
-    "p": 121.17
-   }
-  },
-  {
-   "a": {
-    "m": "Matt",
-    "t": "San Diego Chillin’",
-    "s": 144.7,
-    "p": 119.91
+    "m": "Drew",
+    "t": "I Stand with Jordon",
+    "s": 0.0,
+    "p": 136.07
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
-    "s": 167.24,
-    "p": 132.49
+    "s": 0.0,
+    "p": 124.4
+   }
+  },
+  {
+   "a": {
+    "m": "Erick",
+    "t": "King In The North",
+    "s": 54.0,
+    "p": 109.35
+   },
+   "b": {
+    "m": "Matt",
+    "t": "San Diego Chillin’",
+    "s": 7.9,
+    "p": 111.68
    }
   }
  ],
  "bonus": {
-  "week": 5,
-  "nm": "Massive Cuck",
-  "cr": "Loses their matchup by the most points",
+  "week": 6,
+  "nm": "Catch My Load",
+  "cr": "Most receptions by one player",
   "actual": [
    {
-    "who": "Hoa",
-    "sub": "to Drew",
-    "val": 61.3
+    "who": "Erick",
+    "sub": "Jaxon Smith-Njigba",
+    "val": 12
    },
    {
-    "who": "Tola",
-    "sub": "to David",
-    "val": 51.04
+    "who": "Dylan",
+    "sub": "Jaylen Waddle",
+    "val": 4
    },
    {
-    "who": "Jason",
-    "sub": "to Chris",
-    "val": 39.12
+    "who": "Erick",
+    "sub": "J.K. Dobbins",
+    "val": 3
    }
   ],
   "projected": [
    {
-    "who": "David",
-    "sub": "to Tola",
-    "val": 14.41
+    "who": "Drew",
+    "sub": "Trey McBride",
+    "val": 7.1
    },
    {
-    "who": "Matt",
-    "sub": "to Adam",
-    "val": 12.58
+    "who": "Chris",
+    "sub": "CeeDee Lamb",
+    "val": 6.9
    },
    {
-    "who": "Wes",
-    "sub": "to Zack",
-    "val": 11.6
+    "who": "Erick",
+    "sub": "Jaxon Smith-Njigba",
+    "val": 6.7
    }
   ]
  },
@@ -132,10 +132,10 @@
  "nextKickoff": "2026-10-15T20:15:00-04:00",
  "nextKickoffLabel": "Thursday, Oct 15 · 8:15 PM ET",
  "nextGame": {
-  "away": "SEA",
-  "home": "DEN",
-  "kickoff": "2026-10-15T20:15:00-04:00",
-  "label": "Thursday, Oct 15 at 8:15 PM ET",
-  "network": "Prime Video"
+  "away": "HOU",
+  "home": "JAX",
+  "kickoff": "2026-10-18T09:30:00-04:00",
+  "label": "Sunday, Oct 18 at 9:30 AM ET",
+  "network": "NFL Network"
  }
 }
