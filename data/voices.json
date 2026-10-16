@@ -26,6 +26,11 @@
         "week": 5,
         "pick": "Wes over Zack",
         "result": "W"
+      },
+      {
+        "week": 6,
+        "pick": "Tola over Jason",
+        "result": null
       }
     ]
   },
