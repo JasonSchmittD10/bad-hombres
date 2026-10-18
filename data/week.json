@@ -1,91 +1,91 @@
 {
  "week": 6,
  "status": "live",
- "updated": "2026-10-16T00:25:56-04:00",
+ "updated": "2026-10-18T19:39:46-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 0.0,
-    "p": 109.59
+    "s": 119.36,
+    "p": 103.38
    },
    "b": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 0.0,
-    "p": 130.09
+    "s": 81.64,
+    "p": 129.6
    }
   },
   {
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 16.3,
-    "p": 119.18
+    "s": 107.82,
+    "p": 117.85
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
-    "s": 0.0,
-    "p": 88.55
+    "s": 47.1,
+    "p": 115.82
    }
   },
   {
    "a": {
     "m": "David",
     "t": "Drain the Swamp",
-    "s": 5.2,
-    "p": 122.85
+    "s": 97.68,
+    "p": 121.95
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
-    "s": 0.0,
-    "p": 123.84
+    "s": 57.6,
+    "p": 120.68
    }
   },
   {
    "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 6.4,
-    "p": 112.57
+    "s": 81.9,
+    "p": 121.23
    },
    "b": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 0.0,
-    "p": 132.45
+    "s": 71.0,
+    "p": 136.07
    }
   },
   {
    "a": {
     "m": "Drew",
     "t": "I Stand with Jordon",
-    "s": 0.0,
-    "p": 136.07
+    "s": 106.2,
+    "p": 138.57
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
-    "s": 0.0,
-    "p": 124.4
+    "s": 70.88,
+    "p": 124.0
    }
   },
   {
    "a": {
     "m": "Erick",
     "t": "King In The North",
-    "s": 54.0,
-    "p": 109.35
+    "s": 115.08,
+    "p": 107.74
    },
    "b": {
     "m": "Matt",
     "t": "San Diego Chillin’",
-    "s": 7.9,
-    "p": 111.68
+    "s": 96.5,
+    "p": 124.54
    }
   }
  ],
@@ -95,35 +95,35 @@
   "cr": "Most receptions by one player",
   "actual": [
    {
+    "who": "Hoa",
+    "sub": "Malik Nabers",
+    "val": 12
+   },
+   {
     "who": "Erick",
     "sub": "Jaxon Smith-Njigba",
     "val": 12
    },
    {
-    "who": "Dylan",
-    "sub": "Jaylen Waddle",
-    "val": 4
-   },
-   {
-    "who": "Erick",
-    "sub": "J.K. Dobbins",
-    "val": 3
+    "who": "Drew",
+    "sub": "DK Metcalf",
+    "val": 11
    }
   ],
   "projected": [
    {
     "who": "Drew",
     "sub": "Trey McBride",
-    "val": 7.1
+    "val": 7
    },
    {
     "who": "Chris",
     "sub": "CeeDee Lamb",
-    "val": 6.9
+    "val": 6.8
    },
    {
-    "who": "Erick",
-    "sub": "Jaxon Smith-Njigba",
+    "who": "Drew",
+    "sub": "Puka Nacua",
     "val": 6.7
    }
   ]
@@ -132,10 +132,10 @@
  "nextKickoff": "2026-10-15T20:15:00-04:00",
  "nextKickoffLabel": "Thursday, Oct 15 · 8:15 PM ET",
  "nextGame": {
-  "away": "HOU",
-  "home": "JAX",
-  "kickoff": "2026-10-18T09:30:00-04:00",
-  "label": "Sunday, Oct 18 at 9:30 AM ET",
-  "network": "NFL Network"
+  "away": "DAL",
+  "home": "GB",
+  "kickoff": "2026-10-18T20:20:00-04:00",
+  "label": "Sunday, Oct 18 at 8:20 PM ET",
+  "network": "NBC"
  }
 }
