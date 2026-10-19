@@ -1,7 +1,7 @@
 {
  "week": 6,
  "status": "live",
- "updated": "2026-10-18T19:39:46-04:00",
+ "updated": "2026-10-19T01:16:05-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -9,13 +9,13 @@
     "m": "Jason",
     "t": "Pull-Out Game Weak",
     "s": 119.36,
-    "p": 103.38
+    "p": 103.39
    },
    "b": {
     "m": "Tola",
     "t": "Alien Awareness",
     "s": 81.64,
-    "p": 129.6
+    "p": 129.7
    }
   },
   {
@@ -28,8 +28,8 @@
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
-    "s": 47.1,
-    "p": 115.82
+    "s": 69.5,
+    "p": 116.28
    }
   },
   {
@@ -37,41 +37,41 @@
     "m": "David",
     "t": "Drain the Swamp",
     "s": 97.68,
-    "p": 121.95
+    "p": 121.97
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
-    "s": 57.6,
-    "p": 120.68
+    "s": 83.9,
+    "p": 120.33
    }
   },
   {
    "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 81.9,
-    "p": 121.23
+    "s": 82.9,
+    "p": 121.69
    },
    "b": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 71.0,
-    "p": 136.07
+    "s": 88.0,
+    "p": 136.16
    }
   },
   {
    "a": {
     "m": "Drew",
     "t": "I Stand with Jordon",
-    "s": 106.2,
-    "p": 138.57
+    "s": 126.44,
+    "p": 138.92
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
-    "s": 70.88,
-    "p": 124.0
+    "s": 80.28,
+    "p": 124.36
    }
   },
   {
@@ -84,8 +84,8 @@
    "b": {
     "m": "Matt",
     "t": "San Diego Chillin’",
-    "s": 96.5,
-    "p": 124.54
+    "s": 108.5,
+    "p": 124.86
    }
   }
  ],
@@ -119,7 +119,7 @@
    {
     "who": "Chris",
     "sub": "CeeDee Lamb",
-    "val": 6.8
+    "val": 7
    },
    {
     "who": "Drew",
@@ -132,10 +132,10 @@
  "nextKickoff": "2026-10-15T20:15:00-04:00",
  "nextKickoffLabel": "Thursday, Oct 15 · 8:15 PM ET",
  "nextGame": {
-  "away": "DAL",
-  "home": "GB",
-  "kickoff": "2026-10-18T20:20:00-04:00",
-  "label": "Sunday, Oct 18 at 8:20 PM ET",
-  "network": "NBC"
+  "away": "WSH",
+  "home": "SF",
+  "kickoff": "2026-10-19T20:15:00-04:00",
+  "label": "Monday, Oct 19 at 8:15 PM ET",
+  "network": "ESPN/ABC"
  }
 }
