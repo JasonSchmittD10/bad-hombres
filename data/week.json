@@ -1,7 +1,7 @@
 {
  "week": 6,
- "status": "live",
- "updated": "2026-10-20T00:24:12-04:00",
+ "status": "final",
+ "updated": "2026-10-20T07:14:14-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -128,9 +128,9 @@
    }
   ]
  },
- "nextWeek": 6,
- "nextKickoff": "2026-10-15T20:15:00-04:00",
- "nextKickoffLabel": "Thursday, Oct 15 · 8:15 PM ET",
+ "nextWeek": 7,
+ "nextKickoff": "2026-10-22T20:15:00-04:00",
+ "nextKickoffLabel": "Thursday, Oct 22 · 8:15 PM ET",
  "nextGame": {
   "away": "NE",
   "home": "CHI",

@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T07:13:57-04:00",
+ "updated": "2026-10-20T07:14:44-04:00",
  "playoffCut": 6,
  "weeklyBonus": 9,
  "note": "Standings + weekly power-rank history. Written by the weekly recap task. See scripts/UPDATE_WEEK.md. trades: per-manager trade count for GM of the Year, from Yahoo's Commish Tools > Transaction Numbers (read-only), updated on the scoreboard's run D.",
@@ -7,121 +7,121 @@
   {
    "m": "Drew",
    "t": "I Stand with Jordon",
-   "w": 1,
+   "w": 2,
    "l": 4,
    "tie": 0,
-   "pf": 626.48,
-   "pa": 637.16,
+   "pf": 752.92,
+   "pa": 717.44,
    "bank": 9
   },
   {
    "m": "Wes",
    "t": "MikeLee4 Prez",
-   "w": 3,
+   "w": 4,
    "l": 2,
    "tie": 0,
-   "pf": 580.64,
-   "pa": 595.46,
+   "pf": 692.9,
+   "pa": 703.28,
    "bank": 0
   },
   {
    "m": "Erick",
    "t": "King In The North",
-   "w": 2,
+   "w": 3,
    "l": 3,
    "tie": 0,
-   "pf": 581.02,
-   "pa": 570.9,
-   "bank": 0
+   "pf": 696.1,
+   "pa": 683.1,
+   "bank": 4.5
   },
   {
    "m": "Tola",
    "t": "Alien Awareness",
-   "w": 2,
+   "w": 3,
    "l": 3,
    "tie": 0,
-   "pf": 635.62,
-   "pa": 682.1,
+   "pf": 765.86,
+   "pa": 803.66,
    "bank": 0
   },
   {
    "m": "David",
    "t": "Drain the Swamp",
-   "w": 1,
+   "w": 2,
    "l": 4,
    "tie": 0,
-   "pf": 606.14,
-   "pa": 773.84,
+   "pf": 720.22,
+   "pa": 857.74,
    "bank": 9
   },
   {
    "m": "Dylan",
    "t": "Carlie’s Headset",
-   "w": 3,
+   "w": 4,
    "l": 2,
    "tie": 0,
-   "pf": 691.44,
-   "pa": 628.44,
+   "pf": 795.34,
+   "pa": 719.74,
    "bank": 9
   },
   {
    "m": "Matt",
    "t": "San Diego Chillin’",
    "w": 2,
-   "l": 3,
+   "l": 4,
    "tie": 0,
-   "pf": 610.66,
-   "pa": 676.5,
+   "pf": 722.86,
+   "pa": 791.58,
    "bank": 9
   },
   {
    "m": "Zack",
    "t": "Sewer Pigeons",
    "w": 2,
-   "l": 3,
+   "l": 4,
    "tie": 0,
-   "pf": 609.04,
-   "pa": 620.58,
+   "pf": 692.94,
+   "pa": 734.66,
    "bank": 0
   },
   {
    "m": "Hoa",
    "t": "Critical Chase Theory",
    "w": 2,
-   "l": 3,
+   "l": 4,
    "tie": 0,
-   "pf": 548.12,
-   "pa": 610.56,
-   "bank": 9
+   "pf": 655.94,
+   "pa": 722.82,
+   "bank": 13.5
   },
   {
    "m": "Jason",
    "t": "Pull-Out Game Weak",
    "w": 4,
-   "l": 1,
+   "l": 2,
    "tie": 0,
-   "pf": 647.08,
-   "pa": 599.06,
+   "pf": 768.64,
+   "pa": 729.3,
    "bank": 0
   },
   {
    "m": "Chris",
    "t": "Maye the Force Be With You",
    "w": 4,
-   "l": 1,
+   "l": 2,
    "tie": 0,
-   "pf": 708.68,
-   "pa": 501.92,
+   "pf": 799.98,
+   "pa": 605.82,
    "bank": 0
   },
   {
    "m": "Adam",
    "t": "Suck My Diggs",
    "w": 4,
-   "l": 1,
+   "l": 2,
    "tie": 0,
-   "pf": 697.7,
-   "pa": 646.1,
+   "pf": 777.98,
+   "pa": 772.54,
    "bank": 0
   }
  ],
@@ -226,6 +226,23 @@
     "Wes",
     "Hoa",
     "Erick"
+   ]
+  },
+  {
+   "label": "WK 6",
+   "order": [
+    "Jason",
+    "Drew",
+    "Chris",
+    "Tola",
+    "Adam",
+    "Dylan",
+    "Matt",
+    "David",
+    "Wes",
+    "Zack",
+    "Erick",
+    "Hoa"
    ]
   }
  ],

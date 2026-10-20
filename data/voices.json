@@ -3,7 +3,7 @@
   "wes": {
     "bit": "Pastor Wes's Lock of the Week",
     "record": {
-      "w": 2,
+      "w": 3,
       "l": 2
     },
     "locks": [
@@ -30,7 +30,7 @@
       {
         "week": 6,
         "pick": "Tola over Jason",
-        "result": null
+        "result": "W"
       }
     ]
   },
@@ -66,6 +66,12 @@
         "index": -1,
         "paRank": 7,
         "standingsRank": 8
+      },
+      {
+        "week": 6,
+        "index": -6,
+        "paRank": 5,
+        "standingsRank": 11
       }
     ]
   },
@@ -99,6 +105,12 @@
       "a": "Erick",
       "b": "Matt",
       "reason": "Projected within 2.2"
+    },
+    {
+      "week": 7,
+      "a": "Jason",
+      "b": "Zack",
+      "reason": "Projected within 0.9"
     }
   ]
 }
