@@ -150,7 +150,7 @@ def subjects(kind, w):
     """The members a post is about — the only people it tags.
 
     recap     Big Dick of the Week (high score) and Little Bitch of the Week (low)
-    award     the week's bonus winner
+    award     the week's bonus winner(s) — everyone tied for it
     matchups  nobody
     power     nobody
     """
@@ -161,7 +161,8 @@ def subjects(kind, w):
         return [t["m"] for t in teams if t["s"] == hi] + [t["m"] for t in teams if t["s"] == lo]
     if kind == "award":
         winners = ((w.get("bonus") or {}).get("actual") or [])
-        return [winners[0]["who"]] if winners else []
+        # a tie tags every winner
+        return [r["who"] for r in winners if r.get("val") == winners[0].get("val")] if winners else []
     return []
 
 def with_mentions(caption, members):

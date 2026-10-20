@@ -643,16 +643,34 @@ def og_story(slug):
             '<div class="brand"><img src="%s" alt=""><span class="disp">BAD <b>HOMBRES</b></span></div></div></div>') % (
         OG_CSS, size, art, esc(kicker), esc(title), data_uri("assets/logo.webp"))
 
-def bonus_card(week, b, t):
+def bonus_winners(b):
+    """The settled winners: everyone tied with the leader (a tie splits the $9)."""
+    lead = b["actual"][0]
+    return [r for r in b["actual"] if r.get("val") == lead.get("val")]
+
+def bonus_card(week, b, teams_by_m):
     art = "assets/awards/hd/wk%s.jpg" % week
     if not (ROOT / art).exists(): bail("no 1080px award art at %s" % art)
-    top = b["actual"][0]
-    stat = ('<div class="stat">%s · <b>%s</b></div>' % (esc(top["sub"]), fmt(top["val"]) if isinstance(top.get("val"), (int, float)) else esc(top.get("val", "")))) if top.get("sub") else ""
+    win = bonus_winners(b)
+    # counts (receptions) stay whole; points keep two decimals
+    val = lambda r: str(r["val"]) if isinstance(r.get("val"), int) else fmt(r["val"]) if isinstance(r.get("val"), float) else esc(r.get("val", ""))
+    if len(win) == 1:
+        top = win[0]
+        stat = ('<div class="stat">%s · <b>%s</b></div>' % (esc(top["sub"]), val(top))) if top.get("sub") else ""
+        purse = "$9"
+    else:
+        # a tie: every winner stamped on the art, the split on the purse
+        each = 9 / len(win)
+        stat = '<div class="stat">%s · <b>%s each</b></div>' % (esc(" & ".join(r.get("sub", "") for r in win)), val(win[0]))
+        purse = "$%s each" % (("%d" % each) if each == int(each) else ("%.2f" % each))
+    stamps = "".join('<div class="stamp" style="left:%dpx;z-index:%d"><img src="%s" alt=""></div>' % (
+        64 + i * 190, len(win) - i, face(r["who"])) for i, r in enumerate(win))
     return frame(week, (
-        '<div class="bn"><div class="art"><img src="%s" alt=""><div class="stamp"><img src="%s" alt=""></div>'
-        '<div class="purse disp">$9</div></div><div class="txt"><div class="eyebrow">Week %s Bonus</div>'
+        '<div class="bn"><div class="art"><img src="%s" alt="">%s'
+        '<div class="purse disp">%s</div></div><div class="txt"><div class="eyebrow">Week %s Bonus%s</div>'
         '<h1 class="disp">%s</h1><div class="who">%s</div><div class="tm">%s</div>%s</div></div>') % (
-        data_uri(art), face(top["who"]), esc(week), esc(b.get("nm", "")), esc(top["who"]), esc(t), stat))
+        data_uri(art), stamps, esc(purse), esc(week), " · Tied" if len(win) > 1 else "", esc(b.get("nm", "")),
+        esc(" & ".join(r["who"] for r in win)), esc(" · ".join(teams_by_m.get(r["who"], "") for r in win)), stat))
 
 def wp_chart(series, peak=None, W=952, H=420):
     """A win-probability line for a slide: series is [[wp, window], ...] in order (the pulse's
@@ -925,10 +943,10 @@ def main():
         b = w.get("bonus") or {}
         if not (b.get("actual") or []): bail("week %s bonus is not settled" % week)
         if str(b.get("week", week)) != str(week): bail("bonus is for week %s, not %s" % (b.get("week"), week))
-        who = b["actual"][0]["who"]
-        team = next((t["t"] for t in teams if t["m"] == who), None)
-        if team is None: bail("bonus winner %r is not in this week's matchups" % who)
-        shoot(page(bonus_card(week, b, team), preview), out_dir / "award.jpg")
+        teams_by_m = {t["m"]: t["t"] for t in teams}
+        missing = [r["who"] for r in bonus_winners(b) if r["who"] not in teams_by_m]
+        if missing: bail("bonus winner(s) %s not in this week's matchups" % ", ".join(missing))
+        shoot(page(bonus_card(week, b, teams_by_m), preview), out_dir / "award.jpg")
 
 if __name__ == "__main__":
     main()
