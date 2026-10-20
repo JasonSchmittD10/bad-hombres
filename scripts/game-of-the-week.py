@@ -5,9 +5,14 @@
     scripts/game-of-the-week.py --matchups next.json    # Tuesday: next week's matchups from Yahoo
 
 next.json is {"week": N, "matchups": [...]} in the week.json matchup shape
-(a/b with m, t, p). Scoring is bh_league.watchability(): projected closeness,
-the all-time series, current rankings, and — weighted up as the season goes
-on — playoff-bubble, last-place and top-seed stakes.
+(a/b with m, t, p). Scoring is bh_league.watchability(): standings stakes (first
+place on the line, the Beer Mile bowl, the playoff line), rivalries and streaks,
+the top of the table, a fresh-faces penalty for recent picks, and projected
+closeness only as a tiebreaker.
+
+    scripts/game-of-the-week.py --matchups next.json --pick Hoa David --reason "…"
+records a storyline the formula can't see (trash talk in the chat, a trade going
+sour, a revenge game) instead of the formula's pick. The reason is a short phrase.
 
 The pick is LOCKED once recorded. The Tuesday recap's "Looking ahead", the
 Thursday iMessage opener, and the Instagram preview (slide 2 and caption) all
@@ -49,6 +54,12 @@ def main():
     for (score, reason), mu in scored:
         print("  %.3f  %s vs %s — %s" % (score, mu["a"]["m"], mu["b"]["m"], reason))
     (score, reason), mu = scored[0]
+    if "--pick" in args:
+        i = args.index("--pick"); pa, pb = args[i + 1], args[i + 2]
+        mu = next((m for m in ms if {m["a"]["m"], m["b"]["m"]} == {pa, pb}), None)
+        if not mu: die("%s vs %s isn't one of week %s's matchups" % (pa, pb, week))
+        if "--reason" not in args: die("--pick needs a --reason: the storyline, in a short phrase")
+        reason = args[args.index("--reason") + 1].strip()
     pick = {"week": int(week), "a": mu["a"]["m"], "b": mu["b"]["m"], "reason": reason}
     if have: picks.remove(have)
     picks.append(pick)

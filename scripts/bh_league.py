@@ -53,36 +53,75 @@ def current_ranks(season):
         order = (season.get("ranks") or [{}])[-1].get("order") or [t["m"] for t in ts]
     return {m: i + 1 for i, m in enumerate(order)}
 
-def watchability(week, mu, ranks, cut=6, n=12):
-    """How much a matchup deserves Game of the Week, and why. Four parts, each 0-1:
+def _odds():
+    """data/numbers/odds.json baseline {manager: {playoffs, last, ...}}, or {} before it exists."""
+    try: return json.loads((ROOT / "data" / "numbers" / "odds.json").read_text()).get("baseline") or {}
+    except (FileNotFoundError, ValueError): return {}
 
-    close    projected margin (0 at 30+ points apart)
-    rivalry  how even the all-time series is, scaled by how often they've met
-    quality  how high both teams sit in the current rankings
-    stakes   both on the playoff bubble, both fighting over last (weighted up:
-             last place carries the punishment), or both fighting for the top
-             seed — scaled by how late in the season it is, so it barely counts
-             in week 1 and dominates by week 14
+def _streak(a, b):
+    """The longest current head-to-head run: (winner, games) — e.g. Erick has won all 7."""
+    h = json.loads((ROOT / "data" / "history.json").read_text())
+    code = {v: k for k, v in h["managers"].items()}
+    rec = h["profiles"].get(code.get(a, ""), {}).get("vs", {}).get(b) or {}
+    w, l = rec.get("w", 0), rec.get("l", 0)
+    if w and not l: return a, w
+    if l and not w: return b, l
+    return None, 0
+
+def recent_gotw(week, back=3):
+    """Managers in the last few recorded Games of the Week, most recent first."""
+    v = json.loads((ROOT / "data" / "voices.json").read_text())
+    past = sorted((g for g in v.get("gotw", []) if int(g["week"]) < int(week)), key=lambda g: -int(g["week"]))
+    return [m for g in past[:back] for m in (g["a"], g["b"])]
+
+def watchability(week, mu, ranks, cut=6, n=12):
+    """How much a matchup deserves Game of the Week, and why. Jason's ruling (Oct 2026):
+    standings and storylines, not projected closeness — first vs second matters, and late in
+    the year so does last vs second-to-last, because last place runs the Beer Mile.
+
+    stakes   the biggest of: first place on the line (both at or near the top), the Beer
+             Mile bowl (both likely to finish last, from the Hard Numbers odds), the playoff
+             line (both near the cut, odds near a coin flip). Counts from Week 2 and grows.
+    rivalry  an even, well-worn series — or a one-sided streak someone wants to end
+    quality  both teams high in the standings
+    close    projected margin — a tiebreaker now, not the reason
+    fresh    a penalty for managers who were in the last three Games of the Week, so it
+             doesn't keep landing on the same teams
     """
     a, b = mu["a"], mu["b"]
-    close = max(0.0, 1 - abs(a["p"] - b["p"]) / 30)
-    w, l, t = series_rec(a["m"], b["m"]); g = w + l + t
-    rivalry = (1 - abs(w - l) / g) * min(g / 8, 1) if g else 0.0
-    ra, rb = ranks.get(a["m"], n), ranks.get(b["m"], n)
-    quality = 1 - ((ra + rb) / 2 - 1) / (n - 1)
-    bubble = lambda r: max(0.0, 1 - abs(r - (cut + .5)) / 3)       # ranks either side of the cut line
-    bottom = lambda r: max(0.0, (r - (n - 3)) / 3)                  # the last three
-    top = lambda r: max(0.0, (4 - r) / 3)                           # the top three
-    races = {"Playoff bubble": (bubble(ra) * bubble(rb)) ** .5,
-             # last place carries the league's punishment, so it outweighs the other races
-             "Last-place battle": min(1.0, 1.2 * (bottom(ra) * bottom(rb)) ** .5),
-             "Fight for the top seed": (top(ra) * top(rb)) ** .5}
+    A, B = a["m"], b["m"]
+    ra, rb = ranks.get(A, n), ranks.get(B, n)
+    odds = _odds()
+    oa, ob = odds.get(A, {}), odds.get(B, {})
+    top = lambda r: max(0.0, (5 - r) / 4)                                    # ranks 1-4
+    races = {"First place on the line": (top(ra) * top(rb)) ** .5 * (1.15 if {ra, rb} == {1, 2} else 1)}
+    if oa and ob:
+        # both likely to finish last: the punishment game
+        races["Beer Mile bowl"] = min(1.0, 2.2 * (oa.get("last", 0) * ob.get("last", 0)) ** .5 + .25 * ((ra >= n - 1) and (rb >= n - 3)))
+        coin = lambda o: max(0.0, 1 - abs(o.get("playoffs", 0) - .5) * 2)   # 1 at 50%, 0 at 0 or 100
+        races["The playoff line"] = (coin(oa) * coin(ob)) ** .5
+    else:
+        bottom = lambda r: max(0.0, (r - (n - 3)) / 3)
+        bubble = lambda r: max(0.0, 1 - abs(r - (cut + .5)) / 3)
+        races["Beer Mile bowl"] = (bottom(ra) * bottom(rb)) ** .5
+        races["The playoff line"] = (bubble(ra) * bubble(rb)) ** .5
     race, stakes = max(races.items(), key=lambda kv: kv[1])
-    late = min(max((int(week) - 1) / (REGULAR_SEASON - 1), 0.0), 1.0)
-    parts = {"close": .35 * close, "rivalry": .25 * rivalry, "quality": .20 * quality, "stakes": .60 * late * stakes}
+    ramp = 0.0 if int(week) <= 1 else min(1.0, .45 + .55 * (int(week) - 2) / (REGULAR_SEASON - 2))
+
+    w, l, t = series_rec(A, B); g = w + l + t
+    even = (1 - abs(w - l) / g) * min(g / 8, 1) if g else 0.0
+    who, run = _streak(A, B)
+    streak = min(1.0, run / 7) if run >= 4 else 0.0
+    rivalry = max(even, streak)
+    quality = 1 - ((ra + rb) / 2 - 1) / (n - 1)
+    close = max(0.0, 1 - abs(a["p"] - b["p"]) / 30)
+    seen = recent_gotw(week)
+    fresh = -.18 * sum(1 for m in (A, B) if m in seen[:2]) - .08 * sum(1 for m in (A, B) if m in seen[2:])
+
+    parts = {"stakes": .70 * ramp * stakes, "rivalry": .30 * rivalry, "quality": .20 * quality, "close": .12 * close}
     why = max(parts, key=parts.get)
-    reason = {"close": "Projected within %.1f" % abs(a["p"] - b["p"]),
-              "rivalry": "Rivalry · %s" % series(a["m"], b["m"]),
+    reason = {"stakes": race,
+              "rivalry": ("%s has won all %d" % (who, run)) if streak >= even else "Rivalry · %s" % series(A, B),
               "quality": "Top of the table",
-              "stakes": race}[why]
-    return sum(parts.values()), reason
+              "close": "Projected within %.1f" % abs(a["p"] - b["p"])}[why]
+    return sum(parts.values()) + fresh, reason

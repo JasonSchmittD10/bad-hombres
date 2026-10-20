@@ -23,10 +23,10 @@ them.
 
 | Post | Primary voice | Seasoning | Reference |
 |---|---|---|---|
-| Tuesday recap (the article) | **Peter King** — structure and narrator | **Magary** in the roasts | "The Weekly Recap" below |
-| Sunday night in-progress post | **Scott Van Pelt** — Bad Beats, narrated *to* Zack | one Magary button, max | `voice/scott-van-pelt/` |
-| Thursday week-opener (iMessage) | **Scott Van Pelt** — One Big Thing. The post is two things: the topper and the link to the preview article. No slate. | — | `voice/scott-van-pelt/02-architecture.md` §D |
-| Thursday preview article (the site) | **Drew Magary** — the Thursday column, games rated in Money Shots | — | "The Thursday Preview" below |
+| Tuesday recap (the article, and the group-chat thread made from it) | **Stephen A. Smith** — narrator (the Oct 2026 trial) | one Magary roast, max | "The October 2026 reset" below · `voice/stephen-a-smith/` |
+| Sunday night post: the Monday Night Watch | **Stephen A. Smith** — what's decided, what's left, who needs what | — | "The October 2026 reset" below |
+| Thursday preview thread (iMessage) | the preview article itself, sent in full as one text per section — no link, no teaser | — | "The October 2026 reset" below |
+| Thursday preview article (the site) | **Stephen A. Smith** — narrator (the Oct 2026 trial); no Money Shot tiers | Pastor Wes writes his own lock | "The October 2026 reset" below |
 | Bonus-settled post | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | `voice/peter-king/02-architecture.md` §B |
 | Draft recap / season preview | **Matthew Berry** — Love/Hate | — | `voice/matthew-berry/` |
 | Preseason member profiles | **Drew Magary** — Why Your Team Sucks | one Berry confession per profile | `voice/drew-magary/02-architecture.md` §A |
@@ -38,7 +38,84 @@ them.
 | Instagram Thursday matchup preview caption | **Scott Van Pelt** — One Big Thing, the same point as the iMessage topper | — | "Instagram" below |
 
 Kickoff and season-open pieces go to **Berry** (the narrative cold open is the tool for
-it). There is no fifth voice.
+it). **Stephen A. Smith** (`voice/stephen-a-smith/`) is the fifth voice, added Oct 2026 as
+the narrator of the recap, the preview and the Monday Night Watch "for a spell" — Jason
+will decide after a few weeks whether he stays.
+
+---
+
+## The October 2026 reset — Jason's feedback, Oct 20 (overrides anything below that conflicts)
+
+Jason's notes, in his words where they matter: the writing is **"very numbers-oriented …
+kind of boring,"** it feels **formulaic**, it repeats itself week to week, and it's too
+long. The best thing in the whole package is **Pastor Wes's Lock — "really funny, unique,
+to the point."** Write everything like that. He doesn't have time to check every piece for
+repeats, so the routines must police it themselves.
+
+**1. Fewer numbers — tell it with people.** No clock-time narration ("At 9:34 Monday
+night, by the clock on the league's win-probability tracker…"). No decimal-by-decimal
+play-by-play. A matchup gets its final score once, at most. A paragraph carries one
+number, two at the outside; most carry none. Say "he lost by less than a point," not
+"129.08 to 130.02." Numbers are receipts for a take, never the take.
+
+**2. Funny and attention-grabbing, not a report.** Every section has a point of view and a
+joke that couldn't run in any other week. The opener earns the read in two sentences.
+Roasting is fine but not the goal — the goal is that the guys want to read it.
+
+**3. Short.** Recap: 450-700 words. Preview: 350-600 words. Monday Night Watch: 80-200
+words. If a section isn't funny or necessary, cut it.
+
+**4. Sections are texts.** Each article is posted to the group chat IN FULL, one iMessage
+per section (`scripts/thread-post.py`), no links. So sections must stand alone, 3-4 per
+article, each with a header that reads well at the top of a text.
+
+**5. The recap — four sections:**
+   1. *(no header)* **The lede** — the week's one story, in Stephen A's take shape: a
+      flat opener, real credit, *However.*, the turn, a verdict. Results of the other
+      games can fold in as one line each only if they're part of the story.
+   2. **The Awards** — Big Dick, Little Bitch, the week's bonus. One or two sentences each,
+      about the person, not the stat.
+   3. **Around the League** — every other game in one or two sentences, funniest first.
+      No "Things I think," no numbered lists.
+   4. **Beer Mile Watch** — the bottom four in order, each manager's chance of finishing
+      last (Hard Numbers odds, `data/numbers/odds.json`), and the one that should worry
+      most. Then one line: next week's Game of the Week and why (the recap still records
+      it with `scripts/game-of-the-week.py`).
+   Grade Pastor Wes's lock wherever it lands best — never as its own section.
+   **Week 7 is the halfway point:** that recap is a special edition — same four sections
+   plus a short **Halfway** section (the season so far in one paragraph per tier: the
+   contenders, the bubble, the Beer Mile pool).
+
+**6. The preview — three sections:** an intro that grabs (the week's real stakes, not
+projections); **The Games** — all six, two or three sentences each, Game of the Week first,
+no Money Shot ratings or tiers; **Pastor Wes's Lock of the Week** — unchanged, his voice.
+
+**7. The Monday Night Watch (Sunday night post).** Not a scoreboard dump. What's already
+decided (one line: who has it wrapped up), then each matchup still alive: who leads, who
+they have left on Monday, roughly what they need. Make the guys want to watch Monday
+night. Data: `scripts/mnf-watch.py`.
+
+**8. The Game of the Week is about standings and stories, not projections.** First vs
+second, a tie at the top, last vs second-to-last (the Beer Mile), the playoff line, a
+rivalry or a streak, trash talk in the chat, a trade going sour. `scripts/game-of-the-week.py`
+scores standings, Beer Mile odds, rivalries and streaks, and stops repeating the same
+managers; projected closeness is only a tiebreaker. When the chat has a better story than
+the formula, record it with `--pick A B --reason "…"`. Never "it leads because Yahoo
+can't separate them."
+
+**9. Never the same piece twice.** Before writing, read `voice/USED.md` (the running list
+of devices, jokes, images and openings already used this season) AND the last three
+published pieces. Nothing on that list comes back unless it's a deliberate callback.
+After publishing, append this piece's devices to `voice/USED.md`. A joke can recur over a
+season; a *shape* can't recur two weeks running.
+
+**10. Art is the wink.** The hero photo is a visual double entendre on the headline, in
+the league's register — the award art is the model: *Massive Cuck* is a chair, *Hoa's Foot
+Fetish* is a foot, *Catch My Load* is a pair of hands full of footballs. It's the rebound,
+the thing between the lines. Brainstorm five objects that wink at the headline, pick the
+funniest literal one, find it as a CC0/public-domain photo. Never a generic football,
+stadium or random scene; never anything explicit — the joke is that it's innocent.
+
 
 ---
 
@@ -52,11 +129,11 @@ recorded in `data/voices.json`, and every later post reads them — nothing re-p
 | **Game of the Week** | Tuesday, by the recap, with `scripts/game-of-the-week.py` | The recap's *Looking ahead* (first storyline) · Thursday iMessage opener (the One Big Thing) · Instagram preview (slide 2 and the caption's hook) |
 | **Pastor Wes's Lock** | **Thursday, in the preview article** (the Week Preview task), from this week's real matchups | Thursday iMessage opener · Instagram preview (slide 8 and caption) · graded by the next Tuesday recap |
 
-The Game of the Week is scored, not chosen by taste: projected closeness, the all-time
-series, current rankings, and — counting for more each week — stakes (both on the playoff
-bubble, both fighting over last place, both fighting for the top seed; last place weighs
-most, because it carries the punishment). The script prints the reason; the writer turns
-it into a sentence. It's locked once recorded — if Thursday's projections have moved,
+The Game of the Week is scored on standings and stories (see the reset, rule 8): first
+place on the line, the Beer Mile bowl, the playoff line, rivalries and streaks, with a
+penalty for repeating recent managers; projected closeness only breaks ties. A storyline
+the formula can't see is recorded with `--pick`. The script prints the reason; the writer
+turns it into a sentence. It's locked once recorded — if Thursday's projections have moved,
 the game stays the game.
 
 ---
@@ -124,6 +201,10 @@ numbers at most (rule 10), every one real.
 ---
 
 ## The Weekly Recap — structure
+
+> **Superseded (Oct 2026)** by "The October 2026 reset" above: four sections, Stephen A.
+> as narrator, far fewer numbers. Kept for reference — the award names, the Bad Beat
+> device and the Luck Index still live here.
 
 Peter King's mechanics, our sections. This is the fixed running order; every recap hits
 these six beats in this sequence. Full King skeleton and templates:
@@ -379,6 +460,9 @@ fact underneath it:
 ---
 
 ## The Thursday Preview — structure
+
+> **Superseded (Oct 2026)** by "The October 2026 reset" above: an intro, The Games (no
+> Money Shot tiers), Pastor Wes's Lock — sent to the group chat in full, one text each.
 
 Magary's Thursday column, cut to size, published to the site as `week-N-preview` by the
 Week Preview task. It tells the **same story** as the Thursday text and the Instagram

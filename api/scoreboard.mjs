@@ -10,7 +10,7 @@
 
 import { env, LEAGUE_ID, LEAGUE_KEY, yahoo, flat, merge } from './_yahoo.mjs';
 import { numOr, TEAM_IDS, managerName, teamShape, getScoreboard } from './_league.mjs';
-import { getProjections, projectionFor } from './_proj.mjs';
+import { getProjections, projectionFor, normTeam } from './_proj.mjs';
 
 
 /* ---------------- Rosters with per-player weekly stats ---------------- */
@@ -59,25 +59,34 @@ const norm = (s) =>
 let scheduleCache = {};       // week -> {TEAMABBR: 'Mon'|'Thu'|...}
 let rookieCache = { at: 0, set: null };
 
-async function getKickoffDays(week) {
-  if (scheduleCache[week]) return scheduleCache[week];
-  const res = await fetch(
-    `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=${week}`
-  );
-  if (!res.ok) return (scheduleCache[week] = {});
-  const j = await res.json();
+// Each NFL team's game this week, from ESPN: {TEAM: {day: 'Mon', state: 'pre'|'in'|'post', at}},
+// keyed by Yahoo's spelling (normTeam: ESPN's WSH is Yahoo's WAS). Not cached once games
+// are underway, because state changes.
+async function getSchedule(week) {
+  const hit = scheduleCache[week];
+  if (hit && Date.now() - hit.at < 5 * 60 * 1000) return hit.map;
   const map = {};
-  for (const ev of j.events || []) {
-    const day = new Date(ev.date).toLocaleDateString('en-US', {
-      weekday: 'short',
-      timeZone: 'America/New_York',
-    });
-    for (const c of ev.competitions?.[0]?.competitors || []) {
-      const abbr = c.team?.abbreviation;
-      if (abbr) map[abbr.toUpperCase()] = day;
+  try {
+    const res = await fetch(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=${week}`);
+    if (res.ok) {
+      const j = await res.json();
+      for (const ev of j.events || []) {
+        const day = new Date(ev.date).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'America/New_York' });
+        const state = ev.status?.type?.state || 'pre';
+        for (const c of ev.competitions?.[0]?.competitors || []) {
+          const abbr = c.team?.abbreviation;
+          if (abbr) map[normTeam(abbr)] = { day, state, at: ev.date };
+        }
+      }
     }
-  }
-  return (scheduleCache[week] = map);
+  } catch (_) { /* no schedule: the bonus and the Monday watch degrade */ }
+  scheduleCache[week] = { at: Date.now(), map };
+  return map;
+}
+async function getKickoffDays(week) {
+  const sched = await getSchedule(week), days = {};
+  for (const [t, g] of Object.entries(sched)) days[t] = g.day;
+  return days;
 }
 
 async function getRookies() {
@@ -205,7 +214,7 @@ async function computeBonus(week, matchups, teams, kickoffDays, rookies, scoring
           sub: 'Monday starters',
           val: t.players
             .filter((p) => p.slot && p.slot !== 'BN' && p.slot !== 'IR')
-            .filter((p) => days[String(p.nflTeam || '').toUpperCase()] === 'Mon')
+            .filter((p) => days[normTeam(p.nflTeam)] === 'Mon')
             .reduce((s, p) => s + ((mode === 'projected' ? p.proj : p.pts) ?? 0), 0),
         })));
       }
@@ -291,6 +300,13 @@ export default async function handler(req, res) {
         getScoreboard(week + 1).catch(() => null),
       ]);
       out.standings = standings;
+      // who each team still has to play: starters whose NFL game hasn't finished (the
+      // Sunday-night Monday Night Watch reads this through scripts/mnf-watch.py)
+      const sched = await getSchedule(week);
+      out.left = Object.fromEntries(teams.map((t) => [t.m, t.players
+        .filter((p) => p.slot && p.slot !== 'BN' && p.slot !== 'IR')
+        .map((p) => ({ name: p.name, pos: p.pos, nfl: p.nflTeam, pts: p.pts, proj: p.proj, game: sched[normTeam(p.nflTeam)] || null }))
+        .filter((p) => p.game && p.game.state !== 'post')]));
       out.trades = Object.fromEntries(standings.map((r) => [r.m, r.trades]));
       out.next = next && next.matchups.length ? { week: next.week, matchups: next.matchups } : null;
       res.setHeader('Cache-Control', 'no-store');
