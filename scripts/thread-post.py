@@ -36,7 +36,10 @@ def mark(*keys):
     for k in keys: s[k] = now()
     STATE.write_text(json.dumps(s, indent=1))
 
-text = lambda frag: html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", frag))).strip()
+def text(frag):
+    """Plain text for a text message: tags out, a <br> kept as a line break."""
+    frag = re.sub(r"<br\s*/?>", "\n", frag)
+    return "\n".join(html.unescape(re.sub(r"[ \t\r\n]+", " ", re.sub(r"<[^>]+>", "", line))).strip() for line in frag.split("\n")).strip()
 
 def article(slug):
     """[(header or None, [paragraphs])] — the intro, then one part per <h2>."""

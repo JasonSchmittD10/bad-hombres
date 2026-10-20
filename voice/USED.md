@@ -40,3 +40,12 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   feature marquee · wk 6 preview: goldfish in bags · wk 6 recap: Lego dominoes.
 - From now on (rule 10): a visual double entendre on the headline, in the league's
   register. Generic football and stadium photos are out.
+
+## Pieces since the reset
+- **wk 6 recap (rewritten Oct 20 as the reset's example)** — "Santa Clara Finished Four of Us
+  in One Night". Opening: Stephen A respect-disclaimer for Monday Night Football → "However."
+  Devices: "staring at the same broadcast like it owed them money"; Ekeler "never told the
+  game was on"; Wes's lock → "I'd like a look at his phone bill"; "the cheapest Big Dick this
+  league has ever handed out"; Adam "It was RIGHT THERE"; Matt "Who does that? … In PUBLIC";
+  Zack's lineup "took that number as a suggestion"; Drew "quiet is how it starts"; Hoa "should
+  be stretching", "fitted for running shoes". Hero: a tissue box with a crumpled tissue.
