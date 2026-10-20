@@ -1,21 +1,21 @@
 {
  "week": 6,
  "status": "live",
- "updated": "2026-10-19T01:16:05-04:00",
+ "updated": "2026-10-20T00:24:12-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 119.36,
-    "p": 103.39
+    "s": 121.56,
+    "p": 103.79
    },
    "b": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 81.64,
-    "p": 129.7
+    "s": 130.24,
+    "p": 130.12
    }
   },
   {
@@ -23,41 +23,41 @@
     "m": "Hoa",
     "t": "Critical Chase Theory",
     "s": 107.82,
-    "p": 117.85
+    "p": 117.72
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
-    "s": 69.5,
-    "p": 116.28
+    "s": 112.26,
+    "p": 107.03
    }
   },
   {
    "a": {
     "m": "David",
     "t": "Drain the Swamp",
-    "s": 97.68,
-    "p": 121.97
+    "s": 114.08,
+    "p": 121.7
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
     "s": 83.9,
-    "p": 120.33
+    "p": 120.19
    }
   },
   {
    "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 82.9,
-    "p": 121.69
+    "s": 103.9,
+    "p": 106.07
    },
    "b": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 88.0,
-    "p": 136.16
+    "s": 91.3,
+    "p": 136.09
    }
   },
   {
@@ -65,13 +65,13 @@
     "m": "Drew",
     "t": "I Stand with Jordon",
     "s": 126.44,
-    "p": 138.92
+    "p": 138.67
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
     "s": 80.28,
-    "p": 124.36
+    "p": 124.08
    }
   },
   {
@@ -79,13 +79,13 @@
     "m": "Erick",
     "t": "King In The North",
     "s": 115.08,
-    "p": 107.74
+    "p": 107.83
    },
    "b": {
     "m": "Matt",
     "t": "San Diego Chillin’",
-    "s": 108.5,
-    "p": 124.86
+    "s": 112.2,
+    "p": 112.44
    }
   }
  ],
@@ -132,10 +132,10 @@
  "nextKickoff": "2026-10-15T20:15:00-04:00",
  "nextKickoffLabel": "Thursday, Oct 15 · 8:15 PM ET",
  "nextGame": {
-  "away": "WSH",
-  "home": "SF",
-  "kickoff": "2026-10-19T20:15:00-04:00",
-  "label": "Monday, Oct 19 at 8:15 PM ET",
-  "network": "ESPN/ABC"
+  "away": "NE",
+  "home": "CHI",
+  "kickoff": "2026-10-22T20:15:00-04:00",
+  "label": "Thursday, Oct 22 at 8:15 PM ET",
+  "network": "Prime Video"
  }
 }
