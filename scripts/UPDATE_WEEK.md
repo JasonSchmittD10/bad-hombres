@@ -509,8 +509,11 @@ its art, and posts that went out but never made the ledger.
 If two or more managers tie for a weekly bonus, **they all win it and the $9 splits
 evenly** (Jason's ruling, Sept 2026). Record every tied manager in `bonus.actual` at the
 same value, note the split in the report, and enter the award in the money ledger with all
-of them in `who` — the ledger already splits a shared award evenly. Ties for Big Dick or
-Little Bitch of the Week still stop the recap carousel and wait for Jason.
+of them in `who` — the ledger already splits a shared award evenly. In `BH_AWARD_WINNERS`
+join them with " & " ("Hoa & Erick"): the Bonus Board stamps every face, the bank splits
+the $9, the award card (`social-render.py award`) shows every winner and "$4.50 each", and
+`ig-post.py award` tags them all. A tied bonus posts like any other week. Ties for Big
+Dick or Little Bitch of the Week still stop the recap carousel and wait for Jason.
 
 ---
 
