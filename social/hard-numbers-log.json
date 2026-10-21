@@ -4,6 +4,7 @@
   {"slug": "0-2-club", "date": "2026-09-23", "week": 2, "subject": ["David", "Drew", "Zack"], "angle": "History of 0-2 starts: 2 of 13 made the playoffs, none won the title", "data": ["record.json all seasons"]},
   {"slug": "champ-0-3", "date": "2026-10-01", "week": 3, "subject": ["David"], "angle": "The two-time champ is 0-3: points against, schedule swap, 0-3 history (1 of 10 made playoffs), Beer Mile odds", "data": ["standings", "odds", "pine", "record.json"]},
   {"slug": "chris-erick-trade", "date": "2026-10-02", "week": 4, "subject": ["Chris", "Erick"], "angle": "Trade Alert (breaking): 3-for-4, JSN out, Jacobs hasn't played, Chris's 21st trade, proposers 13-25-1", "data": ["Yahoo pending trade", "trades", "archive"]},
-  {"slug": "choke-ledger", "date": "2026-10-14", "week": 5, "subject": ["Drew", "Erick", "Zack"], "angle": "The Choke Ledger: three 90%+ chokes in three weeks, two with the winning points on the bench; win-probability charts", "data": ["pulse", "chokes", "pine", "standings"]}
+  {"slug": "choke-ledger", "date": "2026-10-14", "week": 5, "subject": ["Drew", "Erick", "Zack"], "angle": "The Choke Ledger: three 90%+ chokes in three weeks, two with the winning points on the bench; win-probability charts", "data": ["pulse", "chokes", "pine", "standings"]},
+  {"slug": "two-game-league", "date": "2026-10-21", "week": 6, "subject": ["Wes", "Adam"], "angle": "Parity: whole league within two games after Week 6 (first since 2021), five-way tie for first, 4-2 vs 2-4 playoff history, every record on the board has won a title; Wes-Adam breaks the tie", "data": ["record.json all seasons", "season.json standings", "odds.json schedule"]}
  ]
 }

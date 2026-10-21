@@ -1,0 +1,137 @@
+{
+ "slug": "two-game-league",
+ "label": "Hard Numbers",
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "Hard Numbers · Week 6",
+   "stat": "2",
+   "statSub": "games between first place and last",
+   "say": "Twelve teams. Nobody is 5‑1. Nobody is 1‑5.<br>The tightest it's been after six weeks in any season since&nbsp;2021."
+  },
+  {
+   "type": "chips",
+   "title": "The <em>whole league</em>",
+   "chips": [
+    {
+     "name": "Chris",
+     "tag": "4‑2"
+    },
+    {
+     "name": "Dylan",
+     "tag": "4‑2"
+    },
+    {
+     "name": "Adam",
+     "tag": "4‑2"
+    },
+    {
+     "name": "Jason",
+     "tag": "4‑2"
+    },
+    {
+     "name": "Wes",
+     "tag": "4‑2"
+    },
+    {
+     "name": "Tola",
+     "tag": "3‑3"
+    },
+    {
+     "name": "Erick",
+     "tag": "3‑3"
+    },
+    {
+     "name": "Drew",
+     "tag": "2‑4"
+    },
+    {
+     "name": "Matt",
+     "tag": "2‑4"
+    },
+    {
+     "name": "David",
+     "tag": "2‑4"
+    },
+    {
+     "name": "Zack",
+     "tag": "2‑4"
+    },
+    {
+     "name": "Hoa",
+     "tag": "2‑4"
+    }
+   ],
+   "facts": [
+    {
+     "k": "Tied for first",
+     "v": "5"
+    },
+    {
+     "k": "In the middle",
+     "v": "2"
+    },
+    {
+     "k": "Tied for last",
+     "v": "5"
+    }
+   ],
+   "kicker": "A five‑way tie for first. The most ever tied at the top after six weeks was <b>three</b>, in 2022."
+  },
+  {
+   "type": "chips",
+   "title": "The gap after Week 6, <em>every year</em>",
+   "chips": [
+    {
+     "name": "2021",
+     "tag": "4 games"
+    },
+    {
+     "name": "2022",
+     "tag": "4 games"
+    },
+    {
+     "name": "2023",
+     "tag": "5 games"
+    },
+    {
+     "name": "2024",
+     "tag": "3 games"
+    },
+    {
+     "name": "2025",
+     "tag": "4 games"
+    },
+    {
+     "name": "2026",
+     "tag": "2 games"
+    }
+   ],
+   "facts": [
+    {
+     "k": "Had a 5‑1 team by now",
+     "v": "5 of 5"
+    },
+    {
+     "k": "This season",
+     "v": "None"
+    }
+   ],
+   "kicker": "Before this year, first and last had never been within two games past <b>Week 3</b>."
+  },
+  {
+   "type": "plain",
+   "title": "4‑2 teams made the playoffs <em>11 of 16</em> times",
+   "say": "2‑4 teams made it 3 of 16.<br>Then again, the <b>2024 title game</b> was David vs. Hoa, and both of them were 2‑4 after Week 6."
+  },
+  {
+   "type": "plain",
+   "title": "Every record on the board <em>has won this league</em>",
+   "say": "Drew was 3‑3 in 2021.<br>Matt was 4‑2 in 2023.<br>David was 2‑4 in 2024.<br><br>The tie at the top breaks this week:<br><b>Wes plays Adam.</b>"
+  }
+ ],
+ "tag": [
+  "Wes",
+  "Adam"
+ ]
+}
