@@ -44,7 +44,7 @@ header.bhn{position:sticky;top:0;z-index:60;background:var(--bhn-bg);border:0;fo
  font-family:var(--font-display);font-weight:700;font-size:14px;line-height:18px;white-space:nowrap;transition:transform .15s,box-shadow .15s}
 .bhn-pick:hover{box-shadow:0 0 0 3px rgba(244,245,247,.18)}
 .bhn-pick svg{width:18px;height:18px;flex:none;fill:none;stroke:#0d0d0f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.bhn-pick-k{padding:2px 7px;border-radius:999px;background:rgba(13,13,15,.09);font:700 11px/16px var(--font-ui);color:rgba(13,13,15,.75)}
+.bhn-pick-k{padding:2px 7px;border-radius:999px;background:rgba(13,13,15,.09);font:700 11px/16px var(--font-ui);color:rgba(13,13,15,.75);font-variant-numeric:tabular-nums}
 .bhn-pick-k:empty{display:none}
 .bhn-pick.here{box-shadow:0 0 0 2px var(--gold)}
 .bhn-pick .s{display:none}
@@ -254,14 +254,15 @@ a.bhn-wkt:hover{color:var(--bhn-redt)}
  .bhn-recs{grid-template-columns:1fr 1fr}
 }
 
-/* just above phone width the centred menus leave less room on the right: the button says "Pick" */
-@media (max-width:1099px){.bhn-pick .l{display:none}.bhn-pick .s{display:inline}}
+/* below about 1180px the centred menus leave less room on the right: the button says "Pick" */
+@media (max-width:1179px){.bhn-pick .l{display:none}.bhn-pick .s{display:inline}}
 
 /* ---------- phones and small tablets ---------- */
 .bhn-tabs,.bhn-sheet,.bhn-drop{display:none}
 @media (max-width:1023px){
  :root{--bhn-bar:56px;--bhn-crawl:36px;--bhn-h:92px}
  .bhn-nav{display:none}
+ .bhn-bar > .bhn-in{display:flex;justify-content:space-between}
  .bhn-brand{gap:8px}
  .bhn-brand img{height:32px}
  .bhn-wm{display:block;font-size:16px}
@@ -338,6 +339,10 @@ a.bhn-wkt:hover{color:var(--bhn-redt)}
  .bhn-mr > svg,.bhn-pk > svg:last-child{width:16px;height:16px}
  .bhn-mr > svg{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 }
+
+/* the smallest phones: a smaller wordmark, then just the logo, keeps the countdown button on screen */
+@media (max-width:374px){.bhn-wm{font-size:14px}}
+@media (max-width:349px){.bhn-wm{display:none}}
 
 @media (prefers-reduced-motion:reduce){
  .bhn-run.go{animation:none}

@@ -184,19 +184,21 @@
   });
 
   // ---------- the button ----------
+  // the button counts down to the week's first kickoff, when picks lock (tick() keeps it running)
   function renderPick() {
     var a = $('bhnPick'); if (!a) return;
-    var P = PS, l = 'Pick\u2019em', s = 'Pick\u2019em', k = '';
+    var P = PS, l = 'Pick\u2019em', s = 'Pick\u2019em', k = a.querySelector('.bhn-pick-k');
+    k.removeAttribute('data-cd'); k.textContent = ''; a.removeAttribute('title');
     if (P && P.game && !P.locked && P.at) {
       l = 'Make your pick'; s = 'Pick';
-      k = (isToday(P.at) ? '' : etDow(P.at) + ' ') + etTime(P.at).replace(/\s?[AP]M$/, '');
-      a.title = 'Call ' + P.game.a + ' vs ' + P.game.b + ' before ' + etTime(P.at) + ' ET';
+      k.setAttribute('data-cd', '');
+      k.textContent = clock(P.at.getTime() - Date.now());
+      a.title = 'Call ' + P.game.a + ' vs ' + P.game.b + ' before ' + (isToday(P.at) ? '' : etDow(P.at) + ' ') + etTime(P.at) + ' ET';
     } else if (P && P.game) {
       l = 'See the picks'; s = 'Picks';
     }
     a.querySelector('.l').textContent = l;
     a.querySelector('.s').textContent = s;
-    a.querySelector('.bhn-pick-k').textContent = k;
   }
 
   // ---------- the crawl ----------
