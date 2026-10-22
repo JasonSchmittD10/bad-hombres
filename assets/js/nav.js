@@ -4,7 +4,7 @@
 // it); this fills it from the data files, so the weekly routines never have to touch it.
 //
 // Reads: data/week.json, voices.json, numbers/odds.json, record.json, stories.json (the crawl,
-// the button), then season.json, chokes.json, history.json (the menus, once the page is idle).
+// the button), then season.json and history.json (the menus, once the page is idle).
 // Nothing here may break a page: a file that fails to load just leaves its piece out.
 (function () {
   'use strict';
@@ -38,7 +38,7 @@
     trophy: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>',
     swords: '<polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/><line x1="5" x2="9" y1="14" y2="18"/><line x1="7" x2="4" y1="17" y2="20"/><line x1="3" x2="5" y1="19" y2="21"/>',
     file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
-    sort: '<path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/>',
+    hash: '<line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/>',
     arrow: '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
     left: '<path d="m15 18-6-6 6-6"/>',
     right: '<path d="m9 18 6-6-6-6"/>',
@@ -81,7 +81,7 @@
   var FILES = {
     week: '/data/week.json', voices: '/data/voices.json', odds: '/data/numbers/odds.json',
     record: '/data/record.json', stories: '/data/stories.json', season: '/data/season.json',
-    chokes: '/data/chokes.json', history: '/data/history.json'
+    history: '/data/history.json'
   };
   function need(keys) {
     return Promise.all(keys.map(function (k) {
@@ -340,22 +340,23 @@
   var BUILT = {};
   function panel(k) { return $('bhn-p-' + k).querySelector('.bhn-in'); }
   function linkList(head, rows) {
-    return '<div class="bhn-links-col"><span class="bhn-eb">' + esc(head) + '</span><div class="bhn-links">' + rows.map(function (r) {
+    return '<div class="bhn-links-col">' + (head ? '<span class="bhn-eb">' + esc(head) + '</span>' : '') + '<div class="bhn-links">' + rows.map(function (r) {
       var on = r.on ? ' on' : '';
       return '<a class="bhn-link' + on + '" href="' + r.href + '"' + (r.on ? ' aria-current="page"' : '') + '><span class="bhn-ib">' + ic(r.ic) +
         '</span><span><span class="bhn-lt">' + esc(r.t) + '</span><span class="bhn-ls">' + esc(r.s) + '</span></span></a>';
     }).join('') + '</div></div>';
   }
 
-  // Season: the links, the standings card, three Hard Numbers desks, the week card
+  // Season: the links (Hard Numbers is one of them), the standings card, the week card
   var wcW = 0;
   function buildSeason() {
     var T = table(), b = D.week && D.week.bonus, amt = D.season && D.season.weeklyBonus;
-    var html = '<div class="bhn-grid bhn-g-season">' + linkList('Season \u00b7 ' + season(), [
+    var html = '<div class="bhn-grid bhn-g-season">' + linkList('', [
       { ic: 'chart', t: 'This Week', s: 'Scoreboard + Game of the Week', href: '/#season', on: path === '/' },
       { ic: 'trend', t: 'Power Lines', s: 'The rise & fall, week to week', href: '/#power-lines' },
       { ic: 'dollar', t: 'Bonus Board', s: b && b.nm ? b.nm + (amt ? ' \u00b7 $' + amt : '') : 'Every weekly bonus', href: '/#bonus-board' },
-      { ic: 'beer', t: 'Beer Mile Watch', s: 'The bottom four, ranked by dread', href: '/numbers/#odds' }
+      { ic: 'beer', t: 'Beer Mile Watch', s: 'The bottom four, ranked by dread', href: '/numbers/#odds' },
+      { ic: 'hash', t: 'Hard Numbers', s: '7 desks: The Pine, Choke Ledger, Odds\u2026', href: '/numbers/', on: path === '/numbers/' }
     ]);
     if (T.length) {
       var row = function (x) {
@@ -365,13 +366,6 @@
       html += '<div class="bhn-card"><div class="bhn-ch"><a class="bhn-ct" href="/#standings">Standings</a><a class="bhn-more" href="/#standings">Full table \u2192</a></div>' +
         T.slice(0, 4).map(row).join('') + '<div class="bhn-pool"><span>BEER MILE POOL</span></div>' + T.slice(-4).map(row).join('') + '</div>';
     }
-    var ch = D.chokes && String(D.chokes.season) === season() ? (D.chokes.chokes || []).length : null;
-    html += '<div class="bhn-hn"><span class="bhn-eb">Hard Numbers</span>' + [
-      ['Real Standings', 'All-play: who\u2019s actually good', '/numbers/#standings'],
-      ['Choke Ledger', ch == null ? 'Blown leads, logged live' : ch ? word(ch) + ' blown lead' + (ch === 1 ? '' : 's') + ' so far' : 'Nobody\u2019s choked. Yet.', '/numbers/#chokes'],
-      ['The Pine', 'Points left on the bench', '/numbers/#pine']
-    ].map(function (r) { return '<a href="' + r[2] + '"><span><span class="t">' + r[0] + '</span><span class="bhn-sub">' + r[1] + '</span></span>' + ic('arrow') + '</a>'; }).join('') +
-      '<a class="bhn-more" href="/numbers/">View all 7 desks \u2192</a></div>';
     html += '<div class="bhn-wkc" id="bhnWkc"></div></div>';
     panel('season').innerHTML = html;
     wcW = weeksPlayed();
@@ -443,9 +437,8 @@
     panel('booth').innerHTML = html + '</div>';
   }
 
-  // The Hombres: all twelve, sortable, and Tecmo's card for whoever you're on
-  var SORT = 'standings', SEL = null;
-  var SORTS = [['standings', 'Standings'], ['alltime', 'All-time'], ['money', 'Money'], ['beer', 'Beer Mile odds'], ['az', 'A\u2013Z']];
+  // The Hombres: all twelve in standings order, and Tecmo's card for whoever you're on
+  var SEL = null;
   function hombres() {
     var T = table(), hist = D.history || {}, prof = hist.profiles || {}, mon = (hist.money && hist.money.members) || {};
     var odds = (D.odds && String(D.odds.season) === season() && D.odds.baseline) || {};
@@ -460,19 +453,9 @@
     });
   }
   function buildHombres() {
-    var html = '<div class="bhn-hh"><div class="l"><span class="bhn-eb">The Hombres \u00b7 Faces of the Franchise</span><div class="bhn-sort" role="group" aria-label="Sort the Hombres">' +
-      '<span class="lab">' + ic('sort') + 'Sort</span>' + SORTS.map(function (s) {
-        return '<button type="button" data-s="' + s[0] + '" aria-pressed="' + (SORT === s[0]) + '">' + s[1] + '</button>';
-      }).join('') + '</div></div><div class="r"><a href="/record/#h2h">Head-to-Head \u2192</a><a href="/record/#awards">Lifetime Money \u2192</a></div></div>' +
+    panel('hombres').innerHTML = '<div class="bhn-hh"><span class="bhn-eb">The Hombres \u00b7 Faces of the Franchise</span>' +
+      '<div class="r"><a href="/record/#h2h">Head-to-Head \u2192</a><a href="/record/#awards">Lifetime Money \u2192</a></div></div>' +
       '<div class="bhn-hb"><div class="bhn-roster" id="bhnRoster"></div><div class="bhn-tec" id="bhnTec" aria-live="polite"></div></div>';
-    panel('hombres').innerHTML = html;
-    [].forEach.call(panel('hombres').querySelectorAll('[data-s]'), function (b) {
-      b.onclick = function () {
-        SORT = b.getAttribute('data-s');
-        [].forEach.call(panel('hombres').querySelectorAll('[data-s]'), function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-        roster();
-      };
-    });
     var me = (document.cookie.match(/(?:^|; )bh_who=([^;]*)/) || [])[1];
     me = me ? decodeURIComponent(me) : '';
     var R = hombres();
@@ -480,23 +463,12 @@
     roster();
   }
   function roster() {
-    var R = hombres(), by = {
-      standings: function (a, b) { return a.rank - b.rank; },
-      alltime: function (a, b) { return ((b.p && b.p.pct) || 0) - ((a.p && a.p.pct) || 0); },
-      money: function (a, b) { return ((b.money && b.money.net) || 0) - ((a.money && a.money.net) || 0); },
-      beer: function (a, b) { return ((b.odds && b.odds.last) || 0) - ((a.odds && a.odds.last) || 0); },
-      az: function (a, b) { return a.m < b.m ? -1 : 1; }
-    };
-    R.sort(by[SORT]);
-    $('bhnRoster').innerHTML = R.map(function (x, i) {
-      var st = SORT === 'alltime' && x.p ? x.p.w + '-' + x.p.l + ' \u00b7 ' + three(x.p.pct)
-        : SORT === 'money' && x.money ? signed(x.money.net)
-        : SORT === 'beer' && x.odds ? pct(x.odds.last) + ' to run it'
-        : rec(x);
+    var R = hombres();
+    $('bhnRoster').innerHTML = R.map(function (x) {
       return '<a class="bhn-tile' + (x.pool ? ' pool' : '') + (x.m === SEL ? ' sel' : '') + '" href="' + profile(x.m) + '" data-m="' + esc(x.m) + '">' +
-        '<span class="rk">' + (SORT === 'standings' ? x.rank : i + 1) + '</span><span class="cur" aria-hidden="true"></span>' +
+        '<span class="rk">' + x.rank + '</span><span class="cur" aria-hidden="true"></span>' +
         (x.pool ? '<svg class="bm" viewBox="0 0 24 24" aria-label="Beer Mile pool">' + ICON.beer + '</svg>' : '') +
-        av(x.m) + '<span class="n">' + esc(x.m) + '</span><span class="tm">' + esc(x.t) + '</span><span class="st">' + st + '</span></a>';
+        av(x.m) + '<span class="n">' + esc(x.m) + '</span><span class="tm">' + esc(x.t) + '</span><span class="st">' + rec(x) + '</span></a>';
     }).join('');
     [].forEach.call($('bhnRoster').querySelectorAll('.bhn-tile'), function (t) {
       var pick = function () {
@@ -589,7 +561,7 @@
   }
 
   var NEEDS = {
-    season: ['week', 'season', 'record', 'odds', 'chokes', 'voices', 'stories'],
+    season: ['week', 'season', 'record', 'voices', 'stories'],
     booth: ['stories', 'voices', 'week', 'season', 'record'],
     hombres: ['season', 'history', 'odds', 'record', 'week', 'voices'],
     records: ['record', 'history', 'season']
@@ -637,6 +609,15 @@
     it.addEventListener('focusout', function (e) { if (open === it && e.relatedTarget && !it.contains(e.relatedTarget)) hide(it); });
   });
   $('bhnScrim').addEventListener('click', function () { if (open) hide(open); drop(false); more(false); });
+  // picking a link in a menu, the drop-down or the More sheet folds it away as it takes you
+  // there, which matters when the link is somewhere on this same page
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (open && a.closest('.bhn-panel')) { clearTimeout(tOpen); hide(open); a.blur(); }
+    if (a.closest('#bhnDrop')) drop(false);
+    if (a.closest('#bhnSheet')) more(false);
+  });
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
     if (open) { var t = open.querySelector('.bhn-tog'); hide(open); t.focus(); }

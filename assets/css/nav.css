@@ -13,7 +13,7 @@ html body{padding-bottom:0}
 
 header.bhn{position:sticky;top:0;z-index:60;background:var(--bhn-bg);border:0;font-family:var(--font-ui);color:var(--white)}
 .bhn a{text-decoration:none}
-.bhn button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:where(.bhn) button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 .bhn-in{max-width:1440px;margin:0 auto;padding:0 var(--bhn-pad)}
 
 /* ---------- the bar ---------- */
@@ -29,16 +29,14 @@ header.bhn{position:sticky;top:0;z-index:60;background:var(--bhn-bg);border:0;fo
 .bhn-pill{position:relative;display:flex;align-items:center;border-radius:10px;transition:background .15s}
 .bhn-top{display:block;padding:11px 4px 11px 16px;color:var(--silver);font-family:var(--font-display);font-weight:700;
  font-size:16px;line-height:21px;letter-spacing:.01em;white-space:nowrap;transition:color .15s}
-.bhn-tog{display:flex;align-items:center;padding:11px 14px 11px 6px;border-radius:0 10px 10px 0}
+.bhn-tog{display:flex;align-items:center;padding:11px 16px 11px 4px;border-radius:0 10px 10px 0}
 .bhn-tog svg{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s,stroke .15s}
 .bhn-pill:hover .bhn-top,.bhn-item.here .bhn-top{color:#fff}
 .bhn-pill::after{content:"";position:absolute;left:12px;right:12px;bottom:calc((var(--bhn-bar) - 43px) / -2);height:3px;border-radius:2px;background:var(--red);opacity:0;transition:opacity .15s}
-.bhn-item.here .bhn-pill::after{opacity:.55}
-body.bhn-open .bhn-item.here:not(.open) .bhn-pill::after{opacity:0}
+.bhn-item.here .bhn-pill::after{opacity:1}
 .bhn-item.open .bhn-pill{background:var(--panel-2)}
 .bhn-item.open .bhn-top{color:#fff}
 .bhn-item.open .bhn-tog svg{transform:rotate(180deg);stroke:#fff}
-.bhn-item.open .bhn-pill::after{opacity:1}
 .bhn-top:focus-visible,.bhn-tog:focus-visible,.bhn a:focus-visible,.bhn button:focus-visible,.bhn-tabs a:focus-visible,
 .bhn-tabs button:focus-visible,.bhn-sheet a:focus-visible,.bhn-sheet button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:8px}
 
@@ -114,22 +112,15 @@ a.bhn-sr:hover{background:var(--panel-2)}
 .bhn-pool::before,.bhn-pool::after{content:"";flex:1;height:1px;background:var(--line)}
 .bhn-pool span{font:700 9px/1 var(--font-ui);letter-spacing:.14em;color:var(--bhn-redt)}
 
-/* Season: Hard Numbers */
-.bhn-hn a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);color:#fff}
-.bhn-hn a:hover .t{color:var(--bhn-redt)}
-.bhn-hn .t{display:block;font:600 15px/1.25 var(--font-ui)}
-.bhn-hn svg{width:14px;height:14px;flex:none;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.bhn-hn .bhn-more{display:inline-block;margin-top:14px}
-
 /* Season: the week card */
 .bhn-wkc{display:flex;flex-direction:column;gap:12px}
 .bhn-wkh{display:flex;align-items:center;justify-content:space-between}
 .bhn-wkh b{font-family:var(--font-display);font-weight:900;font-size:16px;color:#fff}
-.bhn-arw{width:30px;height:30px;border-radius:8px;border:1px solid var(--line)!important;display:flex;align-items:center;justify-content:center}
+.bhn-arw{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
 .bhn-arw svg{width:14px;height:14px;fill:none;stroke:var(--silver);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .bhn-arw:hover:not(:disabled){background:var(--panel-2)}
 .bhn-arw:disabled{opacity:.3;cursor:default}
-.bhn-art{display:block;width:100%;height:104px;border-radius:12px;object-fit:cover;background:var(--panel)}
+.bhn-art{display:block;width:100%;height:136px;border-radius:12px;object-fit:cover;background:var(--panel)}
 .bhn-art.svg{object-fit:contain;background:#e9e9ec}
 .bhn-wkt{font-family:var(--font-display);font-weight:900;font-size:18px;line-height:22px;color:#fff}
 a.bhn-wkt:hover{color:var(--bhn-redt)}
@@ -171,17 +162,10 @@ a.bhn-wkt:hover{color:var(--bhn-redt)}
 
 /* The Hombres */
 .bhn-hh{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:24px;flex-wrap:wrap}
-.bhn-hh .l{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .bhn-hh .bhn-eb{margin:0}
 .bhn-hh .r{display:flex;gap:24px}
 .bhn-hh .r a{font:700 13px/1 var(--font-ui);color:var(--silver)}
 .bhn-hh .r a:hover{color:#fff}
-.bhn-sort{display:flex;align-items:center;gap:2px;padding:3px;border-radius:10px;background:var(--panel);border:1px solid var(--line)}
-.bhn-sort .lab{display:flex;align-items:center;gap:6px;padding:6px 8px 6px 10px;font:500 12px/1 var(--font-ui);color:var(--muted)}
-.bhn-sort .lab svg{width:13px;height:13px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round}
-.bhn-sort button{padding:6px 12px;border-radius:8px;font:500 12px/1 var(--font-ui);color:var(--muted)}
-.bhn-sort button:hover{color:#fff}
-.bhn-sort button[aria-pressed="true"]{background:#2a2a31;color:#fff;font-weight:600}
 .bhn-hb{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:40px;align-items:stretch}
 .bhn-roster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .bhn-tile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:150px;padding:12px;
@@ -254,13 +238,11 @@ a.bhn-wkt:hover{color:var(--bhn-redt)}
 
 /* column layouts: four columns at full width, squeezing down to about 1200px */
 .bhn-grid{gap:clamp(24px,2.8vw,40px)}
-.bhn-g-season{grid-template-columns:minmax(220px,300px) minmax(260px,330px) minmax(190px,250px) minmax(270px,360px)}
+.bhn-g-season{grid-template-columns:minmax(220px,.85fr) minmax(260px,1fr) minmax(300px,1.25fr)}
 .bhn-g-booth{grid-template-columns:minmax(230px,280px) minmax(360px,520px) minmax(320px,440px)}
 .bhn-g-rec{grid-template-columns:minmax(240px,280px) minmax(0,1fr)}
 @media (max-width:1199px){
  .bhn-wm{display:none}
- .bhn-g-season{grid-template-columns:minmax(220px,280px) minmax(260px,320px) minmax(190px,1fr)}
- .bhn-g-season > .bhn-wkc{display:none}
  .bhn-g-booth{grid-template-columns:minmax(320px,1fr) minmax(300px,400px)}
  .bhn-g-booth > .bhn-links-col{display:none}
  .bhn-hb{grid-template-columns:minmax(0,1fr) 340px;gap:24px}

@@ -738,6 +738,16 @@ renderSeason(YEARS[YEARS.length-1]);
  if(location.hash==='#awards')show('awards');
 })();
 </script>
+<script>
+// the header's Record Book menu links straight to a tab (#h2h, #records, #seasons-2025, #awards);
+// follow the hash when it changes on this page too, not only on the first load
+window.addEventListener('hashchange',function(){
+ var m=location.hash.match(/^#(overview|h2h|managers|records|seasons|awards)(?:-(\d{4}))?$/);
+ show(m?m[1]:'overview');
+ if(m&&m[1]==='seasons'&&m[2]){var b=document.querySelector('#yearSeg [data-y="'+m[2]+'"]');if(b)b.click();}
+ var t=document.getElementById('tabs');if(t)window.scrollTo({top:t.offsetTop-126,behavior:'smooth'});
+});
+</script>
 
 <script>
 /* Footer countdown to the next week's kickoff. */
