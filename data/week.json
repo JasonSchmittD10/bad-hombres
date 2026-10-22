@@ -1,7 +1,7 @@
 {
  "week": 7,
  "status": "preseason",
- "updated": "2026-10-22T09:08:45-04:00",
+ "updated": "2026-10-22T12:08:02-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -9,7 +9,7 @@
     "m": "Jason",
     "t": "Pull-Out Game Weak",
     "s": 0.0,
-    "p": 125.94
+    "p": 125.9
    },
    "b": {
     "m": "Zack",
@@ -29,7 +29,7 @@
     "m": "Chris",
     "t": "Maye the Force Be With You",
     "s": 0.0,
-    "p": 137.45
+    "p": 137.38
    }
   },
   {
@@ -37,13 +37,13 @@
     "m": "Hoa",
     "t": "Critical Chase Theory",
     "s": 0.0,
-    "p": 122.67
+    "p": 122.52
    },
    "b": {
     "m": "David",
     "t": "Drain the Swamp",
     "s": 0.0,
-    "p": 98.74
+    "p": 98.69
    }
   },
   {
@@ -51,13 +51,13 @@
     "m": "Dylan",
     "t": "Carlie’s Headset",
     "s": 0.0,
-    "p": 124.73
+    "p": 124.71
    },
    "b": {
     "m": "Matt",
     "t": "San Diego Chillin’",
     "s": 0.0,
-    "p": 106.83
+    "p": 106.72
    }
   },
   {
@@ -71,7 +71,7 @@
     "m": "Erick",
     "t": "King In The North",
     "s": 0.0,
-    "p": 119.43
+    "p": 119.24
    }
   },
   {
@@ -85,7 +85,7 @@
     "m": "Adam",
     "t": "Suck My Diggs",
     "s": 0.0,
-    "p": 130.04
+    "p": 130.03
    }
   }
  ],
@@ -103,12 +103,12 @@
    {
     "who": "David",
     "sub": "Drain the Swamp",
-    "val": 98.74
+    "val": 98.69
    },
    {
     "who": "Matt",
     "sub": "San Diego Chillin’",
-    "val": 106.83
+    "val": 106.72
    }
   ]
  },
