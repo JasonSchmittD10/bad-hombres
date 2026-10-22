@@ -18,13 +18,13 @@ header.bhn{position:sticky;top:0;z-index:60;background:var(--bhn-bg);border:0;fo
 
 /* ---------- the bar ---------- */
 .bhn-bar{background:linear-gradient(180deg,#141416,#0d0d0f)}
-.bhn-bar > .bhn-in{height:var(--bhn-bar);display:flex;align-items:center;justify-content:space-between;gap:20px}
-.bhn-brand{display:flex;align-items:center;gap:12px;color:#fff;flex:none}
+.bhn-bar > .bhn-in{height:var(--bhn-bar);display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;column-gap:20px}
+.bhn-brand{grid-column:1;justify-self:start;display:flex;align-items:center;gap:12px;color:#fff}
 .bhn-brand img{height:48px;width:auto;display:block}
 .bhn-wm{font-family:var(--font-display);font-weight:900;font-size:22px;line-height:1;letter-spacing:.04em;white-space:nowrap}
 .bhn-wm b{color:var(--red);font-weight:900}
 
-.bhn-nav{display:flex;align-items:center;gap:4px;height:100%}
+.bhn-nav{grid-column:2;display:flex;align-items:center;gap:4px;height:100%}
 .bhn-item{height:100%;display:flex;align-items:center}
 .bhn-pill{position:relative;display:flex;align-items:center;border-radius:10px;transition:background .15s}
 .bhn-top{display:block;padding:11px 4px 11px 16px;color:var(--silver);font-family:var(--font-display);font-weight:700;
@@ -40,7 +40,7 @@ header.bhn{position:sticky;top:0;z-index:60;background:var(--bhn-bg);border:0;fo
 .bhn-top:focus-visible,.bhn-tog:focus-visible,.bhn a:focus-visible,.bhn button:focus-visible,.bhn-tabs a:focus-visible,
 .bhn-tabs button:focus-visible,.bhn-sheet a:focus-visible,.bhn-sheet button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:8px}
 
-.bhn-pick{display:inline-flex;align-items:center;gap:8px;flex:none;padding:9px 10px 9px 14px;border-radius:999px;background:#f4f5f7;color:#0d0d0f;
+.bhn-pick{grid-column:3;justify-self:end;display:inline-flex;align-items:center;gap:8px;padding:9px 10px 9px 14px;border-radius:999px;background:#f4f5f7;color:#0d0d0f;
  font-family:var(--font-display);font-weight:700;font-size:14px;line-height:18px;white-space:nowrap;transition:transform .15s,box-shadow .15s}
 .bhn-pick:hover{box-shadow:0 0 0 3px rgba(244,245,247,.18)}
 .bhn-pick svg{width:18px;height:18px;flex:none;fill:none;stroke:#0d0d0f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -253,6 +253,9 @@ a.bhn-wkt:hover{color:var(--bhn-redt)}
  .bhn-champ img,.bhn-champ .q{width:44px;height:44px}
  .bhn-recs{grid-template-columns:1fr 1fr}
 }
+
+/* just above phone width the centred menus leave less room on the right: the button says "Pick" */
+@media (max-width:1099px){.bhn-pick .l{display:none}.bhn-pick .s{display:inline}}
 
 /* ---------- phones and small tablets ---------- */
 .bhn-tabs,.bhn-sheet,.bhn-drop{display:none}
