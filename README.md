@@ -9,7 +9,8 @@ Static site for the Bad Hombres league. Pure HTML, no build step, no dependencie
 
 ## The header
 Every page shares one header: the bar, the Week N crawl under it, four menus (Season, The Booth,
-The Hombres, Record Book), the Make your pick button, and on phones a tab bar and a More sheet.
+The Hombres, Record Book), the Make your pick button (it counts down to the week's first kickoff,
+when picks lock, the same rule as /api/picks), and on phones a tab bar and a More sheet.
 - Markup: `scripts/header.py` writes the same block into every page (between `<!-- bh:header -->`
   markers). Change the markup there and rerun it; `scripts/header.py check` says if a page is behind.
 - Behaviour: `assets/js/nav.js` fills it from the data files (week, voices, odds, record, season,
