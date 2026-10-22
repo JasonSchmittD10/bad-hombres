@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Publish one story to the site: its page, its Updates card, the homepage feature.
+"""Publish one story to the site: its page, its Updates card, the homepage feature, and its
+line in data/stories.json (the header's story list, via scripts/stories.py).
 
     scripts/publish-story.py spec.json            # new story
     scripts/publish-story.py spec.json --force    # replace a story with the same slug
@@ -93,9 +94,8 @@ def build_page(spec, related):
         page = swap(page, r'<meta %s="%s" content="[^"]*">' % (attr, prop), '<meta %s="%s" content="%s">' % (attr, prop, img), prop)
     page = swap(page, r'<meta property="og:image:alt" content="[^"]*">', '<meta property="og:image:alt" content="%s">' % t, "og:image:alt")
     page = swap(page, r'<meta property="og:type" content="[^"]*">', '<meta property="og:type" content="article">', "og:type")
-    # a story belongs to Updates, not the season hub
-    page = swap(page, r'<a href="/" class="active">2026 Season</a><a href="/updates/" class="">Updates</a>',
-                '<a href="/" class="">2026 Season</a><a href="/updates/" class="active">Updates</a>', "nav")
+    # the header is the same on every page and marks the page's own section itself
+    # (assets/js/nav.js), so the template's copy carries over untouched
     hero = '<div class="st-hero"><img class="ph-img" src="/%s" alt="%s" loading="lazy"></div>' % (esc(spec["hero"]), esc(spec["heroAlt"]))
     page = swap(page, r'<div class="st-hero">.*?</div>', hero, "hero")
     page = swap(page, r'<div class="st-kicker">.*?</div>', '<div class="st-kicker">%s</div>' % esc(spec["kicker"]), "kicker")
@@ -159,6 +159,9 @@ def main():
     # the section pages' cards show the newest story art and the latest numbers — refresh them too
     r = subprocess.run([str(ROOT / "scripts" / "social-render.py"), "og-pages"], capture_output=True, text=True)
     if r.returncode != 0: print("note: story published, but the section preview cards didn't refresh: %s" % (r.stderr.strip() or r.stdout.strip()))
+    # the header's Booth menu and Week card read the story list
+    r = subprocess.run([str(ROOT / "scripts" / "stories.py")], capture_output=True, text=True)
+    if r.returncode != 0: print("note: story published, but data/stories.json didn't refresh: %s" % (r.stderr.strip() or r.stdout.strip()))
     print("published /story/%s/  (page %d KB; Updates card first; homepage feature set; preview card story/%s/og.jpg)" % (slug, len(page) // 1024, slug))
 
 if __name__ == "__main__":

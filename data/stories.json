@@ -1,0 +1,165 @@
+{
+ "note": "Every story on the Updates page, newest first, for the header's Booth menu and Week card. Written by scripts/stories.py (publish-story.py runs it).",
+ "stories": [
+  {
+   "slug": "week-7-preview",
+   "type": "preview",
+   "week": 7,
+   "kicker": "Week 7 · The Preview",
+   "title": "Hoa Is Loaded, and the Beer Mile Doesn't Take Cash",
+   "dek": "The richest man in last place plays the two-time defending champion, and the Beer Mile is sitting on the table between them.",
+   "img": "/assets/members/svg/Hoa.svg",
+   "thumb": null
+  },
+  {
+   "slug": "week-6-recap",
+   "type": "recap",
+   "week": 6,
+   "kicker": "Week 6 · The Recap",
+   "title": "Santa Clara Finished Four of Us in One Night",
+   "dek": "One Monday night game flipped three matchups, settled a fourth, and paid off a pastor's prayer.",
+   "img": "/assets/stories/week-6-recap.jpg",
+   "thumb": "/assets/stories/thumb/week-6-recap.jpg"
+  },
+  {
+   "slug": "week-6-preview",
+   "type": "preview",
+   "week": 6,
+   "kicker": "Week 6 · The Preview",
+   "title": "Up 46 on a Thursday, and Erick Has to Carry It All the Way to Monday",
+   "dek": "Jaxon Smith-Njigba handed Erick a lead in the Game of the Week before the weekend began, the commissioner is a 20-point underdog, Pastor Wes has turned on him, and the rest of Week 6 is rated in Money Shots.",
+   "img": "/assets/stories/week-6-preview.jpg",
+   "thumb": "/assets/stories/thumb/week-6-preview.jpg"
+  },
+  {
+   "slug": "week-5-recap",
+   "type": "recap",
+   "week": 5,
+   "kicker": "Week 5 · The Recap",
+   "title": "The Two Teams Without a Win Posted the Two Best Scores of the Week",
+   "dek": "David and Drew finally won, by a combined 112 points, Tyler Shough handed the commissioner his first loss, and Erick sat on 105.00 for more than a day and lost it at 11:23 Monday night.",
+   "img": "/assets/stories/week-5-recap.jpg",
+   "thumb": "/assets/stories/thumb/week-5-recap.jpg"
+  },
+  {
+   "slug": "week-5-preview",
+   "type": "preview",
+   "week": 5,
+   "kicker": "Week 5 · The Preview",
+   "title": "Four Weeks of Scarecrows, and Now Chris Has to Play the Commissioner",
+   "dek": "Chris's opponents have scored the fewest points in the league, Jason is unbeaten and still trophyless, Pastor Wes has taken himself, and the rest of Week 5 is rated in Money Shots.",
+   "img": "/assets/stories/week-5-preview.jpg",
+   "thumb": "/assets/stories/thumb/week-5-preview.jpg"
+  },
+  {
+   "slug": "week-4-recap",
+   "type": "recap",
+   "week": 4,
+   "kicker": "Week 4 · The Recap",
+   "title": "Down 28 With 1:13 Left, One Saints Touchdown Decided Two Games",
+   "dek": "A garbage-time throw in New Orleans kept the commissioner perfect, dropped Drew to 0-4 and took Pastor Wes's lock down with it.",
+   "img": "/assets/stories/week-4-recap.jpg",
+   "thumb": "/assets/stories/thumb/week-4-recap.jpg"
+  },
+  {
+   "slug": "week-4-preview",
+   "type": "preview",
+   "week": 4,
+   "kicker": "Week 4 · The Preview",
+   "title": "Eighteen Hundredths of a Point, and Ten Men Are Suddenly Dylan Guys",
+   "dek": "The commissioner is unbeaten, Dylan has scored more than anybody, Yahoo can’t separate them, and the rest of the league has quietly picked a side.",
+   "img": "/assets/stories/week-4-preview.jpg",
+   "thumb": "/assets/stories/thumb/week-4-preview.jpg"
+  },
+  {
+   "slug": "week-3-recap",
+   "type": "recap",
+   "week": 3,
+   "kicker": "Week 3 · The Recap",
+   "title": "Named for His Quarterback, Won in Spite of Him",
+   "dek": "Drake Maye scored 3.76 and Chris won the Game of the Week by 52 anyway, Zack finally won a game and called the pick'em, and the two-time champion is 0-3 with $9 to show for it.",
+   "img": "/assets/stories/week-3-recap.jpg",
+   "thumb": "/assets/stories/thumb/week-3-recap.jpg"
+  },
+  {
+   "slug": "week-3-preview",
+   "type": "preview",
+   "week": 3,
+   "kicker": "Week 3 · The Preview",
+   "title": "Seventh Against Eighth, and God Help Us, It Matters",
+   "dek": "Chris and Wes were a coin flip on Tuesday, Hoa has four empty chairs in his lineup, and the rest of Week 3 is rated in Money Shots.",
+   "img": "/assets/stories/week-3-preview.jpg",
+   "thumb": "/assets/stories/thumb/week-3-preview.jpg"
+  },
+  {
+   "slug": "week-2-recap",
+   "type": "recap",
+   "week": 2,
+   "kicker": "Week 2 · The Recap",
+   "title": "Two Hundred, and Three Minutes Nobody Can Explain",
+   "dek": "Dylan Greene posted the best week of his career, took the $9 and handed the two-time champion a 59-point loss, while the commissioner survived Wes with a quarterback who went down on the first possession.",
+   "img": "/assets/stories/week-2-recap.jpg",
+   "thumb": "/assets/stories/thumb/week-2-recap.jpg"
+  },
+  {
+   "slug": "week-2-preview",
+   "type": "preview",
+   "week": 2,
+   "kicker": "Week 2 · The Preview",
+   "title": "Four and Four, Zack",
+   "dek": "Erick and Zack lead a slate rated in Money Shots, the commissioner is in first place and nervous about it, and Pastor Wes has spoken.",
+   "img": "/assets/stories/week-2-preview.jpg",
+   "thumb": "/assets/stories/thumb/week-2-preview.jpg"
+  },
+  {
+   "slug": "week-1-recap",
+   "type": "recap",
+   "week": 1,
+   "kicker": "Week 1 · The Recap",
+   "title": "The Competition’s Level Was 150.64",
+   "dek": "Zack scores 146.16 and loses to the one man he makes look good, Jason posts the high score with 35.80 on his bench, Dylan sets the floor, and Matt takes the Money Shot by 0.40.",
+   "img": "/assets/members/svg/Zack.svg",
+   "thumb": null
+  },
+  {
+   "slug": "draft-recap",
+   "type": "feature",
+   "week": null,
+   "kicker": "Love / Hate · Draft Recap",
+   "title": "Love/Hate: The 2026 Draft",
+   "dek": "The rosters worth loving, the ones worth reporting to the league office, a Ride or Die, and a reckoning for the commissioner's QB room — with the numbers to back it.",
+   "img": null,
+   "thumb": "/assets/stories/thumb/draft-recap.jpg"
+  },
+  {
+   "slug": "the-curse",
+   "type": "feature",
+   "week": null,
+   "kicker": "The Commissioner",
+   "title": "Five Podiums. Zero Trophies.",
+   "dek": "Nobody in this league has been better, more often, for longer — and nobody has less to show for it.",
+   "img": null,
+   "thumb": "/assets/stories/thumb/the-curse.jpg"
+  },
+  {
+   "slug": "three-peat",
+   "type": "feature",
+   "week": null,
+   "kicker": "The Defending Champion",
+   "title": "The Swamp Doesn’t Drain Itself",
+   "dek": "Back-to-back titles, two completely different roads. Now he's chasing something nobody in this league has ever done.",
+   "img": null,
+   "thumb": "/assets/stories/thumb/three-peat.jpg"
+  },
+  {
+   "slug": "nine-nine-nine",
+   "type": "feature",
+   "week": null,
+   "kicker": "The Debt",
+   "title": "Eighteen Points From Freedom",
+   "dek": "Wes finished last in 2025 by the thinnest possible margin — and the league has a long memory.",
+   "img": null,
+   "thumb": "/assets/stories/thumb/nine-nine-nine.jpg"
+  }
+ ]
+}

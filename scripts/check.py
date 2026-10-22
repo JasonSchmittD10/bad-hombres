@@ -18,6 +18,8 @@ number on the site. A failure means DON'T PUSH: fix the data, or report and stop
     handles.json  every manager has an entry (blank means "never tag")
     story/        every published story has its link-preview card and its hero image
     pages         every section page's og:image points at a card that exists
+    header        (note only) every page carries the shared header, and data/stories.json
+                  lists the Updates page's stories in order (the header's Booth menu)
     ledger        (--posted) the posts this run claims to have made are recorded
 """
 import datetime, json, os, re, sys
@@ -205,6 +207,23 @@ def check_page_cards():
         if not m: fail("%s: no og:image" % (rel or "home")); continue
         if not (ROOT / m.group(1)).exists(): fail("%s: its link-preview card %s doesn't exist" % (rel or "home", m.group(1)))
 
+def check_header():
+    """Notes, never failures: a stale header or story list looks wrong but puts no wrong number up."""
+    stale = []
+    for p in sorted(ROOT.rglob("index.html")):
+        rel = p.relative_to(ROOT)
+        if rel.parts[0] in (".git", "bad-hombres-site 3", "voice", "social"): continue
+        s = p.read_text()
+        if '<header><div class="wrap hbar">' in s or ("<!-- bh:header -->" in s and "/assets/js/nav.js" not in s):
+            stale.append(str(rel))
+    if stale: note("old or incomplete header on %s — run scripts/header.py" % ", ".join(stale))
+    try:
+        listed = [x["slug"] for x in json.loads((ROOT / "data" / "stories.json").read_text())["stories"]]
+    except (FileNotFoundError, json.JSONDecodeError, KeyError):
+        note("data/stories.json is missing or unreadable — run scripts/stories.py"); return
+    cards = re.findall(r'<a class="acard" href="/story/([^/"]+)/">', (ROOT / "updates" / "index.html").read_text())
+    if cards != listed: note("data/stories.json doesn't match the Updates page — run scripts/stories.py")
+
 def check_ledger(keys):
     try: s = json.loads(LEDGER.read_text())
     except (FileNotFoundError, json.JSONDecodeError): fail("ledger %s is missing or unreadable" % LEDGER); return
@@ -222,6 +241,7 @@ def main():
     load("data/history.json")
     check_stories()
     check_page_cards()
+    check_header()
     if posted: check_ledger(posted)
     for n in notes: print("note: " + n)
     if fails:

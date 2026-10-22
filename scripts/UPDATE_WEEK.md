@@ -263,7 +263,8 @@ EOF
 
 The recap is written to `VOICE_GUIDE.md` — the six-beat running order, the
 recurring voices, the eight rules — and published with one script, which does
-the story page, the Updates card (first) and the homepage feature in one go:
+the story page, the Updates card (first), the homepage feature and the header's story
+list (`data/stories.json`) in one go:
 
 ```bash
 scripts/publish-story.py spec.json            # refuses if the slug exists

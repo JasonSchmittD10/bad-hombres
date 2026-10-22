@@ -19,8 +19,9 @@ DRAFT reads the rules and the season, and writes data/closeout-<year>.json:
 APPLY refuses unless the draft is complete (no TBD) and "confirmed" is true — Jason flips
 it, or tells a session to. Then it writes the year into history.json's money and awards
 (build-history.py re-validates every member's total), sets the final places and champion
-in record.json, closes the season there, rebuilds the record book, and puts the champion
-at the head of the Hall of Champions ticker on every page.
+in record.json, closes the season there, and rebuilds the record book. The header's Hall of
+Champions (Record Book menu) reads record.json, so the new champion shows up on every page
+by itself.
 
 Money in the ledger has always come from the official payout post. The draft is the
 post's first version; nothing is written to the ledger until Jason says it's right.
@@ -160,22 +161,7 @@ def draft(year, places_arg, commish):
     print("\nNext: Jason checks it, then set \"confirmed\": true and run  scripts/close-season.py apply %s" % year)
 
 # ---------------------------------------------------------------- apply
-TICK_SVG = None
-def ticker(rec):
-    """The Hall of Champions strip, newest first, written from record.json."""
-    M, full, teams = rec["managers"], rec["fullNames"], rec["teams"]
-    items = [(y, full[c], teams[y][c]) for y, c in sorted(rec["champ"].items(), reverse=True)]
-    items.append(("2020", "Erick DeLeon", "King in the North"))   # before the game log began
-    spans = []
-    for i, (y, who, team) in enumerate(items):
-        reign = i == 0
-        spans.append('<span class="tk%s">%s<b>%s</b> <span class="mgr-n">%s</span> <span class="team-n">%s</span>%s</span>' % (
-            " reign" if reign else "", TICK_SVG, y, html.escape(who), html.escape(team),
-            ' <span class="team-n">·</span> <span class="mgr-n">Reigning</span>' if reign else ""))
-    return "".join(spans) * 2        # twice, so the strip scrolls without a seam
-
 def apply(year):
-    global TICK_SVG
     path = ROOT / "data" / ("closeout-%s.json" % year)
     if not path.exists(): die("no draft at data/closeout-%s.json — run draft first" % year)
     d = json.loads(path.read_text())
@@ -207,21 +193,10 @@ def apply(year):
     r = subprocess.run([str(ROOT / "scripts" / "build-history.py"), "build"], capture_output=True, text=True)
     if r.returncode: die("build-history refused the ledger:\n" + r.stderr)
 
-    # the Hall of Champions strip on every page
-    pages = [p for p in ROOT.rglob("index.html") if ".git" not in p.parts and "bad-hombres-site 3" not in str(p)]
-    changed = 0
-    for p in pages:
-        s = p.read_text()
-        # the track holds only <span>s, so its own </div> ends it, whatever wraps it
-        m2 = re.search(r'<div class="ticker-track">(.*?)</div>', s, re.S)
-        if not m2: continue
-        if TICK_SVG is None:
-            TICK_SVG = re.search(r'<span class="tk[^"]*">(<svg.*?</svg>)', m2.group(1), re.S).group(1)
-        p.write_text(s[:m2.start(1)] + ticker(rec) + s[m2.end(1):]); changed += 1
     # the Record Book and profile cards list the champions and the reigning champ's numbers
     subprocess.run([str(ROOT / "scripts" / "social-render.py"), "og-pages"], capture_output=True, text=True)
-    print("closed %s: %d awards and $%.2f in the ledger, %s champion, record book rebuilt, ticker updated on %d pages"
-          % (year, len(d["awards"]), d["total"], rec["fullNames"][d["places"][0]], changed))
+    print("closed %s: %d awards and $%.2f in the ledger, %s champion, record book rebuilt"
+          % (year, len(d["awards"]), d["total"], rec["fullNames"][d["places"][0]]))
 
 def main():
     a = sys.argv[1:]
