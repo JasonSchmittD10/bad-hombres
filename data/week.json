@@ -1,130 +1,114 @@
 {
- "week": 6,
- "status": "final",
- "updated": "2026-10-20T07:14:14-04:00",
+ "week": 7,
+ "status": "preseason",
+ "updated": "2026-10-22T09:08:45-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 121.56,
-    "p": 103.79
+    "s": 0.0,
+    "p": 125.94
    },
    "b": {
+    "m": "Zack",
+    "t": "Sewer Pigeons",
+    "s": 0.0,
+    "p": 119.68
+   }
+  },
+  {
+   "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 130.24,
-    "p": 130.12
+    "s": 0.0,
+    "p": 130.83
+   },
+   "b": {
+    "m": "Chris",
+    "t": "Maye the Force Be With You",
+    "s": 0.0,
+    "p": 137.45
    }
   },
   {
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 107.82,
-    "p": 117.72
+    "s": 0.0,
+    "p": 122.67
    },
    "b": {
-    "m": "Wes",
-    "t": "MikeLee4 Prez",
-    "s": 112.26,
-    "p": 107.03
-   }
-  },
-  {
-   "a": {
     "m": "David",
     "t": "Drain the Swamp",
-    "s": 114.08,
-    "p": 121.7
-   },
-   "b": {
-    "m": "Zack",
-    "t": "Sewer Pigeons",
-    "s": 83.9,
-    "p": 120.19
+    "s": 0.0,
+    "p": 98.74
    }
   },
   {
    "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 103.9,
-    "p": 106.07
+    "s": 0.0,
+    "p": 124.73
    },
    "b": {
-    "m": "Chris",
-    "t": "Maye the Force Be With You",
-    "s": 91.3,
-    "p": 136.09
+    "m": "Matt",
+    "t": "San Diego Chillin’",
+    "s": 0.0,
+    "p": 106.83
    }
   },
   {
    "a": {
     "m": "Drew",
     "t": "I Stand with Jordon",
-    "s": 126.44,
-    "p": 138.67
+    "s": 0.0,
+    "p": 133.54
    },
    "b": {
-    "m": "Adam",
-    "t": "Suck My Diggs",
-    "s": 80.28,
-    "p": 124.08
+    "m": "Erick",
+    "t": "King In The North",
+    "s": 0.0,
+    "p": 119.43
    }
   },
   {
    "a": {
-    "m": "Erick",
-    "t": "King In The North",
-    "s": 115.08,
-    "p": 107.83
+    "m": "Wes",
+    "t": "MikeLee4 Prez",
+    "s": 0.0,
+    "p": 81.82
    },
    "b": {
-    "m": "Matt",
-    "t": "San Diego Chillin’",
-    "s": 112.2,
-    "p": 112.44
+    "m": "Adam",
+    "t": "Suck My Diggs",
+    "s": 0.0,
+    "p": 130.04
    }
   }
  ],
  "bonus": {
-  "week": 6,
-  "nm": "Catch My Load",
-  "cr": "Most receptions by one player",
-  "actual": [
-   {
-    "who": "Hoa",
-    "sub": "Malik Nabers",
-    "val": 12
-   },
-   {
-    "who": "Erick",
-    "sub": "Jaxon Smith-Njigba",
-    "val": 12
-   },
-   {
-    "who": "Drew",
-    "sub": "DK Metcalf",
-    "val": 11
-   }
-  ],
+  "week": 7,
+  "nm": "Adam of the Week",
+  "cr": "Lowest point total overall",
+  "actual": [],
   "projected": [
    {
-    "who": "Drew",
-    "sub": "Trey McBride",
-    "val": 7
+    "who": "Wes",
+    "sub": "MikeLee4 Prez",
+    "val": 81.82
    },
    {
-    "who": "Chris",
-    "sub": "CeeDee Lamb",
-    "val": 7
+    "who": "David",
+    "sub": "Drain the Swamp",
+    "val": 98.74
    },
    {
-    "who": "Drew",
-    "sub": "Puka Nacua",
-    "val": 6.7
+    "who": "Matt",
+    "sub": "San Diego Chillin’",
+    "val": 106.83
    }
   ]
  },
