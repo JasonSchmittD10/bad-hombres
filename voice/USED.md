@@ -49,3 +49,13 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   league has ever handed out"; Adam "It was RIGHT THERE"; Matt "Who does that? … In PUBLIC";
   Zack's lineup "took that number as a suggestion"; Drew "quiet is how it starts"; Hoa "should
   be stretching", "fitted for running shoes". Hero: a tissue box with a crumpled tissue.
+- **wk 7 preview** — "Hoa Is Loaded, and the Beer Mile Doesn't Take Cash". Opening: flat fact
+  (Hoa has the most bonus money) → credit → "However." → last place → "You cannot Venmo your way
+  around a track" → "He HAS to." Devices: David "misplaced his own trophy case … found it behind
+  the couch"; Drew–Erick 0-7 "a rivalry … becomes a subscription … never found the cancel
+  button"; Adam watching "his own name get handed to the guy across the field" (Adam of the Week
+  bonus); Wes "runs on faith and bad projections"; Jason "how a formality turns back into a
+  season"; Chris's opponents "show up in oven mitts"; Tola–Chris "tiebreaker everybody will
+  bring up at Thanksgiving". Wes's object: Sister Paulette's pickle jar at the Wednesday potluck
+  (seven men loosened it, the eighth opens it; the fogged-up fellowship hall). Hero: Hoa's member
+  illustration (fallback — Openverse was returning 504s; the planned wink was a loaded baked potato).
