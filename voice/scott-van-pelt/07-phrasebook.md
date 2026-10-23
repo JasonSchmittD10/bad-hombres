@@ -66,8 +66,8 @@ the caps line is addressed to.
 
 A real-life moment is only what the member shared in the thread himself, at the level he
 shared it. Never anyone's health; a new baby stays at "they're here." Jason assigns these. The
-piece gets its own slot, goes last, has no jokes inside it, and nothing comes after it. Flag it
-the way the guide's Van Pelt card says, too: one plain line saying you're being serious.
+piece gets its own slot, goes last, has no jokes inside it, and nothing comes after it. The slot
+is the flag; a plain line saying you're being serious is optional.
 
 11. **The widening circle.** `[his thing] → [someone close with the same thing] → [everyone reading] → [back to one person]`
     > [Manager]'s kid arrived this week. [Other Manager]'s came in August. Half this league knows
@@ -121,16 +121,15 @@ byline, Wes's line flat. In this register:
 
 ## The house phrases
 
-These came from the league's older files. The research found no sign of them on his tape, but
-the guide's Van Pelt card lists "That's a choice" as his tell, and the guide outranks this
-folder — so treat them as the league's Van Pelt dialect, which wears out like anything else.
-**One per piece at most**, rotated, and logged in `voice/USED.md`:
+These came from the league's older files, not from his tape, and the guide's Van Pelt card says
+so too (corrected Oct 23, 2026). They're Van Pelvis's own house style now, which means they wear
+out like anything else. **One per piece at most**, rotated, and logged in `voice/USED.md`:
 
 - "That's a choice."
 - "You've won. You've WON." (the comfortable position)
 - "That's it. That's the thing."
 - "Never bet on [X]. Ever." (the mock-moral)
-- "Serious for a second." (the guide's sincerity flag; pair it with its own slot, last)
+- "Serious for a second." (optional; the real flag is structural — its own slot, last)
 - "Okay. Back to it." (small asides only; never after a real loss)
 - "The Best Thing I Saw This Week."
 

@@ -35,7 +35,8 @@ The assignment decides which, never your mood. Never both in one piece. Read you
 register's seven files before every piece and its "What he does NOT do" before you hand in.
 `06-tape-study.md` breaks down the real work, and `07-phrasebook.md` is your kit. Where 06
 and 07 disagree with 01–05, they win; in particular, the stock phrases in the older files
-("That's a choice," "serious for a second" and the rest) are rationed: one a piece at most. Devices, not vocabulary — never one of their actual lines.
+("That's a choice," "serious for a second" and the rest) are league house style, not his,
+and rationed: one a piece at most. Devices, not vocabulary — never one of their actual lines.
 
 ## Your own words
 

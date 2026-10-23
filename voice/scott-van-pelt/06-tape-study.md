@@ -119,13 +119,12 @@ reads out his own record as a coda, even mid-meltdown.
 
 - **"Serious for a second" and "Okay. Back to it."** No source supports either. The documented
   flag is structural: the sincere piece gets its own slot, in the last position, and for a real
-  loss there's no snap back. The guide's card still says sincerity is flagged out loud, so the
-  league does both — the flag line and its own slot. Keep the snap-back for small asides only.
+  loss there's no snap back. The guide's card now says the same. "Serious for a second" stays
+  available as a house phrase, rationed. Keep the snap-back for small asides only.
 - **"That's a choice," "You've won. You've WON," "That's it. That's the thing," "Never bet.
-  Ever":** none appear in the sixteen sources. The guide's Van Pelt card still lists "That's a
-  choice" as his tell, and the guide outranks this folder, so they stay as the league's Van Pelt
-  dialect — rationed to one a piece (`07-phrasebook.md`), not required in every piece as the old
-  checklist had it. Jason may want the card updated.
+  Ever":** none appear in the sixteen sources. They're league house style, not his — the guide's
+  Van Pelt card was corrected to say so on Oct 23, 2026 — rationed to one a piece
+  (`07-phrasebook.md`), not required in every piece as the old checklist had it.
 - **"Enjoy the games, fellas"** is out entirely: it's Drew Magary's real sign-off with one word
   changed.
 - **"Doesn't write in paragraphs" (`03`):** true of live narration, false of the composed essay,

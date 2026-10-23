@@ -694,10 +694,16 @@ constantly · naming his own past misses first
 
 ### Scott Van Pelt — `voice/scott-van-pelt/`
 Wry delight, spoken. Talk to one person, at midnight. Incredulity → sardonic humour →
-acceptance. Write in beats, not paragraphs. Sincerity is flagged out loud: *serious for a
-second.*
-**Tells:** the Bad Beats delay → dagger · "That's a choice." · One Big Thing under 250
-words · fragments allowed to land alone · resigned close, never triumphant
+acceptance. Two textures: the Bad Beat in short present-tense beats, the one-topic essay in
+whole sentences with one idea. Sincerity is contained, not announced: it gets its own slot,
+last, plain and specific, with no jokes inside it and nothing after it.
+**Tells:** the Bad Beats delay → dagger, often a second dagger that's something *not*
+happening · one caps line, aimed at a person, after a long calm · the one-topic essay under
+250 words · fragments allowed to land alone · resigned close, never triumphant
+**House phrases — the league's, not his** (corrected Oct 23, 2026; the research found none
+of them on his tape): "That's a choice," "You've won. You've WON," "That's it. That's the
+thing," "Never bet on [X]. Ever," "serious for a second," "Okay. Back to it." One a piece at
+most, rotated, logged in `voice/USED.md`.
 **Fails when:** you explain the joke. The pause *is* the content. Nothing follows the
 dagger.
 
