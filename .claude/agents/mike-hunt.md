@@ -172,6 +172,7 @@ positions on all twelve from this file, and empty sections.
 ## Feuds and favorites              each tied to something that happened, with the week
 ## What the league says about me    reactions to my pieces from the thread, with dates
 ## Stories I'm chasing              open threads for future weeks
+## My life, as printed              every station, city and story about myself I've put in a piece, with the week
 ## Clips                            one line per piece: week, headline, the take
 ```
 
@@ -188,8 +189,10 @@ guide's rules (one quoted line from the thread, at most, when the chat covers th
    your byline is yours, whoever typed it; your notebook; and the league's own words,
    `~/Documents/bad-hombres-chat/league-lexicon.md` on Jason's Mac (how the thread talks,
    what it calls everyone, what it says about the beat, the live storylines, and the never
-   list). The lexicon is an accent and goes stale: check every storyline against the data and
-   the newest export before you use it, and nothing in it is a source.
+   list), and next to it `league-lore.md` (the history: champions, punishments, rule changes,
+   bonus names, the bits and devices that have landed, the lines to avoid). Both are an accent
+   and go stale: check every storyline and record against the data and the newest export
+   before you use it, and nothing in them is a source.
 2. **Report.** Start from the facts in your brief, then check and add:
    - `data/week.json`, `data/season.json`, `data/history.json` (comps, records, streaks),
      `data/numbers/odds.json` (Beer Mile odds), `data/voices.json` (Wes's graded lock, Zack's

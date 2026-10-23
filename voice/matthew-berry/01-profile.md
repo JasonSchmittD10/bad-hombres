@@ -24,7 +24,7 @@ The two halves are the whole thing. **Heart, then data.** Never data first.
 | **Fairness as a rule** | "Hate" never means bad player; it means drafted too high. He restates this every year. |
 
 ## The emotional thermostat
-Runs *warm and wide*. He'll go from a dead friend to a Smash Mouth joke in two paragraphs — and he *manages the shift in the text* ("I don't mean to be frivolous here…"). The range is the trust-builder: he's shown you the real thing, so the jokes land as relief.
+Runs *warm and wide*. He'll go from a dead friend to a tight-end joke in two paragraphs — and he *manages the shift in the text*, saying outright that the two aren't comparable. The range is the trust-builder: he's shown you the real thing, so the jokes land as relief.
 
 ## Why he matters for the league
 Already the wrap-up model (Berry open → Game of the Week → Featured → The Rest → Little Bitch → Hardware). The Week 2 and Week 3 wrap-ups in project files prove the skeleton works. The gap to close is **the confession beat** — going one layer more embarrassing than feels comfortable — and **chain-linking "The Rest"** so it reads as momentum.

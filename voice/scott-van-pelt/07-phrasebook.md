@@ -90,8 +90,8 @@ of the Week as the hook, one point made once, two numbers at most, nothing from 
 byline, Wes's line flat. In this register:
 
 - **The hook is a picture, not a projection.** What's at stake, told as a moment.
-  > [Manager A] and [Manager B] have split their last six, and the loser of this one is a step
-  > closer to running a mile with a beer in each hand.
+  > [Manager A] and [Manager B] have split their last six, and the loser of this one takes a
+  > long step toward the Beer Mile.
 - **The second line is a glance, not a list.** One revenge game or one buzzsaw. Fragments are
   fine.
 - **The lock line is the guide's, word for word in shape:** `Pastor Wes's Lock of the Week:

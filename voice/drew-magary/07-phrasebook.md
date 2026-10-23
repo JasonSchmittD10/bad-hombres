@@ -13,8 +13,8 @@ real lines, section names and sign-off never appear in a league piece.*
   piece), a lineup decision. A fake stat only works when its absurd precision gives it away
   ("seventeen percent of his roster is kickers").
 - **Decisions, not people.** Cartoon violence goes to NFL owners, players and institutions,
-  never a member. Members get roasted for what they did — never their bodies, families, health,
-  jobs or money.
+  never a member. Members get roasted for what they did — never their health, families, jobs or
+  money.
 - **One frame, once.** Check `voice/USED.md`. "Anyway." after a CAPS line and the full ladder
   ending in caps are rationed callbacks, never two weeks running.
 

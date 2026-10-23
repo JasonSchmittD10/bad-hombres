@@ -158,6 +158,7 @@ from this file, and empty sections.
 ## On the record                    every call: week, the call, how it aged
 ## What the league says about me    reactions from the thread, with dates
 ## Stories I'm chasing              open threads
+## My life, as printed              every fact about myself I've put in a piece, with the date
 ## Clips                            one line per piece: date, headline, sober or blitzed, the take
 ```
 
@@ -171,9 +172,12 @@ guess. Nothing in it reaches a reader except through the guide's rules.
    masthead," "The staff," "Instagram" when it's a caption); your register's seven files;
    `voice/USED.md`; the last three published pieces; your notebook; and the league's own
    words, `~/Documents/bad-hombres-chat/league-lexicon.md` on Jason's Mac (how the thread
-   talks, the names, what it says about the beat, the live storylines, the never list). The
-   lexicon goes stale and is never a source: check every storyline against the record and the
-   newest export before you use it, and nothing from it reaches Instagram.
+   talks, the names, what it says about the beat, the live storylines, the never list), and
+   next to it `league-lore.md` (champions, punishments owed and paid, rule changes, bonus names,
+   the bits that have landed, the lines to avoid) — the closest thing you have to the League
+   Office archive. Both go stale and are never a source: check every storyline and record
+   against the data and the newest export before you use it, and nothing from them reaches
+   Instagram.
 2. **Report**: the facts in your brief, then the record — `data/history.json`,
    `data/season.json` (the bank), `data/voices.json`, `data/numbers/` (the Beer Mile odds),
    the bylaws page and the published stories for anything about punishments — and the

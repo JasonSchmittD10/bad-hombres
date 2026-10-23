@@ -18,7 +18,7 @@ The Week 2 open confesses "my team put up 79 points" — good. Berry goes one la
 | Berry section | League version |
 |---|---|
 | **The Intro** | Already the standard. Never skip it for a "quick" week — if the week is quick, use the **10 Facts** form and *say so*, as Berry does. |
-| **Housekeeping with a wink** | Dues / payout / punishment reminders in the "it wouldn't be a wrap-up without" register |
+| **Housekeeping with a wink** | Dues / payout / punishment reminders, each one acknowledged as a reminder |
 | **Love/Hate** | **"Teams I Love / Teams I Hate This Week"** preview section. "Hate" carries the Berry disclaimer (hate ≠ bad; hate = overconfident / due for regression). Each entry gets hook → "Get this:" → "so" → callback |
 | **Others receiving votes** | **"The Rest"** — chain-linked with "Speaking of…" / "From X to Y…" instead of a flat list. This is the exact fix for "diminishing enthusiasm" |
 | **10 Facts** | The fast-week fallback and/or the mid-week awards post: ten numbered league facts, one-line implication + joke each |
@@ -27,17 +27,17 @@ The Week 2 open confesses "my team put up 79 points" — good. Berry goes one la
 
 ## Sample 1 — Berry-structured, league-register intro (Week 9, 2025 data as placeholder)
 
-> When I was nine, my brother Adam and I had a rule about Monopoly: whoever was losing got to flip the board. Not as a tantrum — as a *rule*. We wrote it down. Our mom thought it was cute. It was not cute. It was a seven-year-old's first experience with governance, and the lesson I took from it was that if you make the rules, you never really lose.
+> When I was nine, my brother and I had a rule about Monopoly: whoever was losing got to flip the board. Not as a tantrum — as a *rule*. We wrote it down. Our mom thought it was cute. It was not cute. It was a seven-year-old's first experience with governance, and the lesson I took from it was that if you make the rules, you never really lose.
 >
-> I've been thinking about that this week, because Adam is 4-4 with the fourth-worst offense in the league and somehow in playoff position, and I'm the commissioner, and there's a four-way tie at 2-6, and not one of those four guys has asked me to flip the board. They should. I would. I'm on record as a coward.
+> I've been thinking about that this week, because Adam is 4-4 with the fourth-worst offense in the league and somehow in playoff position, and there's a four-way tie at 2-6, and not one of those four guys has asked the commissioner to flip the board. They should. He might. He's on record as a soft touch.
 >
-> Here's the confession part, because it wouldn't be a wrap-up without one: I checked the Drain the Swamp score eleven times on Sunday. Not my game. David's. A man actively organizing my removal from office dropped 164.24 and I watched it happen the way you watch a neighbor's house get an addition. I'm not jealous. (I'm jealous.) I realize that's insane. I knew it Sunday. I know it now.
+> Here's the confession part: I checked the Drain the Swamp score eleven times on Sunday. I don't even have a team. A man actively organizing the commissioner's removal from office dropped 164.24 and I watched it happen the way you watch a neighbor's house get an addition. I'm not jealous. (I'm jealous.) There's no version of that I'm proud of.
 >
 > Which brings me to the point: there are six weeks left, the projections have Sewp in last and San Diego first, and projections are as good as polls. Nobody's safe. Nobody's out. Adam's in fourth. Flip the board.
 >
 > Let's get to it.
 >
-> *(Housekeeping: dues are still outstanding from two of you and you know who you are, which is a sentence I have written in this space for three consecutive seasons. It wouldn't be a wrap-up without it.)*
+> *(Housekeeping: dues are still outstanding from two of you and you know who you are, which is a sentence that has appeared in this space for three consecutive seasons. Consider yourselves reminded.)*
 
 ## Sample 2 — "Teams I Hate This Week" entry + chain-linked Rest
 
@@ -51,10 +51,10 @@ The Week 2 open confesses "my team put up 79 points" — good. Berry goes one la
 
 ## Sample 3 — 10 Facts (fast-week form)
 
-> Short one this week. Newborn, no sleep, you know the drill. It wouldn't be a wrap-up without the excuse.
+> Short one this week. Long week, no sleep, you know the drill.
 >
 > 1. Four teams are 2-6. Only one of them (Sewp) has a positive points-against differential, which means he's the only one who can blame the schedule. He will. Loudly.
 > 2. Drain the Swamp's 164.24 is the highest score in the league in 19 months. The last one was also David. Nobody else has cracked 160 since 2024. Hashtag: dynasty.
-> 3. Rags-to-Richardson's 76.44 is Dylan's third sub-80 week in two seasons. He has served zero of one required punishments. These facts are related.
+> 3. Rags-to-Richardson's 76.44 is Dylan's third sub-80 week in two seasons. He started the same kicker in all three. These facts are related.
 > …
 > 10. Adam is in fourth place. I have nothing to add. I have never had less to add.
