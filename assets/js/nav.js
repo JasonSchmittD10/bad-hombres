@@ -664,7 +664,7 @@
     s.innerHTML = '<div class="bhn-sh-h"><div><b>More</b><button class="bhn-x" type="button" aria-label="Close">' + ic('x') + '</button></div></div>' +
       '<a class="bhn-pk" href="/picks/">' + ic('pick') + '<div><b>' + pk[0] + '</b><span>' + pk[1] + '</span></div>' + ic('right') + '</a>' +
       grp('SEASON', [['chart', 'Hard Numbers', '7 desks: The Pine, Choke Ledger, Odds\u2026', '/numbers/'], ['trend', 'Power Lines', 'The rise & fall, week to week', '/#power-lines'],
-        ['dollar', 'Bonus Board', 'Every weekly bonus', '/#bonus-board'], ['beer', 'Beer Mile Watch', 'The bottom four, ranked by dread', '/numbers/#odds']]) +
+        ['dollar', 'Bonus Board', 'Every weekly bonus', '/#bonus-board'], ['beer', 'Beer Mile Watch', 'The bottom four, ranked by dread', '/#stakes']]) +
       grp('HISTORY', [['swords', 'Head-to-Head', 'Every rivalry since 2021', '/record/#h2h'], ['dollar', 'Awards & Money', 'Who got paid, for what', '/record/#awards'],
         ['calendar', 'Year by Year', 'Every season, every bracket', '/record/#seasons'],
         ['file', 'By-Laws', 'The Contract, and who still owes', '/bylaws/', OWED.length ? OWED.length + ' still owed' : '']]);

@@ -303,7 +303,7 @@ CSS = """
 .sf .kicker b{color:#fff;font-weight:700}
 """
 
-# the Power Lines palette (index.html COLORS), by data/season.json team order, so a
+# the Power Lines palette (assets/js/home.js COLORS), by data/season.json team order, so a
 # manager is the same colour on the homepage chart and on Instagram
 POWER_COLORS = ['#e8b84b', '#3fb26b', '#5aa9e6', '#c1121f', '#b07de0', '#f0803c',
                   '#4ecdc4', '#ef6f8e', '#8ea1b8', '#d4d94a', '#7c86e0', '#e0724d']

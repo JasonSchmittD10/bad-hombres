@@ -169,12 +169,16 @@ def main():
     at = upd.index(anchor) + len(anchor)
     upd = swap_span(upd, at, at, card, "Updates card")
 
-    # Homepage: the single featured story
+    # Homepage: the single featured story, at the top of the Booth (the hero reads the
+    # week's recap and preview from data/stories.json on its own)
     m = re.search(r'<a class="feature" href="[^"]*">.*?</a>', home, re.S)
     if not m or len(re.findall(r'<a class="feature" ', home)) != 1: die("expected one homepage feature")
+    kind = re.fullmatch(r"week-\d+-(recap|preview)", slug)
+    cta = "Read the %s" % (kind.group(1) if kind else "story")
     feat = ('<a class="feature" href="/story/%s/"><div class="feat-img"><img src="/%s" alt="%s" loading="lazy"></div>'
-            '<div class="feat-body"><h3 class="feat-h">%s</h3><p class="feat-d">%s</p></div></a>') % (
-        slug, esc(spec["hero"]), esc(spec["heroAlt"]), esc(spec["title"]), esc(spec["dek"]))
+            '<div class="feat-body"><div class="feat-k">%s</div><h3 class="feat-h">%s</h3><p class="feat-d">%s</p>'
+            '<span class="feat-cta">%s <i>→</i></span></div></a>') % (
+        slug, esc(spec["hero"]), esc(spec["heroAlt"]), esc(spec["kicker"]), esc(spec["title"]), esc(spec["dek"]), cta)
     home = swap_span(home, m.start(), m.end(), feat, "homepage feature")
 
     related = [c for c in existing if c["slug"] != slug][:2]

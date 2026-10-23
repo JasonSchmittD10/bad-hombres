@@ -89,20 +89,22 @@ backwards, never nulls the bonus, and keeps `nextGame` / `nextKickoff`.
   `bonus.projected` all week; null blanks it (Week 1, Sunday 8pm). If you can't
   read the leaders, leave the existing object untouched.
 
-### `nextGame` — the homepage hero
+### `nextGame` — the homepage hero and the footer
 
 ```jsonc
 "nextGame": {"away":"BUF","home":"MIA","kickoff":"2026-09-17T20:15:00-04:00",
              "label":"Thursday, Sept 17 at 8:15 PM ET","network":"Prime Video"}
 ```
 
-The hero reads `week.json`: a countdown to `nextGame.kickoff`, then "Week N is
-Live" once it passes, then **"Week N is Complete"** once `status` is `final`,
-with `nextGame` as the matchup under it. So when a week goes final (the
-scoreboard run D; the Week Recap re-checks), `nextGame` must move to the first
-game of NFL week N+1 — from ESPN's schedule, teams by ESPN abbreviation (logos
-are `assets/nfl/<abbr>.png`). If it can't be confirmed, set it to `null`: the
-hero hides the matchup rather than show a game that's already been played.
+The homepage reads it in every state: while picks are open, the red card counts
+down to `nextKickoff` (pick lock) with this game on it; once games are live, the
+Next kickoff card shows it with a countdown; once the week is final, the
+footer counts down to it. So whenever its kickoff passes it must move to the
+next game still to come, and when a week goes final (the scoreboard run D; the
+Week Recap re-checks) to the first game of NFL week N+1 — from ESPN's schedule,
+teams by ESPN abbreviation (logos are `assets/nfl/<abbr>.png`). If it can't be
+confirmed, set it to `null`: the cards hide rather than show a game that's
+already been played.
 
 Award names and criteria live in `index.html` as `BH_BONUSES` — the scoreboard
 and the season awards grid both read it, so don't restate them anywhere else.
@@ -122,8 +124,75 @@ curl -s https://bad-hombres.vercel.app/data/week.json | head -c 200
 
 ## Season awards
 
-Once a week's award is settled, record the winner so the flip card on the
-homepage stops saying TBD. Winners live in `BH_AWARD_WINNERS` in `index.html`.
+Once a week's award is settled, record the winner so its Bonus Board card on the
+homepage stops saying "Being settled" and the bank pays out. Winners live in
+`BH_AWARD_WINNERS` in `index.html` — one line, `window.BH_AWARD_WINNERS={...};`,
+because the scripts find it with a one-line regex.
+
+---
+
+# The homepage
+
+`index.html` is a shell. `assets/js/home.js` builds every section from the data
+files the routines already keep, so most of the page updates itself. The one new
+thing anybody writes each week is a handful of one-liners in `data/home.json`.
+
+## What each section reads, and who keeps it current
+
+| Section | Reads | Kept current by |
+|---|---|---|
+| **Hero, picks open** (status `preseason`): the Game of the Week with projections and pregame win probability, the pick'em, the red pick-lock countdown, the preview story, Pastor Wes's lock | `week.json`, `voices.json` (`gotw`, `wes`), `stories.json`, `home.json` (`title`, `preview`), `/api/scoreboard`, `/api/picks` | the Week Preview (Thursday) |
+| **Hero, live**: live score and win probability, the pulse chart, the next kickoff, Wes, the pick'em split | `week.json`, `/api/scoreboard`, `/api/pulse`, `/api/picks`, `home.json` (`title`, `live`, `kickoff`) | scoreboard runs A, B, C |
+| **Hero, final**: the recap, Big Dick and Little Bitch, the bonus winner, Wes's graded lock, next week's Game of the Week | `stories.json` (the `week-N-recap`), `week.json`, `BH_AWARD_WINNERS`, `voices.json` | run D and the Week Recap — nothing extra to write |
+| **Scoreboard**: all six matchups, actual / projected, each opens its sweat chart | `week.json`, `/api/scoreboard`, `/api/pulse` | scoreboard runs |
+| **On the line**: Beer Mile Watch, The Bubble, the week's bonus race | `numbers/odds.json`, `season.json`, `week.json` (`bonus`), `home.json` (`beerMile`, `bubble`, `bonus`) | `numbers.py` (run D / the Week Recap); the footers, the Week Preview |
+| **Standings** and **Power Lines** | `season.json` (teams, `ranks`), `record.json`, `numbers/odds.json` | run D: `sync.py season`, `power.py`, `numbers.py` |
+| **The Bonus Board**: Weekly (fourteen cards, two rows of seven) and End of season (the six races) | `BH_BONUSES`, `BH_AWARD_WINNERS`, `BH_SEASON_AWARDS`, `week.json` (`bonus`), `season.json`, `record.json` | run D / the Week Recap (`BH_AWARD_WINNERS`) |
+| **The Hombres**: all twelve in standings order, rings, career W-L, the money line | `season.json`, `history.json` | run D (`build-history.py add-week`) |
+| **The Booth**: the featured story, three more, Zack's Luck Index | the `<a class="feature">` in `index.html`, `stories.json`, `voices.json` (`zack`) | `publish-story.py` (the preview and the recap) |
+
+## The one-liners: `data/home.json`
+
+Written with `scripts/home.py`, never by hand (`check.py` fails a malformed one).
+Every line is optional, and a line can carry an `until`: once it's missing or
+expired, the slot hides or the page says something plain and computed instead
+("Hoa leads by 19.00."). So skipping a line is always safe, and a stale joke
+can't show.
+
+```bash
+scripts/home.py                                    # this week's lines: set, missing, expired
+scripts/home.py set title "The Beer Mile Bowl"
+scripts/home.py set live "David hasn't scored yet. That's not a strategy, it's a schedule."
+scripts/home.py set kickoff "Football in Paris before breakfast." --tag Paris
+scripts/home.py clear live
+```
+
+| Line | Where | Who writes it | Expires |
+|---|---|---|---|
+| `title` | the hero's headline all week, 36 characters at most. The Game of the Week as a title, not the article's headline. Without it: "Hoa vs. David". | the Week Preview, Thursday | — |
+| `preview` | the hero's line while picks are open. Without it: the preview's dek. | the Week Preview | — (shows only before kickoff) |
+| `live` | the hero's line once games are on | scoreboard runs A, B, C | the next kickoff, by default |
+| `kickoff` | the Next kickoff card, with an optional red `--tag` (`Paris`) | runs A, B, C, only when the next game has a story | that kickoff, by default |
+| `beerMile`, `bubble`, `bonus` | the footers on the three On the line cards (hidden once the week is final). Without `beerMile`: a computed line. | the Week Preview | `--until`, if it could go stale |
+
+Rules: VOICE_GUIDE.md applies to every line — third person, never the
+commissioner's voice, short and funny, one number at most, nothing from
+`voice/USED.md`, every name and number from the data. One or two sentences,
+140 characters at most. A line has to stay true until it expires: write about
+the stakes, not who's ahead, or give it an `--until`. The script turns straight
+quotes curly.
+
+**Pastor Wes's quote.** The Wes card quotes him. When the Week Preview records
+his lock it adds his best line from the homily as `quote` (one sentence, 120
+characters at most, no quote marks — the card adds them).
+
+## Images
+
+The face tiles (the hero face-off, Big Dick and Little Bitch, the Hombres) use
+`assets/members/cutout/<Name>.svg`: the illustration without its grey square.
+`scripts/optimize-svg.py` writes one with every new illustration;
+`scripts/optimize-svg.py --cutouts` rebuilds them all. The Bonus Board art is
+`assets/awards/wkN.jpg`, named in `BH_BONUSES`.
 
 ---
 
@@ -222,7 +291,8 @@ State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
 ```jsonc
 {
   "wes":  {"record":{"w":1,"l":0},
-           "locks":[{"week":2,"pick":"Hoa over Tola","result":null}]},
+           "locks":[{"week":2,"pick":"Hoa over Tola","result":null,
+                     "quote":"<his best line from the homily>"}]},
   "zack": {"history":[{"week":1,"index":-4,"paRank":2,"standingsRank":6}]},
   "gotw": [{"week":2,"a":"Tola","b":"Erick","reason":"Projected within 1.4"}]
 }
@@ -231,7 +301,9 @@ State for the two recurring voices in `VOICE_GUIDE.md`. Update it **after**
 **Pastor Wes's Lock of the Week.** Each recap names one pick for next week. On
 Tuesday: grade last week's lock (`result` → `"W"` or `"L"`), bump `record`, then
 append this week's new lock with `result: null`. The record is quoted in the
-recap and should be allowed to be bad — never shade a grade.
+recap and should be allowed to be bad — never shade a grade. `quote` is optional:
+his best line from the preview's homily, for the homepage's Wes card ("The
+homepage", above).
 
 **Game of the Week.** Scored by `scripts/bh_league.py` `watchability()` and
 recorded once by `scripts/game-of-the-week.py`; after that it's locked and
