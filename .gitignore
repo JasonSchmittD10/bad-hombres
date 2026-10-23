@@ -5,3 +5,7 @@ assets/incoming/
 __pycache__/
 # the pulse sampler's live working file (local only; the ledger is data/chokes.json)
 data/pulse.json
+# the beat writers' notebooks (VOICE_GUIDE.md, "The staff") — they hold what the writers
+# read in the group chat, and this repo is public
+.claude/agent-memory-local/
+.claude/agent-memory/

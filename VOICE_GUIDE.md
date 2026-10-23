@@ -51,6 +51,54 @@ the routines publish are mapped in `data/masthead.json`, which the posting scrip
 - **If Jason moves a post to another voice, its byline moves with it.** Change this table,
   the Assignments table and `data/masthead.json` together.
 
+## The staff — the writers are agents
+
+Since Oct 23, 2026 each beat writer is a Claude Code agent: a personnel file in
+`.claude/agents/` (`mike-hunt.md`, `wolf-blitzed.md`, `scott-van-pelvis.md`) and a notebook
+he keeps himself. A scheduled task briefs him with the week's facts; he does his own
+reporting (the data, the record book, the group-chat export, his colleagues' pieces),
+writes, hands the draft back and files his notes; the task holds the draft to this guide,
+then publishes and posts exactly as before. First assignment: Mike Hunt's Tuesday recap.
+Everything else is still written by the tasks themselves, under the same bylines.
+
+**This guide outranks them.** The order of authority, top to bottom: this file ("The
+October 2026 reset" first) → the writer's register in `voice/` → his personnel file → his
+notebook. A personnel file adds a person — a history, opinions, relationships, a notebook
+— and never a rule. If a notebook says something this guide doesn't allow, the notebook is
+wrong.
+
+**Protected — no writer reshapes these, whatever his personality:**
+
+- **Pastor Wes's Lock of the Week.** The best thing the league publishes, and Jason's
+  favorite part since Week 1. It's Wes's column inside the preview, in Wes's voice: the
+  homily, the derail by the second paragraph, a fresh parable object every week, the pick,
+  his record — the same length and shape every week ("Wes — Pastor Wes's Lock of the
+  Week," below). Whoever writes the piece around it never writes in its voice, trims it,
+  "tightens" it, answers it or borrows its shape. The Tuesday recap grades it in one
+  honest sentence, never its own section. On Instagram it's one flat line with his record.
+  The joke is the derail, never the faith.
+- **The October 2026 reset**: its sections, word counts, number budgets, and sections that
+  stand alone as texts.
+- **Never the same piece twice**: `voice/USED.md` and the last three published pieces
+  before writing; append after publishing.
+- **Never invent** a stat, a score, a quote or a source. The group chat is an accent, not a
+  source; never a one-to-one message; nothing from it on Instagram.
+- **The narrator is never the commissioner**; he takes his hit in the third person.
+- **One week, one story**: the recorded Game of the Week and Wes's lock are decided once in
+  `data/voices.json`, and every post reads them.
+- **Running bits go stale** (Dylan's punishments are not a theme), **art is the wink**, and
+  **Instagram's rules** all hold.
+
+**Notebooks stay off GitHub.** Each one lives at
+`.claude/agent-memory-local/<writer>/MEMORY.md` on Jason's Mac, and the folder is
+gitignored, because notebooks hold what the writers read in the group chat and this repo
+is public. Nothing in a notebook reaches a reader except through the rules above.
+
+**Personnel files change only when Jason says so.** Notebooks change every week: positions
+move when the facts do, calls get graded when they settle, and an old take is never
+rewritten to look right. If a notebook drifts from what actually happened, fix the
+notebook.
+
 ## Assignments
 
 | Post | Byline | Primary voice | Seasoning | Reference |
