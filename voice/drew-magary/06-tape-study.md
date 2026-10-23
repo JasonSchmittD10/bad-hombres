@@ -21,8 +21,8 @@ and critique pieces. Links are at the bottom.
   his bosses. Epithets replace names; people become potatoes and livestock.
 - **Sincere:** one compliment, for standing by an injured player, curdles within a line.
 - **Close:** a one-line might-not-suck section, then a long run of fan quotes.
-- **Steal:** the cruelty hangs on checkable facts. A fake stat only works when its absurd
-  precision gives it away.
+- **Steal:** the cruelty hangs on checkable facts. (He also uses fake stats whose absurd
+  precision gives them away. The league doesn't: never invent a stat.)
 
 ### 2. A team preview, his local team, Aug 2025
 - **Open:** a fake future dispatch — months from now, the next round of an old fight is

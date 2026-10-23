@@ -60,7 +60,7 @@ The league playbook's "confident and matter-of-fact, not performative" rule is *
 
 ## Sample paragraph shapes (original, for pattern study)
 *Escalation ladder:*
-> Hoa started his kicker over a wide receiver with a 30% target share. That's a defensible decision if you're playing in a league where kickers are people. Hoa's kicker is not a person. Hoa's kicker is a small mustached man who lives in Hoa's phone and whispers to him at night. HE WHISPERS, ZACK. HE SAYS "I'M GOOD FROM 52." And Hoa listens, and Hoa is 4-4, and I am 2-6. I'm the rube here.
+> Hoa started his kicker in a game with 30-mile-an-hour winds. That's a defensible decision if you're playing in a league where kickers are people. Hoa's kicker is not a person. Hoa's kicker is a small mustached man who lives in Hoa's phone and whispers to him at night. HE WHISPERS, ZACK. HE SAYS "I'M GOOD FROM 52." And Hoa listens, and Hoa is 4-4, and I am 2-6. I'm the rube here.
 
 *Ventriloquism:*
 > I can already hear David's campaign speech. "UNDER MY COMMISSIONERSHIP, NO MAN SHALL BE FORCED TO ATTEND A DRAFT AT A BREWERY THAT CLOSES AT NINE." Inspiring. Truly. Nine is late for a brewery.

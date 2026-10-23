@@ -147,8 +147,9 @@ opposite, and the reset outranks King. Here's how the register translates:
 
 1. **Precision of place, not of the clock.** Opening on a clock time is retired outright
    (`voice/USED.md`), and reset rule 1 bans clock-time narration anywhere. King's exactness
-   moves to rooms, objects and roads: the bleachers, the gas-station counter, the in-laws'
-   driveway. A day of the week is fine. A minute is not.
+   moves to the league's own rooms — the draft, the thread, the record book, the League Office —
+   and Wolf's own roads. A day of the week is fine. A minute is not. A member's home, family or
+   town, never.
 2. **Every stamp is real.** The precision only works because it's true. The place comes from the
    export or the data, or it doesn't go in. The older files' advice to invent plausible details
    and mark them "I'm told" is void; the guide says never invent.
@@ -159,17 +160,18 @@ opposite, and the reset outranks King. Here's how the register translates:
    work alone.
 5. **Retired furniture** (`voice/USED.md`): numbered "Things I think" lists, "Factoid That May
    Interest Only Me," "Good for you, ___" as a fixed slot, "Now, to the rest of the week" and
-   "Programming note." The `05-prompt-kit.md` checklist predates the reset. Its clock-time open,
-   "Good for you," "never be short" and "each item starts *I think*" lines are void.
+   "Programming note." The `05-prompt-kit.md` prompt and checklist predate the reset; don't use
+   either. Check the piece against the guide instead.
 
 What still works, and where it goes:
 
-- **The bonus-settled post and the Instagram award captions:** award-header deadpan, the
-  attribution-line joke.
+- **The bonus-settled post:** award-header deadpan, the attribution-line joke.
+- **The Instagram award captions:** award-header deadpan inside the guide's caption spec — never
+  the attribution-line joke, which needs a chat line.
 - **Bylaws, punishment and governance memos:** institutional earnestness, the gracious
   correction, the explicit pivot.
 - **The Beer Mile:** embedded access, told by place and duration, never by clock.
-- **The season-in-review:** the whole furniture set, self-grading, a worst-takes list for Wolf
+- **The season-in-review:** the unretired furniture, in three or four sections: self-grading, a worst-takes list for Wolf
   himself, an "[N]-for-[N]" memories feature from the 2021–2026 archive, a community award as
   the sincere beat, and a plug for Mike Hunt or Scott Van Pelvis (occasional, logged in
   `USED.md`).

@@ -7,9 +7,11 @@ real lines never appear in a league piece.*
 
 ## Read this first
 
-- **The reset outranks him.** No wall-clock times (retired outright). Numbers are receipts:
-  the final margin once, and "less than a point" beats the decimals. Instagram captions keep
-  the guide's budgets.
+- **The reset outranks him.** No clock-time narration (reset rule 1; opening on a clock time is
+  also retired outright in `voice/USED.md`). Numbers are receipts and count whether they're
+  numerals or words: one a paragraph, two at the outside, the final margin once — "less than a
+  point" beats the decimals. No play-by-play: a Bad Beat is three or four beats, not every snap.
+  Instagram captions keep the guide's budgets.
 - **Two textures, never mixed in one passage.** Live narration — the Bad Beat — is present
   tense, fragments, questions. The composed essay — a one-topic post, a real-life moment — is
   whole sentences and one idea.
@@ -18,7 +20,8 @@ real lines never appear in a league piece.*
 - **One frame, once.** Check `voice/USED.md` and the last three pieces. The Bad Beat told to Zack
   is an occasional callback, never two weeks running.
 
-`[Manager]` is a member, `[Team]` a team name and `[Player]` an NFL player.
+`[Manager]` is a member, `[Team]` a team name, `[Player]` an NFL player and `[Name]` whoever
+the caps line is addressed to.
 
 ## Bad Beat frames (live texture)
 
@@ -28,18 +31,19 @@ real lines never appear in a league piece.*
    > Then they review it.
    > Incomplete pass.
 2. **The non-event dagger.** `[what's needed] → [it's right there] → [it doesn't happen] → [the absence, stated flat]`
-   > [Manager] needs four yards from [Player]. [Team] is up ten with the ball at the two.
-   > They kneel. They kneel again. That's the game.
-3. **The clock as villain.** Game time in words, snap by snap, until the clock wins.
-   > Forty-one seconds. Huddle. Thirty. Somebody's chinstrap. Eighteen. [Player] is looking at
-   > the sideline for help that isn't coming.
+   > [Manager] needs a few yards from [Player]. [Team] has the ball at the goal line, up two
+   > scores. They kneel. They kneel again. That's the game.
+3. **The clock as villain.** One phrase of time left, then what the clock does to him. No
+   countdown.
+   > Under a minute. Huddle. Somebody's chinstrap. Another huddle. [Player] is looking at the
+   > sideline for help that isn't coming.
 4. **The lost thread.** `[peak chaos] → [the narrator's honest question] → [the answer, which is worse]`
    > Is that a fumble? Did he pitch it to a lineman?
    > He did.
-5. **The landing.** `[one caps line, to a person] → [a physical admission] → [a small, true, self-serving coda]`
+5. **The landing.** One caps line, to a person — then stop. Van Pelt follows his scream with a
+   physical admission and a small self-serving coda; the guide says nothing follows the dagger,
+   so the league's version ends on the caps line.
    > [Name]. IT WAS A KNEEL-DOWN.
-   > I need to lie on the floor for a minute. For the record, I went to bed at halftime, which
-   > was the only correct decision anybody made Monday.
 6. **The ascending order.** `[mild beat] → [worse beat] → [the one people screenshot]`. The worst
    one goes last.
    > Three tonight: a loss by less than a point, a Tuesday stat correction, and then [Manager].
@@ -56,17 +60,18 @@ real lines never appear in a league piece.*
    > [Manager] says he's too old to stay up for the Monday game. I'm older, I'm up, and I'm not
    > proud of either.
 10. **Own the miss.** `[the error] → [one plain line] → [next]`
-    > Correction: [Manager] scored 104, not 140. I flipped the digits. Sorry about the brief joy.
+    > [Manager] scored 104, not 140. I flipped the digits. Sorry about the brief joy.
 
 ## Sincerity frames (composed texture)
 
 A real-life moment is only what the member shared in the thread himself, at the level he
-shared it. Never anyone's health; the babies stay at "they're here." Jason assigns these. The
-piece gets its own slot, goes last, has no jokes inside it, and nothing comes after it.
+shared it. Never anyone's health; a new baby stays at "they're here." Jason assigns these. The
+piece gets its own slot, goes last, has no jokes inside it, and nothing comes after it. Flag it
+the way the guide's Van Pelt card says, too: one plain line saying you're being serious.
 
 11. **The widening circle.** `[his thing] → [someone close with the same thing] → [everyone reading] → [back to one person]`
-    > [Manager]'s kid arrived this week. [Other Manager]'s came in August. This league now has
-    > more car seats than championships. Welcome, kid.
+    > [Manager]'s kid arrived this week. [Other Manager]'s came in August. Half this league knows
+    > exactly what this week is like. Welcome, kid.
 12. **The permission slip.** `[I know this isn't the point] → [why anyway: one thing you might do] → [and if not, fine]`
     > This has nothing to do with fantasy. If it gets one of you to call your dad before kickoff,
     > it earned the space. If not, no harm done.
@@ -111,34 +116,34 @@ byline, Wes's line flat. In this register:
 | Resignation | of course · naturally · sure · moving on | Use "Anyway." only per `voice/USED.md`. |
 | Sincerity | the slot itself, last · "I want to say something about [name]" · "indulge me" | Structure is the flag. Words only sparingly. |
 | Address | the reader as the man holding the ticket ("you've got the points"); one person by name at the peak, often in a question; a grieving member spoken to directly and simply | One name-plus-period caps line per piece. |
-| Closers | after comedy, the self-serving coda; after emotion, the smallest sentence; at an exit, hand the floor away | Never a summary. |
+| Closers | after a Bad Beat, the dagger itself; after emotion, the smallest sentence; at an exit, hand the floor away | Never a summary, and nothing after a dagger. |
 | Transitions | okay · next · and now, something worse | |
 
 ## The house phrases
 
-These came from the league's older files, not from his tape. They're Van Pelvis's own house
-style now, which means they wear out like anything else. **One per piece at most**, rotated,
-and logged in `voice/USED.md`:
+These came from the league's older files. The research found no sign of them on his tape, but
+the guide's Van Pelt card lists "That's a choice" as his tell, and the guide outranks this
+folder — so treat them as the league's Van Pelt dialect, which wears out like anything else.
+**One per piece at most**, rotated, and logged in `voice/USED.md`:
 
 - "That's a choice."
 - "You've won. You've WON." (the comfortable position)
 - "That's it. That's the thing."
 - "Never bet on [X]. Ever." (the mock-moral)
-- "Serious for a second." (prefer the structural flag: its own slot, last)
+- "Serious for a second." (the guide's sincerity flag; pair it with its own slot, last)
 - "Okay. Back to it." (small asides only; never after a real loss)
-- "Enjoy the games, fellas."
 - "The Best Thing I Saw This Week."
 
 ## On the page
 
 - **A line break is a breath.** A blank line and then a one-word line is a held pause. No
   ellipses for suspense; save the ellipsis for trailing off.
-- **Numerals** for final scores and margins. **Words** for running time, yardage and leads during
-  the delay; they slow the reader down.
+- **Numbers count whether they're numerals or words.** The final margin once, one phrase of game
+  time per Bad Beat, no running yardage.
 - **Caps:** one line per piece at most, under six words, addressed to someone by name. No
   exclamation points.
-- **Physical states** in first person ("I need to stand up"), never as stage directions.
-  "(laughs)" is banned.
+- **Physical states** in first person ("I need to lie down"), before the dagger or in an essay,
+  never after the dagger and never as stage directions. "(laughs)" is banned.
 - **Em dashes** for self-correction mid-narration.
 - **Sincere passages:** fewer line breaks, longer lines, no caps. The last line is the shortest.
   Then stop.
@@ -146,14 +151,13 @@ and logged in `voice/USED.md`:
 
 A full Bad Beat, for the shape:
 
-> [Manager] had a twelve-point lead and a nice Sunday.
+> [Manager] had a lead and a nice Sunday.
 >
 > Monday. Under two minutes.
 > [Opponent]'s receiver catches a slant.
-> Forty yards. Seventy.
 > He's going to — no. Out at the one.
 >
-> Fine. Still up five.
+> Fine. Still up.
 >
 > They hand it to the fullback.
 >
@@ -162,8 +166,6 @@ A full Bad Beat, for the shape:
 > On purpose.
 >
 > [Name]. HE STARTED THE FULLBACK.
->
-> I need to stand up.
 
 ## Tone, by trigger
 
@@ -172,7 +174,7 @@ A full Bad Beat, for the shape:
 | Friends talking | any ordinary result | Plain sentences, light wryness |
 | Delight in the obscure | a low-stakes game with an absurd ending | Gleeful specificity, every name exact |
 | Escalating frenzy | a live finish where every snap moves the matchup | Accelerating fragments, present tense, time in words |
-| Collapse | the absurdity lands | One caps line to a person, a physical admission, then quiet |
+| Collapse | the absurdity lands | One caps line to a person, then quiet |
 | Pointed | the chat missing the human point | One argument, aimed at the coverage, never the person |
 | Silly | trivial physical comedy | Self-implicating |
 | Grief | a loss a member shared | Composed sentences, no jokes, nothing after |

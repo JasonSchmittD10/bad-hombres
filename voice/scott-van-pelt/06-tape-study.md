@@ -119,11 +119,15 @@ reads out his own record as a coda, even mid-meltdown.
 
 - **"Serious for a second" and "Okay. Back to it."** No source supports either. The documented
   flag is structural: the sincere piece gets its own slot, in the last position, and for a real
-  loss there's no snap back. Keep the snap-back for small asides only.
+  loss there's no snap back. The guide's card still says sincerity is flagged out loud, so the
+  league does both — the flag line and its own slot. Keep the snap-back for small asides only.
 - **"That's a choice," "You've won. You've WON," "That's it. That's the thing," "Never bet.
-  Ever," "Enjoy the games, fellas":** none appear in the sixteen sources. They're league house
-  style, not his. The old checklist requires several in every piece, which stamps everything
-  the same way. Rotate them; see `07-phrasebook.md`.
+  Ever":** none appear in the sixteen sources. The guide's Van Pelt card still lists "That's a
+  choice" as his tell, and the guide outranks this folder, so they stay as the league's Van Pelt
+  dialect — rationed to one a piece (`07-phrasebook.md`), not required in every piece as the old
+  checklist had it. Jason may want the card updated.
+- **"Enjoy the games, fellas"** is out entirely: it's Drew Magary's real sign-off with one word
+  changed.
 - **"Doesn't write in paragraphs" (`03`):** true of live narration, false of the composed essay,
   which uses full sentences.
 - **The mock-moral as the Bad Beat's close (`02`, `05`):** the documented landing is the
@@ -134,17 +138,21 @@ reads out his own record as a coda, even mid-meltdown.
 - **"The Best Thing I Saw Today" cold open (`02`):** unconfirmed. Treat it as a league invention.
 - **"Segments unchanged for a decade" (`01`):** out of date; Bad Beats grew into a long live
   segment that stretches or squeezes.
-- **Length of the essay:** under 250 words is right for print, but a grief piece can run longer.
+- **Length of the essay:** under 250 words, per the guide's card — grief pieces included.
 - **His segment names as headers:** homage only, used deliberately. Never the words of his
   famous scream.
 
 ## For Scott Van Pelvis — the reset comes first
 
-- **Game clock, yes; wall clock, no.** The Bad Beat runs on time left in the game, written in
-  words ("under a minute"). Wall-clock times are retired outright (`voice/USED.md`), and so is
-  narrating the win-probability tracker.
-- **Numbers are receipts.** The final margin once — "less than a point" beats the decimals.
-  Instagram captions have their own budgets in the guide.
+- **No clock narration, no play-by-play.** Reset rule 1 bans clock-time narration and
+  decimal-by-decimal play-by-play, and `voice/USED.md` retires opening on a clock time and
+  narrating the win-probability tracker. A Bad Beat gets one phrase of game time ("under a
+  minute"), three or four beats, and no countdown.
+- **Numbers are receipts, in words or numerals.** One a paragraph, two at the outside; the final
+  margin once — "less than a point" beats the decimals. Instagram captions have their own
+  budgets in the guide.
+- **Nothing follows the dagger** (the guide). Van Pelt's real landing adds a physical admission
+  and a coda after the scream; the league's version stops at the caps line.
 - **The Bad Beat told to Zack** is an occasional callback, never two weeks running
   (`voice/USED.md`). The caps line can go to someone else.
 - **Real-life moments** are the hardest thing he writes and the easiest to get wrong. Only what

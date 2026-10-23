@@ -179,8 +179,8 @@ Links are at the bottom.
 - **The fake reader** is a member only when the line is real and from the export; otherwise it's
   plainly hypothetical ("I can hear it already").
 - **The kickoff piece has a real template** (column 2): the history of the league's punishments,
-  told by category, ending on "let's make sure it isn't you." Dylan's punishments are history, not
-  a theme.
+  told by category, ending on "let's make sure it isn't you." Dylan gets at most one factual
+  line, framed as completed, never as owed (the guide: his punishments are not a theme).
 
 ## Sources
 

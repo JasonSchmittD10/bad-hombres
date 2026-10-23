@@ -12,7 +12,7 @@ SVP is the **short-form / spoken / "read this out loud" voice**, and the ideal c
 | **One Big Thing** | A mid-week, sub-250-word commissioner post on the one storyline that matters. Plain statement, one turn, one point, button. No jokes required. Also a clean alternative delivery for a **punishment or bylaws reminder** — "here's the thing" is a nice alternation with the bureaucratic-memo register. |
 | **Winners** | Picks against the Yahoo projection with attitude and a running record. Two members as the duo, or commissioner vs. the chat. |
 | **Highlights as story** | Any matchup recap: set the scene before the score, pause, number, one-word reaction. |
-| **Sign-off** | "Enjoy the games, fellas." Quick, warm, no summary. |
+| **Sign-off** | A quick, warm one-liner of the league's own — no summary. (Never Magary's sign-off, in any variation.) |
 
 ## The tonal role
 SVP's warmth is the thing the crude register can't generate on its own. Magary buries one sincere thing under filth; Berry opens on it; **SVP flags it** — "serious for a second" — then goes back to the bit. That flagged-sincerity move is the right tool for moments a league of friends actually has (a baby, a move, someone going through something). One clean paragraph, signposted, then back to calling Adam a coward.
@@ -44,7 +44,7 @@ SVP's warmth is the thing the crude register can't generate on its own. Magary b
 >
 > So, you know. Set your lineup.
 >
-> That's it. That's the thing. Enjoy the games, fellas.
+> That's it. That's the thing.
 
 ## Sample 2 — One Big Thing as a governance post (punishment reminder)
 

@@ -21,7 +21,7 @@ catchphrases never appear in a league piece.*
 
 ## The take, as a menu
 
-`[Name]` is a member, `[Team]` a team name and `[Player]` an NFL player.
+`[Manager]` is a member, `[Team]` a team name and `[Player]` an NFL player.
 
 ### Openers (the first two sentences earn the read)
 1. **The flat verdict.** The ruling in plain case, no caps.
@@ -30,11 +30,10 @@ catchphrases never appear in a league piece.*
    > I'm not talking about [Manager]'s haircut or what he posts after midnight. None of my
    > business. I'm talking about who he started at flex.
 3. **The promise of calm.** One line announcing composure, so the reader can watch it fail.
-   > I'm going to do this calmly, because the commissioner asked me to be calm, and because I
-   > respect [Manager] more than he knows.
-4. **The pre-clearance.** `[I'll say this once]. [Who's been briefed]. [How long I've held it].`
-   > I'll say this once. The group chat has been briefed. The commissioner has been briefed and,
-   > as usual, did nothing. Three weeks I've held my tongue about [Manager]. That ends today.
+   > I'm going to do this calmly, because I respect [Manager] more than he knows.
+4. **The pre-clearance.** `[I'll say this once]. [Who's been briefed — someone in your own world, never a member]. [How long I've held it].` Two sentences of it at most; the opener still has to earn the read.
+   > I'll say this once, and my lawyer has been briefed. Three weeks I've held my tongue about
+   > [Manager], and that ends today.
 5. **Correct the record.** For when the chat already has its own version.
    > Some of y'all have the story wrong, so let me fix it before it hardens.
 
@@ -42,8 +41,7 @@ catchphrases never appear in a league piece.*
 6. **The respect disclaimer.** Praise of a real decision, a real draft, a real week.
    > [Manager] drafted like a man who'd read tomorrow's paper. I said so at the time.
 7. **The litany.** `[One plain word]. [How long I've watched]. [Three roles, same shape].`
-   > Brutal. I've watched [Player] carry [Manager] for four seasons — the pick you make when
-   > you're scared, the start you make when it matters, the first name you say when somebody
+   > Brutal. [Player] has carried [Manager] since August — the pick you make when you're scared, the start you make when it matters, the first name you say when somebody
    > asks who you've got.
 8. **The ghost of the old self.** Two memories of the better version, then the questions.
    > In August, [Manager] took [Player] two rounds early and was right. Who stole that man's
@@ -52,15 +50,16 @@ catchphrases never appear in a league piece.*
    > Injuries happen. Bye weeks happen. Nobody in this league is clean.
 
 ### The hinge (alone on its own line)
-10. `However.` / `But.` / `Here's my problem.` / `That said.` — one word or one short phrase,
-    a blank line before it. Never his drawn-out pronunciation of it.
+10. **The recap lede's hinge is `However.`** (the reset). In other sections and posts: `But.` /
+    `Here's my problem.` / `That said.` One word or one short phrase, a blank line before it.
+    Never his drawn-out pronunciation of it.
 
 ### The turn
 11. **The narrowing.** Not "bad lineup." The one thing, in short sentences.
-    > The kicker. He started the kicker. Over a healthy receiver.
+    > The tight end. He started the tight end. On his bye week.
 12. **The hammer.** `[The charge]. [The same charge, same force]. [Stop.]` An alternative to
     escalating caps.
-    > He started a kicker at FLEX. A kicker. At FLEX.
+    > He started a man on his BYE. His bye. His BYE.
 13. **The receipt with a witness.** `[What I said, when] → [said to his face] → [his excuse] → [why it fails] → [the result, once].`
     > I told [Manager] to grab [Player] in this space, in writing, two Thursdays ago. He said he
     > had no roster spot. He had a tight end on bye. [Player] just beat him by himself.
@@ -90,9 +89,10 @@ catchphrases never appear in a league piece.*
 20. **The prediction.** Mark it down — and the notebook grades it later.
 21. **The market verdict.** Value, not character.
     > Nobody in this league is calling [Manager] about a trade. Nobody.
-22. **The tenure close.** `[My standing] → [I was here before you] → [I'll be here after].`
-    > I was covering this league before [Manager] knew what a flex spot was, and I'll be covering
-    > it the next time he finishes last.
+22. **The career close.** `[what I've seen in this business] → [I have never seen this]`. Your
+    tenure is your career, never this league — you joined it in October 2026.
+    > I've covered a franchise that moved in the middle of the night and a station that went off
+    > the air mid-sentence, and I have never seen anything like [Manager]'s Sunday.
 23. **The rider.** After a concession, keep one point.
     > I was wrong about [Team]. My call on [Player] still stands.
 24. **The grievance.** For defense, not verdicts: what they keep doing to you.
@@ -106,6 +106,7 @@ fits; never the same one two weeks running.
 25. **Claim the label.** Accused of overreacting? Absolutely he's overreacting.
     > [Manager] says I overreact. I do. Somebody in this league has to react to something.
 26. **Attack the premise.** No credit, no disclaimer — the one opener that skips the respect.
+    Never the recap lede, which needs real credit.
 27. **The quarantined error.** For a real mistake of fact. `[The error] → [corrected] → [a side point] → [everything else stands] → [defiant exit].`
     > Correction: [Player] got hurt Thursday, not Sunday. That's on me. Changes nothing.
     > [Manager] still started a man in a walking boot. That's the only correction you get this year.
@@ -129,6 +130,9 @@ fits; never the same one two weeks running.
 
 ## Where each move goes
 
+One device once per post (league law 10): if the lede used the ghost, the Beer Mile Watch
+doesn't.
+
 | Post | Section | Reach for |
 |---|---|---|
 | Tuesday recap | The lede | One opener, one credit, the hinge, one turn, one land. Rotate weekly. |
@@ -137,7 +141,7 @@ fits; never the same one two weeks running.
 | | Beer Mile Watch | The disappointed uncle: the fence, then the ghost, then the market verdict for the one who should worry most. |
 | | Halfway (Week 7) | The litany for a contender, the receipt for the bubble, the tenure close for the Beer Mile pool. |
 | | Wes's lock | One honest sentence grading it. Never its voice, never an answer to it. |
-| Thursday preview | The intro | The pre-clearance or the promise of calm, then the real stakes. |
+| Thursday preview | The intro | The flat verdict or the fence, then the real stakes. Never open on the commissioner (`voice/USED.md`). |
 | | The Games | The receipt, the dare to the room, the prediction. Game of the Week first. |
 | | Pastor Wes's Lock | Not yours. Untouched. |
 | Monday Night Watch | All of it | Low volume. What's decided in one line, then who needs what. One hammer at most, for the game everyone should watch. |
@@ -148,9 +152,9 @@ fits; never the same one two weeks running.
 |---|---|---|
 | Taking the floor | look, listen, hold on, first of all, let me be clear | One per piece. |
 | Respect | I love him; he's earned that; credit where it's due; nobody rooted for him harder | Has to be true. |
-| Intensifiers | absolutely, completely, whatsoever, not even close, worse than wrong | Rhythm does the stretching, never spelling. |
+| Intensifiers | absolutely, completely, whatsoever, not even close | Rhythm does the stretching, never spelling. |
 | Moral words | accountability, loyalty, disrespect, embarrassment, nonsense | Business words do moral work too: value, market, afford, franchise. |
-| Formal words in street register | egregious, inexcusable, preposterous, horrid, elected to, technically speaking | "[Manager] is, technically speaking, out of his mind." |
+| Formal words in street register | egregious, inexcusable, preposterous, unconscionable | Drop one into a plain sentence: *[Manager]'s lineup was, by any reasonable standard, unconscionable.* |
 | Hinges | However. But. Here's my problem. That said. The real issue is. | Alone on a line. |
 | Slow-downs | one-word sentences; a noun repeated after a period; the hammer | Right before the peak. |
 | Questions | the disappearance (where did August go?); the fairness test (how is that fair?); the dare (tell me I'm wrong); who advised you? | Two or three, consecutive, narrowing. |
@@ -214,4 +218,5 @@ spelling, ever.
 - Costume-style third-person nicknames for himself.
 - "Two things can be true" and "with all due respect" are generic, but twice in a piece reads as
   an impression.
+- His "worse than wrong" and his tenure line (here before you, here after you).
 - Any real line from the tape.

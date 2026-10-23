@@ -10,8 +10,7 @@ real lines, section names and sign-off never appear in a league piece.*
 - **The reset outranks him.** Short pieces, sections that stand alone as texts, one number a
   paragraph. A blitzed piece is a few hard texts, not a column.
 - **Every shot rides on a fact.** A record, a trade, a quote from the export (one line per
-  piece), a lineup decision. A fake stat only works when its absurd precision gives it away
-  ("seventeen percent of his roster is kickers").
+  piece), a lineup decision. Never a fake stat, however obviously fake.
 - **Decisions, not people.** Cartoon violence goes to NFL owners, players and institutions,
   never a member. Members get roasted for what they did — never their health, families, jobs or
   money.
@@ -28,8 +27,8 @@ real lines, section names and sign-off never appear in a league piece.*
    > locking your keys in the car and setting the car on fire to stay warm. YOU SENT A GIF ABOUT
    > IT, [MANAGER]. Incredible.
 2. **Escalate by sin.** `[small offense] → [the pattern] → [what it reveals] → [the worst thing, said flat]`. No caps needed; the facts get louder on their own.
-   > Fine, [Manager] vetoed one trade. Then four. Then one he'd proposed himself. Then we
-   > learned he'd been drafting off a magazine from 2019.
+   > Fine, [Manager] vetoed a trade. Then another. Then one he'd proposed himself. Then we
+   > learned he'd been drafting off a magazine from three seasons ago.
 3. **Verdict, then a worse one.** `[status] → [short verdict] → [a new bad fact] → [the verdict, worsened]`
    > [Team] is 2-5. Toast. Then their running back pulled a hamstring at a charity softball game.
    > Burnt toast, scraped into the sink.
@@ -38,19 +37,20 @@ real lines, section names and sign-off never appear in a league piece.*
    > in Week 2.
 
 ### Dissection and ventriloquism
-5. **The statement dissection.** `[his phrase] → [the cynical translation]`, each reply shorter than the last. One real line from the export at most; the rest can be the trade offer itself, which is league business.
+5. **The statement dissection.** `[his phrase] → [the cynical translation]`, each reply shorter than the last. One real line from the export at most — here, three phrases from one real message. A trade offer's own text counts only if it was posted in the thread, and then it's your one line; otherwise describe the players offered.
    > "I'm open to anything." He wants your best receiver for a backup tight end and a handshake.
    > "Let's find something fair." Fair to him. "No pressure." Pressure.
 6. **The CAPS stage direction.** `[an italic stage direction] + [the target's real motive, in CAPS] → [a flat correction]`. Voicing a motive is commentary; never present it as something he said.
    > *[Manager] enters, holding his phone like a hymnal:* I DID NOT DRAFT BADLY. MY PLAYERS
    > UNDERPERFORMED MY DRAFT. He did. They didn't.
 7. **Fake dialogue.** An inner monologue that gets cut off, or an exchange where the other side
-   keeps refusing.
-   > Check the injury report. Check the wind. Do not start the kicker in the wind game. Do not—
-   > [Manager] started the kicker in the wind game.
+   keeps refusing. The member's side is a stage direction, never a line he didn't say, and the
+   thing he's doing has to be real.
+   > Check the injury report. Check the bye weeks. Do not start the man on bye. Do not—
+   > [Manager] started the man on bye.
    >
-   > **[MANAGER]:** Can I undo the trade? **THE APP:** I can't help with that. **[MANAGER]:** I'll
-   > pay. **THE APP:** I can't help with that, [Manager].
+   > *[Manager] asks the app to undo the trade.* **THE APP:** I can't help with that. *[Manager]
+   > offers to pay.* **THE APP:** I can't help with that, [Manager].
 8. **The question, the flat answer.** `[a long earnest question] → [a one-word paragraph]`
    > Did [Manager] consider, during an eleven-minute draft-night bathroom break, that his
    > auto-draft was set to best available kicker?
@@ -58,20 +58,19 @@ real lines, section names and sign-off never appear in a league piece.*
    > No.
 
 ### Formats
-9. **The fake future dispatch** (a cold open). `[a future dateline] → [the inevitable, reported as news] → [exhaustion in advance]`
+9. **The fake future dispatch** (a cold open). `[a future dateline] → [the inevitable, reported as news] → [exhaustion in advance]`. Plainly the future — a dateline nobody could mistake for a real result.
    > WEEK 13, A TUESDAY: [Manager] has again proposed a rule making him retroactively undefeated.
    > It fails 11-1. It's October and I'm already tired.
-10. **The fake-credential expert.** `[a member] + [a credential built from a trivial true fact about him] + [earnest advice] → [weirder advice] → [a surreal derail] → [a mundane exit]`
-    > Dr. [Manager], D.D.S. (Doctor of Drafting Slowly), on injuries: Ice the ankle. Ice the
-    > phone too, because the injury report lives in there and it lies. A heron in my garage told
-    > me that. Anyway, I have to return a rug.
+10. **The fake-credential expert.** `[a member] + [a credential built from a trivial true fact about him] + [earnest advice] → [advice that turns out to be about his own real decision] → [a flat exit]`. No surreal derail: earnest authority sliding into a derail is the Lock's shape, and the Lock is Wes's.
+    > Dr. [Manager], D.D.S. (Doctor of Drafting Slowly), on injuries: Ice the ankle. Rest it.
+    > And never trade for a man who's already in a walking boot. Office hours are Tuesday.
 11. **The executive's proposal.** `[an entitled figure] + [a furious fix-everything proposal] + [an escalating demand] + [a petty ask]`. A natural home: the governance memo's evil twin.
     > PROPOSAL: Anyone who starts a player on bye hosts the draft in his garage and apologizes to
     > the garage. Also I need forty dollars.
 12. **The catalog.** Priced items with reactions that grow with the pretension — aimed at a stack
     of trade offers.
-    > ITEM 3: [Manager]'s offer, a backup quarterback and "future considerations," retail value
-    > one waiver claim. "A win-now package," says the offer. It says that about all of them.
+    > ITEM 3: [Manager]'s offer — a backup quarterback and a tight end on bye. Retail value: one
+    > waiver claim. Pretension value: incalculable.
 13. **Rude notes on all twelve.** Bolded entries of uneven length: verdict, evidence, context,
     kicker for the ones that earned it, two words of doom for the hopeless. The silence is the
     insult.
@@ -81,10 +80,10 @@ real lines, section names and sign-off never appear in a league piece.*
     > "hear me out," I won't.
 
 ### The sincere register
-15. **The sincere litany.** `[anaphora, three or four times, each a person and a sensory detail] → [close on a small object]`. No joke after it.
-    > I remember the first draft, at a folding table that wobbled. I remember [Manager] reading
-    > every pick like a court clerk. I remember [Manager] finding the trophy in a box of Christmas
-    > lights. It's still dented.
+15. **The sincere litany.** `[anaphora, three or four times, each a person and a sensory detail] → [close on a small object]`. No joke after it. Every item real, and only what Wolf could have read or seen — he wasn't there for the league's early years.
+    > I've read the first draft board, photographed on a folding table that wobbled. I've read
+    > [Manager]'s rules proposal, all four versions of it. I've read the note taped to the trophy
+    > box. The trophy is still dented.
 
 ## Building the insult noun
 
@@ -101,7 +100,7 @@ real lines, section names and sign-off never appear in a league piece.*
 ## Headlines
 
 The headline is the thesis. Four shapes:
-- `[Name] + [stacked charges, the heaviest last]` — *[Manager] Is A Menace, A Fraud, And A Kicker
+- `[Name] + [stacked charges, the heaviest last]` — *[Manager] Is A Menace, A Fraud, And A Bye-Week
   Truther*
 - `[Group] Sucks At [A Basic Task]` — *[Team] Sucks At Subtraction*
 - `[A two-word life order]` — *Draft Sober*
@@ -119,7 +118,7 @@ The headline is the thesis. Four shapes:
 | Deflates | a one-word verdict; a flat no; an old wound in a few flat words; a mundane errand that ends a derail | "Anyway." is rationed; find another. |
 | Transitions | hard cuts on headers; quoting the target to open a dissection | |
 | Closers | a curse at the villain; somebody else's sincere line as the last word; a small object | Never his sign-off. |
-| Texture | convenience-store food, cheap beer, strict snack rules, suburban dad errands, GPS fights | Wolf's own life belongs in his personnel file. |
+| Texture | the texture of Wolf's own life (his personnel file), never Magary's | |
 
 ## Reference shelf, translated
 

@@ -32,8 +32,8 @@ signature phrases and his life never appear in a league piece.*
 | Open | Shape | Example |
 |---|---|---|
 | The false complaint that flips | a complaint about someone you love → the real offense is that they're changing | *[Manager] says he's barely paying attention this year. He said it in a text with three injury-report links.* |
-| The found document | paste the official version, then rewrite it honestly in the same format | *Official: [Team] earned an A-minus from the draft grader. Honest, same font: he took a kicker in round nine.* |
-| The dated memory | a year, a place, one line of dialogue | *August, the first draft. Somebody asked whether kickers were allowed. Somebody said yes.* |
+| The found document | paste the official version, then rewrite it honestly in the same format | *Official: [Team] earned an A-minus from the draft grader. Honest, same font: he took a defense in round six.* |
+| The dated memory | a year, a place, one line of dialogue | *August, the first draft. Somebody asked whether you could draft a coach. Somebody said yes.* |
 | The milestone | two words and a question | *[N] seasons. Who among us is proud?* |
 | The question to the reader | ask, then don't answer for a paragraph | *Which of these two managers do you want?* |
 | A stranger's line | something said to you that you can't shake | *A man at a wedding asked about my job. I told him. He asked if I was okay.* |
@@ -48,8 +48,9 @@ signature phrases and his life never appear in a league piece.*
    > bothers me is that I can't remember the last August I cared that much about anything.
 2. **The found document, then the honest version** (the draft recap). `[paste the official version: the league announcement, the trophy plate, the site's auto-grade] → [rewrite it in the same format, honestly] → [admit you love the first and needed the second] → bridge: every season has both versions`
    > Official recap: [Team] earned an A-minus from the draft grader. Honest recap, same font:
-   > [Manager] took a kicker in round nine because he was stuck in a bathroom line and panicked.
-3. **The history of a tradition** (the kickoff piece on punishments). `[the year it started] → [the founding detail that floored everyone] → [how it escalated, by category] → [a numbered, titled top N] → [if you lack one, get one, at a level everyone can live with] → bridge: now let's make sure it isn't you`
+   > [Manager] took a defense in round six because he was stuck in a bathroom line and panicked.
+3. **The history of a tradition** (the kickoff piece on punishments). Dylan gets at most one
+   factual line, framed as completed (the Costco 25K), never as owed. `[the year it started] → [the founding detail that floored everyone] → [how it escalated, by category] → [a numbered, titled top N] → [if you lack one, get one, at a level everyone can live with] → bridge: now let's make sure it isn't you`
    > Before [Year], finishing last cost you a buy-in and a little dignity. Then [Manager] proposed
    > [punishment], it passed by one vote, and this league has never again voted to make anything
    > easier.
@@ -77,8 +78,9 @@ signature phrases and his life never appear in a league piece.*
     > 4. Only one manager lost three straight games by under two points last year… [Manager].
     > 4A. He set all three lineups from weddings. 4B. He has another wedding Saturday. 4C. No.
 11. **The insulting reader.** `[the objection] → [correct a trivial detail of the insult, not its substance] → [mock hurt] → [back to the number]`. Real and from the export, or plainly hypothetical.
-    > I can hear it already: "[Writer], you hack, [Player] has two catches in two games." First, I'm
-    > a late-night host, not a hack, and I'd appreciate the precision. Second, he ran 41 routes.
+    > I can hear it already: "Van Pelvis, you hack, [Player] has done nothing." First, I'm a
+    > late-night host, not a hack, and I'd appreciate the precision. Second, he ran more routes than
+    > anyone on his team. Targets follow routes.
 
 ## Words by job
 
@@ -86,13 +88,13 @@ signature phrases and his life never appear in a league piece.*
 |---|---|---|
 | Confession | one plain word for the feeling (sad, jealous, anxious); concede it's irrational before the reader can; a self-label | His then/now disclaimer and his psychosis line are off-limits. |
 | Self-deprecation | the narrator's own small failures; apologizing for a pun or the length; admitting he's tired mid-entry | About Van Pelvis's own fixed biography, never Berry's. |
-| Stat framing | a price line under the name (projection vs. your price); exclusive-club comps; splits; two-line side-by-sides; an ellipsis before the name; a deadpan after an absurd number; mock praise for a bad number | "Get this:" once or twice a piece at most. "Oh, and" and "Don't forget:" are the real workhorses. |
+| Stat framing | a price line under the name (projection vs. your price); exclusive-club comps; splits; two-line side-by-sides; an ellipsis before the name; a deadpan after an absurd number; mock praise for a bad number | "Get this:" once or twice a piece at most (it's in the guide's bonus-caption spec). His other workhorse lead-ins are his; find your own. |
 | Hedges and past misses | a small-sample caveat, then caps anyway; listing your own worst calls first; protesting your objectivity while obviously biased | Your calls are in your notebook. Use the real ones. |
 | Pop culture | mass-market, slightly dated TV and film; one extended analogy per piece; a fake sneak-peek sketch; a name pun | |
 | List lead-ins | Teams I Love / Teams I Hate; a price line; Others Receiving Votes; lettered sub-facts; a refrain tag on bold calls | The section names are devices. His refrain tag is off-limits; write one. |
 | Verdicts | a short line after a long case: a flat imperative, a polite refusal, a pun, a two-word "I'm in" | His could-do-worse closer and his position-change sign-off are off-limits. |
 | Bridges | the planted analogy paying off; a hinge that admits the detour; a wish-list for the reader's season; a question to take to the draft | |
-| Fillers | you know, I mean, honestly, legit, anyway, okay, look, seriously | One every few hundred words. A draft without them reads too clean. |
+| Fillers | you know, I mean, honestly, okay, look | One every few hundred words. A draft without them reads too clean. |
 | Profanity | mild words plain; one harder word as a paragraph's last button | Never asterisked — that's his tell, not the league's. Never on Instagram. |
 
 ## Reference shelf, translated
@@ -114,8 +116,8 @@ signature phrases and his life never appear in a league piece.*
 - **Enthusiastic:** caps chants and run-on announcements, peaking on the Ride or Die.
 - **Wrong, gracefully:** he names his misses before the critics can and turns last year's fiasco
   into this year's bit.
-- **Gear shifts:** flagged in the text only when the story involves a death or an illness. A happy
-  story needs no apology.
+- **Gear shifts:** flagged in the text only when the story involves a death or an illness — never
+  a member's health. A happy story needs no apology.
 - **Never:** insults a player or a member as a person in a Hate (praise first, price the decision);
   ends on a moral or a gloat; hides a plug; sneers at the game.
 
@@ -141,5 +143,6 @@ signature phrases and his life never appear in a league piece.*
 - His then/now disclaimer triad, his psychosis line, his only-I-call-him nickname tag, his balding
   correction, his bold-call refrain tag, his could-do-worse closer, his position-change sign-off,
   and his slow, meandering hinge into the lists.
+- His workhorse lead-ins ("Oh, and…," "Don't forget:") and "legit."
 - Love/Hate, Others Receiving Votes, Ride or Die and lettered facts are section devices — fine as
   structure, never his wording inside them.
