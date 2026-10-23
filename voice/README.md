@@ -32,6 +32,7 @@ voice/
 | You want… | Open |
 |---|---|
 | The league's fixed running order and post-type assignments | `../VOICE_GUIDE.md` (authoritative) |
+| Which beat writer carries which voice (Mike Hunt, Wolf Blitzed, Scott Van Pelvis) | `../VOICE_GUIDE.md`, "The masthead" · `../data/masthead.json` |
 | To decide which voice to use for a given post | `BLENDING.md` §2 |
 | The section skeleton for a voice | `<writer>/02-architecture.md` |
 | To fix a draft that "sounds off" | `<writer>/03-dialect.md` — check "what he does NOT do" |

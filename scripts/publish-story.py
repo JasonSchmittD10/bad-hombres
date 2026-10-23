@@ -11,12 +11,18 @@ spec.json:
       "kicker":  "Week 1 · The Recap",
       "title":   "…",
       "dek":     "…",                               # one sentence; also the card + meta text
-      "byline":  "The Bad Hombres beat · Week 1 · Sep 15, 2026",
+      "byline":  "Mike Hunt · Week 1 · Sep 15, 2026",   # the writer from data/masthead.json, or a member's full name
       "hero":    "assets/members/svg/Chris.svg",    # repo-relative image
       "heroAlt": "Chris",
       "stats":   [["38.02", "Big Dick"], ["0.00", "Little Bitch"]],   # optional, up to 4
       "body":    "path/to/body.html"                # the article body, see below
     }
+
+The byline names who wrote it: one of the beat writers in data/masthead.json
+(VOICE_GUIDE.md, "The masthead"), or a member's full name for a guest column. The old
+"The Bad Hombres beat" is swapped for the masthead's writer on a week-N-recap or
+week-N-preview; anywhere else, and for any name that isn't on the masthead or a member's,
+the script refuses.
 
 The body is an HTML fragment of <p>, <p class="lede">, <h2 class="st-h2">,
 <blockquote class="st-q">, <p class="sign">, and inline <b>/<em>/<a>. No <div>:
@@ -51,11 +57,35 @@ def swap_span(text, start, end, repl, what):
         die("%s edit touched content outside its element" % what)
     return new
 
+LEGACY_BYLINE = "The Bad Hombres beat"
+
+def byline(slug, line):
+    """The byline with its writer checked: a masthead writer or a member's full name.
+    The old house byline becomes the masthead's writer for a weekly recap or preview."""
+    masthead = json.loads((ROOT / "data" / "masthead.json").read_text())
+    writers = [w["name"] for w in masthead["writers"]]
+    members = list(json.loads((ROOT / "data" / "history.json").read_text())["fullNames"].values())
+    line = re.sub(r"\s+", " ", line).strip()
+    who = line.split(" · ")[0].strip()
+    if who == LEGACY_BYLINE:
+        kind = re.fullmatch(r"week-\d+-(recap|preview)", slug)
+        if not kind:
+            die('byline: name the writer, not "%s" — VOICE_GUIDE.md, "The masthead" (%s), or a member\'s full name'
+                % (LEGACY_BYLINE, ", ".join(writers)))
+        who = masthead["posts"][kind.group(1)]
+        line = who + line[len(LEGACY_BYLINE):]
+        print("publish-story: byline is now %r (the masthead's %s writer)" % (line, kind.group(1)))
+    if who not in writers + members:
+        die('byline must start with a beat writer (%s) or a member\'s full name, then " · " — got %r'
+            % (", ".join(writers), who))
+    return line
+
 def load_spec(path):
     spec = json.loads(Path(path).read_text())
     for k in ("slug", "kicker", "title", "dek", "byline", "hero", "heroAlt", "body"):
         if not str(spec.get(k, "")).strip(): die("spec is missing %r" % k)
     if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", spec["slug"]): die("bad slug %r" % spec["slug"])
+    spec["byline"] = byline(spec["slug"], spec["byline"])
     if not (ROOT / spec["hero"]).is_file(): die("hero image not found: %s" % spec["hero"])
     stats = spec.get("stats") or []
     if len(stats) > 4 or any(len(s) != 2 for s in stats): die("stats must be up to four [value, label] pairs")

@@ -16,6 +16,9 @@ number on the site. A failure means DON'T PUSH: fix the data, or report and stop
     voices.json   Wes's record equals his graded locks; one lock / one Game of the Week
                   per week
     handles.json  every manager has an entry (blank means "never tag")
+    masthead.json the recap, preview and Monday Night Watch each name one of the beat
+                  writers, and every story's byline is a writer, a member's full name, or
+                  the old house byline (stories from before the masthead)
     story/        every published story has its link-preview card and its hero image
     pages         every section page's og:image points at a card that exists
     header        (note only) every page carries the shared header, and data/stories.json
@@ -190,6 +193,21 @@ def check_handles(h):
     missing = MANAGERS - set((h.get("handles") or {}).keys())
     if missing: fail("handles.json: no entry for %s (use \"\" for never-tag)" % ", ".join(sorted(missing)))
 
+def check_masthead(m, history):
+    if m is None: return
+    writers = [w.get("name") for w in m.get("writers") or []]
+    if not writers or not all(writers) or len(writers) != len(set(writers)):
+        fail("masthead.json: writers must be named, and named once each: %s" % writers); return
+    for post in ("recap", "preview", "watch"):
+        if (m.get("posts") or {}).get(post) not in writers:
+            fail("masthead.json: the %s's writer %r isn't on the masthead" % (post, (m.get("posts") or {}).get(post)))
+    members = list(((history or {}).get("fullNames") or {}).values())
+    for page in sorted((ROOT / "story").glob("*/index.html")):
+        by = re.search(r'<b>From the Booth</b><span>(.*?)</span>', page.read_text(), re.S)
+        who = by.group(1).split(" · ")[0].strip() if by else ""
+        if who and who != "The Bad Hombres beat" and who not in writers + members:
+            fail("story/%s: byline %r is neither a beat writer nor a member" % (page.parent.name, who))
+
 def check_stories():
     for page in sorted((ROOT / "story").glob("*/index.html")):
         slug = page.parent.name
@@ -238,7 +256,7 @@ def main():
     check_season(load("data/season.json"), load("data/record.json"))
     check_voices(load("data/voices.json"))
     check_handles(load("data/handles.json"))
-    load("data/history.json")
+    check_masthead(load("data/masthead.json"), load("data/history.json"))
     check_stories()
     check_page_cards()
     check_header()
@@ -248,7 +266,7 @@ def main():
         for f in fails: print("FAIL: " + f)
         print("\n%d problem(s). Do not push until they're fixed." % len(fails))
         sys.exit(1)
-    print("ok — week.json, season.json, record.json, voices.json, handles.json, stories%s" % (", ledger" if posted else ""))
+    print("ok — week.json, season.json, record.json, voices.json, handles.json, masthead.json, stories%s" % (", ledger" if posted else ""))
 
 if __name__ == "__main__":
     main()

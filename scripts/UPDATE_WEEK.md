@@ -279,6 +279,13 @@ rules that matter:
   preview publishes the same way as `week-N-preview` (kicker `Week N · The
   Preview`); the Tuesday iMessage post only ever shares a `week-N-recap`, so a
   failed recap can't send the preview to the thread by mistake.
+- **Byline:** the writer, the occasion, the date — `Mike Hunt · Week 8 · Oct 27,
+  2026`. Who writes which post is `data/masthead.json` (`VOICE_GUIDE.md`, "The
+  masthead"). The script swaps the old "The Bad Hombres beat" for that post's
+  writer on a recap or preview and refuses a name that isn't on the masthead or a
+  member's full name. `thread-post.py` carries the byline into the group chat
+  (*By Mike Hunt* under the headline; the Monday Night Watch signed *— Mike
+  Hunt*), so never sign a post by hand.
 - **Body markup:** `<p class="lede">` first, then `<p>`, `<h2 class="st-h2">`
   for the six section heads, `<blockquote class="st-q">` for one pull quote,
   `<p class="sign">` for Chatnerdness, inline `<b>/<em>/<a>`. **No `<div>`** —
