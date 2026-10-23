@@ -2,11 +2,18 @@
 """Slim member illustration SVGs for the site, keeping them fully editable.
 
     scripts/optimize-svg.py assets/incoming/*.svg      # -> assets/members/svg/<Name>.svg
+                                                       #  + assets/members/cutout/<Name>.svg
+    scripts/optimize-svg.py --cutouts                  # rebuild every cutout from assets/members/svg/
 
 Rounds path coordinates to 0.1 unit (these are drawn on a ~1300-unit canvas,
 so that is invisible) and drops the line breaks between elements. Colours,
 shapes and structure are left exactly as drawn, so a file can still be opened
 in Figma or Illustrator and recoloured.
+
+Every illustration also gets a cutout: the same drawing without its grey
+background square, so the homepage can sit the face on a red, silver or gold
+tile (the Game of the Week face-off, Big Dick / Little Bitch, the Hombres
+grid). The faces are filled white, so they read on any of those.
 
 Refuses anything it wasn't written for — embedded images, scripts, or
 elements other than <svg>/<path>/<rect> — rather than guessing.
@@ -29,7 +36,21 @@ def slim_d(m):
     # keep spaces, just collapse runs of them
     return 'd="%s"' % re.sub(r"\s+", " ", d).strip()
 
+CUT = ROOT / "assets" / "members" / "cutout"
+BG = re.compile(r'<rect width="(\d+(?:\.\d+)?)" height="\1" fill="#D7D7D7"/>', re.I)
+
+def cutout(name, svg):
+    """The illustration without its full-canvas grey background square."""
+    out, n = BG.subn("", svg, count=1)
+    if not n: sys.exit("%s: no grey background square to cut out — check the drawing" % name)
+    CUT.mkdir(parents=True, exist_ok=True)
+    (CUT / (name + ".svg")).write_text(out)
+
 def main(paths):
+    if paths == ["--cutouts"]:
+        for p in sorted(OUT.glob("*.svg")): cutout(p.stem, p.read_text())
+        print("cutouts: %d written to %s" % (len(list(OUT.glob("*.svg"))), CUT.relative_to(ROOT)))
+        return
     if not paths: sys.exit(__doc__)
     OUT.mkdir(parents=True, exist_ok=True)
     total_in = total_out = 0
@@ -44,6 +65,7 @@ def main(paths):
         out = re.sub(r">\s+<", "><", out).strip() + "\n"
         name = p.stem[:1].upper() + p.stem[1:]
         (OUT / (name + ".svg")).write_text(out)
+        cutout(name, out)
         total_in += len(src); total_out += len(out)
         print("%-10s %6.1f KB -> %5.1f KB" % (name, len(src) / 1024, len(out) / 1024))
     print("total      %6.1f KB -> %5.1f KB  (%s)" % (total_in / 1024, total_out / 1024, OUT.relative_to(ROOT)))

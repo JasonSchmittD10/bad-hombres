@@ -14,7 +14,9 @@ number on the site. A failure means DON'T PUSH: fix the data, or report and stop
                   for/against agree with the game log in record.json to the cent
     record.json   every recorded week of the current season has 6 games, 12 managers
     voices.json   Wes's record equals his graded locks; one lock / one Game of the Week
-                  per week
+                  per week; a lock's quote (the homepage's Wes card) is one short line
+    home.json     the homepage's one-liners are one short line each and any 'until' is a
+                  real time (scripts/home.py); a note when the week on the board has none
     handles.json  every manager has an entry (blank means "never tag")
     masthead.json the recap, preview and Monday Night Watch each name one of the beat
                   writers, and every story's byline is a writer, a member's full name, or
@@ -77,7 +79,7 @@ def check_week(w, winners):
             if not isinstance(b.get(k, []), list): fail("week.json: bonus.%s is not a list" % k)
         settled = status == "final" and (b.get("actual") or [])
         if settled and str(wk) not in winners:
-            fail("index.html: week %s is final with a settled bonus, but BH_AWARD_WINNERS has no week %s — the card will say TBD" % (wk, wk))
+            fail("index.html: week %s is final with a settled bonus, but BH_AWARD_WINNERS has no week %s — its Bonus Board card will say \"Being settled\" and the bank won't pay" % (wk, wk))
 
     g = w.get("nextGame")
     if g is not None:
@@ -184,8 +186,22 @@ def check_voices(v):
         if not re.fullmatch(r"(\w+) over (\w+)", l.get("pick", "")) or \
            any(n not in MANAGERS for n in re.findall(r"\w+", l.get("pick", "")) if n != "over"):
             fail("voices.json: Wes's week %s pick %r isn't '<Manager> over <Manager>'" % (l.get("week"), l.get("pick")))
+        q = l.get("quote")
+        if q is not None and (not isinstance(q, str) or not q.strip() or "\n" in q or len(q) > 120 or q[:1] in "\"'\u201c\u2018"):
+            fail("voices.json: Wes's week %s quote must be one line of 120 characters at most, without its own quote marks (the homepage adds them): %r" % (l.get("week"), q))
     g = [x.get("week") for x in v.get("gotw") or []]
     if len(g) != len(set(g)): fail("voices.json: more than one Game of the Week for the same week: %s" % g)
+
+# ---------------------------------------------------------------- homepage lines
+def check_home(h, w):
+    if h is None: return
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from home import problems
+    for fatal, msg in problems(h):
+        (fail if fatal else note)(msg + " — rewrite it with scripts/home.py")
+    wk = (w or {}).get("week")
+    if wk and not ((h.get("weeks") or {}).get(str(wk))):
+        note("data/home.json has no lines for week %s — the homepage shows its plain fallbacks (scripts/UPDATE_WEEK.md, 'The homepage')" % wk)
 
 # ---------------------------------------------------------------- handles, stories
 def check_handles(h):
@@ -255,6 +271,7 @@ def main():
     check_week(load("data/week.json"), winners)
     check_season(load("data/season.json"), load("data/record.json"))
     check_voices(load("data/voices.json"))
+    check_home(load("data/home.json"), load("data/week.json"))
     check_handles(load("data/handles.json"))
     check_masthead(load("data/masthead.json"), load("data/history.json"))
     check_stories()
@@ -266,7 +283,7 @@ def main():
         for f in fails: print("FAIL: " + f)
         print("\n%d problem(s). Do not push until they're fixed." % len(fails))
         sys.exit(1)
-    print("ok — week.json, season.json, record.json, voices.json, handles.json, masthead.json, stories%s" % (", ledger" if posted else ""))
+    print("ok — week.json, season.json, record.json, voices.json, home.json, handles.json, masthead.json, stories%s" % (", ledger" if posted else ""))
 
 if __name__ == "__main__":
     main()

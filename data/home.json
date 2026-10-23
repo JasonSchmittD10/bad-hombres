@@ -1,0 +1,14 @@
+{
+  "note": "The homepage's one-liners, one set per week (scripts/UPDATE_WEEK.md, 'The homepage'). Write them with scripts/home.py, never by hand. Every line is optional: a missing or expired line just hides, so the page never shows a stale joke. Same rules as everything else the beat writes (VOICE_GUIDE.md): third person, short and funny, one number at most, nothing from voice/USED.md. title: the Game of the Week headline. preview: the hero line while picks are open (Thursday). live: the hero line once games start, with an 'until' so it expires before it goes stale. kickoff: the line on the next-kickoff card, with an optional 'tag' (where it's played, if that's the story). beerMile, bubble, bonus: the footers on the On the line cards.",
+  "weeks": {
+    "7": {
+      "title": "The Beer Mile Bowl",
+      "preview": "Last place has the money. The champ has the rings. Somebody gets closer to the track.",
+      "live": {"text": "David hasn’t scored yet. That’s not a strategy, it’s a schedule.", "until": "2026-10-25T09:30:00-04:00"},
+      "kickoff": {"text": "Football in Paris before breakfast. Set your lineup the night before.", "tag": "Paris", "until": "2026-10-25T09:30:00-04:00"},
+      "beerMile": "Two of the four play each other this week. That’s the Game of the Week.",
+      "bubble": "Wes is 4-2 on the fewest points above the line. Someone up there likes him.",
+      "bonus": {"text": "Named for Adam. Projected for Wes.", "until": "2026-10-25T13:00:00-04:00"}
+    }
+  }
+}
