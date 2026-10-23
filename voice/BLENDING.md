@@ -12,9 +12,9 @@
 | **Self-implication** | Low (observer) | High (loser fan) | High (anxious striver) | Medium (bald/tall, gets there first) |
 | **Structure** | Fixed sections, nested lists | Fixed sections, running bits | Story intro → lists w/ micro-structure | Fixed segments, beats |
 | **Reader relationship** | Trusted correspondent | Fellow sufferer at the bar | Friend telling you about his week | Host you watch every night |
-| **Signature device** | "I think…" ×10 + Factoid + Haiku | Throwgasms + CAPS ventriloquism + Simpsons close | "Get this:" + callback button + confession | Bad Beats delay + "That's a choice" + One Big Thing |
+| **Signature device** | "I think…" ×10 + Factoid + Haiku | Throwgasms + CAPS ventriloquism + Simpsons close | "Get this:" + callback button + confession | Bad Beats delay + the double-tap dagger + the one-topic essay |
 | **Length** | Endless | Long, digressive | Long intro, dense lists | Short. Beats. |
-| **Sincerity delivery** | "Good for you, ___" | Buried, unflagged | Opens on it | Flagged: "serious for a second" |
+| **Sincerity delivery** | "Good for you, ___" | Buried, unflagged | Opens on it | Contained: its own slot, last, nothing after it |
 | **Status (Sept 2026)** | Retired Feb 2024 | Active | Written form retired Aug 2025 | Active, 11th season |
 | **League register fit** | "Official record" — clean narrator, filthy facts | Roast engine — closest native match | Prose north star — the open and the callbacks | Spoken/short-form and the sincere-moment tool |
 
@@ -33,7 +33,7 @@
 | **Season-in-review / playoff omnibus** | King (10,000-word cadence, Ten Things) | Berry (narrative open) | Only King's format holds a whole season without collapsing. |
 | **Video / voice-memo recap** | SVP | — | Only one of the four is a broadcaster. Write in beats. |
 | **Fast week** | Berry's "10 Facts" | — | Numbered, no intro, joke-per-fact. Say it's the short version — Berry does. |
-| **A real-life moment (baby, move, loss)** | SVP (flagged sincerity) | Berry (if it needs to be the *open*) | Signpost, say it clean, go back to the bit. Don't bury it; don't make it the whole post. |
+| **A real-life moment (baby, move, loss)** | SVP (contained sincerity) | Berry (if it needs to be the *open*) | Its own slot, last, plain, nothing after it — only what the member shared himself, never anyone's health. Don't bury it; don't make it the whole post. |
 
 ## 3. Blending rules
 
@@ -43,7 +43,7 @@
 
 **Rule 3 — Profanity is a button, not a base.** Three of four models don't curse; the league does. Crude content lives in the *nouns* (award names, team names, the specific comparison) and in the *button* (the last line of a paragraph). It does not live in the *intensifiers*. "Fucking" before every noun is noise. One "Fuck you" as Zack's quoted text is a punchline. (The playbook's "confident and matter-of-fact, not performative" rule, restated mechanically.)
 
-**Rule 4 — Every post needs one sincere beat.** King: "Good for you." Magary: the buried thing he loves. Berry: the confession. SVP: "serious for a second." Zero sincerity reads as trying too hard. Two is a Hallmark card.
+**Rule 4 — Every post needs one sincere beat.** King: "Good for you." Magary: the buried thing he loves. Berry: the confession. SVP: the contained slot, last. Zero sincerity reads as trying too hard. Two is a Hallmark card.
 
 **Rule 5 — Fixed sections are a feature.** All four voices are built on recurring bits with fixed names. The reader's pleasure is in the *return* of the bit. Have 4–6 fixed section names in the same order every week; content inside is fresh. Structure repeats; jokes don't.
 
@@ -60,7 +60,7 @@
 | **King** | Parody without affection | Coffee jokes with no actual coffee content; "I think" items that are sarcastic instead of sincere. King works when the narrator *means it*. |
 | **Magary** | Volume without specificity | CAPS in every paragraph; "fucking" as a comma; insults that are just "he sucks." The Magary tell is the *extra clause*, not the swear. |
 | **Berry** | Intro without confession | A "personal story" that's just a setup with no vulnerability. Readers smell a fake open. Also: rushing to the lists. |
-| **SVP** | Explaining the joke | A sentence after "That's a choice." Narrating the dagger before it lands. The pause *is* the content. |
+| **SVP** | Explaining the joke | A sentence after the dagger. Narrating the dagger before it lands. The pause *is* the content. |
 | **All** | Recycled bits | Same insult for the same guy two weeks running. Magary writes 32 fresh WYTS a year; the league can do 12. |
 
 ## 5. Suggested fixed weekly skeleton (v2, voices assigned)
@@ -90,7 +90,7 @@ Each `05-prompt-kit.md` has a paste-ready version of this for its writer.
 
 ## 7. Rule 8, decided — the two recurring voices
 
-**Wes → the Rex Ryan slot (fake monologue, tracked pick).** "Pastor Wes's Lock of the Week." Opens as a homily, cites scripture that doesn't exist, derails by the second paragraph (grill, Texas, a parable about a kicker), lands on a pick. Register: warm and lost. The joke is the derail, never the faith. Track his record weekly; it should be bad. Don't stack him in Best Thing / serious-for-a-second the same week.
+**Wes → the Rex Ryan slot (fake monologue, tracked pick).** "Pastor Wes's Lock of the Week." Opens as a homily, cites scripture that doesn't exist, derails by the second paragraph (grill, Texas, a parable about a kicker), lands on a pick. Register: warm and lost. The joke is the derail, never the faith. Track his record weekly; it should be bad. Don't stack him in Best Thing or the sincere slot the same week.
 
 **Zack → the Stanford Steve slot (named foil, lives the bad beats).** Not a monologue — a reaction. Bad Beats is narrated *to* him ("Sewp, I need you to hear this"). His tracked number is the **Luck Index**: points-against rank vs. actual record, updated weekly. His chat replies are next week's material.
 

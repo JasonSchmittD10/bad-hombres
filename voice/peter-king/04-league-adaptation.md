@@ -45,7 +45,7 @@ King's voice is clean. So the **crude league content does the offending while th
 > …
 > 10. I think these are my non-football thoughts of the week:
 >    a. Pastor Wes, congratulations on the new grill. I want a full report.
->    b. Coffeenerdness: Whatever Hoa was drinking when he started his kicker over a functioning wide receiver — I'd like some. Or, I would not.
+>    b. Coffeenerdness: Whatever Hoa was drinking when he started his kicker in a wind game — I'd like some. Or, I would not.
 >    c. Beernerdness: Zack, please stop sending me pictures of Busch Light. It is not a craft beer. It is a decision.
 >    d. Good for you, Matt, for setting a lineup from a time zone where the games start at 10 a.m. Not everyone would.
 >

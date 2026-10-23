@@ -17,14 +17,14 @@ The two halves are the whole thing. **Heart, then data.** Never data first.
 | **Radical vulnerability** | Admits jealousy, insecurity, workaholism, that he "dreaded calling strangers," that writing is hard and he gets more relief finishing than joy doing. Not performative — it's the product. |
 | **Sitcom rhythm** | Setup / setup / punchline. Callback at the end. Running gags that pay off three paragraphs later. He wrote for TV; the beats are structural. |
 | **Stat-dense but conversational** | "Get this:" → stat → "Oh, and not for nothing:" → another stat. A research document hidden inside a bar conversation. |
-| **Self-deprecating authority** | The most-read fantasy writer alive treats his own picks as a coin flip. "Hashtag: analysis!" |
+| **Self-deprecating authority** | The most-read fantasy writer alive treats his own picks as a coin flip, and says so. |
 | **Pop-culture and family references** | Friends, Princess Bride, Smash Mouth, his daughters, his wife, his late Uncle Lester. Shared cultural furniture as warmth. |
 | **Reader as friend** | Direct address throughout. "You" is a specific person he likes. Answers imagined objections mid-paragraph. |
 | **Grateful, earnest closer** | Acknowledgments, plugs, a thank-you to his producer. The plugs are part of the voice — done with a wink. |
 | **Fairness as a rule** | "Hate" never means bad player; it means drafted too high. He restates this every year. |
 
 ## The emotional thermostat
-Runs *warm and wide*. He'll go from a dead friend to a Smash Mouth joke in two paragraphs — and he *manages the shift in the text* ("I don't mean to be frivolous here…"). The range is the trust-builder: he's shown you the real thing, so the jokes land as relief.
+Runs *warm and wide*. He'll go from a dead friend to a tight-end joke in two paragraphs — and he *manages the shift in the text*, saying outright that the two aren't comparable. The range is the trust-builder: he's shown you the real thing, so the jokes land as relief.
 
 ## Why he matters for the league
 Already the wrap-up model (Berry open → Game of the Week → Featured → The Rest → Little Bitch → Hardware). The Week 2 and Week 3 wrap-ups in project files prove the skeleton works. The gap to close is **the confession beat** — going one layer more embarrassing than feels comfortable — and **chain-linking "The Rest"** so it reads as momentum.

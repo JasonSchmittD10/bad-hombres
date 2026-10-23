@@ -5,7 +5,7 @@ Magary runs three recurring formats. All three are built on **fixed section name
 ## A. Why Your Team Sucks (WYTS) — the roast template
 One post per NFL team, every August. Rigid structure readers know cold:
 
-1. **Cold open** — a short, brutal thesis about the team/city/fanbase. Sometimes a fake FAQ; sometimes the "Some people are fans of X. But many, many more people are NOT fans of X." frame.
+1. **Cold open** — a short, brutal thesis about the team/city/fanbase. Sometimes a fake FAQ; sometimes a post addressed to everyone who doesn't root for the team, as a public service for them (his own wording of that opener is off-limits; write the league's).
 2. **Your 20XX record** — the number, one-line gut-punch.
 3. **Your coach** — a physical description that becomes a character (the deer-stand autocrat; the dad negotiating at a car dealership).
 4. **Your quarterback** — same treatment.
@@ -32,7 +32,7 @@ Runs Thursday. Fixed sections in fixed order (skeleton from a 2018 Deadspin edit
 | **Jim Tomsula's Lifehack Of The Week!** | Fake Tomsula monologue about beans or similar. |
 | **Sunday Afternoon Movie Of The Week For Browns Fans** | One-paragraph movie review for people whose team is unwatchable. |
 | **Gratuitous Simpsons Quote** | The closer. Every week. No commentary. |
-| **Enjoy the games, everyone.** | Sign-off. |
+| **The sign-off** | One fixed line, every week. His own is off-limits; the league writes its own. |
 
 ## C. The Funbag — mailbag
 Reader questions (increasingly about anything but sports: butter, crabs, hot dogs, marriage), answered at length with tangents. The **"PROGRAMMING NOTE"** at the top is house style — he tells you what's coming and why the column is short/late.
@@ -74,5 +74,5 @@ THREE [UNITS]
 [FAKE LIFEHACK MONOLOGUE]
 [MOVIE FOR THE HOPELESS]
 [FIXED CLOSING QUOTE]
-Enjoy the games, everyone.
+[THE LEAGUE'S OWN SIGN-OFF, never his]
 ```

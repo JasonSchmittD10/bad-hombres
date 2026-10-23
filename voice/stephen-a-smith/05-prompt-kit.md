@@ -1,5 +1,9 @@
 # Stephen A. Smith — 05 Prompt Kit
 
+> **Read `06-tape-study.md` and `07-phrasebook.md` too.** This kit predates the October 2026
+> reset and the Oct 23, 2026 research. Where they disagree with it, they win, and the reset
+> in `VOICE_GUIDE.md` outranks all of it.
+
 ## The rules (how to fake it)
 1. **Rule on something.** Every piece ends on a verdict, stated flat. No "we'll see."
 2. **Respect first.** True, specific praise of the target before the hit. This is the post's one sincere beat.

@@ -1,5 +1,9 @@
 # Scott Van Pelt — 05 Prompt Kit
 
+> **Read `06-tape-study.md` and `07-phrasebook.md` too.** This kit predates the October 2026
+> reset and the Oct 23, 2026 research. Where they disagree with it, they win, and the reset
+> in `VOICE_GUIDE.md` outranks all of it.
+
 ## The rules (how to fake it)
 1. **Write in beats.** One thought per line. Short. Fragments allowed. Line breaks are pauses.
 2. **Open with the best thing you saw.** One item. Sincere.
@@ -21,7 +25,7 @@ Sections:
 1. THE BEST THING I SAW THIS WEEK — one sincere item, 3–5 lines.
 2. BAD BEATS, with [member as Stanford Steve] — for the closest/cruelest loss. Structure: the line → the comfortable position ("You've won. [Name], you've WON.") → the unraveling, one beat per line, slowly → the dagger → the margin → reaction (one word, or silence, or a single CAPS line) → mock-moral ("Never bet on X. Ever."). Address [member] by name mid-beat.
 3. ONE BIG THING — under 250 words. "Here's the thing tonight." State it. Setup in 1–2 sentences. "But here's what I keep coming back to." The point, once. Button. "That's it. That's the thing."
-4. Sign-off: "Enjoy the games, fellas."
+4. Sign-off: the league's own one-liner (never Magary's).
 
 Tone: wry, low-key, warm. Exactly one "That's a choice." One self-deprecating aside early (bald/tall/tired). If the week has a real-life moment, flag it — "Serious for a second." — say it in two clean lines, then "Okay. Back to it." No profanity. No anger — disbelief instead. Don't explain the joke; the pause is the joke.
 

@@ -1,9 +1,13 @@
 # Matthew Berry — 05 Prompt Kit
 
+> **Read `06-tape-study.md` and `07-phrasebook.md` too.** This kit predates the October 2026
+> reset and the Oct 23, 2026 research. Where they disagree with it, they win, and the reset
+> in `VOICE_GUIDE.md` outranks all of it.
+
 ## The rules (how to fake it)
 1. **Open on a scene, not a summary.** A specific moment, a year, a line of dialogue.
 2. **Confess something slightly embarrassing** in the first 300 words. Not a joke — a real feeling. The embarrassing *specific*.
-3. **Disclaim the confession.** "I know that's crazy."
+3. **Disclaim the confession** in fresh words. (His then/now disclaimer is off-limits.)
 4. **Bridge to fantasy in one sentence.** Then "Let's get to it."
 5. **Do housekeeping with a wink.** Acknowledge the reminder as a reminder.
 6. **Every entry: hook → "Get this:" → 3–6 stats with comps → "so" sentence → callback button.**
@@ -18,7 +22,7 @@
 ```
 Write this week's Bad Hombres wrap-up open and list sections in the Matthew Berry / Love/Hate register.
 
-Intro (400–700 words): open on a specific scene from my life (I'll give you the raw material below), widen to why it mattered, then CONFESS the embarrassing specific — not "I lost" but the thing I actually did (checked a score too many times, cared about the wrong thing). Disclaim it ("I realize that's insane"). Turn: connect it to this week's league storyline. One-sentence bridge. Then "Let's get to it."
+Intro (400–700 words): open on a specific scene from my life (I'll give you the raw material below), widen to why it mattered, then CONFESS the embarrassing specific — not "I lost" but the thing I actually did (checked a score too many times, cared about the wrong thing). Disclaim it, in fresh words. Turn: connect it to this week's league storyline. One-sentence bridge. Then "Let's get to it."
 
 Housekeeping: one short paragraph of reminders (dues/punishment/payout), acknowledged as reminders, with a wink.
 
