@@ -103,13 +103,14 @@
     var ms = matchups().slice().sort(function (x, y) { return Math.abs(x.a.p - x.b.p) - Math.abs(y.a.p - y.b.p); });
     return ms.length ? { g: null, mu: { a: ms[0].a, b: ms[0].b } } : null;
   }
-  function gTitle(g, mu) {
-    var t = line(N(), 'title'); if (t) return t;
-    if (g && g.reason && !/projected|within/i.test(g.reason)) {
-      t = g.reason.replace(/\b\w/g, function (c) { return c.toUpperCase(); });
-      return /^the\b/i.test(t) ? t : 'The ' + t;
-    }
-    return mu.a.m + ' vs. ' + mu.b.m;
+  // the formula's stakes labels (scripts/bh_league.py watchability) read as headlines; anything
+  // else — a rivalry, a streak, a hand-picked storyline — is a dek, under "A vs. B"
+  var STAKES = { 'beer mile bowl': 'The Beer Mile Bowl', 'first place on the line': 'First Place on the Line',
+    'the playoff line': 'The Playoff Line', 'top of the table': 'Top of the Table' };
+  function stakesTitle(g) { return g && g.reason ? STAKES[g.reason.toLowerCase()] || '' : ''; }
+  function gTitle(g, mu) { return line(N(), 'title') || stakesTitle(g) || mu.a.m + ' vs. ' + mu.b.m; }
+  function reasonDek(g) {
+    return g && g.reason && !stakesTitle(g) && !/projected|within/i.test(g.reason) ? 'Why it’s the Game of the Week: ' + g.reason.replace(/\.$/, '') + '.' : '';
   }
 
   /* ------------------------------------------------------------------ league tables */
@@ -204,9 +205,18 @@
   }
   function wesCard(n, graded) {
     var w = (D.voices && D.voices.wes) || {}, locks = (w.locks || []).slice().sort(function (x, y) { return x.week - y.week; });
-    var L = locks.filter(function (l) { return l.week === n; })[0];
-    if (!L) return '';
-    var r = w.record || { w: 0, l: 0 }, m = /^(\w+) over (\w+)$/.exec(L.pick || ''), fact = '';
+    var L = locks.filter(function (l) { return l.week === n; })[0], r = w.record || { w: 0, l: 0 };
+    if (!L) {
+      // the week has rolled over but the Thursday preview hasn't picked yet
+      if (graded || !locks.length) return '';
+      var due = locks.filter(function (l) { return l.week < n; }).slice(-5).map(function (l) {
+        var c = l.result === 'W' ? 'w' : l.result === 'L' ? 'l' : 'p';
+        return '<span class="lk"><i class="lk-' + c + '">' + (l.result || '?') + '</i><small>Wk ' + l.week + '</small></span>';
+      }).join('') + '<span class="lk"><i class="lk-p">?</i><small>Wk ' + n + '</small></span>';
+      return '<div class="side-card wes"><div class="sc-t"><span class="k gold">Pastor Wes’s Lock</span><b class="wes-rec">' + r.w + '–' + r.l + '</b></div>' +
+        '<div class="wes-body"><h3 class="wes-pick">Coming Thursday</h3><p class="wes-fact">He’s still up the mountain with it.</p></div><div class="lks">' + due + '</div></div>';
+    }
+    var m = /^(\w+) over (\w+)$/.exec(L.pick || ''), fact = '';
     if (m && !graded) { var s = vs(m[1], m[2]); if (s && s.w + s.l) fact = m[1] + ' is ' + s.w + '-' + s.l + (s.t ? '-' + s.t : '') + ' against ' + m[2] + '.'; }
     var dots = locks.filter(function (l) { return l.week <= n; }).slice(-6).map(function (l) {
       var c = l.result === 'W' ? 'w' : l.result === 'L' ? 'l' : 'p';
@@ -261,7 +271,7 @@
   }
   function heroPreview(f) {
     var a = f.mu.a, b = f.mu.b, n = N(), lead = a.p === b.p ? null : (a.p > b.p ? 'a' : 'b');
-    var story = storyFor('preview', n), dek = line(n, 'preview') || (story && story.dek) || (f.g && f.g.reason ? 'Why it’s the Game of the Week: ' + f.g.reason + '.' : '');
+    var story = storyFor('preview', n), dek = line(n, 'preview') || (story && story.dek) || reasonDek(f.g);
     var lock = wk().nextKickoff || (wk().nextGame && wk().nextGame.kickoff);
     var lockTxt = lock ? 'Locks ' + dayT(lock) + ' at ' + clockT(lock) + ' ET' : '';
     var main = '<article class="gotw panel is-preview">' +
@@ -740,11 +750,16 @@
     // the committed file keeps the leaders when the API didn't compute any, and the next kickoff
     var has = function (b) { return b && ((b.actual && b.actual.length) || (b.projected && b.projected.length)); };
     if (f && f.week === api.week) { if (!has(api.bonus)) api.bonus = f.bonus; api.nextGame = api.nextGame || f.nextGame; api.nextKickoff = api.nextKickoff || f.nextKickoff; }
+    // Yahoo rolls to the next week midweek, before Thursday's sync: the settled file's nextGame
+    // is already that week's opener (run D moves it), which is also when its picks lock
+    else if (f && f.status === 'final' && api.week === f.week + 1 && f.nextGame && new Date(f.nextGame.kickoff) > new Date()) {
+      api.nextGame = api.nextGame || f.nextGame; api.nextKickoff = api.nextKickoff || f.nextGame.kickoff;
+    }
     D.live = api; return true;
   }
   function refresh(first) {
     return get('/api/scoreboard').then(function (api) {
-      if (useLive(api)) { safe(renderHero); safe(renderScoreboard); safe(renderStakes); if (!first) drawCharts(true); }
+      if (useLive(api)) { safe(renderHero); safe(renderScoreboard); safe(renderStakes); safe(renderBonusBoard); if (!first) drawCharts(true); }
       if (state() === 'live') return get('/api/pulse?week=' + N()).then(function (p) { D.pulseTried = true; if (p) D.pulse = p; safe(drawPulse); });
     });
   }
