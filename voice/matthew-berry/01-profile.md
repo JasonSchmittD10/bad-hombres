@@ -17,7 +17,7 @@ The two halves are the whole thing. **Heart, then data.** Never data first.
 | **Radical vulnerability** | Admits jealousy, insecurity, workaholism, that he "dreaded calling strangers," that writing is hard and he gets more relief finishing than joy doing. Not performative — it's the product. |
 | **Sitcom rhythm** | Setup / setup / punchline. Callback at the end. Running gags that pay off three paragraphs later. He wrote for TV; the beats are structural. |
 | **Stat-dense but conversational** | "Get this:" → stat → "Oh, and not for nothing:" → another stat. A research document hidden inside a bar conversation. |
-| **Self-deprecating authority** | The most-read fantasy writer alive treats his own picks as a coin flip. "Hashtag: analysis!" |
+| **Self-deprecating authority** | The most-read fantasy writer alive treats his own picks as a coin flip, and says so. |
 | **Pop-culture and family references** | Friends, Princess Bride, Smash Mouth, his daughters, his wife, his late Uncle Lester. Shared cultural furniture as warmth. |
 | **Reader as friend** | Direct address throughout. "You" is a specific person he likes. Answers imagined objections mid-paragraph. |
 | **Grateful, earnest closer** | Acknowledgments, plugs, a thank-you to his producer. The plugs are part of the voice — done with a wink. |

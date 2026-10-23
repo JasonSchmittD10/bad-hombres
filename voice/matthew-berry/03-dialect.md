@@ -1,13 +1,13 @@
 # Matthew Berry — 03 Sentence-Level Dialect
 
 ## Rhythm
-Conversational, medium sentences, lots of **one-line paragraphs for emphasis**. Fragments used as beats: *Well.* / *Like, A LOT.* / *Many, many times over the last two years.* He'll write a paragraph that's one word and let it sit.
+Conversational, medium sentences, lots of **one-line paragraphs for emphasis**. Fragments used as beats *(originals)*: *Sure.* / *Every week.* / *Twice, if we're counting, and I am.* He'll write a paragraph that's one word and let it sit.
 
 ## Signature moves
 - **The fake reader objection.** *"Berry, you're insane." Yes. But hear me out.* Stages the argument you'd make, rebuts it.
 - **"Get this:"** — the universal stat-introducer.
 - **"Oh, and not for nothing:"** — the bonus stat.
-- **"Hashtag: [word]"** — spelled out, ironic. *Hashtag: analysis!* / *hashtag not ideal.*
+- **"Hashtag: [word]"** — spelled out, ironic, one word after it *(original: Hashtag: process.)*. Rationed; it reads as an impression fast.
 - **"Look at it this way:" / "So, to recap:"** — the plain-English translation beat; sometimes a mock-summary that's really a joke restatement.
 - **Parenthetical asides that undercut the sentence they're in.** *(Knock on wood.)* / *(original: which, to be clear, is not a compliment)*
 - **Sitcom callback.** Whatever the joke was at the top of an entry returns at the bottom, escalated.

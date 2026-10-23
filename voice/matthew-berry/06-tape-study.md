@@ -20,8 +20,8 @@ Links are at the bottom.
   of his career, plus real posts from his critics.
 - **Confession:** the mock release is the confession — a failure résumé — followed by one sincere
   paragraph about having worked every year since he was a teenager.
-- **Bridge:** your season will have a second press release too, and you don't get the trophy
-  without it.
+- **Bridge:** every season produces both versions — the official one and the honest one — and
+  the winners live through the second.
 - **Lists:** Love then Hate by position, his rank beside the market price. One Hate entry is a
   whole category.
 - **Gags:** the new contract makes him "untouchable," so he refuses to write new material and
@@ -45,8 +45,8 @@ Links are at the bottom.
 ### 3. Week 13 Love/Hate, Dec 2020 — the tribute
 - **Open:** a calendar occasion (a cancer-charity week and a late colleague's day). He admits he's
   retelling a story few people read the first time.
-- **Story:** three vignettes — the colleague vouching for him when he was nobody; pulling him out
-  of a bar confrontation before it became a headline (the embarrassing middle one); bringing it up
+- **Story:** three vignettes — the colleague vouching for him when he was nobody; steering him away
+  from a bar confrontation before it became a headline (the embarrassing middle one); bringing it up
   years later in front of family. Then the last time he saw him.
 - **Confession:** he was a nobody and nearly threw a punch. They were never close, and that's the
   point.
@@ -99,8 +99,8 @@ Links are at the bottom.
   handled, and his own decision handed to the reader as a question.
 
 ### 8. 100 Facts, Aug 2025 — admitting the trick
-- **Open:** a direct question (which running back do you want?), two blind profiles, then the
-  reveal that both are the same player.
+- **Open:** he asks the reader to choose between two players, gives two blind profiles, then
+  reveals that both are the same player.
 - **Confession:** he can make numbers argue anything, so the facts that follow are true but chosen
   to support his opinions.
 - **Facts:** short and bare. Lettered sub-facts build a case, an ellipsis holds back the surprising

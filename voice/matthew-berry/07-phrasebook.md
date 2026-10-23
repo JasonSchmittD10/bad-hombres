@@ -36,7 +36,7 @@ signature phrases and his life never appear in a league piece.*
 | The dated memory | a year, a place, one line of dialogue | *August, the first draft. Somebody asked whether kickers were allowed. Somebody said yes.* |
 | The milestone | two words and a question | *[N] seasons. Who among us is proud?* |
 | The question to the reader | ask, then don't answer for a paragraph | *Which of these two managers do you want?* |
-| A stranger's line | something said to you that you can't shake | *A guy at the bar asked what I do for a living, and I told him, and he asked if I was okay.* |
+| A stranger's line | something said to you that you can't shake | *A man at a wedding asked about my job. I told him. He asked if I was okay.* |
 | The calendar occasion | a date that means something to the league | *This is the week, every year, when the league remembers it has a punishment.* |
 | What people always ask you | the question, and why it's never the one you'd expect | *Every August someone asks me the same thing, and it's never about football. It's whether [Manager] is okay.* |
 
@@ -54,9 +54,8 @@ signature phrases and his life never appear in a league piece.*
    > [punishment], it passed by one vote, and this league has never again voted to make anything
    > easier.
 4. **The blind A/B reveal** (a preview open or a Love entry). `[ask the reader to choose] → [profile A, all true] → [profile B, all true] → [reveal: same subject] → [confess you picked the numbers]`
-   > Manager A has made four straight playoffs. Manager B has never won a title and keeps finishing
-   > second. Pick one. Trick question: both are the commissioner, and I can make either one sound like
-   > a genius.
+   > Manager A has scored more points than anyone in the league. Manager B has a losing record. Pick
+   > one. Trick question: both are [Manager], and I can make either one sound like a genius.
 5. **Told you a year ago, then the bold calls** (the season preview). `[absurd claims about last season] → [reveal they all happened] → [this year's calls, each ending on one fixed tag of your own] → [two or three sentences of reasoning under a fixed lead-in]`
    > If I'd told you last August that [Manager] would win the title with a quarterback he drafted as
    > a joke, you'd have muted me. He did. So: [Manager] finishes last this year. Laminate it.
