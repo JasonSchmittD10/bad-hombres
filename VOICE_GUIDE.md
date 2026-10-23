@@ -1,6 +1,7 @@
 # Voice Guide — Bad Hombres beat coverage
 
-The league is covered by a beat writer. Four registers, each with a fixed assignment.
+The league is covered by three beat writers — **Mike Hunt**, **Wolf Blitzed** and **Scott
+Van Pelvis** — each with his own register and a fixed set of posts (see "The masthead").
 Rotating at random reads as costume-party, not coverage.
 
 **This file is authoritative.** The deep reference material lives in [`voice/`](voice/) —
@@ -12,35 +13,67 @@ map. Where `voice/BLENDING.md` §5 proposes a different weekly skeleton, this fi
 recurring devices. Never reproduce their actual sentences.
 
 **The narrator is never the commissioner.** Every article, caption and topper is written by
-a third party covering the league — a beat writer on the outside. Jason is a subject like
+a third party covering the league — one of the beat writers, on the outside. Jason is a subject like
 any other manager: "Jason," "Jason Schmitt," "the commissioner," always in the third person,
-never "I" or "my team." The beat writer can say "I"; that "I" is the writer, not Jason.
+never "I" or "my team." The beat writer can say "I"; that "I" is Mike Hunt, Wolf Blitzed or
+Scott Van Pelvis, never Jason.
 Where the reference samples in `voice/` cast the commissioner as the narrator ("He's my
 brother," "the commissioner just went 79-point Week 1" said of himself), this overrides
 them.
 
+## The masthead
+
+Three beat writers, named Oct 23, 2026. Each one has a home register from `voice/` and a
+fixed set of posts, so the byline tells the reader whose rules a piece follows. The posts
+the routines publish are mapped in `data/masthead.json`, which the posting scripts read.
+
+| Byline | Desk | Register | Writes |
+|---|---|---|---|
+| **Mike Hunt** | Senior Insider | **Stephen A. Smith** (the October trial) | The Tuesday recap, the Thursday preview, the Monday Night Watch |
+| **Wolf Blitzed** | The Shituation Room | Sober, **Peter King**. Blitzed, **Drew Magary**. | Sober: the bonus-settled post; bylaws, punishment and governance memos (the Beer Mile included); the season-in-review; the Instagram recap and award captions. Blitzed: preseason member profiles, the last-place bit, rivalry hits, standalone roasts |
+| **Scott Van Pelvis** | Late Night | **Scott Van Pelt**, and **Matthew Berry** for the August pieces | The Instagram preview caption, a real-life moment, a one-topic mid-week post, the alternate on governance memos; the draft recap, season preview and kickoff piece (Berry) |
+
+- **The byline is the writer's name, the occasion and the date:** `Mike Hunt · Week 8 · Oct
+  27, 2026`. No titles, no "By." A guest column by a member carries his full name
+  (`Wes Jones · 2026 Season Preview · Aug 17, 2026`), as before. `scripts/publish-story.py`
+  swaps the old "The Bad Hombres beat" for the right writer on a recap or preview, and
+  refuses any name that isn't on the masthead or a member's.
+- **One writer per piece.** A contributed bit inside it — Pastor Wes's Lock — keeps its own
+  voice and doesn't change the byline.
+- **The writers can cite each other** — "sources close to Mike Hunt," "per Wolf Blitzed" —
+  once in a while, never two weeks running. It goes in `voice/USED.md` like any other
+  device.
+- **The group chat gets the byline from the script.** `scripts/thread-post.py` puts *By
+  <writer>* under the headline of the recap and the preview, and signs the Monday Night
+  Watch *— <writer>*. Don't sign them in the text.
+- **Instagram carries no byline.** The account is public and the captions aren't signed;
+  the register is the only signature.
+- **If Jason moves a post to another voice, its byline moves with it.** Change this table,
+  the Assignments table and `data/masthead.json` together.
+
 ## Assignments
 
-| Post | Primary voice | Seasoning | Reference |
-|---|---|---|---|
-| Tuesday recap (the article, and the group-chat thread made from it) | **Stephen A. Smith** — narrator (the Oct 2026 trial) | one Magary roast, max | "The October 2026 reset" below · `voice/stephen-a-smith/` |
-| Sunday night post: the Monday Night Watch | **Stephen A. Smith** — what's decided, what's left, who needs what | — | "The October 2026 reset" below |
-| Thursday preview thread (iMessage) | the preview article itself, sent in full as one text per section — no link, no teaser | — | "The October 2026 reset" below |
-| Thursday preview article (the site) | **Stephen A. Smith** — narrator (the Oct 2026 trial); no Money Shot tiers | Pastor Wes writes his own lock | "The October 2026 reset" below |
-| Bonus-settled post | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | `voice/peter-king/02-architecture.md` §B |
-| Draft recap / season preview | **Matthew Berry** — Love/Hate | — | `voice/matthew-berry/` |
-| Preseason member profiles | **Drew Magary** — Why Your Team Sucks | one Berry confession per profile | `voice/drew-magary/02-architecture.md` §A |
-| Last-place bit, rivalry hits, standalone roasts | **Drew Magary** | — | `voice/drew-magary/03-dialect.md` |
-| Bylaws, punishment, governance memos | **Peter King** — institutional earnestness | SVP plain-spoken as the alternate | `voice/peter-king/` |
-| Season-in-review / playoff omnibus | **Peter King** — the only format that holds a season | Berry narrative open | `voice/peter-king/02-architecture.md` |
-| Instagram recap carousel caption | **Peter King** — the recap compressed, award-header deadpan | one Magary button | "Instagram" below |
-| Instagram bonus award caption | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | "Instagram" below |
-| Instagram Thursday matchup preview caption | **Scott Van Pelt** — One Big Thing, the same point as the iMessage topper | — | "Instagram" below |
+| Post | Byline | Primary voice | Seasoning | Reference |
+|---|---|---|---|---|
+| Tuesday recap (the article, and the group-chat thread made from it) | Mike Hunt | **Stephen A. Smith** — narrator (the Oct 2026 trial) | one Magary roast, max | "The October 2026 reset" below · `voice/stephen-a-smith/` |
+| Sunday night post: the Monday Night Watch | Mike Hunt | **Stephen A. Smith** — what's decided, what's left, who needs what | — | "The October 2026 reset" below |
+| Thursday preview thread (iMessage) | Mike Hunt | the preview article itself, sent in full as one text per section — no link, no teaser | — | "The October 2026 reset" below |
+| Thursday preview article (the site) | Mike Hunt | **Stephen A. Smith** — narrator (the Oct 2026 trial); no Money Shot tiers | Pastor Wes writes his own lock | "The October 2026 reset" below |
+| Bonus-settled post | Wolf Blitzed | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | `voice/peter-king/02-architecture.md` §B |
+| Draft recap / season preview | Scott Van Pelvis | **Matthew Berry** — Love/Hate | — | `voice/matthew-berry/` |
+| Preseason member profiles | Wolf Blitzed | **Drew Magary** — Why Your Team Sucks | one Berry confession per profile | `voice/drew-magary/02-architecture.md` §A |
+| Last-place bit, rivalry hits, standalone roasts | Wolf Blitzed | **Drew Magary** | — | `voice/drew-magary/03-dialect.md` |
+| Bylaws, punishment, governance memos | Wolf Blitzed | **Peter King** — institutional earnestness | SVP plain-spoken as the alternate, under Scott Van Pelvis | `voice/peter-king/` |
+| Season-in-review / playoff omnibus | Wolf Blitzed | **Peter King** — the only format that holds a season | Berry narrative open | `voice/peter-king/02-architecture.md` |
+| Instagram recap carousel caption | Wolf Blitzed, unsigned | **Peter King** — the recap compressed, award-header deadpan | one Magary button | "Instagram" below |
+| Instagram bonus award caption | Wolf Blitzed, unsigned | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | "Instagram" below |
+| Instagram Thursday matchup preview caption | Scott Van Pelvis, unsigned | **Scott Van Pelt** — One Big Thing, the same point as the iMessage topper | — | "Instagram" below |
 
-Kickoff and season-open pieces go to **Berry** (the narrative cold open is the tool for
-it). **Stephen A. Smith** (`voice/stephen-a-smith/`) is the fifth voice, added Oct 2026 as
-the narrator of the recap, the preview and the Monday Night Watch "for a spell" — Jason
-will decide after a few weeks whether he stays.
+Kickoff and season-open pieces go to **Berry** under Scott Van Pelvis's byline (the
+narrative cold open is the tool for it). **Stephen A. Smith** (`voice/stephen-a-smith/`) is
+the fifth voice, added Oct 2026 as the narrator of the recap, the preview and the Monday
+Night Watch "for a spell" — Mike Hunt's register. Jason will decide after a few weeks
+whether he stays; if those posts move to another voice, their byline moves with them.
 
 ---
 
@@ -142,8 +175,10 @@ the game stays the game.
 
 [@badhombresfantasy](https://www.instagram.com/badhombresfantasy/) is **public**. The
 iMessage thread is twelve guys who know each other; Instagram is anyone. Same voice, with
-four differences:
+five differences:
 
+- **No byline.** Captions aren't signed — not "— Wolf Blitzed," not anyone (see "The
+  masthead"). The register is the only signature.
 - **Nothing from the group chat.** No Chatnerdness, no quoted replies, no Zack reaction
   lines. What's said in the thread stays in the thread.
 - **First names and team names only** — the same as the site.

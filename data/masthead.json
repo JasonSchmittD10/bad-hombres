@@ -1,0 +1,25 @@
+{
+  "note": "The league's three beat writers and which scripted posts carry each byline (VOICE_GUIDE.md, 'The masthead'). Read by scripts/publish-story.py (the story byline), scripts/thread-post.py (the group-chat byline and the Monday Night Watch sign-off) and scripts/check.py. If a post moves to another voice, its byline moves with it: change the guide's table and this file together.",
+  "writers": [
+    {
+      "name": "Mike Hunt",
+      "desk": "Senior Insider",
+      "voices": ["stephen-a-smith"]
+    },
+    {
+      "name": "Wolf Blitzed",
+      "desk": "The Shituation Room",
+      "voices": ["peter-king", "drew-magary"]
+    },
+    {
+      "name": "Scott Van Pelvis",
+      "desk": "Late Night",
+      "voices": ["scott-van-pelt", "matthew-berry"]
+    }
+  ],
+  "posts": {
+    "recap": "Mike Hunt",
+    "preview": "Mike Hunt",
+    "watch": "Mike Hunt"
+  }
+}

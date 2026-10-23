@@ -13,6 +13,10 @@ doesn't build link previews for scripted messages, so links just look bad). The 
 is followed by two pictures: the standings (social/week-N/recap-4.jpg) and the week's
 bonus card (social/week-N/award.jpg).
 
+The byline goes with it (VOICE_GUIDE.md, "The masthead"): the first text carries "By
+<writer>" from the story page's byline, and the Monday Night Watch (a key starting mnf-)
+is signed "— <writer>" from data/masthead.json. Nobody signs a post by hand.
+
 Once only: every part is recorded in the post ledger (~/.bad-hombres-posts.json) as it
 goes, so a rerun after a failure sends only what's missing, and a finished post is
 recorded under the same keys the old posts used (opener-wN, recap-/story/…/, bonus-wN),
@@ -41,8 +45,20 @@ def text(frag):
     frag = re.sub(r"<br\s*/?>", "\n", frag)
     return "\n".join(html.unescape(re.sub(r"[ \t\r\n]+", " ", re.sub(r"<[^>]+>", "", line))).strip() for line in frag.split("\n")).strip()
 
+def writer_of(page_html):
+    """The beat writer named in the page's byline ("Mike Hunt · Week 8 · …"); '' for the
+    old house byline, so stories from before the masthead go out unsigned, as they did."""
+    line = text((re.search(r'<b>From the Booth</b><span>(.*?)</span>', page_html, re.S) or [None, ""])[1])
+    who = line.split(" · ")[0].strip()
+    return "" if who.startswith("The Bad Hombres beat") else who
+
+def masthead_writer(post):
+    """Who writes a scripted post ('recap', 'preview', 'watch') — data/masthead.json."""
+    try: return json.loads((ROOT / "data" / "masthead.json").read_text())["posts"].get(post, "")
+    except (FileNotFoundError, KeyError, json.JSONDecodeError): return ""
+
 def article(slug):
-    """[(header or None, [paragraphs])] — the intro, then one part per <h2>."""
+    """(title, [(header or None, [paragraphs])], writer) — the intro, then one part per <h2>."""
     page = ROOT / "story" / slug / "index.html"
     if not page.exists(): skip("no article at story/%s/ — publish it first" % slug)
     s = page.read_text()
@@ -58,13 +74,17 @@ def article(slug):
     parts.append((head, paras))
     parts = [(h, p) for h, p in parts if p]
     if not parts: die("story/%s has no paragraphs" % slug)
-    return title, parts
+    return title, parts, writer_of(s)
 
-def messages(kicker, title, parts):
-    """The intro carries the kicker and the headline; every other part leads with its header."""
+def messages(kicker, title, parts, writer=""):
+    """The intro carries the kicker, the headline and the byline; every other part leads with
+    its header."""
     out = []
     for i, (head, paras) in enumerate(parts):
-        top = ["%s: %s" % (kicker.upper(), title)] if i == 0 else ([head.upper()] if head else [])
+        if i == 0:
+            top = ["%s: %s" % (kicker.upper(), title) + ("\nBy %s" % writer if writer else "")]
+        else:
+            top = [head.upper()] if head else []
         out.append("\n\n".join(top + paras))
     if any(len(m) > 6000 for m in out): die("a section is over 6,000 characters — too long for one text")
     return out
@@ -104,13 +124,13 @@ def main():
     if kind == "preview":
         w = week(); n = w["week"]
         if w.get("status") != "preseason": skip("week %s has kicked off — too late for the preview" % n)
-        title, parts = article("week-%s-preview" % n)
-        run("opener-w%s" % n, [("text", m) for m in messages("Week %s Preview" % n, title, parts)])
+        title, parts, writer = article("week-%s-preview" % n)
+        run("opener-w%s" % n, [("text", m) for m in messages("Week %s Preview" % n, title, parts, writer)])
     elif kind == "recap":
         w = week(); n = w["week"]
         if w.get("status") != "final": skip("week %s isn't final" % n)
-        title, parts = article("week-%s-recap" % n)
-        msgs = [("text", m) for m in messages("Week %s Recap" % n, title, parts)]
+        title, parts, writer = article("week-%s-recap" % n)
+        msgs = [("text", m) for m in messages("Week %s Recap" % n, title, parts, writer)]
         d = ROOT / "social" / ("week-%s" % n)
         for img, what in (("recap-4.jpg", "the standings"), ("award.jpg", "the bonus card")):
             if not (d / img).exists(): skip("%s isn't rendered (social/week-%s/%s) — run social-render.py first" % (what, n, img))
@@ -120,6 +140,9 @@ def main():
         if len(a) < 3: sys.exit("usage: thread-post.py text <key> <file>")
         body = Path(a[2]).read_text().strip()
         if not body: die("the message file is empty")
+        writer = masthead_writer("watch") if a[1].startswith("mnf-") else ""
+        if writer and not body.endswith(writer):         # the Monday Night Watch is signed
+            body += "\n\n— " + writer
         run(a[1], [("text", body)])
     else:
         sys.exit(__doc__)
