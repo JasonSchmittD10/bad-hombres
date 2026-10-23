@@ -13,8 +13,8 @@
 
     --week N      a week other than the one in data/week.json
     --until ISO   when the line hides itself (ISO 8601 with a UTC offset). live and kickoff
-                  default to data/week.json's nextKickoff, so a line about where the week
-                  stands never outlives the next game that could change it.
+                  default to the next kickoff in data/week.json (nextGame), so a line about
+                  where the week stands never outlives the next game that could change it.
     --tag WORD    kickoff only: a red label on the card, when where it's played is the story
 
 Every line is optional. A missing or expired line just hides, or the page says something
@@ -170,8 +170,10 @@ def main():
     if tag is not None and not (0 < len(tag.strip()) <= TAG_LIMIT): die("the tag is a word or two, %d characters at most" % TAG_LIMIT)
     if k in TIMED and until is None:
         if str(w.get("week")) != str(wk): die("%s needs --until when it's not data/week.json's week" % k)
-        until = w.get("nextKickoff") or (w.get("nextGame") or {}).get("kickoff")
-        if not until: die("data/week.json has no next kickoff — pass --until")
+        # the next game still to come (every scoreboard run keeps nextGame current)
+        ahead = [c for c in ((w.get("nextGame") or {}).get("kickoff"), w.get("nextKickoff")) if c and when(c) and when(c) > now()]
+        if not ahead: die("data/week.json has no kickoff still to come — pass --until")
+        until = ahead[0]
     if until is not None:
         u = when(until)
         if not u: die("--until %r isn't an ISO time with a UTC offset (2026-10-25T13:00:00-04:00)" % until)
