@@ -9,7 +9,7 @@ Magary is the **roast engine** — the primary voice for Little Bitch of the Wee
 |---|---|
 | **WYTS** | **"Why Your Team Sucks: [Member]"** — preseason or bye-week feature. One member per post with the full skeleton: Your record / Your draft / What's new that sucks / What has always sucked / What might not suck / **HEAR IT FROM THE LEAGUE** (solicit one-liners from the other 11 guys about the target; print raw with first names) |
 | **Throwgasms** | Matchup tiers under a league-specific, offensive unit name. Empty tiers get **"None."** Forces editorial choice — not every game gets a paragraph |
-| **Fire This Asshole!** | **"Punishment Watch"** — running tracker of who's closest to last place with tags: SAFE! / COOKED! / IN DENIAL! / PRAYING! Dylan gets a permanent **OWES US A PUNISHMENT!** line |
+| **Fire This Asshole!** | **"Punishment Watch"** — running tracker of who's closest to last place with tags: SAFE! / COOKED! / IN DENIAL! / PRAYING! No permanent tag for anyone: running bits go stale, and Dylan's punishments are not a theme |
 | **Fantasy Player Who Deserves To Die…** | **"Player Who Ruined Someone's Week"** — the real NFL player who tanked a member, with the member named |
 | **Gametime Cheap Beer** | Member-submitted photo of what they were drinking during the loss, reviewed |
 | **Rex Ryan's Lock** | **"Pastor Wes's Lock of the Week"** — fake monologue in Wes's voice that starts as a sermon and ends somewhere it shouldn't. Track his fake record. |
@@ -23,7 +23,7 @@ The league's guys are okay being pushed. Magary's rule keeps that healthy: **the
 
 ## Sample 1 — Cold open + Punishment Watch + Matchup + Fake monologue (Week 9, 2025 data as placeholder)
 
-> Some people are fans of Rags-to-Richardson. But many, many more people are NOT fans of Rags-to-Richardson, and this week Dylan Greene gave those people a gift: 76.44 points, against the highest score of the season, from a man who still owes this league a punishment from two years ago. You and I both know what happened here. Dylan set his lineup Thursday, felt a small tickle of doubt, and decided doubt was for people who fulfill their obligations.
+> Most of this league does not root for Rags-to-Richardson, and this week Dylan Greene gave every one of them a gift: 76.44 points, against the highest score of the season. You and I both know what happened here. Dylan set his lineup Thursday, felt a small tickle of doubt, and decided doubt was for people with a backup plan.
 >
 > Let us pause for a moment to salute David Hurst, who scored 164.24 and is now the first man in league history to lead a coup and a scoring race in the same season. THE PEOPLE HAVE SPOKEN, DAVID. THE PEOPLE ARE FOUR GUYS IN A GROUP CHAT. Nobody's overthrowing anybody. Anyway.
 >
@@ -47,7 +47,7 @@ The league's guys are okay being pushed. Magary's rule keeps that healthy: **the
 
 > **WHY YOUR TEAM SUCKS: SUCK MY DIGGS**
 >
-> Some people are fans of Suck My Diggs. That's it. That's the sentence. There is no second half.
+> Suck My Diggs has one fan, and he sets the lineup. The fan base meets in his car.
 >
 > **Your 2024 record:** 6-8. Somehow not last. It's never last. Adam Schmitt has been the lowest-scoring team in this league for three years running and has finished last zero times, which means either the schedule is rigged or God has a brother.
 >

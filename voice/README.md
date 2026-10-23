@@ -20,12 +20,19 @@ voice/
 │   ├── 02-architecture.md       ← fixed sections in order, templates
 │   ├── 03-dialect.md            ← rhythm, signature moves, vocabulary, humor engine, do-nots
 │   ├── 04-league-adaptation.md  ← section ports, member fit, worked samples in league register
-│   └── 05-prompt-kit.md         ← rules, paste-ready prompt, QA checklist, reference reads
-├── drew-magary/                 (same 5 files)
-├── matthew-berry/               (same 5 files)
-├── scott-van-pelt/              (same 5 files)
-└── stephen-a-smith/             (same 5 files; proposed fifth voice, not yet assigned in VOICE_GUIDE)
+│   ├── 05-prompt-kit.md         ← rules, paste-ready prompt, QA checklist, reference reads
+│   ├── 06-tape-study.md         ← real pieces broken down beat by beat, corrections to 01–05, sources
+│   └── 07-phrasebook.md         ← the working kit: frames with original examples, words by job, traps, do-not-use
+├── drew-magary/                 (same 7 files)
+├── matthew-berry/               (same 7 files)
+├── scott-van-pelt/              (same 7 files)
+└── stephen-a-smith/             (same 7 files; Mike Hunt's register since Oct 2026)
 ```
+
+**06 and 07 were added Oct 23, 2026** from new research: tape studies of real columns and
+segments (transcripts, recaps and reviews; no video), with every description paraphrased and
+every example original. They were written after the October reset, so where they disagree
+with 01–05, they win — and the reset in `../VOICE_GUIDE.md` outranks all of it.
 
 ## Which file to open
 
@@ -39,6 +46,8 @@ voice/
 | To fix a draft that "sounds off" | `<writer>/03-dialect.md` — check "what he does NOT do" |
 | A worked example in league register | `<writer>/04-league-adaptation.md` |
 | To prompt Claude to draft in a voice | `<writer>/05-prompt-kit.md` — paste-ready prompt + checklist |
+| How the real writer actually builds a piece | `<writer>/06-tape-study.md` |
+| Fresh frames, words by job, and what never to copy | `<writer>/07-phrasebook.md` |
 
 ## Ground rules baked into every file
 - **Devices, not vocabulary.** The repos reverse-engineer the machinery. Fresh jokes every week; nobody's actual sentences get reused.
@@ -51,8 +60,8 @@ voice/
 - **King** — retired from the column Feb 2024. Frozen format; ideal for pastiche.
 - **Magary** — active. WYTS 2026 complete; Jamboroo running weekly at Defector. Re-read each season.
 - **Berry** — written Love/Hate ended Aug 2025 (final column is in project files). Now a sub-1,200-word Thursday "10 Facts" plus daily video.
-- **Van Pelt** — active, 11th season of the midnight SportsCenter, segments unchanged.
-- **Stephen A. Smith** — active (Oct 2026): First Take commentator/EP, The Stephen A. Smith Show on SiriusXM; the verdict voice for trade alerts, breaking news and chokes, pending an assignment row in VOICE_GUIDE.
+- **Van Pelt** — active, midnight SportsCenter; Bad Beats has grown into a long live segment (see `scott-van-pelt/06-tape-study.md`).
+- **Stephen A. Smith** — active (Oct 2026): First Take commentator/EP, The Stephen A. Smith Show on SiriusXM. Since Oct 2026 the narrator of the recap, the preview and the Monday Night Watch, under Mike Hunt's byline.
 
 ## Samples note
 All worked samples use **2025-season team names and Week 9 data as placeholders.** Swap in current-season rosters before reusing any structure.

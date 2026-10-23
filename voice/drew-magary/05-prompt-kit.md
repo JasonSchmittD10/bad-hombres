@@ -1,5 +1,9 @@
 # Drew Magary — 05 Prompt Kit
 
+> **Read `06-tape-study.md` and `07-phrasebook.md` too.** This kit predates the October 2026
+> reset and the Oct 23, 2026 research. Where they disagree with it, they win, and the reset
+> in `VOICE_GUIDE.md` outranks all of it.
+
 ## The rules (how to fake it)
 1. **Open cold** with a thesis sentence that's already an insult. No throat-clearing.
 2. **Build every insult as a noun phrase with a visual.** Person → object or creature → one more adjective than necessary.
@@ -18,16 +22,16 @@
 ```
 Write this week's Bad Hombres [matchup preview / Little Bitch of the Week / member profile] in the Drew Magary register (Why Your Team Sucks / Jamboroo).
 
-Narrator rules: confident, matter-of-fact, filthy, never performative. Every insult is a specific visual noun phrase, not "he sucks." Use the escalation ladder — two normal sentences, one absurd image, one CAPS line, one quiet deflating button — and don't skip the deflate. Ventriloquize at least one member in CAPS. The narrator (commissioner) loses on the page at least once before roasting anyone. One sincere sentence buried somewhere, unflagged. Profanity placed at the ends of rhythms and before nouns — never as filler.
+Narrator rules: confident, matter-of-fact, filthy, never performative. Every insult is a specific visual noun phrase, not "he sucks." Use the escalation ladder — two normal sentences, one absurd image, one CAPS line, one quiet deflating button — and don't skip the deflate. Ventriloquize at least one member in CAPS. The commissioner takes a hit at least once, in the third person (the narrator is the beat writer, never him). One sincere sentence buried somewhere, unflagged. Profanity placed at the ends of rhythms and before nouns — never as filler.
 
 Structure:
 - Cold-open thesis (one paragraph, already an insult)
 - [Section name]: matchups rated 1–5 on a scale called [league unit]; empty tiers say "None."
-- PUNISHMENT WATCH: every team at risk, one line each, ALL-CAPS TAG (SAFE! / COOKED! / OWES US A PUNISHMENT!)
-- PASTOR WES'S LOCK OF THE WEEK: fake Wes monologue, starts as sermon, derails, ends with a pick; then "Wes record: X-X"
+- PUNISHMENT WATCH: every team at risk, one line each, ALL-CAPS TAG (SAFE! / COOKED! / IN DENIAL!)
+- (No Pastor Wes's Lock here. It lives only in the Thursday preview, in Wes's voice.)
 - One line-by-line evisceration of a group-chat message I paste below
 - Fixed closer: [league's chosen quote/format]
-- "Enjoy the games, everyone."
+- The league's own one-line sign-off (never his)
 
 Fresh jokes only — nothing from prior weeks. Targets are peers and bad decisions, never anything that could actually hurt someone.
 

@@ -1,5 +1,9 @@
 # Scott Van Pelt — 05 Prompt Kit
 
+> **Read `06-tape-study.md` and `07-phrasebook.md` too.** This kit predates the October 2026
+> reset and the Oct 23, 2026 research. Where they disagree with it, they win, and the reset
+> in `VOICE_GUIDE.md` outranks all of it.
+
 ## The rules (how to fake it)
 1. **Write in beats.** One thought per line. Short. Fragments allowed. Line breaks are pauses.
 2. **Open with the best thing you saw.** One item. Sincere.

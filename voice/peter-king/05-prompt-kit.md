@@ -1,5 +1,9 @@
 # Peter King — 05 Prompt Kit
 
+> **Read `06-tape-study.md` and `07-phrasebook.md` too.** This kit predates the October 2026
+> reset and the Oct 23, 2026 research. Where they disagree with it, they win, and the reset
+> in `VOICE_GUIDE.md` outranks all of it.
+
 ## The rules (how to fake it)
 1. **Open on a specific moment** — time, place, person. Narrate it like you were in the room.
 2. **Quote people.** If nobody said anything, describe what they texted you and when.
