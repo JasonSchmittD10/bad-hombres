@@ -188,6 +188,11 @@
   setInterval(tick, 1000);
 
   /* ================================================================== THE HERO */
+  // the projection beside a live score is where the team is headed now: the API's lp, its
+  // points so far plus what its starters still to play are projected for. Before kickoff and
+  // once the week is final it's Yahoo's pre-game projection, p.
+  function projOf(t) { return status() === 'live' && t.lp != null ? t.lp : t.p; }
+  function projTxt(t, word, done) { return status() === 'live' && t.togo === 0 ? done : word + ' ' + n2(projOf(t)); }
   function side(t, other, lead, color, cls, big, sub) {
     return '<a class="fo-side ' + cls + (lead ? ' lead' : '') + '" href="' + profile(t.m) + '">' + tile(t.m, color) +
       '<span class="fo-info"><span class="fo-name">' + esc(t.m) + '</span><span class="fo-team">' + esc(t.t) + '</span>' +
@@ -263,8 +268,8 @@
     var main = '<article class="gotw panel">' +
       '<div class="g-top"><span class="g-k"><i class="dot red pulse-dot"></i><b class="red">Live</b><span>Week ' + n + '<span class="g-kx"> · ' + (f.g ? 'Game of the Week' : 'Featured matchup') + '</span></span></span><span class="g-upd">' + esc(upd) + '</span></div>' +
       '<h1 class="g-title">' + esc(gTitle(f.g, f.mu)) + '</h1><p class="g-dek">' + esc(dek) + '</p>' +
-      '<div class="fo">' + side(a, b, lead === 'a', lead === 'b' ? 'silver' : 'red', 'a', n2(a.s), 'Projected ' + n2(a.p)) +
-      '<span class="fo-vs">vs</span>' + side(b, a, lead === 'b', lead === 'b' ? 'red' : 'silver', 'b', n2(b.s), 'Projected ' + n2(b.p)) + '</div>' +
+      '<div class="fo">' + side(a, b, lead === 'a', lead === 'b' ? 'silver' : 'red', 'a', n2(a.s), projTxt(a, 'Projected', 'All played')) +
+      '<span class="fo-vs">vs</span>' + side(b, a, lead === 'b', lead === 'b' ? 'red' : 'silver', 'b', n2(b.s), projTxt(b, 'Projected', 'All played')) + '</div>' +
       wpHTML(a, b, 'Win probability') + '<div class="pulse" id="pulse"></div></article>';
     var sideH = kickCard() + wesCard(n) + pickCard(f);
     return [main, sideH];
@@ -404,7 +409,7 @@
   function sbMode() { if (!S.chosen) S.mode = status() === 'preseason' ? 'projected' : 'actual'; return S.mode; }
   function muCard(m, isG) {
     var st = status(), mode = sbMode(), actual = mode === 'actual', started = st !== 'preseason';
-    var a = m.a, b = m.b, ap = actual ? (started ? a.s : null) : a.p, bp = actual ? (started ? b.s : null) : b.p;
+    var a = m.a, b = m.b, ap = actual ? (started ? a.s : null) : projOf(a), bp = actual ? (started ? b.s : null) : projOf(b);
     var lead = ap == null || ap === bp ? null : ap > bp ? 'a' : 'b';
     var any = (a.s || 0) + (b.s || 0) > 0, tag;
     if (isG) tag = chip('Game of the Week', 'red');
@@ -413,9 +418,9 @@
       chip(/^(Thu|Fri|Sat)$/.test(dayT(new Date().toISOString())) ? 'Kicks off Sunday' : 'No points yet', 'dim');
     else tag = '';
     function row(t, k) {
-      var big = actual ? (started ? n2(t.s) : '—') : n2(t.p);
-      var small = actual ? 'proj ' + n2(t.p) : (started ? 'actual ' + n2(t.s) : 'projected');
-      var cls = lead === k ? ' lead' : ((actual ? t.s : t.p) > 0 ? '' : ' zero');
+      var big = actual ? (started ? n2(t.s) : '—') : n2(projOf(t));
+      var small = actual ? projTxt(t, 'proj', 'all played') : (started ? 'actual ' + n2(t.s) : 'projected');
+      var cls = lead === k ? ' lead' : ((actual ? t.s : projOf(t)) > 0 ? '' : ' zero');
       return '<a class="mu-row' + cls + '" href="' + profile(t.m) + '">' + av(t.m) + '<span class="mu-nm"><b>' + esc(t.m) + '</b><small>' + esc(t.t) + '</small></span>' +
         '<span class="mu-pts"><b>' + big + '</b><small>' + small + '</small></span></a>';
     }
