@@ -25,8 +25,12 @@ Two things the API can't do, and how the site handles them:
 - **No per-player projections.** Yahoo publishes team projections, not player ones.
   Awards judged on one player (weeks 1, 3, 4, 6, 8, 10, 11, 12) have live leaders but no
   projected list; the Bonus Board says so. Team and matchup awards project normally.
-- **Projections are pre-game.** A team's `p` is Yahoo's original projection for the
-  week, not the in-game number that converges on the final score as players finish.
+- **Yahoo's projections are pre-game.** A team's `p` is Yahoo's projection for the week,
+  which ignores what has already happened. So the API also computes `lp`, where the team is
+  headed now (its points so far plus its unfinished starters' projections, Sleeper's scaled
+  to Yahoo's `p`), and `togo`, how many starters are still to play; `sync.py week` keeps
+  both in `week.json`. The homepage shows `lp` beside a live score ("all played" once
+  `togo` is 0) and `p` before kickoff and after the final.
 
 If the API fails, `sync.py` refuses and writes nothing; the routine alerts Jason and
 stops. There is no browser fallback.

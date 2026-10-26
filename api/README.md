@@ -160,7 +160,7 @@ curl -s https://bad-hombres.vercel.app/api/scoreboard | head -c 400
   "week": 1,
   "status": "preseason" | "live" | "final",
   "updated": "2026-09-09T20:31:00.000Z",
-  "matchups": [{ "a": {"m":"Jason","t":"Pull-Out Game Weak","s":88.4,"p":130.2}, "b": {…} }],
+  "matchups": [{ "a": {"m":"Jason","t":"Pull-Out Game Weak","s":88.4,"p":130.2,"lp":121.7,"togo":3,"wp":0.62}, "b": {…} }],
   "bonus": {
     "week": 1, "nm": "Josh Allen's Money Shot", "cr": "Highest-scoring QB",
     "actual":    [{"who":"Erick","sub":"Jayden Daniels","val":31.4}, …],
@@ -169,8 +169,12 @@ curl -s https://bad-hombres.vercel.app/api/scoreboard | head -c 400
 }
 ```
 
-`s` = actual score, `p` = projected. Cached 60s at the edge; the page re-polls
-every 90s.
+`s` = actual score. `p` = Yahoo's projection for the week, made before kickoff (Yahoo
+publishes no other). `lp` = where the team is headed now: `s` plus what its starters still
+to play are projected for — Sleeper's projections scaled so they add up to `p`, a game in
+progress counting only the part still to play (ESPN's clock) — so it equals `p` before
+kickoff and `s` once everyone has played. `togo` = starters whose game isn't over. `wp` =
+Yahoo's live win probability. Cached 60s at the edge; the page re-polls every 90s.
 
 ## Bonus math
 

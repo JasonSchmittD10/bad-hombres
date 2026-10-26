@@ -59,29 +59,63 @@ const norm = (s) =>
 let scheduleCache = {};       // week -> {TEAMABBR: 'Mon'|'Thu'|...}
 let rookieCache = { at: 0, set: null };
 
-// Each NFL team's game this week, from ESPN: {TEAM: {day: 'Mon', state: 'pre'|'in'|'post', at}},
-// keyed by Yahoo's spelling (normTeam: ESPN's WSH is Yahoo's WAS). Not cached once games
-// are underway, because state changes.
+// Each NFL team's game this week, from ESPN: {TEAM: {day: 'Mon', state: 'pre'|'in'|'post', at, rem}},
+// keyed by Yahoo's spelling (normTeam: ESPN's WSH is Yahoo's WAS). rem is the share of the
+// game still to play, 1 before kickoff to 0 at the final whistle. Kept a minute while any
+// game is on (the clock moves), five minutes otherwise.
 async function getSchedule(week) {
   const hit = scheduleCache[week];
-  if (hit && Date.now() - hit.at < 5 * 60 * 1000) return hit.map;
+  if (hit && Date.now() - hit.at < (hit.live ? 60 : 300) * 1000) return hit.map;
   const map = {};
   try {
-    const res = await fetch(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=${week}`);
+    const res = await fetch(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=${week}`,
+      { signal: AbortSignal.timeout(8000) });
     if (res.ok) {
       const j = await res.json();
       for (const ev of j.events || []) {
         const day = new Date(ev.date).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'America/New_York' });
         const state = ev.status?.type?.state || 'pre';
+        // four 15-minute quarters; ESPN's clock is the seconds left in the current period
+        const per = Number(ev.status?.period) || 1, clock = Number(ev.status?.clock) || 0;
+        const rem = state === 'pre' ? 1 : state === 'post' ? 0
+          : Math.max(0, Math.min(1, (per <= 4 ? (4 - per) * 900 + clock : clock) / 3600));
         for (const c of ev.competitions?.[0]?.competitors || []) {
           const abbr = c.team?.abbreviation;
-          if (abbr) map[normTeam(abbr)] = { day, state, at: ev.date };
+          if (abbr) map[normTeam(abbr)] = { day, state, at: ev.date, rem: Math.round(rem * 1000) / 1000 };
         }
       }
     }
-  } catch (_) { /* no schedule: the bonus and the Monday watch degrade */ }
-  scheduleCache[week] = { at: Date.now(), map };
+  } catch (_) { /* no schedule: the bonus, the live projections and the Monday watch degrade */ }
+  scheduleCache[week] = { at: Date.now(), map, live: Object.values(map).some((g) => g.state === 'in') };
   return map;
+}
+
+/* ---------------- Live projections ----------------
+   Yahoo only publishes each team's pre-game projection (p), which ignores what has already
+   happened. lp is where the team is headed now: its points so far plus what its starters
+   still to play are projected for — Sleeper's projections, scaled so they add up to Yahoo's
+   own p for the team (so lp equals p before kickoff and the homepage doesn't jump when the
+   first game starts), and a game in progress counting only the part still to play. Once
+   every starter's game is over, lp is the score. A team without projections gets no lp.
+   togo is how many of its starters haven't finished their game (0: the team is done). */
+
+export function liveProjections(matchups, teams, sched) {
+  if (!teams.length || !Object.keys(sched).length) return;
+  const byKey = Object.fromEntries(teams.map((t) => [String(t.key), t]));
+  for (const m of matchups) for (const x of [m.a, m.b]) {
+    const t = byKey[String(x.key)];
+    if (!t || x.s == null) continue;
+    const st = t.players.filter((p) => p.slot && p.slot !== 'BN' && p.slot !== 'IR');
+    // no game this week (a bye) counts as done: nothing more to come
+    const playing = st.filter((p) => { const g = sched[normTeam(p.nflTeam)]; return g && g.state !== 'post'; });
+    x.togo = playing.length;
+    const sum = st.reduce((n, p) => n + (p.proj || 0), 0);
+    if (!sum) continue;
+    let k = x.p ? x.p / sum : 1;
+    if (!(k > 0.5 && k < 2)) k = 1;                    // Yahoo and Sleeper wildly apart: trust Sleeper
+    const still = playing.reduce((n, p) => n + (p.proj || 0) * k * sched[normTeam(p.nflTeam)].rem, 0);
+    x.lp = Math.round((x.s + still) * 100) / 100;
+  }
 }
 async function getKickoffDays(week) {
   const sched = await getSchedule(week), days = {};
@@ -282,6 +316,9 @@ export default async function handler(req, res) {
       }
     }
 
+    const sched = teams.length ? await getSchedule(week) : {};
+    try { liveProjections(sb.matchups, teams, sched); } catch (_) { /* no lp: the page shows Yahoo's p */ }
+
     const anyScores = sb.matchups.some((m) => (m.a.s ?? 0) > 0 || (m.b.s ?? 0) > 0);
     const bonus = teams.length
       ? await computeBonus(week, sb.matchups, teams, getKickoffDays(week), getRookies(), anyScores)
@@ -302,7 +339,6 @@ export default async function handler(req, res) {
       out.standings = standings;
       // who each team still has to play: starters whose NFL game hasn't finished (the
       // Sunday-night Monday Night Watch reads this through scripts/mnf-watch.py)
-      const sched = await getSchedule(week);
       out.left = Object.fromEntries(teams.map((t) => [t.m, t.players
         .filter((p) => p.slot && p.slot !== 'BN' && p.slot !== 'IR')
         .map((p) => ({ name: p.name, pos: p.pos, nfl: p.nflTeam, pts: p.pts, proj: p.proj, game: sched[normTeam(p.nflTeam)] || null }))

@@ -64,6 +64,10 @@ def side(t, with_score=True):
     out = {"m": t["m"], "t": t.get("t") or ""}
     if with_score: out["s"] = round(float(t.get("s") or 0), 2)
     out["p"] = round(float(t.get("p") or 0), 2)
+    # the live projection and how many starters are still to play (api/scoreboard.mjs), so the
+    # homepage's "proj" stays current from the file when the live API is down
+    if with_score and t.get("lp") is not None: out["lp"] = round(float(t["lp"]), 2)
+    if with_score and t.get("togo") is not None: out["togo"] = int(t["togo"])
     return out
 
 def week_cmd(args):
