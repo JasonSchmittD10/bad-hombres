@@ -243,6 +243,14 @@ button{font:inherit;color:inherit}
 .mu .wp-bar{height:6px;gap:3px;margin-top:7px}
 .mu .wp-bar i,.mu .wp-bar s{border-radius:3px}
 .mu-chart:empty{display:none}
+/* decided: both teams have played everyone (or the week is final) */
+.mu-top .chip+.chip{margin-left:-4px}
+.mu-row.lost .mu-nm b,.mu-row.lost .mu-pts b{color:var(--muted)}
+.mu-row.lost .av{opacity:.5;filter:grayscale(1)}
+.res{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--silver)}
+.res b{color:#fff;font-family:var(--font-display);font-weight:700}
+.res small{display:none;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.gotw .res{margin-top:0;padding-top:16px;font-size:16px}
 
 /* ================================================================== ON THE LINE */
 .stk-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -517,6 +525,8 @@ a.feature:hover .feat-cta{background:var(--gold)}
  .mu{padding:14px;gap:8px}
  .mu-top{display:none}
  .mu.is-gotw .mu-top{display:flex}
+ .mu .res small{display:inline}
+ .mu.is-gotw .mu-top .chip+.chip{display:none}
  .mu-row .av{width:28px;height:28px}
  .mu-nm small{display:none}
  .mu-nm b{font-size:15px}

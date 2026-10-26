@@ -193,6 +193,13 @@
   // once the week is final it's Yahoo's pre-game projection, p.
   function projOf(t) { return status() === 'live' && t.lp != null ? t.lp : t.p; }
   function projTxt(t, word, done) { return status() === 'live' && t.togo === 0 ? done : word + ' ' + n2(projOf(t)); }
+  // a matchup is decided once both teams' starters have all played (togo, from the API) —
+  // often Sunday night, before the week is final — and every matchup is once it is
+  function decided(m) { var st = status(); return st === 'final' || (st === 'live' && m.a.togo === 0 && m.b.togo === 0); }
+  function resultHTML(a, b) {
+    var txt = a.s === b.s ? 'Tied at ' + n2(a.s) : '<b>' + esc(a.s > b.s ? a.m : b.m) + '</b> won by ' + n2(Math.abs(a.s - b.s));
+    return '<div class="res"><span>' + txt + '</span><small>Final</small></div>';
+  }
   function side(t, other, lead, color, cls, big, sub) {
     return '<a class="fo-side ' + cls + (lead ? ' lead' : '') + '" href="' + profile(t.m) + '">' + tile(t.m, color) +
       '<span class="fo-info"><span class="fo-name">' + esc(t.m) + '</span><span class="fo-team">' + esc(t.t) + '</span>' +
@@ -251,26 +258,31 @@
       (txt ? '<p class="kick-l">' + esc(txt) + '</p>' : '') + '</div>';
   }
   function pickCard(f) {
-    var p = D.picks, txt = 'Locked at kickoff. No take-backs.';
+    var p = D.picks, txt = 'Locked at kickoff. No take-backs.', done = f && decided(f.mu);
     if (p && p.counts && f && p.week === N()) {
-      var a = p.counts[f.mu.a.m] || 0, b = p.counts[f.mu.b.m] || 0;
-      if (a + b) txt = a + ' took ' + f.mu.a.m + ', ' + b + ' took ' + f.mu.b.m + '.';
+      var a = p.counts[f.mu.a.m] || 0, b = p.counts[f.mu.b.m] || 0, A = f.mu.a, B = f.mu.b;
+      if (a + b && done && A.s !== B.s) {
+        var c = A.s > B.s ? a : b;
+        txt = c === a + b ? 'All ' + c + ' called it.' : c ? c + ' of ' + (a + b) + ' called it.' : 'Nobody called it.';
+      } else if (a + b) txt = a + ' took ' + A.m + ', ' + b + ' took ' + B.m + '.';
     }
-    return '<a class="side-card pick" href="/picks/"><span class="pick-t"><span class="k">Pick’em · Locked</span><span class="pick-x">' + esc(txt) + '</span></span>' +
+    return '<a class="side-card pick" href="/picks/"><span class="pick-t"><span class="k">Pick’em · ' + (done ? 'Decided' : 'Locked') + '</span><span class="pick-x">' + esc(txt) + '</span></span>' +
       '<span class="pill">See the picks <i>→</i></span></a>';
   }
 
   function heroLive(f) {
-    var a = f.mu.a, b = f.mu.b, n = N(), lead = a.s === b.s ? null : (a.s > b.s ? 'a' : 'b');
+    var a = f.mu.a, b = f.mu.b, n = N(), lead = a.s === b.s ? null : (a.s > b.s ? 'a' : 'b'), done = decided(f.mu);
     var dek = line(n, 'live');
-    if (!dek) dek = lead ? (lead === 'a' ? a.m : b.m) + ' leads by ' + n2(Math.abs(a.s - b.s)) + '.' : (a.s ? 'Dead even at ' + n2(a.s) + '.' : 'Nobody has scored yet.');
+    // decided: the result line under the scores says it, so no computed line repeats it
+    if (!dek && !done) dek = lead ? (lead === 'a' ? a.m : b.m) + ' leads by ' + n2(Math.abs(a.s - b.s)) + '.' : (a.s ? 'Dead even at ' + n2(a.s) + '.' : 'Nobody has scored yet.');
+    var under = function (t) { return done ? 'Final' : projTxt(t, 'Projected', 'All played'); };
     var upd = wk().updated ? 'Updated ' + dayT(wk().updated) + ' ' + clockT(wk().updated) + ' ET' : '';
     var main = '<article class="gotw panel">' +
-      '<div class="g-top"><span class="g-k"><i class="dot red pulse-dot"></i><b class="red">Live</b><span>Week ' + n + '<span class="g-kx"> · ' + (f.g ? 'Game of the Week' : 'Featured matchup') + '</span></span></span><span class="g-upd">' + esc(upd) + '</span></div>' +
-      '<h1 class="g-title">' + esc(gTitle(f.g, f.mu)) + '</h1><p class="g-dek">' + esc(dek) + '</p>' +
-      '<div class="fo">' + side(a, b, lead === 'a', lead === 'b' ? 'silver' : 'red', 'a', n2(a.s), projTxt(a, 'Projected', 'All played')) +
-      '<span class="fo-vs">vs</span>' + side(b, a, lead === 'b', lead === 'b' ? 'red' : 'silver', 'b', n2(b.s), projTxt(b, 'Projected', 'All played')) + '</div>' +
-      wpHTML(a, b, 'Win probability') + '<div class="pulse" id="pulse"></div></article>';
+      '<div class="g-top"><span class="g-k">' + (done ? '<i class="dot silver"></i><b>Final</b>' : '<i class="dot red pulse-dot"></i><b class="red">Live</b>') + '<span>Week ' + n + '<span class="g-kx"> · ' + (f.g ? 'Game of the Week' : 'Featured matchup') + '</span></span></span><span class="g-upd">' + esc(upd) + '</span></div>' +
+      '<h1 class="g-title">' + esc(gTitle(f.g, f.mu)) + '</h1>' + (dek ? '<p class="g-dek">' + esc(dek) + '</p>' : '') +
+      '<div class="fo">' + side(a, b, lead === 'a', lead === 'b' ? 'silver' : 'red', 'a', n2(a.s), under(a)) +
+      '<span class="fo-vs">vs</span>' + side(b, a, lead === 'b', lead === 'b' ? 'red' : 'silver', 'b', n2(b.s), under(b)) + '</div>' +
+      (done ? resultHTML(a, b) : wpHTML(a, b, 'Win probability')) + '<div class="pulse" id="pulse"></div></article>';
     var sideH = kickCard() + wesCard(n) + pickCard(f);
     return [main, sideH];
   }
@@ -399,7 +411,8 @@
     var lp = (nx / W * 100).toFixed(2), tp = (y(cur) / H * 100).toFixed(2), cp = Math.round(cur * 100);
     box.innerHTML = head + '<div class="pulse-c">' + svg +
       '<span class="pl-dot" style="left:' + lp + '%;top:' + tp + '%"></span>' +
-      '<span class="pl-nowl' + (nx > W * 0.82 ? ' left' : '') + '" style="left:' + lp + '%">Now · ' + cp + '%</span>' +
+      // the label sits right of the line unless that would run into the "favored" labels or off a phone
+      '<span class="pl-nowl' + ((1 - nx / W) * (box.clientWidth || 600) < 200 ? ' left' : '') + '" style="left:' + lp + '%">Now · ' + cp + '%</span>' +
       '<span class="pl-fav top">' + esc(a) + ' favored</span><span class="pl-fav bot">' + esc(b) + ' favored</span><span class="pl-50">50%</span></div>' +
       '<div class="pulse-x" style="grid-template-columns:repeat(' + cols.length + ',1fr)">' +
       cols.map(function (c, k) { return '<span' + ((k + 1) * cw <= nx + 0.5 ? ' class="done"' : '') + '>' + c + '</span>'; }).join('') + '</div>';
@@ -408,25 +421,27 @@
   /* ================================================================== SCOREBOARD */
   function sbMode() { if (!S.chosen) S.mode = status() === 'preseason' ? 'projected' : 'actual'; return S.mode; }
   function muCard(m, isG) {
-    var st = status(), mode = sbMode(), actual = mode === 'actual', started = st !== 'preseason';
+    var st = status(), mode = sbMode(), actual = mode === 'actual', started = st !== 'preseason', done = decided(m);
     var a = m.a, b = m.b, ap = actual ? (started ? a.s : null) : projOf(a), bp = actual ? (started ? b.s : null) : projOf(b);
+    // once it's decided, the winner is the winner whichever numbers the toggle shows
+    if (done) { ap = a.s; bp = b.s; }
     var lead = ap == null || ap === bp ? null : ap > bp ? 'a' : 'b';
     var any = (a.s || 0) + (b.s || 0) > 0, tag;
-    if (isG) tag = chip('Game of the Week', 'red');
-    else if (st === 'final') tag = chip('Final', 'dim');
+    if (isG) tag = chip('Game of the Week', 'red') + (done ? chip('Final', 'dim') : '');
+    else if (done) tag = chip('Final', 'dim');
     else if (st === 'live') tag = any ? '<span class="chip"><i class="dot red"></i>Live</span>' :
       chip(/^(Thu|Fri|Sat)$/.test(dayT(new Date().toISOString())) ? 'Kicks off Sunday' : 'No points yet', 'dim');
     else tag = '';
     function row(t, k) {
       var big = actual ? (started ? n2(t.s) : '—') : n2(projOf(t));
-      var small = actual ? projTxt(t, 'proj', 'all played') : (started ? 'actual ' + n2(t.s) : 'projected');
-      var cls = lead === k ? ' lead' : ((actual ? t.s : projOf(t)) > 0 ? '' : ' zero');
+      var small = done && actual ? '' : actual ? projTxt(t, 'proj', 'all played') : (started ? 'actual ' + n2(t.s) : 'projected');
+      var cls = lead === k ? ' lead' : done && lead ? ' lost' : ((actual ? t.s : projOf(t)) > 0 ? '' : ' zero');
       return '<a class="mu-row' + cls + '" href="' + profile(t.m) + '">' + av(t.m) + '<span class="mu-nm"><b>' + esc(t.m) + '</b><small>' + esc(t.t) + '</small></span>' +
-        '<span class="mu-pts"><b>' + big + '</b><small>' + small + '</small></span></a>';
+        '<span class="mu-pts"><b>' + big + '</b>' + (small ? '<small>' + small + '</small>' : '') + '</span></a>';
     }
-    var wp = st !== 'final' ? wpHTML(a, b, 'Win prob') : '';
+    var wp = done ? resultHTML(a, b) : wpHTML(a, b, 'Win prob');
     var key = a.m + '|' + b.m;
-    return '<article class="mu' + (isG ? ' is-gotw' : '') + (S.charts ? ' open' : '') + '" data-k="' + esc(key) + '" tabindex="0" role="button" aria-expanded="' + S.charts + '">' +
+    return '<article class="mu' + (isG ? ' is-gotw' : '') + (done ? ' is-done' : '') + (S.charts ? ' open' : '') + '" data-k="' + esc(key) + '" tabindex="0" role="button" aria-expanded="' + S.charts + '">' +
       '<div class="mu-top">' + tag + '<span class="mu-ser">' + esc(series(a.m, b.m, isG)) + '</span></div>' +
       row(a, 'a') + '<div class="mu-div"></div>' + row(b, 'b') + wp + '<div class="mu-chart"></div></article>';
   }
