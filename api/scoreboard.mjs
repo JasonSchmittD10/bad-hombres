@@ -317,7 +317,7 @@ export default async function handler(req, res) {
     }
 
     const sched = teams.length ? await getSchedule(week) : {};
-    liveProjections(sb.matchups, teams, sched);
+    try { liveProjections(sb.matchups, teams, sched); } catch (_) { /* no lp: the page shows Yahoo's p */ }
 
     const anyScores = sb.matchups.some((m) => (m.a.s ?? 0) > 0 || (m.b.s ?? 0) > 0);
     const bonus = teams.length
