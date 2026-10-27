@@ -34,6 +34,15 @@ if [ "${DRY_RUN:-0}" = "1" ]; then
   exit 0
 fi
 
+# Messages is sandboxed: an attachment sent from an arbitrary folder (the repo) goes
+# out as a blank "Not Delivered" file. Stage it in ~/Pictures, which Messages can read.
+if [ -n "$img" ]; then
+  stage="$HOME/Pictures/bad-hombres-outbox"
+  mkdir -p "$stage"
+  cp -f "$img" "$stage/"
+  img="$stage/$(basename "$img")"
+fi
+
 osascript <<APPLESCRIPT
 set msgText to (do shell script "cat " & quoted form of "$msg_file")
 tell application "Messages"
