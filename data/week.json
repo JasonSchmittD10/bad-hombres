@@ -1,7 +1,7 @@
 {
   "week": 7,
   "status": "live",
-  "updated": "2026-10-26T10:34:53-04:00",
+  "updated": "2026-10-27T00:24:23-04:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
@@ -9,13 +9,17 @@
         "m": "Jason",
         "t": "Pull-Out Game Weak",
         "s": 102.32,
-        "p": 132.24
+        "p": 132.24,
+        "lp": 102.32,
+        "togo": 0
       },
       "b": {
         "m": "Zack",
         "t": "Sewer Pigeons",
-        "s": 80.02,
-        "p": 122.19
+        "s": 117.22,
+        "p": 122.41,
+        "lp": 117.22,
+        "togo": 0
       }
     },
     {
@@ -23,13 +27,17 @@
         "m": "Tola",
         "t": "Alien Awareness",
         "s": 123.68,
-        "p": 127.8
+        "p": 127.8,
+        "lp": 123.68,
+        "togo": 0
       },
       "b": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "s": 115.74,
-        "p": 139.92
+        "s": 140.14,
+        "p": 139.9,
+        "lp": 140.14,
+        "togo": 0
       }
     },
     {
@@ -37,27 +45,35 @@
         "m": "Hoa",
         "t": "Critical Chase Theory",
         "s": 140.18,
-        "p": 121.75
+        "p": 121.75,
+        "lp": 140.18,
+        "togo": 0
       },
       "b": {
         "m": "David",
         "t": "Drain the Swamp",
         "s": 90.4,
-        "p": 109.16
+        "p": 109.16,
+        "lp": 90.4,
+        "togo": 0
       }
     },
     {
       "a": {
         "m": "Dylan",
         "t": "Carlie’s Headset",
-        "s": 98.22,
-        "p": 126.53
+        "s": 111.82,
+        "p": 126.47,
+        "lp": 111.82,
+        "togo": 0
       },
       "b": {
         "m": "Matt",
         "t": "San Diego Chillin’",
         "s": 127.62,
-        "p": 120.48
+        "p": 120.48,
+        "lp": 127.62,
+        "togo": 0
       }
     },
     {
@@ -65,27 +81,35 @@
         "m": "Drew",
         "t": "I Stand with Jordon",
         "s": 137.56,
-        "p": 135.33
+        "p": 135.33,
+        "lp": 137.56,
+        "togo": 0
       },
       "b": {
         "m": "Erick",
         "t": "King In The North",
-        "s": 129.28,
-        "p": 127.77
+        "s": 139.08,
+        "p": 127.31,
+        "lp": 139.08,
+        "togo": 0
       }
     },
     {
       "a": {
         "m": "Wes",
         "t": "MikeLee4 Prez",
-        "s": 63.32,
-        "p": 120.18
+        "s": 78.42,
+        "p": 120.03,
+        "lp": 78.42,
+        "togo": 0
       },
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
         "s": 117.12,
-        "p": 131.63
+        "p": 131.63,
+        "lp": 117.12,
+        "togo": 0
       }
     }
   ],
@@ -97,17 +121,17 @@
       {
         "who": "Wes",
         "sub": "MikeLee4 Prez",
-        "val": 63.32
-      },
-      {
-        "who": "Zack",
-        "sub": "Sewer Pigeons",
-        "val": 80.02
+        "val": 78.42
       },
       {
         "who": "David",
         "sub": "Drain the Swamp",
         "val": 90.4
+      },
+      {
+        "who": "Jason",
+        "sub": "Pull-Out Game Weak",
+        "val": 102.32
       }
     ],
     "projected": [
@@ -119,7 +143,7 @@
       {
         "who": "Wes",
         "sub": "MikeLee4 Prez",
-        "val": 120.18
+        "val": 120.03
       },
       {
         "who": "Matt",
@@ -132,10 +156,10 @@
   "nextKickoff": "2026-10-25T09:30:00-04:00",
   "nextKickoffLabel": "Thursday, Oct 22 · 8:15 PM ET",
   "nextGame": {
-    "away": "DAL",
-    "home": "PHI",
-    "kickoff": "2026-10-26T20:15:00-04:00",
-    "label": "Monday, Oct 26 at 8:15 PM ET",
-    "network": "ESPN/ABC"
+    "away": "CAR",
+    "home": "GB",
+    "kickoff": "2026-10-29T20:15:00-04:00",
+    "label": "Thursday, Oct 29 at 8:15 PM ET",
+    "network": "Prime Video"
   }
 }
