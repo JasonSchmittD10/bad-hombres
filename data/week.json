@@ -1,165 +1,165 @@
 {
-  "week": 7,
-  "status": "live",
-  "updated": "2026-10-27T00:24:23-04:00",
-  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
-  "matchups": [
-    {
-      "a": {
-        "m": "Jason",
-        "t": "Pull-Out Game Weak",
-        "s": 102.32,
-        "p": 132.24,
-        "lp": 102.32,
-        "togo": 0
-      },
-      "b": {
-        "m": "Zack",
-        "t": "Sewer Pigeons",
-        "s": 117.22,
-        "p": 122.41,
-        "lp": 117.22,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "Tola",
-        "t": "Alien Awareness",
-        "s": 123.68,
-        "p": 127.8,
-        "lp": 123.68,
-        "togo": 0
-      },
-      "b": {
-        "m": "Chris",
-        "t": "Maye the Force Be With You",
-        "s": 140.14,
-        "p": 139.9,
-        "lp": 140.14,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "Hoa",
-        "t": "Critical Chase Theory",
-        "s": 140.18,
-        "p": 121.75,
-        "lp": 140.18,
-        "togo": 0
-      },
-      "b": {
-        "m": "David",
-        "t": "Drain the Swamp",
-        "s": 90.4,
-        "p": 109.16,
-        "lp": 90.4,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "Dylan",
-        "t": "Carlie’s Headset",
-        "s": 111.82,
-        "p": 126.47,
-        "lp": 111.82,
-        "togo": 0
-      },
-      "b": {
-        "m": "Matt",
-        "t": "San Diego Chillin’",
-        "s": 127.62,
-        "p": 120.48,
-        "lp": 127.62,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "Drew",
-        "t": "I Stand with Jordon",
-        "s": 137.56,
-        "p": 135.33,
-        "lp": 137.56,
-        "togo": 0
-      },
-      "b": {
-        "m": "Erick",
-        "t": "King In The North",
-        "s": 139.08,
-        "p": 127.31,
-        "lp": 139.08,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "Wes",
-        "t": "MikeLee4 Prez",
-        "s": 78.42,
-        "p": 120.03,
-        "lp": 78.42,
-        "togo": 0
-      },
-      "b": {
-        "m": "Adam",
-        "t": "Suck My Diggs",
-        "s": 117.12,
-        "p": 131.63,
-        "lp": 117.12,
-        "togo": 0
-      }
-    }
-  ],
-  "bonus": {
-    "week": 7,
-    "nm": "Adam of the Week",
-    "cr": "Lowest point total overall",
-    "actual": [
-      {
-        "who": "Wes",
-        "sub": "MikeLee4 Prez",
-        "val": 78.42
-      },
-      {
-        "who": "David",
-        "sub": "Drain the Swamp",
-        "val": 90.4
-      },
-      {
-        "who": "Jason",
-        "sub": "Pull-Out Game Weak",
-        "val": 102.32
-      }
-    ],
-    "projected": [
-      {
-        "who": "David",
-        "sub": "Drain the Swamp",
-        "val": 109.16
-      },
-      {
-        "who": "Wes",
-        "sub": "MikeLee4 Prez",
-        "val": 120.03
-      },
-      {
-        "who": "Matt",
-        "sub": "San Diego Chillin’",
-        "val": 120.48
-      }
-    ]
+ "week": 7,
+ "status": "final",
+ "updated": "2026-10-27T07:45:58-04:00",
+ "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
+ "matchups": [
+  {
+   "a": {
+    "m": "Jason",
+    "t": "Pull-Out Game Weak",
+    "s": 102.32,
+    "p": 132.24,
+    "lp": 102.32,
+    "togo": 0
+   },
+   "b": {
+    "m": "Zack",
+    "t": "Sewer Pigeons",
+    "s": 117.22,
+    "p": 122.41,
+    "lp": 117.22,
+    "togo": 0
+   }
   },
-  "nextWeek": 7,
-  "nextKickoff": "2026-10-25T09:30:00-04:00",
-  "nextKickoffLabel": "Thursday, Oct 22 · 8:15 PM ET",
-  "nextGame": {
-    "away": "CAR",
-    "home": "GB",
-    "kickoff": "2026-10-29T20:15:00-04:00",
-    "label": "Thursday, Oct 29 at 8:15 PM ET",
-    "network": "Prime Video"
+  {
+   "a": {
+    "m": "Tola",
+    "t": "Alien Awareness",
+    "s": 123.68,
+    "p": 127.8,
+    "lp": 123.68,
+    "togo": 0
+   },
+   "b": {
+    "m": "Chris",
+    "t": "Maye the Force Be With You",
+    "s": 140.14,
+    "p": 139.9,
+    "lp": 140.14,
+    "togo": 0
+   }
+  },
+  {
+   "a": {
+    "m": "Hoa",
+    "t": "Critical Chase Theory",
+    "s": 140.18,
+    "p": 121.75,
+    "lp": 140.18,
+    "togo": 0
+   },
+   "b": {
+    "m": "David",
+    "t": "Drain the Swamp",
+    "s": 90.4,
+    "p": 109.16,
+    "lp": 90.4,
+    "togo": 0
+   }
+  },
+  {
+   "a": {
+    "m": "Dylan",
+    "t": "Carlie’s Headset",
+    "s": 111.82,
+    "p": 126.47,
+    "lp": 111.82,
+    "togo": 0
+   },
+   "b": {
+    "m": "Matt",
+    "t": "San Diego Chillin’",
+    "s": 127.62,
+    "p": 120.48,
+    "lp": 127.62,
+    "togo": 0
+   }
+  },
+  {
+   "a": {
+    "m": "Drew",
+    "t": "I Stand with Jordon",
+    "s": 137.56,
+    "p": 135.33,
+    "lp": 137.56,
+    "togo": 0
+   },
+   "b": {
+    "m": "Erick",
+    "t": "King In The North",
+    "s": 139.08,
+    "p": 127.31,
+    "lp": 139.08,
+    "togo": 0
+   }
+  },
+  {
+   "a": {
+    "m": "Wes",
+    "t": "MikeLee4 Prez",
+    "s": 78.42,
+    "p": 120.03,
+    "lp": 78.42,
+    "togo": 0
+   },
+   "b": {
+    "m": "Adam",
+    "t": "Suck My Diggs",
+    "s": 117.12,
+    "p": 131.63,
+    "lp": 117.12,
+    "togo": 0
+   }
   }
+ ],
+ "bonus": {
+  "week": 7,
+  "nm": "Adam of the Week",
+  "cr": "Lowest point total overall",
+  "actual": [
+   {
+    "who": "Wes",
+    "sub": "MikeLee4 Prez",
+    "val": 78.42
+   },
+   {
+    "who": "David",
+    "sub": "Drain the Swamp",
+    "val": 90.4
+   },
+   {
+    "who": "Jason",
+    "sub": "Pull-Out Game Weak",
+    "val": 102.32
+   }
+  ],
+  "projected": [
+   {
+    "who": "David",
+    "sub": "Drain the Swamp",
+    "val": 109.16
+   },
+   {
+    "who": "Wes",
+    "sub": "MikeLee4 Prez",
+    "val": 120.03
+   },
+   {
+    "who": "Matt",
+    "sub": "San Diego Chillin’",
+    "val": 120.48
+   }
+  ]
+ },
+ "nextWeek": 8,
+ "nextKickoff": "2026-10-29T20:15:00-04:00",
+ "nextKickoffLabel": "Thursday, Oct 29 · 8:15 PM ET",
+ "nextGame": {
+  "away": "CAR",
+  "home": "GB",
+  "kickoff": "2026-10-29T20:15:00-04:00",
+  "label": "Thursday, Oct 29 at 8:15 PM ET",
+  "network": "Prime Video"
+ }
 }

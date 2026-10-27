@@ -4,7 +4,7 @@
     "bit": "Pastor Wes's Lock of the Week",
     "record": {
       "w": 3,
-      "l": 2
+      "l": 3
     },
     "locks": [
       {
@@ -35,7 +35,7 @@
       {
         "week": 7,
         "pick": "Drew over Erick",
-        "result": null,
+        "result": "L",
         "quote": "Seven tries is how the eighth one opens."
       }
     ]
@@ -78,6 +78,12 @@
         "index": -6,
         "paRank": 5,
         "standingsRank": 11
+      },
+      {
+        "week": 7,
+        "index": -1,
+        "paRank": 8,
+        "standingsRank": 9
       }
     ]
   },
@@ -117,6 +123,12 @@
       "a": "Hoa",
       "b": "David",
       "reason": "Beer Mile bowl"
+    },
+    {
+      "week": 8,
+      "a": "Erick",
+      "b": "Wes",
+      "reason": "The playoff line"
     }
   ]
 }

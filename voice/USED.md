@@ -59,3 +59,17 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   bring up at Thanksgiving". Wes's object: Sister Paulette's pickle jar at the Wednesday potluck
   (seven men loosened it, the eighth opens it; the fogged-up fellowship hall). Hero: Hoa's member
   illustration (fallback — Openverse was returning 504s; the planned wink was a loaded baked potato).
+- **wk 7 recap (Halfway edition)** — "The Halfway Edition: Drew Had It the Whole Time and Never
+  Took It Out". Opening: flat verdict ("Drew has the best team in this league, and he is 2-5.") →
+  "I mean the first half of that" → Erick "is the weather" → "However." → Hockenson on the bench,
+  Josh Downs at flex → two-question volley → "I took this beat on Friday… made a fool of me" →
+  "It was never Erick. It was the FLEX." → "That's malpractice." Devices: Hoa's Big Dick "a margin
+  only a kicker man could love"; "moment of silence for the kicker" (Wes's zero); "I don't name
+  the awards. I just read them."; Jason's own thread quote turned on him ("It's the commissioner
+  who needs a minute"); Matt "I don't trust a man who doesn't argue"; Chris "Who is he saving him
+  for?"; Adam the brother, "I've asked to see the paperwork"; David "he knows the way"; Chris's
+  schedule "the closest thing this league has to a pardon"; Wes/Tola "owes the schedule a fruit
+  basket"; Mike's Muncie station now a Spirit Halloween, "this much jewelry this close to the
+  bottom"; the Beer Mile as "a starting line and a cooler". Wes's lock graded inside the lede
+  ("the pastor is not the problem"). Hero: Drew's member illustration (fallback — Openverse
+  504s again; the planned wink was a fire extinguisher behind break-glass).
