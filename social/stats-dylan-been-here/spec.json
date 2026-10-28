@@ -1,0 +1,93 @@
+{
+ "slug": "dylan-been-here",
+ "label": "Hard Numbers",
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "Hard Numbers · Week 7",
+   "stat": "4‑3",
+   "statSub": "Dylan, seven weeks in",
+   "say": "He has been 4‑3 at this exact point twice before.<br>Both times he finished <b>6‑8</b>."
+  },
+  {
+   "type": "cards",
+   "title": "Dylan has <em>been here</em>",
+   "cards": [
+    {
+     "who": "Dylan",
+     "name": "2021",
+     "tag": "4‑3 → 6‑8",
+     "tone": "bad",
+     "ln": "Third in the league in points after seven weeks. Went <b>2‑5</b> the rest of the way. Finished 8th."
+    },
+    {
+     "who": "Dylan",
+     "name": "2025",
+     "tag": "4‑3 → 6‑8",
+     "tone": "bad",
+     "ln": "Went <b>2‑5</b> the rest of the way. Again. Finished 9th."
+    },
+    {
+     "who": "Dylan",
+     "name": "2026",
+     "tag": "4‑3 → ?",
+     "tone": "good",
+     "ln": "Second in the league in points. The fewest points left on his bench of anyone."
+    }
+   ],
+   "kicker": "Same record, same week, same finish. Twice."
+  },
+  {
+   "type": "chips",
+   "title": "Dylan from Week 8 on, <em>every year</em>",
+   "chips": [
+    {
+     "name": "2021",
+     "tag": "2‑5"
+    },
+    {
+     "name": "2022",
+     "tag": "0‑7"
+    },
+    {
+     "name": "2023",
+     "tag": "3‑4"
+    },
+    {
+     "name": "2024",
+     "tag": "2‑5"
+    },
+    {
+     "name": "2025",
+     "tag": "2‑5"
+    }
+   ],
+   "facts": [
+    {
+     "k": "Dylan, Weeks 8‑14",
+     "v": "9‑26"
+    },
+    {
+     "k": "Next‑worst in the league",
+     "v": "14‑21"
+    }
+   ],
+   "kicker": "Nobody in the league has had a worse back half. It isn&#x27;t&nbsp;close."
+  },
+  {
+   "type": "plain",
+   "title": "Playoff trips since 2021: <em>zero</em>",
+   "say": "Every other manager in the league has made it at least once.<br><br>Teams that were 4‑3 after Week 7 made the playoffs <b>10 of 15</b> times.<br>Two of the five that missed were Dylan."
+  },
+  {
+   "type": "hook",
+   "eyebrow": "The odds",
+   "stat": "83%",
+   "statSub": "chance Dylan makes the playoffs",
+   "say": "The math has no memory. Dylan does.<br>Week 8: <b>Dylan vs. Tola.</b>"
+  }
+ ],
+ "tag": [
+  "Dylan"
+ ]
+}
