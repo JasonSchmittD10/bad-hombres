@@ -139,10 +139,13 @@ async function getRookies() {
           .catch(() => null)
       )
     );
+    // keyed by name AND team: names repeat across the NFL (a rookie linebacker named Justin
+    // Jefferson in Cleveland made the Vikings' Justin Jefferson a "rookie" in Week 8, 2026)
     for (const r of rosters) {
+      const team = normTeam(r?.team?.abbreviation);
       for (const grp of r?.athletes || []) {
         for (const a of grp.items || grp || []) {
-          if (a?.experience && Number(a.experience.years) === 0) set.add(norm(a.displayName));
+          if (a?.experience && Number(a.experience.years) === 0) set.add(norm(a.displayName) + '|' + team);
         }
       }
     }
@@ -228,7 +231,7 @@ async function computeBonus(week, matchups, teams, kickoffDays, rookies, scoring
       case 8: {
         const rk = await rookies;
         return top3(
-          starters(teams, (p) => rk.has(norm(p.name))).map((r) => ({ ...r, val: val(r, mode) }))
+          starters(teams, (p) => rk.has(norm(p.name) + '|' + normTeam(p.nflTeam))).map((r) => ({ ...r, val: val(r, mode) }))
         );
       }
       case 9:

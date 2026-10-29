@@ -183,7 +183,9 @@ Yahoo team/player data. Two need outside help, both from ESPN's public API (no
 key required):
 
 - **Week 8, Popped Your Cherry** — rookies are found via ESPN team rosters
-  (`experience.years === 0`), matched to Yahoo players by normalized name.
+  (`experience.years === 0`), matched to Yahoo players by normalized name AND NFL team
+  (names repeat: a Cleveland rookie linebacker named Justin Jefferson once made the Vikings'
+  receiver a "rookie").
 - **Week 11, Happy Ending** — Monday starters are found by mapping each player's
   NFL team to that week's ESPN schedule and keeping the `Mon` games.
 
