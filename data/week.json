@@ -1,7 +1,7 @@
 {
  "week": 8,
  "status": "preseason",
- "updated": "2026-10-29T08:49:21-04:00",
+ "updated": "2026-10-29T10:40:58-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -27,16 +27,16 @@
     "m": "Tola",
     "t": "Alien Awareness",
     "s": 0.0,
-    "p": 108.61,
-    "lp": 108.61,
+    "p": 108.58,
+    "lp": 108.58,
     "togo": 9
    },
    "b": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
     "s": 0.0,
-    "p": 129.9,
-    "lp": 129.9,
+    "p": 129.87,
+    "lp": 129.87,
     "togo": 9
    }
   },
@@ -45,16 +45,16 @@
     "m": "David",
     "t": "Drain the Swamp",
     "s": 0.0,
-    "p": 99.3,
-    "lp": 99.3,
+    "p": 99.31,
+    "lp": 99.31,
     "togo": 8
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
     "s": 0.0,
-    "p": 126.05,
-    "lp": 126.05,
+    "p": 128.84,
+    "lp": 128.84,
     "togo": 9
    }
   },
@@ -81,8 +81,8 @@
     "m": "Chris",
     "t": "Maye the Force Be With You",
     "s": 0.0,
-    "p": 125.93,
-    "lp": 125.93,
+    "p": 125.92,
+    "lp": 125.92,
     "togo": 8
    },
    "b": {
@@ -99,8 +99,8 @@
     "m": "Erick",
     "t": "King In The North",
     "s": 0.0,
-    "p": 119.71,
-    "lp": 119.71,
+    "p": 119.7,
+    "lp": 119.7,
     "togo": 9
    },
    "b": {
@@ -120,11 +120,6 @@
   "actual": [],
   "projected": [
    {
-    "who": "Wes",
-    "sub": "Justin Jefferson",
-    "val": 19.66
-   },
-   {
     "who": "Chris",
     "sub": "Carnell Tate",
     "val": 14.76
@@ -133,6 +128,11 @@
     "who": "Dylan",
     "sub": "KC Concepcion Jr.",
     "val": 11.35
+   },
+   {
+    "who": "David",
+    "sub": "Germie Bernard",
+    "val": 11.05
    }
   ]
  },
