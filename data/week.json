@@ -1,154 +1,138 @@
 {
- "week": 7,
- "status": "final",
- "updated": "2026-10-27T07:45:58-04:00",
+ "week": 8,
+ "status": "preseason",
+ "updated": "2026-10-29T08:49:21-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 102.32,
-    "p": 132.24,
-    "lp": 102.32,
-    "togo": 0
+    "s": 0.0,
+    "p": 126.47,
+    "lp": 126.47,
+    "togo": 9
    },
    "b": {
-    "m": "Zack",
-    "t": "Sewer Pigeons",
-    "s": 117.22,
-    "p": 122.41,
-    "lp": 117.22,
-    "togo": 0
+    "m": "Hoa",
+    "t": "Critical Chase Theory",
+    "s": 0.0,
+    "p": 98.02,
+    "lp": 98.02,
+    "togo": 7
    }
   },
   {
    "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 123.68,
-    "p": 127.8,
-    "lp": 123.68,
-    "togo": 0
+    "s": 0.0,
+    "p": 108.61,
+    "lp": 108.61,
+    "togo": 9
    },
    "b": {
-    "m": "Chris",
-    "t": "Maye the Force Be With You",
-    "s": 140.14,
-    "p": 139.9,
-    "lp": 140.14,
-    "togo": 0
-   }
-  },
-  {
-   "a": {
-    "m": "Hoa",
-    "t": "Critical Chase Theory",
-    "s": 140.18,
-    "p": 121.75,
-    "lp": 140.18,
-    "togo": 0
-   },
-   "b": {
-    "m": "David",
-    "t": "Drain the Swamp",
-    "s": 90.4,
-    "p": 109.16,
-    "lp": 90.4,
-    "togo": 0
-   }
-  },
-  {
-   "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 111.82,
-    "p": 126.47,
-    "lp": 111.82,
-    "togo": 0
+    "s": 0.0,
+    "p": 129.9,
+    "lp": 129.9,
+    "togo": 9
+   }
+  },
+  {
+   "a": {
+    "m": "David",
+    "t": "Drain the Swamp",
+    "s": 0.0,
+    "p": 99.3,
+    "lp": 99.3,
+    "togo": 8
    },
    "b": {
-    "m": "Matt",
-    "t": "San Diego Chillin’",
-    "s": 127.62,
-    "p": 120.48,
-    "lp": 127.62,
-    "togo": 0
+    "m": "Adam",
+    "t": "Suck My Diggs",
+    "s": 0.0,
+    "p": 126.05,
+    "lp": 126.05,
+    "togo": 9
    }
   },
   {
    "a": {
     "m": "Drew",
     "t": "I Stand with Jordon",
-    "s": 137.56,
-    "p": 135.33,
-    "lp": 137.56,
-    "togo": 0
+    "s": 0.0,
+    "p": 139.19,
+    "lp": 139.19,
+    "togo": 9
    },
    "b": {
-    "m": "Erick",
-    "t": "King In The North",
-    "s": 139.08,
-    "p": 127.31,
-    "lp": 139.08,
-    "togo": 0
+    "m": "Matt",
+    "t": "San Diego Chillin’",
+    "s": 0.0,
+    "p": 94.89,
+    "lp": 94.89,
+    "togo": 8
    }
   },
   {
    "a": {
-    "m": "Wes",
-    "t": "MikeLee4 Prez",
-    "s": 78.42,
-    "p": 120.03,
-    "lp": 78.42,
-    "togo": 0
+    "m": "Chris",
+    "t": "Maye the Force Be With You",
+    "s": 0.0,
+    "p": 125.93,
+    "lp": 125.93,
+    "togo": 8
    },
    "b": {
-    "m": "Adam",
-    "t": "Suck My Diggs",
-    "s": 117.12,
-    "p": 131.63,
-    "lp": 117.12,
-    "togo": 0
+    "m": "Zack",
+    "t": "Sewer Pigeons",
+    "s": 0.0,
+    "p": 117.29,
+    "lp": 117.29,
+    "togo": 9
+   }
+  },
+  {
+   "a": {
+    "m": "Erick",
+    "t": "King In The North",
+    "s": 0.0,
+    "p": 119.71,
+    "lp": 119.71,
+    "togo": 9
+   },
+   "b": {
+    "m": "Wes",
+    "t": "MikeLee4 Prez",
+    "s": 0.0,
+    "p": 130.43,
+    "lp": 130.43,
+    "togo": 9
    }
   }
  ],
  "bonus": {
-  "week": 7,
-  "nm": "Adam of the Week",
-  "cr": "Lowest point total overall",
-  "actual": [
-   {
-    "who": "Wes",
-    "sub": "MikeLee4 Prez",
-    "val": 78.42
-   },
-   {
-    "who": "David",
-    "sub": "Drain the Swamp",
-    "val": 90.4
-   },
-   {
-    "who": "Jason",
-    "sub": "Pull-Out Game Weak",
-    "val": 102.32
-   }
-  ],
+  "week": 8,
+  "nm": "Popped Your Cherry",
+  "cr": "Highest-scoring rookie",
+  "actual": [],
   "projected": [
    {
-    "who": "David",
-    "sub": "Drain the Swamp",
-    "val": 109.16
-   },
-   {
     "who": "Wes",
-    "sub": "MikeLee4 Prez",
-    "val": 120.03
+    "sub": "Justin Jefferson",
+    "val": 19.66
    },
    {
-    "who": "Matt",
-    "sub": "San Diego Chillin’",
-    "val": 120.48
+    "who": "Chris",
+    "sub": "Carnell Tate",
+    "val": 14.76
+   },
+   {
+    "who": "Dylan",
+    "sub": "KC Concepcion Jr.",
+    "val": 11.35
    }
   ]
  },
