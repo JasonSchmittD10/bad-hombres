@@ -1,7 +1,7 @@
 {
  "week": 8,
  "status": "preseason",
- "updated": "2026-10-29T10:40:58-04:00",
+ "updated": "2026-10-29T12:07:49-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -9,16 +9,16 @@
     "m": "Jason",
     "t": "Pull-Out Game Weak",
     "s": 0.0,
-    "p": 126.47,
-    "lp": 126.47,
+    "p": 126.63,
+    "lp": 126.63,
     "togo": 9
    },
    "b": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
     "s": 0.0,
-    "p": 98.02,
-    "lp": 98.02,
+    "p": 98.1,
+    "lp": 98.1,
     "togo": 7
    }
   },
@@ -27,16 +27,16 @@
     "m": "Tola",
     "t": "Alien Awareness",
     "s": 0.0,
-    "p": 108.58,
-    "lp": 108.58,
+    "p": 108.7,
+    "lp": 108.7,
     "togo": 9
    },
    "b": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
     "s": 0.0,
-    "p": 129.87,
-    "lp": 129.87,
+    "p": 130.37,
+    "lp": 130.37,
     "togo": 9
    }
   },
@@ -45,16 +45,16 @@
     "m": "David",
     "t": "Drain the Swamp",
     "s": 0.0,
-    "p": 99.31,
-    "lp": 99.31,
+    "p": 99.35,
+    "lp": 99.35,
     "togo": 8
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
     "s": 0.0,
-    "p": 128.84,
-    "lp": 128.84,
+    "p": 128.98,
+    "lp": 128.98,
     "togo": 9
    }
   },
@@ -63,16 +63,16 @@
     "m": "Drew",
     "t": "I Stand with Jordon",
     "s": 0.0,
-    "p": 139.19,
-    "lp": 139.19,
+    "p": 139.38,
+    "lp": 139.38,
     "togo": 9
    },
    "b": {
     "m": "Matt",
     "t": "San Diego Chillin’",
     "s": 0.0,
-    "p": 94.89,
-    "lp": 94.89,
+    "p": 95.0,
+    "lp": 95.0,
     "togo": 8
    }
   },
@@ -81,16 +81,16 @@
     "m": "Chris",
     "t": "Maye the Force Be With You",
     "s": 0.0,
-    "p": 125.92,
-    "lp": 125.92,
+    "p": 125.71,
+    "lp": 125.71,
     "togo": 8
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
     "s": 0.0,
-    "p": 117.29,
-    "lp": 117.29,
+    "p": 117.57,
+    "lp": 117.57,
     "togo": 9
    }
   },
@@ -99,16 +99,16 @@
     "m": "Erick",
     "t": "King In The North",
     "s": 0.0,
-    "p": 119.7,
-    "lp": 119.7,
+    "p": 119.37,
+    "lp": 119.37,
     "togo": 9
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
     "s": 0.0,
-    "p": 130.43,
-    "lp": 130.43,
+    "p": 130.85,
+    "lp": 130.85,
     "togo": 9
    }
   }
@@ -122,17 +122,17 @@
    {
     "who": "Chris",
     "sub": "Carnell Tate",
-    "val": 14.76
+    "val": 14.78
    },
    {
     "who": "Dylan",
     "sub": "KC Concepcion Jr.",
-    "val": 11.35
+    "val": 11.36
    },
    {
     "who": "David",
     "sub": "Germie Bernard",
-    "val": 11.05
+    "val": 11.07
    }
   ]
  },
