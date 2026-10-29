@@ -88,5 +88,6 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   his argument said "at his memorial"; Matt "in no mood to host a comeback". Wes's object: the last
   seat in the fifteen-passenger church van to the youth retreat — he rides on the Coleman cooler
   (deviled eggs, Capri Suns, I-35, the gas receipt in the glovebox); picks AGAINST HIMSELF, "Erick
-  over Wes". Hero: Erick's member illustration (fallback — Openverse search 504'd a third week; the
-  planned wink was a bunk bed).
+  over Wes". Hero: a wooden bunk bed in a kid's pink bedroom, patchwork curtain (Wikimedia Commons,
+  public domain, "Bunk bed.jpg"; swapped in the same day for Erick's illustration after Openverse
+  504'd a third week).

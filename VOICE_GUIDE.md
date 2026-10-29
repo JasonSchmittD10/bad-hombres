@@ -516,16 +516,22 @@ then find the picture that comments on it:
 The test: read the headline, look at the photo, and see whether the pairing makes you
 exhale through your nose. If it's just "men playing football", keep looking.
 
-- Source: Openverse, filtered to **CC0 / public domain**
-  (`https://api.openverse.org/v1/images/?q=...&license=cc0,pdm`). No credit required, and
-  nothing that needs a licence we don't have. Google Images is not a source.
-- **Look at the photo before you use it.** No recognizable current NFL players (likeness),
+- Source: **CC0 / public domain only**, through `scripts/find-photo.py "<object>"`. It
+  tries Openverse first and falls back to **Wikimedia Commons** when Openverse times out
+  (its search 504'd three weeks running in Oct 2026), keeping only Commons files licensed
+  public domain or CC0. No credit required, and nothing that needs a licence we don't
+  have. Google Images, Unsplash, Pexels and Pixabay are not sources.
+- **Look at the photo before you use it.** The script checks the license, not the
+  picture. Commons search returns everything that matches the word — "bunk beds" brings
+  up a concentration camp — so skip anything from a war, a disaster, a hospital or a
+  tragedy, however public-domain it is. No recognizable current NFL players (likeness),
   no stickers or clip art dressed up as photos, nothing that reads as a stock cliché.
-- Save it to `assets/stories/<slug>.jpg`, about 1600px wide, and write `heroAlt`
-  describing what is actually in the frame.
+- Save it with `scripts/find-photo.py --get <url> assets/stories/<slug>.jpg` (JPEG,
+  1600px wide), and write `heroAlt` describing what is actually in the frame.
 - Never reuse a photo another story already used.
-- If nothing suitable turns up, fall back to the member illustration and say so — a
-  fallback is fine, a bad photo is not.
+- If nothing suitable turns up on either source, try another of the five objects before
+  falling back to the member illustration, and say so — a fallback is fine, a bad photo
+  is not.
 
 ---
 
