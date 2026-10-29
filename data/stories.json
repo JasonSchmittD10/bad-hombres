@@ -2,6 +2,16 @@
  "note": "Every story on the Updates page, newest first, for the header's Booth menu and Week card. Written by scripts/stories.py (publish-story.py runs it).",
  "stories": [
   {
+   "slug": "week-8-preview",
+   "type": "preview",
+   "week": 8,
+   "kicker": "Week 8 · The Preview",
+   "title": "Erick and Wes Both Want the Top Bunk",
+   "dek": "Two 4-3 teams meet right on the playoff line, and only one of them sleeps up there Sunday night.",
+   "img": "/assets/members/svg/Erick.svg",
+   "thumb": null
+  },
+  {
    "slug": "week-7-recap",
    "type": "feature",
    "week": null,

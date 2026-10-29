@@ -73,3 +73,20 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   bottom"; the Beer Mile as "a starting line and a cooler". Wes's lock graded inside the lede
   ("the pastor is not the problem"). Hero: Drew's member illustration (fallback — Openverse
   504s again; the planned wink was a fire extinguisher behind break-glass).
+- **wk 8 preview** — "Erick and Wes Both Want the Top Bunk". Opening: flat count ("Four men are 4-3
+  this morning, and two of them have to play each other.") → "I'll be fair about the room" → the
+  bubble as people with "faces pressed to the glass", "assigned seating" → "But." (hinge) → "These
+  two draw a mirror" → two-question volley (Erick "lost three straight and then remembered who he
+  was"; the pastor "now has to go DO it") → verdict "a playoff game wearing an October jersey."
+  Devices: Erick–Wes 4-3 series "as close as two grown men can stand without somebody asking for
+  room"; Wes "doesn't trust anybody who likes him on a Thursday"; Zack drawing opponents "on the
+  best Sunday of their lives" → "Zack, I'm sorry."; Jason "lost three straight without ever
+  announcing a rebuild", leads the series "the kind of thing a man brings up when he hasn't won in
+  three weeks"; David 3-3 with Adam "the only place David is even with anybody", "The title is gone.
+  The dignity is still on the table."; Dylan 4-3 → 6-8 twice "knows this hallway and where it lets
+  out"; Tola "gets scored on like a piñata" (the simile); Drew's "public talking-to on Tuesday",
+  his argument said "at his memorial"; Matt "in no mood to host a comeback". Wes's object: the last
+  seat in the fifteen-passenger church van to the youth retreat — he rides on the Coleman cooler
+  (deviled eggs, Capri Suns, I-35, the gas receipt in the glovebox); picks AGAINST HIMSELF, "Erick
+  over Wes". Hero: Erick's member illustration (fallback — Openverse search 504'd a third week; the
+  planned wink was a bunk bed).
