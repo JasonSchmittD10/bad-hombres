@@ -64,7 +64,9 @@ header.bhn{position:sticky;top:0;z-index:60;background:var(--bhn-bg);border:0;fo
 a.bhn-it:hover .v{color:#fff;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.35)}
 .bhn-it .k{font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .bhn-k-gold{color:var(--gold)!important}.bhn-k-red{color:var(--bhn-redt)!important}
-.bhn-it .cd{font-variant-numeric:tabular-nums}
+/* the ticker's countdown is inline text — not the page's big .cd countdown grid (which is display:grid
+   with a top margin, and would knock it onto its own line) */
+.bhn-it .cd,.bhn-one .cd{display:inline;margin:0;gap:0;font-variant-numeric:tabular-nums}
 .bhn-sep{width:4px;height:4px;border-radius:50%;background:#3a3a44;margin:0 20px;flex:none}
 .bhn-one,.bhn-wkbtn{display:none}
 
