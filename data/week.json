@@ -1,25 +1,25 @@
 {
  "week": 8,
- "status": "preseason",
- "updated": "2026-10-29T12:07:49-04:00",
+ "status": "live",
+ "updated": "2026-10-30T00:23:58-04:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 0.0,
-    "p": 126.63,
-    "lp": 126.63,
-    "togo": 9
+    "s": 9.6,
+    "p": 125.87,
+    "lp": 119.05,
+    "togo": 8
    },
    "b": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
     "s": 0.0,
-    "p": 98.1,
-    "lp": 98.1,
-    "togo": 7
+    "p": 115.41,
+    "lp": 115.41,
+    "togo": 9
    }
   },
   {
@@ -27,16 +27,16 @@
     "m": "Tola",
     "t": "Alien Awareness",
     "s": 0.0,
-    "p": 108.7,
-    "lp": 108.7,
+    "p": 108.26,
+    "lp": 108.26,
     "togo": 9
    },
    "b": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
     "s": 0.0,
-    "p": 130.37,
-    "lp": 130.37,
+    "p": 130.98,
+    "lp": 130.98,
     "togo": 9
    }
   },
@@ -45,52 +45,52 @@
     "m": "David",
     "t": "Drain the Swamp",
     "s": 0.0,
-    "p": 99.35,
-    "lp": 99.35,
+    "p": 99.32,
+    "lp": 99.32,
     "togo": 8
    },
    "b": {
     "m": "Adam",
     "t": "Suck My Diggs",
-    "s": 0.0,
-    "p": 128.98,
-    "lp": 128.98,
-    "togo": 9
+    "s": 19.3,
+    "p": 129.32,
+    "lp": 132.44,
+    "togo": 8
    }
   },
   {
    "a": {
     "m": "Drew",
     "t": "I Stand with Jordon",
-    "s": 0.0,
+    "s": 22.52,
     "p": 139.38,
-    "lp": 139.38,
-    "togo": 9
+    "lp": 145.52,
+    "togo": 8
    },
    "b": {
     "m": "Matt",
     "t": "San Diego Chillin’",
-    "s": 0.0,
-    "p": 95.0,
-    "lp": 95.0,
-    "togo": 8
+    "s": 17.3,
+    "p": 94.99,
+    "lp": 100.26,
+    "togo": 7
    }
   },
   {
    "a": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 0.0,
-    "p": 125.71,
-    "lp": 125.71,
-    "togo": 8
+    "s": 39.7,
+    "p": 137.61,
+    "lp": 154.74,
+    "togo": 7
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
     "s": 0.0,
-    "p": 117.57,
-    "lp": 117.57,
+    "p": 117.95,
+    "lp": 117.95,
     "togo": 9
    }
   },
@@ -98,18 +98,18 @@
    "a": {
     "m": "Erick",
     "t": "King In The North",
-    "s": 0.0,
-    "p": 119.37,
-    "lp": 119.37,
-    "togo": 9
+    "s": 24.9,
+    "p": 119.33,
+    "lp": 127.21,
+    "togo": 8
    },
    "b": {
     "m": "Wes",
     "t": "MikeLee4 Prez",
-    "s": 0.0,
-    "p": 130.85,
-    "lp": 130.85,
-    "togo": 9
+    "s": 32.7,
+    "p": 131.0,
+    "lp": 133.61,
+    "togo": 7
    }
   }
  ],
@@ -117,13 +117,24 @@
   "week": 8,
   "nm": "Popped Your Cherry",
   "cr": "Highest-scoring rookie",
-  "actual": [],
-  "projected": [
+  "actual": [
+   {
+    "who": "David",
+    "sub": "Germie Bernard",
+    "val": 0
+   },
+   {
+    "who": "Dylan",
+    "sub": "KC Concepcion Jr.",
+    "val": 0
+   },
    {
     "who": "Chris",
-    "sub": "Carnell Tate",
-    "val": 14.78
-   },
+    "sub": "Jeremiyah Love",
+    "val": 0
+   }
+  ],
+  "projected": [
    {
     "who": "Dylan",
     "sub": "KC Concepcion Jr.",
@@ -133,6 +144,11 @@
     "who": "David",
     "sub": "Germie Bernard",
     "val": 11.07
+   },
+   {
+    "who": "Zack",
+    "sub": "Omar Cooper Jr.",
+    "val": 10.68
    }
   ]
  },
@@ -140,10 +156,10 @@
  "nextKickoff": "2026-10-29T20:15:00-04:00",
  "nextKickoffLabel": "Thursday, Oct 29 · 8:15 PM ET",
  "nextGame": {
-  "away": "CAR",
-  "home": "GB",
-  "kickoff": "2026-10-29T20:15:00-04:00",
-  "label": "Thursday, Oct 29 at 8:15 PM ET",
-  "network": "Prime Video"
+  "away": "BAL",
+  "home": "BUF",
+  "kickoff": "2026-11-01T13:00:00-05:00",
+  "label": "Sunday, Nov 1 at 1:00 PM ET",
+  "network": "CBS"
  }
 }
