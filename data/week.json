@@ -1,61 +1,61 @@
 {
   "week": 8,
   "status": "live",
-  "updated": "2026-11-01T19:23:45-05:00",
+  "updated": "2026-11-02T00:23:40-05:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
       "a": {
         "m": "Jason",
         "t": "Pull-Out Game Weak",
-        "s": 107.98,
+        "s": 119.68,
         "p": 123.73,
-        "lp": 131.05,
-        "togo": 2
+        "lp": 132.61,
+        "togo": 1
       },
       "b": {
         "m": "Hoa",
         "t": "Critical Chase Theory",
         "s": 128.58,
-        "p": 104.67,
-        "lp": 150.02,
-        "togo": 3
+        "p": 115.8,
+        "lp": 151.9,
+        "togo": 2
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "s": 105.7,
+        "s": 120.5,
         "p": 113.05,
-        "lp": 117.4,
-        "togo": 2
+        "lp": 120.5,
+        "togo": 0
       },
       "b": {
         "m": "Dylan",
         "t": "Carlie’s Headset",
-        "s": 97.5,
+        "s": 138.48,
         "p": 132.8,
-        "lp": 128.56,
-        "togo": 5
+        "lp": 138.48,
+        "togo": 0
       }
     },
     {
       "a": {
         "m": "David",
         "t": "Drain the Swamp",
-        "s": 84.26,
+        "s": 92.96,
         "p": 116.36,
-        "lp": 93.23,
-        "togo": 3
+        "lp": 92.96,
+        "togo": 0
       },
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
         "s": 122.84,
         "p": 129.14,
-        "lp": 123.24,
-        "togo": 1
+        "lp": 122.84,
+        "togo": 0
       }
     },
     {
@@ -72,44 +72,44 @@
         "t": "San Diego Chillin’",
         "s": 104.56,
         "p": 119.88,
-        "lp": 114.24,
-        "togo": 2
+        "lp": 113.91,
+        "togo": 1
       }
     },
     {
       "a": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "s": 129.06,
+        "s": 128.76,
         "p": 136.58,
-        "lp": 129.76,
-        "togo": 1
+        "lp": 128.76,
+        "togo": 0
       },
       "b": {
         "m": "Zack",
         "t": "Sewer Pigeons",
         "s": 80.8,
         "p": 126.47,
-        "lp": 96.18,
-        "togo": 2
+        "lp": 95.86,
+        "togo": 1
       }
     },
     {
       "a": {
         "m": "Erick",
         "t": "King In The North",
-        "s": 87.6,
+        "s": 96.3,
         "p": 125.78,
-        "lp": 141.46,
-        "togo": 4
+        "lp": 138.84,
+        "togo": 2
       },
       "b": {
         "m": "Wes",
         "t": "MikeLee4 Prez",
-        "s": 115.4,
+        "s": 127.8,
         "p": 130.77,
-        "lp": 139.07,
-        "togo": 2
+        "lp": 138.06,
+        "togo": 1
       }
     }
   ],
@@ -121,17 +121,17 @@
       {
         "who": "David",
         "sub": "Jonah Coleman",
-        "val": 15.9
+        "val": 22.4
+      },
+      {
+        "who": "Jason",
+        "sub": "Makai Lemon",
+        "val": 11.7
       },
       {
         "who": "David",
         "sub": "Germie Bernard",
         "val": 8
-      },
-      {
-        "who": "Dylan",
-        "sub": "KC Concepcion Jr.",
-        "val": 6.7
       }
     ],
     "projected": [
@@ -156,10 +156,10 @@
   "nextKickoff": "2026-10-29T20:15:00-04:00",
   "nextKickoffLabel": "Thursday, Oct 29 · 8:15 PM ET",
   "nextGame": {
-    "away": "PHI",
-    "home": "WSH",
-    "kickoff": "2026-11-01T20:20:00-05:00",
-    "label": "Sunday, Nov 1 at 8:20 PM ET",
-    "network": "NBC"
+    "away": "CHI",
+    "home": "SEA",
+    "kickoff": "2026-11-02T20:15:00-05:00",
+    "label": "Monday, Nov 2 at 8:15 PM ET",
+    "network": "ESPN"
   }
 }
