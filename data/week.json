@@ -1,165 +1,165 @@
 {
-  "week": 8,
-  "status": "live",
-  "updated": "2026-11-03T00:23:52-05:00",
-  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
-  "matchups": [
-    {
-      "a": {
-        "m": "Jason",
-        "t": "Pull-Out Game Weak",
-        "s": 138.28,
-        "p": 122.27,
-        "lp": 138.28,
-        "togo": 0
-      },
-      "b": {
-        "m": "Hoa",
-        "t": "Critical Chase Theory",
-        "s": 159.98,
-        "p": 114.86,
-        "lp": 159.98,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "Tola",
-        "t": "Alien Awareness",
-        "s": 120.5,
-        "p": 112.66,
-        "lp": 120.5,
-        "togo": 0
-      },
-      "b": {
-        "m": "Dylan",
-        "t": "Carlie’s Headset",
-        "s": 138.48,
-        "p": 131.87,
-        "lp": 138.48,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "David",
-        "t": "Drain the Swamp",
-        "s": 92.96,
-        "p": 116.08,
-        "lp": 92.96,
-        "togo": 0
-      },
-      "b": {
-        "m": "Adam",
-        "t": "Suck My Diggs",
-        "s": 122.84,
-        "p": 127.69,
-        "lp": 122.84,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "Drew",
-        "t": "I Stand with Jordon",
-        "s": 137.02,
-        "p": 137.41,
-        "lp": 137.02,
-        "togo": 0
-      },
-      "b": {
-        "m": "Matt",
-        "t": "San Diego Chillin’",
-        "s": 104.26,
-        "p": 119.05,
-        "lp": 104.26,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "Chris",
-        "t": "Maye the Force Be With You",
-        "s": 128.76,
-        "p": 135.45,
-        "lp": 128.76,
-        "togo": 0
-      },
-      "b": {
-        "m": "Zack",
-        "t": "Sewer Pigeons",
-        "s": 94.78,
-        "p": 126.0,
-        "lp": 94.78,
-        "togo": 0
-      }
-    },
-    {
-      "a": {
-        "m": "Erick",
-        "t": "King In The North",
-        "s": 141.62,
-        "p": 125.58,
-        "lp": 141.62,
-        "togo": 0
-      },
-      "b": {
-        "m": "Wes",
-        "t": "MikeLee4 Prez",
-        "s": 139.3,
-        "p": 130.08,
-        "lp": 139.3,
-        "togo": 0
-      }
-    }
-  ],
-  "bonus": {
-    "week": 8,
-    "nm": "Popped Your Cherry",
-    "cr": "Highest-scoring rookie",
-    "actual": [
-      {
-        "who": "David",
-        "sub": "Jonah Coleman",
-        "val": 22.4
-      },
-      {
-        "who": "Jason",
-        "sub": "Makai Lemon",
-        "val": 11.7
-      },
-      {
-        "who": "David",
-        "sub": "Germie Bernard",
-        "val": 8
-      }
-    ],
-    "projected": [
-      {
-        "who": "David",
-        "sub": "Jonah Coleman",
-        "val": 12.5
-      },
-      {
-        "who": "Zack",
-        "sub": "Omar Cooper Jr.",
-        "val": 11.4
-      },
-      {
-        "who": "Dylan",
-        "sub": "KC Concepcion Jr.",
-        "val": 11.39
-      }
-    ]
+ "week": 8,
+ "status": "final",
+ "updated": "2026-11-03T07:03:10-05:00",
+ "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
+ "matchups": [
+  {
+   "a": {
+    "m": "Jason",
+    "t": "Pull-Out Game Weak",
+    "s": 138.28,
+    "p": 122.27,
+    "lp": 138.28,
+    "togo": 0
+   },
+   "b": {
+    "m": "Hoa",
+    "t": "Critical Chase Theory",
+    "s": 159.98,
+    "p": 114.86,
+    "lp": 159.98,
+    "togo": 0
+   }
   },
-  "nextWeek": 8,
-  "nextKickoff": "2026-10-29T20:15:00-04:00",
-  "nextKickoffLabel": "Thursday, Oct 29 · 8:15 PM ET",
-  "nextGame": {
-    "away": "JAX",
-    "home": "BAL",
-    "kickoff": "2026-11-05T20:15:00-05:00",
-    "label": "Thursday, Nov 5 at 8:15 PM ET",
-    "network": "Prime Video"
+  {
+   "a": {
+    "m": "Tola",
+    "t": "Alien Awareness",
+    "s": 120.5,
+    "p": 112.66,
+    "lp": 120.5,
+    "togo": 0
+   },
+   "b": {
+    "m": "Dylan",
+    "t": "Carlie’s Headset",
+    "s": 138.48,
+    "p": 131.87,
+    "lp": 138.48,
+    "togo": 0
+   }
+  },
+  {
+   "a": {
+    "m": "David",
+    "t": "Drain the Swamp",
+    "s": 92.96,
+    "p": 116.08,
+    "lp": 92.96,
+    "togo": 0
+   },
+   "b": {
+    "m": "Adam",
+    "t": "Suck My Diggs",
+    "s": 122.84,
+    "p": 127.69,
+    "lp": 122.84,
+    "togo": 0
+   }
+  },
+  {
+   "a": {
+    "m": "Drew",
+    "t": "I Stand with Jordon",
+    "s": 137.02,
+    "p": 137.41,
+    "lp": 137.02,
+    "togo": 0
+   },
+   "b": {
+    "m": "Matt",
+    "t": "San Diego Chillin’",
+    "s": 104.26,
+    "p": 119.05,
+    "lp": 104.26,
+    "togo": 0
+   }
+  },
+  {
+   "a": {
+    "m": "Chris",
+    "t": "Maye the Force Be With You",
+    "s": 128.76,
+    "p": 135.45,
+    "lp": 128.76,
+    "togo": 0
+   },
+   "b": {
+    "m": "Zack",
+    "t": "Sewer Pigeons",
+    "s": 94.78,
+    "p": 126.0,
+    "lp": 94.78,
+    "togo": 0
+   }
+  },
+  {
+   "a": {
+    "m": "Erick",
+    "t": "King In The North",
+    "s": 141.62,
+    "p": 125.58,
+    "lp": 141.62,
+    "togo": 0
+   },
+   "b": {
+    "m": "Wes",
+    "t": "MikeLee4 Prez",
+    "s": 139.3,
+    "p": 130.08,
+    "lp": 139.3,
+    "togo": 0
+   }
   }
+ ],
+ "bonus": {
+  "week": 8,
+  "nm": "Popped Your Cherry",
+  "cr": "Highest-scoring rookie",
+  "actual": [
+   {
+    "who": "David",
+    "sub": "Jonah Coleman",
+    "val": 22.4
+   },
+   {
+    "who": "Jason",
+    "sub": "Makai Lemon",
+    "val": 11.7
+   },
+   {
+    "who": "David",
+    "sub": "Germie Bernard",
+    "val": 8
+   }
+  ],
+  "projected": [
+   {
+    "who": "David",
+    "sub": "Jonah Coleman",
+    "val": 12.5
+   },
+   {
+    "who": "Zack",
+    "sub": "Omar Cooper Jr.",
+    "val": 11.4
+   },
+   {
+    "who": "Dylan",
+    "sub": "KC Concepcion Jr.",
+    "val": 11.39
+   }
+  ]
+ },
+ "nextWeek": 9,
+ "nextKickoff": "2026-11-05T20:15:00-05:00",
+ "nextKickoffLabel": "Thursday, Nov 5 · 8:15 PM ET",
+ "nextGame": {
+  "away": "JAX",
+  "home": "BAL",
+  "kickoff": "2026-11-05T20:15:00-05:00",
+  "label": "Thursday, Nov 5 at 8:15 PM ET",
+  "network": "Prime Video"
+ }
 }

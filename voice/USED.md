@@ -91,3 +91,23 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   over Wes". Hero: a wooden bunk bed in a kid's pink bedroom, patchwork curtain (Wikimedia Commons,
   public domain, "Bunk bed.jpg"; swapped in the same day for Erick's illustration after Openverse
   504'd a third week).
+- **wk 8 recap** — "Two Rings and a Jacoby Brissett" (Mike Hunt). Opening: the promise of calm
+  ("I'm going to stay calm about this… I have never won anything but arguments, and only some of
+  those") → credit: two rings, and the right Mahomes benching in Week 7 → "However." → "Jacoby
+  Brissett." alone → hammer "Brissett started. Over MAHOMES." → stack of three benchings (Bo Nix in
+  September, Kyler Murray last week, Brissett on Sunday) → two-question volley ("What did Brissett
+  show you?" / "What did Patrick Mahomes ever do to you except win?") → the Mahomes + Rashee Rice
+  bench counterfactual → wound: "the short list of men in this league who don't need my help…
+  He's off the list" (the "Mike Hunt has seen enough" name line, used once) → verdict "START HIM".
+  Devices: Hoa wins without "the one man on his roster he truly loves" (kicker scored 1);
+  David "Mahomes in the building. The building was his bench."; David the league's CFO with the
+  most bonus money "from last place. Somebody audit that."; Wes locked against himself, lock 4-3
+  and team out of the last playoff seat; "Erick was the only man who took Erick" (pick'em);
+  Drew "He didn't fix it. He outscored it. I'll allow it once."; the commissioner "a very
+  commissioner way to make the round trip" (4-0 to 4-4); Zack "I told you Thursday I was sorry. I
+  didn't know yet how sorry."; Tola "the schedule decides it doesn't care for you"; Beer Mile
+  vindication lap "I'd like that noted"; Adam paperwork callback (second straight week — RESTS
+  now). Editor cut a dead-radio-station line (Muncie/Spirit Halloween ran wk 7; that bit rests).
+  Hero: spare tire on the back door of a gray Land Rover Defender (Wikimedia Commons, CC0,
+  "Land Rover Defender 110 (L316), rear side with door and spare wheel.jpg") — the spare got the
+  start.

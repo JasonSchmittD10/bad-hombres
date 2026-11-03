@@ -3,7 +3,7 @@
   "wes": {
     "bit": "Pastor Wes's Lock of the Week",
     "record": {
-      "w": 3,
+      "w": 4,
       "l": 3
     },
     "locks": [
@@ -41,7 +41,7 @@
       {
         "week": 8,
         "pick": "Erick over Wes",
-        "result": null,
+        "result": "W",
         "quote": "A shepherd does not take the last seat, brothers. A shepherd rides on the cooler."
       }
     ]
@@ -90,6 +90,12 @@
         "index": -1,
         "paRank": 8,
         "standingsRank": 9
+      },
+      {
+        "week": 8,
+        "index": -5,
+        "paRank": 6,
+        "standingsRank": 11
       }
     ]
   },
@@ -135,6 +141,12 @@
       "a": "Erick",
       "b": "Wes",
       "reason": "The playoff line"
+    },
+    {
+      "week": 9,
+      "a": "Jason",
+      "b": "Adam",
+      "reason": "Rivalry · Jason leads 4-3"
     }
   ]
 }
