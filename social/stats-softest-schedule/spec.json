@@ -1,0 +1,54 @@
+{
+ "slug": "softest-schedule",
+ "label": "Hard Numbers",
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "Hard Numbers",
+   "stat": "824",
+   "statSub": "points scored against Chris in eight weeks",
+   "say": "The fewest any team has faced through eight weeks since 2021.<br>The record he broke was his own."
+  },
+  {
+   "type": "chips",
+   "title": "The five softest <em>eight-week starts</em>",
+   "chips": [
+    {"name": "Chris", "tag": "2026 · 824"},
+    {"name": "Chris", "tag": "2022 · 833"},
+    {"name": "Erick", "tag": "2023 · 890"},
+    {"name": "Matt", "tag": "2024 · 896"},
+    {"name": "Chris", "tag": "2024 · 898"}
+   ],
+   "facts": [
+    {"k": "Belong to Chris", "v": "3 of 5"},
+    {"k": "Everyone else", "v": "2"}
+   ],
+   "kicker": "Points against through Week 8, every season since 2021."
+  },
+  {
+   "type": "cards",
+   "title": "It's not <em>all luck</em>",
+   "cards": [
+    {"who": "Chris", "name": "1,068.88 for", "tone": "good", "ln": "The <b>most points in the league</b>. He's tied with Jason for the best all-play record, 53‑35."},
+    {"who": "Chris", "name": "103 a week against", "tone": "good", "ln": "The league averages <b>122.8</b>. Seven of his eight opponents scored under their own average the week they drew him."}
+   ],
+   "kicker": "He'd be good on a normal schedule. He doesn't have one."
+  },
+  {
+   "type": "cards",
+   "title": "The last time <em>this happened</em>",
+   "cards": [
+    {"who": "Chris", "name": "2022", "tag": "Champion", "tone": "good", "ln": "Started 7‑1 against the softest schedule on record. Went <b>1‑5</b> the rest of the way, got in as the 6 seed, and won the title anyway."}
+   ],
+   "kicker": "Then he had the easy schedule. Now he has it and the most points."
+  },
+  {
+   "type": "hook",
+   "eyebrow": "The odds",
+   "stat": "98%",
+   "statSub": "chance Chris makes the playoffs",
+   "say": "75% for a bye.<br>Week 9 he gets Hoa, who just posted the highest score of Week 8. Somebody has to score on him eventually."
+  }
+ ],
+ "tag": ["Chris"]
+}
