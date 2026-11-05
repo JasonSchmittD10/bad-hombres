@@ -111,3 +111,19 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   Hero: spare tire on the back door of a gray Land Rover Defender (Wikimedia Commons, CC0,
   "Land Rover Defender 110 (L316), rear side with door and spare wheel.jpg") — the spare got the
   start.
+- **wk 9 preview** — "Two Schmitts, One Wishbone" (Mike Hunt). Opening: flat fact about Adam ("has never
+  finished higher than fifth… this morning he is tied for first") → credit: preseason Power Lines had him
+  dead last, "without a single speech, which in this league counts as a medical condition" → "Here's the
+  thing." (hinge) → the brother in the way; Jason's skid as a four-name stack ("Chris. Tola. Zack. Hoa.
+  Four men, one result.") → "the one opponent he can't avoid at Christmas" → two-question volley →
+  verdict "Somebody will be INSUFFERABLE by Monday. Pick which one." Devices: Jason–Adam 4-3 "the kind of
+  number a brother keeps folded in his wallet", "the playoff line becomes a family matter"; Chris
+  "answering the door in a bathrobe", Hoa "knocks like he means it"; Drew "get him out of a chair" (6-1 vs
+  Dylan); David's title "banners… just hang over last place now"; Tola–Zack loser "measuring himself for
+  the lap", Size Doesn't Matter "the most honest trophy"; Matt "the waiting room, where all the magazines
+  are about running"; "He'll be brief. He won't be." (Wes intro). Wes's object: the lost-and-found loafer
+  (left foot, 11½, tassels, since the 2019 Easter cantata), Deacon Ray "a heart like a folding chair", the
+  visitor with one shoe, Wes in the coat closet; "Epistle to the Galoshes"; pick Dylan over Drew ("seven
+  times… six times he has gone home with one shoe"). Homepage: title "The Brother Bowl", "music stops"
+  bubble line. Hero: a single dried wishbone on a weathered stump (Openverse/Flickr CC0, "The wish bone in a
+  stump"); skipped Winslow Homer's "Thanksgiving Day in the Army: The Wish-Bone" (Civil War camp).
