@@ -1,115 +1,115 @@
 {
   "week": 9,
   "status": "live",
-  "updated": "2026-11-06T00:24:01-05:00",
+  "updated": "2026-11-09T08:11:55-05:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
       "a": {
         "m": "Jason",
         "t": "Pull-Out Game Weak",
-        "s": 19.1,
-        "p": 129.93,
-        "lp": 140.31,
-        "togo": 8
+        "s": 132.0,
+        "p": 131.18,
+        "lp": 132.0,
+        "togo": 0
       },
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
-        "s": 0.0,
-        "p": 122.25,
-        "lp": 122.25,
-        "togo": 9
+        "s": 82.8,
+        "p": 121.17,
+        "lp": 95.39,
+        "togo": 1
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "s": 16.58,
-        "p": 126.56,
-        "lp": 124.06,
-        "togo": 8
+        "s": 112.88,
+        "p": 128.88,
+        "lp": 112.88,
+        "togo": 0
       },
       "b": {
         "m": "Zack",
         "t": "Sewer Pigeons",
-        "s": 21.3,
-        "p": 121.28,
-        "lp": 117.47,
-        "togo": 7
+        "s": 95.46,
+        "p": 122.5,
+        "lp": 95.46,
+        "togo": 0
       }
     },
     {
       "a": {
         "m": "Hoa",
         "t": "Critical Chase Theory",
-        "s": 0.0,
-        "p": 135.12,
-        "lp": 135.12,
-        "togo": 9
+        "s": 128.54,
+        "p": 138.06,
+        "lp": 137.96,
+        "togo": 1
       },
       "b": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "s": 0.0,
-        "p": 137.66,
-        "lp": 137.66,
-        "togo": 9
+        "s": 159.66,
+        "p": 138.48,
+        "lp": 159.66,
+        "togo": 0
       }
     },
     {
       "a": {
         "m": "David",
         "t": "Drain the Swamp",
-        "s": 16.1,
-        "p": 123.25,
-        "lp": 125.02,
-        "togo": 8
+        "s": 113.48,
+        "p": 124.05,
+        "lp": 128.19,
+        "togo": 1
       },
       "b": {
         "m": "Erick",
         "t": "King In The North",
-        "s": 0.0,
-        "p": 115.4,
-        "lp": 115.4,
-        "togo": 9
+        "s": 86.7,
+        "p": 117.11,
+        "lp": 95.8,
+        "togo": 1
       }
     },
     {
       "a": {
         "m": "Dylan",
         "t": "Carlie’s Headset",
-        "s": 0.0,
-        "p": 134.63,
-        "lp": 134.63,
-        "togo": 9
+        "s": 127.98,
+        "p": 132.95,
+        "lp": 127.98,
+        "togo": 0
       },
       "b": {
         "m": "Drew",
         "t": "I Stand with Jordon",
-        "s": 0.0,
-        "p": 124.89,
-        "lp": 124.89,
-        "togo": 9
+        "s": 171.18,
+        "p": 124.34,
+        "lp": 171.18,
+        "togo": 0
       }
     },
     {
       "a": {
         "m": "Wes",
         "t": "MikeLee4 Prez",
-        "s": 8.9,
-        "p": 101.8,
-        "lp": 96.9,
-        "togo": 7
+        "s": 120.08,
+        "p": 126.86,
+        "lp": 138.1,
+        "togo": 1
       },
       "b": {
         "m": "Matt",
         "t": "San Diego Chillin’",
-        "s": 5.58,
-        "p": 116.79,
-        "lp": 110.19,
-        "togo": 8
+        "s": 54.98,
+        "p": 116.89,
+        "lp": 76.25,
+        "togo": 1
       }
     }
   ],
@@ -119,36 +119,36 @@
     "cr": "Smallest margin in a win",
     "actual": [
       {
-        "who": "Hoa",
-        "sub": "over Chris",
-        "val": 0
+        "who": "Tola",
+        "sub": "over Zack",
+        "val": 17.42
       },
       {
-        "who": "Dylan",
-        "sub": "over Drew",
-        "val": 0
+        "who": "David",
+        "sub": "over Erick",
+        "val": 26.78
       },
       {
-        "who": "Wes",
-        "sub": "over Matt",
-        "val": 3.32
+        "who": "Chris",
+        "sub": "over Hoa",
+        "val": 31.12
       }
     ],
     "projected": [
       {
         "who": "Chris",
         "sub": "over Hoa",
-        "val": 2.54
+        "val": 0.42
       },
       {
         "who": "Tola",
         "sub": "over Zack",
-        "val": 5.28
+        "val": 6.38
       },
       {
-        "who": "Jason",
-        "sub": "over Adam",
-        "val": 7.68
+        "who": "David",
+        "sub": "over Erick",
+        "val": 6.94
       }
     ]
   },
@@ -156,10 +156,10 @@
   "nextKickoff": "2026-11-05T20:15:00-05:00",
   "nextKickoffLabel": "Thursday, Nov 5 · 8:15 PM ET",
   "nextGame": {
-    "away": "CIN",
-    "home": "ATL",
-    "kickoff": "2026-11-08T09:30:00-05:00",
-    "label": "Sunday, Nov 8 at 9:30 AM ET",
-    "network": "NFL Network"
+    "away": "BUF",
+    "home": "MIN",
+    "kickoff": "2026-11-09T20:15:00-05:00",
+    "label": "Monday, Nov 9 at 8:15 PM ET",
+    "network": "ABC"
   }
 }
