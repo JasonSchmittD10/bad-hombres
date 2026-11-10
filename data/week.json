@@ -1,7 +1,7 @@
 {
  "week": 9,
- "status": "live",
- "updated": "2026-11-10T00:30:48-05:00",
+ "status": "final",
+ "updated": "2026-11-10T07:14:58-05:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -152,9 +152,9 @@
    }
   ]
  },
- "nextWeek": 9,
- "nextKickoff": "2026-11-05T20:15:00-05:00",
- "nextKickoffLabel": "Thursday, Nov 5 · 8:15 PM ET",
+ "nextWeek": 10,
+ "nextKickoff": "2026-11-12T20:15:00-05:00",
+ "nextKickoffLabel": "Thursday, Nov 12 · 8:15 PM ET",
  "nextGame": {
   "away": "WSH",
   "home": "NYG",

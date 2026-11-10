@@ -4,7 +4,7 @@
     "bit": "Pastor Wes's Lock of the Week",
     "record": {
       "w": 4,
-      "l": 3
+      "l": 4
     },
     "locks": [
       {
@@ -47,7 +47,7 @@
       {
         "week": 9,
         "pick": "Dylan over Drew",
-        "result": null,
+        "result": "L",
         "quote": "Ray, a shoe like that is waiting on somebody."
       }
     ]
@@ -102,6 +102,12 @@
         "index": -5,
         "paRank": 6,
         "standingsRank": 11
+      },
+      {
+        "week": 9,
+        "index": -3,
+        "paRank": 9,
+        "standingsRank": 12
       }
     ]
   },
@@ -153,6 +159,12 @@
       "a": "Jason",
       "b": "Adam",
       "reason": "Rivalry · Jason leads 4-3"
+    },
+    {
+      "week": 10,
+      "a": "Chris",
+      "b": "Adam",
+      "reason": "First place on the line"
     }
   ]
 }

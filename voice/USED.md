@@ -127,3 +127,21 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   times… six times he has gone home with one shoe"). Homepage: title "The Brother Bowl", "music stops"
   bubble line. Hero: a single dried wishbone on a weathered stump (Openverse/Flickr CC0, "The wish bone in a
   stump"); skipped Winslow Homer's "Thanksgiving Day in the Army: The Wish-Bone" (Civil War camp).
+- **wk 9 recap** — "Chris Offered, and Zack Took It" (Mike Hunt). Opening: the record book's one verdict on
+  Chris ("when he starts a trade, the other guy wins it") → credit: Bijan + Odunze carried him past Hoa, "a
+  champion's trade, from a man with a ring that says he'd know one" → concession: Chris 4-9 in trades he
+  proposed, "Saying yes to him was the percentage play. I'd have made it." → "However." → the swing bigger than
+  either game's margin, "one deal decided two of them" → wound: "Here's what gets me." the history "took the
+  afternoon off"; call-in audiences told to trust the record, a station that's a vape shop in Terre Haute now →
+  verdict "the right call in the WRONG week." Devices: Drew 7-1 vs Dylan, Hockenson benched "for once I have
+  no notes" (wk 7 flex callback, reversed); Matt "San Diego Chillin'… followed instructions", Stroud from the
+  bench behind Josh Allen "the one part I can't hold against him"; Tola "nobody needed their fingernails",
+  "scored less than usual and got paid"; David/Mahomes gloat ONCE ("a good mood since Sunday that I will not
+  be discussing further" — the START HIM thread is closed, don't lap it); Hoa "Two Big Dicks, then this",
+  kicker did nothing wrong; Wes "the manager… better week than… the handicapper" (lock 4-4); Jason ended a
+  four-game losing streak against his brother, 5-4 "a seat, not a lead"; Zack's Luck Index improved "and he
+  lost ANYWAY", "He'll have to blame Chris, and Chris is busy"; close "if Chris calls before Sunday, let it
+  ring." Caps: WRONG, ANYWAY. Editor pulled the first lede (a Nov 4 "take Chris's trades" ruling that could not
+  be sourced to any published piece — don't cite it). Hero: black bakelite GPO 232 rotary telephone on a
+  rumpled white bedspread (Wikimedia Commons, public domain, "GPO 232 Telephone without bell set 26.JPG");
+  Openverse 504'd again.
