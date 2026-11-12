@@ -145,3 +145,18 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   be sourced to any published piece — don't cite it). Hero: black bakelite GPO 232 rotary telephone on a
   rumpled white bedspread (Wikimedia Commons, public domain, "GPO 232 Telephone without bell set 26.JPG");
   Openverse 504'd again.
+- **wk 10 preview** — "Adam Wants a Turn on Top" (Mike Hunt). Opening: flat fact about Chris ("the most points in
+  this league and given up the fewest") → "the only man within a game of him" → "I'll be fair to Adam, because nobody
+  else has been" → six wins with the sixth-most points, "a career of being the less impressive team and leaving with
+  the win" → "Except." (hinge) → never done it against the best team with first on the table → "the most convincing
+  guy at the party?" → verdict "ONE afternoon to make everybody stop explaining him. I'd take it." Devices: Chris
+  "the kind of man you'd like to see get told no"; David–Matt "the last three trophies belong to the two men in this
+  game", "The loser should start hydrating"; Tola's Alien Awareness "something out there is doing this on purpose";
+  Jason "finally beat somebody… his brother", "the crowd at 5-5, where nobody has a chair and everybody has a
+  tiebreaker argument"; Wes's seat "getting the good table by standing near it long enough" (the simile); Zack vs
+  Dylan "how a man ends up in a homily" (hand-off to Wes). Wes's object: the church bell that rings late (Cincinnati
+  foundry, Brother Hollis on the rope, the seminary kid with WD-40, Hollis in his truck through the first hymn);
+  "Book of Belfries"; pick Zack over Dylan ("Zack has been pulling the rope since September"). Homepage: title
+  "First Place, Straight Up", "start hydrating" Beer Mile line, "steps into the hallway" bubble line, D/ST "eleven
+  guys nobody drafted on purpose". Hero: wooden spinning tops with red-handled whips on pavement (Wikimedia Commons,
+  CC0, "Wooden spinning top and whip.jpg"); Openverse 504'd again.
