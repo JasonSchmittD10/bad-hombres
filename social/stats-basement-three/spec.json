@@ -1,0 +1,146 @@
+{
+ "slug": "basement-three",
+ "label": "Hard Numbers",
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "Hard Numbers · Week 9",
+   "stat": "3‑6",
+   "statSub": "David, Matt and Zack. All three.",
+   "say": "A three‑way tie for last after Week 9.<br>No basement has been this crowded at this point since 2021."
+  },
+  {
+   "type": "cards",
+   "title": "Who runs the <em>Beer Mile</em>",
+   "cards": [
+    {
+     "who": "Zack",
+     "name": "Zack",
+     "tag": "36%",
+     "tone": "bad",
+     "ln": "The <b>fewest points</b> in the league. The odds' favorite to finish last."
+    },
+    {
+     "who": "Matt",
+     "name": "Matt",
+     "tag": "31%",
+     "tone": "bad",
+     "ln": "Was 3‑6 at this exact point last year. Hold that thought."
+    },
+    {
+     "who": "David",
+     "name": "David",
+     "tag": "25%",
+     "tone": "bad",
+     "ln": "The two‑time defending champion. The <b>most points scored against</b> anyone."
+    }
+   ],
+   "kicker": "Week 10: <b>David vs. Matt</b>. One of them gets to four wins."
+  },
+  {
+   "type": "chips",
+   "title": "Twelve teams have been <em>3‑6</em> after Week 9",
+   "chips": [
+    {
+     "name": "Chris",
+     "tag": "2021 · 9th"
+    },
+    {
+     "name": "Matt",
+     "tag": "2022 · 8th"
+    },
+    {
+     "name": "Zack",
+     "tag": "2022 · 9th"
+    },
+    {
+     "name": "Wes",
+     "tag": "2022 · 10th"
+    },
+    {
+     "name": "Dylan",
+     "tag": "2023 · 10th"
+    },
+    {
+     "name": "Erick",
+     "tag": "2024 · 9th"
+    },
+    {
+     "name": "Wes",
+     "tag": "2024 · 10th"
+    },
+    {
+     "name": "Dylan",
+     "tag": "2024 · 12th"
+    },
+    {
+     "name": "Matt",
+     "tag": "2025 · 4th"
+    },
+    {
+     "name": "Adam",
+     "tag": "2025 · 7th"
+    },
+    {
+     "name": "Zack",
+     "tag": "2025 · 8th"
+    },
+    {
+     "name": "Hoa",
+     "tag": "2025 · 11th"
+    }
+   ],
+   "facts": [
+    {
+     "k": "Made playoffs",
+     "v": "1"
+    },
+    {
+     "k": "Finished last",
+     "v": "1"
+    }
+   ],
+   "kicker": "The one who got in: <b>Matt, last year</b>. At 6‑8. He finished 4th."
+  },
+  {
+   "type": "cards",
+   "title": "Last isn't <em>always last</em>",
+   "cards": [
+    {
+     "who": "Wes",
+     "name": "Wes, 2021",
+     "tag": "1‑8 → 5‑9",
+     "tone": "good",
+     "ln": "Dead last after Week 9. Won four of five and climbed out."
+    },
+    {
+     "who": "Tola",
+     "name": "Tola, 2021",
+     "tag": "4‑5 → 4‑10",
+     "tone": "bad",
+     "ln": "Lost <b>all five</b> after Week 9. Finished last."
+    },
+    {
+     "who": "Dylan",
+     "name": "Dylan, 2024",
+     "tag": "3‑6 → 4‑10",
+     "tone": "bad",
+     "ln": "Zack was alone in last at 2‑7 and escaped. Dylan went 1‑4 the rest of the way. Finished last."
+    }
+   ],
+   "kicker": "Twice in five years, last place came from outside the basement."
+  },
+  {
+   "type": "hook",
+   "eyebrow": "Meanwhile",
+   "stat": "4‑5",
+   "statSub": "Tola, one game up on the basement",
+   "say": "Tola was 4‑5 after Week 9 in 2021 too. Then he lost five straight and finished last.<br>The odds give him <b>2%</b>. History gives him a precedent."
+  }
+ ],
+ "tag": [
+  "David",
+  "Matt",
+  "Zack"
+ ]
+}
