@@ -1,154 +1,138 @@
 {
- "week": 9,
- "status": "final",
- "updated": "2026-11-10T07:14:58-05:00",
+ "week": 10,
+ "status": "preseason",
+ "updated": "2026-11-12T09:10:13-05:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
    "a": {
     "m": "Jason",
     "t": "Pull-Out Game Weak",
-    "s": 132.0,
-    "p": 131.18,
-    "lp": 132.0,
-    "togo": 0
+    "s": 0.0,
+    "p": 132.24,
+    "lp": 132.24,
+    "togo": 9
    },
    "b": {
-    "m": "Adam",
-    "t": "Suck My Diggs",
-    "s": 89.4,
-    "p": 121.27,
-    "lp": 89.4,
-    "togo": 0
+    "m": "Erick",
+    "t": "King In The North",
+    "s": 0.0,
+    "p": 120.61,
+    "lp": 120.61,
+    "togo": 9
    }
   },
   {
    "a": {
     "m": "Tola",
     "t": "Alien Awareness",
-    "s": 112.88,
-    "p": 128.88,
-    "lp": 112.88,
-    "togo": 0
+    "s": 0.0,
+    "p": 123.69,
+    "lp": 123.69,
+    "togo": 9
    },
    "b": {
-    "m": "Zack",
-    "t": "Sewer Pigeons",
-    "s": 95.46,
-    "p": 106.94,
-    "lp": 95.46,
-    "togo": 0
-   }
-  },
-  {
-   "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 138.14,
-    "p": 138.15,
-    "lp": 138.14,
-    "togo": 0
-   },
-   "b": {
-    "m": "Chris",
-    "t": "Maye the Force Be With You",
-    "s": 159.66,
-    "p": 138.48,
-    "lp": 159.66,
-    "togo": 0
+    "s": 0.0,
+    "p": 124.58,
+    "lp": 124.58,
+    "togo": 9
    }
   },
   {
    "a": {
     "m": "David",
     "t": "Drain the Swamp",
-    "s": 130.18,
-    "p": 124.26,
-    "lp": 130.18,
-    "togo": 0
+    "s": 0.0,
+    "p": 118.25,
+    "lp": 118.25,
+    "togo": 9
    },
    "b": {
-    "m": "Erick",
-    "t": "King In The North",
-    "s": 91.5,
-    "p": 117.28,
-    "lp": 91.5,
-    "togo": 0
+    "m": "Matt",
+    "t": "San Diego Chillin’",
+    "s": 0.0,
+    "p": 118.22,
+    "lp": 118.22,
+    "togo": 9
    }
   },
   {
    "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 127.98,
-    "p": 132.95,
-    "lp": 127.98,
-    "togo": 0
+    "s": 0.0,
+    "p": 133.12,
+    "lp": 133.12,
+    "togo": 9
    },
    "b": {
-    "m": "Drew",
-    "t": "I Stand with Jordon",
-    "s": 171.18,
-    "p": 124.34,
-    "lp": 171.18,
-    "togo": 0
+    "m": "Zack",
+    "t": "Sewer Pigeons",
+    "s": 0.0,
+    "p": 112.93,
+    "lp": 112.93,
+    "togo": 9
    }
   },
   {
    "a": {
-    "m": "Wes",
-    "t": "MikeLee4 Prez",
-    "s": 128.88,
-    "p": 127.23,
-    "lp": 128.88,
-    "togo": 0
+    "m": "Drew",
+    "t": "I Stand with Jordon",
+    "s": 0.0,
+    "p": 123.33,
+    "lp": 123.33,
+    "togo": 9
    },
    "b": {
-    "m": "Matt",
-    "t": "San Diego Chillin’",
-    "s": 67.84,
-    "p": 117.18,
-    "lp": 67.84,
-    "togo": 0
+    "m": "Wes",
+    "t": "MikeLee4 Prez",
+    "s": 0.0,
+    "p": 104.78,
+    "lp": 104.78,
+    "togo": 7
+   }
+  },
+  {
+   "a": {
+    "m": "Chris",
+    "t": "Maye the Force Be With You",
+    "s": 0.0,
+    "p": 128.34,
+    "lp": 128.34,
+    "togo": 9
+   },
+   "b": {
+    "m": "Adam",
+    "t": "Suck My Diggs",
+    "s": 0.0,
+    "p": 123.55,
+    "lp": 123.55,
+    "togo": 9
    }
   }
  ],
  "bonus": {
-  "week": 9,
-  "nm": "Size Doesn't Matter",
-  "cr": "Smallest margin in a win",
-  "actual": [
-   {
-    "who": "Tola",
-    "sub": "over Zack",
-    "val": 17.42
-   },
-   {
-    "who": "Chris",
-    "sub": "over Hoa",
-    "val": 21.52
-   },
-   {
-    "who": "David",
-    "sub": "over Erick",
-    "val": 38.68
-   }
-  ],
+  "week": 10,
+  "nm": "Sackin' Off",
+  "cr": "Highest-scoring D/ST",
+  "actual": [],
   "projected": [
    {
-    "who": "Chris",
-    "sub": "over Hoa",
-    "val": 0.33
+    "who": "Drew",
+    "sub": "Rams",
+    "val": 12.63
    },
    {
-    "who": "David",
-    "sub": "over Erick",
-    "val": 6.98
+    "who": "Zack",
+    "sub": "Jaguars",
+    "val": 12.2
    },
    {
-    "who": "Dylan",
-    "sub": "over Drew",
-    "val": 8.61
+    "who": "Hoa",
+    "sub": "Seahawks",
+    "val": 12.09
    }
   ]
  },
