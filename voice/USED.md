@@ -160,3 +160,20 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   "First Place, Straight Up", "start hydrating" Beer Mile line, "steps into the hallway" bubble line, D/ST "eleven
   guys nobody drafted on purpose". Hero: wooden spinning tops with red-handled whips on pavement (Wikimedia Commons,
   CC0, "Wooden spinning top and whip.jpg"); Openverse 504'd again.
+- **wk 10 recap** — "Four Sundays Left, and Chris Can't Stop Fiddling With It" (Mike Hunt). Tightened to ~600 words on
+  Jason's live note (Nov 17), with crunch time (four Sundays left) and the Nov 28 trade deadline worked in. Opening: the
+  fence ("I'm not going to talk about Drake Maye" → team named after his QB, three points in the first-place game, "doesn't
+  need anything else from me") → credit: best team for nine weeks, still the best bet for a bye; concession "Adam beat him by
+  almost sixty, and no trade covers that" → "However." → second trade in seven days, Odunze "played one Sunday for him and
+  was gone by Wednesday", the two who came back "scored zero. Between them." → "Maybe the trade looks brilliant in December…
+  can't stop rearranging the furniture" → receipt: last week's "let it ring" advice to Adam, "I had the wrong man. Drew
+  called, and Chris picked up." → verdict "The trade deadline is eleven days out. Chris, put the phone DOWN before the league
+  takes it away." No two-question volley this week. Devices: Hoa "Best man at three weddings in a month, and he still can't
+  get a date"; Chris's first place "the kind… a man keeps in a drawer, not a frame"; Adam "can't prove anybody in his family
+  had a hand in it. I've looked." (the paperwork bit, varied; it rests now); pick'em "Chris picked Chris", the commissioner
+  picked his brother, "the last thing he got right all weekend"; Tola "seen both ends of this league's pay structure"; Wes
+  "started the right one. That's professional."; Drew "a lot of work to end up nowhere"; David "a rounding error"; Pickens
+  "did everything one receiver can do for Zack"; Beer Mile "two men playing to stay off the track" (Matt–Zack, Week 14).
+  Caps: FIRST, DOWN, WIN. The phone bit (wk 9 "let it ring" → wk 10 "put the phone DOWN") is RETIRED. Editor cut "a man with
+  an asterisk on his ring": league lore with no source in the record, so don't use it. Hero: a fiddler crab on wet sand
+  holding up its one oversized claw (Openverse → Wikimedia Commons, CC0, "Fiddler crab 2.jpg").

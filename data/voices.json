@@ -4,7 +4,7 @@
     "bit": "Pastor Wes's Lock of the Week",
     "record": {
       "w": 4,
-      "l": 4
+      "l": 5
     },
     "locks": [
       {
@@ -53,7 +53,7 @@
       {
         "week": 10,
         "pick": "Zack over Dylan",
-        "result": null,
+        "result": "L",
         "quote": "Some things are supposed to be late, brothers."
       }
     ]
@@ -114,6 +114,12 @@
         "index": -3,
         "paRank": 9,
         "standingsRank": 12
+      },
+      {
+        "week": 10,
+        "index": -5,
+        "paRank": 7,
+        "standingsRank": 12
       }
     ]
   },
@@ -170,6 +176,12 @@
       "week": 10,
       "a": "Chris",
       "b": "Adam",
+      "reason": "First place on the line"
+    },
+    {
+      "week": 11,
+      "a": "Chris",
+      "b": "Erick",
       "reason": "First place on the line"
     }
   ]
