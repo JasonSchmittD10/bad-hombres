@@ -1,0 +1,125 @@
+{
+ "slug": "luck-bowl",
+ "label": "Hard Numbers",
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "Hard Numbers · Week 11",
+   "stat": "1,355",
+   "statSub": "Points scored against Tola in ten weeks",
+   "say": "The most anyone has faced through Week 10 since 2021.<br>He's fourth in the league in points. He's 4‑6."
+  },
+  {
+   "type": "cards",
+   "title": "Sunday is the <em>Luck Bowl</em>",
+   "cards": [
+    {
+     "who": "Tola",
+     "name": "Tola",
+     "tag": "4‑6",
+     "tone": "bad",
+     "ln": "<b>4th</b> in points. A <b>64‑46</b> record if he played everybody every week, second-best in the league."
+    },
+    {
+     "who": "Adam",
+     "name": "Adam",
+     "tag": "7‑3",
+     "tone": "good",
+     "ln": "<b>7th</b> in points. A <b>55‑55</b> record against everybody. Tied for first anyway."
+    }
+   ],
+   "kicker": "One of them has the second-best team on paper. The other has the standings."
+  },
+  {
+   "type": "cards",
+   "title": "How you get <em>there</em>",
+   "cards": [
+    {
+     "who": "Tola",
+     "name": "Tola's opponents",
+     "tag": "2× high",
+     "tone": "bad",
+     "ln": "Ran into the week's highest score twice. In Week 10 he put up <b>164.98</b>, second-most in the league, and lost."
+    },
+    {
+     "who": "Adam",
+     "name": "Adam's opponents",
+     "tag": "3× low",
+     "tone": "good",
+     "ln": "Three of his last four opponents posted the <b>lowest score of the week</b>. Wes, David, Chris. 74.72 was the last one."
+    }
+   ],
+   "kicker": "Nobody since 2021 has faced the week's worst score more than three times through Week 10. Adam's tied."
+  },
+  {
+   "type": "chips",
+   "title": "Eleven teams have been <em>4‑6</em> after Week 10",
+   "chips": [
+    {
+     "name": "Jason",
+     "tag": "2021 · in"
+    },
+    {
+     "name": "Hoa",
+     "tag": "2021"
+    },
+    {
+     "name": "Tola",
+     "tag": "2021"
+    },
+    {
+     "name": "David",
+     "tag": "2022"
+    },
+    {
+     "name": "Matt",
+     "tag": "2022"
+    },
+    {
+     "name": "Zack",
+     "tag": "2022"
+    },
+    {
+     "name": "Drew",
+     "tag": "2023"
+    },
+    {
+     "name": "Drew",
+     "tag": "2024"
+    },
+    {
+     "name": "Erick",
+     "tag": "2024"
+    },
+    {
+     "name": "Adam",
+     "tag": "2025"
+    },
+    {
+     "name": "Matt",
+     "tag": "2025 · in"
+    }
+   ],
+   "facts": [
+    {
+     "k": "Made playoffs",
+     "v": "2"
+    },
+    {
+     "k": "Tola's odds now",
+     "v": "30%"
+    }
+   ],
+   "kicker": "Adam's odds: <b>95%</b>. He's done this before: 7‑3 in 2024 with the 11th-most points. Made the playoffs."
+  },
+  {
+   "type": "plain",
+   "title": "Somebody's <em>luck</em> runs out Sunday",
+   "say": "Tola vs. Adam. The most points against through ten weeks since 2021, versus the guy whose opponents keep saving their worst week for him.<br><br>Three weeks left after this one. Tola needs it. Adam just needs it to keep happening."
+  }
+ ],
+ "tag": [
+  "Tola",
+  "Adam"
+ ]
+}
