@@ -177,3 +177,20 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   Caps: FIRST, DOWN, WIN. The phone bit (wk 9 "let it ring" → wk 10 "put the phone DOWN") is RETIRED. Editor cut "a man with
   an asterisk on his ring": league lore with no source in the record, so don't use it. Hero: a fiddler crab on wet sand
   holding up its one oversized claw (Openverse → Wikimedia Commons, CC0, "Fiddler crab 2.jpg").
+- **wk 11 preview** — "Erick Is Coming Up Fast" (Mike Hunt). Opening: flat fact ("Chris had first place to himself for
+  most of the fall, and last Sunday Adam caught him") → "the next set of headlights in his mirror belongs to Erick" →
+  credit: fewest points against, still the best bet for a December bye → hinge "Then there's Erick." alone → Erick won the
+  first trophy this league handed out; "more than 150 on the commissioner, which for Erick is less a win than a hobby" →
+  one question ("a pothole for Chris, or the first sign of a flat?") → verdict "For the SECOND straight Sunday, somebody
+  pulls even with the leader. I've got Erick." The road/driving imagery (mirror, headlights, pothole, flat) is used up.
+  Devices: GOTW "head of the table … card table with the cousins" (Thanksgiving week); Tola as the name on Adam's schedule
+  that "reads like a dentist appointment" (6-2 series); Hoa "can't treat him like a bye", Zack "penciled in for the
+  track"; Matt "another step away from the starting line"; Jason "how a commissioner becomes somebody's escape route";
+  David–Drew "three of this league's titles between them, which on Sunday buys exactly nothing"; Happy Ending "a bonus
+  nobody … has ever said out loud with a straight face"; Wes "would rather talk about something else" (hand-off). Wes's
+  object: the church marquee letter box (tackle box, Sister Darlene, the youth group's Halloween, no W since, "ALKING IN THE
+  AY", the H-E-B); "Book of Signage"; pick David over Drew ("Brothers, we did not have a W."). Homepage: title "Two
+  Champions, One Head of the Table", "lap of practice" Beer Mile line, "nobody wants to be the one who blinks" bubble line,
+  Happy Ending "a sentence nobody asked for". Hero: a car side mirror at a Toronto intersection, an orange storm cloud in
+  the reflection (Wikimedia Commons, CC0, "Toronto side view mirror (Unsplash).jpg"); Openverse 504'd; skipped a
+  public-domain "Objects in mirror" shot full of armored vehicles (military).
