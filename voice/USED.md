@@ -21,6 +21,8 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
 - **"It leads because Yahoo can't separate them"** / any Game of the Week justified by
   projected closeness.
 - **"Programming note: this column is a day late."**
+- **Section labels in the Monday Night Watch** ("Wrapped up:", "Still alive:"), weeks 9-10.
+  Retired Nov 23 with the rest of rule 7's rewrite: one story, no labels.
 
 ## Used — fine as an occasional callback, never two weeks running
 - The Bad Beat told to Zack ("Sewp, pull up a chair" / "Sewp, I need you to hear this").
@@ -194,3 +196,22 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   Happy Ending "a sentence nobody asked for". Hero: a car side mirror at a Toronto intersection, an orange storm cloud in
   the reflection (Wikimedia Commons, CC0, "Toronto side view mirror (Unsplash).jpg"); Openverse 504'd; skipped a
   public-domain "Objects in mirror" shot full of armored vehicles (military).
+- **wk 9 Monday Night Watch** (Mike Hunt, Nov 9; logged late on Nov 23 from the run's transcript, 188 words). Opening:
+  "I want to be straight with everybody before the Bills and Vikings kick off" → "None." alone → "the room needs to
+  understand the difference". Devices: "Wrapped up:" label; Reichard "is a KICKER"; "The Brother Bowl" and "Set an
+  extra plate of crow for Thanksgiving"; Addison "the night of his life"; "Josh Allen is great. Not that great.";
+  "Here's the real game." (the bonus); "somebody's grocery money"; closer "WATCH."
+- **wk 10 Monday Night Watch** (Mike Hunt, Nov 16; logged late on Nov 23, 160 words, 888 characters signed, the length
+  Jason set as the ceiling). Opening: "Every matchup still alive in this league runs through one building in Baltimore
+  tonight" → "six grown men are about to care about it way too much". Devices: "Wrapped up:" label; "The Beer Mile game
+  is the main event"; "Same field, same night"; Henry doing "something they put on a STATUE"; "Pastor Wes locked Zack
+  this week. Somebody check on Wes."; Jason needs Hampton "to score negative" → "Negative!" alone; closer "Three
+  grudges, one game, all of it in Baltimore. Somebody in this league is going to yell at a kicker tonight."
+- **wk 11 Monday Night Watch** (Mike Hunt, Nov 23; 884 characters signed, 164 words; the first under rule 7's Nov 23
+  rewrite, approved by Jason before it went out). Opening: Zack's fear of last place (a group-chat accent, no quote) →
+  "It worked." Devices: Jason "rallied past Matt"; Zack and Matt "tied for last"; Adam started a running back on
+  injured reserve, "There's the Adam we know"; Chris "has first to himself again"; pivot "Bengals-Commanders settles
+  the rest tonight."; Drew and David "came in with the same record", loser "a game ahead of Zack and Matt"; Wes and
+  Dylan "tied too", "Wes has nobody left", loser "drops back into the pack"; closer: Wes locked David, so he needs
+  Diggs to go off and "the guy throwing him the ball" to have a quiet night, "That's a lot to ask of one quarterback."
+  Two numbers (what David and Dylan needed), no labels, no CAPS.

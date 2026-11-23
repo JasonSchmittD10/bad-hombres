@@ -104,7 +104,7 @@ notebook.
 | Post | Byline | Primary voice | Seasoning | Reference |
 |---|---|---|---|---|
 | Tuesday recap (the article, and the group-chat thread made from it) | Mike Hunt | **Stephen A. Smith** — narrator (the Oct 2026 trial) | one Magary roast, max | "The October 2026 reset" below · `voice/stephen-a-smith/` |
-| Sunday night post: the Monday Night Watch | Mike Hunt | **Stephen A. Smith** — what's decided, what's left, who needs what | — | "The October 2026 reset" below |
+| Sunday night post: the Monday Night Watch | Mike Hunt | **Stephen A. Smith** — one story: what Sunday settled, what's alive tonight, who needs what | — | "The October 2026 reset" below, rule 7 |
 | Thursday preview thread (iMessage) | Mike Hunt | the preview article itself, sent in full as one text per section — no link, no teaser | — | "The October 2026 reset" below |
 | Thursday preview article (the site) | Mike Hunt | **Stephen A. Smith** — narrator (the Oct 2026 trial); no Money Shot tiers | Pastor Wes writes his own lock | "The October 2026 reset" below |
 | Bonus-settled post | Wolf Blitzed | **Peter King** — award-header deadpan | Berry's "Get this:" stat framing | `voice/peter-king/02-architecture.md` §B |
@@ -143,8 +143,9 @@ number, two at the outside; most carry none. Say "he lost by less than a point,"
 joke that couldn't run in any other week. The opener earns the read in two sentences.
 Roasting is fine but not the goal — the goal is that the guys want to read it.
 
-**3. Short.** Recap: 450-700 words. Preview: 350-600 words. Monday Night Watch: 80-200
-words. If a section isn't funny or necessary, cut it.
+**3. Short.** Recap: 450-700 words. Preview: 350-600 words. Monday Night Watch: 888
+characters at most, sign-off included (Week 10's length, Jason's ceiling since Nov 23).
+If a section isn't funny or necessary, cut it.
 
 **4. Sections are texts.** Each article is posted to the group chat IN FULL, one iMessage
 per section (`scripts/thread-post.py`), no links. So sections must stand alone, 3-4 per
@@ -171,10 +172,20 @@ article, each with a header that reads well at the top of a text.
 projections); **The Games** — all six, two or three sentences each, Game of the Week first,
 no Money Shot ratings or tiers; **Pastor Wes's Lock of the Week** — unchanged, his voice.
 
-**7. The Monday Night Watch (Sunday night post).** Not a scoreboard dump. What's already
-decided (one line: who has it wrapped up), then each matchup still alive: who leads, who
-they have left on Monday, roughly what they need. Make the guys want to watch Monday
-night. Data: `scripts/mnf-watch.py`.
+**7. The Monday Night Watch (Sunday night post).** One clear story, with the weight on what
+to watch tonight (Jason, Nov 23). Not a scoreboard dump, and not an update on everything.
+Work it out the way a beat writer would, then write only what the story needs:
+   - what the group chat has been about since Thursday (who's talking, who's nervous);
+   - what Sunday settled, and the human reason (a starter left on injured reserve, a
+     comeback), winners only, no scores;
+   - what's still alive tonight and what it means: first place, the playoff line, the
+     Beer Mile. For each live game: who's done, who's left, about what they need.
+   Jason's example (Week 11): the chat's mood since Thursday; Adam lost with a man on
+   injured reserve in his lineup; Drew and David came in with the same record and the loser
+   stays in the last-place mix; Wes and Dylan's winner moves up the playoff picture. "Not
+   saying we write all of it." Numbers: only what the live teams need, rounded, two in the
+   whole post at most. No section labels ("Wrapped up:", "Still alive:"). Make the guys
+   want to watch. Data: `scripts/mnf-watch.py`.
 
 **8. The Game of the Week is about standings and stories, not projections.** First vs
 second, a tie at the top, last vs second-to-last (the Beer Mile), the playoff line, a
@@ -196,6 +207,14 @@ Fetish* is a foot, *Catch My Load* is a pair of hands full of footballs. It's th
 the thing between the lines. Brainstorm five objects that wink at the headline, pick the
 funniest literal one, find it as a CC0/public-domain photo. Never a generic football,
 stadium or random scene; never anything explicit — the joke is that it's innocent.
+
+**Nov 23 follow-up: "clearly AI."** League members told Jason the writing is getting long,
+reads as clearly AI, and repeats itself. Every piece has to feel like an actual beat writer
+covering twelve guys he knows: not over-analyzing, not constantly reaching for numbers, no
+element repeated, and a really clear narrative, most of all in the small updates (the
+Monday Night Watch, the homepage lines). The test for any line: would a sportswriter who's
+in the group chat say it this way? If it's there to sound like the voice instead of to tell
+the story, cut it.
 
 
 ---
