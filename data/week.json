@@ -1,7 +1,7 @@
 {
  "week": 11,
  "status": "live",
- "updated": "2026-11-23T09:57:11-05:00",
+ "updated": "2026-11-24T01:53:43-05:00",
  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
  "matchups": [
   {
@@ -44,16 +44,16 @@
    "a": {
     "m": "Hoa",
     "t": "Critical Chase Theory",
-    "s": 87.8,
-    "p": 137.96,
-    "lp": 132.86,
-    "togo": 2
+    "s": 116.8,
+    "p": 138.2,
+    "lp": 116.8,
+    "togo": 0
    },
    "b": {
     "m": "Zack",
     "t": "Sewer Pigeons",
     "s": 66.6,
-    "p": 101.16,
+    "p": 95.48,
     "lp": 66.6,
     "togo": 0
    }
@@ -62,16 +62,16 @@
    "a": {
     "m": "David",
     "t": "Drain the Swamp",
-    "s": 130.76,
+    "s": 139.26,
     "p": 137.15,
-    "lp": 143.92,
-    "togo": 1
+    "lp": 139.26,
+    "togo": 0
    },
    "b": {
     "m": "Drew",
     "t": "I Stand with Jordon",
     "s": 145.04,
-    "p": 119.92,
+    "p": 119.93,
     "lp": 145.04,
     "togo": 0
    }
@@ -80,10 +80,10 @@
    "a": {
     "m": "Dylan",
     "t": "Carlie’s Headset",
-    "s": 91.7,
-    "p": 136.5,
-    "lp": 148.57,
-    "togo": 3
+    "s": 132.66,
+    "p": 136.67,
+    "lp": 132.66,
+    "togo": 0
    },
    "b": {
     "m": "Wes",
@@ -98,16 +98,16 @@
    "a": {
     "m": "Chris",
     "t": "Maye the Force Be With You",
-    "s": 128.04,
-    "p": 127.57,
-    "lp": 139.14,
-    "togo": 1
+    "s": 138.64,
+    "p": 127.6,
+    "lp": 138.64,
+    "togo": 0
    },
    "b": {
     "m": "Erick",
     "t": "King In The North",
     "s": 105.56,
-    "p": 122.76,
+    "p": 122.75,
     "lp": 105.56,
     "togo": 0
    }
@@ -119,36 +119,36 @@
   "cr": "Highest Monday-night score",
   "actual": [
    {
-    "who": "Jason",
+    "who": "Dylan",
     "sub": "Monday starters",
-    "val": 0
-   },
-   {
-    "who": "Tola",
-    "sub": "Monday starters",
-    "val": 0
+    "val": 40.96
    },
    {
     "who": "Hoa",
     "sub": "Monday starters",
-    "val": 0
+    "val": 29
+   },
+   {
+    "who": "Chris",
+    "sub": "Monday starters",
+    "val": 10.6
    }
   ],
   "projected": [
    {
     "who": "Dylan",
     "sub": "Monday starters",
-    "val": 57.74
+    "val": 58.38
    },
    {
     "who": "Hoa",
     "sub": "Monday starters",
-    "val": 49.45
+    "val": 50.32
    },
    {
     "who": "David",
     "sub": "Monday starters",
-    "val": 14.25
+    "val": 14.31
    }
   ]
  },
@@ -156,10 +156,10 @@
  "nextKickoff": "2026-11-19T20:15:00-05:00",
  "nextKickoffLabel": "Thursday, Nov 19 · 8:15 PM ET",
  "nextGame": {
-  "away": "CIN",
-  "home": "WSH",
-  "kickoff": "2026-11-23T20:15:00-05:00",
-  "label": "Monday, Nov 23 at 8:15 PM ET",
-  "network": "ESPN"
+  "away": "GB",
+  "home": "LAR",
+  "kickoff": "2026-11-25T20:00:00-05:00",
+  "label": "Wednesday, Nov 25 at 8:00 PM ET",
+  "network": "Netflix"
  }
 }
