@@ -2,6 +2,16 @@
  "note": "Every story on the Updates page, newest first, for the header's Booth menu and Week card. Written by scripts/stories.py (publish-story.py runs it).",
  "stories": [
   {
+   "slug": "week-11-recap",
+   "type": "recap",
+   "week": 11,
+   "kicker": "Week 11 · The Recap",
+   "title": "Dylan Started the Wrong Jordan",
+   "dek": "Dylan won Monday's Happy Ending and lost to Wes by a point, with Jordan Mason on his bench and Jordyn Tyson in his lineup.",
+   "img": "/assets/stories/week-11-recap.jpg",
+   "thumb": null
+  },
+  {
    "slug": "week-11-preview",
    "type": "preview",
    "week": 11,

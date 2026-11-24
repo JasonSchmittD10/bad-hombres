@@ -215,3 +215,22 @@ bit it touched. Newest at the bottom. (VOICE_GUIDE.md, "The October 2026 reset",
   Dylan "tied too", "Wes has nobody left", loser "drops back into the pack"; closer: Wes locked David, so he needs
   Diggs to go off and "the guy throwing him the ball" to have a quiet night, "That's a lot to ask of one quarterback."
   Two numbers (what David and Dylan needed), no labels, no CAPS.
+- **wk 11 recap** — "Dylan Started the Wrong Jordan" (Mike Hunt, 620 words). Opening: the flat verdict ("won nine dollars on
+  Monday night and lost his game by a point, and the point was sitting on his bench the whole time") → credit: most points,
+  "Thursday, in this space, in writing" named him the Happy Ending favorite → concession "a one-point loss finds everybody… I
+  don't hold the schedule against any man" → "However." → "Jordan Mason sat on Dylan's bench Sunday. Jordyn Tyson started." /
+  "Same name. Different spelling." → wound "the best offense in the league lost to a spelling bee" → "He started the WRONG
+  Jordan. That's not the schedule. That's a TYPO." → verdict "Hire a proofreader." The name/spelling/typo/proofreader bit is
+  used up. Devices: Drew "won the Chris trade and lost his game… finally got to keep both" (Lamb for thirty); Zack "doing
+  business with a man in first and the man with the most points", Kirk Cousins, lowest score of anybody's season; "Nine
+  dollars: the going rate for a one-point loss"; Chris "wrong twice, said once" (Mike ate the wk 10 stop-trading advice and
+  the Thursday Erick pick — don't eat it again), Maye cut, re-added, cut again, "the team is still named after him"; Hoa
+  chasing the Happy Ending with Burrow and Chase, Dylan's "quarterback from the other sideline"; Adam "kept [the dentist
+  appointment] anyway" (callback to wk 11 preview, now spent), seventh loss to Tola; Matt's benched Stroud outscoring Allen
+  again, "I'm getting closer" (wk 9 callback — spent); the commissioner's "first win since he beat his brother, which in that
+  house counts as a streak"; David "lost to the only man who beat it"; Wes's lock "a good lock that lost anyway" (4-6). Beer
+  Mile: "The pool is down to two men"; Zack behind Matt on points "by sixty-six and change… EXACTLY what he scored Sunday";
+  GOTW Jason vs Drew "right on the playoff line". Caps: WRONG, TYPO, EXACTLY. Hero: Jan van der Venne's painting "The
+  proofreader Cornelis Kiel at work" — bearded man squinting through spectacles at his desk (Wikimedia Commons, public
+  domain). Instagram: carousel hook "The point was on his bench"; award "He still lost by a point"; Power Lines noted Wes
+  ninth there and third in the standings.

@@ -53,12 +53,12 @@
     "ADA": {
       "name": "Adam",
       "w": 35,
-      "l": 45,
+      "l": 46,
       "t": 0,
-      "g": 80,
-      "pct": 0.438,
-      "avg": 114.34,
-      "avgPa": 119.81,
+      "g": 81,
+      "pct": 0.432,
+      "avg": 114.01,
+      "avgPa": 119.54,
       "highs": 3,
       "weeksTop": 2,
       "high": {
@@ -80,10 +80,10 @@
         {
           "y": 2026,
           "w": 7,
-          "l": 3,
+          "l": 4,
           "t": 0,
-          "avg": 124.03,
-          "pa": 115.06,
+          "avg": 120.75,
+          "pa": 113.54,
           "finish": null,
           "po": null
         },
@@ -198,7 +198,7 @@
         },
         "Tola": {
           "w": 2,
-          "l": 6,
+          "l": 7,
           "t": 0
         },
         "Wes": {
@@ -217,7 +217,7 @@
         "highs": 12,
         "weeksTop": 10,
         "avg": 12,
-        "avgPa": 3,
+        "avgPa": 2,
         "high": 12,
         "low": 11,
         "blowout": 3
@@ -232,15 +232,15 @@
     },
     "CHR": {
       "name": "Chris",
-      "w": 43,
+      "w": 44,
       "l": 37,
       "t": 0,
-      "g": 80,
-      "pct": 0.537,
-      "avg": 119.21,
-      "avgPa": 119.43,
+      "g": 81,
+      "pct": 0.543,
+      "avg": 119.45,
+      "avgPa": 119.26,
       "highs": 3,
-      "weeksTop": 7,
+      "weeksTop": 8,
       "high": {
         "v": 184.9,
         "y": 2024,
@@ -259,11 +259,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 7,
+          "w": 8,
           "l": 3,
           "t": 0,
-          "avg": 130.33,
-          "pa": 109.52,
+          "avg": 131.08,
+          "pa": 109.16,
           "finish": null,
           "po": null
         },
@@ -357,7 +357,7 @@
           "t": 0
         },
         "Erick": {
-          "w": 4,
+          "w": 5,
           "l": 4,
           "t": 0
         },
@@ -414,12 +414,12 @@
     "DAV": {
       "name": "David",
       "w": 46,
-      "l": 34,
+      "l": 35,
       "t": 0,
-      "g": 80,
-      "pct": 0.575,
-      "avg": 128.89,
-      "avgPa": 124.17,
+      "g": 81,
+      "pct": 0.568,
+      "avg": 129.02,
+      "avgPa": 124.43,
       "highs": 15,
       "weeksTop": 5,
       "high": {
@@ -441,10 +441,10 @@
         {
           "y": 2026,
           "w": 4,
-          "l": 6,
+          "l": 7,
           "t": 0,
-          "avg": 119.36,
-          "pa": 132.81,
+          "avg": 121.17,
+          "pa": 133.92,
           "finish": null,
           "po": null
         },
@@ -529,7 +529,7 @@
         },
         "Drew": {
           "w": 6,
-          "l": 2,
+          "l": 3,
           "t": 0
         },
         "Dylan": {
@@ -578,7 +578,7 @@
         "highs": 1,
         "weeksTop": 7,
         "avg": 3,
-        "avgPa": 8,
+        "avgPa": 9,
         "high": 7,
         "low": 3,
         "blowout": 4
@@ -593,14 +593,14 @@
     },
     "DRE": {
       "name": "Drew",
-      "w": 44,
+      "w": 45,
       "l": 36,
       "t": 0,
-      "g": 80,
-      "pct": 0.55,
-      "avg": 129.52,
-      "avgPa": 123.91,
-      "highs": 7,
+      "g": 81,
+      "pct": 0.556,
+      "avg": 129.71,
+      "avgPa": 124.1,
+      "highs": 8,
       "weeksTop": 12,
       "high": {
         "v": 180.05,
@@ -620,11 +620,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 4,
+          "w": 5,
           "l": 6,
           "t": 0,
-          "avg": 130.7,
-          "pa": 121.02,
+          "avg": 132.0,
+          "pa": 122.68,
           "finish": null,
           "po": null
         },
@@ -708,7 +708,7 @@
           "t": 0
         },
         "David": {
-          "w": 2,
+          "w": 3,
           "l": 6,
           "t": 0
         },
@@ -755,10 +755,10 @@
       },
       "rank": {
         "pct": 4,
-        "highs": 5,
+        "highs": 4,
         "weeksTop": 3,
         "avg": 1,
-        "avgPa": 7,
+        "avgPa": 8,
         "high": 11,
         "low": 4,
         "blowout": 10
@@ -775,12 +775,12 @@
     "DYL": {
       "name": "Dylan",
       "w": 29,
-      "l": 51,
+      "l": 52,
       "t": 0,
-      "g": 80,
-      "pct": 0.362,
-      "avg": 115.94,
-      "avgPa": 121.96,
+      "g": 81,
+      "pct": 0.358,
+      "avg": 116.14,
+      "avgPa": 122.1,
       "highs": 3,
       "weeksTop": 1,
       "high": {
@@ -802,10 +802,10 @@
         {
           "y": 2026,
           "w": 6,
-          "l": 4,
+          "l": 5,
           "t": 0,
-          "avg": 132.0,
-          "pa": 123.4,
+          "avg": 132.06,
+          "pa": 124.34,
           "finish": null,
           "po": null
         },
@@ -921,7 +921,7 @@
         },
         "Wes": {
           "w": 4,
-          "l": 3,
+          "l": 4,
           "t": 0
         },
         "Zack": {
@@ -951,12 +951,12 @@
     "ERI": {
       "name": "Erick",
       "w": 46,
-      "l": 34,
+      "l": 35,
       "t": 0,
-      "g": 80,
-      "pct": 0.575,
-      "avg": 125.42,
-      "avgPa": 123.4,
+      "g": 81,
+      "pct": 0.568,
+      "avg": 125.17,
+      "avgPa": 123.59,
       "highs": 8,
       "weeksTop": 0,
       "high": {
@@ -978,10 +978,10 @@
         {
           "y": 2026,
           "w": 6,
-          "l": 4,
+          "l": 5,
           "t": 0,
-          "avg": 121.99,
-          "pa": 120.93,
+          "avg": 120.5,
+          "pa": 122.54,
           "finish": null,
           "po": null
         },
@@ -1061,7 +1061,7 @@
         },
         "Chris": {
           "w": 4,
-          "l": 4,
+          "l": 5,
           "t": 0
         },
         "David": {
@@ -1112,7 +1112,7 @@
       },
       "rank": {
         "pct": 3,
-        "highs": 4,
+        "highs": 5,
         "weeksTop": 12,
         "avg": 6,
         "avgPa": 6,
@@ -1130,13 +1130,13 @@
     },
     "HOA": {
       "name": "Hoa",
-      "w": 39,
+      "w": 40,
       "l": 41,
       "t": 0,
-      "g": 80,
-      "pct": 0.487,
-      "avg": 126.18,
-      "avgPa": 127.8,
+      "g": 81,
+      "pct": 0.494,
+      "avg": 126.07,
+      "avgPa": 127.04,
       "highs": 10,
       "weeksTop": 3,
       "high": {
@@ -1157,11 +1157,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 5,
+          "w": 6,
           "l": 5,
           "t": 0,
-          "avg": 127.16,
-          "pa": 127.61,
+          "avg": 126.22,
+          "pa": 122.07,
           "finish": null,
           "po": null
         },
@@ -1285,7 +1285,7 @@
           "t": 0
         },
         "Zack": {
-          "w": 3,
+          "w": 4,
           "l": 4,
           "t": 0
         }
@@ -1311,13 +1311,13 @@
     },
     "JAS": {
       "name": "Jason",
-      "w": 48,
+      "w": 49,
       "l": 32,
       "t": 0,
-      "g": 80,
-      "pct": 0.6,
-      "avg": 129.44,
-      "avgPa": 123.11,
+      "g": 81,
+      "pct": 0.605,
+      "avg": 129.21,
+      "avgPa": 122.7,
       "highs": 6,
       "weeksTop": 12,
       "high": {
@@ -1338,11 +1338,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 5,
+          "w": 6,
           "l": 5,
           "t": 0,
-          "avg": 126.04,
-          "pa": 124.75,
+          "avg": 124.66,
+          "pa": 121.61,
           "finish": null,
           "po": null
         },
@@ -1451,7 +1451,7 @@
           "t": 0
         },
         "Matt": {
-          "w": 5,
+          "w": 6,
           "l": 3,
           "t": 0
         },
@@ -1493,12 +1493,12 @@
     "MAT": {
       "name": "Matt",
       "w": 38,
-      "l": 42,
+      "l": 43,
       "t": 0,
-      "g": 80,
-      "pct": 0.475,
-      "avg": 126.69,
-      "avgPa": 125.28,
+      "g": 81,
+      "pct": 0.469,
+      "avg": 126.24,
+      "avgPa": 125.11,
       "highs": 11,
       "weeksTop": 5,
       "high": {
@@ -1520,10 +1520,10 @@
         {
           "y": 2026,
           "w": 3,
-          "l": 7,
+          "l": 8,
           "t": 0,
-          "avg": 113.84,
-          "pa": 132.91,
+          "avg": 111.69,
+          "pa": 130.91,
           "finish": null,
           "po": null
         },
@@ -1633,7 +1633,7 @@
         },
         "Jason": {
           "w": 3,
-          "l": 5,
+          "l": 6,
           "t": 0
         },
         "Tola": {
@@ -1653,7 +1653,7 @@
         }
       },
       "rank": {
-        "pct": 8,
+        "pct": 9,
         "highs": 2,
         "weeksTop": 8,
         "avg": 4,
@@ -1672,13 +1672,13 @@
     },
     "TOL": {
       "name": "Tola",
-      "w": 41,
+      "w": 42,
       "l": 39,
       "t": 0,
-      "g": 80,
-      "pct": 0.512,
-      "avg": 123.12,
-      "avgPa": 124.26,
+      "g": 81,
+      "pct": 0.519,
+      "avg": 122.81,
+      "avgPa": 123.81,
       "highs": 6,
       "weeksTop": 9,
       "high": {
@@ -1699,11 +1699,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 4,
+          "w": 5,
           "l": 6,
           "t": 0,
-          "avg": 128.78,
-          "pa": 135.51,
+          "avg": 126.01,
+          "pa": 131.19,
           "finish": null,
           "po": null
         },
@@ -1777,7 +1777,7 @@
       },
       "vs": {
         "Adam": {
-          "w": 6,
+          "w": 7,
           "l": 2,
           "t": 0
         },
@@ -1837,7 +1837,7 @@
         "highs": 7,
         "weeksTop": 5,
         "avg": 7,
-        "avgPa": 9,
+        "avgPa": 7,
         "high": 2,
         "low": 5,
         "blowout": 11
@@ -1852,13 +1852,13 @@
     },
     "WES": {
       "name": "Wes",
-      "w": 37,
+      "w": 38,
       "l": 43,
       "t": 0,
-      "g": 80,
-      "pct": 0.463,
-      "avg": 120.13,
-      "avgPa": 119.67,
+      "g": 81,
+      "pct": 0.469,
+      "avg": 120.29,
+      "avgPa": 119.83,
       "highs": 3,
       "weeksTop": 10,
       "high": {
@@ -1879,11 +1879,11 @@
       "season": [
         {
           "y": 2026,
-          "w": 6,
+          "w": 7,
           "l": 4,
           "t": 0,
-          "avg": 116.1,
-          "pa": 113.82,
+          "avg": 117.7,
+          "pa": 115.53,
           "finish": null,
           "po": null
         },
@@ -1977,7 +1977,7 @@
           "t": 0
         },
         "Dylan": {
-          "w": 3,
+          "w": 4,
           "l": 4,
           "t": 0
         },
@@ -2013,13 +2013,13 @@
         }
       },
       "rank": {
-        "pct": 9,
+        "pct": 8,
         "highs": 11,
         "weeksTop": 4,
         "avg": 8,
-        "avgPa": 2,
+        "avgPa": 3,
         "high": 10,
-        "low": 7,
+        "low": 6,
         "blowout": 6
       },
       "bio": "Pastor Reverend Wes — college pastor to many people in the league. Lives out in Texas and is the certified “dad” of the group. Finished last in 2025 at 4-10, losing the tiebreaker to Hoa on points — and therefore owes the league the 9/9/9 Challenge.",
@@ -2034,12 +2034,12 @@
     "ZAC": {
       "name": "Zack",
       "w": 34,
-      "l": 46,
+      "l": 47,
       "t": 0,
-      "g": 80,
-      "pct": 0.425,
-      "avg": 118.88,
-      "avgPa": 124.95,
+      "g": 81,
+      "pct": 0.42,
+      "avg": 118.24,
+      "avgPa": 124.85,
       "highs": 5,
       "weeksTop": 14,
       "high": {
@@ -2048,9 +2048,9 @@
         "opp": "David"
       },
       "low": {
-        "v": 68.28,
-        "y": 2024,
-        "opp": "Drew"
+        "v": 66.6,
+        "y": 2026,
+        "opp": "Hoa"
       },
       "blowout": {
         "v": 91.09,
@@ -2061,10 +2061,10 @@
         {
           "y": 2026,
           "w": 3,
-          "l": 7,
+          "l": 8,
           "t": 0,
-          "avg": 109.54,
-          "pa": 122.5,
+          "avg": 105.63,
+          "pa": 121.98,
           "finish": null,
           "po": null
         },
@@ -2169,7 +2169,7 @@
         },
         "Hoa": {
           "w": 4,
-          "l": 3,
+          "l": 4,
           "t": 0
         },
         "Jason": {
@@ -2200,7 +2200,7 @@
         "avg": 10,
         "avgPa": 10,
         "high": 8,
-        "low": 6,
+        "low": 7,
         "blowout": 5
       },
       "bio": "Finished last in 2023 with a 1-13 campaign — the worst record in recorded league history. Extremely active in the shit-talk department and just trying, desperately, to stay out of the basement.",

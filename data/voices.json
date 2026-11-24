@@ -4,7 +4,7 @@
     "bit": "Pastor Wes's Lock of the Week",
     "record": {
       "w": 4,
-      "l": 5
+      "l": 6
     },
     "locks": [
       {
@@ -59,7 +59,7 @@
       {
         "week": 11,
         "pick": "David over Drew",
-        "result": null,
+        "result": "L",
         "quote": "Brothers, we did not have a W."
       }
     ]
@@ -126,6 +126,12 @@
         "index": -5,
         "paRank": 7,
         "standingsRank": 12
+      },
+      {
+        "week": 11,
+        "index": -4,
+        "paRank": 8,
+        "standingsRank": 12
       }
     ]
   },
@@ -189,6 +195,12 @@
       "a": "Chris",
       "b": "Erick",
       "reason": "First place on the line"
+    },
+    {
+      "week": 12,
+      "a": "Jason",
+      "b": "Drew",
+      "reason": "The playoff line"
     }
   ]
 }
