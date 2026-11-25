@@ -14,13 +14,15 @@ scripts/thread-post.py text mnf-wN <file>.
 ahead and only the leader has anyone left, so the trailing side can't score again: it flips
 only if the leader's players go negative by the margin. Both are "settled" in the JSON;
 everything else is live. "Needs" is the trailing side's deficit; "has left" is what its
-remaining starters are projected for, and it's "within reach" when that covers the deficit
-plus what the leader's remaining starters are projected for. Projections are a guide, not a
-promise — the brief says so and the post should too.
+remaining starters are projected for. The target on projections is the deficit plus what the
+leader's remaining starters are projected for: within COIN_FLIP points of it either way is
+"a coin flip", clear of it "within reach", short of it "a long shot". Projections are a
+guide, not a promise — the brief says so and the post should too.
 """
 import json, os, sys, urllib.request
 
 API = os.environ.get("BH_API", "https://bad-hombres.vercel.app/api/scoreboard")
+COIN_FLIP = 3  # projected points either side of the target that still read as a coin flip
 
 def fetch():
     req = urllib.request.Request(API + "?full=1", headers={"Cache-Control": "no-store"})
@@ -66,8 +68,10 @@ def show(b):
         for side, who, ps, tot in (("lead", r["lead"], r["lead_left"], r["lead_left_proj"]), ("trail", r["trail"], r["trail_left"], r["trail_left_proj"])):
             print("   %-5s %s has left: %s — projected %.1f" % (side, who, names(ps), tot))
         need = round(r["margin"] + r["lead_left_proj"], 2)  # the deficit, plus whatever the leader's players add
+        gap = r["trail_left_proj"] - need
+        odds = "a coin flip" if abs(gap) <= COIN_FLIP else "within reach" if gap > 0 else "a long shot"
         print("   %s needs %.2f more than %s's remaining players score (on projections: %s)" % (
-            r["trail"], r["margin"], r["lead"], "within reach" if r["trail_left_proj"] >= need else "a long shot"))
+            r["trail"], r["margin"], r["lead"], odds))
     print("\nProjections are a guide. Write the post from this; don't paste it.")
 
 if __name__ == "__main__":
