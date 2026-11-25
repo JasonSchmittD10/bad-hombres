@@ -1,0 +1,125 @@
+{
+ "slug": "six-five-jam",
+ "label": "Hard Numbers",
+ "slides": [
+  {
+   "type": "hook",
+   "eyebrow": "Hard Numbers · Week 12",
+   "stat": "6‑5",
+   "statSub": "Four teams. Same record. Three weeks left.",
+   "say": "Dylan, Hoa, Jason and Erick.<br>Only one other year since 2021 had four teams at 6‑5 after Week 11."
+  },
+  {
+   "type": "cards",
+   "title": "The tiebreaker is <em>points</em>",
+   "cards": [
+    {
+     "who": "Dylan",
+     "name": "Dylan",
+     "tag": "Seed 4",
+     "tone": "good",
+     "ln": "<b>1,452.64</b> points, most in the league. Odds <b>82%</b>."
+    },
+    {
+     "who": "Hoa",
+     "name": "Hoa",
+     "tag": "Seed 5",
+     "tone": "good",
+     "ln": "<b>1,388.40</b> points. Odds <b>63%</b>."
+    },
+    {
+     "who": "Jason",
+     "name": "Jason",
+     "tag": "Seed 6",
+     "tone": "good",
+     "ln": "<b>1,371.30</b> points. Holding the last spot. Odds <b>59%</b>."
+    },
+    {
+     "who": "Erick",
+     "name": "Erick",
+     "tag": "7th",
+     "tone": "bad",
+     "ln": "<b>1,325.46</b> points, ninth in the league. Odds <b>53%</b>."
+    }
+   ],
+   "kicker": "Same record. Erick is out on points alone."
+  },
+  {
+   "type": "chips",
+   "title": "Eleven teams were <em>6‑5</em> after Week 11",
+   "chips": [
+    {
+     "name": "David",
+     "tag": "2021 · 2‑1 · in"
+    },
+    {
+     "name": "Adam",
+     "tag": "2021 · 0‑3"
+    },
+    {
+     "name": "Dylan",
+     "tag": "2021 · 0‑3"
+    },
+    {
+     "name": "Hoa",
+     "tag": "2023 · 2‑1 · in"
+    },
+    {
+     "name": "Erick",
+     "tag": "2023 · 2‑1 · in"
+    },
+    {
+     "name": "Tola",
+     "tag": "2023 · 2‑1"
+    },
+    {
+     "name": "Hoa",
+     "tag": "2024 · 2‑1 · in"
+    },
+    {
+     "name": "David",
+     "tag": "2024 · 2‑1 · in"
+    },
+    {
+     "name": "Matt",
+     "tag": "2024 · 2‑1 · in"
+    },
+    {
+     "name": "Tola",
+     "tag": "2024 · 0‑3"
+    },
+    {
+     "name": "Dylan",
+     "tag": "2025 · 0‑3"
+    }
+   ],
+   "facts": [
+    {
+     "k": "Went 2‑1",
+     "v": "6 of 7 in"
+    },
+    {
+     "k": "Went 0‑3",
+     "v": "0 of 4 in"
+    }
+   ],
+   "kicker": "Nobody went 3‑0. Nobody went 1‑2. The one 2‑1 team that missed, Tola in 2023, lost a five-way tie at 8‑6 on points."
+  },
+  {
+   "type": "plain",
+   "title": "2024 had <em>four</em>, too",
+   "say": "Hoa, David and Matt each went 2‑1 and got in. Tola went 0‑3 and didn't.<br><br>After Week 11 that year, Tola and David were separated by <b>0.04</b> points. David won the title."
+  },
+  {
+   "type": "plain",
+   "title": "It starts <em>Sunday</em>",
+   "say": "Hoa vs. Dylan, 6‑5 against 6‑5. Jason gets Drew, who is 5‑6 with the second-most points in the league. Erick gets Tola. Hoa and Erick meet in Week 14.<br><br>History offers two options from here: 2‑1 or 0‑3. Nothing else has been attempted."
+  }
+ ],
+ "tag": [
+  "Dylan",
+  "Hoa",
+  "Jason",
+  "Erick"
+ ]
+}
