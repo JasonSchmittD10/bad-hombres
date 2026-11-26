@@ -1,165 +1,165 @@
 {
- "week": 11,
- "status": "final",
- "updated": "2026-11-24T07:15:13-05:00",
- "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
- "matchups": [
-  {
-   "a": {
-    "m": "Jason",
-    "t": "Pull-Out Game Weak",
-    "s": 110.88,
-    "p": 121.5,
-    "lp": 110.88,
-    "togo": 0
-   },
-   "b": {
-    "m": "Matt",
-    "t": "San Diego Chillin’",
-    "s": 90.16,
-    "p": 112.42,
-    "lp": 90.16,
-    "togo": 0
-   }
-  },
-  {
-   "a": {
-    "m": "Tola",
-    "t": "Alien Awareness",
-    "s": 98.34,
-    "p": 114.58,
-    "lp": 98.34,
-    "togo": 0
-   },
-   "b": {
-    "m": "Adam",
-    "t": "Suck My Diggs",
-    "s": 87.96,
-    "p": 103.45,
-    "lp": 87.96,
-    "togo": 0
-   }
-  },
-  {
-   "a": {
-    "m": "Hoa",
-    "t": "Critical Chase Theory",
-    "s": 116.8,
-    "p": 138.2,
-    "lp": 116.8,
-    "togo": 0
-   },
-   "b": {
-    "m": "Zack",
-    "t": "Sewer Pigeons",
-    "s": 66.6,
-    "p": 95.48,
-    "lp": 66.6,
-    "togo": 0
-   }
-  },
-  {
-   "a": {
-    "m": "David",
-    "t": "Drain the Swamp",
-    "s": 139.26,
-    "p": 137.15,
-    "lp": 139.26,
-    "togo": 0
-   },
-   "b": {
-    "m": "Drew",
-    "t": "I Stand with Jordon",
-    "s": 145.04,
-    "p": 119.93,
-    "lp": 145.04,
-    "togo": 0
-   }
-  },
-  {
-   "a": {
-    "m": "Dylan",
-    "t": "Carlie’s Headset",
-    "s": 132.66,
-    "p": 136.67,
-    "lp": 132.66,
-    "togo": 0
-   },
-   "b": {
-    "m": "Wes",
-    "t": "MikeLee4 Prez",
-    "s": 133.7,
-    "p": 127.5,
-    "lp": 133.7,
-    "togo": 0
-   }
-  },
-  {
-   "a": {
-    "m": "Chris",
-    "t": "Maye the Force Be With You",
-    "s": 138.64,
-    "p": 127.6,
-    "lp": 138.64,
-    "togo": 0
-   },
-   "b": {
-    "m": "Erick",
-    "t": "King In The North",
-    "s": 105.56,
-    "p": 122.75,
-    "lp": 105.56,
-    "togo": 0
-   }
-  }
- ],
- "bonus": {
-  "week": 11,
-  "nm": "Happy Ending",
-  "cr": "Highest Monday-night score",
-  "actual": [
-   {
-    "who": "Dylan",
-    "sub": "Monday starters",
-    "val": 40.96
-   },
-   {
-    "who": "Hoa",
-    "sub": "Monday starters",
-    "val": 29
-   },
-   {
-    "who": "Chris",
-    "sub": "Monday starters",
-    "val": 10.6
-   }
+  "week": 12,
+  "status": "live",
+  "updated": "2026-11-26T12:05:04-05:00",
+  "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
+  "matchups": [
+    {
+      "a": {
+        "m": "Jason",
+        "t": "Pull-Out Game Weak",
+        "s": 28.5,
+        "p": 133.07,
+        "lp": 150.11,
+        "togo": 8
+      },
+      "b": {
+        "m": "Drew",
+        "t": "I Stand with Jordon",
+        "s": 8.62,
+        "p": 122.67,
+        "lp": 114.24,
+        "togo": 8
+      }
+    },
+    {
+      "a": {
+        "m": "Tola",
+        "t": "Alien Awareness",
+        "s": 0.0,
+        "p": 122.64,
+        "lp": 122.64,
+        "togo": 9
+      },
+      "b": {
+        "m": "Erick",
+        "t": "King In The North",
+        "s": 0.0,
+        "p": 118.43,
+        "lp": 118.43,
+        "togo": 9
+      }
+    },
+    {
+      "a": {
+        "m": "Hoa",
+        "t": "Critical Chase Theory",
+        "s": 0.0,
+        "p": 131.79,
+        "lp": 131.79,
+        "togo": 9
+      },
+      "b": {
+        "m": "Dylan",
+        "t": "Carlie’s Headset",
+        "s": 0.0,
+        "p": 122.69,
+        "lp": 122.69,
+        "togo": 9
+      }
+    },
+    {
+      "a": {
+        "m": "David",
+        "t": "Drain the Swamp",
+        "s": 0.0,
+        "p": 132.99,
+        "lp": 132.99,
+        "togo": 9
+      },
+      "b": {
+        "m": "Wes",
+        "t": "MikeLee4 Prez",
+        "s": 4.9,
+        "p": 131.66,
+        "lp": 121.19,
+        "togo": 8
+      }
+    },
+    {
+      "a": {
+        "m": "Chris",
+        "t": "Maye the Force Be With You",
+        "s": 0.0,
+        "p": 125.46,
+        "lp": 125.46,
+        "togo": 9
+      },
+      "b": {
+        "m": "Matt",
+        "t": "San Diego Chillin’",
+        "s": 3.4,
+        "p": 113.24,
+        "lp": 105.7,
+        "togo": 8
+      }
+    },
+    {
+      "a": {
+        "m": "Zack",
+        "t": "Sewer Pigeons",
+        "s": 0.0,
+        "p": 114.22,
+        "lp": 114.22,
+        "togo": 9
+      },
+      "b": {
+        "m": "Adam",
+        "t": "Suck My Diggs",
+        "s": 0.0,
+        "p": 114.84,
+        "lp": 114.84,
+        "togo": 9
+      }
+    }
   ],
-  "projected": [
-   {
-    "who": "Dylan",
-    "sub": "Monday starters",
-    "val": 58.38
-   },
-   {
-    "who": "Hoa",
-    "sub": "Monday starters",
-    "val": 50.32
-   },
-   {
-    "who": "David",
-    "sub": "Monday starters",
-    "val": 14.31
-   }
-  ]
- },
- "nextWeek": 12,
- "nextKickoff": "2026-11-25T20:00:00-05:00",
- "nextKickoffLabel": "Wednesday, Nov 25 · 8:00 PM ET",
- "nextGame": {
-  "away": "GB",
-  "home": "LAR",
-  "kickoff": "2026-11-25T20:00:00-05:00",
-  "label": "Wednesday, Nov 25 at 8:00 PM ET",
-  "network": "Netflix"
- }
+  "bonus": {
+    "week": 12,
+    "nm": "Mr. Big Dick",
+    "cr": "Highest individual player score",
+    "actual": [
+      {
+        "who": "Jason",
+        "sub": "Blake Corum",
+        "val": 28.5
+      },
+      {
+        "who": "Drew",
+        "sub": "Jordan Love",
+        "val": 8.62
+      },
+      {
+        "who": "Wes",
+        "sub": "Matthew Golden",
+        "val": 4.9
+      }
+    ],
+    "projected": [
+      {
+        "who": "Jason",
+        "sub": "Jahmyr Gibbs",
+        "val": 27.56
+      },
+      {
+        "who": "Erick",
+        "sub": "Jaxon Smith-Njigba",
+        "val": 25.43
+      },
+      {
+        "who": "Hoa",
+        "sub": "Joe Burrow",
+        "val": 23.81
+      }
+    ]
+  },
+  "nextWeek": 12,
+  "nextKickoff": "2026-11-25T20:00:00-05:00",
+  "nextKickoffLabel": "Wednesday, Nov 25 · 8:00 PM ET",
+  "nextGame": {
+    "away": "CHI",
+    "home": "DET",
+    "kickoff": "2026-11-26T13:00:00-05:00",
+    "label": "Thursday, Nov 26 at 1:00 PM ET",
+    "network": "CBS"
+  }
 }
