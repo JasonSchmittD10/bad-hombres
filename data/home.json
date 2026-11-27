@@ -43,6 +43,10 @@
       "beerMile": "Matt and Zack both draw .500 teams, and every loss is another lap of practice.",
       "bubble": "Hoa and Jason sit at 5-5 with the line running between them; nobody wants to be the one who blinks.",
       "bonus": "Happy Ending: highest Monday-night score. Dylan is the favorite, which is a sentence nobody asked for."
+    },
+    "12": {
+      "live": {"text": "Jason carved out a 61.88-point lead on Thanksgiving. Drew’s five players left need Sunday to be a second helping.", "until": "2026-11-27T15:00:00-05:00"},
+      "kickoff": {"text": "Black Friday doorbuster: David gets the first crack at catching Wes, with Jonah Coleman.", "until": "2026-11-27T15:00:00-05:00", "tag": "Black Friday"}
     }
   }
 }

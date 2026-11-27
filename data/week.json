@@ -1,97 +1,97 @@
 {
   "week": 12,
   "status": "live",
-  "updated": "2026-11-26T12:05:04-05:00",
+  "updated": "2026-11-27T00:28:44-05:00",
   "note": "Yahoo projections scraped from the league's team pages. Same shape as /api/scoreboard. See scripts/UPDATE_WEEK.md.",
   "matchups": [
     {
       "a": {
         "m": "Jason",
         "t": "Pull-Out Game Weak",
-        "s": 28.5,
-        "p": 133.07,
-        "lp": 150.11,
-        "togo": 8
+        "s": 100.6,
+        "p": 132.73,
+        "lp": 165.77,
+        "togo": 5
       },
       "b": {
         "m": "Drew",
         "t": "I Stand with Jordon",
-        "s": 8.62,
-        "p": 122.67,
-        "lp": 114.24,
-        "togo": 8
+        "s": 38.72,
+        "p": 122.72,
+        "lp": 106.69,
+        "togo": 5
       }
     },
     {
       "a": {
         "m": "Tola",
         "t": "Alien Awareness",
-        "s": 0.0,
-        "p": 122.64,
-        "lp": 122.64,
-        "togo": 9
+        "s": 57.5,
+        "p": 122.99,
+        "lp": 159.96,
+        "togo": 7
       },
       "b": {
         "m": "Erick",
         "t": "King In The North",
-        "s": 0.0,
-        "p": 118.43,
-        "lp": 118.43,
-        "togo": 9
+        "s": 1.9,
+        "p": 118.56,
+        "lp": 109.07,
+        "togo": 8
       }
     },
     {
       "a": {
         "m": "Hoa",
         "t": "Critical Chase Theory",
-        "s": 0.0,
-        "p": 131.79,
-        "lp": 131.79,
-        "togo": 9
+        "s": 32.2,
+        "p": 131.54,
+        "lp": 141.89,
+        "togo": 7
       },
       "b": {
         "m": "Dylan",
         "t": "Carlie’s Headset",
-        "s": 0.0,
-        "p": 122.69,
-        "lp": 122.69,
-        "togo": 9
+        "s": 44.14,
+        "p": 122.07,
+        "lp": 109.15,
+        "togo": 5
       }
     },
     {
       "a": {
         "m": "David",
         "t": "Drain the Swamp",
-        "s": 0.0,
-        "p": 132.99,
-        "lp": 132.99,
-        "togo": 9
+        "s": 15.16,
+        "p": 132.78,
+        "lp": 123.3,
+        "togo": 7
       },
       "b": {
         "m": "Wes",
         "t": "MikeLee4 Prez",
-        "s": 4.9,
-        "p": 131.66,
-        "lp": 121.19,
-        "togo": 8
+        "s": 30.64,
+        "p": 131.71,
+        "lp": 99.12,
+        "togo": 5
       }
     },
     {
       "a": {
         "m": "Chris",
         "t": "Maye the Force Be With You",
-        "s": 0.0,
-        "p": 125.46,
-        "lp": 125.46,
-        "togo": 9
+        "s": 107.8,
+        "p": 125.56,
+        "lp": 143.24,
+        "togo": 3
       },
       "b": {
         "m": "Matt",
         "t": "San Diego Chillin’",
-        "s": 3.4,
-        "p": 113.24,
-        "lp": 105.7,
-        "togo": 8
+        "s": 17.4,
+        "p": 112.79,
+        "lp": 105.55,
+        "togo": 7
       }
     },
     {
@@ -106,10 +106,10 @@
       "b": {
         "m": "Adam",
         "t": "Suck My Diggs",
-        "s": 0.0,
-        "p": 114.84,
-        "lp": 114.84,
-        "togo": 9
+        "s": 40.92,
+        "p": 114.71,
+        "lp": 103.12,
+        "togo": 6
       }
     }
   ],
@@ -120,18 +120,18 @@
     "actual": [
       {
         "who": "Jason",
-        "sub": "Blake Corum",
-        "val": 28.5
+        "sub": "Jahmyr Gibbs",
+        "val": 50.2
       },
       {
-        "who": "Drew",
-        "sub": "Jordan Love",
-        "val": 8.62
+        "who": "Tola",
+        "sub": "DeVonta Smith",
+        "val": 47
       },
       {
-        "who": "Wes",
-        "sub": "Matthew Golden",
-        "val": 4.9
+        "who": "Chris",
+        "sub": "Javonte Williams",
+        "val": 33.3
       }
     ],
     "projected": [
@@ -143,12 +143,12 @@
       {
         "who": "Erick",
         "sub": "Jaxon Smith-Njigba",
-        "val": 25.43
+        "val": 25.28
       },
       {
         "who": "Hoa",
         "sub": "Joe Burrow",
-        "val": 23.81
+        "val": 23.71
       }
     ]
   },
@@ -156,10 +156,10 @@
   "nextKickoff": "2026-11-25T20:00:00-05:00",
   "nextKickoffLabel": "Wednesday, Nov 25 · 8:00 PM ET",
   "nextGame": {
-    "away": "CHI",
-    "home": "DET",
-    "kickoff": "2026-11-26T13:00:00-05:00",
-    "label": "Thursday, Nov 26 at 1:00 PM ET",
-    "network": "CBS"
+    "away": "DEN",
+    "home": "PIT",
+    "kickoff": "2026-11-27T15:00:00-05:00",
+    "label": "Friday, Nov 27 at 3:00 PM ET",
+    "network": "Prime Video"
   }
 }
